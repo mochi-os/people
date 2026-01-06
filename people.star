@@ -314,7 +314,6 @@ def event_invite(e):
 		mochi.service.call("notifications", "create", "friends", "accept", e.header("from"), name + " is now your friend", "/people")
 	else:
 		mochi.db.execute("replace into invites ( identity, id, direction, name, updated ) values ( ?, ?, 'from', ?, ? )", identity, e.header("from"), name, mochi.time.now())
-		mochi.service.call("notifications", "create", "friends", "invite", e.header("from"), name + " sent you a friend invitation", "/people")
 
 def event_cancel(e):
 	# Remove the invitation from the recipient's side

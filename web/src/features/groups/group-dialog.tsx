@@ -16,8 +16,18 @@ import {
   Label,
   Textarea,
   getErrorMessage,
+  PermissionPrompt,
+  isPermissionError,
 } from '@mochi/common'
 import type { Group } from '@/api/types/groups'
+
+// Extract response data from API error
+function getErrorData(error: unknown): unknown {
+  if (error && typeof error === 'object' && 'data' in error) {
+    return (error as { data: unknown }).data
+  }
+  return null
+}
 
 interface GroupDialogProps {
   open: boolean
@@ -28,6 +38,7 @@ interface GroupDialogProps {
 export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
+  const [permissionNeeded, setPermissionNeeded] = useState<string | null>(null)
 
   const isEditing = !!group
   const createMutation = useCreateGroupMutation()
@@ -42,6 +53,7 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
         setName('')
         setDescription('')
       }
+      setPermissionNeeded(null)
     }
   }, [open, group])
 
@@ -53,6 +65,15 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
       return
     }
 
+    const handleError = (error: unknown, fallback: string) => {
+      const permError = isPermissionError(getErrorData(error))
+      if (permError) {
+        setPermissionNeeded(permError.permission)
+      } else {
+        toast.error(getErrorMessage(error, fallback))
+      }
+    }
+
     if (isEditing) {
       updateMutation.mutate(
         { id: group.id, name: name.trim(), description: description.trim() },
@@ -61,9 +82,7 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
             toast.success('Group updated')
             onOpenChange(false)
           },
-          onError: (error) => {
-            toast.error(getErrorMessage(error, 'Failed to update group'))
-          },
+          onError: (error) => handleError(error, 'Failed to update group'),
         }
       )
     } else {
@@ -74,9 +93,7 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
             toast.success('Group created')
             onOpenChange(false)
           },
-          onError: (error) => {
-            toast.error(getErrorMessage(error, 'Failed to create group'))
-          },
+          onError: (error) => handleError(error, 'Failed to create group'),
         }
       )
     }
@@ -119,6 +136,12 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
               />
             </div>
           </div>
+          {permissionNeeded && (
+            <PermissionPrompt
+              permission={permissionNeeded}
+              onDismiss={() => setPermissionNeeded(null)}
+            />
+          )}
           <DialogFooter>
             <Button type='button' variant='outline' onClick={() => onOpenChange(false)} disabled={isPending}>
               Cancel

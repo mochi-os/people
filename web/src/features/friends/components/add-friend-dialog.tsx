@@ -111,7 +111,11 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
   const showEmpty = !isLoading && users.length === 0 && debouncedQuery.length > 0
 
   return (
-    <ResponsiveDialog open={open} onOpenChange={onOpenChange}>
+    <ResponsiveDialog
+      open={open}
+      onOpenChange={onOpenChange}
+      shouldCloseOnInteractOutside={false}
+    >
       <ResponsiveDialogContent className='flex max-h-[85vh] flex-col gap-0 p-0 sm:max-w-[600px]'>
         <ResponsiveDialogHeader className='border-b px-6 pt-6 pb-4'>
           <ResponsiveDialogTitle className='text-2xl font-semibold'>

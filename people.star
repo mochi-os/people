@@ -325,19 +325,19 @@ def event_remove(e):
 	mochi.db.execute("delete from friends where identity=? and id=?", identity, e.header("from"))
 	mochi.db.execute("delete from invites where identity=? and id=?", identity, e.header("from"))
 
-def function_get(identity, id):
+def function_get(context, identity, id):
 	if not identity:
 		return None
 	return mochi.db.row("select * from friends where identity=? and id=?", identity, id)
 
-def function_list(identity):
+def function_list(context, identity):
 	if not identity:
 		return []
 	return mochi.db.rows("select * from friends where identity=? order by name, id", identity)
 
 # Service function for user search
 # Supports searching by name, entity ID, fingerprint (with or without hyphens), or URL
-def function_users_search(query):
+def function_users_search(context, query):
 	if not query or len(query) > 200:
 		return []
 
@@ -387,7 +387,7 @@ def function_users_search(query):
 	return unique_results
 
 # Service function for groups list
-def function_groups_list():
+def function_groups_list(context):
 	return mochi.group.list()
 
 # Group management actions

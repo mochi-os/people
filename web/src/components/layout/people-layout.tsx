@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useRef } from 'react'
 import { AuthenticatedLayout, getErrorMessage } from '@mochi/common'
 import type { SidebarData, NavItem } from '@mochi/common'
 import { Pencil, Plus, Trash2, User, UserPlus, Users, UsersRound } from 'lucide-react'
@@ -28,6 +28,12 @@ function PeopleLayoutInner() {
   const navigate = useNavigate()
   const deleteMutation = useDeleteGroupMutation()
 
+  // Use refs to avoid recreating sidebarData on every render
+  const navigateRef = useRef(navigate)
+  navigateRef.current = navigate
+  const deleteMutationRef = useRef(deleteMutation)
+  deleteMutationRef.current = deleteMutation
+
   // Find the group being edited for the dialog
   const editGroup = editGroupId ? groups?.find(g => g.id === editGroupId) : null
 
@@ -44,13 +50,13 @@ function PeopleLayoutInner() {
       // Create delete handler for this group
       const handleDelete = () => {
         if (confirm(`Delete group "${group.name}"? This cannot be undone.`)) {
-          deleteMutation.mutate(
+          deleteMutationRef.current.mutate(
             { id: group.id },
             {
               onSuccess: () => {
                 toast.success('Group deleted')
                 // Navigate to friends page since there's no groups list
-                navigate({ to: '/' })
+                navigateRef.current({ to: '/' })
               },
               onError: (error) => {
                 toast.error(getErrorMessage(error, 'Failed to delete group'))
@@ -108,7 +114,7 @@ function PeopleLayoutInner() {
     ]
 
     return { navGroups: groups_section }
-  }, [groups, groupId, openCreateGroupDialog, openEditGroupDialog, openAddMemberDialog, deleteMutation, navigate])
+  }, [groups, groupId, openCreateGroupDialog, openEditGroupDialog, openAddMemberDialog])
 
   return (
     <>

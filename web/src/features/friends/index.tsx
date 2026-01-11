@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { APP_ROUTES } from '@/config/app-routes'
-import { UserPlus, Users, MessageSquare, UserX } from 'lucide-react'
+import { UserPlus, Users, MessageSquare, UserX, Minus } from 'lucide-react'
 import { toast } from '@mochi/common'
 import type { Friend } from '@/api/types/friends'
 import { useCreateChatMutation } from '@/hooks/useChats'
@@ -249,6 +249,7 @@ export function Friends() {
                 onClick={confirmRemoveFriend}
                 disabled={removeFriendMutation.isPending}
               >
+                <Minus className='mr-2 h-4 w-4' />
                 {removeFriendMutation.isPending
                   ? FRIENDS_STRINGS.REMOVING
                   : FRIENDS_STRINGS.REMOVE_FRIEND}

@@ -18,8 +18,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   Button,
-  Card,
-  CardContent,
   Main,
   usePageTitle,
 } from '@mochi/common'
@@ -170,50 +168,37 @@ export function Friends() {
             )}
           </div>
         ) : (
-          <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+          <div className='divide-border divide-y rounded-lg border'>
             {filteredFriends.map((friend) => (
-              <Card
+              <div
                 key={friend.id}
-                className='group transition-shadow hover:shadow-md'
+                className='hover:bg-muted/50 flex items-center justify-between px-4 py-3 transition-colors'
               >
-                <CardContent className='p-4'>
-                  <div className='flex flex-col items-center space-y-3 text-center'>
-                    <div className='w-full'>
-                      <p className='truncate font-medium'>
-                        {friend.name}
-                      </p>
-                    </div>
-                    <div className='flex w-full items-center gap-2'>
-                      <Button
-                        variant='outline'
-                        size='sm'
-                        className='flex-1'
-                        disabled={
-                          startChatMutation.isPending &&
-                          pendingChatFriendId === friend.id
-                        }
-                        onClick={() => handleStartChat(friend)}
-                      >
-                        <MessageSquare className='mr-1 h-4 w-4' />
-                        {startChatMutation.isPending &&
-                          pendingChatFriendId === friend.id
-                          ? 'Opening...'
-                          : 'Chat'}
-                      </Button>
-                      <Button
-                        variant='ghost'
-                        size='sm'
-                        disabled={removeFriendMutation.isPending}
-                        onClick={() =>
-                          handleRemoveFriend(friend.id, friend.name)
-                        }
-                      >
-                        <UserX className='h-4 w-4' />
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                <span className='truncate font-medium'>{friend.name}</span>
+                <div className='flex items-center gap-1'>
+                  <Button
+                    variant='ghost'
+                    size='sm'
+                    disabled={
+                      startChatMutation.isPending &&
+                      pendingChatFriendId === friend.id
+                    }
+                    onClick={() => handleStartChat(friend)}
+                  >
+                    <MessageSquare className='h-4 w-4' />
+                  </Button>
+                  <Button
+                    variant='ghost'
+                    size='sm'
+                    disabled={removeFriendMutation.isPending}
+                    onClick={() =>
+                      handleRemoveFriend(friend.id, friend.name)
+                    }
+                  >
+                    <UserX className='h-4 w-4' />
+                  </Button>
+                </div>
+              </div>
             ))}
           </div>
         )}

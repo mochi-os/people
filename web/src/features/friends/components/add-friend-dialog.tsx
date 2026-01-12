@@ -272,8 +272,8 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                         case 'invited':
                           return (
                             <>
+                              <Send className='mr-2 h-4 w-4' />
                               {FRIENDS_STRINGS.INVITATION_SENT}
-                              <Send className='ml-2 h-4 w-4' />
                             </>
                           )
                         case 'pending':
@@ -286,8 +286,8 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                         default:
                           return (
                             <>
+                              <UserPlus className='mr-2 h-4 w-4' />
                               {FRIENDS_STRINGS.ADD_FRIEND}
-                              <UserPlus className='ml-2 h-4 w-4' />
                             </>
                           )
                       }
@@ -367,7 +367,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
         onOpenChange={setSubscribeOpen}
         app="people"
         label="Friend requests and updates"
-        notificationsBase="/notifications"
+        appBase="/people"
         onResult={() => refetchSubscription()}
       />
     </ResponsiveDialog>

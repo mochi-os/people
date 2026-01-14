@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban } from 'lucide-react'
-import { cn, toast } from '@mochi/common'
+import { cn, toast, SubscribeDialog, requestHelpers } from '@mochi/common'
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation } from '@/hooks/useFriends'
 import { Avatar, AvatarFallback, AvatarImage } from '@mochi/common'
 import { Button } from '@mochi/common'
@@ -22,11 +23,27 @@ type AddFriendDialogProps = {
   onOpenChange: (open: boolean) => void
 }
 
+interface SubscriptionCheckResponse {
+  exists: boolean
+}
+
 export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [debouncedQuery, setDebouncedQuery] = useState('')
   const [invitedUserIds, setInvitedUserIds] = useState<Set<string>>(new Set())
   const [pendingUserId, setPendingUserId] = useState<string | null>(null)
+  const [subscribeOpen, setSubscribeOpen] = useState(false)
+
+  // Check if user already has a subscription for people notifications
+  const { data: subscriptionData, refetch: refetchSubscription } = useQuery({
+    queryKey: ['subscription-check', 'people'],
+    queryFn: async () => {
+      return await requestHelpers.get<SubscriptionCheckResponse>(
+        '/notifications/-/subscriptions/check?app=people'
+      )
+    },
+    staleTime: Infinity,
+  })
 
   // Debounce search query
   useEffect(() => {
@@ -49,6 +66,10 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
       toast.success(FRIENDS_STRINGS.SUCCESS_INVITATION_SENT, {
         description: `${FRIENDS_STRINGS.SUCCESS_INVITATION_SENT_DESC} ${variables.name}.`,
       })
+      // Prompt for notifications if user hasn't subscribed yet
+      if (!subscriptionData?.exists) {
+        setSubscribeOpen(true)
+      }
     },
     onError: (error) => {
       setPendingUserId(null)
@@ -98,13 +119,16 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
   }
 
   useEffect(() => {
-    if (!open) {
+    if (open) {
+      // Refetch subscription status when dialog opens in case user deleted subscriptions
+      refetchSubscription()
+    } else {
       setSearchQuery('')
       setDebouncedQuery('')
       setInvitedUserIds(new Set())
       setPendingUserId(null)
     }
-  }, [open])
+  }, [open, refetchSubscription])
 
   const showResults = debouncedQuery.length > 0
   const showLoading = isLoading && debouncedQuery.length > 0
@@ -158,9 +182,6 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                   <UserPlus className='text-muted-foreground mb-3 h-12 w-12 opacity-50' />
                   <p className='text-muted-foreground text-sm font-medium'>
                     {FRIENDS_STRINGS.SEARCH_PROMPT_TITLE}
-                  </p>
-                  <p className='text-muted-foreground mt-1 text-xs'>
-                    {FRIENDS_STRINGS.SEARCH_PROMPT_DESC}
                   </p>
                 </div>
               )}
@@ -255,8 +276,8 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                         case 'invited':
                           return (
                             <>
+                              <Send className='mr-2 h-4 w-4' />
                               {FRIENDS_STRINGS.INVITATION_SENT}
-                              <Send className='ml-2 h-4 w-4' />
                             </>
                           )
                         case 'pending':
@@ -269,8 +290,8 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                         default:
                           return (
                             <>
+                              <UserPlus className='mr-2 h-4 w-4' />
                               {FRIENDS_STRINGS.ADD_FRIEND}
-                              <UserPlus className='ml-2 h-4 w-4' />
                             </>
                           )
                       }
@@ -344,6 +365,15 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
           </Button>
         </div>
       </ResponsiveDialogContent>
+
+      <SubscribeDialog
+        open={subscribeOpen}
+        onOpenChange={setSubscribeOpen}
+        app="people"
+        label="Friend requests and updates"
+        appBase="/people"
+        onResult={() => refetchSubscription()}
+      />
     </ResponsiveDialog>
   )
 }

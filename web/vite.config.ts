@@ -19,6 +19,7 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
+    dedupe: ['react', 'react-dom', '@tanstack/react-query', '@tanstack/react-router'],
   },
   build: {
     outDir: 'dist',

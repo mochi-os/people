@@ -8,7 +8,7 @@ export const FRIENDS_STRINGS = {
   FRIENDS_LIST_DESCRIPTION: 'Your current friends list',
 
   // Actions
-  ADD_FRIEND: 'Add Friend',
+  ADD_FRIEND: 'Add friend',
   ACCEPT: 'Accept',
   DECLINE: 'Decline',
   CHAT: 'Chat',
@@ -23,7 +23,7 @@ export const FRIENDS_STRINGS = {
   // Relationship Status
   ALREADY_FRIENDS: 'Already Friends',
   PENDING_INVITE: 'Accept Invite',
-  INVITATION_SENT: 'Invitation Sent',
+  INVITATION_SENT: 'Invitation sent',
   THATS_YOU: "That's you",
 
   // Search & Inputs
@@ -58,7 +58,7 @@ export const FRIENDS_STRINGS = {
   SUCCESS_INVITATION_SENT_DESC: 'A friend invitation has been sent to',
 
   // Dialogs
-  ADD_FRIEND_DIALOG_TITLE: 'Add Friend',
+  ADD_FRIEND_DIALOG_TITLE: 'Add friend',
   ADD_FRIEND_DIALOG_DESC: 'Search for users by name to add them as friends',
   REMOVE_FRIEND_DIALOG_TITLE: 'Remove friend',
   REMOVE_FRIEND_CONFIRM_PRE: 'Are you sure you want to remove',

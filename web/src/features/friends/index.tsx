@@ -20,12 +20,15 @@ import {
   Button,
   Main,
   usePageTitle,
+  useScreenSize,
 } from '@mochi/common'
+import { PageHeader } from '@/components/page-header'
 import { AddFriendDialog } from './components/add-friend-dialog'
 import { FRIENDS_STRINGS } from './constants'
 
 export function Friends() {
   usePageTitle('Friends')
+  const { isMobile } = useScreenSize()
   const [search, setSearch] = useState('')
   const [addFriendDialogOpen, setAddFriendDialogOpen] = useState(false)
   const [removeFriendDialog, setRemoveFriendDialog] = useState<{
@@ -139,25 +142,32 @@ export function Friends() {
     )
   }
 
+  const searchInput = (
+    <input
+      type='text'
+      placeholder='Search...'
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      className='border-border bg-background focus:ring-ring w-48 rounded-md border px-3 py-2 text-sm focus:ring-2 focus:ring-offset-2 focus:outline-none'
+    />
+  )
+
   return (
     <>
-      <Main>
-        <div className='mb-6 flex items-center justify-between space-y-2'>
-          <h1 className='text-2xl font-bold tracking-tight'>Friends</h1>
-          <div className='flex items-center gap-2'>
-            <input
-              type='text'
-              placeholder='Search...'
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className='border-border bg-background focus:ring-ring w-48 rounded-md border px-3 py-2 text-sm focus:ring-2 focus:ring-offset-2 focus:outline-none'
-            />
+      <PageHeader
+        title='Friends'
+        searchBar={searchInput}
+        actions={
+          <>
+            {!isMobile && searchInput}
             <Button onClick={() => setAddFriendDialogOpen(true)}>
               <UserPlus className='mr-2 h-4 w-4' />
               Add friend
             </Button>
-          </div>
-        </div>
+          </>
+        }
+      />
+      <Main>
 
         {filteredFriends.length === 0 ? (
           <div className='text-muted-foreground py-8 text-center'>

@@ -7,6 +7,7 @@ import {
   useRemoveGroupMemberMutation,
 } from '@/hooks/useGroups'
 import { MemberDialog } from './member-dialog'
+import { PageHeader } from '@/components/page-header'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,7 +18,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   Button,
-  Header,
   Main,
   Table,
   TableBody,
@@ -99,20 +99,16 @@ export function GroupDetail() {
 
   return (
     <>
-      <Header>
-        <div className='flex w-full items-center justify-between'>
-          <div>
-            <h1 className='text-lg font-semibold'>{group.name}</h1>
-            {group.description && (
-              <p className='text-muted-foreground text-sm'>{group.description}</p>
-            )}
-          </div>
+      <PageHeader
+        title={group.name}
+        description={group.description}
+        actions={
           <Button onClick={() => setAddMemberDialog(true)}>
             <UserPlus className='h-4 w-4' />
             Add member
           </Button>
-        </div>
-      </Header>
+        }
+      />
       <Main>
         <h2 className='text-lg font-semibold mb-4'>Members ({members.length})</h2>
 

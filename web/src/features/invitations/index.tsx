@@ -7,11 +7,13 @@ import {
   useDeclineFriendInviteMutation,
   useRemoveFriendMutation,
 } from '@/hooks/useFriends'
-import { Button, Card, CardContent, Main, usePageTitle, getErrorMessage } from '@mochi/common'
+import { Button, Card, CardContent, Main, usePageTitle, getErrorMessage, useScreenSize } from '@mochi/common'
+import { PageHeader } from '@/components/page-header'
 import { AddFriendDialog } from '@/features/friends/components/add-friend-dialog'
 
 export function Invitations() {
   usePageTitle('Invitations')
+  const { isMobile } = useScreenSize()
   const [search, setSearch] = useState('')
   const [addFriendDialogOpen, setAddFriendDialogOpen] = useState(false)
   const { data: friendsData, isLoading, isError, error } = useFriendsQuery()
@@ -108,24 +110,32 @@ export function Invitations() {
   const hasSent = filteredSent.length > 0
   const hasAny = hasReceived || hasSent
 
+  const searchInput = (
+    <input
+      type='text'
+      placeholder='Search...'
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      className='border-border bg-background focus:ring-ring w-48 rounded-md border px-3 py-2 text-sm focus:ring-2 focus:ring-offset-2 focus:outline-none'
+    />
+  )
+
   return (
-    <Main>
-      <div className='mb-6 flex items-center justify-between space-y-2'>
-          <h1 className='text-2xl font-bold tracking-tight'>Invitations</h1>
-        <div className='flex items-center gap-2'>
-          <input
-            type='text'
-            placeholder='Search...'
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className='border-border bg-background focus:ring-ring w-48 rounded-md border px-3 py-2 text-sm focus:ring-2 focus:ring-offset-2 focus:outline-none'
-          />
-          <Button onClick={() => setAddFriendDialogOpen(true)}>
-            <UserPlus className='mr-2 h-4 w-4' />
-            Add friend
-          </Button>
-        </div>
-      </div>
+    <>
+      <PageHeader
+        title='Invitations'
+        searchBar={searchInput}
+        actions={
+          <>
+            {!isMobile && searchInput}
+            <Button onClick={() => setAddFriendDialogOpen(true)}>
+              <UserPlus className='mr-2 h-4 w-4' />
+              Add friend
+            </Button>
+          </>
+        }
+      />
+      <Main>
 
       <AddFriendDialog
         open={addFriendDialogOpen}
@@ -234,6 +244,7 @@ export function Invitations() {
           )}
         </div>
       )}
-    </Main>
+      </Main>
+    </>
   )
 }

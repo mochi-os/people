@@ -7,7 +7,7 @@ import {
   useRemoveGroupMemberMutation,
 } from '@/hooks/useGroups'
 import { MemberDialog } from './member-dialog'
-import { PageHeader } from '@/components/page-header'
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -27,6 +27,7 @@ import {
   TableRow,
   usePageTitle,
   getErrorMessage,
+  PageHeader,
 } from '@mochi/common'
 import { useSidebarContext } from '@/context/sidebar-context'
 

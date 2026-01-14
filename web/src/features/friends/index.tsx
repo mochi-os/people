@@ -21,8 +21,8 @@ import {
   Main,
   usePageTitle,
   useScreenSize,
+  PageHeader,
 } from '@mochi/common'
-import { PageHeader } from '@/components/page-header'
 import { AddFriendDialog } from './components/add-friend-dialog'
 import { FRIENDS_STRINGS } from './constants'
 

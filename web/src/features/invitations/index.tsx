@@ -7,8 +7,7 @@ import {
   useDeclineFriendInviteMutation,
   useRemoveFriendMutation,
 } from '@/hooks/useFriends'
-import { Button, Card, CardContent, Main, usePageTitle, getErrorMessage, useScreenSize } from '@mochi/common'
-import { PageHeader } from '@/components/page-header'
+import { Button, Card, CardContent, Main, usePageTitle, getErrorMessage, useScreenSize, PageHeader } from '@mochi/common'
 import { AddFriendDialog } from '@/features/friends/components/add-friend-dialog'
 
 export function Invitations() {

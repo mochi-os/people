@@ -156,6 +156,7 @@ export function Friends() {
     <>
       <PageHeader
         title='Friends'
+        icon={<Users className='size-4 md:size-5' />}
         searchBar={searchInput}
         actions={
           <>

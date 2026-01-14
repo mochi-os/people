@@ -123,6 +123,7 @@ export function Invitations() {
     <>
       <PageHeader
         title='Invitations'
+        icon={<UserPlus className='size-4 md:size-5' />}
         searchBar={searchInput}
         actions={
           <>

@@ -242,6 +242,7 @@ export function Friends() {
                 {FRIENDS_STRINGS.CANCEL}
               </AlertDialogCancel>
               <AlertDialogAction
+                variant='destructive'
                 onClick={confirmRemoveFriend}
                 disabled={removeFriendMutation.isPending}
               >

@@ -123,6 +123,7 @@ export function Invitations() {
     <>
       <PageHeader
         title='Invitations'
+        icon={<UserPlus className='size-4 md:size-5' />}
         searchBar={searchInput}
         actions={
           <>
@@ -182,7 +183,7 @@ export function Invitations() {
                             Accept
                           </Button>
                           <Button
-                            variant='outline'
+                            variant='destructive'
                             size='sm'
                             disabled={declineInviteMutation.isPending}
                             onClick={() => handleDeclineInvite(invite.id, invite.name)}
@@ -225,7 +226,7 @@ export function Invitations() {
                           </p>
                         </div>
                         <Button
-                          variant='outline'
+                          variant='warning'
                           size='sm'
                           disabled={removeMutation.isPending}
                           onClick={() => handleCancelSent(invite.id, invite.name)}

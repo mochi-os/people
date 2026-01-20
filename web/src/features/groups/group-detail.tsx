@@ -102,6 +102,7 @@ export function GroupDetail() {
     <>
       <PageHeader
         title={group.name}
+        icon={<UsersRound className='size-4 md:size-5' />}
         description={group.description}
         actions={
           <Button onClick={() => setAddMemberDialog(true)}>

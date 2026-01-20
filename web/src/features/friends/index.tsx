@@ -156,6 +156,7 @@ export function Friends() {
     <>
       <PageHeader
         title='Friends'
+        icon={<Users className='size-4 md:size-5' />}
         searchBar={searchInput}
         actions={
           <>
@@ -241,6 +242,7 @@ export function Friends() {
                 {FRIENDS_STRINGS.CANCEL}
               </AlertDialogCancel>
               <AlertDialogAction
+                variant='destructive'
                 onClick={confirmRemoveFriend}
                 disabled={removeFriendMutation.isPending}
               >

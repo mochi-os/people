@@ -108,6 +108,7 @@ function PeopleLayoutInner() {
             title: 'New group',
             icon: Plus,
             onClick: openCreateGroupDialog,
+            variant: 'primary',
           },
         ],
       },

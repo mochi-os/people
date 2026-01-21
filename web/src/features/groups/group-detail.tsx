@@ -18,6 +18,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   Button,
+  EmptyState,
   Main,
   Table,
   TableBody,
@@ -115,11 +116,11 @@ export function GroupDetail() {
         <h2 className='text-lg font-semibold mb-4'>Members ({members.length})</h2>
 
       {members.length === 0 ? (
-        <div className='text-muted-foreground rounded-md border py-8 text-center'>
-          <User className='mx-auto mb-4 h-12 w-12 opacity-50' />
-          <p>No members in this group</p>
-          <p className='mt-2 text-sm'>Add users or groups to get started</p>
-        </div>
+        <EmptyState
+          icon={User}
+          title="No members in this group"
+          description="Add users or groups to get started"
+        />
       ) : (
         <div className='rounded-md border'>
           <Table>

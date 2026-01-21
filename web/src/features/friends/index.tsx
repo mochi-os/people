@@ -18,6 +18,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   Button,
+  EmptyState,
   Main,
   usePageTitle,
   useScreenSize,
@@ -171,13 +172,11 @@ export function Friends() {
       <Main>
 
         {filteredFriends.length === 0 ? (
-          <div className='text-muted-foreground py-8 text-center'>
-            <Users className='mx-auto mb-4 h-12 w-12 opacity-50' />
-            <p>No friends found</p>
-            {search && (
-              <p className='mt-2 text-sm'>Try adjusting your search</p>
-            )}
-          </div>
+          <EmptyState
+            icon={Users}
+            title="No friends found"
+            description={search ? "Try adjusting your search" : "Add friends to start connecting"}
+          />
         ) : (
           <div className='divide-border divide-y rounded-lg border'>
             {filteredFriends.map((friend) => (

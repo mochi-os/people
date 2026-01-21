@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { UserPlus, UserX, Send, Clock, X, Check } from 'lucide-react'
+import { UserPlus, UserX, Send, X, Check } from 'lucide-react'
 import { toast } from '@mochi/common'
 import {
   useFriendsQuery,
@@ -7,7 +7,7 @@ import {
   useDeclineFriendInviteMutation,
   useRemoveFriendMutation,
 } from '@/hooks/useFriends'
-import { Button, Card, CardContent, Main, usePageTitle, getErrorMessage, useScreenSize, PageHeader } from '@mochi/common'
+import { Button, EmptyState, Main, usePageTitle, getErrorMessage, useScreenSize, PageHeader } from '@mochi/common'
 import { AddFriendDialog } from '@/features/friends/components/add-friend-dialog'
 
 export function Invitations() {
@@ -143,59 +143,56 @@ export function Invitations() {
       />
 
       {!hasAny ? (
-        <div className='text-muted-foreground py-8 text-center'>
-          <UserPlus className='mx-auto mb-4 h-12 w-12 opacity-50' />
-          <p>No pending invitations</p>
-          {search && (
-            <p className='mt-2 text-sm'>Try adjusting your search</p>
-          )}
-        </div>
+        <EmptyState
+          icon={UserPlus}
+          title="No pending invitations"
+          description={search ? "Try adjusting your search" : "New invitations will appear here"}
+        />
       ) : (
         <div className='space-y-8'>
           {/* Received Invitations */}
           {hasReceived && (
-            <div>
-              <h2 className='text-muted-foreground mb-4 flex items-center gap-2 text-sm font-medium'>
+            <div className='space-y-3'>
+              <h2 className='text-muted-foreground flex items-center gap-2 text-sm font-medium'>
                 <UserPlus className='h-4 w-4' />
                 Received ({filteredReceived.length})
               </h2>
-              <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+              <div className='divide-border divide-y rounded-md border'>
                 {filteredReceived.map((invite) => (
-                  <Card
+                  <div
                     key={invite.id}
-                    className='group transition-shadow hover:shadow-md'
+                    className='hover:bg-muted/50 flex items-center justify-between px-4 py-3 transition-colors'
                   >
-                    <CardContent className='p-4'>
-                      <div className='flex flex-col items-center space-y-3 text-center'>
-                        <div className='w-full'>
-                          <p className='truncate font-medium'>
-                            {invite.name}
-                          </p>
-                        </div>
-                        <div className='flex w-full flex-col gap-2'>
-                          <Button
-                            size='sm'
-                            disabled={acceptInviteMutation.isPending}
-                            onClick={() => handleAcceptInvite(invite.id, invite.name)}
-                            className='w-full'
-                          >
-                            <Check className='mr-1 h-4 w-4' />
-                            Accept
-                          </Button>
-                          <Button
-                            variant='destructive'
-                            size='sm'
-                            disabled={declineInviteMutation.isPending}
-                            onClick={() => handleDeclineInvite(invite.id, invite.name)}
-                            className='w-full'
-                          >
-                            <UserX className='mr-1 h-4 w-4' />
-                            Decline
-                          </Button>
-                        </div>
+                    <div className='flex items-center gap-3'>
+                      <div className='flex flex-col'>
+                        <span className='truncate font-medium'>
+                          {invite.name}
+                        </span>
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                    <div className='flex items-center gap-2'>
+                      <Button
+                        size='sm'
+                        variant='default'
+                        disabled={acceptInviteMutation.isPending}
+                        onClick={() => handleAcceptInvite(invite.id, invite.name)}
+                        className='h-8'
+                      >
+                        <Check className='mr-2 h-3.5 w-3.5' />
+                        Accept
+                      </Button>
+                      <Button
+                        variant='ghost'
+                        size='sm'
+                        disabled={declineInviteMutation.isPending}
+                        onClick={() => handleDeclineInvite(invite.id, invite.name)}
+                        className='h-8 text-muted-foreground hover:text-destructive'
+                      >
+                        <UserX className='mr-2 h-3.5 w-3.5' />
+                        Decline
+                      </Button>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -203,41 +200,38 @@ export function Invitations() {
 
           {/* Sent Invitations */}
           {hasSent && (
-            <div>
-              <h2 className='text-muted-foreground mb-4 flex items-center gap-2 text-sm font-medium'>
+            <div className='space-y-3'>
+              <h2 className='text-muted-foreground flex items-center gap-2 text-sm font-medium'>
                 <Send className='h-4 w-4' />
                 Sent ({filteredSent.length})
               </h2>
-              <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+              <div className='divide-border divide-y rounded-md border'>
                 {filteredSent.map((invite) => (
-                  <Card
+                  <div
                     key={invite.id}
-                    className='group transition-shadow hover:shadow-md'
+                    className='hover:bg-muted/50 flex items-center justify-between px-4 py-3 transition-colors'
                   >
-                    <CardContent className='p-4'>
-                      <div className='flex flex-col items-center space-y-3 text-center'>
-                        <div className='w-full'>
-                          <p className='truncate font-medium'>
-                            {invite.name}
-                          </p>
-                          <p className='text-muted-foreground flex items-center justify-center gap-1 text-xs'>
-                            <Clock className='h-3 w-3' />
-                            Pending
-                          </p>
-                        </div>
-                        <Button
-                          variant='warning'
-                          size='sm'
-                          disabled={removeMutation.isPending}
-                          onClick={() => handleCancelSent(invite.id, invite.name)}
-                          className='w-full'
-                        >
-                          <X className='mr-1 h-4 w-4' />
-                          Cancel
-                        </Button>
+                    <div className='flex items-center gap-3'>
+                      <div className='flex flex-col'>
+                        <span className='truncate font-medium'>
+                          {invite.name}
+                        </span>
+                        <span className='text-muted-foreground text-xs'>
+                          Pending
+                        </span>
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                    <Button
+                      variant='ghost'
+                      size='sm'
+                      disabled={removeMutation.isPending}
+                      onClick={() => handleCancelSent(invite.id, invite.name)}
+                      className='h-8 text-muted-foreground hover:text-destructive'
+                    >
+                      <X className='mr-2 h-3.5 w-3.5' />
+                      Cancel
+                    </Button>
+                  </div>
                 ))}
               </div>
             </div>

@@ -13,6 +13,7 @@ import {
   ResponsiveDialogDescription,
 } from '@mochi/common'
 import { Input } from '@mochi/common'
+import { EmptyState } from '@mochi/common'
 // import { Label } from '@mochi/common'
 import { ScrollArea } from '@mochi/common'
 import { buildAvatarUrl } from '../utils/avatar'
@@ -178,12 +179,12 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
           <ScrollArea className='max-h-[300px] flex-1 rounded-lg border'>
             <div className='p-2 h-[16rem]'>
               {!showResults && (
-                <div className='flex flex-col items-center justify-center py-12 text-center'>
-                  <UserPlus className='text-muted-foreground mb-3 h-12 w-12 opacity-50' />
-                  <p className='text-muted-foreground text-sm font-medium'>
-                    {FRIENDS_STRINGS.SEARCH_PROMPT_TITLE}
-                  </p>
-                </div>
+                <EmptyState
+                  icon={UserPlus}
+                  title={FRIENDS_STRINGS.SEARCH_PROMPT_TITLE}
+                  description={FRIENDS_STRINGS.SEARCH_USERS_PLACEHOLDER}
+                  className="bg-transparent border-0 shadow-none pt-12 pb-12"
+                />
               )}
 
               {showLoading && (
@@ -193,26 +194,21 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
               )}
 
               {isError && showResults && (
-                <div className='flex flex-col items-center justify-center py-12 text-center'>
-                  <p className='text-destructive mb-1 text-sm font-medium'>
-                    {FRIENDS_STRINGS.ERR_SEARCH_FAILED}
-                  </p>
-                  <p className='text-muted-foreground text-xs'>
-                    {error instanceof Error ? error.message : FRIENDS_STRINGS.ERR_UNKNOWN}
-                  </p>
-                </div>
+                <EmptyState
+                  icon={Ban}
+                  title={FRIENDS_STRINGS.ERR_SEARCH_FAILED}
+                  description={error instanceof Error ? error.message : FRIENDS_STRINGS.ERR_UNKNOWN}
+                  className="bg-transparent border-0 shadow-none pt-12 pb-12"
+                />
               )}
 
               {showEmpty && (
-                <div className='flex flex-col items-center justify-center py-12 text-center'>
-                  <Search className='text-muted-foreground mb-3 h-12 w-12 opacity-50' />
-                  <p className='text-muted-foreground text-sm font-medium'>
-                    {FRIENDS_STRINGS.NO_USERS_FOUND}
-                  </p>
-                  <p className='text-muted-foreground mt-1 text-xs'>
-                    {FRIENDS_STRINGS.TRY_DIFFERENT_TERM}
-                  </p>
-                </div>
+                <EmptyState
+                  icon={Search}
+                  title={FRIENDS_STRINGS.NO_USERS_FOUND}
+                  description={FRIENDS_STRINGS.TRY_DIFFERENT_TERM}
+                  className="bg-transparent border-0 shadow-none pt-12 pb-12"
+                />
               )}
 
               {!isLoading && users.length > 0 && (

@@ -93,7 +93,7 @@ function PeopleLayoutInner() {
 
     const groups_section: SidebarData['navGroups'] = [
       {
-        title: '',
+        title: 'People',
         items: [
           { title: 'Friends', url: '/', icon: Users },
           { title: 'Invitations', url: '/invitations', icon: User },
@@ -103,13 +103,13 @@ function PeopleLayoutInner() {
         title: 'Groups',
         separator: true,
         items: [
-          ...groupItems,
           {
             title: 'New group',
             icon: Plus,
             onClick: openCreateGroupDialog,
-            variant: 'primary',
+            className: 'bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground',
           },
+          ...groupItems,
         ],
       },
     ]

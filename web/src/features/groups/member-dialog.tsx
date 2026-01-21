@@ -23,6 +23,7 @@ import {
   Card,
   CardContent,
   getErrorMessage,
+  EmptyState,
 } from '@mochi/common'
 
 interface MemberDialogProps {
@@ -136,9 +137,12 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
                   Searching...
                 </p>
               ) : !searchResults?.results?.length ? (
-                <p className='text-muted-foreground text-center text-sm'>
-                  No users found
-                </p>
+                <EmptyState
+                  icon={User}
+                  title="No users found"
+                  description="Try searching for a different name"
+                  className="py-6"
+                />
               ) : (
                 <div className='max-h-[200px] space-y-2 overflow-y-auto'>
                   {searchResults.results.map((user) => (
@@ -173,9 +177,12 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
             <div className='space-y-4'>
               <Label>Select group</Label>
               {availableGroups.length === 0 ? (
-                <p className='text-muted-foreground text-center text-sm'>
-                  No other groups available
-                </p>
+                <EmptyState
+                  icon={UsersRound}
+                  title="No other groups"
+                  description="All available groups are already added"
+                  className="py-6"
+                />
               ) : (
                 <div className='max-h-[200px] space-y-2 overflow-y-auto'>
                   {availableGroups.map((group) => (

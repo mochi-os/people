@@ -1,13 +1,5 @@
 import { useMemo, useState } from 'react'
 import { APP_ROUTES } from '@/config/app-routes'
-import { UserPlus, Users, MessageSquare, UserX, Minus } from 'lucide-react'
-import { toast } from '@mochi/common'
-import type { Friend } from '@/api/types/friends'
-import { useCreateChatMutation } from '@/hooks/useChats'
-import {
-  useFriendsQuery,
-  useRemoveFriendMutation,
-} from '@/hooks/useFriends'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -23,7 +15,13 @@ import {
   usePageTitle,
   useScreenSize,
   PageHeader,
+  Skeleton,
+  toast,
 } from '@mochi/common'
+import { UserPlus, Users, MessageSquare, UserX, Minus } from 'lucide-react'
+import type { Friend } from '@/api/types/friends'
+import { useCreateChatMutation } from '@/hooks/useChats'
+import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
 import { AddFriendDialog } from './components/add-friend-dialog'
 import { FRIENDS_STRINGS } from './constants'
 
@@ -63,7 +61,7 @@ export function Friends() {
       const chatUrl = chatBaseUrl.startsWith('http')
         ? new URL(chatBaseUrl, undefined)
         : new URL(chatBaseUrl, window.location.origin)
-      
+
       // Append chatId to the path
       chatUrl.pathname = chatUrl.pathname + chatId
       /**
@@ -124,7 +122,9 @@ export function Friends() {
     return (
       <Main>
         <div className='flex h-64 flex-col items-center justify-center gap-2'>
-          <div className='text-destructive font-medium'>Failed to load friends</div>
+          <div className='text-destructive font-medium'>
+            Failed to load friends
+          </div>
           <div className='text-muted-foreground text-sm'>
             {error instanceof Error ? error.message : 'Unknown error'}
           </div>
@@ -136,8 +136,19 @@ export function Friends() {
   if (isLoading && !friendsData) {
     return (
       <Main>
-        <div className='flex h-64 items-center justify-center'>
-          <div className='text-muted-foreground'>Loading friends...</div>
+        <div className='divide-border divide-y rounded-lg border'>
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div
+              key={i}
+              className='flex items-center justify-between px-4 py-3'
+            >
+              <Skeleton className='h-5 w-32' />
+              <div className='flex items-center gap-1'>
+                <Skeleton className='h-8 w-8' />
+                <Skeleton className='h-8 w-8' />
+              </div>
+            </div>
+          ))}
         </div>
       </Main>
     )
@@ -170,12 +181,15 @@ export function Friends() {
         }
       />
       <Main>
-
         {filteredFriends.length === 0 ? (
           <EmptyState
             icon={Users}
-            title="No friends found"
-            description={search ? "Try adjusting your search" : "Add friends to start connecting"}
+            title='No friends found'
+            description={
+              search
+                ? 'Try adjusting your search'
+                : 'Add friends to start connecting'
+            }
           />
         ) : (
           <div className='divide-border divide-y rounded-lg border'>
@@ -201,9 +215,7 @@ export function Friends() {
                     variant='ghost'
                     size='sm'
                     disabled={removeFriendMutation.isPending}
-                    onClick={() =>
-                      handleRemoveFriend(friend.id, friend.name)
-                    }
+                    onClick={() => handleRemoveFriend(friend.id, friend.name)}
                   >
                     <UserX className='h-4 w-4' />
                   </Button>
@@ -227,7 +239,9 @@ export function Friends() {
         >
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>{FRIENDS_STRINGS.REMOVE_FRIEND_DIALOG_TITLE}</AlertDialogTitle>
+              <AlertDialogTitle>
+                {FRIENDS_STRINGS.REMOVE_FRIEND_DIALOG_TITLE}
+              </AlertDialogTitle>
               <AlertDialogDescription>
                 {FRIENDS_STRINGS.REMOVE_FRIEND_CONFIRM_PRE}{' '}
                 <span className='text-foreground font-semibold'>

@@ -211,7 +211,7 @@ def action_search(a):
 		result_id = result["id"]
 		if result_id not in seen:
 			seen[result_id] = True
-			
+
 			# Determine relationship status
 			# - "friend": Already friends
 			# - "invited": You sent them an invitation (outgoing)
@@ -227,9 +227,15 @@ def action_search(a):
 				status = "pending"
 			else:
 				status = "none"
-			
+
 			result["relationshipStatus"] = status
 			unique_results.append(result)
+
+	# Sort by name (case-insensitive), then by created date (oldest first)
+	# Oldest first for same names prevents impersonation attacks
+	def sort_key(r):
+		return (r.get("name", "").lower(), r.get("created", 0))
+	unique_results = sorted(unique_results, key=sort_key)
 
 	return {"data": {"results": unique_results}}
 
@@ -389,6 +395,13 @@ def function_users_search(context, query):
 # Service function for groups list
 def function_groups_list(context):
 	return mochi.group.list()
+
+# Service function for friends count (used by chat app for cross-app link)
+def function_count(context, identity):
+	if not identity:
+		return 0
+	row = mochi.db.row("select count(*) as count from friends where identity=?", identity)
+	return row["count"] if row else 0
 
 # Group management actions
 
@@ -555,3 +568,15 @@ def action_notifications_destinations(a):
 	"""List available notification destinations."""
 	result = mochi.service.call("notifications", "destinations")
 	return {"data": result}
+
+# Welcome page data - returns whether user has seen welcome and friends count
+def action_welcome(a):
+	identity = a.user.identity.id
+	seen = a.user.preference.get("people_welcome_seen") == "true"
+	count = mochi.db.row("select count(*) as count from friends where identity=?", identity)
+	return {"data": {"seen": seen, "count": count["count"] if count else 0}}
+
+# Mark welcome as seen
+def action_welcome_seen(a):
+	a.user.preference.set("people_welcome_seen", "true")
+	return {"data": {}}

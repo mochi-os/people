@@ -10,7 +10,6 @@ import {
   ResponsiveDialogContent,
   ResponsiveDialogHeader,
   ResponsiveDialogTitle,
-  ResponsiveDialogDescription,
 } from '@mochi/common'
 import { Input } from '@mochi/common'
 import { EmptyState } from '@mochi/common'
@@ -146,9 +145,6 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
           <ResponsiveDialogTitle className='text-2xl font-semibold'>
             {FRIENDS_STRINGS.ADD_FRIEND_DIALOG_TITLE}
           </ResponsiveDialogTitle>
-          <ResponsiveDialogDescription className='text-muted-foreground mt-1 text-sm'>
-            {FRIENDS_STRINGS.ADD_FRIEND_DIALOG_DESC}
-          </ResponsiveDialogDescription>
         </ResponsiveDialogHeader>
 
         <div className='flex min-h-0 flex-1 flex-col gap-4 px-6 py-4'>
@@ -168,23 +164,15 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                 autoFocus
               />
             </div>
-            {searchQuery.length > 0 && searchQuery.length < 2 && (
-              <p className='text-muted-foreground text-xs'>
-                {FRIENDS_STRINGS.SEARCH_MIN_CHARS}
-              </p>
-            )}
           </div>
 
           {/* Results List */}
           <ScrollArea className='max-h-[300px] flex-1 rounded-lg border'>
             <div className='p-2 h-[16rem]'>
-              {!showResults && (
-                <EmptyState
-                  icon={UserPlus}
-                  title={FRIENDS_STRINGS.SEARCH_PROMPT_TITLE}
-                  description={FRIENDS_STRINGS.SEARCH_USERS_PLACEHOLDER}
-                  className="bg-transparent border-0 shadow-none pt-12 pb-12"
-                />
+              {!showResults && !showLoading && (
+                <div className='flex items-center justify-center py-12'>
+                  <UserPlus className='text-muted-foreground/30 h-12 w-12' />
+                </div>
               )}
 
               {showLoading && (
@@ -340,17 +328,13 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
 
         <div className='bg-muted/30 flex items-center justify-between gap-3 border-t px-6 py-4'>
           <div className='text-muted-foreground text-sm'>
-            {users.length > 0 ? (
+            {users.length > 0 && (
               <span>
                 <span className='text-foreground font-medium'>
                   {users.length}
                 </span>{' '}
                 {users.length === 1 ? FRIENDS_STRINGS.USER : FRIENDS_STRINGS.USERS} {FRIENDS_STRINGS.FOUND}
               </span>
-            ) : debouncedQuery.length > 0 ? (
-              <span>{FRIENDS_STRINGS.NO_USERS_FOUND}</span>
-            ) : (
-              <span>{FRIENDS_STRINGS.ENTER_NAME_TO_SEARCH}</span>
             )}
           </div>
           <Button

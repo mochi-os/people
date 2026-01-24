@@ -25,6 +25,7 @@ import {
   PageHeader,
 } from '@mochi/common'
 import { AddFriendDialog } from './components/add-friend-dialog'
+import { InlineFriendSearch } from './components/inline-friend-search'
 import { FRIENDS_STRINGS } from './constants'
 
 export function Friends() {
@@ -42,6 +43,7 @@ export function Friends() {
   )
   const { data: friendsData, isLoading, isError, error } = useFriendsQuery()
   const removeFriendMutation = useRemoveFriendMutation()
+
   const startChatMutation = useCreateChatMutation({
     onSuccess: (data) => {
       setPendingChatFriendId(null)
@@ -79,6 +81,8 @@ export function Friends() {
       toast.error(FRIENDS_STRINGS.ERR_START_CHAT, { description })
     },
   })
+
+  const hasFriends = (friendsData?.friends?.length ?? 0) > 0
 
   const filteredFriends = useMemo(() => {
     const list = friendsData?.friends ?? []
@@ -143,15 +147,15 @@ export function Friends() {
     )
   }
 
-  const searchInput = (
+  const searchInput = hasFriends ? (
     <input
       type='text'
-      placeholder='Search...'
+      placeholder='Search your friends...'
       value={search}
       onChange={(e) => setSearch(e.target.value)}
       className='border-border bg-background focus:ring-ring w-48 rounded-md border px-3 py-2 text-sm focus:ring-2 focus:ring-offset-2 focus:outline-none'
     />
-  )
+  ) : null
 
   return (
     <>
@@ -162,21 +166,34 @@ export function Friends() {
         actions={
           <>
             {!isMobile && searchInput}
-            <Button onClick={() => setAddFriendDialogOpen(true)}>
-              <UserPlus className='mr-2 h-4 w-4' />
-              Add friend
-            </Button>
+            {hasFriends && (
+              <Button variant='outline' onClick={() => setAddFriendDialogOpen(true)}>
+                <UserPlus className='mr-2 h-4 w-4' />
+                Add friend
+              </Button>
+            )}
           </>
         }
       />
       <Main>
 
         {filteredFriends.length === 0 ? (
-          <EmptyState
-            icon={Users}
-            title="No friends found"
-            description={search ? "Try adjusting your search" : "Add friends to start connecting"}
-          />
+          search ? (
+            <EmptyState
+              icon={Users}
+              title="No friends found"
+              description="Try adjusting your search"
+            />
+          ) : (
+            <div className="flex flex-col items-center justify-center p-8 text-center">
+              <Users className="text-muted-foreground mx-auto mb-3 h-10 w-10 opacity-50" />
+              <p className="text-muted-foreground mb-1 text-sm font-medium">Friends</p>
+              <p className="text-muted-foreground mb-4 max-w-sm text-xs">
+                You have no friends yet.
+              </p>
+              <InlineFriendSearch />
+            </div>
+          )
         ) : (
           <div className='divide-border divide-y rounded-lg border'>
             {filteredFriends.map((friend) => (

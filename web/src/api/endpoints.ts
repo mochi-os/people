@@ -7,6 +7,10 @@ const endpoints = {
     ignore: '/people/-/friends/ignore',
     delete: '/people/-/friends/delete',
   },
+  welcome: {
+    get: '/people/-/welcome',
+    seen: '/people/-/welcome/seen',
+  },
   users: {
     search: '/people/-/users/search',
   },

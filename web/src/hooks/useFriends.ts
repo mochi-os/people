@@ -11,12 +11,14 @@ import friendsApi, {
   type SearchUsersResponse,
   type SearchLocalUsersResponse,
   type CreateFriendRequest,
+  type WelcomeResponse,
 } from '@/api/friends'
 
 export const friendKeys = {
   all: () => ['friends'] as const,
   search: (query: string) => ['friends', 'search', query] as const,
   localUsers: (query: string) => ['users', 'search', query] as const,
+  welcome: () => ['welcome'] as const,
 }
 
 export const useFriendsQuery = () =>
@@ -126,5 +128,21 @@ export const useCreateFriendMutation = (
       onSuccess?.(data, variables, context, mutation)
     },
     ...rest,
+  })
+}
+
+export const useWelcomeQuery = () =>
+  useQuery<WelcomeResponse>({
+    queryKey: friendKeys.welcome(),
+    queryFn: () => friendsApi.getWelcome(),
+  })
+
+export const useMarkWelcomeSeenMutation = () => {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: () => friendsApi.markWelcomeSeen(),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: friendKeys.welcome() })
+    },
   })
 }

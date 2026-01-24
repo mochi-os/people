@@ -208,6 +208,20 @@ const removeFriend = (friendId: string) =>
     )
   )
 
+export interface WelcomeResponse {
+  seen: boolean
+  count: number
+}
+
+const getWelcome = async (): Promise<WelcomeResponse> => {
+  return requestHelpers.get<WelcomeResponse>(endpoints.welcome.get)
+}
+
+const markWelcomeSeen = async (): Promise<MutationSuccessResponse> => {
+  await requestHelpers.post(endpoints.welcome.seen, {})
+  return { success: true }
+}
+
 export const friendsApi = {
   list: listFriends,
   searchUsers,
@@ -216,6 +230,8 @@ export const friendsApi = {
   acceptInvite: acceptFriendInvite,
   declineInvite: declineFriendInvite,
   remove: removeFriend,
+  getWelcome,
+  markWelcomeSeen,
 }
 
 export type {

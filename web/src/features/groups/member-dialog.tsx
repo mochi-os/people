@@ -92,8 +92,8 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
       <DialogContent className='sm:max-w-[500px]'>
         <DialogHeader>
           <DialogTitle>Add member</DialogTitle>
-          <DialogDescription>
-            Add a user or group as a member of this group.
+          <DialogDescription className="sr-only">
+            Add member
           </DialogDescription>
         </DialogHeader>
 
@@ -139,8 +139,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
               ) : !searchResults?.results?.length ? (
                 <EmptyState
                   icon={User}
-                  title="No users found"
-                  description="Try searching for a different name"
+                  title="No people found"
                   className="py-6"
                 />
               ) : (

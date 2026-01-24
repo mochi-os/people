@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Plus } from 'lucide-react'
 import { toast } from '@mochi/common'
 import {
   useCreateGroupMutation,
@@ -107,10 +108,8 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
         <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle>{isEditing ? 'Edit group' : 'Create group'}</DialogTitle>
-            <DialogDescription>
-              {isEditing
-                ? 'Update the group name and description.'
-                : 'Create a new group to organize users.'}
+            <DialogDescription className="sr-only">
+              {isEditing ? 'Edit group' : 'Create group'}
             </DialogDescription>
           </DialogHeader>
           <div className='grid gap-4 py-4'>
@@ -147,7 +146,7 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
               Cancel
             </Button>
             <Button type='submit' disabled={isPending}>
-              {isPending ? 'Saving...' : isEditing ? 'Save' : 'Create'}
+              {isPending ? 'Saving...' : isEditing ? 'Save' : <><Plus className="mr-2 h-4 w-4" />Create group</>}
             </Button>
           </DialogFooter>
         </form>

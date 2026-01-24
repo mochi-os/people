@@ -104,7 +104,7 @@ function PeopleLayoutInner() {
         separator: true,
         items: [
           {
-            title: 'New group',
+            title: 'Create group',
             icon: Plus,
             onClick: openCreateGroupDialog,
             className: 'bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground',

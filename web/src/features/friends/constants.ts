@@ -36,7 +36,7 @@ export const FRIENDS_STRINGS = {
   // Empty States
   NO_INVITATIONS: 'No pending invitations',
   NO_FRIENDS: 'No friends found',
-  NO_USERS_FOUND: 'No users found',
+  NO_USERS_FOUND: 'No people found',
   ADJUST_SEARCH: 'Try adjusting your search',
   TRY_DIFFERENT_TERM: 'Try a different search term',
   ENTER_NAME_TO_SEARCH: 'Enter a name to search',

@@ -171,7 +171,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
             <div className='p-2 h-[16rem]'>
               {!showResults && !showLoading && (
                 <div className='flex items-center justify-center py-12'>
-                  <UserPlus className='text-muted-foreground/30 h-12 w-12' />
+                  <Search className='text-muted-foreground/30 h-12 w-12' />
                 </div>
               )}
 
@@ -194,7 +194,6 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                 <EmptyState
                   icon={Search}
                   title={FRIENDS_STRINGS.NO_USERS_FOUND}
-                  description={FRIENDS_STRINGS.TRY_DIFFERENT_TERM}
                   className="bg-transparent border-0 shadow-none pt-12 pb-12"
                 />
               )}

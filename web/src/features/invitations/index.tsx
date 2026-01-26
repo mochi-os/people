@@ -168,15 +168,23 @@ export function Invitations() {
         />
 
         {!hasAny ? (
-          <EmptyState
-            icon={UserPlus}
-            title='No pending invitations'
-            description={
-              search
-                ? 'Try adjusting your search'
-                : 'New invitations will appear here'
-            }
-          />
+          search ? (
+            <EmptyState
+              icon={UserPlus}
+              title='No results found'
+              description='Try adjusting your search terms'
+            />
+          ) : (
+            <EmptyState
+              icon={UserPlus}
+              title='No invitations yet'
+              description="You're all caught up. Why not make the first move?"
+            >
+              <Button onClick={() => setAddFriendDialogOpen(true)}>
+                Find People
+              </Button>
+            </EmptyState>
+          )
         ) : (
           <div className='space-y-8'>
             {/* Received Invitations */}

@@ -23,6 +23,7 @@ import type { Friend } from '@/api/types/friends'
 import { useCreateChatMutation } from '@/hooks/useChats'
 import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
 import { AddFriendDialog } from './components/add-friend-dialog'
+import { SuggestedFriendsList } from './components/suggested-friends-list'
 import { FRIENDS_STRINGS } from './constants'
 
 export function Friends() {
@@ -182,15 +183,39 @@ export function Friends() {
       />
       <Main>
         {filteredFriends.length === 0 ? (
-          <EmptyState
-            icon={Users}
-            title='No friends found'
-            description={
-              search
-                ? 'Try adjusting your search'
-                : 'Add friends to start connecting'
-            }
-          />
+          search ? (
+            <EmptyState
+              icon={Users}
+              title='No friends found'
+              description='Try adjusting your search terms'
+            />
+          ) : (
+            <div className="flex flex-col gap-8">
+              <div className="flex flex-col items-center justify-center py-12 text-center">
+                <div className="bg-primary/10 mb-4 flex h-20 w-20 items-center justify-center rounded-full">
+                  <Users className="text-primary h-10 w-10" />
+                </div>
+                <h2 className="text-2xl font-semibold tracking-tight">Build your circle</h2>
+                <p className="text-muted-foreground mt-2 max-w-sm text-balance">
+                  Connect with others to start chatting and sharing. 
+                  Add friends to get started.
+                </p>
+                <div className="mt-8">
+                  <Button size="lg" onClick={() => setAddFriendDialogOpen(true)}>
+                    <UserPlus className="mr-2 h-5 w-5" />
+                    Add Friend
+                  </Button>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-semibold tracking-tight">Suggested People</h3>
+                </div>
+                <SuggestedFriendsList />
+              </div>
+            </div>
+          )
         ) : (
           <div className='divide-border divide-y rounded-lg border'>
             {filteredFriends.map((friend) => (

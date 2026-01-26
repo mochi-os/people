@@ -1,13 +1,5 @@
 import { useMemo, useState } from 'react'
 import { APP_ROUTES } from '@/config/app-routes'
-import { UserPlus, Users, MessageSquare, UserX, Minus } from 'lucide-react'
-import { toast } from '@mochi/common'
-import type { Friend } from '@/api/types/friends'
-import { useCreateChatMutation } from '@/hooks/useChats'
-import {
-  useFriendsQuery,
-  useRemoveFriendMutation,
-} from '@/hooks/useFriends'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -23,9 +15,14 @@ import {
   usePageTitle,
   useScreenSize,
   PageHeader,
+  Skeleton,
+  toast,
 } from '@mochi/common'
+import { UserPlus, Users, MessageSquare, UserX, Minus } from 'lucide-react'
+import type { Friend } from '@/api/types/friends'
+import { useCreateChatMutation } from '@/hooks/useChats'
+import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
 import { AddFriendDialog } from './components/add-friend-dialog'
-import { InlineFriendSearch } from './components/inline-friend-search'
 import { FRIENDS_STRINGS } from './constants'
 
 export function Friends() {
@@ -43,7 +40,6 @@ export function Friends() {
   )
   const { data: friendsData, isLoading, isError, error } = useFriendsQuery()
   const removeFriendMutation = useRemoveFriendMutation()
-
   const startChatMutation = useCreateChatMutation({
     onSuccess: (data) => {
       setPendingChatFriendId(null)
@@ -65,7 +61,7 @@ export function Friends() {
       const chatUrl = chatBaseUrl.startsWith('http')
         ? new URL(chatBaseUrl, undefined)
         : new URL(chatBaseUrl, window.location.origin)
-      
+
       // Append chatId to the path
       chatUrl.pathname = chatUrl.pathname + chatId
       /**
@@ -81,8 +77,6 @@ export function Friends() {
       toast.error(FRIENDS_STRINGS.ERR_START_CHAT, { description })
     },
   })
-
-  const hasFriends = (friendsData?.friends?.length ?? 0) > 0
 
   const filteredFriends = useMemo(() => {
     const list = friendsData?.friends ?? []
@@ -128,7 +122,9 @@ export function Friends() {
     return (
       <Main>
         <div className='flex h-64 flex-col items-center justify-center gap-2'>
-          <div className='text-destructive font-medium'>Failed to load friends</div>
+          <div className='text-destructive font-medium'>
+            Failed to load friends
+          </div>
           <div className='text-muted-foreground text-sm'>
             {error instanceof Error ? error.message : 'Unknown error'}
           </div>
@@ -140,22 +136,33 @@ export function Friends() {
   if (isLoading && !friendsData) {
     return (
       <Main>
-        <div className='flex h-64 items-center justify-center'>
-          <div className='text-muted-foreground'>Loading friends...</div>
+        <div className='divide-border divide-y rounded-lg border'>
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div
+              key={i}
+              className='flex items-center justify-between px-4 py-3'
+            >
+              <Skeleton className='h-5 w-32' />
+              <div className='flex items-center gap-1'>
+                <Skeleton className='h-8 w-8' />
+                <Skeleton className='h-8 w-8' />
+              </div>
+            </div>
+          ))}
         </div>
       </Main>
     )
   }
 
-  const searchInput = hasFriends ? (
+  const searchInput = (
     <input
       type='text'
-      placeholder='Search your friends...'
+      placeholder='Search...'
       value={search}
       onChange={(e) => setSearch(e.target.value)}
       className='border-border bg-background focus:ring-ring w-48 rounded-md border px-3 py-2 text-sm focus:ring-2 focus:ring-offset-2 focus:outline-none'
     />
-  ) : null
+  )
 
   return (
     <>
@@ -166,34 +173,24 @@ export function Friends() {
         actions={
           <>
             {!isMobile && searchInput}
-            {hasFriends && (
-              <Button variant='outline' onClick={() => setAddFriendDialogOpen(true)}>
-                <UserPlus className='mr-2 h-4 w-4' />
-                Add friend
-              </Button>
-            )}
+            <Button onClick={() => setAddFriendDialogOpen(true)}>
+              <UserPlus className='mr-2 h-4 w-4' />
+              Add friend
+            </Button>
           </>
         }
       />
       <Main>
-
         {filteredFriends.length === 0 ? (
-          search ? (
-            <EmptyState
-              icon={Users}
-              title="No friends found"
-              description="Try adjusting your search"
-            />
-          ) : (
-            <div className="flex flex-col items-center justify-center p-8 text-center">
-              <Users className="text-muted-foreground mx-auto mb-3 h-10 w-10 opacity-50" />
-              <p className="text-muted-foreground mb-1 text-sm font-medium">Friends</p>
-              <p className="text-muted-foreground mb-4 max-w-sm text-xs">
-                You have no friends yet.
-              </p>
-              <InlineFriendSearch />
-            </div>
-          )
+          <EmptyState
+            icon={Users}
+            title='No friends found'
+            description={
+              search
+                ? 'Try adjusting your search'
+                : 'Add friends to start connecting'
+            }
+          />
         ) : (
           <div className='divide-border divide-y rounded-lg border'>
             {filteredFriends.map((friend) => (
@@ -218,9 +215,7 @@ export function Friends() {
                     variant='ghost'
                     size='sm'
                     disabled={removeFriendMutation.isPending}
-                    onClick={() =>
-                      handleRemoveFriend(friend.id, friend.name)
-                    }
+                    onClick={() => handleRemoveFriend(friend.id, friend.name)}
                   >
                     <UserX className='h-4 w-4' />
                   </Button>
@@ -244,7 +239,9 @@ export function Friends() {
         >
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>{FRIENDS_STRINGS.REMOVE_FRIEND_DIALOG_TITLE}</AlertDialogTitle>
+              <AlertDialogTitle>
+                {FRIENDS_STRINGS.REMOVE_FRIEND_DIALOG_TITLE}
+              </AlertDialogTitle>
               <AlertDialogDescription>
                 {FRIENDS_STRINGS.REMOVE_FRIEND_CONFIRM_PRE}{' '}
                 <span className='text-foreground font-semibold'>

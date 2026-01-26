@@ -1,13 +1,22 @@
 import { useMemo, useState } from 'react'
+import {
+  Button,
+  EmptyState,
+  Main,
+  usePageTitle,
+  getErrorMessage,
+  useScreenSize,
+  PageHeader,
+  Skeleton,
+  toast,
+} from '@mochi/common'
 import { UserPlus, UserX, Send, X, Check } from 'lucide-react'
-import { toast } from '@mochi/common'
 import {
   useFriendsQuery,
   useAcceptFriendInviteMutation,
   useDeclineFriendInviteMutation,
   useRemoveFriendMutation,
 } from '@/hooks/useFriends'
-import { Button, EmptyState, Main, usePageTitle, getErrorMessage, useScreenSize, PageHeader } from '@mochi/common'
 import { AddFriendDialog } from '@/features/friends/components/add-friend-dialog'
 
 export function Invitations() {
@@ -86,7 +95,9 @@ export function Invitations() {
     return (
       <Main>
         <div className='flex h-64 flex-col items-center justify-center gap-2'>
-          <div className='text-destructive font-medium'>Failed to load invitations</div>
+          <div className='text-destructive font-medium'>
+            Failed to load invitations
+          </div>
           <div className='text-muted-foreground text-sm'>
             {error instanceof Error ? error.message : 'Unknown error'}
           </div>
@@ -98,8 +109,23 @@ export function Invitations() {
   if (isLoading && !friendsData) {
     return (
       <Main>
-        <div className='flex h-64 items-center justify-center'>
-          <div className='text-muted-foreground'>Loading invitations...</div>
+        <div className='divide-border divide-y rounded-lg border'>
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div
+              key={i}
+              className='flex items-center justify-between px-4 py-3'
+            >
+              <div className='flex items-center gap-3'>
+                <div className='flex flex-col gap-1'>
+                  <Skeleton className='h-5 w-32' />
+                </div>
+              </div>
+              <div className='flex items-center gap-2'>
+                <Skeleton className='h-8 w-20' />
+                <Skeleton className='h-8 w-20' />
+              </div>
+            </div>
+          ))}
         </div>
       </Main>
     )
@@ -136,108 +162,115 @@ export function Invitations() {
         }
       />
       <Main>
-
-      <AddFriendDialog
-        open={addFriendDialogOpen}
-        onOpenChange={setAddFriendDialogOpen}
-      />
-
-      {!hasAny ? (
-        <EmptyState
-          icon={UserPlus}
-          title="No pending invitations"
-          description={search ? "Try adjusting your search" : "New invitations will appear here"}
+        <AddFriendDialog
+          open={addFriendDialogOpen}
+          onOpenChange={setAddFriendDialogOpen}
         />
-      ) : (
-        <div className='space-y-8'>
-          {/* Received Invitations */}
-          {hasReceived && (
-            <div className='space-y-3'>
-              <h2 className='text-muted-foreground flex items-center gap-2 text-sm font-medium'>
-                <UserPlus className='h-4 w-4' />
-                Received ({filteredReceived.length})
-              </h2>
-              <div className='divide-border divide-y rounded-md border'>
-                {filteredReceived.map((invite) => (
-                  <div
-                    key={invite.id}
-                    className='hover:bg-muted/50 flex items-center justify-between px-4 py-3 transition-colors'
-                  >
-                    <div className='flex items-center gap-3'>
-                      <div className='flex flex-col'>
-                        <span className='truncate font-medium'>
-                          {invite.name}
-                        </span>
+
+        {!hasAny ? (
+          <EmptyState
+            icon={UserPlus}
+            title='No pending invitations'
+            description={
+              search
+                ? 'Try adjusting your search'
+                : 'New invitations will appear here'
+            }
+          />
+        ) : (
+          <div className='space-y-8'>
+            {/* Received Invitations */}
+            {hasReceived && (
+              <div className='space-y-3'>
+                <h2 className='text-muted-foreground flex items-center gap-2 text-sm font-medium'>
+                  <UserPlus className='h-4 w-4' />
+                  Received ({filteredReceived.length})
+                </h2>
+                <div className='divide-border divide-y rounded-md border'>
+                  {filteredReceived.map((invite) => (
+                    <div
+                      key={invite.id}
+                      className='hover:bg-muted/50 flex items-center justify-between px-4 py-3 transition-colors'
+                    >
+                      <div className='flex items-center gap-3'>
+                        <div className='flex flex-col'>
+                          <span className='truncate font-medium'>
+                            {invite.name}
+                          </span>
+                        </div>
+                      </div>
+                      <div className='flex items-center gap-2'>
+                        <Button
+                          size='sm'
+                          variant='default'
+                          disabled={acceptInviteMutation.isPending}
+                          onClick={() =>
+                            handleAcceptInvite(invite.id, invite.name)
+                          }
+                          className='h-8'
+                        >
+                          <Check className='mr-2 h-3.5 w-3.5' />
+                          Accept
+                        </Button>
+                        <Button
+                          variant='ghost'
+                          size='sm'
+                          disabled={declineInviteMutation.isPending}
+                          onClick={() =>
+                            handleDeclineInvite(invite.id, invite.name)
+                          }
+                          className='text-muted-foreground hover:text-destructive h-8'
+                        >
+                          <UserX className='mr-2 h-3.5 w-3.5' />
+                          Decline
+                        </Button>
                       </div>
                     </div>
-                    <div className='flex items-center gap-2'>
-                      <Button
-                        size='sm'
-                        variant='default'
-                        disabled={acceptInviteMutation.isPending}
-                        onClick={() => handleAcceptInvite(invite.id, invite.name)}
-                        className='h-8'
-                      >
-                        <Check className='mr-2 h-3.5 w-3.5' />
-                        Accept
-                      </Button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Sent Invitations */}
+            {hasSent && (
+              <div className='space-y-3'>
+                <h2 className='text-muted-foreground flex items-center gap-2 text-sm font-medium'>
+                  <Send className='h-4 w-4' />
+                  Sent ({filteredSent.length})
+                </h2>
+                <div className='divide-border divide-y rounded-md border'>
+                  {filteredSent.map((invite) => (
+                    <div
+                      key={invite.id}
+                      className='hover:bg-muted/50 flex items-center justify-between px-4 py-3 transition-colors'
+                    >
+                      <div className='flex items-center gap-3'>
+                        <div className='flex flex-col'>
+                          <span className='truncate font-medium'>
+                            {invite.name}
+                          </span>
+                          <span className='text-muted-foreground text-xs'>
+                            Pending
+                          </span>
+                        </div>
+                      </div>
                       <Button
                         variant='ghost'
                         size='sm'
-                        disabled={declineInviteMutation.isPending}
-                        onClick={() => handleDeclineInvite(invite.id, invite.name)}
-                        className='h-8 text-muted-foreground hover:text-destructive'
+                        disabled={removeMutation.isPending}
+                        onClick={() => handleCancelSent(invite.id, invite.name)}
+                        className='text-muted-foreground hover:text-destructive h-8'
                       >
-                        <UserX className='mr-2 h-3.5 w-3.5' />
-                        Decline
+                        <X className='mr-2 h-3.5 w-3.5' />
+                        Cancel
                       </Button>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
-
-          {/* Sent Invitations */}
-          {hasSent && (
-            <div className='space-y-3'>
-              <h2 className='text-muted-foreground flex items-center gap-2 text-sm font-medium'>
-                <Send className='h-4 w-4' />
-                Sent ({filteredSent.length})
-              </h2>
-              <div className='divide-border divide-y rounded-md border'>
-                {filteredSent.map((invite) => (
-                  <div
-                    key={invite.id}
-                    className='hover:bg-muted/50 flex items-center justify-between px-4 py-3 transition-colors'
-                  >
-                    <div className='flex items-center gap-3'>
-                      <div className='flex flex-col'>
-                        <span className='truncate font-medium'>
-                          {invite.name}
-                        </span>
-                        <span className='text-muted-foreground text-xs'>
-                          Pending
-                        </span>
-                      </div>
-                    </div>
-                    <Button
-                      variant='ghost'
-                      size='sm'
-                      disabled={removeMutation.isPending}
-                      onClick={() => handleCancelSent(invite.id, invite.name)}
-                      className='h-8 text-muted-foreground hover:text-destructive'
-                    >
-                      <X className='mr-2 h-3.5 w-3.5' />
-                      Cancel
-                    </Button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      )}
+            )}
+          </div>
+        )}
       </Main>
     </>
   )

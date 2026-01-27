@@ -1,14 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useParams } from '@tanstack/react-router'
 import { User, UsersRound, X, UserPlus } from 'lucide-react'
-import { toast } from '@mochi/common'
-import {
-  useGroupQuery,
-  useRemoveGroupMemberMutation,
-} from '@/hooks/useGroups'
-import { MemberDialog } from './member-dialog'
-
-import {
+import { 
+  toast,
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -29,7 +23,15 @@ import {
   usePageTitle,
   getErrorMessage,
   PageHeader,
+  Section,
+  FieldRow,
+  DataChip,
 } from '@mochi/common'
+import {
+  useGroupQuery,
+  useRemoveGroupMemberMutation,
+} from '@/hooks/useGroups'
+import { MemberDialog } from './member-dialog'
 import { useSidebarContext } from '@/context/sidebar-context'
 
 export function GroupDetail() {
@@ -107,99 +109,113 @@ export function GroupDetail() {
         description={group.description}
         actions={
           <Button onClick={() => setAddMemberDialog(true)}>
-            <UserPlus className='h-4 w-4' />
+            <UserPlus className='h-4 w-4 mr-2' />
             Add member
           </Button>
         }
       />
-      <Main>
-        <h2 className='text-lg font-semibold mb-4'>Members ({members.length})</h2>
+      <Main className="space-y-6">
+        <Section title="Identity" description="Core information about this group">
+          <div className="divide-y-0">
+            <FieldRow label="Group ID">
+              <DataChip value={id} />
+            </FieldRow>
+            {group.description && (
+              <FieldRow label="Description">
+                <span className="text-sm text-foreground">{group.description}</span>
+              </FieldRow>
+            )}
+            <FieldRow label="Members Count">
+              <DataChip value={members.length.toString()} copyable={false} />
+            </FieldRow>
+          </div>
+        </Section>
 
-      {members.length === 0 ? (
-        <EmptyState
-          icon={User}
-          title="No members in this group"
-          description="Add users or groups to get started"
+        <Section title="Members" description="Users and groups that belong to this group">
+          {members.length === 0 ? (
+            <div className="py-8">
+              <EmptyState
+                icon={User}
+                title="No members"
+                description="Add users or groups to get started"
+              />
+            </div>
+          ) : (
+            <div className='rounded-md border'>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Member</TableHead>
+                    <TableHead>Type</TableHead>
+                    <TableHead className='w-[80px] text-right'>Actions</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {members.map((member) => (
+                    <TableRow key={member.member}>
+                      <TableCell className='font-medium'>{member.name}</TableCell>
+                      <TableCell>
+                        <div className="flex items-center gap-2">
+                          {member.type === 'group' ? (
+                            <DataChip value="Group" icon={<UsersRound className='size-3.5' />} copyable={false} />
+                          ) : (
+                            <DataChip value="User" icon={<User className='size-3.5' />} copyable={false} />
+                          )}
+                        </div>
+                      </TableCell>
+                      <TableCell className="text-right">
+                        <Button
+                          variant='ghost'
+                          size='icon'
+                          className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                          onClick={() => handleRemoveMember(member.member, member.name, member.type)}
+                        >
+                          <X className='h-4 w-4' />
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          )}
+        </Section>
+
+        <AlertDialog
+          open={removeMemberDialog.open}
+          onOpenChange={(open) => setRemoveMemberDialog({ ...removeMemberDialog, open })}
+        >
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Remove member</AlertDialogTitle>
+              <AlertDialogDescription>
+                Are you sure you want to remove{' '}
+                <span className='text-foreground font-semibold'>
+                  {removeMemberDialog.name}
+                </span>{' '}
+                from this group?
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel disabled={removeMemberMutation.isPending}>
+                Cancel
+              </AlertDialogCancel>
+              <AlertDialogAction
+                variant="destructive"
+                onClick={confirmRemoveMember}
+                disabled={removeMemberMutation.isPending}
+              >
+                {removeMemberMutation.isPending ? 'Removing...' : 'Remove Member'}
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+
+        <MemberDialog
+          open={addMemberDialog}
+          onOpenChange={setAddMemberDialog}
+          groupId={id}
         />
-      ) : (
-        <div className='rounded-md border'>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Member</TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead className='w-[80px]'>Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {members.map((member) => (
-                <TableRow key={member.member}>
-                  <TableCell className='font-medium'>{member.name}</TableCell>
-                  <TableCell>
-                    <span className='inline-flex items-center gap-1'>
-                      {member.type === 'group' ? (
-                        <>
-                          <UsersRound className='h-4 w-4' />
-                          Group
-                        </>
-                      ) : (
-                        <>
-                          <User className='h-4 w-4' />
-                          User
-                        </>
-                      )}
-                    </span>
-                  </TableCell>
-                  <TableCell>
-                    <Button
-                      variant='ghost'
-                      size='icon'
-                      onClick={() => handleRemoveMember(member.member, member.name, member.type)}
-                    >
-                      <X className='h-4 w-4' />
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
-      )}
-
-      <AlertDialog
-        open={removeMemberDialog.open}
-        onOpenChange={(open) => setRemoveMemberDialog({ ...removeMemberDialog, open })}
-      >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Remove member</AlertDialogTitle>
-            <AlertDialogDescription>
-              Are you sure you want to remove{' '}
-              <span className='text-foreground font-semibold'>
-                {removeMemberDialog.name}
-              </span>{' '}
-              from this group?
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel disabled={removeMemberMutation.isPending}>
-              Cancel
-            </AlertDialogCancel>
-            <AlertDialogAction
-              onClick={confirmRemoveMember}
-              disabled={removeMemberMutation.isPending}
-            >
-              {removeMemberMutation.isPending ? 'Removing...' : 'Remove'}
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-
-      <MemberDialog
-        open={addMemberDialog}
-        onOpenChange={setAddMemberDialog}
-        groupId={id}
-      />
       </Main>
     </>
   )

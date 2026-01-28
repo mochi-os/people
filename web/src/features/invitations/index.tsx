@@ -155,7 +155,7 @@ export function Invitations() {
           <>
             {!isMobile && searchInput}
             <Button onClick={() => setAddFriendDialogOpen(true)}>
-              <UserPlus className='mr-2 h-4 w-4' />
+              <UserPlus className='h-4 w-4' />
               Add friend
             </Button>
           </>
@@ -207,9 +207,8 @@ export function Invitations() {
                           onClick={() =>
                             handleAcceptInvite(invite.id, invite.name)
                           }
-                          className='h-8'
                         >
-                          <Check className='mr-2 h-3.5 w-3.5' />
+                          <Check className='h-3.5 w-3.5' />
                           Accept
                         </Button>
                         <Button
@@ -219,9 +218,9 @@ export function Invitations() {
                           onClick={() =>
                             handleDeclineInvite(invite.id, invite.name)
                           }
-                          className='text-muted-foreground hover:text-destructive h-8'
+                          className='text-muted-foreground hover:text-destructive'
                         >
-                          <UserX className='mr-2 h-3.5 w-3.5' />
+                          <UserX className='h-3.5 w-3.5' />
                           Decline
                         </Button>
                       </div>
@@ -259,9 +258,9 @@ export function Invitations() {
                         size='sm'
                         disabled={removeMutation.isPending}
                         onClick={() => handleCancelSent(invite.id, invite.name)}
-                        className='text-muted-foreground hover:text-destructive h-8'
+                        className='text-muted-foreground hover:text-destructive'
                       >
-                        <X className='mr-2 h-3.5 w-3.5' />
+                        <X className='h-3.5 w-3.5' />
                         Cancel
                       </Button>
                     </div>

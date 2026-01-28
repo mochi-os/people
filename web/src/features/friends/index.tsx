@@ -174,7 +174,7 @@ export function Friends() {
           <>
             {!isMobile && searchInput}
             <Button onClick={() => setAddFriendDialogOpen(true)}>
-              <UserPlus className='mr-2 h-4 w-4' />
+              <UserPlus className='h-4 w-4' />
               Add friend
             </Button>
           </>
@@ -259,7 +259,7 @@ export function Friends() {
                 onClick={confirmRemoveFriend}
                 disabled={removeFriendMutation.isPending}
               >
-                <Minus className='mr-2 h-4 w-4' />
+                <Minus className='h-4 w-4' />
                 {removeFriendMutation.isPending
                   ? FRIENDS_STRINGS.REMOVING
                   : FRIENDS_STRINGS.REMOVE_FRIEND}

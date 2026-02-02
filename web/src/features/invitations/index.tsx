@@ -5,7 +5,6 @@ import {
   Main,
   usePageTitle,
   getErrorMessage,
-  useScreenSize,
   PageHeader,
   Skeleton,
   toast,
@@ -21,7 +20,6 @@ import { AddFriendDialog } from '@/features/friends/components/add-friend-dialog
 
 export function Invitations() {
   usePageTitle('Invitations')
-  const { isMobile } = useScreenSize()
   const [search, setSearch] = useState('')
   const [addFriendDialogOpen, setAddFriendDialogOpen] = useState(false)
   const { data: friendsData, isLoading, isError, error } = useFriendsQuery()
@@ -150,10 +148,9 @@ export function Invitations() {
       <PageHeader
         title='Invitations'
         icon={<UserPlus className='size-4 md:size-5' />}
-        searchBar={searchInput}
         actions={
           <>
-            {!isMobile && searchInput}
+            {searchInput}
             <Button onClick={() => setAddFriendDialogOpen(true)}>
               <UserPlus className='h-4 w-4' />
               Add friend

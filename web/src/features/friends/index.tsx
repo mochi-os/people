@@ -13,7 +13,6 @@ import {
   EmptyState,
   Main,
   usePageTitle,
-  useScreenSize,
   PageHeader,
   Skeleton,
   toast,
@@ -27,7 +26,6 @@ import { FRIENDS_STRINGS } from './constants'
 
 export function Friends() {
   usePageTitle('Friends')
-  const { isMobile } = useScreenSize()
   const [search, setSearch] = useState('')
   const [addFriendDialogOpen, setAddFriendDialogOpen] = useState(false)
   const [removeFriendDialog, setRemoveFriendDialog] = useState<{
@@ -169,10 +167,9 @@ export function Friends() {
       <PageHeader
         title='Friends'
         icon={<Users className='size-4 md:size-5' />}
-        searchBar={searchInput}
         actions={
           <>
-            {!isMobile && searchInput}
+            {searchInput}
             <Button onClick={() => setAddFriendDialogOpen(true)}>
               <UserPlus className='h-4 w-4' />
               Add friend

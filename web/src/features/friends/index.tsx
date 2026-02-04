@@ -14,15 +14,14 @@ import {
   Main,
   usePageTitle,
   PageHeader,
-  Skeleton,
   toast,
+  ListSkeleton,
 } from '@mochi/common'
 import { UserPlus, Users, MessageSquare, UserX, Minus } from 'lucide-react'
 import type { Friend } from '@/api/types/friends'
 import { useCreateChatMutation } from '@/hooks/useChats'
 import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
 import { AddFriendDialog } from './components/add-friend-dialog'
-import { FriendListSkeleton } from './components/list-skeleton'
 import { FRIENDS_STRINGS } from './constants'
 
 export function Friends() {
@@ -134,7 +133,7 @@ export function Friends() {
   if (isLoading && !friendsData) {
     return (
       <Main>
-        <FriendListSkeleton />
+        <ListSkeleton count={5} variant="simple" height="h-16" />
       </Main>
     )
   }

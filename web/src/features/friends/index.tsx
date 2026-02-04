@@ -22,6 +22,7 @@ import type { Friend } from '@/api/types/friends'
 import { useCreateChatMutation } from '@/hooks/useChats'
 import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
 import { AddFriendDialog } from './components/add-friend-dialog'
+import { FriendListSkeleton } from './components/list-skeleton'
 import { FRIENDS_STRINGS } from './constants'
 
 export function Friends() {
@@ -36,7 +37,11 @@ export function Friends() {
   const [pendingChatFriendId, setPendingChatFriendId] = useState<string | null>(
     null
   )
-  const { data: friendsData, isLoading, isError, error } = useFriendsQuery()
+  const {
+    data: friendsData,
+    isLoading,
+    ErrorComponent,
+  } = useFriendsQuery()
   const removeFriendMutation = useRemoveFriendMutation()
   const startChatMutation = useCreateChatMutation({
     onSuccess: (data) => {
@@ -116,16 +121,11 @@ export function Friends() {
     startChatMutation.mutate({ participantIds: [friend.id], name: chatName })
   }
 
-  if (isError) {
+  if (ErrorComponent) {
     return (
       <Main>
-        <div className='flex h-64 flex-col items-center justify-center gap-2'>
-          <div className='text-destructive font-medium'>
-            Failed to load friends
-          </div>
-          <div className='text-muted-foreground text-sm'>
-            {error instanceof Error ? error.message : 'Unknown error'}
-          </div>
+        <div className='flex h-64 flex-col items-center justify-center p-4'>
+          {ErrorComponent}
         </div>
       </Main>
     )
@@ -134,20 +134,7 @@ export function Friends() {
   if (isLoading && !friendsData) {
     return (
       <Main>
-        <div className='divide-border divide-y rounded-lg border'>
-          {Array.from({ length: 5 }).map((_, i) => (
-            <div
-              key={i}
-              className='flex items-center justify-between px-4 py-3'
-            >
-              <Skeleton className='h-5 w-32' />
-              <div className='flex items-center gap-1'>
-                <Skeleton className='h-8 w-8' />
-                <Skeleton className='h-8 w-8' />
-              </div>
-            </div>
-          ))}
-        </div>
+        <FriendListSkeleton />
       </Main>
     )
   }

@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban } from 'lucide-react'
-import { cn, toast, SubscribeDialog, requestHelpers } from '@mochi/common'
+import { cn, toast, SubscribeDialog, requestHelpers, getErrorMessage } from '@mochi/common'
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation } from '@/hooks/useFriends'
 import { Avatar, AvatarFallback, AvatarImage } from '@mochi/common'
 import { Button } from '@mochi/common'
@@ -73,10 +73,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
     },
     onError: (error) => {
       setPendingUserId(null)
-      toast.error(FRIENDS_STRINGS.ERR_ADD_FRIEND, {
-        description:
-          error instanceof Error ? error.message : FRIENDS_STRINGS.ERR_GENERIC,
-      })
+      toast.error(getErrorMessage(error, FRIENDS_STRINGS.ERR_ADD_FRIEND))
     },
   })
 
@@ -91,10 +88,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
     },
     onError: (error) => {
       setPendingUserId(null)
-      toast.error(FRIENDS_STRINGS.ERR_ADD_FRIEND, {
-        description:
-          error instanceof Error ? error.message : FRIENDS_STRINGS.ERR_GENERIC,
-      })
+      toast.error(getErrorMessage(error, FRIENDS_STRINGS.ERR_ADD_FRIEND))
     },
   })
 
@@ -185,7 +179,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                 <EmptyState
                   icon={Ban}
                   title={FRIENDS_STRINGS.ERR_SEARCH_FAILED}
-                  description={error instanceof Error ? error.message : FRIENDS_STRINGS.ERR_UNKNOWN}
+                  description={getErrorMessage(error, FRIENDS_STRINGS.ERR_UNKNOWN)}
                   className="bg-transparent border-0 shadow-none pt-12 pb-12"
                 />
               )}

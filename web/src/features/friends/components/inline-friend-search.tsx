@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from 'react'
 import { Search, Loader2, UserPlus, UserCheck, Send, Ban } from 'lucide-react'
-import { cn, toast } from '@mochi/common'
+import { cn, toast, getErrorMessage } from '@mochi/common'
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation } from '@/hooks/useFriends'
 import { Avatar, AvatarFallback, AvatarImage } from '@mochi/common'
 import { Button } from '@mochi/common'
@@ -36,9 +36,7 @@ export function InlineFriendSearch() {
     },
     onError: (error) => {
       setPendingUserId(null)
-      toast.error(FRIENDS_STRINGS.ERR_ADD_FRIEND, {
-        description: error instanceof Error ? error.message : FRIENDS_STRINGS.ERR_GENERIC,
-      })
+      toast.error(getErrorMessage(error, FRIENDS_STRINGS.ERR_ADD_FRIEND))
     },
   })
 
@@ -52,9 +50,7 @@ export function InlineFriendSearch() {
     },
     onError: (error) => {
       setPendingUserId(null)
-      toast.error(FRIENDS_STRINGS.ERR_ADD_FRIEND, {
-        description: error instanceof Error ? error.message : FRIENDS_STRINGS.ERR_GENERIC,
-      })
+      toast.error(getErrorMessage(error, FRIENDS_STRINGS.ERR_ADD_FRIEND))
     },
   })
 

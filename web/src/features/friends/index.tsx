@@ -16,6 +16,7 @@ import {
   PageHeader,
   toast,
   ListSkeleton,
+  getErrorMessage,
 } from '@mochi/common'
 import { UserPlus, Users, MessageSquare, UserX, Minus } from 'lucide-react'
 import type { Friend } from '@/api/types/friends'
@@ -74,9 +75,7 @@ export function Friends() {
     },
     onError: (error) => {
       setPendingChatFriendId(null)
-      const description =
-        error instanceof Error ? error.message : FRIENDS_STRINGS.ERR_GENERIC
-      toast.error(FRIENDS_STRINGS.ERR_START_CHAT, { description })
+      toast.error(getErrorMessage(error, FRIENDS_STRINGS.ERR_START_CHAT))
     },
   })
 

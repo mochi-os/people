@@ -82,7 +82,7 @@ export function GroupDetail() {
         <div className='flex h-64 flex-col items-center justify-center gap-2'>
           <div className='text-destructive font-medium'>Failed to load group</div>
           <div className='text-muted-foreground text-sm'>
-            {error instanceof Error ? error.message : 'Unknown error'}
+            {getErrorMessage(error, 'Failed to load group')}
           </div>
         </div>
       </Main>

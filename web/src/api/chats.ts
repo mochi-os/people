@@ -35,5 +35,3 @@ export const chatsApi = {
 }
 
 export type { CreateChatRequest, CreateChatResponse }
-
-export default chatsApi

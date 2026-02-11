@@ -246,4 +246,3 @@ export type {
   SearchLocalUsersResponse,
 }
 
-export default friendsApi

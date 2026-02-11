@@ -159,4 +159,3 @@ export type {
   UpdateGroupRequest,
 }
 
-export default groupsApi

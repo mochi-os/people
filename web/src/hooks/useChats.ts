@@ -1,5 +1,5 @@
 import { useMutation, type UseMutationOptions } from '@tanstack/react-query'
-import chatsApi, {
+import { chatsApi,
   type CreateChatRequest,
   type CreateChatResponse,
 } from '@/api/chats'
@@ -16,4 +16,3 @@ export const useCreateChatMutation = (
     mutationFn: (payload: CreateChatRequest) => chatsApi.create(payload),
     ...options,
   })
-

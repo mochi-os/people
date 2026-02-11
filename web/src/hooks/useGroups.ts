@@ -4,7 +4,7 @@ import {
   useQueryClient,
   type UseMutationOptions,
 } from '@tanstack/react-query'
-import groupsApi, {
+import { groupsApi,
   type AddGroupMemberRequest,
   type CreateGroupRequest,
   type Group,

@@ -1,5 +1,9 @@
 import endpoints from '@/api/endpoints'
-import type { CreateChatRequest, CreateChatResponse } from '@/api/types/chats'
+import type {
+  CreateChatRequest,
+  CreateChatResponse,
+  GetNewChatResponse,
+} from '@/api/types/chats'
 import { requestHelpers } from '@mochi/common'
 
 type CreateChatApiResponse = { data: CreateChatResponse } | CreateChatResponse
@@ -32,6 +36,17 @@ const createChat = async (
 
 export const chatsApi = {
   create: createChat,
+  getFriendsForNewChat: async (): Promise<GetNewChatResponse> => {
+    const response = (await requestHelpers.get<
+      GetNewChatResponse | { data: GetNewChatResponse }
+    >(endpoints.chat.new)) as GetNewChatResponse | { data: GetNewChatResponse }
+
+    if (typeof response === 'object' && response !== null && 'data' in response) {
+      return response.data
+    }
+
+    return response
+  },
 }
 
-export type { CreateChatRequest, CreateChatResponse }
+export type { CreateChatRequest, CreateChatResponse, GetNewChatResponse }

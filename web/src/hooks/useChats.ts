@@ -1,7 +1,8 @@
-import { useMutation, type UseMutationOptions } from '@tanstack/react-query'
+import { useMutation, type UseMutationOptions, useQuery } from '@tanstack/react-query'
 import { chatsApi,
   type CreateChatRequest,
   type CreateChatResponse,
+  type GetNewChatResponse,
 } from '@/api/chats'
 
 export const useCreateChatMutation = (
@@ -15,4 +16,10 @@ export const useCreateChatMutation = (
   useMutation({
     mutationFn: (payload: CreateChatRequest) => chatsApi.create(payload),
     ...options,
+  })
+
+export const useNewChatFriendsQuery = () =>
+  useQuery<GetNewChatResponse>({
+    queryKey: ['chats', 'new'],
+    queryFn: () => chatsApi.getFriendsForNewChat(),
   })

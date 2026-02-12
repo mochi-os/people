@@ -20,7 +20,7 @@ import {
 } from '@mochi/common'
 import { UserPlus, Users, MessageSquare, UserX, Minus } from 'lucide-react'
 import type { Friend } from '@/api/types/friends'
-import { useCreateChatMutation } from '@/hooks/useChats'
+import { useCreateChatMutation, useNewChatFriendsQuery } from '@/hooks/useChats'
 import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
 import { AddFriendDialog } from './components/add-friend-dialog'
 import { FRIENDS_STRINGS } from './constants'
@@ -42,36 +42,40 @@ export function Friends() {
     isLoading,
     ErrorComponent,
   } = useFriendsQuery()
+  const newChatFriendsQuery = useNewChatFriendsQuery()
   const removeFriendMutation = useRemoveFriendMutation()
+  const redirectToChat = (chatId: string) => {
+    let chatBaseUrl = import.meta.env.VITE_APP_CHAT_URL ?? APP_ROUTES.CHAT.HOME
+
+    // Ensure chatBaseUrl ends with a slash before appending search params
+    if (!chatBaseUrl.endsWith('/')) {
+      chatBaseUrl = chatBaseUrl + '/'
+    }
+
+    const chatUrl = chatBaseUrl.startsWith('http')
+      ? new URL(chatBaseUrl, undefined)
+      : new URL(chatBaseUrl, window.location.origin)
+
+    // Append chatId to the path
+    chatUrl.pathname = chatUrl.pathname + chatId
+    /**
+     * NOTE: Chat lives in a separate micro-app. Use full-page navigation so the chat app
+     * can bootstrap with the selected chat ID.
+     */
+    window.location.assign(chatUrl.toString())
+  }
+
   const startChatMutation = useCreateChatMutation({
     onSuccess: (data) => {
       setPendingChatFriendId(null)
       toast.success(FRIENDS_STRINGS.SUCCESS_CHAT_READY, {
         description: FRIENDS_STRINGS.SUCCESS_REDIRECTING,
       })
-      const chatId = data.id
+      const chatId = data.fingerprint ?? data.id
       if (!chatId) {
         return
       }
-      let chatBaseUrl =
-        import.meta.env.VITE_APP_CHAT_URL ?? APP_ROUTES.CHAT.HOME
-
-      // Ensure chatBaseUrl ends with a slash before appending search params
-      if (!chatBaseUrl.endsWith('/')) {
-        chatBaseUrl = chatBaseUrl + '/'
-      }
-
-      const chatUrl = chatBaseUrl.startsWith('http')
-        ? new URL(chatBaseUrl, undefined)
-        : new URL(chatBaseUrl, window.location.origin)
-
-      // Append chatId to the path
-      chatUrl.pathname = chatUrl.pathname + chatId
-      /**
-       * NOTE: Chat lives in a separate micro-app. Use full-page navigation so the chat app
-       * can bootstrap with the selected chat ID.
-       */
-      window.location.assign(chatUrl.toString())
+      redirectToChat(chatId)
     },
     onError: (error) => {
       setPendingChatFriendId(null)
@@ -85,6 +89,23 @@ export function Friends() {
       friend.name.toLowerCase().includes(search.toLowerCase())
     )
   }, [friendsData?.friends, search])
+
+  const existingChatsByFriendId = useMemo(() => {
+    const map = new Map<
+      string,
+      { chatId: string; chatFingerprint?: string }
+    >()
+    const list = newChatFriendsQuery.data?.friends ?? []
+    list.forEach((friend) => {
+      const chatId = friend.chatId ?? friend.chatFingerprint
+      if (!chatId) return
+      map.set(friend.id, {
+        chatId,
+        chatFingerprint: friend.chatFingerprint,
+      })
+    })
+    return map
+  }, [newChatFriendsQuery.data?.friends])
 
   const handleRemoveFriend = (friendId: string, friendName: string) => {
     setRemoveFriendDialog({ open: true, friendId, friendName })
@@ -106,6 +127,12 @@ export function Friends() {
       return
     }
 
+    const existingChat = existingChatsByFriendId.get(friend.id)
+    if (existingChat) {
+      redirectToChat(existingChat.chatFingerprint ?? existingChat.chatId)
+      return
+    }
+
     const chatName = friend.name?.trim()
     if (!chatName) {
       toast.error(FRIENDS_STRINGS.ERR_START_CHAT, {
@@ -114,7 +141,6 @@ export function Friends() {
       return
     }
 
-    // TODO: Reuse an existing DM once chat-to-friend mapping is available.
     setPendingChatFriendId(friend.id)
     startChatMutation.mutate({ participantIds: [friend.id], name: chatName })
   }
@@ -186,8 +212,9 @@ export function Friends() {
                     variant='ghost'
                     size='sm'
                     disabled={
-                      startChatMutation.isPending &&
-                      pendingChatFriendId === friend.id
+                      newChatFriendsQuery.isLoading ||
+                      (startChatMutation.isPending &&
+                        pendingChatFriendId === friend.id)
                     }
                     onClick={() => handleStartChat(friend)}
                   >

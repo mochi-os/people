@@ -18,8 +18,22 @@ export interface CreateChatRequest {
 
 export interface CreateChatResponse {
   id: string
+  fingerprint?: string
   members: ChatMember[]
   name: string
   [key: string]: unknown
 }
 
+export interface NewChatFriend {
+  class: string
+  id: string
+  identity: string
+  name: string
+  chatId?: string
+  chatFingerprint?: string
+}
+
+export interface GetNewChatResponse {
+  friends: NewChatFriend[]
+  name: string
+}

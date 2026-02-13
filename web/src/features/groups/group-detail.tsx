@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams } from '@tanstack/react-router'
+import { useNavigate, useParams } from '@tanstack/react-router'
 import { User, UsersRound, X, UserPlus } from 'lucide-react'
 import { 
   toast,
@@ -36,9 +36,11 @@ import { useSidebarContext } from '@/context/sidebar-context'
 
 export function GroupDetail() {
   const { id } = useParams({ from: '/_authenticated/groups/$id' })
+  const navigate = useNavigate()
   const { data, isLoading, isError, error } = useGroupQuery(id)
   const removeMemberMutation = useRemoveGroupMemberMutation()
   const { setGroupId } = useSidebarContext()
+  const goBackToFriends = () => navigate({ to: '/' })
 
   usePageTitle(data?.group?.name ?? 'Group')
 
@@ -107,6 +109,7 @@ export function GroupDetail() {
         title={group.name}
         icon={<UsersRound className='size-4 md:size-5' />}
         description={group.description}
+        back={{ label: 'Back to friends', onFallback: goBackToFriends }}
         actions={
           <Button onClick={() => setAddMemberDialog(true)}>
             <UserPlus className='h-4 w-4 mr-2' />

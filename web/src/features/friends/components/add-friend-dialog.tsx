@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban } from 'lucide-react'
-import { cn, toast, SubscribeDialog, requestHelpers, getErrorMessage } from '@mochi/common'
+import { cn, toast, SubscribeDialog, requestHelpers, getAppPath, getErrorMessage } from '@mochi/common'
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation } from '@/hooks/useFriends'
 import { Avatar, AvatarFallback, AvatarImage } from '@mochi/common'
 import { Button } from '@mochi/common'
@@ -344,7 +344,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
         onOpenChange={setSubscribeOpen}
         app="people"
         label="Friend requests and updates"
-        appBase="/people"
+        appBase={getAppPath()}
         onResult={() => refetchSubscription()}
       />
     </ResponsiveDialog>

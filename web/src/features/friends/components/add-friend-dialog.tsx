@@ -39,7 +39,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
     queryKey: ['subscription-check', 'people'],
     queryFn: async () => {
       return await requestHelpers.get<SubscriptionCheckResponse>(
-        '/notifications/-/subscriptions/check?app=people'
+        `${getAppPath()}/-/notifications/check`
       )
     },
     staleTime: Infinity,

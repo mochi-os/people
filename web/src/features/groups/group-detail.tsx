@@ -26,6 +26,8 @@ import {
   Section,
   FieldRow,
   DataChip,
+  GeneralError,
+  ListSkeleton,
 } from '@mochi/common'
 import {
   useGroupQuery,
@@ -81,12 +83,7 @@ export function GroupDetail() {
   if (isError) {
     return (
       <Main>
-        <div className='flex h-64 flex-col items-center justify-center gap-2'>
-          <div className='text-destructive font-medium'>Failed to load group</div>
-          <div className='text-muted-foreground text-sm'>
-            {getErrorMessage(error, 'Failed to load group')}
-          </div>
-        </div>
+        <GeneralError error={error} minimal mode='inline' />
       </Main>
     )
   }
@@ -94,8 +91,8 @@ export function GroupDetail() {
   if (isLoading || !data) {
     return (
       <Main>
-        <div className='flex h-64 items-center justify-center'>
-          <div className='text-muted-foreground'>Loading group...</div>
+        <div className='py-6'>
+          <ListSkeleton variant='simple' height='h-12' count={3} />
         </div>
       </Main>
     )

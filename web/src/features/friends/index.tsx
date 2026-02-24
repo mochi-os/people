@@ -16,6 +16,7 @@ import {
   PageHeader,
   toast,
   ListSkeleton,
+  GeneralError,
   getErrorMessage,
 } from '@mochi/common'
 import { UserPlus, Users, MessageSquare, UserX, Minus } from 'lucide-react'
@@ -40,7 +41,8 @@ export function Friends() {
   const {
     data: friendsData,
     isLoading,
-    ErrorComponent,
+    error,
+    refetch,
   } = useFriendsQuery()
   const newChatFriendsQuery = useNewChatFriendsQuery()
   const removeFriendMutation = useRemoveFriendMutation()
@@ -145,24 +147,6 @@ export function Friends() {
     startChatMutation.mutate({ participantIds: [friend.id], name: chatName })
   }
 
-  if (ErrorComponent) {
-    return (
-      <Main>
-        <div className='flex h-64 flex-col items-center justify-center p-4'>
-          {ErrorComponent}
-        </div>
-      </Main>
-    )
-  }
-
-  if (isLoading && !friendsData) {
-    return (
-      <Main>
-        <ListSkeleton count={5} variant="simple" height="h-16" />
-      </Main>
-    )
-  }
-
   const searchInput = (
     <input
       type='text'
@@ -189,7 +173,18 @@ export function Friends() {
         }
       />
       <Main>
-        {filteredFriends.length === 0 ? (
+        {error ? (
+          <GeneralError
+            error={error}
+            minimal
+            mode='inline'
+            reset={refetch}
+            className='mb-4'
+          />
+        ) : null}
+        {isLoading && !friendsData ? (
+          <ListSkeleton count={5} variant="simple" height="h-16" />
+        ) : error && !friendsData ? null : filteredFriends.length === 0 ? (
           <EmptyState
             icon={Users}
             title='No friends found'

@@ -24,12 +24,12 @@ export const friendKeys = {
 import { useQueryWithError } from '@mochi/common'
 
 export const useFriendsQuery = () => {
-  const { data, isLoading, isError, error, ErrorComponent } = useQueryWithError<GetFriendsListResponse, Error>({
+  const { data, isLoading, isError, error, refetch } = useQueryWithError<GetFriendsListResponse, Error>({
     queryKey: friendKeys.all(),
     queryFn: () => friendsApi.list(),
   })
 
-  return { data, isLoading, isError, error, ErrorComponent }
+  return { data, isLoading, isError, error, refetch }
 }
 
 interface FriendMutationVariables {

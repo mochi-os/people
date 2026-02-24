@@ -24,6 +24,7 @@ import {
   CardContent,
   getErrorMessage,
   EmptyState,
+  GeneralError,
 } from '@mochi/common'
 
 interface MemberDialogProps {
@@ -39,8 +40,13 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
   const [activeTab, setActiveTab] = useState<'user' | 'group'>('user')
 
   const addMemberMutation = useAddGroupMemberMutation()
-  const { data: groups } = useGroupsQuery()
-  const { data: searchResults, isLoading: searchLoading } = useSearchLocalUsersQuery(userSearch, {
+  const { data: groups, error: groupsError, refetch: refetchGroups } = useGroupsQuery()
+  const {
+    data: searchResults,
+    isLoading: searchLoading,
+    error: searchError,
+    refetch: refetchSearch,
+  } = useSearchLocalUsersQuery(userSearch, {
     enabled: userSearch.length >= 1,
   })
 
@@ -136,6 +142,13 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
                 <p className='text-muted-foreground text-center text-sm'>
                   Searching...
                 </p>
+              ) : searchError ? (
+                <GeneralError
+                  error={searchError}
+                  minimal
+                  mode='inline'
+                  reset={refetchSearch}
+                />
               ) : !searchResults?.results?.length ? (
                 <EmptyState
                   icon={User}
@@ -175,7 +188,14 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
           <TabsContent value='group' className='mt-4'>
             <div className='space-y-4'>
               <Label>Select group</Label>
-              {availableGroups.length === 0 ? (
+              {groupsError ? (
+                <GeneralError
+                  error={groupsError}
+                  minimal
+                  mode='inline'
+                  reset={refetchGroups}
+                />
+              ) : availableGroups.length === 0 ? (
                 <EmptyState
                   icon={UsersRound}
                   title="No other groups"

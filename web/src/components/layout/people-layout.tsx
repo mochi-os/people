@@ -10,7 +10,7 @@ import { toast } from '@mochi/common'
 import { useNavigate } from '@tanstack/react-router'
 
 function PeopleLayoutInner() {
-  const { data: groups } = useGroupsQuery()
+  const { data: groups, error: groupsError } = useGroupsQuery()
   const {
     groupId,
     createGroupDialogOpen,
@@ -91,6 +91,24 @@ function PeopleLayoutInner() {
       }
     })
 
+    const groupsSectionItems: NavItem[] = [
+      {
+        title: 'Create group',
+        icon: Plus,
+        onClick: openCreateGroupDialog,
+      },
+      ...(groupsError
+        ? [
+            {
+              title: 'Failed to load groups',
+              onClick: () => void 0,
+              className:
+                'pointer-events-none h-auto px-2 py-1 text-xs font-medium text-destructive/90 hover:bg-transparent active:bg-transparent',
+            } satisfies NavItem,
+          ]
+        : groupItems),
+    ]
+
     const groups_section: SidebarData['navGroups'] = [
       {
         title: 'People',
@@ -102,20 +120,12 @@ function PeopleLayoutInner() {
       {
         title: 'Groups',
         separator: true,
-        items: [
-          {
-            title: 'Create group',
-            icon: Plus,
-            onClick: openCreateGroupDialog,
-            className: 'bg-primary text-primary-foreground shadow hover:bg-primary/90 hover:text-primary-foreground',
-          },
-          ...groupItems,
-        ],
+        items: groupsSectionItems,
       },
     ]
 
     return { navGroups: groups_section }
-  }, [groups, groupId, openCreateGroupDialog, openEditGroupDialog, openAddMemberDialog])
+  }, [groups, groupId, groupsError, openCreateGroupDialog, openEditGroupDialog, openAddMemberDialog])
 
   return (
     <>

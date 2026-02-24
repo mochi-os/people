@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import {
   Button,
   EmptyState,
+  GeneralError,
   Main,
   usePageTitle,
   getErrorMessage,
@@ -22,7 +23,7 @@ export function Invitations() {
   usePageTitle('Invitations')
   const [search, setSearch] = useState('')
   const [addFriendDialogOpen, setAddFriendDialogOpen] = useState(false)
-  const { data: friendsData, isLoading, isError, error } = useFriendsQuery()
+  const { data: friendsData, isLoading, error, refetch } = useFriendsQuery()
   const acceptInviteMutation = useAcceptFriendInviteMutation()
   const declineInviteMutation = useDeclineFriendInviteMutation()
   const removeMutation = useRemoveFriendMutation()
@@ -89,46 +90,6 @@ export function Invitations() {
     )
   }
 
-  if (isError) {
-    return (
-      <Main>
-        <div className='flex h-64 flex-col items-center justify-center gap-2'>
-          <div className='text-destructive font-medium'>
-            Failed to load invitations
-          </div>
-          <div className='text-muted-foreground text-sm'>
-            {error instanceof Error ? error.message : 'Unknown error'}
-          </div>
-        </div>
-      </Main>
-    )
-  }
-
-  if (isLoading && !friendsData) {
-    return (
-      <Main>
-        <div className='divide-border divide-y rounded-lg border'>
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div
-              key={i}
-              className='flex items-center justify-between px-4 py-3'
-            >
-              <div className='flex items-center gap-3'>
-                <div className='flex flex-col gap-1'>
-                  <Skeleton className='h-5 w-32' />
-                </div>
-              </div>
-              <div className='flex items-center gap-2'>
-                <Skeleton className='h-8 w-20' />
-                <Skeleton className='h-8 w-20' />
-              </div>
-            </div>
-          ))}
-        </div>
-      </Main>
-    )
-  }
-
   const hasReceived = filteredReceived.length > 0
   const hasSent = filteredSent.length > 0
   const hasAny = hasReceived || hasSent
@@ -159,12 +120,39 @@ export function Invitations() {
         }
       />
       <Main>
+        {error ? (
+          <GeneralError
+            error={error}
+            minimal
+            mode='inline'
+            reset={refetch}
+            className='mb-4'
+          />
+        ) : null}
         <AddFriendDialog
           open={addFriendDialogOpen}
           onOpenChange={setAddFriendDialogOpen}
         />
-
-        {!hasAny ? (
+        {isLoading && !friendsData ? (
+          <div className='divide-border divide-y rounded-lg border'>
+            {Array.from({ length: 3 }).map((_, i) => (
+              <div
+                key={i}
+                className='flex items-center justify-between px-4 py-3'
+              >
+                <div className='flex items-center gap-3'>
+                  <div className='flex flex-col gap-1'>
+                    <Skeleton className='h-5 w-32' />
+                  </div>
+                </div>
+                <div className='flex items-center gap-2'>
+                  <Skeleton className='h-8 w-20' />
+                  <Skeleton className='h-8 w-20' />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : error && !friendsData ? null : !hasAny ? (
           <EmptyState
             icon={UserPlus}
             title='No pending invitations'

@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban } from 'lucide-react'
-import { cn, toast, SubscribeDialog, requestHelpers, getAppPath, getErrorMessage } from '@mochi/common'
+import { cn, toast, SubscribeDialog, requestHelpers, getAppPath, getErrorMessage, GeneralError } from '@mochi/common'
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation } from '@/hooks/useFriends'
 import { Avatar, AvatarFallback, AvatarImage } from '@mochi/common'
 import { Button } from '@mochi/common'
@@ -54,7 +54,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
     return () => clearTimeout(timer)
   }, [searchQuery])
 
-  const { data, isLoading, isError, error } = useSearchUsersQuery(debouncedQuery, {
+  const { data, isLoading, isError, error, refetch } = useSearchUsersQuery(debouncedQuery, {
     enabled: open && debouncedQuery.length > 0,
   })
 
@@ -124,9 +124,22 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
     }
   }, [open, refetchSubscription])
 
-  const showResults = debouncedQuery.length > 0
-  const showLoading = isLoading && debouncedQuery.length > 0
-  const showEmpty = !isLoading && users.length === 0 && debouncedQuery.length > 0
+  const hasQuery = debouncedQuery.trim().length > 0
+  const viewState: 'idle' | 'loading' | 'error' | 'empty' | 'results' = (() => {
+    if (!hasQuery) {
+      return 'idle'
+    }
+    if (isLoading) {
+      return 'loading'
+    }
+    if (isError) {
+      return 'error'
+    }
+    if (users.length === 0) {
+      return 'empty'
+    }
+    return 'results'
+  })()
 
   return (
     <ResponsiveDialog
@@ -161,60 +174,70 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
           </div>
 
           {/* Results List */}
-          <ScrollArea className='max-h-[300px] flex-1 rounded-lg border'>
-            <div className='p-2 h-[16rem]'>
-              {!showResults && !showLoading && (
-                <div className='flex items-center justify-center py-12'>
-                  <Search className='text-muted-foreground/30 h-12 w-12' />
-                </div>
+          <ScrollArea
+            className={cn(
+              'rounded-lg border overflow-y-scroll',
+              viewState === 'idle' ? 'max-h-[180px]' : 'max-h-[300px] flex-1'
+            )}
+          >
+            <div className={cn('p-2', viewState === 'idle' && 'min-h-[10rem]')}>
+              {viewState === 'idle' && (
+                <EmptyState
+                  icon={Search}
+                  title={FRIENDS_STRINGS.SEARCH_PROMPT_TITLE}
+                  description={FRIENDS_STRINGS.SEARCH_PROMPT_DESC}
+                  className='border-0 bg-transparent py-6 shadow-none'
+                />
               )}
 
-              {showLoading && (
+              {viewState === 'loading' && (
                 <div className='flex items-center justify-center py-12'>
                   <Loader2 className='text-muted-foreground h-6 w-6 animate-spin' />
                 </div>
               )}
 
-              {isError && showResults && (
-                <EmptyState
-                  icon={Ban}
-                  title={FRIENDS_STRINGS.ERR_SEARCH_FAILED}
-                  description={getErrorMessage(error, FRIENDS_STRINGS.ERR_UNKNOWN)}
-                  className="bg-transparent border-0 shadow-none pt-12 pb-12"
+              {viewState === 'error' && (
+                <GeneralError
+                  error={error}
+                  minimal
+                  mode='inline'
+                  reset={refetch}
+                  className='border-0 bg-transparent py-6 shadow-none'
                 />
               )}
 
-              {showEmpty && (
+              {viewState === 'empty' && (
                 <EmptyState
                   icon={Search}
                   title={FRIENDS_STRINGS.NO_USERS_FOUND}
-                  className="bg-transparent border-0 shadow-none pt-12 pb-12"
+                  description={FRIENDS_STRINGS.TRY_DIFFERENT_TERM}
+                  className='border-0 bg-transparent py-6 shadow-none'
                 />
               )}
 
-              {!isLoading && users.length > 0 && (
+              {viewState === 'results' && (
                 <div className='space-y-1'>
                   {users.map((user) => {
                     const sessionInvited = invitedUserIds.has(user.id)
                     const isPendingForThisUser = pendingUserId === user.id
-                    
+
                     // Determine the effective status considering both API response and session state
                     const status = sessionInvited ? 'invited' : (user.relationshipStatus ?? 'none')
-                    
+
                     // Determine if button should be disabled
-                    const isDisabled = 
+                    const isDisabled =
                       isPendingForThisUser ||
                       status === 'friend' ||
                       status === 'invited' ||
                       status === 'self'
-                    
+
                     // Determine button variant
                     const getButtonVariant = () => {
                       if (status === 'pending') return 'default'
                       if (status === 'none') return 'default'
                       return 'secondary'
                     }
-                    
+
                     // Determine button action
                     const handleClick = () => {
                       if (status === 'pending') {
@@ -223,7 +246,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                         handleAddFriend(user.id, user.name)
                       }
                     }
-                    
+
                     // Render button content based on status
                     const renderButtonContent = () => {
                       if (isPendingForThisUser) {
@@ -234,7 +257,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                           </>
                         )
                       }
-                      
+
                       switch (status) {
                         case 'self':
                           return (
@@ -273,7 +296,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                           )
                       }
                     }
-                    
+
                     return (
                       <div
                         key={user.id}
@@ -321,7 +344,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
 
         <div className='bg-muted/30 flex items-center justify-between gap-3 border-t px-6 py-4'>
           <div className='text-muted-foreground text-sm'>
-            {users.length > 0 && (
+            {viewState === 'results' && users.length > 0 && (
               <span>
                 <span className='text-foreground font-medium'>
                   {users.length}

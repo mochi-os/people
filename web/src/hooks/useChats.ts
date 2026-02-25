@@ -1,4 +1,9 @@
-import { useMutation, type UseMutationOptions, useQuery } from '@tanstack/react-query'
+import {
+  useMutation,
+  type UseMutationOptions,
+  useQuery,
+  type UseQueryOptions,
+} from '@tanstack/react-query'
 import { chatsApi,
   type CreateChatRequest,
   type CreateChatResponse,
@@ -18,8 +23,11 @@ export const useCreateChatMutation = (
     ...options,
   })
 
-export const useNewChatFriendsQuery = () =>
+export const useNewChatFriendsQuery = (
+  options?: Pick<UseQueryOptions<GetNewChatResponse>, 'enabled' | 'staleTime' | 'gcTime'>
+) =>
   useQuery<GetNewChatResponse>({
     queryKey: ['chats', 'new'],
     queryFn: () => chatsApi.getFriendsForNewChat(),
+    ...options,
   })

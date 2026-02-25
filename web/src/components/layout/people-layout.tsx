@@ -97,16 +97,17 @@ function PeopleLayoutInner() {
         icon: Plus,
         onClick: openCreateGroupDialog,
       },
+      ...groupItems,
       ...(groupsError
         ? [
             {
-              title: 'Failed to load groups',
+              title: 'Failed to refresh groups',
               onClick: () => void 0,
               className:
                 'pointer-events-none h-auto px-2 py-1 text-xs font-medium text-destructive/90 hover:bg-transparent active:bg-transparent',
             } satisfies NavItem,
           ]
-        : groupItems),
+        : []),
     ]
 
     const groups_section: SidebarData['navGroups'] = [

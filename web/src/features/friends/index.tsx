@@ -44,7 +44,9 @@ export function Friends() {
     error,
     refetch,
   } = useFriendsQuery()
-  const newChatFriendsQuery = useNewChatFriendsQuery()
+  const newChatFriendsQuery = useNewChatFriendsQuery({
+    enabled: false,
+  })
   const removeFriendMutation = useRemoveFriendMutation()
   const redirectToChat = (chatId: string) => {
     let chatBaseUrl = import.meta.env.VITE_APP_CHAT_URL ?? APP_ROUTES.CHAT.HOME
@@ -124,12 +126,41 @@ export function Friends() {
     )
   }
 
-  const handleStartChat = (friend: Friend) => {
+  const handleStartChat = async (friend: Friend) => {
     if (startChatMutation.isPending) {
       return
     }
+    if (newChatFriendsQuery.isFetching && !newChatFriendsQuery.data) {
+      return
+    }
 
-    const existingChat = existingChatsByFriendId.get(friend.id)
+    setPendingChatFriendId(friend.id)
+
+    let lookup = existingChatsByFriendId
+
+    // Lazily fetch chat mapping only when user explicitly starts chat flow.
+    if (!newChatFriendsQuery.data && !newChatFriendsQuery.isFetching) {
+      const result = await newChatFriendsQuery.refetch()
+      if (result.error || !result.data) {
+        setPendingChatFriendId(null)
+        return
+      }
+
+      lookup = new Map<
+        string,
+        { chatId: string; chatFingerprint?: string }
+      >()
+      result.data.friends.forEach((item) => {
+        const chatId = item.chatId ?? item.chatFingerprint
+        if (!chatId) return
+        lookup.set(item.id, {
+          chatId,
+          chatFingerprint: item.chatFingerprint,
+        })
+      })
+    }
+
+    const existingChat = lookup.get(friend.id)
     if (existingChat) {
       redirectToChat(existingChat.chatFingerprint ?? existingChat.chatId)
       return
@@ -140,10 +171,10 @@ export function Friends() {
       toast.error(FRIENDS_STRINGS.ERR_START_CHAT, {
         description: FRIENDS_STRINGS.ERR_MISSING_NAME,
       })
+      setPendingChatFriendId(null)
       return
     }
 
-    setPendingChatFriendId(friend.id)
     startChatMutation.mutate({ participantIds: [friend.id], name: chatName })
   }
 
@@ -182,6 +213,15 @@ export function Friends() {
             className='mb-4'
           />
         ) : null}
+        {newChatFriendsQuery.error ? (
+          <GeneralError
+            error={newChatFriendsQuery.error}
+            minimal
+            mode='inline'
+            reset={newChatFriendsQuery.refetch}
+            className='mb-4'
+          />
+        ) : null}
         {isLoading && !friendsData ? (
           <ListSkeleton count={5} variant="simple" height="h-16" />
         ) : error && !friendsData ? null : filteredFriends.length === 0 ? (
@@ -207,7 +247,7 @@ export function Friends() {
                     variant='ghost'
                     size='sm'
                     disabled={
-                      newChatFriendsQuery.isLoading ||
+                      newChatFriendsQuery.isFetching ||
                       (startChatMutation.isPending &&
                         pendingChatFriendId === friend.id)
                     }

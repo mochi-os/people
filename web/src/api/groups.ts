@@ -30,6 +30,10 @@ const getGroup = async (id: string): Promise<{ group: Group; members: GroupMembe
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
+      mochi: {
+        // This is query-owned UI; failures are rendered inline via GeneralError.
+        showGlobalErrorToast: false,
+      },
     }
   )
 
@@ -158,4 +162,3 @@ export type {
   RemoveGroupMemberRequest,
   UpdateGroupRequest,
 }
-

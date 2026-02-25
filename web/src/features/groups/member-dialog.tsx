@@ -40,7 +40,12 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
   const [activeTab, setActiveTab] = useState<'user' | 'group'>('user')
 
   const addMemberMutation = useAddGroupMemberMutation()
-  const { data: groups, error: groupsError, refetch: refetchGroups } = useGroupsQuery()
+  const {
+    data: groups,
+    isLoading: groupsLoading,
+    error: groupsError,
+    refetch: refetchGroups,
+  } = useGroupsQuery()
   const {
     data: searchResults,
     isLoading: searchLoading,
@@ -188,7 +193,11 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
           <TabsContent value='group' className='mt-4'>
             <div className='space-y-4'>
               <Label>Select group</Label>
-              {groupsError ? (
+              {groupsLoading ? (
+                <p className='text-muted-foreground text-center text-sm'>
+                  Loading groups...
+                </p>
+              ) : groupsError ? (
                 <GeneralError
                   error={groupsError}
                   minimal

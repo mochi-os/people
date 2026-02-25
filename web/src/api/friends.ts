@@ -125,6 +125,10 @@ const searchUsers = async (query: string): Promise<SearchUsersResponse> => {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
+      mochi: {
+        // This is query-owned UI; failures are rendered inline via GeneralError.
+        showGlobalErrorToast: false,
+      },
     }
   )
   return response
@@ -140,6 +144,10 @@ const searchLocalUsers = async (query: string): Promise<SearchLocalUsersResponse
     {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      mochi: {
+        // This is query-owned UI; failures are rendered inline via GeneralError.
+        showGlobalErrorToast: false,
       },
     }
   )

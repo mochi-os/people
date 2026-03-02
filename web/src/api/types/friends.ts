@@ -48,19 +48,9 @@ export interface DeclineInviteRequest {
   id: string
 }
 
-export interface RemoveFriendRequest {
-  friendId: string
-}
-
 export interface MutationSuccessResponse {
   success: boolean
   message?: string
-}
-
-export interface SearchUsersRequest {
-  query: string
-  limit?: number
-  page?: number
 }
 
 export type RelationshipStatus = 'friend' | 'invited' | 'pending' | 'self' | 'none'

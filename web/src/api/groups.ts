@@ -6,10 +6,10 @@ import type {
   GetGroupsResponse,
   Group,
   GroupMember,
-  MutationSuccessResponse,
   RemoveGroupMemberRequest,
   UpdateGroupRequest,
 } from '@/api/types/groups'
+import type { MutationSuccessResponse } from '@/api/types/friends'
 import { requestHelpers } from '@mochi/common'
 
 const listGroups = async (): Promise<Group[]> => {
@@ -159,6 +159,7 @@ export type {
   GetGroupsResponse,
   Group,
   GroupMember,
+  MutationSuccessResponse,
   RemoveGroupMemberRequest,
   UpdateGroupRequest,
 }

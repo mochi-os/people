@@ -43,6 +43,3 @@ export interface RemoveGroupMemberRequest {
   member: string
 }
 
-export interface MutationSuccessResponse {
-  success: boolean
-}

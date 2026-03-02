@@ -30,38 +30,6 @@ const logUnexpectedStructure = (payload: unknown) => {
   }
 }
 
-const pickList = <T>(values: unknown[], keyOrder: string[]): T[] => {
-  for (const value of values) {
-    if (Array.isArray(value)) {
-      return value as T[]
-    }
-
-    const record = asRecord(value)
-    if (!record) {
-      continue
-    }
-
-    for (const key of keyOrder) {
-      if (!(key in record)) {
-        continue
-      }
-
-      const candidate = record[key]
-      if (candidate === value) {
-        continue
-      }
-
-      const nested = pickList<T>([candidate], keyOrder)
-
-      if (nested.length) {
-        return nested
-      }
-    }
-  }
-
-  return []
-}
-
 const normalizeFriendsList = (
   payload: GetFriendsListRaw
 ): GetFriendsListResponse => {

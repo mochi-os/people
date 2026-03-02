@@ -9,13 +9,10 @@ import { groupsApi,
   type CreateGroupRequest,
   type Group,
   type GroupMember,
+  type MutationSuccessResponse,
   type RemoveGroupMemberRequest,
   type UpdateGroupRequest,
 } from '@/api/groups'
-
-interface MutationSuccessResponse {
-  success: boolean
-}
 
 export const groupKeys = {
   all: () => ['groups'] as const,

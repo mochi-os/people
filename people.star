@@ -480,6 +480,9 @@ def action_group_update(a):
 	name = a.input("name", "")
 	description = a.input("description", "")
 
+	if not name and not description:
+		return json_error("No fields to update")
+
 	if name:
 		if not mochi.valid(name, "line"):
 			return json_error("Invalid group name")
@@ -489,7 +492,12 @@ def action_group_update(a):
 	if description and not mochi.valid(description, "text"):
 		return json_error("Invalid description")
 
-	mochi.group.update(id, name=name, description=description)
+	kwargs = {}
+	if name:
+		kwargs["name"] = name
+	if description:
+		kwargs["description"] = description
+	mochi.group.update(id, **kwargs)
 	return {"data": {}}
 
 def action_group_delete(a):
@@ -513,13 +521,16 @@ def action_group_member_add(a):
 	if not g:
 		return json_error("Group not found", 404)
 
-	member = a.input("member")
-	if not member:
-		return json_error("Missing member ID")
+	member = a.input("member", "").strip()
+	if not member or len(member) > 256:
+		return json_error("Invalid member ID")
 
 	type = a.input("type", "user")
 	if type not in ["user", "group"]:
 		return json_error("Invalid member type")
+
+	if type == "user" and not member.isdigit():
+		return json_error("Invalid user ID")
 
 	mochi.group.add(group, member, type)
 	return {"data": {}}

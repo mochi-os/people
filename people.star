@@ -1,6 +1,6 @@
 # Mochi friends app
 # REST-style JSON responses version with default identity for API calls
-# Copyright Alistair Cunningham 2024-2025
+# Copyright Alistair Cunningham 2024-2026
 
 def database_create():
 	mochi.db.execute("create table if not exists friends ( identity text not null, id text not null, name text not null, class text not null, primary key ( identity, id ) )")
@@ -141,19 +141,15 @@ def action_search(a):
 	# Check if search term is a fingerprint (9 alphanumeric, with or without hyphens)
 	fingerprint = search.replace("-", "")
 	if mochi.valid(fingerprint, "fingerprint"):
-		all_people = mochi.directory.search("person", "", False)
-		for entry in all_people:
-			entry_fp = entry.get("fingerprint", "").replace("-", "")
-			if entry_fp == fingerprint:
-				# Avoid duplicates
-				found = False
-				for r in results:
-					if r.get("id") == entry.get("id"):
-						found = True
-						break
-				if not found:
-					results.append(entry)
-				break
+		matches = mochi.directory.search("person", "", False, fingerprint=fingerprint)
+		for entry in matches:
+			found = False
+			for r in results:
+				if r.get("id") == entry.get("id"):
+					found = True
+					break
+			if not found:
+				results.append(entry)
 
 	# Check if search term is a URL (e.g., https://example.com/people/ENTITY_ID)
 	if search.startswith("http://") or search.startswith("https://"):
@@ -262,14 +258,11 @@ def action_users_search(a):
 	# Check if search term is a fingerprint (9 alphanumeric, with or without hyphens)
 	fingerprint = search.replace("-", "")
 	if mochi.valid(fingerprint, "fingerprint"):
-		all_people = mochi.directory.search("person", "", False)
-		for entry in all_people:
-			entry_fp = entry.get("fingerprint", "").replace("-", "")
-			if entry_fp == fingerprint:
-				if entry["id"] not in seen:
-					seen[entry["id"]] = True
-					unique_results.append({"id": entry["id"], "name": entry["name"]})
-				break
+		matches = mochi.directory.search("person", "", False, fingerprint=fingerprint)
+		for entry in matches:
+			if entry["id"] not in seen:
+				seen[entry["id"]] = True
+				unique_results.append({"id": entry["id"], "name": entry["name"]})
 
 	# Check if search term is a URL (e.g., https://example.com/people/ENTITY_ID)
 	if search.startswith("http://") or search.startswith("https://"):
@@ -362,14 +355,11 @@ def function_users_search(context, query):
 	# Check if search term is a fingerprint (9 alphanumeric, with or without hyphens)
 	fingerprint = search.replace("-", "")
 	if mochi.valid(fingerprint, "fingerprint"):
-		all_people = mochi.directory.search("person", "", False)
-		for entry in all_people:
-			entry_fp = entry.get("fingerprint", "").replace("-", "")
-			if entry_fp == fingerprint:
-				if entry["id"] not in seen:
-					seen[entry["id"]] = True
-					unique_results.append({"id": entry["id"], "name": entry["name"]})
-				break
+		matches = mochi.directory.search("person", "", False, fingerprint=fingerprint)
+		for entry in matches:
+			if entry["id"] not in seen:
+				seen[entry["id"]] = True
+				unique_results.append({"id": entry["id"], "name": entry["name"]})
 
 	# Check if search term is a URL (e.g., https://example.com/people/ENTITY_ID)
 	if search.startswith("http://") or search.startswith("https://"):

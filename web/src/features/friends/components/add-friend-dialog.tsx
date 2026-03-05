@@ -1,20 +1,9 @@
 import { useEffect, useState, useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban } from 'lucide-react'
-import { cn, toast, SubscribeDialog, requestHelpers, getAppPath, getErrorMessage, GeneralError } from '@mochi/common'
+import { cn, toast, SubscribeDialog, requestHelpers, getAppPath, getErrorMessage, GeneralError, Avatar, AvatarFallback, AvatarImage, Button, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogHeader, ResponsiveDialogTitle, Input, EmptyState, ScrollArea } from '@mochi/common'
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation } from '@/hooks/useFriends'
-import { Avatar, AvatarFallback, AvatarImage } from '@mochi/common'
-import { Button } from '@mochi/common'
-import {
-  ResponsiveDialog,
-  ResponsiveDialogContent,
-  ResponsiveDialogHeader,
-  ResponsiveDialogTitle,
-} from '@mochi/common'
-import { Input } from '@mochi/common'
-import { EmptyState } from '@mochi/common'
 // import { Label } from '@mochi/common'
-import { ScrollArea } from '@mochi/common'
 import { buildAvatarUrl } from '../utils/avatar'
 import { FRIENDS_STRINGS } from '../constants'
 

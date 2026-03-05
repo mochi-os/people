@@ -1,12 +1,10 @@
 import { useMemo, useRef } from 'react'
-import { AuthenticatedLayout, getErrorMessage } from '@mochi/common'
-import type { SidebarData, NavItem } from '@mochi/common'
+import { AuthenticatedLayout, getErrorMessage, type SidebarData, type NavItem, toast } from '@mochi/common'
 import { Pencil, Plus, Trash2, User, UserPlus, Users, UsersRound } from 'lucide-react'
 import { useGroupsQuery, useDeleteGroupMutation } from '@/hooks/useGroups'
 import { SidebarProvider, useSidebarContext } from '@/context/sidebar-context'
 import { GroupDialog } from '@/features/groups/group-dialog'
 import { MemberDialog } from '@/features/groups/member-dialog'
-import { toast } from '@mochi/common'
 import { useNavigate } from '@tanstack/react-router'
 
 function PeopleLayoutInner() {

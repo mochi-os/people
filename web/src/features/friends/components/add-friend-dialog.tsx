@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query'
 import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban } from 'lucide-react'
 import { cn, toast, SubscribeDialog, requestHelpers, getAppPath, getErrorMessage, GeneralError, Avatar, AvatarFallback, AvatarImage, Button, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogHeader, ResponsiveDialogTitle, Input, EmptyState, ScrollArea } from '@mochi/common'
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation } from '@/hooks/useFriends'
-// import { Label } from '@mochi/common'
 import { buildAvatarUrl } from '../utils/avatar'
 import { FRIENDS_STRINGS } from '../constants'
 

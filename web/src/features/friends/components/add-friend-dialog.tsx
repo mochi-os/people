@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban } from 'lucide-react'
-import { cn, toast, SubscribeDialog, requestHelpers, getAppPath, getErrorMessage, GeneralError, Avatar, AvatarFallback, AvatarImage, Button, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogHeader, ResponsiveDialogTitle, Input, EmptyState, ScrollArea } from '@mochi/common'
+import { cn, toast, shellSubscribeNotifications, requestHelpers, getAppPath, getErrorMessage, GeneralError, Avatar, AvatarFallback, AvatarImage, Button, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogHeader, ResponsiveDialogTitle, Input, EmptyState, ScrollArea } from '@mochi/common'
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation } from '@/hooks/useFriends'
 import { buildAvatarUrl } from '../utils/avatar'
 import { FRIENDS_STRINGS } from '../constants'
@@ -20,7 +20,6 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
   const [debouncedQuery, setDebouncedQuery] = useState('')
   const [invitedUserIds, setInvitedUserIds] = useState<Set<string>>(new Set())
   const [pendingUserId, setPendingUserId] = useState<string | null>(null)
-  const [subscribeOpen, setSubscribeOpen] = useState(false)
 
   // Check if user already has a subscription for people notifications
   const { data: subscriptionData, refetch: refetchSubscription } = useQuery({
@@ -56,7 +55,9 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
       })
       // Prompt for notifications if user hasn't subscribed yet
       if (!subscriptionData?.exists) {
-        setSubscribeOpen(true)
+        shellSubscribeNotifications('people', [
+          { label: 'Friend requests and updates', type: '', defaultEnabled: true },
+        ]).then(() => refetchSubscription())
       }
     },
     onError: (error) => {
@@ -350,14 +351,6 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
         </div>
       </ResponsiveDialogContent>
 
-      <SubscribeDialog
-        open={subscribeOpen}
-        onOpenChange={setSubscribeOpen}
-        app="people"
-        label="Friend requests and updates"
-        appBase={getAppPath()}
-        onResult={() => refetchSubscription()}
-      />
     </ResponsiveDialog>
   )
 }

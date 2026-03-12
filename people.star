@@ -421,7 +421,7 @@ def action_group_get(a):
 				user = mochi.user.get.id(int(member_id))
 				if user:
 					name = user["username"]
-			else:
+			elif mochi.valid(member_id, "entity"):
 				# Entity from directory
 				entity = mochi.directory.get(member_id)
 				if entity:
@@ -543,32 +543,10 @@ def action_group_member_remove(a):
 
 # Notification proxy actions - forward to notifications service
 
-def action_notifications_subscribe(a):
-	"""Create a notification subscription via the notifications service."""
-	label = a.input("label", "").strip()
-	type = a.input("type", "").strip()
-	object = a.input("object", "").strip()
-	destinations = a.input("destinations", "")
-
-	if not label:
-		return json_error("label is required")
-	if not mochi.valid(label, "text"):
-		return json_error("Invalid label")
-
-	destinations_list = json.decode(destinations) if destinations else []
-
-	result = mochi.service.call("notifications", "subscribe", label, type, object, destinations_list)
-	return {"data": {"id": result}}
-
 def action_notifications_check(a):
 	"""Check if a notification subscription exists for this app."""
 	result = mochi.service.call("notifications", "subscriptions")
 	return {"data": {"exists": len(result) > 0}}
-
-def action_notifications_destinations(a):
-	"""List available notification destinations."""
-	result = mochi.service.call("notifications", "destinations")
-	return {"data": result}
 
 # Welcome page data - returns whether user has seen welcome and friends count
 def action_welcome(a):

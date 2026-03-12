@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { shellNavigateExternal } from '@mochi/common'
 import { APP_ROUTES } from '@/config/app-routes'
 import {
   AlertDialog,
@@ -14,14 +15,10 @@ import {
   Main,
   usePageTitle,
   PageHeader,
-  toast,
   ListSkeleton,
   GeneralError,
-  getErrorMessage,
 } from '@mochi/common'
 import { UserPlus, Users, MessageSquare, UserX, Minus } from 'lucide-react'
-import type { Friend } from '@/api/types/friends'
-import { useCreateChatMutation, useNewChatFriendsQuery } from '@/hooks/useChats'
 import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
 import { AddFriendDialog } from './components/add-friend-dialog'
 import { FRIENDS_STRINGS } from './constants'
@@ -35,57 +32,13 @@ export function Friends() {
     friendId: string
     friendName: string
   }>({ open: false, friendId: '', friendName: '' })
-  const [pendingChatFriendId, setPendingChatFriendId] = useState<string | null>(
-    null
-  )
   const {
     data: friendsData,
     isLoading,
     error,
     refetch,
   } = useFriendsQuery()
-  const newChatFriendsQuery = useNewChatFriendsQuery({
-    enabled: false,
-  })
   const removeFriendMutation = useRemoveFriendMutation()
-  const redirectToChat = (chatId: string) => {
-    let chatBaseUrl = import.meta.env.VITE_APP_CHAT_URL ?? APP_ROUTES.CHAT.HOME
-
-    // Ensure chatBaseUrl ends with a slash before appending search params
-    if (!chatBaseUrl.endsWith('/')) {
-      chatBaseUrl = chatBaseUrl + '/'
-    }
-
-    const chatUrl = chatBaseUrl.startsWith('http')
-      ? new URL(chatBaseUrl, undefined)
-      : new URL(chatBaseUrl, window.location.origin)
-
-    // Append chatId to the path
-    chatUrl.pathname = chatUrl.pathname + chatId
-    /**
-     * NOTE: Chat lives in a separate micro-app. Use full-page navigation so the chat app
-     * can bootstrap with the selected chat ID.
-     */
-    window.location.assign(chatUrl.toString())
-  }
-
-  const startChatMutation = useCreateChatMutation({
-    onSuccess: (data) => {
-      setPendingChatFriendId(null)
-      toast.success(FRIENDS_STRINGS.SUCCESS_CHAT_READY, {
-        description: FRIENDS_STRINGS.SUCCESS_REDIRECTING,
-      })
-      const chatId = data.fingerprint ?? data.id
-      if (!chatId) {
-        return
-      }
-      redirectToChat(chatId)
-    },
-    onError: (error) => {
-      setPendingChatFriendId(null)
-      toast.error(getErrorMessage(error, FRIENDS_STRINGS.ERR_START_CHAT))
-    },
-  })
 
   const filteredFriends = useMemo(() => {
     const list = friendsData?.friends ?? []
@@ -93,23 +46,6 @@ export function Friends() {
       friend.name.toLowerCase().includes(search.toLowerCase())
     )
   }, [friendsData?.friends, search])
-
-  const existingChatsByFriendId = useMemo(() => {
-    const map = new Map<
-      string,
-      { chatId: string; chatFingerprint?: string }
-    >()
-    const list = newChatFriendsQuery.data?.friends ?? []
-    list.forEach((friend) => {
-      const chatId = friend.chatId ?? friend.chatFingerprint
-      if (!chatId) return
-      map.set(friend.id, {
-        chatId,
-        chatFingerprint: friend.chatFingerprint,
-      })
-    })
-    return map
-  }, [newChatFriendsQuery.data?.friends])
 
   const handleRemoveFriend = (friendId: string, friendName: string) => {
     setRemoveFriendDialog({ open: true, friendId, friendName })
@@ -126,56 +62,9 @@ export function Friends() {
     )
   }
 
-  const handleStartChat = async (friend: Friend) => {
-    if (startChatMutation.isPending) {
-      return
-    }
-    if (newChatFriendsQuery.isFetching && !newChatFriendsQuery.data) {
-      return
-    }
-
-    setPendingChatFriendId(friend.id)
-
-    let lookup = existingChatsByFriendId
-
-    // Lazily fetch chat mapping only when user explicitly starts chat flow.
-    if (!newChatFriendsQuery.data && !newChatFriendsQuery.isFetching) {
-      const result = await newChatFriendsQuery.refetch()
-      if (result.error || !result.data) {
-        setPendingChatFriendId(null)
-        return
-      }
-
-      lookup = new Map<
-        string,
-        { chatId: string; chatFingerprint?: string }
-      >()
-      result.data.friends.forEach((item) => {
-        const chatId = item.chatId ?? item.chatFingerprint
-        if (!chatId) return
-        lookup.set(item.id, {
-          chatId,
-          chatFingerprint: item.chatFingerprint,
-        })
-      })
-    }
-
-    const existingChat = lookup.get(friend.id)
-    if (existingChat) {
-      redirectToChat(existingChat.chatFingerprint ?? existingChat.chatId)
-      return
-    }
-
-    const chatName = friend.name?.trim()
-    if (!chatName) {
-      toast.error(FRIENDS_STRINGS.ERR_START_CHAT, {
-        description: FRIENDS_STRINGS.ERR_MISSING_NAME,
-      })
-      setPendingChatFriendId(null)
-      return
-    }
-
-    startChatMutation.mutate({ participantIds: [friend.id], name: chatName })
+  const handleStartChat = () => {
+    const chatUrl = import.meta.env.VITE_APP_CHAT_URL ?? APP_ROUTES.CHAT.HOME
+    shellNavigateExternal(chatUrl)
   }
 
   const searchInput = (
@@ -213,15 +102,6 @@ export function Friends() {
             className='mb-4'
           />
         ) : null}
-        {newChatFriendsQuery.error ? (
-          <GeneralError
-            error={newChatFriendsQuery.error}
-            minimal
-            mode='inline'
-            reset={newChatFriendsQuery.refetch}
-            className='mb-4'
-          />
-        ) : null}
         {isLoading && !friendsData ? (
           <ListSkeleton count={5} variant="simple" height="h-16" />
         ) : error && !friendsData ? null : filteredFriends.length === 0 ? (
@@ -246,12 +126,7 @@ export function Friends() {
                   <Button
                     variant='ghost'
                     size='sm'
-                    disabled={
-                      newChatFriendsQuery.isFetching ||
-                      (startChatMutation.isPending &&
-                        pendingChatFriendId === friend.id)
-                    }
-                    onClick={() => handleStartChat(friend)}
+                    onClick={handleStartChat}
                   >
                     <MessageSquare className='h-4 w-4' />
                   </Button>

@@ -1,19 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Plus } from 'lucide-react'
-import { toast, Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Button, Input, Label, Textarea, getErrorMessage, PermissionPrompt, isPermissionError } from '@mochi/common'
+import { toast, Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Button, Input, Label, Textarea, getErrorMessage, handlePermissionError } from '@mochi/common'
 import {
   useCreateGroupMutation,
   useUpdateGroupMutation,
 } from '@/hooks/useGroups'
 import type { Group } from '@/api/types/groups'
-
-// Extract response data from API error
-function getErrorData(error: unknown): unknown {
-  if (error && typeof error === 'object' && 'data' in error) {
-    return (error as { data: unknown }).data
-  }
-  return null
-}
 
 interface GroupDialogProps {
   open: boolean
@@ -24,7 +16,6 @@ interface GroupDialogProps {
 export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
-  const [permissionNeeded, setPermissionNeeded] = useState<string | null>(null)
 
   const isEditing = !!group
   const createMutation = useCreateGroupMutation()
@@ -39,7 +30,6 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
         setName('')
         setDescription('')
       }
-      setPermissionNeeded(null)
     }
   }, [open, group])
 
@@ -52,12 +42,11 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
     }
 
     const handleError = (error: unknown, fallback: string) => {
-      const permError = isPermissionError(getErrorData(error))
-      if (permError) {
-        setPermissionNeeded(permError.permission)
-      } else {
-        toast.error(getErrorMessage(error, fallback))
-      }
+      const data = error && typeof error === 'object' && 'data' in error
+        ? (error as { data: unknown }).data
+        : null
+      if (data && handlePermissionError(data)) return
+      toast.error(getErrorMessage(error, fallback))
     }
 
     if (isEditing) {
@@ -120,12 +109,6 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
               />
             </div>
           </div>
-          {permissionNeeded && (
-            <PermissionPrompt
-              permission={permissionNeeded}
-              onDismiss={() => setPermissionNeeded(null)}
-            />
-          )}
           <DialogFooter>
             <Button type='button' variant='outline' onClick={() => onOpenChange(false)} disabled={isPending}>
               Cancel

@@ -23,14 +23,6 @@ const endpoints = {
     memberAdd: '-/groups/members/add',
     memberRemove: '-/groups/members/remove',
   },
-  chat: {
-    list: '/chat/-/list',
-    new: '/chat/-/new',
-    create: '/chat/-/create',
-    messages: (chatId: string) => `/chat/${chatId}/-/messages`,
-    send: (chatId: string) => `/chat/${chatId}/-/send`,
-    detail: (chatId: string) => `/chat/${chatId}/-/view`,
-  },
   auth: {
     code: '/_/code',
     verify: '/_/verify',

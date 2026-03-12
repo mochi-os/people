@@ -421,7 +421,7 @@ def action_group_get(a):
 				user = mochi.user.get.id(int(member_id))
 				if user:
 					name = user["username"]
-			else:
+			elif mochi.valid(member_id, "entity"):
 				# Entity from directory
 				entity = mochi.directory.get(member_id)
 				if entity:

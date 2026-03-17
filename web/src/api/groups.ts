@@ -10,7 +10,7 @@ import type {
   UpdateGroupRequest,
 } from '@/api/types/groups'
 import type { MutationSuccessResponse } from '@/api/types/friends'
-import { requestHelpers } from '@mochi/common'
+import { requestHelpers } from '@mochi/web'
 
 const listGroups = async (): Promise<Group[]> => {
   const response = await requestHelpers.get<GetGroupsResponse>(

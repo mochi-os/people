@@ -28,7 +28,7 @@ import {
   DataChip,
   GeneralError,
   ListSkeleton,
-} from '@mochi/common'
+} from '@mochi/web'
 import {
   useGroupQuery,
   useRemoveGroupMemberMutation,

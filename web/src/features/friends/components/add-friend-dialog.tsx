@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban } from 'lucide-react'
-import { cn, toast, shellSubscribeNotifications, requestHelpers, getAppPath, getErrorMessage, GeneralError, Avatar, AvatarFallback, AvatarImage, Button, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogHeader, ResponsiveDialogTitle, Input, EmptyState, ScrollArea } from '@mochi/common'
+import { cn, toast, shellSubscribeNotifications, requestHelpers, getAppPath, getErrorMessage, GeneralError, Avatar, AvatarFallback, AvatarImage, Button, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogHeader, ResponsiveDialogTitle, Input, EmptyState, ScrollArea } from '@mochi/web'
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation } from '@/hooks/useFriends'
 import { buildAvatarUrl } from '../utils/avatar'
 import { FRIENDS_STRINGS } from '../constants'

@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { ConfigDrawer, Header, ProfileDropdown, Search, ThemeSwitch, ForbiddenError, GeneralError, MaintenanceError, NotFoundError, UnauthorisedError } from '@mochi/common'
+import { ConfigDrawer, Header, ProfileDropdown, Search, ThemeSwitch, ForbiddenError, GeneralError, MaintenanceError, NotFoundError, UnauthorisedError } from '@mochi/web'
 export const Route = createFileRoute('/_authenticated/errors/$error')({
   component: RouteComponent,
 })

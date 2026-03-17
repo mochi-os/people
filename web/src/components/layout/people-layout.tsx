@@ -1,5 +1,5 @@
 import { useMemo, useRef } from 'react'
-import { AuthenticatedLayout, getErrorMessage, type SidebarData, type NavItem, toast } from '@mochi/common'
+import { AuthenticatedLayout, getErrorMessage, type SidebarData, type NavItem, toast } from '@mochi/web'
 import { Pencil, Plus, Trash2, User, UserPlus, Users, UsersRound } from 'lucide-react'
 import { useGroupsQuery, useDeleteGroupMutation } from '@/hooks/useGroups'
 import { SidebarProvider, useSidebarContext } from '@/context/sidebar-context'

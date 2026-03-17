@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Plus } from 'lucide-react'
-import { toast, Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Button, Input, Label, Textarea, getErrorMessage, handlePermissionError } from '@mochi/common'
+import { toast, Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Button, Input, Label, Textarea, getErrorMessage, handlePermissionError } from '@mochi/web'
 import {
   useCreateGroupMutation,
   useUpdateGroupMutation,

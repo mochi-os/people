@@ -21,7 +21,7 @@ export const friendKeys = {
   welcome: () => ['welcome'] as const,
 }
 
-import { useQueryWithError } from '@mochi/common'
+import { useQueryWithError } from '@mochi/web'
 
 export const useFriendsQuery = () => {
   const { data, isLoading, isError, error, refetch } = useQueryWithError<GetFriendsListResponse, Error>({

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { User, UsersRound, Search } from 'lucide-react'
-import { toast, Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Button, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, getErrorMessage, EmptyState, GeneralError } from '@mochi/common'
+import { toast, Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Button, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, getErrorMessage, EmptyState, GeneralError } from '@mochi/web'
 import {
   useAddGroupMemberMutation,
   useGroupsQuery,

@@ -9,7 +9,7 @@ import {
   PageHeader,
   Skeleton,
   toast,
-} from '@mochi/common'
+} from '@mochi/web'
 import { UserPlus, UserX, Send, X, Check } from 'lucide-react'
 import {
   useFriendsQuery,

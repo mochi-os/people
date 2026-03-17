@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { shellNavigateExternal } from '@mochi/common'
+import { shellNavigateExternal } from '@mochi/web'
 import { APP_ROUTES } from '@/config/app-routes'
 import {
   AlertDialog,
@@ -17,7 +17,7 @@ import {
   PageHeader,
   ListSkeleton,
   GeneralError,
-} from '@mochi/common'
+} from '@mochi/web'
 import { UserPlus, Users, MessageSquare, UserX, Minus } from 'lucide-react'
 import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
 import { AddFriendDialog } from './components/add-friend-dialog'

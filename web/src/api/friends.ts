@@ -11,7 +11,7 @@ import type {
   SearchUsersResponse,
   SearchLocalUsersResponse,
 } from '@/api/types/friends'
-import { requestHelpers } from '@mochi/common'
+import { requestHelpers } from '@mochi/web'
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   Boolean(value) && typeof value === 'object'

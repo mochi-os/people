@@ -3,7 +3,6 @@ import { shellNavigateExternal } from '@mochi/web'
 import { APP_ROUTES } from '@/config/app-routes'
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
@@ -12,11 +11,14 @@ import {
   AlertDialogTitle,
   Button,
   EmptyState,
+  Input,
   Main,
   usePageTitle,
   PageHeader,
   ListSkeleton,
   GeneralError,
+  toast,
+  getErrorMessage,
 } from '@mochi/web'
 import { UserPlus, Users, MessageSquare, UserX, Minus } from 'lucide-react'
 import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
@@ -58,6 +60,9 @@ export function Friends() {
         onSuccess: () => {
           setRemoveFriendDialog({ open: false, friendId: '', friendName: '' })
         },
+        onError: (error) => {
+          toast.error(getErrorMessage(error, 'Failed to remove friend'))
+        },
       }
     )
   }
@@ -68,12 +73,12 @@ export function Friends() {
   }
 
   const searchInput = (
-    <input
+    <Input
       type='text'
       placeholder='Search...'
       value={search}
       onChange={(e) => setSearch(e.target.value)}
-      className='border-border bg-background focus:ring-ring w-48 rounded-md border px-3 py-2 text-sm focus:ring-2 focus:ring-offset-2 focus:outline-none'
+      className='w-48'
     />
   )
 
@@ -126,6 +131,7 @@ export function Friends() {
                   <Button
                     variant='ghost'
                     size='sm'
+                    aria-label={`Start chat with ${friend.name}`}
                     onClick={handleStartChat}
                   >
                     <MessageSquare className='h-4 w-4' />
@@ -133,6 +139,7 @@ export function Friends() {
                   <Button
                     variant='ghost'
                     size='sm'
+                    aria-label={`Remove ${friend.name}`}
                     disabled={removeFriendMutation.isPending}
                     onClick={() => handleRemoveFriend(friend.id, friend.name)}
                   >
@@ -173,7 +180,7 @@ export function Friends() {
               <AlertDialogCancel disabled={removeFriendMutation.isPending}>
                 {FRIENDS_STRINGS.CANCEL}
               </AlertDialogCancel>
-              <AlertDialogAction
+              <Button
                 variant='destructive'
                 onClick={confirmRemoveFriend}
                 disabled={removeFriendMutation.isPending}
@@ -182,7 +189,7 @@ export function Friends() {
                 {removeFriendMutation.isPending
                   ? FRIENDS_STRINGS.REMOVING
                   : FRIENDS_STRINGS.REMOVE_FRIEND}
-              </AlertDialogAction>
+              </Button>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>

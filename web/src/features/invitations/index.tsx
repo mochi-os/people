@@ -3,6 +3,7 @@ import {
   Button,
   EmptyState,
   GeneralError,
+  Input,
   Main,
   usePageTitle,
   getErrorMessage,
@@ -95,12 +96,12 @@ export function Invitations() {
   const hasAny = hasReceived || hasSent
 
   const searchInput = (
-    <input
+    <Input
       type='text'
       placeholder='Search...'
       value={search}
       onChange={(e) => setSearch(e.target.value)}
-      className='border-border bg-background focus:ring-ring w-48 rounded-md border px-3 py-2 text-sm focus:ring-2 focus:ring-offset-2 focus:outline-none'
+      className='w-48'
     />
   )
 

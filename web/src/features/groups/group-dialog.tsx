@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Plus } from 'lucide-react'
-import { toast, Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Button, Input, Label, Textarea, getErrorMessage, handlePermissionError } from '@mochi/web'
+import { toast, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, Input, Label, Textarea, getErrorMessage, handlePermissionError } from '@mochi/web'
 import {
   useCreateGroupMutation,
   useUpdateGroupMutation,
@@ -77,15 +77,15 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
   const isPending = createMutation.isPending || updateMutation.isPending
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className='sm:max-w-[425px]'>
+    <ResponsiveDialog open={open} onOpenChange={onOpenChange}>
+      <ResponsiveDialogContent className='sm:max-w-[425px]'>
         <form onSubmit={handleSubmit}>
-          <DialogHeader>
-            <DialogTitle>{isEditing ? 'Edit group' : 'Create group'}</DialogTitle>
-            <DialogDescription className="sr-only">
+          <ResponsiveDialogHeader>
+            <ResponsiveDialogTitle>{isEditing ? 'Edit group' : 'Create group'}</ResponsiveDialogTitle>
+            <ResponsiveDialogDescription className="sr-only">
               {isEditing ? 'Edit group' : 'Create group'}
-            </DialogDescription>
-          </DialogHeader>
+            </ResponsiveDialogDescription>
+          </ResponsiveDialogHeader>
           <div className='grid gap-4 py-4'>
             <div className='grid gap-2'>
               <Label htmlFor='name'>Name</Label>
@@ -109,16 +109,16 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
               />
             </div>
           </div>
-          <DialogFooter>
+          <ResponsiveDialogFooter>
             <Button type='button' variant='outline' onClick={() => onOpenChange(false)} disabled={isPending}>
               Cancel
             </Button>
             <Button type='submit' disabled={isPending}>
               {isPending ? 'Saving...' : isEditing ? 'Save' : <><Plus className="mr-2 h-4 w-4" />Create group</>}
             </Button>
-          </DialogFooter>
+          </ResponsiveDialogFooter>
         </form>
-      </DialogContent>
-    </Dialog>
+      </ResponsiveDialogContent>
+    </ResponsiveDialog>
   )
 }

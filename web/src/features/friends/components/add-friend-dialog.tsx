@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban } from 'lucide-react'
-import { cn, toast, shellSubscribeNotifications, requestHelpers, getAppPath, getErrorMessage, GeneralError, Avatar, AvatarFallback, AvatarImage, Button, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogHeader, ResponsiveDialogTitle, Input, EmptyState, ScrollArea } from '@mochi/web'
+import { cn, toast, shellSubscribeNotifications, requestHelpers, getAppPath, getErrorMessage, GeneralError, Avatar, AvatarFallback, AvatarImage, Button, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Input, EmptyState, ScrollArea, useScreenSize } from '@mochi/web'
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation } from '@/hooks/useFriends'
 import { buildAvatarUrl } from '../utils/avatar'
 import { FRIENDS_STRINGS } from '../constants'
@@ -20,6 +20,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
   const [debouncedQuery, setDebouncedQuery] = useState('')
   const [invitedUserIds, setInvitedUserIds] = useState<Set<string>>(new Set())
   const [pendingUserId, setPendingUserId] = useState<string | null>(null)
+  const { isMobile } = useScreenSize()
 
   // Check if user already has a subscription for people notifications
   const { data: subscriptionData, refetch: refetchSubscription } = useQuery({
@@ -136,46 +137,43 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
       onOpenChange={onOpenChange}
       shouldCloseOnInteractOutside={false}
     >
-      <ResponsiveDialogContent className='flex max-h-[85vh] flex-col gap-0 p-0 sm:max-w-[600px]'>
-        <ResponsiveDialogHeader className='border-b px-6 pt-6 pb-4'>
-          <ResponsiveDialogTitle className='text-2xl font-semibold'>
+      <ResponsiveDialogContent className='gap-0 sm:max-w-[520px]'>
+        <ResponsiveDialogHeader className='gap-1.5'>
+          <ResponsiveDialogTitle>
             {FRIENDS_STRINGS.ADD_FRIEND_DIALOG_TITLE}
           </ResponsiveDialogTitle>
+          <ResponsiveDialogDescription className='sr-only'>
+            Search for people and send a friend request.
+          </ResponsiveDialogDescription>
         </ResponsiveDialogHeader>
 
-        <div className='flex min-h-0 flex-1 flex-col gap-4 px-6 py-4'>
-          {/* Search Input */}
+        <div className='space-y-4 px-4 pb-4 sm:px-0 sm:pb-0'>
           <div className='space-y-2'>
-            {/* <Label className='flex items-center gap-1.5 text-sm font-medium'>
-              <Search className='h-4 w-4' />
-              Search Users
-            </Label> */}
             <div className='relative'>
               <Search className='text-muted-foreground pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 transform' />
               <Input
                 placeholder={FRIENDS_STRINGS.SEARCH_USERS_PLACEHOLDER}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className='h-10 pl-9'
-                autoFocus
+                className='pl-9'
+                autoFocus={!isMobile}
               />
             </div>
           </div>
 
-          {/* Results List */}
           <ScrollArea
             className={cn(
-              'rounded-lg border overflow-y-scroll',
-              viewState === 'idle' ? 'max-h-[180px]' : 'max-h-[300px] flex-1'
+              'overflow-hidden rounded-xl border',
+              viewState === 'results' ? 'max-h-[18rem]' : 'h-[13rem]'
             )}
           >
-            <div className={cn('p-2', viewState === 'idle' && 'min-h-[10rem]')}>
+            <div className={cn('p-3', viewState !== 'results' && 'min-h-full')}>
               {viewState === 'idle' && (
                 <EmptyState
                   icon={Search}
                   title={FRIENDS_STRINGS.SEARCH_PROMPT_TITLE}
                   description={FRIENDS_STRINGS.SEARCH_PROMPT_DESC}
-                  className='border-0 bg-transparent py-6 shadow-none'
+                  className='border-0 bg-transparent px-4 py-5 shadow-none'
                 />
               )}
 
@@ -191,7 +189,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                   minimal
                   mode='inline'
                   reset={refetch}
-                  className='border-0 bg-transparent py-6 shadow-none'
+                  className='border-0 bg-transparent px-4 py-5 shadow-none'
                 />
               )}
 
@@ -200,7 +198,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                   icon={Search}
                   title={FRIENDS_STRINGS.NO_USERS_FOUND}
                   description={FRIENDS_STRINGS.TRY_DIFFERENT_TERM}
-                  className='border-0 bg-transparent py-6 shadow-none'
+                  className='border-0 bg-transparent px-4 py-5 shadow-none'
                 />
               )}
 
@@ -331,26 +329,12 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
           </ScrollArea>
         </div>
 
-        <div className='bg-muted/30 flex items-center justify-between gap-3 border-t px-6 py-4'>
-          <div className='text-muted-foreground text-sm'>
-            {viewState === 'results' && users.length > 0 && (
-              <span>
-                <span className='text-foreground font-medium'>
-                  {users.length}
-                </span>{' '}
-                {users.length === 1 ? FRIENDS_STRINGS.USER : FRIENDS_STRINGS.USERS} {FRIENDS_STRINGS.FOUND}
-              </span>
-            )}
-          </div>
-          <Button
-            variant='outline'
-            onClick={() => onOpenChange(false)}
-          >
+        <ResponsiveDialogFooter className='gap-2'>
+          <Button variant='outline' onClick={() => onOpenChange(false)}>
             {FRIENDS_STRINGS.CLOSE}
           </Button>
-        </div>
+        </ResponsiveDialogFooter>
       </ResponsiveDialogContent>
-
     </ResponsiveDialog>
   )
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { User, UsersRound, Search } from 'lucide-react'
-import { toast, Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, Button, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, getErrorMessage, EmptyState, GeneralError } from '@mochi/web'
+import { toast, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, getErrorMessage, EmptyState, GeneralError } from '@mochi/web'
 import {
   useAddGroupMemberMutation,
   useGroupsQuery,
@@ -78,14 +78,14 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
     (activeTab === 'group' && selectedGroup)
 
   return (
-    <Dialog open={open} onOpenChange={resetAndClose}>
-      <DialogContent className='sm:max-w-[500px]'>
-        <DialogHeader>
-          <DialogTitle>Add member</DialogTitle>
-          <DialogDescription className="sr-only">
+    <ResponsiveDialog open={open} onOpenChange={resetAndClose}>
+      <ResponsiveDialogContent className='sm:max-w-[500px]'>
+        <ResponsiveDialogHeader>
+          <ResponsiveDialogTitle>Add member</ResponsiveDialogTitle>
+          <ResponsiveDialogDescription className="sr-only">
             Add member
-          </DialogDescription>
-        </DialogHeader>
+          </ResponsiveDialogDescription>
+        </ResponsiveDialogHeader>
 
         <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'user' | 'group')}>
           <TabsList className='grid w-full grid-cols-2'>
@@ -228,15 +228,15 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
           </TabsContent>
         </Tabs>
 
-        <DialogFooter>
+        <ResponsiveDialogFooter>
           <Button variant='outline' onClick={resetAndClose}>
             Cancel
           </Button>
           <Button onClick={handleAddMember} disabled={!canAdd || addMemberMutation.isPending}>
             {addMemberMutation.isPending ? 'Adding...' : 'Add member'}
           </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+        </ResponsiveDialogFooter>
+      </ResponsiveDialogContent>
+    </ResponsiveDialog>
   )
 }

@@ -1,14 +1,8 @@
 import { useMemo, useState } from 'react'
 import { APP_ROUTES } from '@/config/app-routes'
 import {
-  AlertDialog,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
   Button,
+  ConfirmDialog,
   EmptyState,
   Input,
   Main,
@@ -20,7 +14,7 @@ import {
   getErrorMessage,
   shellNavigateExternal
 } from '@mochi/web'
-import { UserPlus, Users, MessageSquare, UserX, Minus } from 'lucide-react'
+import { UserPlus, Users, MessageSquare, UserX } from 'lucide-react'
 import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
 import { AddFriendDialog } from './components/add-friend-dialog'
 import { FRIENDS_STRINGS } from './constants'
@@ -157,42 +151,26 @@ export function Friends() {
         />
 
         {/* Remove Friend Confirmation Dialog */}
-        <AlertDialog
+        <ConfirmDialog
           open={removeFriendDialog.open}
           onOpenChange={(open) =>
             setRemoveFriendDialog({ ...removeFriendDialog, open })
           }
-        >
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>
-                {FRIENDS_STRINGS.REMOVE_FRIEND_DIALOG_TITLE}
-              </AlertDialogTitle>
-              <AlertDialogDescription>
-                {FRIENDS_STRINGS.REMOVE_FRIEND_CONFIRM_PRE}{' '}
-                <span className='text-foreground font-semibold'>
-                  {removeFriendDialog.friendName}
-                </span>{' '}
-                {FRIENDS_STRINGS.REMOVE_FRIEND_CONFIRM_POST}
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel disabled={removeFriendMutation.isPending}>
-                {FRIENDS_STRINGS.CANCEL}
-              </AlertDialogCancel>
-              <Button
-                variant='destructive'
-                onClick={confirmRemoveFriend}
-                disabled={removeFriendMutation.isPending}
-              >
-                <Minus className='h-4 w-4' />
-                {removeFriendMutation.isPending
-                  ? FRIENDS_STRINGS.REMOVING
-                  : FRIENDS_STRINGS.REMOVE_FRIEND}
-              </Button>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+          title={FRIENDS_STRINGS.REMOVE_FRIEND_DIALOG_TITLE}
+          desc={
+            <>
+              {FRIENDS_STRINGS.REMOVE_FRIEND_CONFIRM_PRE}{' '}
+              <span className='text-foreground font-semibold'>
+                {removeFriendDialog.friendName}
+              </span>{' '}
+              {FRIENDS_STRINGS.REMOVE_FRIEND_CONFIRM_POST}
+            </>
+          }
+          confirmText={removeFriendMutation.isPending ? FRIENDS_STRINGS.REMOVING : FRIENDS_STRINGS.REMOVE_FRIEND}
+          destructive
+          handleConfirm={confirmRemoveFriend}
+          isLoading={removeFriendMutation.isPending}
+        />
       </Main>
     </>
   )

@@ -3,15 +3,8 @@ import { useNavigate, useParams } from '@tanstack/react-router'
 import { User, UsersRound, X, UserPlus } from 'lucide-react'
 import { 
   toast,
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
   Button,
+  ConfirmDialog,
   EmptyState,
   Main,
   Table,
@@ -183,35 +176,24 @@ export function GroupDetail() {
           </>
         )}
 
-        <AlertDialog
+        <ConfirmDialog
           open={removeMemberDialog.open}
           onOpenChange={(open) => setRemoveMemberDialog({ ...removeMemberDialog, open })}
-        >
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>Remove member</AlertDialogTitle>
-              <AlertDialogDescription>
-                Are you sure you want to remove{' '}
-                <span className='text-foreground font-semibold'>
-                  {removeMemberDialog.name}
-                </span>{' '}
-                from this group?
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel disabled={removeMemberMutation.isPending}>
-                Cancel
-              </AlertDialogCancel>
-              <AlertDialogAction
-                variant="destructive"
-                onClick={confirmRemoveMember}
-                disabled={removeMemberMutation.isPending}
-              >
-                {removeMemberMutation.isPending ? 'Removing...' : 'Remove Member'}
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+          title="Remove member"
+          desc={
+            <>
+              Are you sure you want to remove{' '}
+              <span className='text-foreground font-semibold'>
+                {removeMemberDialog.name}
+              </span>{' '}
+              from this group?
+            </>
+          }
+          confirmText={removeMemberMutation.isPending ? 'Removing...' : 'Remove Member'}
+          destructive
+          handleConfirm={confirmRemoveMember}
+          isLoading={removeMemberMutation.isPending}
+        />
 
         <MemberDialog
           open={addMemberDialog}

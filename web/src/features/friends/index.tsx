@@ -4,11 +4,11 @@ import {
   Button,
   ConfirmDialog,
   EmptyState,
-  Input,
+  HeaderSearch,
+  IconButton,
   Main,
   usePageTitle,
   PageHeader,
-  PageUtilityBar,
   ListSkeleton,
   GeneralError,
   toast,
@@ -73,22 +73,32 @@ export function Friends() {
         title='Friends'
         icon={<Users className='size-4 md:size-5' />}
         showSidebarTrigger
+        primaryAction={
+          <div className='flex items-center gap-1.5 md:gap-2'>
+            <HeaderSearch
+              value={search}
+              onValueChange={setSearch}
+              placeholder='Search...'
+              label='Search friends'
+            />
+            <IconButton
+              label='Add friend'
+              variant='default'
+              className='md:hidden'
+              onClick={() => setAddFriendDialogOpen(true)}
+            >
+              <UserPlus className='h-4 w-4' />
+            </IconButton>
+            <Button
+              className='hidden md:inline-flex'
+              onClick={() => setAddFriendDialogOpen(true)}
+            >
+              <UserPlus className='h-4 w-4' />
+              Add friend
+            </Button>
+          </div>
+        }
       />
-      <PageUtilityBar>
-        <Input
-          type='text'
-          placeholder='Search...'
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className='min-w-0 flex-1 md:w-56 md:flex-none'
-        />
-        <Button
-          onClick={() => setAddFriendDialogOpen(true)}
-        >
-          <UserPlus className='h-4 w-4' />
-          Add friend
-        </Button>
-      </PageUtilityBar>
       <Main>
         {error ? (
           <GeneralError

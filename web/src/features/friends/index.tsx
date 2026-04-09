@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { APP_ROUTES } from '@/config/app-routes'
 import {
   Button,
@@ -20,10 +20,14 @@ import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
 import { AddFriendDialog } from './components/add-friend-dialog'
 import { FRIENDS_STRINGS } from './constants'
 
-export function Friends() {
+export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
   usePageTitle('Friends')
   const [search, setSearch] = useState('')
   const [addFriendDialogOpen, setAddFriendDialogOpen] = useState(false)
+
+  useEffect(() => {
+    if (autoAdd) setAddFriendDialogOpen(true)
+  }, [autoAdd])
   const [removeFriendDialog, setRemoveFriendDialog] = useState<{
     open: boolean
     friendId: string

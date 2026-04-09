@@ -128,7 +128,10 @@ function PeopleLayoutInner() {
 
   return (
     <>
-      <AuthenticatedLayout sidebarData={sidebarData} />
+      <AuthenticatedLayout
+        sidebarData={sidebarData}
+        usePageHeaderForMobileNav
+      />
 
       {/* Create group dialog */}
       <GroupDialog

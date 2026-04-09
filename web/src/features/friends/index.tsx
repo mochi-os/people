@@ -8,6 +8,7 @@ import {
   Main,
   usePageTitle,
   PageHeader,
+  PageUtilityBar,
   ListSkeleton,
   GeneralError,
   toast,
@@ -66,31 +67,28 @@ export function Friends() {
     shellNavigateExternal(chatUrl)
   }
 
-  const searchInput = (
-    <Input
-      type='text'
-      placeholder='Search...'
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
-      className='w-48'
-    />
-  )
-
   return (
     <>
       <PageHeader
         title='Friends'
         icon={<Users className='size-4 md:size-5' />}
-        actions={
-          <>
-            {searchInput}
-            <Button onClick={() => setAddFriendDialogOpen(true)}>
-              <UserPlus className='h-4 w-4' />
-              Add friend
-            </Button>
-          </>
-        }
+        showSidebarTrigger
       />
+      <PageUtilityBar>
+        <Input
+          type='text'
+          placeholder='Search...'
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className='min-w-0 flex-1 md:w-56 md:flex-none'
+        />
+        <Button
+          onClick={() => setAddFriendDialogOpen(true)}
+        >
+          <UserPlus className='h-4 w-4' />
+          Add friend
+        </Button>
+      </PageUtilityBar>
       <Main>
         {error ? (
           <GeneralError

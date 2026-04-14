@@ -1,5 +1,5 @@
-import { useMemo, useRef } from 'react'
-import { AuthenticatedLayout, getErrorMessage, type SidebarData, type NavItem, toast } from '@mochi/web'
+import { useMemo, useRef, useState } from 'react'
+import { AuthenticatedLayout, ConfirmDialog, getErrorMessage, type SidebarData, type NavItem, toast } from '@mochi/web'
 import { Pencil, Plus, Trash2, User, UserPlus, Users, UsersRound } from 'lucide-react'
 import { useGroupsQuery, useDeleteGroupMutation } from '@/hooks/useGroups'
 import { SidebarProvider, useSidebarContext } from '@/context/sidebar-context'
@@ -25,12 +25,15 @@ function PeopleLayoutInner() {
   } = useSidebarContext()
   const navigate = useNavigate()
   const deleteMutation = useDeleteGroupMutation()
+  const [confirmDelete, setConfirmDelete] = useState<{ id: string; name: string } | null>(null)
 
   // Use refs to avoid recreating sidebarData on every render
   const navigateRef = useRef(navigate)
   navigateRef.current = navigate
   const deleteMutationRef = useRef(deleteMutation)
   deleteMutationRef.current = deleteMutation
+  const setConfirmDeleteRef = useRef(setConfirmDelete)
+  setConfirmDeleteRef.current = setConfirmDelete
 
   // Find the group being edited for the dialog
   const editGroup = editGroupId ? groups?.find(g => g.id === editGroupId) : null
@@ -44,25 +47,6 @@ function PeopleLayoutInner() {
     // Build group items with sub-items for actions
     const groupItems: NavItem[] = sortedGroups.map((group) => {
       const isCurrentGroup = groupId === group.id
-
-      // Create delete handler for this group
-      const handleDelete = () => {
-        if (confirm(`Delete group "${group.name}"? This cannot be undone.`)) {
-          deleteMutationRef.current.mutate(
-            { id: group.id },
-            {
-              onSuccess: () => {
-                toast.success('Group deleted')
-                // Navigate to friends page since there's no groups list
-                navigateRef.current({ to: '/' })
-              },
-              onError: (error) => {
-                toast.error(getErrorMessage(error, 'Failed to delete group'))
-              },
-            }
-          )
-        }
-      }
 
       return {
         title: group.name,
@@ -82,7 +66,7 @@ function PeopleLayoutInner() {
           {
             title: 'Delete',
             icon: Trash2,
-            onClick: handleDelete,
+            onClick: () => setConfirmDeleteRef.current({ id: group.id, name: group.name }),
           },
         ],
         open: isCurrentGroup,
@@ -126,6 +110,23 @@ function PeopleLayoutInner() {
     return { navGroups: groups_section }
   }, [groups, groupId, groupsError, openCreateGroupDialog, openEditGroupDialog, openAddMemberDialog])
 
+  const handleConfirmDelete = () => {
+    if (!confirmDelete) return
+    deleteMutation.mutate(
+      { id: confirmDelete.id },
+      {
+        onSuccess: () => {
+          toast.success('Group deleted')
+          setConfirmDelete(null)
+          void navigate({ to: '/' })
+        },
+        onError: (error) => {
+          toast.error(getErrorMessage(error, 'Failed to delete group'))
+        },
+      }
+    )
+  }
+
   return (
     <>
       <AuthenticatedLayout
@@ -157,6 +158,18 @@ function PeopleLayoutInner() {
           groupId={addMemberGroupId}
         />
       )}
+
+      {/* Delete group confirmation */}
+      <ConfirmDialog
+        open={!!confirmDelete}
+        onOpenChange={(open) => { if (!open) setConfirmDelete(null) }}
+        title="Delete group"
+        desc={`Delete group "${confirmDelete?.name}"? This cannot be undone.`}
+        confirmText="Delete"
+        destructive
+        isLoading={deleteMutation.isPending}
+        handleConfirm={handleConfirmDelete}
+      />
     </>
   )
 }

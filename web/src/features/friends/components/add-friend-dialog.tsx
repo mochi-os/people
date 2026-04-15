@@ -57,7 +57,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
       // Prompt for notifications if user hasn't subscribed yet
       if (!subscriptionData?.exists) {
         shellSubscribeNotifications('people', [
-          { label: 'Friend requests and updates', type: '', defaultEnabled: true },
+          { label: 'Friend requests and updates', topic: '', defaultEnabled: true },
         ]).then(() => refetchSubscription())
       }
     },

@@ -12,6 +12,8 @@ import { friendsApi,
   type SearchLocalUsersResponse,
   type CreateFriendRequest,
   type WelcomeResponse,
+  type PreferencesResponse,
+  type InvitePolicy,
 } from '@/api/friends'
 
 export const friendKeys = {
@@ -19,6 +21,7 @@ export const friendKeys = {
   search: (query: string) => ['friends', 'search', query] as const,
   localUsers: (query: string) => ['users', 'search', query] as const,
   welcome: () => ['welcome'] as const,
+  preferences: () => ['people', 'preferences'] as const,
 }
 
 import { useQueryWithError } from '@mochi/web'
@@ -148,6 +151,22 @@ export const useMarkWelcomeSeenMutation = () => {
     mutationFn: () => friendsApi.markWelcomeSeen(),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: friendKeys.welcome() })
+    },
+  })
+}
+
+export const usePreferencesQuery = () =>
+  useQuery<PreferencesResponse>({
+    queryKey: friendKeys.preferences(),
+    queryFn: () => friendsApi.getPreferences(),
+  })
+
+export const useSetPreferencesMutation = () => {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: (policy: InvitePolicy) => friendsApi.setPreferences({ invite_policy: policy }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: friendKeys.preferences() })
     },
   })
 }

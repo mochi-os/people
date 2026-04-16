@@ -297,22 +297,45 @@ def event_accept(e):
 	mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, e.header("from"), i["name"])
 
 	mochi.db.execute("delete from invites where identity=? and id=?", identity, e.header("from"))
-	mochi.service.call("notifications", "send", "accept", "Friend request accepted", i["name"] + " accepted your friend invitation", "", "/people")
+	mochi.service.call("notifications", "send", "accept/accepted", "Friend request accepted", i["name"] + " accepted your friend invitation", "", "/people")
 
 def event_invite(e):
+	# Incoming friend invite. The user-configurable `invite_policy` preference
+	# decides what happens for unsolicited invites (default: silent store, no
+	# notification — invites are a common unsolicited-contact vector).
+	# Mutual invites always transition to friends regardless of policy.
 	name = e.content("name")
 	if not mochi.valid(name, "line") or len(name) > 255:
 		return
 
 	identity = resolve_identity(e.header("to"))
-	if mochi.db.exists("select id from invites where identity=? and id=? and direction='to'", identity, e.header("from")):
-		# Mutual invite - add friend immediately to avoid race condition
-		mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, e.header("from"), name)
-		mochi.message.send({"from": identity, "to": e.header("from"), "service": "friends", "event": "friend/accept"})
-		mochi.db.execute("delete from invites where identity=? and id=?", identity, e.header("from"))
-		mochi.service.call("notifications", "send", "accept", "New friend", name + " is now your friend", "", "/people")
-	else:
-		mochi.db.execute("replace into invites ( identity, id, direction, name, updated ) values ( ?, ?, 'from', ?, ? )", identity, e.header("from"), name, mochi.time.now())
+	sender = e.header("from")
+
+	# Mutual invite — always connect, regardless of policy.
+	if mochi.db.exists("select id from invites where identity=? and id=? and direction='to'", identity, sender):
+		mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, sender, name)
+		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
+		mochi.db.execute("delete from invites where identity=? and id=?", identity, sender)
+		mochi.service.call("notifications", "send", "accept/matched", "New friend", name + " is now your friend", "", "/people")
+		return
+
+	policy = e.user.preference.get("invite_policy") or "notify"
+
+	if policy == "reject":
+		return
+
+	if policy == "accept":
+		# Auto-accept: mirror mutual-invite path without writing to invites.
+		mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, sender, name)
+		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
+		mochi.service.call("notifications", "send", "accept/matched", "New friend", name + " is now your friend", "", "/people")
+		return
+
+	# silent or notify: store pending invite
+	mochi.db.execute("replace into invites ( identity, id, direction, name, updated ) values ( ?, ?, 'from', ?, ? )", identity, sender, name, mochi.time.now())
+
+	if policy == "notify":
+		mochi.service.call("notifications", "send", "invite/received", "Friend invitation", name + " invited you to be friends", sender, "/people/invitations")
 
 def event_cancel(e):
 	# Remove the invitation from the recipient's side
@@ -558,4 +581,17 @@ def action_welcome(a):
 # Mark welcome as seen
 def action_welcome_seen(a):
 	a.user.preference.set("people_welcome_seen", "true")
+	return {"data": {}}
+
+# Preferences: incoming friend invite policy
+_VALID_INVITE_POLICIES = ("silent", "notify", "reject", "accept")
+
+def action_preferences_get(a):
+	return {"data": {"invite_policy": a.user.preference.get("invite_policy") or "notify"}}
+
+def action_preferences_set(a):
+	policy = a.input("invite_policy", "").strip()
+	if policy not in _VALID_INVITE_POLICIES:
+		return json_error("Invalid invite_policy")
+	a.user.preference.set("invite_policy", policy)
 	return {"data": {}}

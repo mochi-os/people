@@ -1,7 +1,6 @@
 import { useEffect, useState, useMemo } from 'react'
-import { useQuery } from '@tanstack/react-query'
 import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban } from 'lucide-react'
-import { cn, toast, shellSubscribeNotifications, requestHelpers, getAppPath, getErrorMessage, GeneralError, Avatar, AvatarFallback, AvatarImage, Button, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Input, EmptyState, ScrollArea, useScreenSize } from '@mochi/web'
+import { cn, toast, shellSubscribeNotifications, getErrorMessage, GeneralError, Avatar, AvatarFallback, AvatarImage, Button, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Input, EmptyState, ScrollArea, useScreenSize } from '@mochi/web'
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation } from '@/hooks/useFriends'
 import { buildAvatarUrl } from '../utils/avatar'
 import { FRIENDS_STRINGS } from '../constants'
@@ -11,10 +10,6 @@ type AddFriendDialogProps = {
   onOpenChange: (open: boolean) => void
 }
 
-interface SubscriptionCheckResponse {
-  exists: boolean
-}
-
 export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [debouncedQuery, setDebouncedQuery] = useState('')
@@ -22,16 +17,6 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
   const [pendingUserId, setPendingUserId] = useState<string | null>(null)
   const { isMobile } = useScreenSize()
 
-  // Check if user already has a subscription for people notifications
-  const { data: subscriptionData, refetch: refetchSubscription } = useQuery({
-    queryKey: ['subscription-check', 'people'],
-    queryFn: async () => {
-      return await requestHelpers.get<SubscriptionCheckResponse>(
-        `${getAppPath()}/-/notifications/check`
-      )
-    },
-    staleTime: Infinity,
-  })
 
   // Debounce search query
   useEffect(() => {
@@ -54,12 +39,11 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
       toast.success(FRIENDS_STRINGS.SUCCESS_INVITATION_SENT, {
         description: `${FRIENDS_STRINGS.SUCCESS_INVITATION_SENT_DESC} ${variables.name}.`,
       })
-      // Prompt for notifications if user hasn't subscribed yet
-      if (!subscriptionData?.exists) {
-        shellSubscribeNotifications('people', [
-          { label: 'Friend requests and updates', type: '', defaultEnabled: true },
-        ]).then(() => refetchSubscription())
-      }
+      void shellSubscribeNotifications('people', [
+        { label: 'Friend invitation received', topic: 'invite/received', defaultEnabled: true },
+        { label: 'Friend request accepted', topic: 'accept/accepted', defaultEnabled: true },
+        { label: 'New friendship', topic: 'accept/matched', defaultEnabled: true },
+      ])
     },
     onError: (error) => {
       setPendingUserId(null)
@@ -103,16 +87,13 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
   }
 
   useEffect(() => {
-    if (open) {
-      // Refetch subscription status when dialog opens in case user deleted subscriptions
-      refetchSubscription()
-    } else {
+    if (!open) {
       setSearchQuery('')
       setDebouncedQuery('')
       setInvitedUserIds(new Set())
       setPendingUserId(null)
     }
-  }, [open, refetchSubscription])
+  }, [open])
 
   const hasQuery = debouncedQuery.trim().length > 0
   const viewState: 'idle' | 'loading' | 'error' | 'empty' | 'results' = (() => {

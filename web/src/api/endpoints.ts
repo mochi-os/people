@@ -11,6 +11,10 @@ const endpoints = {
     get: '-/welcome',
     seen: '-/welcome/seen',
   },
+  preferences: {
+    get: '-/preferences/get',
+    set: '-/preferences/set',
+  },
   users: {
     search: '-/users/search',
   },

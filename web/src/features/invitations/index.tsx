@@ -11,7 +11,7 @@ import {
   Skeleton,
   toast,
 } from '@mochi/web'
-import { UserPlus, UserX, Send, X, Check } from 'lucide-react'
+import { UserPlus, UserX, Send, X, Check, Settings } from 'lucide-react'
 import {
   useFriendsQuery,
   useAcceptFriendInviteMutation,
@@ -19,11 +19,13 @@ import {
   useRemoveFriendMutation,
 } from '@/hooks/useFriends'
 import { AddFriendDialog } from '@/features/friends/components/add-friend-dialog'
+import { InviteSettingsDialog } from './invite-settings-dialog'
 
 export function Invitations() {
   usePageTitle('Invitations')
   const [search, setSearch] = useState('')
   const [addFriendDialogOpen, setAddFriendDialogOpen] = useState(false)
+  const [settingsOpen, setSettingsOpen] = useState(false)
   const { data: friendsData, isLoading, error, refetch } = useFriendsQuery()
   const acceptInviteMutation = useAcceptFriendInviteMutation()
   const declineInviteMutation = useDeclineFriendInviteMutation()
@@ -113,6 +115,9 @@ export function Invitations() {
         actions={
           <>
             {searchInput}
+            <Button variant='outline' size='icon' onClick={() => setSettingsOpen(true)} aria-label='Invite settings'>
+              <Settings className='h-4 w-4' />
+            </Button>
             <Button onClick={() => setAddFriendDialogOpen(true)}>
               <UserPlus className='h-4 w-4' />
               Add friend
@@ -133,6 +138,10 @@ export function Invitations() {
         <AddFriendDialog
           open={addFriendDialogOpen}
           onOpenChange={setAddFriendDialogOpen}
+        />
+        <InviteSettingsDialog
+          open={settingsOpen}
+          onOpenChange={setSettingsOpen}
         />
         {isLoading && !friendsData ? (
           <div className='divide-border divide-y rounded-lg border'>

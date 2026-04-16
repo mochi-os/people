@@ -198,6 +198,24 @@ const markWelcomeSeen = async (): Promise<MutationSuccessResponse> => {
   return { success: true }
 }
 
+export type InvitePolicy = 'silent' | 'notify' | 'reject' | 'accept'
+
+export interface PreferencesResponse {
+  invite_policy: InvitePolicy
+}
+
+const getPreferences = async (): Promise<PreferencesResponse> => {
+  return requestHelpers.get<PreferencesResponse>(endpoints.preferences.get)
+}
+
+const setPreferences = async (payload: { invite_policy: InvitePolicy }): Promise<MutationSuccessResponse> => {
+  const body = new URLSearchParams({ invite_policy: payload.invite_policy })
+  await requestHelpers.post(endpoints.preferences.set, body.toString(), {
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  })
+  return { success: true }
+}
+
 export const friendsApi = {
   list: listFriends,
   searchUsers,
@@ -208,6 +226,8 @@ export const friendsApi = {
   remove: removeFriend,
   getWelcome,
   markWelcomeSeen,
+  getPreferences,
+  setPreferences,
 }
 
 export type {

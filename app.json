@@ -2,8 +2,9 @@
 // Copyright Alistair Cunningham 2025-2026
 
 {
-	"version": "1.32",
+	"version": "1.34",
 	"label": "app_name",
+	"classes": ["person"],
 	"paths": ["people"],
 	"services": ["people", "friends"],
 
@@ -11,9 +12,10 @@
 	"execute": ["people.star"],
 
 	"database": {
-		"schema": 1,
+		"schema": 2,
 		"file": "people.db",
-		"create": {"function": "database_create"}
+		"create": {"function": "database_create"},
+		"upgrade": {"function": "database_upgrade"}
 	},
 
 	"icons": [
@@ -44,14 +46,31 @@
 		"-/welcome": {"function": "action_welcome"},
 		"-/welcome/seen": {"function": "action_welcome_seen"},
 		"-/preferences/get": {"function": "action_preferences_get"},
-		"-/preferences/set": {"function": "action_preferences_set"}
+		"-/preferences/set": {"function": "action_preferences_set"},
+
+		":person": {"file": "web/dist/index.html", "public": true, "opengraph": "opengraph_person"},
+		":person/-/information": {"function": "action_information", "public": true},
+		":person/-/avatar": {"function": "action_avatar", "public": true},
+		":person/-/avatar/set": {"function": "action_avatar_set"},
+		":person/-/banner": {"function": "action_banner", "public": true},
+		":person/-/banner/set": {"function": "action_banner_set"},
+		":person/-/favicon": {"function": "action_favicon", "public": true},
+		":person/-/favicon/set": {"function": "action_favicon_set"},
+		":person/-/style": {"function": "action_style", "public": true},
+		":person/-/style/set": {"function": "action_style_set"},
+		":person/-/profile/set": {"function": "action_profile_set"}
 	},
 
 	"events": {
 		"friend/accept": {"function": "event_accept"},
 		"friend/cancel": {"function": "event_cancel"},
 		"friend/invite": {"function": "event_invite"},
-		"friend/remove": {"function": "event_remove"}
+		"friend/remove": {"function": "event_remove"},
+		"information": {"function": "event_information"},
+		"avatar": {"function": "event_avatar"},
+		"banner": {"function": "event_banner"},
+		"favicon": {"function": "event_favicon"},
+		"style": {"function": "event_style"}
 	},
 
 	"functions": {

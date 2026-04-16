@@ -28,22 +28,22 @@ const options: { value: InvitePolicy; label: string; description: string }[] = [
   {
     value: 'notify',
     label: 'Notify me',
-    description: 'Invites appear in your Received list and send a notification. (default)',
+    description: 'Invites appear in invitations and you are sent a notification (default).',
   },
   {
     value: 'silent',
     label: 'Store silently',
-    description: 'Invites appear in your Received list with no notification.',
+    description: 'Invites appear in invitations. No notification is sent.',
   },
   {
     value: 'reject',
     label: 'Reject all',
-    description: 'Unknown-sender invites are dropped. Mutual invites still connect.',
+    description: 'Invites from unknown senders are dropped. Mutual invites still connect.',
   },
   {
     value: 'accept',
     label: 'Accept automatically',
-    description: 'Every inviter becomes a friend without approval. For broadcast or support accounts.',
+    description: 'All invites are accepted without your approval.',
   },
 ]
 

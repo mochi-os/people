@@ -8,6 +8,7 @@ import {
   Label,
   Main,
   PageHeader,
+  Skeleton,
   Textarea,
   getErrorMessage,
   toast,
@@ -22,7 +23,7 @@ import {
   useUploadImageMutation,
 } from '@/hooks/usePerson'
 
-const PROFILE_MAX = 100 * 1024
+const PROFILE_MAX = 100 * 100
 const ACCENT_PATTERN = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i
 
 const SLOT_MAX: Record<'avatar' | 'banner' | 'favicon', number> = {
@@ -49,7 +50,9 @@ export function Profile() {
     return (
       <Main>
         <PageHeader title="Profile" />
-        <p className="text-muted-foreground p-4 text-sm">Loading…</p>
+        <div className="mx-auto w-full max-w-2xl p-4">
+          <ProfileSkeleton />
+        </div>
       </Main>
     )
   }
@@ -58,7 +61,9 @@ export function Profile() {
     return (
       <Main>
         <PageHeader title="Profile" />
-        <GeneralError minimal mode="inline" error={error} reset={() => refetch()} />
+        <div className="mx-auto w-full max-w-2xl p-4">
+          <GeneralError minimal mode="inline" error={error} reset={() => refetch()} />
+        </div>
       </Main>
     )
   }
@@ -66,14 +71,54 @@ export function Profile() {
   return (
     <Main>
       <PageHeader title="Profile" />
-      <div className="mx-auto w-full max-w-2xl space-y-8 p-4">
+      <div className="mx-auto w-full max-w-2xl p-3 sm:p-4">
         {isLoading || !data ? (
-          <p className="text-muted-foreground text-sm">Loading…</p>
+          <ProfileSkeleton />
         ) : (
           <ProfileEditor person={identity} info={data} />
         )}
       </div>
     </Main>
+  )
+}
+
+function ProfileSkeleton() {
+  return (
+    <div className="bg-card border-border overflow-hidden rounded-xl border shadow-sm">
+      {/* Banner */}
+      <Skeleton className="aspect-[3/1] w-full rounded-none" />
+      {/* Avatar row */}
+      <div className="px-5 pt-3 pb-5 space-y-5">
+        <div className="flex items-end gap-3 -mt-10">
+          <Skeleton className="size-20 rounded-full shrink-0 ring-4 ring-card" />
+          <Skeleton className="mb-1 h-8 w-28" />
+        </div>
+        {/* Bio */}
+        <div className="space-y-2">
+          <Skeleton className="h-4 w-32" />
+          <Skeleton className="h-28 w-full" />
+          <Skeleton className="h-3 w-24" />
+        </div>
+        {/* Bottom row */}
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-24" />
+            <div className="flex gap-2">
+              <Skeleton className="size-8 rounded-full shrink-0" />
+              <Skeleton className="h-8 w-28" />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-20" />
+            <div className="flex gap-2">
+              <Skeleton className="h-8 w-24" />
+              <Skeleton className="size-8 rounded-md shrink-0" />
+              <Skeleton className="h-8 w-24" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -93,48 +138,249 @@ function ProfileEditor({ person, info }: { person: string; info: Info }) {
   const bannerUrl = info.banner ? `/${info.fingerprint}/-/banner?v=${info.banner}` : null
   const faviconUrl = info.favicon ? `/${info.fingerprint}/-/favicon?v=${info.favicon}` : null
 
+  const [profile, setProfile] = useState(info.profile)
+  useEffect(() => setProfile(info.profile), [info.profile])
+
+  const [accent, setAccent] = useState(info.style.accent ?? '')
+  useEffect(() => setAccent(info.style.accent ?? ''), [info.style.accent])
+
+  const profileMutation = useSetProfileMutation(person)
+  const accentMutation = useSetAccentMutation(person)
+
+  const profileDirty = profile !== info.profile
+  const tooLong = profile.length > PROFILE_MAX
+  const progress = Math.min((profile.length / PROFILE_MAX) * 100, 100)
+
+  const accentTrimmed = accent.trim()
+  const accentValid = accentTrimmed === '' || ACCENT_PATTERN.test(accentTrimmed)
+  const accentDirty = accentTrimmed !== (info.style.accent ?? '')
+
+  const handleSaveProfile = () => {
+    profileMutation.mutate(profile, {
+      onSuccess: () => toast.success('Profile saved'),
+      onError: (err) => toast.error(getErrorMessage(err, 'Failed to save profile')),
+    })
+    if (accentDirty && accentValid) {
+      accentMutation.mutate(accentTrimmed, {
+        onSuccess: () => toast.success('Accent saved'),
+        onError: (err) => toast.error(getErrorMessage(err, 'Failed to save accent')),
+      })
+    }
+  }
+
   return (
-    <>
-      <BannerSection person={person} src={bannerUrl} />
-      <AvatarSection person={person} name={info.name} src={avatarUrl} />
-      <FaviconSection person={person} src={faviconUrl} />
-      <ProfileSection person={person} initial={info.profile} />
-      <AccentSection person={person} initial={info.style.accent ?? ''} />
-    </>
+    <div className="bg-card border-border overflow-hidden rounded-xl border shadow-sm">
+      <div className="relative" style={{ paddingBottom: 40 }}>
+        <div className="relative bg-muted overflow-hidden">
+          {bannerUrl ? (
+            <EntityBanner src={bannerUrl} aspectRatio="3 / 1" />
+          ) : (
+            <div className="flex aspect-[5/2] min-h-[100px] flex-col items-center justify-center gap-2 text-muted-foreground sm:aspect-[3/1]">
+              <ImageIcon className="size-8 opacity-30" />
+              <span className="text-xs opacity-50">No banner set</span>
+            </div>
+          )}
+          <div className="absolute bottom-3 right-3">
+            <SlotUploader person={person} slot="banner">
+              {(open, pending) => (
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={open}
+                  disabled={pending}
+                  className="shadow-md"
+                >
+                  <Upload className="size-3.5" />
+                  {pending ? 'Uploading…' : 'Change Banner'}
+                </Button>
+              )}
+            </SlotUploader>
+          </div>
+        </div>
+
+        <div className="absolute bottom-0 left-5">
+          <div className="relative" style={{ width: 80, height: 80 }}>
+            <div className="rounded-full ring-4 ring-card overflow-hidden size-full">
+              <EntityAvatar src={avatarUrl} name={info.name} size={80} />
+            </div>
+            <SlotUploader person={person} slot="avatar">
+              {(open, pending) => (
+                <button
+                  type="button"
+                  onClick={open}
+                  disabled={pending}
+                  aria-label="Upload avatar"
+                  className="absolute bottom-0 right-0 flex size-6 items-center justify-center rounded-full border border-border bg-muted text-muted-foreground shadow-sm transition-colors hover:bg-interactive-hover hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+                >
+                  <Upload className="size-3" />
+                </button>
+              )}
+            </SlotUploader>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Main content ─────────────────────────────────────── */}
+      <div className="p-5 space-y-5">
+
+        {/* Section heading */}
+        <h2 className="text-base font-semibold leading-none">Personal Info</h2>
+
+        {/* ── Bio ───────────────────────────────────────────── */}
+        <div className="space-y-2">
+          <Label htmlFor="profile-markdown">Bio (Markdown-supported)</Label>
+          <Textarea
+            id="profile-markdown"
+            rows={5}
+            value={profile}
+            placeholder="Tell us a little about yourself…"
+            onChange={(e) => setProfile(e.target.value)}
+            className={tooLong ? 'border-destructive focus-visible:ring-destructive/30' : ''}
+          />
+          <div className="flex items-center gap-2">
+            <div className="bg-muted h-1 flex-1 overflow-hidden rounded-full">
+              <div
+                className={`h-full rounded-full transition-[width] duration-200 ${tooLong ? 'bg-destructive' : progress > 80 ? 'bg-warning' : 'bg-primary'
+                  }`}
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+            <p
+              className={`shrink-0 text-xs tabular-nums ${tooLong ? 'text-destructive' : 'text-muted-foreground'
+                }`}
+            >
+              {profile.length.toLocaleString()} / {PROFILE_MAX.toLocaleString()}
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {/* Favicon */}
+          <div className="space-y-2">
+            <p className="text-sm font-medium">Customization</p>
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="border-border flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full border bg-muted">
+                {faviconUrl ? (
+                  <EntityAvatar src={faviconUrl} size={32} />
+                ) : (
+                  <span className="text-muted-foreground text-xs font-medium">
+                    {info.name?.[0]?.toUpperCase() ?? '?'}
+                  </span>
+                )}
+              </div>
+              <SlotUploader person={person} slot="favicon">
+                {(open, pending) => (
+                  <Button variant="outline" size="sm" onClick={open} disabled={pending}>
+                    <Upload className="size-3.5" />
+                    {pending ? 'Uploading…' : 'Upload favicon'}
+                  </Button>
+                )}
+              </SlotUploader>
+            </div>
+          </div>
+
+          {/* Accent colour */}
+          <div className="space-y-2">
+            <p className="text-sm font-medium">Accent Color</p>
+            <div className="flex items-center gap-2">
+              <Label htmlFor="accent-colour" className="sr-only">
+                Accent colour
+              </Label>
+              <Input
+                id="accent-colour"
+                value={accent}
+                placeholder="#3b82f6"
+                onChange={(e) => setAccent(e.target.value)}
+                spellCheck={false}
+                className={`w-28 font-mono text-sm ${!accentValid ? 'border-destructive focus-visible:ring-destructive/30' : ''}`}
+              />
+              <div
+                aria-hidden
+                className="border-border size-8 shrink-0 rounded-md border transition-colors duration-150"
+                style={
+                  accentValid && accentTrimmed !== ''
+                    ? { backgroundColor: accentTrimmed }
+                    : undefined
+                }
+              /><Button
+                size="sm"
+                className="w-full sm:w-auto hidden md:block"
+                disabled={!accentDirty || !accentValid || accentMutation.isPending}
+                onClick={() =>
+                  accentMutation.mutate(accentTrimmed, {
+                    onSuccess: () => toast.success('Accent saved'),
+                    onError: (err) =>
+                      toast.error(getErrorMessage(err, 'Failed to save accent')),
+                  })
+                }
+              >
+                {accentMutation.isPending ? 'Saving…' : 'Save Accent'}
+              </Button>
+            </div>
+            <Button
+              size="sm"
+              className="w-full sm:w-auto md:hidden"
+              disabled={!accentDirty || !accentValid || accentMutation.isPending}
+              onClick={() =>
+                accentMutation.mutate(accentTrimmed, {
+                  onSuccess: () => toast.success('Accent saved'),
+                  onError: (err) =>
+                    toast.error(getErrorMessage(err, 'Failed to save accent')),
+                })
+              }
+            >
+              {accentMutation.isPending ? 'Saving…' : 'Save Accent'}
+            </Button>
+            {!accentValid && (
+              <p className="text-destructive text-xs">Use #RGB or #RRGGBB format.</p>
+            )}
+          </div>
+        </div>
+
+        {/* ── Save Profile ──────────────────────────────────── */}
+        <div className="flex justify-end">
+          <Button
+            disabled={!profileDirty || tooLong || profileMutation.isPending}
+            onClick={handleSaveProfile}
+          >
+            {profileMutation.isPending ? 'Saving…' : 'Save Profile'}
+          </Button>
+        </div>
+      </div>
+    </div>
   )
 }
 
-function ImageUploader({
+function SlotUploader({
   person,
   slot,
-  buttonLabel,
+  children,
 }: {
   person: string
   slot: 'avatar' | 'banner' | 'favicon'
-  buttonLabel: string
+  children: (open: () => void, pending: boolean) => React.ReactNode
 }) {
   const inputRef = useRef<HTMLInputElement>(null)
   const mutation = useUploadImageMutation(person, slot)
   const maxBytes = SLOT_MAX[slot]
-
-  const handlePick = () => inputRef.current?.click()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (inputRef.current) inputRef.current.value = ''
     if (!file) return
     if (file.size > maxBytes) {
-      toast.error(`${slot} too large (max ${formatBytes(maxBytes)})`)
+      toast.error(`File too large (max ${formatBytes(maxBytes)})`)
       return
     }
     mutation.mutate(file, {
-      onSuccess: () => toast.success(`${slot.charAt(0).toUpperCase() + slot.slice(1)} updated`),
+      onSuccess: () =>
+        toast.success(`${slot.charAt(0).toUpperCase() + slot.slice(1)} updated`),
       onError: (err) => toast.error(getErrorMessage(err, `Failed to upload ${slot}`)),
     })
   }
 
   return (
-    <div className="flex items-center gap-3">
+    <>
       <input
         ref={inputRef}
         type="file"
@@ -142,151 +388,7 @@ function ImageUploader({
         className="hidden"
         onChange={handleChange}
       />
-      <Button
-        variant="outline"
-        onClick={handlePick}
-        disabled={mutation.isPending}
-      >
-        <Upload className="size-4" />
-        {mutation.isPending ? 'Uploading…' : buttonLabel}
-      </Button>
-      <p className="text-muted-foreground text-xs">
-        JPG, PNG, GIF, WebP, SVG · Max {formatBytes(maxBytes)}
-      </p>
-    </div>
-  )
-}
-
-function BannerSection({ person, src }: { person: string; src: string | null }) {
-  return (
-    <section className="space-y-3">
-      <h2 className="text-sm font-medium">Banner</h2>
-      <div className="bg-muted overflow-hidden rounded-[10px]">
-        {src ? (
-          <EntityBanner src={src} />
-        ) : (
-          <div className="text-muted-foreground flex aspect-[3/1] items-center justify-center text-xs">
-            <ImageIcon className="mr-2 size-4" />
-            No banner set
-          </div>
-        )}
-      </div>
-      <ImageUploader person={person} slot="banner" buttonLabel="Upload banner" />
-    </section>
-  )
-}
-
-function AvatarSection({
-  person,
-  name,
-  src,
-}: {
-  person: string
-  name: string
-  src: string | null
-}) {
-  return (
-    <section className="space-y-3">
-      <h2 className="text-sm font-medium">Avatar</h2>
-      <div className="flex items-center gap-4">
-        <EntityAvatar src={src} name={name} size={96} />
-        <ImageUploader person={person} slot="avatar" buttonLabel="Upload avatar" />
-      </div>
-    </section>
-  )
-}
-
-function FaviconSection({ person, src }: { person: string; src: string | null }) {
-  return (
-    <section className="space-y-3">
-      <h2 className="text-sm font-medium">Favicon</h2>
-      <div className="flex items-center gap-4">
-        <EntityAvatar src={src} size={32} />
-        <ImageUploader person={person} slot="favicon" buttonLabel="Upload favicon" />
-      </div>
-    </section>
-  )
-}
-
-function ProfileSection({ person, initial }: { person: string; initial: string }) {
-  const [value, setValue] = useState(initial)
-  useEffect(() => setValue(initial), [initial])
-
-  const mutation = useSetProfileMutation(person)
-  const dirty = value !== initial
-  const tooLong = value.length > PROFILE_MAX
-
-  return (
-    <section className="space-y-3">
-      <Label htmlFor="profile-markdown">Profile (markdown)</Label>
-      <Textarea
-        id="profile-markdown"
-        rows={10}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <div className="flex items-center justify-between">
-        <p className="text-muted-foreground text-xs">
-          {value.length.toLocaleString()} / {PROFILE_MAX.toLocaleString()} characters
-        </p>
-        <Button
-          disabled={!dirty || tooLong || mutation.isPending}
-          onClick={() => {
-            mutation.mutate(value, {
-              onSuccess: () => toast.success('Profile saved'),
-              onError: (err) => toast.error(getErrorMessage(err, 'Failed to save profile')),
-            })
-          }}
-        >
-          {mutation.isPending ? 'Saving…' : 'Save profile'}
-        </Button>
-      </div>
-    </section>
-  )
-}
-
-function AccentSection({ person, initial }: { person: string; initial: string }) {
-  const [value, setValue] = useState(initial)
-  useEffect(() => setValue(initial), [initial])
-
-  const mutation = useSetAccentMutation(person)
-  const trimmed = value.trim()
-  const valid = trimmed === '' || ACCENT_PATTERN.test(trimmed)
-  const dirty = trimmed !== initial
-
-  return (
-    <section className="space-y-3">
-      <Label htmlFor="accent-colour">Accent colour</Label>
-      <div className="flex items-center gap-3">
-        <Input
-          id="accent-colour"
-          value={value}
-          placeholder="#3b82f6"
-          onChange={(e) => setValue(e.target.value)}
-          className="max-w-[200px]"
-        />
-        {valid && trimmed !== '' && (
-          <span
-            aria-hidden
-            className="border-border inline-block size-8 rounded-full border"
-            style={{ backgroundColor: trimmed }}
-          />
-        )}
-        <Button
-          disabled={!dirty || !valid || mutation.isPending}
-          onClick={() => {
-            mutation.mutate(trimmed, {
-              onSuccess: () => toast.success('Accent saved'),
-              onError: (err) => toast.error(getErrorMessage(err, 'Failed to save accent')),
-            })
-          }}
-        >
-          {mutation.isPending ? 'Saving…' : 'Save accent'}
-        </Button>
-      </div>
-      {!valid && (
-        <p className="text-destructive text-xs">Use #RGB or #RRGGBB hex format.</p>
-      )}
-    </section>
+      {children(() => inputRef.current?.click(), mutation.isPending)}
+    </>
   )
 }

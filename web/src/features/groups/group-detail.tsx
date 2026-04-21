@@ -35,7 +35,7 @@ export function GroupDetail() {
   const { data, isLoading, error, refetch } = useGroupQuery(id)
   const removeMemberMutation = useRemoveGroupMemberMutation()
   const { setGroupId } = useSidebarContext()
-  const goBackToFriends = () => navigate({ to: '/' })
+  const goBackToFriends = () => navigate({ to: '/friends' })
 
   usePageTitle(data?.group?.name ?? 'Group')
 

@@ -33,6 +33,16 @@ const endpoints = {
     identity: '/_/identity',
     logout: '/_/logout',
   },
+  person: {
+    information: (person: string) => `${person}/-/information`,
+    avatar: (person: string) => `${person}/-/avatar`,
+    avatarSet: (person: string) => `${person}/-/avatar/set`,
+    bannerSet: (person: string) => `${person}/-/banner/set`,
+    faviconSet: (person: string) => `${person}/-/favicon/set`,
+    style: (person: string) => `${person}/-/style`,
+    styleSet: (person: string) => `${person}/-/style/set`,
+    profileSet: (person: string) => `${person}/-/profile/set`,
+  },
 } as const
 
 export type Endpoints = typeof endpoints

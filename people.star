@@ -9,6 +9,11 @@ def database_create():
 	mochi.db.execute("create table if not exists invites ( identity text not null, id text not null, direction text not null, name text not null, updated integer not null, primary key ( identity, id, direction ) )")
 	mochi.db.execute("create index if not exists invites_identity_id on invites( identity, id )")
 	mochi.db.execute("create index if not exists invites_direction on invites( direction )")
+	mochi.db.execute("create table if not exists profiles ( person text not null primary key, profile text not null default '', accent text not null default '', updated integer not null default 0 )")
+
+def database_upgrade(version):
+	if version == 2:
+		mochi.db.execute("create table if not exists profiles ( person text not null primary key, profile text not null default '', accent text not null default '', updated integer not null default 0 )")
 
 def json_error(message, code=400):
 	return {"status": code, "error": message, "data": {}}
@@ -595,3 +600,265 @@ def action_preferences_set(a):
 		return json_error("Invalid invite_policy")
 	a.user.preference.set("invite_policy", policy)
 	return {"data": {}}
+
+# ---------------------------------------------------------------------------
+# Person profiles: avatar / banner / favicon / markdown / style
+#
+# The people app handles the `person` entity class. Each person entity exposes
+# a public profile via :person/-/* HTTP actions (for browsers + domain-routed
+# visits) and matching P2P events (for cross-server access). Other apps fetch
+# person data with mochi.remote.request(person, "people", "<event>", {}).
+
+_AVATAR_MAX = 2 * 1024 * 1024
+_BANNER_MAX = 10 * 1024 * 1024
+_FAVICON_MAX = 64 * 1024
+_PROFILE_MAX = 100 * 1024
+
+_IMAGE_SLOTS = ("avatar", "banner", "favicon")
+_SLOT_CAPS = {"avatar": _AVATAR_MAX, "banner": _BANNER_MAX, "favicon": _FAVICON_MAX}
+
+def is_person_owner(a, person_id):
+	if not a.user or not a.user.identity:
+		return False
+	owned = mochi.entity.get(person_id)
+	if not owned:
+		return False
+	for e in owned:
+		if e.get("class") == "person":
+			return True
+	return False
+
+def slot_object(person_id, slot):
+	return person_id + "/" + slot
+
+def slot_attachment(person_id, slot):
+	atts = mochi.attachment.list(slot_object(person_id, slot))
+	if atts and len(atts) > 0:
+		return atts[0]
+	return None
+
+def get_profile_row(person_id):
+	row = mochi.db.row("select * from profiles where person=?", person_id)
+	if row:
+		return row
+	return {"profile": "", "accent": ""}
+
+def upsert_profile(person_id, profile=None, accent=None):
+	existing = mochi.db.row("select profile, accent from profiles where person=?", person_id) or {}
+	new_profile = profile if profile != None else existing.get("profile", "")
+	new_accent = accent if accent != None else existing.get("accent", "")
+	mochi.db.execute(
+		"insert into profiles ( person, profile, accent, updated ) values ( ?, ?, ?, ? ) on conflict ( person ) do update set profile=excluded.profile, accent=excluded.accent, updated=excluded.updated",
+		person_id, new_profile, new_accent, mochi.time.now())
+
+def build_information(person_id, entity):
+	profile = get_profile_row(person_id)
+	style = {}
+	if profile.get("accent"):
+		style["accent"] = profile["accent"]
+	out = {
+		"id": entity["id"],
+		"fingerprint": entity.get("fingerprint", mochi.entity.fingerprint(person_id)),
+		"name": entity.get("name", ""),
+		"profile": profile.get("profile", ""),
+		"style": style,
+		"avatar": "",
+		"banner": "",
+		"favicon": "",
+	}
+	for slot in _IMAGE_SLOTS:
+		att = slot_attachment(person_id, slot)
+		if att:
+			out[slot] = att.get("id", "")
+	return out
+
+def get_person_entity(person_id):
+	if not person_id:
+		return None
+	entity = mochi.entity.info(person_id)
+	if not entity or entity.get("class") != "person":
+		return None
+	return entity
+
+# Hex colour: #RGB or #RRGGBB
+def valid_hex_colour(s):
+	if not s.startswith("#"):
+		return False
+	rest = s[1:]
+	if len(rest) != 3 and len(rest) != 6:
+		return False
+	for c in rest.elems():
+		if c not in "0123456789abcdefABCDEF":
+			return False
+	return True
+
+# === HTTP actions ===
+
+def action_information(a):
+	person_id = a.input("person")
+	entity = get_person_entity(person_id)
+	if not entity:
+		a.error(404, "Person not found")
+		return
+	return {"data": build_information(person_id, entity)}
+
+def serve_image(a, slot, fallback_slot=""):
+	person_id = a.input("person")
+	if not get_person_entity(person_id):
+		a.error(404, "Person not found")
+		return
+	att = slot_attachment(person_id, slot)
+	if not att and fallback_slot:
+		att = slot_attachment(person_id, fallback_slot)
+	if not att:
+		a.error(404, slot + " not set")
+		return
+	path = mochi.attachment.path(att["id"])
+	if not path:
+		a.error(404, slot + " unavailable")
+		return
+	a.write_from_file(path)
+
+def action_avatar(a):
+	serve_image(a, "avatar")
+
+def action_banner(a):
+	serve_image(a, "banner")
+
+def action_favicon(a):
+	serve_image(a, "favicon", "avatar")
+
+def set_image(a, slot):
+	person_id = a.input("person")
+	if not get_person_entity(person_id):
+		return json_error("Person not found", 404)
+	if not is_person_owner(a, person_id):
+		return json_error("Not the owner", 403)
+	object = slot_object(person_id, slot)
+	saved = mochi.attachment.save(object, "file", [], [], [])
+	if not saved or len(saved) == 0:
+		return json_error("No file uploaded")
+	att = saved[0]
+	if att.get("size", 0) > _SLOT_CAPS[slot]:
+		mochi.attachment.delete(att["id"])
+		return json_error(slot + " too large")
+	if not att.get("content_type", "").startswith("image/"):
+		mochi.attachment.delete(att["id"])
+		return json_error(slot + " must be an image")
+	# Validation passed — remove any previous attachment for this slot
+	for old in mochi.attachment.list(object):
+		if old["id"] != att["id"]:
+			mochi.attachment.delete(old["id"])
+	return {"data": {"id": att["id"]}}
+
+def action_avatar_set(a):
+	return set_image(a, "avatar")
+
+def action_banner_set(a):
+	return set_image(a, "banner")
+
+def action_favicon_set(a):
+	return set_image(a, "favicon")
+
+def action_style(a):
+	person_id = a.input("person")
+	if not get_person_entity(person_id):
+		a.error(404, "Person not found")
+		return
+	profile = get_profile_row(person_id)
+	style = {}
+	if profile.get("accent"):
+		style["accent"] = profile["accent"]
+	return {"data": style}
+
+def action_style_set(a):
+	person_id = a.input("person")
+	if not get_person_entity(person_id):
+		return json_error("Person not found", 404)
+	if not is_person_owner(a, person_id):
+		return json_error("Not the owner", 403)
+	accent = a.input("accent", "").strip()
+	if accent and not valid_hex_colour(accent):
+		return json_error("Invalid accent colour")
+	upsert_profile(person_id, accent=accent)
+	return {"data": {}}
+
+def action_profile_set(a):
+	person_id = a.input("person")
+	if not get_person_entity(person_id):
+		return json_error("Person not found", 404)
+	if not is_person_owner(a, person_id):
+		return json_error("Not the owner", 403)
+	profile = a.input("profile", "")
+	if len(profile) > _PROFILE_MAX:
+		return json_error("Profile too long")
+	upsert_profile(person_id, profile=profile)
+	return {"data": {}}
+
+# === Open Graph (rendered profile page) ===
+
+def opengraph_person(params):
+	person_id = params.get("entity", "") or params.get("person", "")
+	og = {"title": "Mochi", "description": "A person on Mochi", "type": "profile"}
+	entity = get_person_entity(person_id)
+	if not entity:
+		return og
+	og["title"] = entity.get("name", "Mochi")
+	profile = get_profile_row(person_id)
+	if profile.get("profile"):
+		# Flatten whitespace so multi-line markdown doesn't break meta attributes
+		excerpt = " ".join(profile["profile"].split()).strip()
+		if len(excerpt) > 200:
+			excerpt = excerpt[:197] + "..."
+		og["description"] = excerpt
+	if slot_attachment(person_id, "avatar"):
+		og["image"] = "-/avatar"
+	return og
+
+# === P2P events (cross-server reads) ===
+
+def event_information(e):
+	person_id = e.header("to")
+	entity = get_person_entity(person_id)
+	if not entity:
+		e.stream.write({"status": "404", "error": "Person not found"})
+		return
+	e.stream.write({"status": "200", "data": build_information(person_id, entity)})
+
+def serve_image_event(e, slot, fallback_slot=""):
+	person_id = e.header("to")
+	if not get_person_entity(person_id):
+		e.stream.write({"status": "404", "error": "Person not found"})
+		return
+	att = slot_attachment(person_id, slot)
+	if not att and fallback_slot:
+		att = slot_attachment(person_id, fallback_slot)
+	if not att:
+		e.stream.write({"status": "404", "error": slot + " not set"})
+		return
+	path = mochi.attachment.path(att["id"])
+	if not path:
+		e.stream.write({"status": "404", "error": slot + " unavailable"})
+		return
+	e.stream.write({"status": "200", "content_type": att.get("content_type", "application/octet-stream"), "size": att.get("size", 0)})
+	e.stream.write_from_file(path)
+
+def event_avatar(e):
+	serve_image_event(e, "avatar")
+
+def event_banner(e):
+	serve_image_event(e, "banner")
+
+def event_favicon(e):
+	serve_image_event(e, "favicon", "avatar")
+
+def event_style(e):
+	person_id = e.header("to")
+	if not get_person_entity(person_id):
+		e.stream.write({"status": "404", "error": "Person not found"})
+		return
+	profile = get_profile_row(person_id)
+	style = {}
+	if profile.get("accent"):
+		style["accent"] = profile["accent"]
+	e.stream.write({"status": "200", "data": style})

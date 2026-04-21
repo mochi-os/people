@@ -1,18 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Friends } from '@/features/friends'
-
-interface SearchParams {
-  action?: string
-}
+import { getEntityFingerprint } from '@mochi/web'
+import { Profile } from '@/features/profile'
+import { PublicProfile } from '@/features/profile/public'
 
 export const Route = createFileRoute('/_authenticated/')({
-  validateSearch: (search: Record<string, unknown>): SearchParams => ({
-    action: typeof search.action === 'string' ? search.action : undefined,
-  }),
-  component: FriendsPage,
+  component: IndexPage,
 })
 
-function FriendsPage() {
-  const { action } = Route.useSearch()
-  return <Friends autoAdd={action === 'add'} />
+function IndexPage() {
+  const fingerprint = getEntityFingerprint()
+  return fingerprint ? <PublicProfile fingerprint={fingerprint} /> : <Profile />
 }

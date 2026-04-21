@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from 'react'
 import { AuthenticatedLayout, ConfirmDialog, getErrorMessage, type SidebarData, type NavItem, toast } from '@mochi/web'
-import { Pencil, Plus, Trash2, User, UserPlus, Users, UsersRound } from 'lucide-react'
+import { CircleUserRound, Pencil, Plus, Trash2, User, UserPlus, Users, UsersRound } from 'lucide-react'
 import { useGroupsQuery, useDeleteGroupMutation } from '@/hooks/useGroups'
 import { SidebarProvider, useSidebarContext } from '@/context/sidebar-context'
 import { GroupDialog } from '@/features/groups/group-dialog'
@@ -96,7 +96,8 @@ function PeopleLayoutInner() {
       {
         title: 'People',
         items: [
-          { title: 'Friends', url: '/', icon: Users },
+          { title: 'Profile', url: '/', icon: CircleUserRound },
+          { title: 'Friends', url: '/friends', icon: Users },
           { title: 'Invitations', url: '/invitations', icon: User },
         ],
       },
@@ -118,7 +119,7 @@ function PeopleLayoutInner() {
         onSuccess: () => {
           toast.success('Group deleted')
           setConfirmDelete(null)
-          void navigate({ to: '/' })
+          void navigate({ to: '/friends' })
         },
         onError: (error) => {
           toast.error(getErrorMessage(error, 'Failed to delete group'))

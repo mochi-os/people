@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2025-2026
 
 {
-	"version": "1.34",
+	"version": "2.0",
 	"label": "app_name",
 	"classes": ["person"],
 	"paths": ["people"],
@@ -49,6 +49,8 @@
 		"-/preferences/set": {"function": "action_preferences_set"},
 
 		":person": {"file": "web/dist/index.html", "public": true, "opengraph": "opengraph_person"},
+		":person/assets": {"files": "web/dist/assets", "public": true},
+		":person/images": {"files": "web/dist/images", "public": true},
 		":person/-/information": {"function": "action_information", "public": true},
 		":person/-/avatar": {"function": "action_avatar", "public": true},
 		":person/-/avatar/set": {"function": "action_avatar_set"},

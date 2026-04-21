@@ -161,7 +161,7 @@ function BannerSection({ person, src }: { person: string; src: string | null }) 
   return (
     <section className="space-y-3">
       <h2 className="text-sm font-medium">Banner</h2>
-      <div className="bg-muted overflow-hidden rounded-[10px]">
+      <div className="bg-muted overflow-hidden rounded-lg">
         {src ? (
           <EntityBanner src={src} />
         ) : (

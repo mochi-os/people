@@ -53,7 +53,7 @@ export function PublicProfile({ fingerprint }: { fingerprint: string }) {
 
   return (
     <div className="mx-auto w-full max-w-3xl" style={styleVars}>
-      {bannerUrl && <EntityBanner src={bannerUrl} className="rounded-[10px]" />}
+      {bannerUrl && <EntityBanner src={bannerUrl} className="rounded-lg" />}
       <div className="flex items-center gap-4 p-4">
         <EntityAvatar src={avatarUrl} name={data.name} size={96} />
         <h1 className="text-2xl font-semibold" style={accent ? { color: accent } : undefined}>

@@ -5,11 +5,29 @@ import {
   EntityAvatar,
   EntityBanner,
   GeneralError,
+  Skeleton,
   requestHelpers,
   usePageTitle,
 } from '@mochi/web'
 import { useQuery } from '@tanstack/react-query'
 import type { PersonInformation } from '@/api/types/person'
+
+function PublicProfileSkeleton() {
+  return (
+    <div className="mx-auto w-full max-w-3xl">
+      <Skeleton className="aspect-3/1 w-full rounded-lg" />
+      <div className="flex items-center gap-4 p-4">
+        <Skeleton className="size-24 shrink-0 rounded-full" />
+        <Skeleton className="h-8 w-48" />
+      </div>
+      <div className="space-y-2 p-4 pt-0">
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-3/4" />
+        <Skeleton className="h-4 w-1/2" />
+      </div>
+    </div>
+  )
+}
 
 function setFavicon(href: string) {
   const existing = document.querySelectorAll('link[rel~="icon"]')
@@ -34,7 +52,7 @@ export function PublicProfile({ fingerprint }: { fingerprint: string }) {
   }, [fingerprint, data?.favicon, data?.avatar])
 
   if (isLoading) {
-    return <p className="text-muted-foreground p-4 text-sm">Loading…</p>
+    return <PublicProfileSkeleton />
   }
 
   if (error || !data) {
@@ -49,14 +67,16 @@ export function PublicProfile({ fingerprint }: { fingerprint: string }) {
   const bannerUrl = data.banner ? `/${fingerprint}/-/banner?v=${data.banner}` : null
   const accent = data.style.accent
 
-  const styleVars = accent ? ({ ['--accent-colour' as string]: accent } as React.CSSProperties) : undefined
+  const styleVars = accent
+    ? ({ '--accent-colour': accent } as React.CSSProperties)
+    : undefined
 
   return (
     <div className="mx-auto w-full max-w-3xl" style={styleVars}>
       {bannerUrl && <EntityBanner src={bannerUrl} className="rounded-lg" />}
       <div className="flex items-center gap-4 p-4">
         <EntityAvatar src={avatarUrl} name={data.name} size={96} />
-        <h1 className="text-2xl font-semibold" style={accent ? { color: accent } : undefined}>
+        <h1 className="text-2xl font-semibold" style={{ color: 'var(--accent-colour, inherit)' }}>
           {data.name}
         </h1>
       </div>

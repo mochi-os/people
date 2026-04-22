@@ -22,6 +22,7 @@ import {
   useSetProfileMutation,
   useUploadImageMutation,
 } from '@/hooks/usePerson'
+import type { PersonInformation } from '@/api/types/person'
 
 const PROFILE_MAX = 100 * 100
 const ACCENT_PATTERN = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i
@@ -85,55 +86,50 @@ export function Profile() {
 function ProfileSkeleton() {
   return (
     <div className="bg-card border-border overflow-hidden rounded-xl border shadow-sm">
-      {/* Banner */}
-      <Skeleton className="aspect-[3/1] w-full rounded-none" />
-      {/* Avatar row */}
-      <div className="px-5 pt-3 pb-5 space-y-5">
-        <div className="flex items-end gap-3 -mt-10">
-          <Skeleton className="size-20 rounded-full shrink-0 ring-4 ring-card" />
-          <Skeleton className="mb-1 h-8 w-28" />
+      {/* Banner + avatar — mirrors ProfileEditor structure */}
+      <div className="relative" style={{ paddingBottom: 40 }}>
+        <Skeleton className="aspect-3/1 w-full rounded-none" />
+        <div className="absolute bottom-0 left-5">
+          <Skeleton className="size-20 rounded-full ring-4 ring-card" />
         </div>
+      </div>
+      {/* Content */}
+      <div className="p-5 space-y-5">
+        {/* Personal Info heading */}
+        <Skeleton className="h-4 w-28" />
         {/* Bio */}
         <div className="space-y-2">
-          <Skeleton className="h-4 w-32" />
+          <Skeleton className="h-4 w-44" />
           <Skeleton className="h-28 w-full" />
-          <Skeleton className="h-3 w-24" />
+          <Skeleton className="h-1 w-full rounded-full" />
         </div>
-        {/* Bottom row */}
-        <div className="grid grid-cols-2 gap-4">
+        {/* Customization + Accent grid */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="space-y-2">
-            <Skeleton className="h-4 w-24" />
-            <div className="flex gap-2">
-              <Skeleton className="size-8 rounded-full shrink-0" />
+            <Skeleton className="h-4 w-28" />
+            <div className="flex items-center gap-2">
+              <Skeleton className="size-8 shrink-0 rounded-full" />
               <Skeleton className="h-8 w-28" />
             </div>
           </div>
           <div className="space-y-2">
-            <Skeleton className="h-4 w-20" />
-            <div className="flex gap-2">
-              <Skeleton className="h-8 w-24" />
-              <Skeleton className="size-8 rounded-md shrink-0" />
-              <Skeleton className="h-8 w-24" />
+            <Skeleton className="h-4 w-24" />
+            <div className="flex items-center gap-2">
+              <Skeleton className="h-9 w-28" />
+              <Skeleton className="size-8 shrink-0 rounded-md" />
             </div>
           </div>
+        </div>
+        {/* Save button */}
+        <div className="flex justify-end">
+          <Skeleton className="h-9 w-16" />
         </div>
       </div>
     </div>
   )
 }
 
-type Info = {
-  id: string
-  fingerprint: string
-  name: string
-  profile: string
-  style: { accent?: string }
-  avatar: string
-  banner: string
-  favicon: string
-}
-
-function ProfileEditor({ person, info }: { person: string; info: Info }) {
+function ProfileEditor({ person, info }: { person: string; info: PersonInformation }) {
   const avatarUrl = info.avatar ? `/${info.fingerprint}/-/avatar?v=${info.avatar}` : null
   const bannerUrl = info.banner ? `/${info.fingerprint}/-/banner?v=${info.banner}` : null
   const faviconUrl = info.favicon ? `/${info.fingerprint}/-/favicon?v=${info.favicon}` : null
@@ -155,16 +151,24 @@ function ProfileEditor({ person, info }: { person: string; info: Info }) {
   const accentValid = accentTrimmed === '' || ACCENT_PATTERN.test(accentTrimmed)
   const accentDirty = accentTrimmed !== (info.style.accent ?? '')
 
-  const handleSaveProfile = () => {
-    profileMutation.mutate(profile, {
-      onSuccess: () => toast.success('Profile saved'),
-      onError: (err) => toast.error(getErrorMessage(err, 'Failed to save profile')),
-    })
-    if (accentDirty && accentValid) {
-      accentMutation.mutate(accentTrimmed, {
-        onSuccess: () => toast.success('Accent saved'),
-        onError: (err) => toast.error(getErrorMessage(err, 'Failed to save accent')),
-      })
+  const isSaving = profileMutation.isPending || accentMutation.isPending
+  const canSave =
+    (profileDirty || accentDirty) &&
+    !tooLong &&
+    (!accentDirty || accentValid) &&
+    !isSaving
+
+  const handleSave = async () => {
+    try {
+      await Promise.all([
+        profileDirty ? profileMutation.mutateAsync(profile) : Promise.resolve(),
+        accentDirty && accentValid
+          ? accentMutation.mutateAsync(accentTrimmed)
+          : Promise.resolve(),
+      ])
+      toast.success('Saved')
+    } catch (err) {
+      toast.error(getErrorMessage(err, 'Failed to save'))
     }
   }
 
@@ -302,48 +306,18 @@ function ProfileEditor({ person, info }: { person: string; info: Info }) {
                     ? { backgroundColor: accentTrimmed }
                     : undefined
                 }
-              /><Button
-                size="sm"
-                className="w-full sm:w-auto hidden md:block"
-                disabled={!accentDirty || !accentValid || accentMutation.isPending}
-                onClick={() =>
-                  accentMutation.mutate(accentTrimmed, {
-                    onSuccess: () => toast.success('Accent saved'),
-                    onError: (err) =>
-                      toast.error(getErrorMessage(err, 'Failed to save accent')),
-                  })
-                }
-              >
-                {accentMutation.isPending ? 'Saving…' : 'Save Accent'}
-              </Button>
+              />
             </div>
-            <Button
-              size="sm"
-              className="w-full sm:w-auto md:hidden"
-              disabled={!accentDirty || !accentValid || accentMutation.isPending}
-              onClick={() =>
-                accentMutation.mutate(accentTrimmed, {
-                  onSuccess: () => toast.success('Accent saved'),
-                  onError: (err) =>
-                    toast.error(getErrorMessage(err, 'Failed to save accent')),
-                })
-              }
-            >
-              {accentMutation.isPending ? 'Saving…' : 'Save Accent'}
-            </Button>
             {!accentValid && (
               <p className="text-destructive text-xs">Use #RGB or #RRGGBB format.</p>
             )}
           </div>
         </div>
 
-        {/* ── Save Profile ──────────────────────────────────── */}
+        {/* ── Save ──────────────────────────────────────────── */}
         <div className="flex justify-end">
-          <Button
-            disabled={!profileDirty || tooLong || profileMutation.isPending}
-            onClick={handleSaveProfile}
-          >
-            {profileMutation.isPending ? 'Saving…' : 'Save Profile'}
+          <Button disabled={!canSave} onClick={() => void handleSave()}>
+            {isSaving ? 'Saving…' : 'Save'}
           </Button>
         </div>
       </div>
@@ -373,8 +347,6 @@ function SlotUploader({
       return
     }
     mutation.mutate(file, {
-      onSuccess: () =>
-        toast.success(`${slot.charAt(0).toUpperCase() + slot.slice(1)} updated`),
       onError: (err) => toast.error(getErrorMessage(err, `Failed to upload ${slot}`)),
     })
   }

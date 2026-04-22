@@ -1,10 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import {
   Button,
+  ColourPicker,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
   EntityAvatar,
   EntityBanner,
   GeneralError,
-  Input,
   Label,
   Main,
   PageHeader,
@@ -14,7 +18,8 @@ import {
   toast,
   usePageTitle,
 } from '@mochi/web'
-import { Image as ImageIcon, Upload } from 'lucide-react'
+import { Eye, Image as ImageIcon, Save, Upload } from 'lucide-react'
+import { ProfileView } from './profile-view'
 import {
   useMyIdentity,
   usePersonInformationQuery,
@@ -143,6 +148,8 @@ function ProfileEditor({ person, info }: { person: string; info: Info }) {
 
   const [accent, setAccent] = useState(info.style.accent ?? '')
   useEffect(() => setAccent(info.style.accent ?? ''), [info.style.accent])
+
+  const [previewOpen, setPreviewOpen] = useState(false)
 
   const profileMutation = useSetProfileMutation(person)
   const accentMutation = useSetAccentMutation(person)
@@ -282,29 +289,14 @@ function ProfileEditor({ person, info }: { person: string; info: Info }) {
           {/* Accent colour */}
           <div className="space-y-2">
             <p className="text-sm font-medium">Accent Color</p>
-            <div className="flex items-center gap-2">
-              <Label htmlFor="accent-colour" className="sr-only">
-                Accent colour
-              </Label>
-              <Input
-                id="accent-colour"
-                value={accent}
-                placeholder="#3b82f6"
-                onChange={(e) => setAccent(e.target.value)}
-                spellCheck={false}
-                className={`w-28 font-mono text-sm ${!accentValid ? 'border-destructive focus-visible:ring-destructive/30' : ''}`}
-              />
-              <div
-                aria-hidden
-                className="border-border size-8 shrink-0 rounded-md border transition-colors duration-150"
-                style={
-                  accentValid && accentTrimmed !== ''
-                    ? { backgroundColor: accentTrimmed }
-                    : undefined
-                }
-              /><Button
+            <ColourPicker
+              value={accentValid ? accentTrimmed : ''}
+              onChange={setAccent}
+              onClear={() => setAccent('')}
+            />
+            <div className="flex justify-end mt-2">
+              <Button
                 size="sm"
-                className="w-full sm:w-auto hidden md:block"
                 disabled={!accentDirty || !accentValid || accentMutation.isPending}
                 onClick={() =>
                   accentMutation.mutate(accentTrimmed, {
@@ -314,39 +306,43 @@ function ProfileEditor({ person, info }: { person: string; info: Info }) {
                   })
                 }
               >
-                {accentMutation.isPending ? 'Saving…' : 'Save Accent'}
+                <Save className="size-3.5" />
+                {accentMutation.isPending ? 'Saving…' : 'Save accent'}
               </Button>
             </div>
-            <Button
-              size="sm"
-              className="w-full sm:w-auto md:hidden"
-              disabled={!accentDirty || !accentValid || accentMutation.isPending}
-              onClick={() =>
-                accentMutation.mutate(accentTrimmed, {
-                  onSuccess: () => toast.success('Accent saved'),
-                  onError: (err) =>
-                    toast.error(getErrorMessage(err, 'Failed to save accent')),
-                })
-              }
-            >
-              {accentMutation.isPending ? 'Saving…' : 'Save Accent'}
-            </Button>
-            {!accentValid && (
-              <p className="text-destructive text-xs">Use #RGB or #RRGGBB format.</p>
-            )}
           </div>
         </div>
 
         {/* ── Save Profile ──────────────────────────────────── */}
-        <div className="flex justify-end">
+        <div className="flex justify-end gap-2">
+          <Button variant="outline" onClick={() => setPreviewOpen(true)}>
+            <Eye className="size-3.5" />
+            Preview
+          </Button>
           <Button
             disabled={!profileDirty || tooLong || profileMutation.isPending}
             onClick={handleSaveProfile}
           >
-            {profileMutation.isPending ? 'Saving…' : 'Save Profile'}
+            <Save className="size-3.5" />
+            {profileMutation.isPending ? 'Saving…' : 'Save profile'}
           </Button>
         </div>
       </div>
+
+      <Dialog open={previewOpen} onOpenChange={setPreviewOpen}>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Profile preview</DialogTitle>
+          </DialogHeader>
+          <ProfileView
+            name={info.name}
+            profile={profile}
+            accent={accentValid && accentTrimmed !== '' ? accentTrimmed : undefined}
+            avatarUrl={avatarUrl}
+            bannerUrl={bannerUrl}
+          />
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

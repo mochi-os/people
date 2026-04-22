@@ -1,15 +1,12 @@
 import { useEffect } from 'react'
-import Markdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
 import {
-  EntityAvatar,
-  EntityBanner,
   GeneralError,
   requestHelpers,
   usePageTitle,
 } from '@mochi/web'
 import { useQuery } from '@tanstack/react-query'
 import type { PersonInformation } from '@/api/types/person'
+import { ProfileView } from './profile-view'
 
 function setFavicon(href: string) {
   const existing = document.querySelectorAll('link[rel~="icon"]')
@@ -47,24 +44,14 @@ export function PublicProfile({ fingerprint }: { fingerprint: string }) {
 
   const avatarUrl = data.avatar ? `/${fingerprint}/-/avatar?v=${data.avatar}` : null
   const bannerUrl = data.banner ? `/${fingerprint}/-/banner?v=${data.banner}` : null
-  const accent = data.style.accent
-
-  const styleVars = accent ? ({ ['--accent-colour' as string]: accent } as React.CSSProperties) : undefined
 
   return (
-    <div className="mx-auto w-full max-w-3xl" style={styleVars}>
-      {bannerUrl && <EntityBanner src={bannerUrl} className="rounded-lg" />}
-      <div className="flex items-center gap-4 p-4">
-        <EntityAvatar src={avatarUrl} name={data.name} size={96} />
-        <h1 className="text-2xl font-semibold" style={accent ? { color: accent } : undefined}>
-          {data.name}
-        </h1>
-      </div>
-      {data.profile && (
-        <div className="markdown-body p-4 text-sm leading-relaxed">
-          <Markdown remarkPlugins={[remarkGfm]}>{data.profile}</Markdown>
-        </div>
-      )}
-    </div>
+    <ProfileView
+      name={data.name}
+      profile={data.profile}
+      accent={data.style.accent}
+      avatarUrl={avatarUrl}
+      bannerUrl={bannerUrl}
+    />
   )
 }

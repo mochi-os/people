@@ -90,7 +90,7 @@ export function Profile() {
 
 function ProfileSkeleton() {
   return (
-    <div className="bg-card border-border overflow-hidden rounded-xl border shadow-sm">
+    <div className="bg-card border-border overflow-hidden rounded-lg border shadow-sm">
       {/* Banner */}
       <Skeleton className="aspect-[3/1] w-full rounded-none" />
       {/* Avatar row */}
@@ -106,7 +106,7 @@ function ProfileSkeleton() {
           <Skeleton className="h-3 w-24" />
         </div>
         {/* Bottom row */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="space-y-2">
             <Skeleton className="h-4 w-24" />
             <div className="flex gap-2">
@@ -116,11 +116,7 @@ function ProfileSkeleton() {
           </div>
           <div className="space-y-2">
             <Skeleton className="h-4 w-20" />
-            <div className="flex gap-2">
-              <Skeleton className="h-8 w-24" />
-              <Skeleton className="size-8 rounded-md shrink-0" />
-              <Skeleton className="h-8 w-24" />
-            </div>
+            <Skeleton className="h-56 w-full" />
           </div>
         </div>
       </div>
@@ -166,7 +162,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
   }
 
   return (
-    <div className="bg-card border-border overflow-hidden rounded-xl border shadow-sm">
+    <div className="bg-card border-border overflow-hidden rounded-lg border shadow-sm">
       <div className="relative" style={{ paddingBottom: 40 }}>
         <div className="relative bg-muted overflow-hidden">
           {bannerUrl ? (
@@ -220,17 +216,14 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
       {/* ── Main content ─────────────────────────────────────── */}
       <div className="p-5 space-y-5">
 
-        {/* Section heading */}
-        <h2 className="text-base font-semibold leading-none">Personal Info</h2>
-
         {/* ── Bio ───────────────────────────────────────────── */}
         <div className="space-y-2">
-          <Label htmlFor="profile-markdown">Bio (Markdown-supported)</Label>
+          <Label htmlFor="profile-markdown">Profile</Label>
           <Textarea
             id="profile-markdown"
             rows={5}
             value={profile}
-            placeholder="Tell us a little about yourself…"
+            placeholder="Markdown supported"
             onChange={(e) => setProfile(e.target.value)}
             className={tooLong ? 'border-destructive focus-visible:ring-destructive/30' : ''}
           />
@@ -254,7 +247,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {/* Favicon */}
           <div className="space-y-2">
-            <p className="text-sm font-medium">Customization</p>
+            <p className="text-sm font-medium">Browser icon</p>
             <div className="flex flex-wrap items-center gap-2">
               <div className="border-border flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full border bg-muted">
                 {faviconUrl ? (
@@ -269,7 +262,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
                 {(open, pending) => (
                   <Button variant="outline" size="sm" onClick={open} disabled={pending}>
                     <Upload className="size-3.5" />
-                    {pending ? 'Uploading…' : 'Upload favicon'}
+                    {pending ? 'Uploading…' : 'Upload'}
                   </Button>
                 )}
               </SlotUploader>
@@ -278,7 +271,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
 
           {/* Accent colour */}
           <div className="space-y-2">
-            <p className="text-sm font-medium">Accent Color</p>
+            <p className="text-sm font-medium">Accent</p>
             <ColourPicker
               value={accentValid ? accentTrimmed : ''}
               onChange={setAccent}

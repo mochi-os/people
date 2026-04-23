@@ -153,12 +153,13 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
       onSuccess: () => toast.success('Profile saved'),
       onError: (err) => toast.error(getErrorMessage(err, 'Failed to save profile')),
     })
-    if (accentDirty && accentValid) {
-      accentMutation.mutate(accentTrimmed, {
-        onSuccess: () => toast.success('Accent saved'),
-        onError: (err) => toast.error(getErrorMessage(err, 'Failed to save accent')),
-      })
-    }
+  }
+
+  const handleSaveAccent = () => {
+    accentMutation.mutate(accentTrimmed, {
+      onSuccess: () => toast.success('Accent saved'),
+      onError: (err) => toast.error(getErrorMessage(err, 'Failed to save accent')),
+    })
   }
 
   return (
@@ -241,17 +242,50 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
             >
               {profile.length.toLocaleString()} / {PROFILE_MAX.toLocaleString()}
             </p>
+            <Button
+              size="sm"
+              className="ml-2"
+              disabled={!profileDirty || tooLong || profileMutation.isPending}
+              onClick={handleSaveProfile}
+            >
+              <Save className="size-3.5" />
+              {profileMutation.isPending ? 'Saving…' : 'Save'}
+            </Button>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {/* Accent colour */}
+          <div className="space-y-2 sm:col-span-2">
+            <p className="text-sm font-medium">Accent</p>
+            <ColourPicker
+              value={accentValid ? accentTrimmed : ''}
+              onChange={setAccent}
+              onClear={() => setAccent('')}
+              actions={
+                <Button
+                  size="sm"
+                  disabled={!accentDirty || !accentValid || accentMutation.isPending}
+                  onClick={handleSaveAccent}
+                >
+                  <Save className="size-3.5" />
+                  {accentMutation.isPending ? 'Saving…' : 'Save'}
+                </Button>
+              }
+            />
+          </div>
+
           {/* Favicon */}
           <div className="space-y-2">
             <p className="text-sm font-medium">Browser icon</p>
-            <div className="flex flex-wrap items-center gap-2">
-              <div className="border-border flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full border bg-muted">
+            <div className="flex flex-col items-start gap-2">
+              <div className="border-border flex size-8 shrink-0 items-center justify-center overflow-hidden border bg-muted">
                 {faviconUrl ? (
-                  <EntityAvatar src={faviconUrl} size={32} />
+                  <img
+                    src={faviconUrl}
+                    alt="Favicon"
+                    className="size-full object-contain"
+                  />
                 ) : (
                   <span className="text-muted-foreground text-xs font-medium">
                     {info.name?.[0]?.toUpperCase() ?? '?'}
@@ -268,46 +302,12 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
               </SlotUploader>
             </div>
           </div>
-
-          {/* Accent colour */}
-          <div className="space-y-2">
-            <p className="text-sm font-medium">Accent</p>
-            <ColourPicker
-              value={accentValid ? accentTrimmed : ''}
-              onChange={setAccent}
-              onClear={() => setAccent('')}
-            />
-            <div className="flex justify-end mt-2">
-              <Button
-                size="sm"
-                disabled={!accentDirty || !accentValid || accentMutation.isPending}
-                onClick={() =>
-                  accentMutation.mutate(accentTrimmed, {
-                    onSuccess: () => toast.success('Accent saved'),
-                    onError: (err) =>
-                      toast.error(getErrorMessage(err, 'Failed to save accent')),
-                  })
-                }
-              >
-                <Save className="size-3.5" />
-                {accentMutation.isPending ? 'Saving…' : 'Save accent'}
-              </Button>
-            </div>
-          </div>
         </div>
 
-        {/* ── Save Profile ──────────────────────────────────── */}
-        <div className="flex justify-end gap-2">
+        <div className="flex justify-end">
           <Button variant="outline" onClick={() => setPreviewOpen(true)}>
             <Eye className="size-3.5" />
             Preview
-          </Button>
-          <Button
-            disabled={!profileDirty || tooLong || profileMutation.isPending}
-            onClick={handleSaveProfile}
-          >
-            <Save className="size-3.5" />
-            {profileMutation.isPending ? 'Saving…' : 'Save profile'}
           </Button>
         </div>
       </div>

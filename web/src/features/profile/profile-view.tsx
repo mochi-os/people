@@ -19,7 +19,7 @@ export function ProfileView({ name, profile, accent, avatarUrl, bannerUrl }: Pro
     <div className="mx-auto w-full max-w-3xl" style={styleVars}>
       {bannerUrl && <EntityBanner src={bannerUrl} className="rounded-lg" />}
       <div className="flex items-center gap-4 p-4">
-        <EntityAvatar src={avatarUrl} name={name} size={96} />
+        <EntityAvatar src={avatarUrl} name={name} size={96} accent={accent} />
         <h1 className="text-2xl font-semibold" style={accent ? { color: accent } : undefined}>
           {name}
         </h1>

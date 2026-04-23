@@ -27,6 +27,7 @@ import {
   useSetProfileMutation,
   useUploadImageMutation,
 } from '@/hooks/usePerson'
+import type { PersonInformation } from '@/api/types/person'
 
 const PROFILE_MAX = 100 * 100
 const ACCENT_PATTERN = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i
@@ -127,18 +128,7 @@ function ProfileSkeleton() {
   )
 }
 
-type Info = {
-  id: string
-  fingerprint: string
-  name: string
-  profile: string
-  style: { accent?: string }
-  avatar: string
-  banner: string
-  favicon: string
-}
-
-function ProfileEditor({ person, info }: { person: string; info: Info }) {
+function ProfileEditor({ person, info }: { person: string; info: PersonInformation }) {
   const avatarUrl = info.avatar ? `/${info.fingerprint}/-/avatar?v=${info.avatar}` : null
   const bannerUrl = info.banner ? `/${info.fingerprint}/-/banner?v=${info.banner}` : null
   const faviconUrl = info.favicon ? `/${info.fingerprint}/-/favicon?v=${info.favicon}` : null

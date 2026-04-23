@@ -1,12 +1,30 @@
 import { useEffect } from 'react'
 import {
   GeneralError,
+  Skeleton,
   requestHelpers,
   usePageTitle,
 } from '@mochi/web'
 import { useQuery } from '@tanstack/react-query'
 import type { PersonInformation } from '@/api/types/person'
 import { ProfileView } from './profile-view'
+
+function PublicProfileSkeleton() {
+  return (
+    <div className="mx-auto w-full max-w-3xl">
+      <Skeleton className="aspect-3/1 w-full rounded-lg" />
+      <div className="flex items-center gap-4 p-4">
+        <Skeleton className="size-24 shrink-0 rounded-full" />
+        <Skeleton className="h-8 w-48" />
+      </div>
+      <div className="space-y-2 p-4 pt-0">
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-3/4" />
+        <Skeleton className="h-4 w-1/2" />
+      </div>
+    </div>
+  )
+}
 
 function setFavicon(href: string) {
   const existing = document.querySelectorAll('link[rel~="icon"]')
@@ -31,7 +49,7 @@ export function PublicProfile({ fingerprint }: { fingerprint: string }) {
   }, [fingerprint, data?.favicon, data?.avatar])
 
   if (isLoading) {
-    return <p className="text-muted-foreground p-4 text-sm">Loading…</p>
+    return <PublicProfileSkeleton />
   }
 
   if (error || !data) {

@@ -717,6 +717,7 @@ def serve_image(a, slot, fallback_slot=""):
 	if not path:
 		a.error(404, slot + " unavailable")
 		return
+	a.header("Cache-Control", "private, max-age=300")
 	a.write_from_file(path)
 
 def action_avatar(a):

@@ -12,7 +12,7 @@ interface ProfileViewProps {
 
 export function ProfileView({ name, profile, accent, avatarUrl, bannerUrl }: ProfileViewProps) {
   const styleVars = accent
-    ? ({ ['--accent-colour' as string]: accent } as React.CSSProperties)
+    ? ({ '--accent-colour': accent } as React.CSSProperties)
     : undefined
 
   return (
@@ -20,7 +20,7 @@ export function ProfileView({ name, profile, accent, avatarUrl, bannerUrl }: Pro
       {bannerUrl && <EntityBanner src={bannerUrl} className="rounded-lg" />}
       <div className="flex items-center gap-4 p-4">
         <EntityAvatar src={avatarUrl} name={name} size={96} accent={accent} />
-        <h1 className="text-2xl font-semibold" style={accent ? { color: accent } : undefined}>
+        <h1 className="text-2xl font-semibold" style={{ color: 'var(--accent-colour, inherit)' }}>
           {name}
         </h1>
       </div>

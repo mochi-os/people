@@ -92,13 +92,13 @@ function ProfileSkeleton() {
   return (
     <div className="bg-card border-border overflow-hidden rounded-lg border shadow-sm">
       {/* Banner */}
-      <Skeleton className="aspect-[3/1] w-full rounded-none" />
-      {/* Avatar row */}
-      <div className="px-5 pt-3 pb-5 space-y-5">
-        <div className="flex items-end gap-3 -mt-10">
-          <Skeleton className="size-20 rounded-full shrink-0 ring-4 ring-card" />
-          <Skeleton className="mb-1 h-8 w-28" />
-        </div>
+      <Skeleton className="aspect-3/1 w-full rounded-none" />
+      {/* Avatar + name row */}
+      <div className="flex items-end gap-3 px-5 -mt-10 pb-4">
+        <Skeleton className="size-20 shrink-0 rounded-full ring-4 ring-card" />
+        <Skeleton className="mb-1 h-5 w-36" />
+      </div>
+      <div className="px-5 pb-5 space-y-5">
         {/* Bio */}
         <div className="space-y-2">
           <Skeleton className="h-4 w-32" />
@@ -164,61 +164,56 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
 
   return (
     <div className="bg-card border-border overflow-hidden rounded-lg border shadow-sm">
-      <div className="relative" style={{ paddingBottom: 40 }}>
-        <div className="relative bg-muted overflow-hidden">
-          {bannerUrl ? (
-            <EntityBanner src={bannerUrl} aspectRatio="3 / 1" />
-          ) : (
-            <div className="flex aspect-[5/2] min-h-[100px] flex-col items-center justify-center gap-2 text-muted-foreground sm:aspect-[3/1]">
-              <ImageIcon className="size-8 opacity-30" />
-              <span className="text-xs opacity-50">No banner set</span>
-            </div>
-          )}
-          <div className="absolute bottom-3 right-3">
-            <SlotUploader person={person} slot="banner">
-              {(open, pending) => (
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  onClick={open}
-                  disabled={pending}
-                  className="shadow-md"
-                >
-                  <Upload className="size-3.5" />
-                  {pending ? 'Uploading…' : 'Change Banner'}
-                </Button>
-              )}
-            </SlotUploader>
+      {/* Banner */}
+      <div className="relative bg-muted overflow-hidden">
+        {bannerUrl ? (
+          <EntityBanner src={bannerUrl} aspectRatio="3 / 1" />
+        ) : (
+          <div className="flex aspect-5/2 min-h-25 flex-col items-center justify-center gap-2 text-muted-foreground sm:aspect-3/1">
+            <ImageIcon className="size-8 opacity-30" />
+            <span className="text-xs opacity-50">No banner set</span>
           </div>
-        </div>
-
-        <div className="absolute bottom-0 left-5">
-          <div className="relative" style={{ width: 80, height: 80 }}>
-            <div className="rounded-full ring-4 ring-card overflow-hidden size-full">
-              <EntityAvatar src={avatarUrl} name={info.name} size={80} />
-            </div>
-            <SlotUploader person={person} slot="avatar">
-              {(open, pending) => (
-                <button
-                  type="button"
-                  onClick={open}
-                  disabled={pending}
-                  aria-label="Upload avatar"
-                  className="absolute bottom-0 right-0 flex size-6 items-center justify-center rounded-full border border-border bg-muted text-muted-foreground shadow-sm transition-colors hover:bg-interactive-hover hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
-                >
-                  <Upload className="size-3" />
-                </button>
-              )}
-            </SlotUploader>
-          </div>
+        )}
+        <div className="absolute bottom-3 right-3">
+          <SlotUploader person={person} slot="banner">
+            {(open, pending) => (
+              <Button variant="secondary" size="sm" onClick={open} disabled={pending} className="shadow-md">
+                <Upload className="size-3.5" />
+                {pending ? 'Uploading…' : 'Change Banner'}
+              </Button>
+            )}
+          </SlotUploader>
         </div>
       </div>
 
+      {/* Avatar + name row — negative margin pulls row up to overlap banner */}
+      <div className="flex items-end gap-3 px-5 -mt-10 pb-4">
+        <div className="relative shrink-0" style={{ width: 80, height: 80 }}>
+          <div className="rounded-full ring-4 ring-card overflow-hidden size-full">
+            <EntityAvatar src={avatarUrl} name={info.name} size={80} />
+          </div>
+          <SlotUploader person={person} slot="avatar">
+            {(open, pending) => (
+              <button
+                type="button"
+                onClick={open}
+                disabled={pending}
+                aria-label="Upload avatar"
+                className="absolute bottom-0 right-0 flex size-6 items-center justify-center rounded-full border border-border bg-muted text-muted-foreground shadow-sm transition-colors hover:bg-interactive-hover hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+              >
+                <Upload className="size-3" />
+              </button>
+            )}
+          </SlotUploader>
+        </div>
+        <p className="min-w-0 truncate pb-1 text-lg font-bold leading-tight">{info.name}</p>
+      </div>
+
       {/* ── Main content ─────────────────────────────────────── */}
-      <div className="p-5 space-y-5">
+      <div className="px-5 pb-5 space-y-5">
 
         {/* ── Bio ───────────────────────────────────────────── */}
-        <div className="space-y-2">
+        <div className="space-y-2 mt-2">
           <Label htmlFor="profile-markdown">Profile</Label>
           <Textarea
             id="profile-markdown"

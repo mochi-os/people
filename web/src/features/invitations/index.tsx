@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
   EmptyState,
@@ -24,7 +25,8 @@ import { AddFriendDialog } from '@/features/friends/components/add-friend-dialog
 import { InviteSettingsDialog } from './invite-settings-dialog'
 
 export function Invitations() {
-  usePageTitle('Invitations')
+  const { t } = useLingui()
+  usePageTitle(t`Invitations`)
   const appPath = getAppPath()
   const [search, setSearch] = useState('')
   const [addFriendDialogOpen, setAddFriendDialogOpen] = useState(false)
@@ -53,12 +55,12 @@ export function Invitations() {
       { friendId },
       {
         onSuccess: () => {
-          toast.success('Invitation accepted', {
+          toast.success(t`Invitation accepted`, {
             description: `You are now friends with ${friendName}.`,
           })
         },
         onError: (error) => {
-          toast.error(getErrorMessage(error, 'Failed to accept invitation'))
+          toast.error(getErrorMessage(error, t`Failed to accept invitation`))
         },
       }
     )
@@ -69,12 +71,12 @@ export function Invitations() {
       { friendId },
       {
         onSuccess: () => {
-          toast.success('Invitation declined', {
+          toast.success(t`Invitation declined`, {
             description: `Declined invitation from ${friendName}.`,
           })
         },
         onError: (error) => {
-          toast.error(getErrorMessage(error, 'Failed to decline invitation'))
+          toast.error(getErrorMessage(error, t`Failed to decline invitation`))
         },
       }
     )
@@ -85,12 +87,12 @@ export function Invitations() {
       { friendId },
       {
         onSuccess: () => {
-          toast.success('Invitation cancelled', {
+          toast.success(t`Invitation cancelled`, {
             description: `Cancelled invitation to ${friendName}.`,
           })
         },
         onError: (error) => {
-          toast.error(getErrorMessage(error, 'Failed to cancel invitation'))
+          toast.error(getErrorMessage(error, t`Failed to cancel invitation`))
         },
       }
     )
@@ -103,7 +105,7 @@ export function Invitations() {
   const searchInput = (
     <Input
       type='text'
-      placeholder='Search...'
+      placeholder={t`Search...`}
       value={search}
       onChange={(e) => setSearch(e.target.value)}
       className='w-48'
@@ -113,17 +115,17 @@ export function Invitations() {
   return (
     <>
       <PageHeader
-        title='Invitations'
+        title={t`Invitations`}
         icon={<UserPlus className='size-4 md:size-5' />}
         actions={
           <>
             {searchInput}
-            <Button variant='outline' size='icon' onClick={() => setSettingsOpen(true)} aria-label='Invite settings'>
+            <Button variant='outline' size='icon' onClick={() => setSettingsOpen(true)} aria-label={t`Invite settings`}>
               <Settings className='h-4 w-4' />
             </Button>
             <Button onClick={() => setAddFriendDialogOpen(true)}>
               <UserPlus className='h-4 w-4' />
-              Add friend
+              <Trans>Add friend</Trans>
             </Button>
           </>
         }
@@ -168,7 +170,7 @@ export function Invitations() {
         ) : error && !friendsData ? null : !hasAny ? (
           <EmptyState
             icon={UserPlus}
-            title='No pending invitations'
+            title={t`No pending invitations`}
             description={
               search
                 ? 'Try adjusting your search'
@@ -213,7 +215,7 @@ export function Invitations() {
                           }
                         >
                           <Check className='h-3.5 w-3.5' />
-                          Accept
+                          <Trans>Accept</Trans>
                         </Button>
                         <Button
                           variant='outline'
@@ -224,7 +226,7 @@ export function Invitations() {
                           }
                         >
                           <UserX className='h-3.5 w-3.5' />
-                          Decline
+                          <Trans>Decline</Trans>
                         </Button>
                       </div>
                     </div>
@@ -258,7 +260,7 @@ export function Invitations() {
                             {invite.name}
                           </span>
                           <span className='text-muted-foreground text-xs'>
-                            Pending
+                            <Trans>Pending</Trans>
                           </span>
                         </div>
                       </div>
@@ -269,7 +271,7 @@ export function Invitations() {
                         onClick={() => handleCancelSent(invite.id, invite.name)}
                       >
                         <X className='h-3.5 w-3.5' />
-                        Cancel
+                        <Trans>Cancel</Trans>
                       </Button>
                     </div>
                   ))}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { Plus } from 'lucide-react'
 import { toast, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, Input, Label, Textarea, getErrorMessage, handlePermissionError } from '@mochi/web'
 import {
@@ -14,6 +15,7 @@ interface GroupDialogProps {
 }
 
 export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
+  const { t } = useLingui()
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
 
@@ -37,7 +39,7 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
     e.preventDefault()
 
     if (!name.trim()) {
-      toast.error('Name is required')
+      toast.error(t`Name is required`)
       return
     }
 
@@ -54,7 +56,7 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
         { id: group.id, name: name.trim(), description: description.trim() },
         {
           onSuccess: () => {
-            toast.success('Group updated')
+            toast.success(t`Group updated`)
             onOpenChange(false)
           },
           onError: (error) => handleError(error, 'Failed to update group'),
@@ -65,7 +67,7 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
         { name: name.trim(), description: description.trim() },
         {
           onSuccess: () => {
-            toast.success('Group created')
+            toast.success(t`Group created`)
             onOpenChange(false)
           },
           onError: (error) => handleError(error, 'Failed to create group'),
@@ -88,22 +90,22 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
           </ResponsiveDialogHeader>
           <div className='grid gap-4 py-4'>
             <div className='grid gap-2'>
-              <Label htmlFor='name'>Name</Label>
+              <Label htmlFor='name'><Trans>Name</Trans></Label>
               <Input
                 id='name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder='Group name'
+                placeholder={t`Group name`}
                 disabled={isPending}
               />
             </div>
             <div className='grid gap-2'>
-              <Label htmlFor='description'>Description</Label>
+              <Label htmlFor='description'><Trans>Description</Trans></Label>
               <Textarea
                 id='description'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder='Optional description'
+                placeholder={t`Optional description`}
                 disabled={isPending}
                 rows={3}
               />
@@ -111,10 +113,10 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
           </div>
           <ResponsiveDialogFooter>
             <Button type='button' variant='outline' onClick={() => onOpenChange(false)} disabled={isPending}>
-              Cancel
+              <Trans>Cancel</Trans>
             </Button>
             <Button type='submit' disabled={isPending}>
-              {isPending ? 'Saving...' : isEditing ? 'Save' : <><Plus className="mr-2 h-4 w-4" />Create group</>}
+              {isPending ? 'Saving...' : isEditing ? 'Save' : <><Plus className="mr-2 h-4 w-4" /><Trans>Create group</Trans></>}
             </Button>
           </ResponsiveDialogFooter>
         </form>

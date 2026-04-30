@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
   Dialog,
@@ -48,6 +49,7 @@ const options: { value: InvitePolicy; label: string; description: string }[] = [
 ]
 
 export function InviteSettingsDialog({ open, onOpenChange }: Props) {
+  const { t } = useLingui()
   const { data, isLoading } = usePreferencesQuery()
   const setPolicy = useSetPreferencesMutation()
   const [value, setValue] = useState<InvitePolicy>('notify')
@@ -59,11 +61,11 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
   const handleSave = () => {
     setPolicy.mutate(value, {
       onSuccess: () => {
-        toast.success('Invite policy updated')
+        toast.success(t`Invite policy updated`)
         onOpenChange(false)
       },
       onError: (error) => {
-        toast.error(getErrorMessage(error, 'Failed to save'))
+        toast.error(getErrorMessage(error, t`Failed to save`))
       },
     })
   }
@@ -72,7 +74,7 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className='max-w-md'>
         <DialogHeader>
-          <DialogTitle>Incoming invitations</DialogTitle>
+          <DialogTitle><Trans>Incoming invitations</Trans></DialogTitle>
         </DialogHeader>
         {isLoading ? (
           <div className='space-y-3 py-2'>
@@ -106,10 +108,10 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
         )}
         <DialogFooter>
           <Button variant='outline' onClick={() => onOpenChange(false)} disabled={setPolicy.isPending}>
-            Cancel
+            <Trans>Cancel</Trans>
           </Button>
           <Button onClick={handleSave} disabled={setPolicy.isPending || isLoading}>
-            Save
+            <Trans>Save</Trans>
           </Button>
         </DialogFooter>
       </DialogContent>

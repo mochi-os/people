@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
   ColourPicker,
@@ -43,7 +44,8 @@ const ACCENT_PATTERN = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i
 const SLOT_INPUT_MAX = 50 * 1024 * 1024
 
 export function Profile() {
-  usePageTitle('Profile')
+  const { t } = useLingui()
+  usePageTitle(t`Profile`)
 
   const identity = useMyIdentity()
   const { data, isLoading, error, refetch } = usePersonInformationQuery(identity)
@@ -51,7 +53,7 @@ export function Profile() {
   if (!identity) {
     return (
       <Main>
-        <PageHeader title="Profile" />
+        <PageHeader title={t`Profile`} />
         <div className="mx-auto w-full max-w-2xl p-4">
           <ProfileSkeleton />
         </div>
@@ -62,7 +64,7 @@ export function Profile() {
   if (error) {
     return (
       <Main>
-        <PageHeader title="Profile" />
+        <PageHeader title={t`Profile`} />
         <div className="mx-auto w-full max-w-2xl p-4">
           <GeneralError minimal mode="inline" error={error} reset={() => refetch()} />
         </div>
@@ -72,7 +74,7 @@ export function Profile() {
 
   return (
     <Main>
-      <PageHeader title="Profile" />
+      <PageHeader title={t`Profile`} />
       <div className="mx-auto w-full max-w-2xl p-3 sm:p-4">
         {isLoading || !data ? (
           <ProfileSkeleton />
@@ -121,6 +123,7 @@ function ProfileSkeleton() {
 }
 
 function ProfileEditor({ person, info }: { person: string; info: PersonInformation }) {
+  const { t } = useLingui()
   const avatarUrl = info.avatar ? `/${info.fingerprint}/-/avatar?v=${info.avatar}` : null
   const bannerUrl = info.banner ? `/${info.fingerprint}/-/banner?v=${info.banner}` : null
   const faviconUrl = info.favicon ? `/${info.fingerprint}/-/favicon?v=${info.favicon}` : null
@@ -154,15 +157,15 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
 
   const handleSaveProfile = () => {
     profileMutation.mutate(profile, {
-      onSuccess: () => toast.success('Profile saved'),
-      onError: (err) => toast.error(getErrorMessage(err, 'Failed to save profile')),
+      onSuccess: () => toast.success(t`Profile saved`),
+      onError: (err) => toast.error(getErrorMessage(err, t`Failed to save profile`)),
     })
   }
 
   const handleSaveAccent = () => {
     accentMutation.mutate(accentTrimmed, {
-      onSuccess: () => toast.success('Accent saved'),
-      onError: (err) => toast.error(getErrorMessage(err, 'Failed to save accent')),
+      onSuccess: () => toast.success(t`Accent saved`),
+      onError: (err) => toast.error(getErrorMessage(err, t`Failed to save accent`)),
     })
   }
 
@@ -170,16 +173,16 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
     if (!nameDirty) return
     nameMutation.mutate(nameTrimmed, {
       onSuccess: () => {
-        toast.success('Name saved')
+        toast.success(t`Name saved`)
         setNameDialogOpen(false)
       },
-      onError: (err) => toast.error(getErrorMessage(err, 'Failed to save name')),
+      onError: (err) => toast.error(getErrorMessage(err, t`Failed to save name`)),
     })
   }
 
   const handleTogglePrivacy = (checked: boolean) => {
     privacyMutation.mutate(checked ? 'public' : 'private', {
-      onError: (err) => toast.error(getErrorMessage(err, 'Failed to update directory listing')),
+      onError: (err) => toast.error(getErrorMessage(err, t`Failed to update directory listing`)),
     })
   }
 
@@ -192,7 +195,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
           ) : (
             <div className="flex aspect-[5/2] min-h-[100px] flex-col items-center justify-center gap-2 text-muted-foreground sm:aspect-[3/1]">
               <ImageIcon className="size-8 opacity-30" />
-              <span className="text-xs opacity-50">No banner set</span>
+              <span className="text-xs opacity-50"><Trans>No banner set</Trans></span>
             </div>
           )}
           <div className="absolute top-3 right-3">
@@ -229,7 +232,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
                   type="button"
                   onClick={open}
                   disabled={pending}
-                  aria-label="Upload avatar"
+                  aria-label={t`Upload avatar`}
                   className="absolute bottom-0 right-0 flex size-6 items-center justify-center rounded-full border border-border bg-muted text-muted-foreground shadow-sm transition-colors hover:bg-interactive-hover hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
                 >
                   <Upload className="size-3" />
@@ -245,7 +248,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
             size="sm"
             className="translate-y-2"
             onClick={() => setNameDialogOpen(true)}
-            aria-label="Edit name"
+            aria-label={t`Edit name`}
           >
             <Pencil className="size-3.5" />
           </Button>
@@ -257,12 +260,12 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
 
         {/* ── Bio ───────────────────────────────────────────── */}
         <div className="space-y-2">
-          <Label htmlFor="profile-markdown">Profile</Label>
+          <Label htmlFor="profile-markdown"><Trans>Profile</Trans></Label>
           <Textarea
             id="profile-markdown"
             rows={5}
             value={profile}
-            placeholder="Markdown supported"
+            placeholder={t`Markdown supported`}
             onChange={(e) => setProfile(e.target.value)}
             className={tooLong ? 'border-destructive focus-visible:ring-destructive/30' : ''}
           />
@@ -295,7 +298,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {/* Accent colour */}
           <div className="space-y-2 sm:col-span-2">
-            <p className="text-sm font-medium">Accent</p>
+            <p className="text-sm font-medium"><Trans>Accent</Trans></p>
             <ColourPicker
               value={accentValid ? accentTrimmed : ''}
               onChange={setAccent}
@@ -315,7 +318,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
 
           {/* Favicon */}
           <div className="space-y-2">
-            <p className="text-sm font-medium">Browser icon</p>
+            <p className="text-sm font-medium"><Trans>Browser icon</Trans></p>
             <div className="flex flex-col items-start gap-2">
               <div className="border-border flex size-8 shrink-0 items-center justify-center overflow-hidden border bg-muted">
                 {faviconUrl ? (
@@ -344,7 +347,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
 
         <div className="flex items-center gap-3 border-t border-border/40 pt-4">
           <Label htmlFor="privacy-public" className="text-sm font-medium">
-            Allow others to find you in directory
+            <Trans>Allow others to find you in directory</Trans>
           </Label>
           <Switch
             id="privacy-public"
@@ -357,7 +360,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
         <div className="flex justify-end">
           <Button variant="outline" onClick={() => setPreviewOpen(true)}>
             <Eye className="size-3.5" />
-            Preview
+            <Trans>Preview</Trans>
           </Button>
         </div>
       </div>
@@ -365,7 +368,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
       <Dialog open={previewOpen} onOpenChange={setPreviewOpen}>
         <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>Profile preview</DialogTitle>
+            <DialogTitle><Trans>Profile preview</Trans></DialogTitle>
           </DialogHeader>
           <ProfileView
             name={info.name}
@@ -386,10 +389,10 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
       >
         <DialogContent className="sm:max-w-[420px]">
           <DialogHeader>
-            <DialogTitle>Edit name</DialogTitle>
+            <DialogTitle><Trans>Edit name</Trans></DialogTitle>
           </DialogHeader>
           <div className="space-y-2 py-2">
-            <Label htmlFor="name-input">Name</Label>
+            <Label htmlFor="name-input"><Trans>Name</Trans></Label>
             <Input
               id="name-input"
               value={nameDraft}
@@ -405,7 +408,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setNameDialogOpen(false)}>
-              Cancel
+              <Trans>Cancel</Trans>
             </Button>
             <Button onClick={handleSaveName} disabled={!nameDirty || nameMutation.isPending}>
               <Save className="size-3.5" />
@@ -427,6 +430,7 @@ function SlotUploader({
   slot: 'avatar' | 'banner' | 'favicon'
   children: (open: () => void, pending: boolean) => React.ReactNode
 }) {
+  const { t } = useLingui()
   const inputRef = useRef<HTMLInputElement>(null)
   const mutation = useUploadImageMutation(person, slot)
   const [resizing, setResizing] = useState(false)
@@ -436,7 +440,7 @@ function SlotUploader({
     if (inputRef.current) inputRef.current.value = ''
     if (!file) return
     if (file.size > SLOT_INPUT_MAX) {
-      toast.error('File too large')
+      toast.error(t`File too large`)
       return
     }
     setResizing(true)

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { useNavigate, useParams } from '@tanstack/react-router'
 import { MoreHorizontal, Pencil, Trash2, User, UsersRound, X, UserPlus } from 'lucide-react'
 import {
@@ -38,6 +39,7 @@ import { MemberDialog } from './member-dialog'
 import { useSidebarContext } from '@/context/sidebar-context'
 
 export function GroupDetail() {
+  const { t } = useLingui()
   const { id } = useParams({ from: '/_authenticated/groups/$id' })
   const navigate = useNavigate()
   const appPath = getAppPath()
@@ -75,11 +77,11 @@ export function GroupDetail() {
       { group: id, member: removeMemberDialog.member },
       {
         onSuccess: () => {
-          toast.success('Member removed')
+          toast.success(t`Member removed`)
           setRemoveMemberDialog({ open: false, member: '', name: '', type: 'user' })
         },
         onError: (error) => {
-          toast.error(getErrorMessage(error, 'Failed to remove member'))
+          toast.error(getErrorMessage(error, t`Failed to remove member`))
         },
       }
     )
@@ -93,12 +95,12 @@ export function GroupDetail() {
       { id },
       {
         onSuccess: () => {
-          toast.success('Group deleted')
+          toast.success(t`Group deleted`)
           setConfirmDeleteOpen(false)
           void navigate({ to: '/' })
         },
         onError: (error) => {
-          toast.error(getErrorMessage(error, 'Failed to delete group'))
+          toast.error(getErrorMessage(error, t`Failed to delete group`))
         },
       }
     )
@@ -116,22 +118,22 @@ export function GroupDetail() {
             <>
               <Button onClick={() => setAddMemberDialog(true)}>
                 <UserPlus className='h-4 w-4 mr-2' />
-                Add member
+                <Trans>Add member</Trans>
               </Button>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant='outline' size='icon' aria-label='Group actions'>
+                  <Button variant='outline' size='icon' aria-label={t`Group actions`}>
                     <MoreHorizontal className='h-4 w-4' />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align='end'>
                   <DropdownMenuItem onClick={() => setEditDialogOpen(true)}>
                     <Pencil className='h-4 w-4' />
-                    Edit
+                    <Trans>Edit</Trans>
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => setConfirmDeleteOpen(true)}>
                     <Trash2 className='h-4 w-4' />
-                    Delete
+                    <Trans>Delete</Trans>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -148,34 +150,34 @@ export function GroupDetail() {
         ) : !data && !error ? (
           <EmptyState
             icon={UsersRound}
-            title='Group not found'
-            description='This group may have been removed or is unavailable.'
+            title={t`Group not found`}
+            description={t`This group may have been removed or is unavailable.`}
           />
         ) : !group ? null : (
           <>
-            <Section title="Identity" description="Core information about this group">
+            <Section title={t`Identity`} description={t`Core information about this group`}>
               <div className="divide-y-0">
-                <FieldRow label="Group ID">
+                <FieldRow label={t`Group ID`}>
                   <DataChip value={id} truncate='middle' />
                 </FieldRow>
                 {group.description && (
-                  <FieldRow label="Description">
+                  <FieldRow label={t`Description`}>
                     <span className="text-sm text-foreground">{group.description}</span>
                   </FieldRow>
                 )}
-                <FieldRow label="Members Count">
+                <FieldRow label={t`Members Count`}>
                   <DataChip value={members.length.toString()} copyable={false} />
                 </FieldRow>
               </div>
             </Section>
 
-            <Section title="Members" description="Users and groups that belong to this group">
+            <Section title={t`Members`} description={t`Users and groups that belong to this group`}>
               {members.length === 0 ? (
                 <div className="py-8">
                   <EmptyState
                     icon={User}
-                    title="No members"
-                    description="Add users or groups to get started"
+                    title={t`No members`}
+                    description={t`Add users or groups to get started`}
                   />
                 </div>
               ) : (
@@ -183,9 +185,9 @@ export function GroupDetail() {
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead>Member</TableHead>
-                        <TableHead>Type</TableHead>
-                        <TableHead className='w-[80px] text-right'>Actions</TableHead>
+                        <TableHead><Trans>Member</Trans></TableHead>
+                        <TableHead><Trans>Type</Trans></TableHead>
+                        <TableHead className='w-[80px] text-right'><Trans>Actions</Trans></TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -238,7 +240,7 @@ export function GroupDetail() {
         <ConfirmDialog
           open={removeMemberDialog.open}
           onOpenChange={(open) => setRemoveMemberDialog({ ...removeMemberDialog, open })}
-          title="Remove member"
+          title={t`Remove member`}
           desc={
             <>
               Are you sure you want to remove{' '}
@@ -271,7 +273,7 @@ export function GroupDetail() {
         <ConfirmDialog
           open={confirmDeleteOpen}
           onOpenChange={setConfirmDeleteOpen}
-          title='Delete group'
+          title={t`Delete group`}
           desc={`Delete group "${group?.name}"? This cannot be undone.`}
           confirmText='Delete'
           destructive

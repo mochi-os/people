@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { User, UsersRound, Search } from 'lucide-react'
 import { toast, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, EntityAvatar, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, getAppPath, getErrorMessage, EmptyState, GeneralError } from '@mochi/web'
 import {
@@ -13,6 +14,7 @@ interface MemberDialogProps {
 }
 
 export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps) {
+  const { t } = useLingui()
   const appPath = getAppPath()
   const [userSearch, setUserSearch] = useState('')
   const [selectedUser, setSelectedUser] = useState<{ id: string; name: string } | null>(null)
@@ -47,7 +49,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
             resetAndClose()
           },
           onError: (error) => {
-            toast.error(getErrorMessage(error, 'Failed to add member'))
+            toast.error(getErrorMessage(error, t`Failed to add member`))
           },
         }
       )
@@ -60,7 +62,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
             resetAndClose()
           },
           onError: (error) => {
-            toast.error(getErrorMessage(error, 'Failed to add member'))
+            toast.error(getErrorMessage(error, t`Failed to add member`))
           },
         }
       )
@@ -82,9 +84,9 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
     <ResponsiveDialog open={open} onOpenChange={resetAndClose}>
       <ResponsiveDialogContent className='sm:max-w-[500px]'>
         <ResponsiveDialogHeader>
-          <ResponsiveDialogTitle>Add member</ResponsiveDialogTitle>
+          <ResponsiveDialogTitle><Trans>Add member</Trans></ResponsiveDialogTitle>
           <ResponsiveDialogDescription className="sr-only">
-            Add member
+            <Trans>Add member</Trans>
           </ResponsiveDialogDescription>
         </ResponsiveDialogHeader>
 
@@ -92,18 +94,18 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
           <TabsList className='grid w-full grid-cols-2'>
             <TabsTrigger value='user'>
               <User className='mr-2 h-4 w-4' />
-              User
+              <Trans>User</Trans>
             </TabsTrigger>
             <TabsTrigger value='group'>
               <UsersRound className='mr-2 h-4 w-4' />
-              Group
+              <Trans>Group</Trans>
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value='user' className='mt-4'>
             <div className='space-y-4'>
               <div className='grid gap-2'>
-                <Label htmlFor='user-search'>Search users</Label>
+                <Label htmlFor='user-search'><Trans>Search users</Trans></Label>
                 <div className='relative'>
                   <Search className='text-muted-foreground absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2' />
                   <Input
@@ -113,7 +115,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
                       setUserSearch(e.target.value)
                       setSelectedUser(null)
                     }}
-                    placeholder='Type to search...'
+                    placeholder={t`Type to search...`}
                     className='pl-10'
                   />
                 </div>
@@ -121,11 +123,11 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
 
               {userSearch.length < 1 ? (
                 <p className='text-muted-foreground text-center text-sm'>
-                  Type to search users
+                  <Trans>Type to search users</Trans>
                 </p>
               ) : searchLoading ? (
                 <p className='text-muted-foreground text-center text-sm'>
-                  Searching...
+                  <Trans>Searching...</Trans>
                 </p>
               ) : searchError ? (
                 <GeneralError
@@ -137,7 +139,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
               ) : !searchResults?.results?.length ? (
                 <EmptyState
                   icon={User}
-                  title="No people found"
+                  title={t`No people found`}
                   className="py-6"
                 />
               ) : (
@@ -177,10 +179,10 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
 
           <TabsContent value='group' className='mt-4'>
             <div className='space-y-4'>
-              <Label>Select group</Label>
+              <Label><Trans>Select group</Trans></Label>
               {groupsLoading ? (
                 <p className='text-muted-foreground text-center text-sm'>
-                  Loading groups...
+                  <Trans>Loading groups...</Trans>
                 </p>
               ) : groupsError ? (
                 <GeneralError
@@ -192,8 +194,8 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
               ) : availableGroups.length === 0 ? (
                 <EmptyState
                   icon={UsersRound}
-                  title="No other groups"
-                  description="All available groups are already added"
+                  title={t`No other groups`}
+                  description={t`All available groups are already added`}
                   className="py-6"
                 />
               ) : (
@@ -236,7 +238,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
 
         <ResponsiveDialogFooter>
           <Button variant='outline' onClick={resetAndClose}>
-            Cancel
+            <Trans>Cancel</Trans>
           </Button>
           <Button onClick={handleAddMember} disabled={!canAdd || addMemberMutation.isPending}>
             {addMemberMutation.isPending ? 'Adding...' : 'Add member'}

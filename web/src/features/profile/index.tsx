@@ -33,23 +33,14 @@ import {
   useUploadImageMutation,
 } from '@/hooks/usePerson'
 import type { PersonInformation } from '@/api/types/person'
+import { resizeImage, SLOT_RESIZE } from '@/lib/resize-image'
 
 const PROFILE_MAX = 100 * 100
 const ACCENT_PATTERN = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i
 
-const SLOT_MAX: Record<'avatar' | 'banner' | 'favicon', number> = {
-  avatar: 2 * 1024 * 1024,
-  banner: 10 * 1024 * 1024,
-  favicon: 64 * 1024,
-}
-
-function formatBytes(bytes: number): string {
-  if (bytes >= 1024 * 1024) {
-    const mb = bytes / (1024 * 1024)
-    return mb === Math.floor(mb) ? `${mb} MB` : `${mb.toFixed(1)} MB`
-  }
-  return `${Math.round(bytes / 1024)} KB`
-}
+// Sanity cap on the *source* file the user picks — well above any real photo.
+// Client-side resize brings the actual upload down to a fraction of this.
+const SLOT_INPUT_MAX = 50 * 1024 * 1024
 
 export function Profile() {
   usePageTitle('Profile')
@@ -204,7 +195,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
               <span className="text-xs opacity-50">No banner set</span>
             </div>
           )}
-          <div className="absolute bottom-3 right-3">
+          <div className="absolute top-3 right-3">
             <SlotUploader person={person} slot="banner">
               {(open, pending) => (
                 <Button
@@ -438,17 +429,30 @@ function SlotUploader({
 }) {
   const inputRef = useRef<HTMLInputElement>(null)
   const mutation = useUploadImageMutation(person, slot)
-  const maxBytes = SLOT_MAX[slot]
+  const [resizing, setResizing] = useState(false)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (inputRef.current) inputRef.current.value = ''
     if (!file) return
-    if (file.size > maxBytes) {
-      toast.error(`File too large (max ${formatBytes(maxBytes)})`)
+    if (file.size > SLOT_INPUT_MAX) {
+      toast.error('File too large')
       return
     }
-    mutation.mutate(file, {
+    setResizing(true)
+    let upload: File
+    try {
+      const opts = SLOT_RESIZE[slot]
+      const blob = await resizeImage(file, opts)
+      const ext = opts.mime === 'image/png' ? 'png' : opts.mime === 'image/webp' ? 'webp' : 'jpg'
+      upload = new File([blob], `${slot}.${ext}`, { type: blob.type })
+    } catch (err) {
+      setResizing(false)
+      toast.error(getErrorMessage(err, `Could not process ${slot} image`))
+      return
+    }
+    setResizing(false)
+    mutation.mutate(upload, {
       onSuccess: () =>
         toast.success(`${slot.charAt(0).toUpperCase() + slot.slice(1)} updated`),
       onError: (err) => toast.error(getErrorMessage(err, `Failed to upload ${slot}`)),
@@ -464,7 +468,7 @@ function SlotUploader({
         className="hidden"
         onChange={handleChange}
       />
-      {children(() => inputRef.current?.click(), mutation.isPending)}
+      {children(() => inputRef.current?.click(), resizing || mutation.isPending)}
     </>
   )
 }

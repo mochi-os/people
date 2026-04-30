@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from '@tanstack/react-router'
-import { User, UsersRound, X, UserPlus } from 'lucide-react'
+import { MoreHorizontal, Pencil, Trash2, User, UsersRound, X, UserPlus } from 'lucide-react'
 import {
   toast,
   Button,
   ConfirmDialog,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
   EmptyState,
   EntityAvatar,
   Main,
@@ -25,9 +29,11 @@ import {
   ListSkeleton,
 } from '@mochi/web'
 import {
+  useDeleteGroupMutation,
   useGroupQuery,
   useRemoveGroupMemberMutation,
 } from '@/hooks/useGroups'
+import { GroupDialog } from './group-dialog'
 import { MemberDialog } from './member-dialog'
 import { useSidebarContext } from '@/context/sidebar-context'
 
@@ -37,8 +43,11 @@ export function GroupDetail() {
   const appPath = getAppPath()
   const { data, isLoading, error, refetch } = useGroupQuery(id)
   const removeMemberMutation = useRemoveGroupMemberMutation()
+  const deleteMutation = useDeleteGroupMutation()
   const { setGroupId } = useSidebarContext()
   const goBackToFriends = () => navigate({ to: '/' })
+  const [editDialogOpen, setEditDialogOpen] = useState(false)
+  const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false)
 
   usePageTitle(data?.group?.name ?? 'Group')
 
@@ -79,6 +88,22 @@ export function GroupDetail() {
   const group = data?.group
   const members = data?.members ?? []
 
+  const handleConfirmDelete = () => {
+    deleteMutation.mutate(
+      { id },
+      {
+        onSuccess: () => {
+          toast.success('Group deleted')
+          setConfirmDeleteOpen(false)
+          void navigate({ to: '/' })
+        },
+        onError: (error) => {
+          toast.error(getErrorMessage(error, 'Failed to delete group'))
+        },
+      }
+    )
+  }
+
   return (
     <>
       <PageHeader
@@ -88,10 +113,29 @@ export function GroupDetail() {
         back={{ label: 'Back to friends', onFallback: goBackToFriends }}
         actions={
           group ? (
-            <Button onClick={() => setAddMemberDialog(true)}>
-              <UserPlus className='h-4 w-4 mr-2' />
-              Add member
-            </Button>
+            <>
+              <Button onClick={() => setAddMemberDialog(true)}>
+                <UserPlus className='h-4 w-4 mr-2' />
+                Add member
+              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant='outline' size='icon' aria-label='Group actions'>
+                    <MoreHorizontal className='h-4 w-4' />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align='end'>
+                  <DropdownMenuItem onClick={() => setEditDialogOpen(true)}>
+                    <Pencil className='h-4 w-4' />
+                    Edit
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setConfirmDeleteOpen(true)}>
+                    <Trash2 className='h-4 w-4' />
+                    Delete
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </>
           ) : undefined
         }
       />
@@ -214,6 +258,25 @@ export function GroupDetail() {
           open={addMemberDialog}
           onOpenChange={setAddMemberDialog}
           groupId={id}
+        />
+
+        {group && (
+          <GroupDialog
+            open={editDialogOpen}
+            onOpenChange={setEditDialogOpen}
+            group={group}
+          />
+        )}
+
+        <ConfirmDialog
+          open={confirmDeleteOpen}
+          onOpenChange={setConfirmDeleteOpen}
+          title='Delete group'
+          desc={`Delete group "${group?.name}"? This cannot be undone.`}
+          confirmText='Delete'
+          destructive
+          isLoading={deleteMutation.isPending}
+          handleConfirm={handleConfirmDelete}
         />
       </Main>
     </>

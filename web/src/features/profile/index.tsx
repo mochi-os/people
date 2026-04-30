@@ -206,7 +206,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
                   className="shadow-md"
                 >
                   <Upload className="size-3.5" />
-                  {pending ? 'Uploading…' : 'Change Banner'}
+                  {pending ? 'Uploading…' : 'Change banner'}
                 </Button>
               )}
             </SlotUploader>

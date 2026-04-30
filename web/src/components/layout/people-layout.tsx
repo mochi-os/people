@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from 'react'
-import { AuthenticatedLayout, ConfirmDialog, getErrorMessage, type SidebarData, type NavItem, toast } from '@mochi/web'
+import { AuthenticatedLayout, ConfirmDialog, EntityAvatar, getErrorMessage, useAuthStore, type SidebarData, type NavItem, toast } from '@mochi/web'
 import { CircleUserRound, Pencil, Plus, Trash2, User, UserPlus, Users, UsersRound } from 'lucide-react'
 import { useGroupsQuery, useDeleteGroupMutation } from '@/hooks/useGroups'
 import { SidebarProvider, useSidebarContext } from '@/context/sidebar-context'
@@ -7,8 +7,29 @@ import { GroupDialog } from '@/features/groups/group-dialog'
 import { MemberDialog } from '@/features/groups/member-dialog'
 import { useNavigate } from '@tanstack/react-router'
 
+const profileIconCache = new Map<string, React.FC>()
+
+function profileIcon(identityId: string): React.FC {
+  let Icon = profileIconCache.get(identityId)
+  if (!Icon) {
+    Icon = function ProfileIcon() {
+      return (
+        <EntityAvatar
+          src={`/people/${identityId}/-/avatar`}
+          styleUrl={`/people/${identityId}/-/style`}
+          size="xs"
+        />
+      )
+    }
+    Icon.displayName = `ProfileIcon(${identityId})`
+    profileIconCache.set(identityId, Icon)
+  }
+  return Icon
+}
+
 function PeopleLayoutInner() {
   const { data: groups, error: groupsError } = useGroupsQuery()
+  const myIdentity = useAuthStore((s) => s.identity)
   const {
     groupId,
     createGroupDialogOpen,
@@ -96,8 +117,8 @@ function PeopleLayoutInner() {
       {
         title: 'People',
         items: [
-          { title: 'Profile', url: '/', icon: CircleUserRound },
-          { title: 'Friends', url: '/friends', icon: Users },
+          { title: 'Profile', url: '/profile', icon: myIdentity ? profileIcon(myIdentity) : CircleUserRound },
+          { title: 'Friends', url: '/', icon: Users },
           { title: 'Invitations', url: '/invitations', icon: User },
         ],
       },
@@ -109,7 +130,7 @@ function PeopleLayoutInner() {
     ]
 
     return { navGroups: groups_section }
-  }, [groups, groupId, groupsError, openCreateGroupDialog, openEditGroupDialog, openAddMemberDialog])
+  }, [groups, groupId, groupsError, myIdentity, openCreateGroupDialog, openEditGroupDialog, openAddMemberDialog])
 
   const handleConfirmDelete = () => {
     if (!confirmDelete) return
@@ -119,7 +140,7 @@ function PeopleLayoutInner() {
         onSuccess: () => {
           toast.success('Group deleted')
           setConfirmDelete(null)
-          void navigate({ to: '/friends' })
+          void navigate({ to: '/' })
         },
         onError: (error) => {
           toast.error(getErrorMessage(error, 'Failed to delete group'))

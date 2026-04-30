@@ -2,10 +2,12 @@ import { useMemo, useState } from 'react'
 import {
   Button,
   EmptyState,
+  EntityAvatar,
   GeneralError,
   Input,
   Main,
   usePageTitle,
+  getAppPath,
   getErrorMessage,
   PageHeader,
   Skeleton,
@@ -23,6 +25,7 @@ import { InviteSettingsDialog } from './invite-settings-dialog'
 
 export function Invitations() {
   usePageTitle('Invitations')
+  const appPath = getAppPath()
   const [search, setSearch] = useState('')
   const [addFriendDialogOpen, setAddFriendDialogOpen] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
@@ -188,6 +191,12 @@ export function Invitations() {
                       className='hover:bg-muted/50 flex items-center justify-between px-4 py-3 transition-colors'
                     >
                       <div className='flex items-center gap-3'>
+                        <EntityAvatar
+                          src={`${appPath}/${invite.id}/-/avatar`}
+                          styleUrl={`${appPath}/${invite.id}/-/style`}
+                          name={invite.name}
+                          size="md"
+                        />
                         <div className='flex flex-col'>
                           <span className='truncate font-medium'>
                             {invite.name}
@@ -239,6 +248,12 @@ export function Invitations() {
                       className='hover:bg-muted/50 flex items-center justify-between px-4 py-3 transition-colors'
                     >
                       <div className='flex items-center gap-3'>
+                        <EntityAvatar
+                          src={`${appPath}/${invite.id}/-/avatar`}
+                          styleUrl={`${appPath}/${invite.id}/-/style`}
+                          name={invite.name}
+                          size="md"
+                        />
                         <div className='flex flex-col'>
                           <span className='truncate font-medium'>
                             {invite.name}

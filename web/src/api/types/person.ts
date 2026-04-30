@@ -2,6 +2,7 @@ export interface PersonInformation {
   id: string
   fingerprint: string
   name: string
+  privacy: string
   profile: string
   style: { accent?: string }
   avatar: string

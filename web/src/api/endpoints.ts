@@ -42,6 +42,8 @@ const endpoints = {
     style: (person: string) => `${person}/-/style`,
     styleSet: (person: string) => `${person}/-/style/set`,
     profileSet: (person: string) => `${person}/-/profile/set`,
+    nameSet: (person: string) => `${person}/-/name/set`,
+    privacySet: (person: string) => `${person}/-/privacy/set`,
   },
 } as const
 

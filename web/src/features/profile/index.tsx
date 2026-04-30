@@ -4,26 +4,31 @@ import {
   ColourPicker,
   Dialog,
   DialogContent,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   EntityAvatar,
   EntityBanner,
   GeneralError,
+  Input,
   Label,
   Main,
   PageHeader,
   Skeleton,
+  Switch,
   Textarea,
   getErrorMessage,
   toast,
   usePageTitle,
 } from '@mochi/web'
-import { Eye, Image as ImageIcon, Save, Upload } from 'lucide-react'
+import { Eye, Image as ImageIcon, Pencil, Save, Upload } from 'lucide-react'
 import { ProfileView } from './profile-view'
 import {
   useMyIdentity,
   usePersonInformationQuery,
   useSetAccentMutation,
+  useSetNameMutation,
+  useSetPrivacyMutation,
   useSetProfileMutation,
   useUploadImageMutation,
 } from '@/hooks/usePerson'
@@ -136,9 +141,14 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
   useEffect(() => setAccent(info.style.accent ?? ''), [info.style.accent])
 
   const [previewOpen, setPreviewOpen] = useState(false)
+  const [nameDialogOpen, setNameDialogOpen] = useState(false)
+  const [nameDraft, setNameDraft] = useState(info.name)
+  useEffect(() => setNameDraft(info.name), [info.name])
 
   const profileMutation = useSetProfileMutation(person)
   const accentMutation = useSetAccentMutation(person)
+  const nameMutation = useSetNameMutation(person)
+  const privacyMutation = useSetPrivacyMutation(person)
 
   const profileDirty = profile !== info.profile
   const tooLong = profile.length > PROFILE_MAX
@@ -147,6 +157,9 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
   const accentTrimmed = accent.trim()
   const accentValid = accentTrimmed === '' || ACCENT_PATTERN.test(accentTrimmed)
   const accentDirty = accentTrimmed !== (info.style.accent ?? '')
+
+  const nameTrimmed = nameDraft.trim()
+  const nameDirty = nameTrimmed !== info.name && nameTrimmed.length > 0
 
   const handleSaveProfile = () => {
     profileMutation.mutate(profile, {
@@ -159,6 +172,23 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
     accentMutation.mutate(accentTrimmed, {
       onSuccess: () => toast.success('Accent saved'),
       onError: (err) => toast.error(getErrorMessage(err, 'Failed to save accent')),
+    })
+  }
+
+  const handleSaveName = () => {
+    if (!nameDirty) return
+    nameMutation.mutate(nameTrimmed, {
+      onSuccess: () => {
+        toast.success('Name saved')
+        setNameDialogOpen(false)
+      },
+      onError: (err) => toast.error(getErrorMessage(err, 'Failed to save name')),
+    })
+  }
+
+  const handleTogglePrivacy = (checked: boolean) => {
+    privacyMutation.mutate(checked ? 'public' : 'private', {
+      onError: (err) => toast.error(getErrorMessage(err, 'Failed to update directory listing')),
     })
   }
 
@@ -192,10 +222,15 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-5">
-          <div className="relative" style={{ width: 80, height: 80 }}>
+        <div className="absolute bottom-0 left-5 right-5 flex items-end gap-3">
+          <div className="relative shrink-0" style={{ width: 80, height: 80 }}>
             <div className="rounded-full ring-4 ring-card overflow-hidden size-full">
-              <EntityAvatar src={avatarUrl} name={info.name} size={80} />
+              <EntityAvatar
+                src={avatarUrl}
+                name={info.name}
+                size="2xl"
+                accent={accentValid && accentTrimmed ? accentTrimmed : undefined}
+              />
             </div>
             <SlotUploader person={person} slot="avatar">
               {(open, pending) => (
@@ -211,6 +246,18 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
               )}
             </SlotUploader>
           </div>
+          <h1 className="min-w-0 translate-y-2 truncate text-2xl font-semibold">
+            {info.name}
+          </h1>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="translate-y-2"
+            onClick={() => setNameDialogOpen(true)}
+            aria-label="Edit name"
+          >
+            <Pencil className="size-3.5" />
+          </Button>
         </div>
       </div>
 
@@ -304,6 +351,18 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
           </div>
         </div>
 
+        <div className="flex items-center gap-3 border-t border-border/40 pt-4">
+          <Label htmlFor="privacy-public" className="text-sm font-medium">
+            Allow others to find you in directory
+          </Label>
+          <Switch
+            id="privacy-public"
+            checked={info.privacy === 'public'}
+            onCheckedChange={handleTogglePrivacy}
+            disabled={privacyMutation.isPending}
+          />
+        </div>
+
         <div className="flex justify-end">
           <Button variant="outline" onClick={() => setPreviewOpen(true)}>
             <Eye className="size-3.5" />
@@ -324,6 +383,44 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
             avatarUrl={avatarUrl}
             bannerUrl={bannerUrl}
           />
+        </DialogContent>
+      </Dialog>
+
+      <Dialog
+        open={nameDialogOpen}
+        onOpenChange={(open) => {
+          setNameDialogOpen(open)
+          if (!open) setNameDraft(info.name)
+        }}
+      >
+        <DialogContent className="sm:max-w-[420px]">
+          <DialogHeader>
+            <DialogTitle>Edit name</DialogTitle>
+          </DialogHeader>
+          <div className="space-y-2 py-2">
+            <Label htmlFor="name-input">Name</Label>
+            <Input
+              id="name-input"
+              value={nameDraft}
+              autoFocus
+              onChange={(e) => setNameDraft(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && nameDirty && !nameMutation.isPending) {
+                  e.preventDefault()
+                  handleSaveName()
+                }
+              }}
+            />
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setNameDialogOpen(false)}>
+              Cancel
+            </Button>
+            <Button onClick={handleSaveName} disabled={!nameDirty || nameMutation.isPending}>
+              <Save className="size-3.5" />
+              {nameMutation.isPending ? 'Saving…' : 'Save'}
+            </Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>

@@ -2,6 +2,9 @@
 # REST-style JSON responses version with default identity for API calls
 # Copyright Alistair Cunningham 2024-2026
 
+def notify(topic, object="", title="", body="", url="", sender=""):
+	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notification_topic_" + topic.replace("/", "_")), sender)
+
 def database_create():
 	mochi.db.execute("create table if not exists friends ( identity text not null, id text not null, name text not null, class text not null, primary key ( identity, id ) )")
 	mochi.db.execute("create index if not exists friends_id on friends( id )")
@@ -302,7 +305,7 @@ def event_accept(e):
 	mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, e.header("from"), i["name"])
 
 	mochi.db.execute("delete from invites where identity=? and id=?", identity, e.header("from"))
-	mochi.service.call("notifications", "send", "accept/accepted", "Friend request accepted", i["name"] + " accepted your friend invitation", "", "/people")
+	notify("accept/accepted", "", "Friend request accepted", i["name"] + " accepted your friend invitation", "/people", e.header("from"))
 
 def event_invite(e):
 	# Incoming friend invite. The user-configurable `invite_policy` preference
@@ -321,7 +324,7 @@ def event_invite(e):
 		mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, sender, name)
 		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
 		mochi.db.execute("delete from invites where identity=? and id=?", identity, sender)
-		mochi.service.call("notifications", "send", "accept/matched", "New friend", name + " is now your friend", "", "/people")
+		notify("accept/matched", "", "New friend", name + " is now your friend", "/people", sender)
 		return
 
 	policy = e.user.preference.get("invite_policy") or "notify"
@@ -333,14 +336,14 @@ def event_invite(e):
 		# Auto-accept: mirror mutual-invite path without writing to invites.
 		mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, sender, name)
 		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
-		mochi.service.call("notifications", "send", "accept/matched", "New friend", name + " is now your friend", "", "/people")
+		notify("accept/matched", "", "New friend", name + " is now your friend", "/people", sender)
 		return
 
 	# silent or notify: store pending invite
 	mochi.db.execute("replace into invites ( identity, id, direction, name, updated ) values ( ?, ?, 'from', ?, ? )", identity, sender, name, mochi.time.now())
 
 	if policy == "notify":
-		mochi.service.call("notifications", "send", "invite/received", "Friend invitation", name + " invited you to be friends", sender, "/people/invitations")
+		notify("invite/received", "", "Friend invitation", name + " invited you to be friends", "/people/invitations", sender)
 
 def event_cancel(e):
 	# Remove the invitation from the recipient's side
@@ -569,13 +572,6 @@ def action_group_member_remove(a):
 	mochi.group.remove(group, member)
 	return {"data": {}}
 
-# Notification proxy actions - forward to notifications service
-
-def action_notifications_check(a):
-	"""Check if a notification subscription exists for this app."""
-	result = mochi.service.call("notifications", "subscriptions")
-	return {"data": {"exists": len(result) > 0}}
-
 # Welcome page data - returns whether user has seen welcome and friends count
 def action_welcome(a):
 	identity = a.user.identity.id
@@ -660,6 +656,7 @@ def build_information(person_id, entity):
 		"id": entity["id"],
 		"fingerprint": entity.get("fingerprint", mochi.entity.fingerprint(person_id)),
 		"name": entity.get("name", ""),
+		"privacy": entity.get("privacy", ""),
 		"profile": profile.get("profile", ""),
 		"style": style,
 		"avatar": "",
@@ -694,40 +691,44 @@ def valid_hex_colour(s):
 
 # === HTTP actions ===
 
-def action_information(a):
-	person_id = a.input("person")
-	entity = get_person_entity(person_id)
-	if not entity:
+# Stream a person asset from its owning peer.
+# Location-transparent: mochi.remote.stream() loops back in-process when the
+# entity lives on this server, or goes over P2P otherwise. Handles both binary
+# assets (avatar/banner/favicon) and JSON assets (information/style).
+def stream_person_asset(a, person_id, asset):
+	if not person_id:
 		a.error(404, "Person not found")
-		return
-	return {"data": build_information(person_id, entity)}
-
-def serve_image(a, slot, fallback_slot=""):
-	person_id = a.input("person")
-	if not get_person_entity(person_id):
-		a.error(404, "Person not found")
-		return
-	att = slot_attachment(person_id, slot)
-	if not att and fallback_slot:
-		att = slot_attachment(person_id, fallback_slot)
-	if not att:
-		a.error(404, slot + " not set")
-		return
-	path = mochi.attachment.path(att["id"])
-	if not path:
-		a.error(404, slot + " unavailable")
-		return
+		return None
+	s = mochi.remote.stream(person_id, "people", asset, {})
+	if not s:
+		a.error(502, "Person unavailable")
+		return None
+	header = s.read()
+	if not header or header.get("status") != "200":
+		code = 404
+		if header and header.get("status"):
+			code = int(header["status"])
+		message = (header.get("error") if header else None) or "Person not found"
+		a.error(code, message)
+		return None
+	if "data" in header:
+		return {"data": header["data"]}
 	a.header("Cache-Control", "private, max-age=300")
-	a.write_from_file(path)
+	a.header("Content-Type", header.get("content_type", "application/octet-stream"))
+	a.write_from_stream(s)
+	return None
+
+def action_information(a):
+	return stream_person_asset(a, a.input("person"), "information")
 
 def action_avatar(a):
-	serve_image(a, "avatar")
+	return stream_person_asset(a, a.input("person"), "avatar")
 
 def action_banner(a):
-	serve_image(a, "banner")
+	return stream_person_asset(a, a.input("person"), "banner")
 
 def action_favicon(a):
-	serve_image(a, "favicon", "avatar")
+	return stream_person_asset(a, a.input("person"), "favicon")
 
 def set_image(a, slot):
 	person_id = a.input("person")
@@ -762,15 +763,7 @@ def action_favicon_set(a):
 	return set_image(a, "favicon")
 
 def action_style(a):
-	person_id = a.input("person")
-	if not get_person_entity(person_id):
-		a.error(404, "Person not found")
-		return
-	profile = get_profile_row(person_id)
-	style = {}
-	if profile.get("accent"):
-		style["accent"] = profile["accent"]
-	return {"data": style}
+	return stream_person_asset(a, a.input("person"), "style")
 
 def action_style_set(a):
 	person_id = a.input("person")
@@ -794,6 +787,32 @@ def action_profile_set(a):
 	if len(profile) > _PROFILE_MAX:
 		return json_error("Profile too long")
 	upsert_profile(person_id, profile=profile)
+	return {"data": {}}
+
+def action_name_set(a):
+	person_id = a.input("person")
+	if not get_person_entity(person_id):
+		return json_error("Person not found", 404)
+	if not is_person_owner(a, person_id):
+		return json_error("Not the owner", 403)
+	name = a.input("name", "").strip()
+	if not name:
+		return json_error("Name cannot be empty")
+	if not mochi.valid(name, "name"):
+		return json_error("Invalid name")
+	mochi.entity.update(person_id, name=name)
+	return {"data": {}}
+
+def action_privacy_set(a):
+	person_id = a.input("person")
+	if not get_person_entity(person_id):
+		return json_error("Person not found", 404)
+	if not is_person_owner(a, person_id):
+		return json_error("Not the owner", 403)
+	privacy = a.input("privacy", "")
+	if privacy != "public" and privacy != "private":
+		return json_error("Privacy must be 'public' or 'private'")
+	mochi.entity.update(person_id, privacy=privacy)
 	return {"data": {}}
 
 # === Open Graph (rendered profile page) ===

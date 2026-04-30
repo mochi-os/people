@@ -18,6 +18,12 @@ const setProfile = (person: string, profile: string): Promise<MutationSuccess> =
 const setAccent = (person: string, accent: string): Promise<MutationSuccess> =>
   requestHelpers.post<MutationSuccess>(endpoints.person.styleSet(person), { accent })
 
+const setName = (person: string, name: string): Promise<MutationSuccess> =>
+  requestHelpers.post<MutationSuccess>(endpoints.person.nameSet(person), { name })
+
+const setPrivacy = (person: string, privacy: string): Promise<MutationSuccess> =>
+  requestHelpers.post<MutationSuccess>(endpoints.person.privacySet(person), { privacy })
+
 const uploadImage = (
   url: string,
   file: File
@@ -41,6 +47,8 @@ export const personApi = {
   getStyle,
   setProfile,
   setAccent,
+  setName,
+  setPrivacy,
   setAvatar,
   setBanner,
   setFavicon,

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { User, UsersRound, Search } from 'lucide-react'
-import { toast, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, getErrorMessage, EmptyState, GeneralError } from '@mochi/web'
+import { toast, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, EntityAvatar, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, getAppPath, getErrorMessage, EmptyState, GeneralError } from '@mochi/web'
 import {
   useAddGroupMemberMutation,
   useGroupsQuery,
@@ -13,6 +13,7 @@ interface MemberDialogProps {
 }
 
 export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps) {
+  const appPath = getAppPath()
   const [userSearch, setUserSearch] = useState('')
   const [selectedUser, setSelectedUser] = useState<{ id: string; name: string } | null>(null)
   const [selectedGroup, setSelectedGroup] = useState<{ id: string; name: string } | null>(null)
@@ -151,8 +152,13 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
                       }`}
                       onClick={() => setSelectedUser({ id: user.id, name: user.name })}
                     >
-                      <CardContent className='flex items-center gap-2 p-3'>
-                        <User className='h-4 w-4' />
+                      <CardContent className='flex items-center gap-3 p-3'>
+                        <EntityAvatar
+                          src={`${appPath}/${user.id}/-/avatar`}
+                          styleUrl={`${appPath}/${user.id}/-/style`}
+                          name={user.name}
+                          size="md"
+                        />
                         <span className='font-medium'>{user.name}</span>
                       </CardContent>
                     </Card>

@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from '@tanstack/react-router'
 import { User, UsersRound, X, UserPlus } from 'lucide-react'
-import { 
+import {
   toast,
   Button,
   ConfirmDialog,
   EmptyState,
+  EntityAvatar,
   Main,
   Table,
   TableBody,
@@ -14,6 +15,7 @@ import {
   TableHeader,
   TableRow,
   usePageTitle,
+  getAppPath,
   getErrorMessage,
   PageHeader,
   Section,
@@ -32,10 +34,11 @@ import { useSidebarContext } from '@/context/sidebar-context'
 export function GroupDetail() {
   const { id } = useParams({ from: '/_authenticated/groups/$id' })
   const navigate = useNavigate()
+  const appPath = getAppPath()
   const { data, isLoading, error, refetch } = useGroupQuery(id)
   const removeMemberMutation = useRemoveGroupMemberMutation()
   const { setGroupId } = useSidebarContext()
-  const goBackToFriends = () => navigate({ to: '/friends' })
+  const goBackToFriends = () => navigate({ to: '/' })
 
   usePageTitle(data?.group?.name ?? 'Group')
 
@@ -144,7 +147,19 @@ export function GroupDetail() {
                     <TableBody>
                       {members.map((member) => (
                         <TableRow key={member.member}>
-                          <TableCell className='font-medium'>{member.name}</TableCell>
+                          <TableCell className='font-medium'>
+                            <div className='flex items-center gap-2'>
+                              {member.type === 'user' && (
+                                <EntityAvatar
+                                  src={`${appPath}/${member.member}/-/avatar`}
+                                  styleUrl={`${appPath}/${member.member}/-/style`}
+                                  name={member.name}
+                                  size="md"
+                                />
+                              )}
+                              <span className='truncate'>{member.name}</span>
+                            </div>
+                          </TableCell>
                           <TableCell>
                             <div className="flex items-center gap-2">
                               {member.type === 'group' ? (

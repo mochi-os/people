@@ -4,6 +4,7 @@ import {
   Button,
   ConfirmDialog,
   EmptyState,
+  EntityAvatar,
   HeaderSearch,
   IconButton,
   Main,
@@ -11,6 +12,7 @@ import {
   PageHeader,
   ListSkeleton,
   GeneralError,
+  getAppPath,
   toast,
   getErrorMessage,
   shellNavigateExternal
@@ -22,6 +24,7 @@ import { FRIENDS_STRINGS } from './constants'
 
 export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
   usePageTitle('Friends')
+  const appPath = getAppPath()
   const [search, setSearch] = useState('')
   const [addFriendDialogOpen, setAddFriendDialogOpen] = useState(false)
 
@@ -43,9 +46,13 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
 
   const filteredFriends = useMemo(() => {
     const list = friendsData?.friends ?? []
-    return list.filter((friend) =>
-      friend.name.toLowerCase().includes(search.toLowerCase())
-    )
+    return list
+      .filter((friend) =>
+        friend.name.toLowerCase().includes(search.toLowerCase())
+      )
+      .sort((a, b) =>
+        a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+      )
   }, [friendsData?.friends, search])
 
   const handleRemoveFriend = (friendId: string, friendName: string) => {
@@ -130,9 +137,15 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
             {filteredFriends.map((friend) => (
               <div
                 key={friend.id}
-                className='hover:bg-muted/50 flex items-center justify-between px-4 py-3 transition-colors'
+                className='hover:bg-muted/50 flex items-center gap-3 px-4 py-3 transition-colors'
               >
-                <span className='truncate font-medium'>{friend.name}</span>
+                <EntityAvatar
+                  src={`${appPath}/${friend.id}/-/avatar`}
+                  styleUrl={`${appPath}/${friend.id}/-/style`}
+                  name={friend.name}
+                  size="lg"
+                />
+                <span className='flex-1 truncate font-medium'>{friend.name}</span>
                 <div className='flex items-center gap-1'>
                   <Button
                     variant='ghost'

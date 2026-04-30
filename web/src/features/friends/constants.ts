@@ -19,6 +19,8 @@ export const FRIENDS_STRINGS = {
   ADDING: 'Adding...',
   INVITED: 'Invited',
   CLOSE: 'Close',
+  BACK: 'Back',
+  SEND_INVITATION: 'Send invitation',
   
   // Relationship Status
   ALREADY_FRIENDS: 'Already Friends',

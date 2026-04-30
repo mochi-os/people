@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { authManager, useAuthStore } from '@mochi/web'
 import { personApi } from '@/api/person'
+import type { PersonInformation } from '@/api/types/person'
 
 const informationKey = (person: string) => ['person', 'information', person] as const
 
@@ -37,6 +38,30 @@ export function useSetAccentMutation(person: string) {
   return useMutation({
     mutationFn: (accent: string) => personApi.setAccent(person, accent),
     onSuccess: () => qc.invalidateQueries({ queryKey: informationKey(person) }),
+  })
+}
+
+export function useSetNameMutation(person: string) {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (name: string) => personApi.setName(person, name),
+    onSuccess: (_, name) => {
+      qc.setQueryData<PersonInformation>(informationKey(person), (old) =>
+        old ? { ...old, name } : old
+      )
+    },
+  })
+}
+
+export function useSetPrivacyMutation(person: string) {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: (privacy: string) => personApi.setPrivacy(person, privacy),
+    onSuccess: (_, privacy) => {
+      qc.setQueryData<PersonInformation>(informationKey(person), (old) =>
+        old ? { ...old, privacy } : old
+      )
+    },
   })
 }
 

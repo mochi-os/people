@@ -2,7 +2,7 @@
 // Copyright Alistair Cunningham 2025-2026
 
 {
-	"version": "2.12",
+	"version": "2.18",
 	"label": "app_name",
 	"classes": ["person"],
 	"paths": ["people"],
@@ -42,7 +42,6 @@
 		"-/groups/members/add": {"function": "action_group_member_add"},
 		"-/groups/members/remove": {"function": "action_group_member_remove"},
 		"-/users/search": {"function": "action_users_search"},
-		"-/notifications/check": {"function": "action_notifications_check"},
 		"-/welcome": {"function": "action_welcome"},
 		"-/welcome/seen": {"function": "action_welcome_seen"},
 		"-/preferences/get": {"function": "action_preferences_get"},
@@ -60,7 +59,9 @@
 		":person/-/favicon/set": {"function": "action_favicon_set"},
 		":person/-/style": {"function": "action_style", "public": true},
 		":person/-/style/set": {"function": "action_style_set"},
-		":person/-/profile/set": {"function": "action_profile_set"}
+		":person/-/profile/set": {"function": "action_profile_set"},
+		":person/-/name/set": {"function": "action_name_set"},
+		":person/-/privacy/set": {"function": "action_privacy_set"}
 	},
 
 	"events": {

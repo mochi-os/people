@@ -73,9 +73,10 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
     )
   }
 
-  const handleStartChat = () => {
-    const chatUrl = import.meta.env.VITE_APP_CHAT_URL ?? APP_ROUTES.CHAT.HOME
-    shellNavigateExternal(chatUrl)
+  const handleStartChat = (friendId: string, friendName: string) => {
+    const base = import.meta.env.VITE_APP_CHAT_URL ?? APP_ROUTES.CHAT.HOME
+    const url = `${base}?with=${encodeURIComponent(friendId)}&name=${encodeURIComponent(friendName)}`
+    shellNavigateExternal(url)
   }
 
   return (
@@ -146,14 +147,14 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
                   size="lg"
                 />
                 <span className='flex-1 truncate font-medium'>{friend.name}</span>
-                <div className='flex items-center gap-1'>
+                <div className='flex items-center gap-2'>
                   <Button
-                    variant='ghost'
+                    variant='outline'
                     size='sm'
-                    aria-label={`Start chat with ${friend.name}`}
-                    onClick={handleStartChat}
+                    onClick={() => handleStartChat(friend.id, friend.name)}
                   >
                     <MessageSquare className='h-4 w-4' />
+                    Chat
                   </Button>
                   <Button
                     variant='ghost'

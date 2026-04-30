@@ -217,7 +217,7 @@ export function GroupDetail() {
                             <Button
                               variant='ghost'
                               size='icon'
-                              className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                              className="h-8 w-8 text-muted-foreground"
                               onClick={() => handleRemoveMember(member.member, member.name, member.type)}
                               aria-label={`Remove ${member.type} ${member.name}`}
                               title={`Remove ${member.type} ${member.name}`}

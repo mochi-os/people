@@ -216,13 +216,12 @@ export function Invitations() {
                           Accept
                         </Button>
                         <Button
-                          variant='ghost'
+                          variant='outline'
                           size='sm'
                           disabled={declineInviteMutation.isPending}
                           onClick={() =>
                             handleDeclineInvite(invite.id, invite.name)
                           }
-                          className='text-muted-foreground hover:text-destructive'
                         >
                           <UserX className='h-3.5 w-3.5' />
                           Decline
@@ -264,11 +263,10 @@ export function Invitations() {
                         </div>
                       </div>
                       <Button
-                        variant='ghost'
+                        variant='outline'
                         size='sm'
                         disabled={removeMutation.isPending}
                         onClick={() => handleCancelSent(invite.id, invite.name)}
-                        className='text-muted-foreground hover:text-destructive'
                       >
                         <X className='h-3.5 w-3.5' />
                         Cancel

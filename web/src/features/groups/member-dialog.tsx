@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { User, UsersRound, Search } from 'lucide-react'
 import { toast, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, EntityAvatar, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, getAppPath, getErrorMessage, EmptyState, GeneralError } from '@mochi/web'
 import {
@@ -14,6 +14,7 @@ interface MemberDialogProps {
 }
 
 export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps) {
+  const { t } = useLingui()
   const appPath = getAppPath()
   const [userSearch, setUserSearch] = useState('')
   const [selectedUser, setSelectedUser] = useState<{ id: string; name: string } | null>(null)
@@ -48,7 +49,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
             resetAndClose()
           },
           onError: (error) => {
-            toast.error(getErrorMessage(error, "Failed to add member"))
+            toast.error(getErrorMessage(error, t`Failed to add member`))
           },
         }
       )
@@ -61,7 +62,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
             resetAndClose()
           },
           onError: (error) => {
-            toast.error(getErrorMessage(error, "Failed to add member"))
+            toast.error(getErrorMessage(error, t`Failed to add member`))
           },
         }
       )

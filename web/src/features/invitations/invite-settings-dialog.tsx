@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
   Dialog,
@@ -49,6 +49,7 @@ const options: { value: InvitePolicy; label: string; description: string }[] = [
 ]
 
 export function InviteSettingsDialog({ open, onOpenChange }: Props) {
+  const { t } = useLingui()
   const { data, isLoading } = usePreferencesQuery()
   const setPolicy = useSetPreferencesMutation()
   const [value, setValue] = useState<InvitePolicy>('notify')
@@ -60,11 +61,11 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
   const handleSave = () => {
     setPolicy.mutate(value, {
       onSuccess: () => {
-        toast.success("Invite policy updated")
+        toast.success(t`Invite policy updated`)
         onOpenChange(false)
       },
       onError: (error) => {
-        toast.error(getErrorMessage(error, "Failed to save"))
+        toast.error(getErrorMessage(error, t`Failed to save`))
       },
     })
   }

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { APP_ROUTES } from '@/config/app-routes'
 import {
   Button,
@@ -24,7 +24,8 @@ import { AddFriendDialog } from './components/add-friend-dialog'
 import { FRIENDS_STRINGS } from './constants'
 
 export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
-  usePageTitle("Friends")
+  const { t } = useLingui()
+  usePageTitle(t`Friends`)
   const appPath = getAppPath()
   const [search, setSearch] = useState('')
   const [addFriendDialogOpen, setAddFriendDialogOpen] = useState(false)
@@ -68,7 +69,7 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
           setRemoveFriendDialog({ open: false, friendId: '', friendName: '' })
         },
         onError: (error) => {
-          toast.error(getErrorMessage(error, "Failed to remove friend"))
+          toast.error(getErrorMessage(error, t`Failed to remove friend`))
         },
       }
     )

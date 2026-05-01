@@ -38,7 +38,7 @@ const getGroup = async (id: string): Promise<{ group: Group; members: GroupMembe
   )
 
   if (!response?.group) {
-    throw new Error('Group not found')
+    throw new Error("Group not found")
   }
 
   return {

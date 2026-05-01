@@ -123,7 +123,6 @@ function ProfileSkeleton() {
 }
 
 function ProfileEditor({ person, info }: { person: string; info: PersonInformation }) {
-  const { t } = useLingui()
   const avatarUrl = info.avatar ? `/${info.fingerprint}/-/avatar?v=${info.avatar}` : null
   const bannerUrl = info.banner ? `/${info.fingerprint}/-/banner?v=${info.banner}` : null
   const faviconUrl = info.favicon ? `/${info.fingerprint}/-/favicon?v=${info.favicon}` : null
@@ -157,15 +156,15 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
 
   const handleSaveProfile = () => {
     profileMutation.mutate(profile, {
-      onSuccess: () => toast.success(t`Profile saved`),
-      onError: (err) => toast.error(getErrorMessage(err, t`Failed to save profile`)),
+      onSuccess: () => toast.success("Profile saved"),
+      onError: (err) => toast.error(getErrorMessage(err, "Failed to save profile")),
     })
   }
 
   const handleSaveAccent = () => {
     accentMutation.mutate(accentTrimmed, {
-      onSuccess: () => toast.success(t`Accent saved`),
-      onError: (err) => toast.error(getErrorMessage(err, t`Failed to save accent`)),
+      onSuccess: () => toast.success("Accent saved"),
+      onError: (err) => toast.error(getErrorMessage(err, "Failed to save accent")),
     })
   }
 
@@ -173,16 +172,16 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
     if (!nameDirty) return
     nameMutation.mutate(nameTrimmed, {
       onSuccess: () => {
-        toast.success(t`Name saved`)
+        toast.success("Name saved")
         setNameDialogOpen(false)
       },
-      onError: (err) => toast.error(getErrorMessage(err, t`Failed to save name`)),
+      onError: (err) => toast.error(getErrorMessage(err, "Failed to save name")),
     })
   }
 
   const handleTogglePrivacy = (checked: boolean) => {
     privacyMutation.mutate(checked ? 'public' : 'private', {
-      onError: (err) => toast.error(getErrorMessage(err, t`Failed to update directory listing`)),
+      onError: (err) => toast.error(getErrorMessage(err, "Failed to update directory listing")),
     })
   }
 
@@ -232,7 +231,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
                   type="button"
                   onClick={open}
                   disabled={pending}
-                  aria-label={t`Upload avatar`}
+                  aria-label={"Upload avatar"}
                   className="absolute bottom-0 right-0 flex size-6 items-center justify-center rounded-full border border-border bg-muted text-muted-foreground shadow-sm transition-colors hover:bg-interactive-hover hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
                 >
                   <Upload className="size-3" />
@@ -248,7 +247,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
             size="sm"
             className="translate-y-2"
             onClick={() => setNameDialogOpen(true)}
-            aria-label={t`Edit name`}
+            aria-label={"Edit name"}
           >
             <Pencil className="size-3.5" />
           </Button>
@@ -265,7 +264,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
             id="profile-markdown"
             rows={5}
             value={profile}
-            placeholder={t`Markdown supported`}
+            placeholder={"Markdown supported"}
             onChange={(e) => setProfile(e.target.value)}
             className={tooLong ? 'border-destructive focus-visible:ring-destructive/30' : ''}
           />
@@ -430,7 +429,6 @@ function SlotUploader({
   slot: 'avatar' | 'banner' | 'favicon'
   children: (open: () => void, pending: boolean) => React.ReactNode
 }) {
-  const { t } = useLingui()
   const inputRef = useRef<HTMLInputElement>(null)
   const mutation = useUploadImageMutation(person, slot)
   const [resizing, setResizing] = useState(false)
@@ -440,7 +438,7 @@ function SlotUploader({
     if (inputRef.current) inputRef.current.value = ''
     if (!file) return
     if (file.size > SLOT_INPUT_MAX) {
-      toast.error(t`File too large`)
+      toast.error("File too large")
       return
     }
     setResizing(true)

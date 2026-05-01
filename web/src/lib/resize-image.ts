@@ -16,7 +16,7 @@ function loadImage(url: string): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const img = new Image()
     img.onload = () => resolve(img)
-    img.onerror = () => reject(new Error('Could not decode image'))
+    img.onerror = () => reject(new Error("Could not decode image"))
     img.src = url
   })
 }
@@ -43,7 +43,7 @@ export async function resizeImage(
     canvas.width = w
     canvas.height = h
     const ctx = canvas.getContext('2d')
-    if (!ctx) throw new Error('Canvas 2D context unavailable')
+    if (!ctx) throw new Error("Canvas 2D context unavailable")
 
     // For JPEG output, paint a white background so transparent PNGs don't
     // composite onto black.
@@ -55,7 +55,7 @@ export async function resizeImage(
 
     return await new Promise<Blob>((resolve, reject) => {
       canvas.toBlob(
-        (blob) => (blob ? resolve(blob) : reject(new Error('Could not encode image'))),
+        (blob) => (blob ? resolve(blob) : reject(new Error("Could not encode image"))),
         mime,
         quality
       )

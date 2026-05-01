@@ -173,8 +173,7 @@ export function Invitations() {
             title={t`No pending invitations`}
             description={
               search
-                ? 'Try adjusting your search'
-                : 'New invitations will appear here'
+                ? t`Try adjusting your search` : t`New invitations will appear here`
             }
           />
         ) : (

@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import { useLingui } from '@lingui/react/macro'
 import { AuthenticatedLayout, EntityAvatar, useAuthStore, type SidebarData, type NavItem } from '@mochi/web'
 import { CircleUserRound, Plus, User, Users, UsersRound } from 'lucide-react'
 import { useGroupsQuery } from '@/hooks/useGroups'
@@ -27,6 +28,7 @@ function profileIcon(identityId: string): React.FC {
 }
 
 function PeopleLayoutInner() {
+  const { t } = useLingui()
   const { data: groups, isLoading: groupsLoading } = useGroupsQuery()
   const { data: friendsData } = useFriendsQuery()
   const myIdentity = useAuthStore((s) => s.identity)
@@ -51,12 +53,12 @@ function PeopleLayoutInner() {
 
     const navGroups: SidebarData['navGroups'] = [
       {
-        title: 'People',
+        title: t`People`,
         items: [
-          { title: 'Profile', url: '/profile', icon: myIdentity ? profileIcon(myIdentity) : CircleUserRound },
-          { title: 'Friends', url: '/', icon: Users },
+          { title: t`Profile`, url: '/profile', icon: myIdentity ? profileIcon(myIdentity) : CircleUserRound },
+          { title: t`Friends`, url: '/', icon: Users },
           {
-            title: 'Invitations',
+            title: t`Invitations`,
             url: '/invitations',
             icon: User,
             badge: pendingInvites > 0 ? String(pendingInvites) : undefined,
@@ -64,11 +66,11 @@ function PeopleLayoutInner() {
         ],
       },
       {
-        title: 'Groups',
+        title: t`Groups`,
         separator: true,
         items: [
           ...groupItems,
-          { title: 'Create group', icon: Plus, onClick: openCreateGroupDialog },
+          { title: t`Create group`, icon: Plus, onClick: openCreateGroupDialog },
         ],
       },
     ]

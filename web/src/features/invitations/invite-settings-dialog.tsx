@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Trans } from '@lingui/react/macro'
 import {
   Button,
   Dialog,
@@ -28,28 +28,27 @@ interface Props {
 const options: { value: InvitePolicy; label: string; description: string }[] = [
   {
     value: 'notify',
-    label: 'Notify me',
-    description: 'Invites appear in invitations and you are sent a notification (default).',
+    label: "Notify me",
+    description: "Invites appear in invitations and you are sent a notification (default).",
   },
   {
     value: 'silent',
-    label: 'Store silently',
-    description: 'Invites appear in invitations. No notification is sent.',
+    label: "Store silently",
+    description: "Invites appear in invitations. No notification is sent.",
   },
   {
     value: 'reject',
-    label: 'Reject all',
-    description: 'Invites from unknown senders are dropped. Mutual invites still connect.',
+    label: "Reject all",
+    description: "Invites from unknown senders are dropped. Mutual invites still connect.",
   },
   {
     value: 'accept',
-    label: 'Accept automatically',
-    description: 'All invites are accepted without your approval.',
+    label: "Accept automatically",
+    description: "All invites are accepted without your approval.",
   },
 ]
 
 export function InviteSettingsDialog({ open, onOpenChange }: Props) {
-  const { t } = useLingui()
   const { data, isLoading } = usePreferencesQuery()
   const setPolicy = useSetPreferencesMutation()
   const [value, setValue] = useState<InvitePolicy>('notify')
@@ -61,11 +60,11 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
   const handleSave = () => {
     setPolicy.mutate(value, {
       onSuccess: () => {
-        toast.success(t`Invite policy updated`)
+        toast.success("Invite policy updated")
         onOpenChange(false)
       },
       onError: (error) => {
-        toast.error(getErrorMessage(error, t`Failed to save`))
+        toast.error(getErrorMessage(error, "Failed to save"))
       },
     })
   }

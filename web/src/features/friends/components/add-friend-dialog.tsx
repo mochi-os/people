@@ -68,7 +68,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
       setPendingUserId(null)
       setPreview(null)
       toast.success(FRIENDS_STRINGS.ALREADY_FRIENDS, {
-        description: 'You are now friends!',
+        description: "You are now friends!",
       })
     },
     onError: (error) => {

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Trans, useLingui } from '@lingui/react/macro'
+import { Trans } from '@lingui/react/macro'
 import { User, UsersRound, Search } from 'lucide-react'
 import { toast, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, EntityAvatar, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, getAppPath, getErrorMessage, EmptyState, GeneralError } from '@mochi/web'
 import {
@@ -14,7 +14,6 @@ interface MemberDialogProps {
 }
 
 export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps) {
-  const { t } = useLingui()
   const appPath = getAppPath()
   const [userSearch, setUserSearch] = useState('')
   const [selectedUser, setSelectedUser] = useState<{ id: string; name: string } | null>(null)
@@ -49,7 +48,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
             resetAndClose()
           },
           onError: (error) => {
-            toast.error(getErrorMessage(error, t`Failed to add member`))
+            toast.error(getErrorMessage(error, "Failed to add member"))
           },
         }
       )
@@ -62,7 +61,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
             resetAndClose()
           },
           onError: (error) => {
-            toast.error(getErrorMessage(error, t`Failed to add member`))
+            toast.error(getErrorMessage(error, "Failed to add member"))
           },
         }
       )
@@ -115,7 +114,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
                       setUserSearch(e.target.value)
                       setSelectedUser(null)
                     }}
-                    placeholder={t`Type to search...`}
+                    placeholder={"Type to search..."}
                     className='pl-10'
                   />
                 </div>
@@ -139,7 +138,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
               ) : !searchResults?.results?.length ? (
                 <EmptyState
                   icon={User}
-                  title={t`No people found`}
+                  title={"No people found"}
                   className="py-6"
                 />
               ) : (
@@ -194,8 +193,8 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
               ) : availableGroups.length === 0 ? (
                 <EmptyState
                   icon={UsersRound}
-                  title={t`No other groups`}
-                  description={t`All available groups are already added`}
+                  title={"No other groups"}
+                  description={"All available groups are already added"}
                   className="py-6"
                 />
               ) : (
@@ -241,7 +240,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
             <Trans>Cancel</Trans>
           </Button>
           <Button onClick={handleAddMember} disabled={!canAdd || addMemberMutation.isPending}>
-            {addMemberMutation.isPending ? 'Adding...' : 'Add member'}
+            {addMemberMutation.isPending ? "Adding..." : "Add member"}
           </Button>
         </ResponsiveDialogFooter>
       </ResponsiveDialogContent>

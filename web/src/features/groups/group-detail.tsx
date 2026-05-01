@@ -112,7 +112,7 @@ export function GroupDetail() {
         title={group?.name ?? 'Group'}
         icon={<UsersRound className='size-4 md:size-5' />}
         description={group?.description}
-        back={{ label: 'Back to friends', onFallback: goBackToFriends }}
+        back={{ label: t`Back to friends`, onFallback: goBackToFriends }}
         actions={
           group ? (
             <>
@@ -250,7 +250,7 @@ export function GroupDetail() {
               from this group?
             </>
           }
-          confirmText={removeMemberMutation.isPending ? 'Removing...' : 'Remove Member'}
+          confirmText={removeMemberMutation.isPending ? t`Removing...` : t`Remove Member`}
           destructive
           handleConfirm={confirmRemoveMember}
           isLoading={removeMemberMutation.isPending}

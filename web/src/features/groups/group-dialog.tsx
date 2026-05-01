@@ -95,7 +95,7 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
                 id='name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder={"Group name"}
+                placeholder={t`Group name`}
                 disabled={isPending}
               />
             </div>
@@ -105,7 +105,7 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
                 id='description'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder={"Optional description"}
+                placeholder={t`Optional description`}
                 disabled={isPending}
                 rows={3}
               />

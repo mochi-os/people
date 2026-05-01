@@ -115,7 +115,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
                       setUserSearch(e.target.value)
                       setSelectedUser(null)
                     }}
-                    placeholder={"Type to search..."}
+                    placeholder={t`Type to search...`}
                     className='pl-10'
                   />
                 </div>
@@ -139,7 +139,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
               ) : !searchResults?.results?.length ? (
                 <EmptyState
                   icon={User}
-                  title={"No people found"}
+                  title={t`No people found`}
                   className="py-6"
                 />
               ) : (
@@ -194,7 +194,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
               ) : availableGroups.length === 0 ? (
                 <EmptyState
                   icon={UsersRound}
-                  title={"No other groups"}
+                  title={t`No other groups`}
                   description={"All available groups are already added"}
                   className="py-6"
                 />

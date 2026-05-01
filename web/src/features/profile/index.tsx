@@ -232,7 +232,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
                   type="button"
                   onClick={open}
                   disabled={pending}
-                  aria-label={"Upload avatar"}
+                  aria-label={t`Upload avatar`}
                   className="absolute bottom-0 right-0 flex size-6 items-center justify-center rounded-full border border-border bg-muted text-muted-foreground shadow-sm transition-colors hover:bg-interactive-hover hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
                 >
                   <Upload className="size-3" />
@@ -248,7 +248,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
             size="sm"
             className="translate-y-2"
             onClick={() => setNameDialogOpen(true)}
-            aria-label={"Edit name"}
+            aria-label={t`Edit name`}
           >
             <Pencil className="size-3.5" />
           </Button>
@@ -265,7 +265,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
             id="profile-markdown"
             rows={5}
             value={profile}
-            placeholder={"Markdown supported"}
+            placeholder={t`Markdown supported`}
             onChange={(e) => setProfile(e.target.value)}
             className={tooLong ? 'border-destructive focus-visible:ring-destructive/30' : ''}
           />

@@ -25,31 +25,30 @@ interface Props {
   onOpenChange: (open: boolean) => void
 }
 
-const options: { value: InvitePolicy; label: string; description: string }[] = [
-  {
-    value: 'notify',
-    label: "Notify me",
-    description: "Invites appear in invitations and you are sent a notification (default).",
-  },
-  {
-    value: 'silent',
-    label: "Store silently",
-    description: "Invites appear in invitations. No notification is sent.",
-  },
-  {
-    value: 'reject',
-    label: "Reject all",
-    description: "Invites from unknown senders are dropped. Mutual invites still connect.",
-  },
-  {
-    value: 'accept',
-    label: "Accept automatically",
-    description: "All invites are accepted without your approval.",
-  },
-]
-
 export function InviteSettingsDialog({ open, onOpenChange }: Props) {
   const { t } = useLingui()
+  const options: { value: InvitePolicy; label: string; description: string }[] = [
+    {
+      value: 'notify',
+      label: t`Notify me`,
+      description: t`Invites appear in invitations and you are sent a notification (default).`,
+    },
+    {
+      value: 'silent',
+      label: t`Store silently`,
+      description: t`Invites appear in invitations. No notification is sent.`,
+    },
+    {
+      value: 'reject',
+      label: t`Reject all`,
+      description: t`Invites from unknown senders are dropped. Mutual invites still connect.`,
+    },
+    {
+      value: 'accept',
+      label: t`Accept automatically`,
+      description: t`All invites are accepted without your approval.`,
+    },
+  ]
   const { data, isLoading } = usePreferencesQuery()
   const setPolicy = useSetPreferencesMutation()
   const [value, setValue] = useState<InvitePolicy>('notify')

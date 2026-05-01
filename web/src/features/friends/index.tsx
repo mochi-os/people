@@ -84,7 +84,7 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
   return (
     <>
       <PageHeader
-        title={"Friends"}
+        title={t`Friends`}
         icon={<Users className='size-4 md:size-5' />}
         showSidebarTrigger
         primaryAction={
@@ -92,11 +92,11 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
             <HeaderSearch
               value={search}
               onValueChange={setSearch}
-              placeholder={"Search..."}
-              label={"Search friends"}
+              placeholder={t`Search...`}
+              label={t`Search friends`}
             />
             <IconButton
-              label={"Add friend"}
+              label={t`Add friend`}
               variant='default'
               className='md:hidden'
               onClick={() => setAddFriendDialogOpen(true)}
@@ -128,7 +128,7 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
         ) : error && !friendsData ? null : filteredFriends.length === 0 ? (
           <EmptyState
             icon={Users}
-            title={"No friends found"}
+            title={t`No friends found`}
             description={
               search
                 ? "Try adjusting your search" : "Add friends to start connecting"

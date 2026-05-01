@@ -179,7 +179,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                   placeholder={FRIENDS_STRINGS.SEARCH_USERS_PLACEHOLDER}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className='pl-9'
+                  className='ps-9'
                   autoFocus={!isMobile}
                 />
               </div>
@@ -264,7 +264,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                           return (
                             <>
                               {FRIENDS_STRINGS.ADDING}
-                              <Loader2 className='ml-2 h-4 w-4 animate-spin' />
+                              <Loader2 className='ms-2 h-4 w-4 animate-spin' />
                             </>
                           )
                         }
@@ -274,20 +274,20 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                             return (
                               <>
                                 {FRIENDS_STRINGS.THATS_YOU}
-                                <Ban className='ml-2 h-4 w-4' />
+                                <Ban className='ms-2 h-4 w-4' />
                               </>
                             )
                           case 'friend':
                             return (
                               <>
                                 {FRIENDS_STRINGS.ALREADY_FRIENDS}
-                                <UserCheck className='ml-2 h-4 w-4' />
+                                <UserCheck className='ms-2 h-4 w-4' />
                               </>
                             )
                           case 'invited':
                             return (
                               <>
-                                <Send className='mr-2 h-4 w-4' />
+                                <Send className='me-2 h-4 w-4' />
                                 {FRIENDS_STRINGS.INVITATION_SENT}
                               </>
                             )
@@ -295,13 +295,13 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                             return (
                               <>
                                 {FRIENDS_STRINGS.PENDING_INVITE}
-                                <Check className='ml-2 h-4 w-4' />
+                                <Check className='ms-2 h-4 w-4' />
                               </>
                             )
                           default:
                             return (
                               <>
-                                <UserPlus className='mr-2 h-4 w-4' />
+                                <UserPlus className='me-2 h-4 w-4' />
                                 {FRIENDS_STRINGS.ADD_FRIEND}
                               </>
                             )
@@ -359,14 +359,14 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                 onClick={() => setPreview(null)}
                 disabled={previewBusy}
               >
-                <ArrowLeft className='h-4 w-4' />
+                <ArrowLeft className='h-4 w-4 rtl:rotate-180' />
                 {FRIENDS_STRINGS.BACK}
               </Button>
               <Button onClick={handleConfirmFromPreview} disabled={previewBusy}>
                 {previewBusy ? (
                   <>
                     {FRIENDS_STRINGS.ADDING}
-                    <Loader2 className='ml-2 h-4 w-4 animate-spin' />
+                    <Loader2 className='ms-2 h-4 w-4 animate-spin' />
                   </>
                 ) : (
                   <>

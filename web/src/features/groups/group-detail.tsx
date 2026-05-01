@@ -117,7 +117,7 @@ export function GroupDetail() {
           group ? (
             <>
               <Button onClick={() => setAddMemberDialog(true)}>
-                <UserPlus className='h-4 w-4 mr-2' />
+                <UserPlus className='h-4 w-4 me-2' />
                 <Trans>Add member</Trans>
               </Button>
               <DropdownMenu>
@@ -187,7 +187,7 @@ export function GroupDetail() {
                       <TableRow>
                         <TableHead><Trans>Member</Trans></TableHead>
                         <TableHead><Trans>Type</Trans></TableHead>
-                        <TableHead className='w-[80px] text-right'><Trans>Actions</Trans></TableHead>
+                        <TableHead className='w-[80px] text-end'><Trans>Actions</Trans></TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -215,7 +215,7 @@ export function GroupDetail() {
                               )}
                             </div>
                           </TableCell>
-                          <TableCell className="text-right">
+                          <TableCell className="text-end">
                             <Button
                               variant='ghost'
                               size='icon'

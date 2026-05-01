@@ -116,7 +116,7 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
               <Trans>Cancel</Trans>
             </Button>
             <Button type='submit' disabled={isPending}>
-              {isPending ? 'Saving...' : isEditing ? 'Save' : <><Plus className="mr-2 h-4 w-4" /><Trans>Create group</Trans></>}
+              {isPending ? 'Saving...' : isEditing ? 'Save' : <><Plus className="me-2 h-4 w-4" /><Trans>Create group</Trans></>}
             </Button>
           </ResponsiveDialogFooter>
         </form>

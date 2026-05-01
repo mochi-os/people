@@ -93,11 +93,11 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
         <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'user' | 'group')}>
           <TabsList className='grid w-full grid-cols-2'>
             <TabsTrigger value='user'>
-              <User className='mr-2 h-4 w-4' />
+              <User className='me-2 h-4 w-4' />
               <Trans>User</Trans>
             </TabsTrigger>
             <TabsTrigger value='group'>
-              <UsersRound className='mr-2 h-4 w-4' />
+              <UsersRound className='me-2 h-4 w-4' />
               <Trans>Group</Trans>
             </TabsTrigger>
           </TabsList>
@@ -116,7 +116,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
                       setSelectedUser(null)
                     }}
                     placeholder={t`Type to search...`}
-                    className='pl-10'
+                    className='ps-10'
                   />
                 </div>
               </div>

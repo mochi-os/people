@@ -285,7 +285,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
             </p>
             <Button
               size="sm"
-              className="ml-2"
+              className="ms-2"
               disabled={!profileDirty || tooLong || profileMutation.isPending}
               onClick={handleSaveProfile}
             >

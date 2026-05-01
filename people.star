@@ -3,7 +3,7 @@
 # Copyright Alistair Cunningham 2024-2026
 
 def notify(topic, object="", title="", body="", url="", sender=""):
-	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notification_topic_" + topic.replace("/", "_")), sender)
+	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender)
 
 def database_create():
 	mochi.db.execute("create table if not exists friends ( identity text not null, id text not null, name text not null, class text not null, primary key ( identity, id ) )")
@@ -33,7 +33,7 @@ def action_accept(a):
 	id = a.input("id")
 	if not id:
 		return json_error("Missing friend ID")
-	if not mochi.valid(id, "entity"):
+	if not mochi.text.valid(id, "entity"):
 		return json_error("Invalid friend ID format")
 
 	i = mochi.db.row("select * from invites where identity=? and id=? and direction='from'", identity, id)
@@ -52,7 +52,7 @@ def action_create(a):
 	id = a.input("id")
 	if not id:
 		return json_error("Missing friend ID")
-	if not mochi.valid(id, "entity"):
+	if not mochi.text.valid(id, "entity"):
 		return json_error("Invalid friend ID format")
 	if id == identity:
 		return json_error("Cannot add yourself as a friend")
@@ -60,7 +60,7 @@ def action_create(a):
 	name = a.input("name")
 	if not name:
 		return json_error("Missing friend name")
-	if not mochi.valid(name, "line"):
+	if not mochi.text.valid(name, "line"):
 		return json_error("Invalid friend name")
 	if len(name) > 255:
 		return json_error("Friend name too long")
@@ -84,7 +84,7 @@ def action_delete(a):
 	id = a.input("id")
 	if not id:
 		return json_error("Missing friend ID")
-	if not mochi.valid(id, "entity"):
+	if not mochi.text.valid(id, "entity"):
 		return json_error("Invalid friend ID format")
 
 	# Check if this is an existing friendship - notify remote to remove us
@@ -106,7 +106,7 @@ def action_ignore(a):
 	id = a.input("id")
 	if not id:
 		return json_error("Missing friend ID")
-	if not mochi.valid(id, "entity"):
+	if not mochi.text.valid(id, "entity"):
 		return json_error("Invalid friend ID format")
 
 	mochi.db.execute("delete from invites where identity=? and id=? and direction='from'", identity, id)
@@ -116,7 +116,7 @@ def action_ignore(a):
 # List friends
 def action_list(a):
 	identity = a.user.identity.id
-	friends = mochi.db.rows("select * from friends where identity=? order by name, id", identity)
+	friends = mochi.db.rows("select * from friends where identity=? order by id", identity)
 
 	# Look up current names from directory to avoid stale names
 	for friend in friends:
@@ -141,14 +141,14 @@ def action_search(a):
 	results = []
 
 	# Check if search term is an entity ID (49-51 word characters)
-	if mochi.valid(search, "entity"):
+	if mochi.text.valid(search, "entity"):
 		entry = mochi.directory.get(search)
 		if entry and entry.get("class") == "person":
 			results.append(entry)
 
 	# Check if search term is a fingerprint (9 alphanumeric, with or without hyphens)
 	fingerprint = search.replace("-", "")
-	if mochi.valid(fingerprint, "fingerprint"):
+	if mochi.text.valid(fingerprint, "fingerprint"):
 		matches = mochi.directory.search("person", "", False, fingerprint=fingerprint)
 		for entry in matches:
 			found = False
@@ -163,7 +163,7 @@ def action_search(a):
 	if search.startswith("http://") or search.startswith("https://"):
 		parts = search.rstrip("/").split("/")
 		for part in reversed(parts):
-			if mochi.valid(part, "entity"):
+			if mochi.text.valid(part, "entity"):
 				entry = mochi.directory.get(part)
 				if entry and entry.get("class") == "person":
 					# Avoid duplicates
@@ -256,7 +256,7 @@ def action_users_search(a):
 	unique_results = []
 
 	# Check if search term is an entity ID (49-51 word characters)
-	if mochi.valid(search, "entity"):
+	if mochi.text.valid(search, "entity"):
 		entry = mochi.directory.get(search)
 		if entry and entry.get("class") == "person":
 			if entry["id"] not in seen:
@@ -265,7 +265,7 @@ def action_users_search(a):
 
 	# Check if search term is a fingerprint (9 alphanumeric, with or without hyphens)
 	fingerprint = search.replace("-", "")
-	if mochi.valid(fingerprint, "fingerprint"):
+	if mochi.text.valid(fingerprint, "fingerprint"):
 		matches = mochi.directory.search("person", "", False, fingerprint=fingerprint)
 		for entry in matches:
 			if entry["id"] not in seen:
@@ -277,7 +277,7 @@ def action_users_search(a):
 		# Extract entity ID from URL - look for the last path segment that's a valid entity
 		parts = search.rstrip("/").split("/")
 		for part in reversed(parts):
-			if mochi.valid(part, "entity"):
+			if mochi.text.valid(part, "entity"):
 				entry = mochi.directory.get(part)
 				if entry and entry.get("class") == "person":
 					if entry["id"] not in seen:
@@ -313,7 +313,7 @@ def event_invite(e):
 	# notification — invites are a common unsolicited-contact vector).
 	# Mutual invites always transition to friends regardless of policy.
 	name = e.content("name")
-	if not mochi.valid(name, "line") or len(name) > 255:
+	if not mochi.text.valid(name, "line") or len(name) > 255:
 		return
 
 	identity = resolve_identity(e.header("to"))
@@ -363,7 +363,7 @@ def function_get(context, identity, id):
 def function_list(context, identity):
 	if not identity:
 		return []
-	return mochi.db.rows("select * from friends where identity=? order by name, id", identity)
+	return mochi.db.rows("select * from friends where identity=? order by id", identity)
 
 # Service function for user search
 # Supports searching by name, entity ID, fingerprint (with or without hyphens), or URL
@@ -376,7 +376,7 @@ def function_users_search(context, query):
 	unique_results = []
 
 	# Check if search term is an entity ID (49-51 word characters)
-	if mochi.valid(search, "entity"):
+	if mochi.text.valid(search, "entity"):
 		entry = mochi.directory.get(search)
 		if entry and entry.get("class") == "person":
 			if entry["id"] not in seen:
@@ -385,7 +385,7 @@ def function_users_search(context, query):
 
 	# Check if search term is a fingerprint (9 alphanumeric, with or without hyphens)
 	fingerprint = search.replace("-", "")
-	if mochi.valid(fingerprint, "fingerprint"):
+	if mochi.text.valid(fingerprint, "fingerprint"):
 		matches = mochi.directory.search("person", "", False, fingerprint=fingerprint)
 		for entry in matches:
 			if entry["id"] not in seen:
@@ -396,7 +396,7 @@ def function_users_search(context, query):
 	if search.startswith("http://") or search.startswith("https://"):
 		parts = search.rstrip("/").split("/")
 		for part in reversed(parts):
-			if mochi.valid(part, "entity"):
+			if mochi.text.valid(part, "entity"):
 				entry = mochi.directory.get(part)
 				if entry and entry.get("class") == "person":
 					if entry["id"] not in seen:
@@ -452,7 +452,7 @@ def action_group_get(a):
 				user = mochi.user.get.id(int(member_id))
 				if user:
 					name = user["username"]
-			elif mochi.valid(member_id, "entity"):
+			elif mochi.text.valid(member_id, "entity"):
 				# Entity from directory
 				entity = mochi.directory.get(member_id)
 				if entity:
@@ -477,13 +477,13 @@ def action_group_create(a):
 	name = a.input("name")
 	if not name:
 		return json_error("Missing group name")
-	if not mochi.valid(name, "line"):
+	if not mochi.text.valid(name, "line"):
 		return json_error("Invalid group name")
 	if len(name) > 255:
 		return json_error("Group name too long")
 
 	description = a.input("description", "")
-	if description and not mochi.valid(description, "text"):
+	if description and not mochi.text.valid(description, "text"):
 		return json_error("Invalid description")
 
 	mochi.group.create(id, name, description)
@@ -505,12 +505,12 @@ def action_group_update(a):
 		return json_error("No fields to update")
 
 	if name:
-		if not mochi.valid(name, "line"):
+		if not mochi.text.valid(name, "line"):
 			return json_error("Invalid group name")
 		if len(name) > 255:
 			return json_error("Group name too long")
 
-	if description and not mochi.valid(description, "text"):
+	if description and not mochi.text.valid(description, "text"):
 		return json_error("Invalid description")
 
 	kwargs = {}
@@ -798,7 +798,7 @@ def action_name_set(a):
 	name = a.input("name", "").strip()
 	if not name:
 		return json_error("Name cannot be empty")
-	if not mochi.valid(name, "name"):
+	if not mochi.text.valid(name, "name"):
 		return json_error("Invalid name")
 	mochi.entity.update(person_id, name=name)
 	return {"data": {}}

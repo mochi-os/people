@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { useLingui } from '@lingui/react/macro'
-import { AuthenticatedLayout, EntityAvatar, useAuthStore, type SidebarData, type NavItem } from '@mochi/web'
+import { AuthenticatedLayout, EntityAvatar, useAuthStore, type SidebarData, type NavItem, naturalCompare} from '@mochi/web'
 import { CircleUserRound, Plus, User, Users, UsersRound } from 'lucide-react'
 import { useGroupsQuery } from '@/hooks/useGroups'
 import { useFriendsQuery } from '@/hooks/useFriends'
@@ -40,7 +40,7 @@ function PeopleLayoutInner() {
 
   const sidebarData: SidebarData = useMemo(() => {
     const sortedGroups = [...(groups || [])].sort((a, b) =>
-      a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+      naturalCompare(a.name, b.name)
     )
 
     const groupItems: NavItem[] = sortedGroups.map((group) => ({

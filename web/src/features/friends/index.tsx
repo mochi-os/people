@@ -16,8 +16,7 @@ import {
   getAppPath,
   toast,
   getErrorMessage,
-  shellNavigateExternal
-} from '@mochi/web'
+  shellNavigateExternal, naturalCompare} from '@mochi/web'
 import { UserPlus, Users, MessageSquare, UserX } from 'lucide-react'
 import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
 import { AddFriendDialog } from './components/add-friend-dialog'
@@ -53,7 +52,7 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
         friend.name.toLowerCase().includes(search.toLowerCase())
       )
       .sort((a, b) =>
-        a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+        naturalCompare(a.name, b.name)
       )
   }, [friendsData?.friends, search])
 

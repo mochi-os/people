@@ -323,7 +323,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
                 {faviconUrl ? (
                   <img
                     src={faviconUrl}
-                    alt="Favicon"
+                    alt={"Favicon"}
                     className="size-full object-contain"
                   />
                 ) : (

@@ -45,7 +45,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
         { group: groupId, member: selectedUser.id, type: 'user' },
         {
           onSuccess: () => {
-            toast.success(`Added ${selectedUser.name} to the group`)
+            toast.success(t`Added ${selectedUser.name} to the group`)
             resetAndClose()
           },
           onError: (error) => {
@@ -58,7 +58,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
         { group: groupId, member: selectedGroup.id, type: 'group' },
         {
           onSuccess: () => {
-            toast.success(`Added ${selectedGroup.name} to the group`)
+            toast.success(t`Added ${selectedGroup.name} to the group`)
             resetAndClose()
           },
           onError: (error) => {
@@ -195,7 +195,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
                 <EmptyState
                   icon={UsersRound}
                   title={t`No other groups`}
-                  description={"All available groups are already added"}
+                  description={t`All available groups are already added`}
                   className="py-6"
                 />
               ) : (

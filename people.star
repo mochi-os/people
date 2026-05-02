@@ -697,11 +697,11 @@ def valid_hex_colour(s):
 # assets (avatar/banner/favicon) and JSON assets (information/style).
 def stream_person_asset(a, person_id, asset):
 	if not person_id:
-		a.error_label(404, "errors.person_not_found")
+		a.error.label(404, "errors.person_not_found")
 		return None
 	s = mochi.remote.stream(person_id, "people", asset, {})
 	if not s:
-		a.error_label(502, "errors.person_unavailable")
+		a.error.label(502, "errors.person_unavailable")
 		return None
 	header = s.read()
 	if not header or header.get("status") != "200":

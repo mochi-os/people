@@ -449,7 +449,7 @@ def action_group_get(a):
 		if member["type"] == "user":
 			# Check if it's a numeric user ID or an entity ID
 			if member_id.isdigit():
-				user = mochi.user.get.id(int(member_id))
+				user = mochi.user.get(int(member_id))
 				if user:
 					name = user["username"]
 			elif mochi.text.valid(member_id, "entity"):

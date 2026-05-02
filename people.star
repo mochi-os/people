@@ -715,7 +715,7 @@ def stream_person_asset(a, person_id, asset):
 		return {"data": header["data"]}
 	a.header("Cache-Control", "private, max-age=300")
 	a.header("Content-Type", header.get("content_type", "application/octet-stream"))
-	a.write_from_stream(s)
+	a.write.stream(s)
 	return None
 
 def action_information(a):

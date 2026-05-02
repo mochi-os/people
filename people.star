@@ -861,7 +861,7 @@ def serve_image_event(e, slot, fallback_slot=""):
 		e.stream.write({"status": "404", "error": slot + " unavailable"})
 		return
 	e.stream.write({"status": "200", "content_type": att.get("content_type", "application/octet-stream"), "size": att.get("size", 0)})
-	e.stream.write_from_file(path)
+	e.write.file(path)
 
 def event_avatar(e):
 	serve_image_event(e, "avatar")

@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/profile/index.tsx:462
+msgid "{slotLabel} updated"
+msgstr "{slotLabel} 已更新"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:52
 msgid "12 hours"
 msgstr "12 小时"
@@ -92,9 +96,14 @@ msgstr "添加账户以接收通知并使用服务。"
 msgid "Add friend"
 msgstr "添加好友"
 
+#: src/features/friends/index.tsx:133
+msgid "Add friends to start connecting"
+msgstr "添加好友以开始联系"
+
 #: src/features/groups/group-detail.tsx:121
 #: src/features/groups/member-dialog.tsx:87
 #: src/features/groups/member-dialog.tsx:89
+#: src/features/groups/member-dialog.tsx:244
 msgid "Add member"
 msgstr "添加成员"
 
@@ -129,6 +138,10 @@ msgstr "添加视图"
 msgid "Added {0} to the group"
 msgstr "已将 {0} 添加到群组"
 
+#: src/features/groups/member-dialog.tsx:244
+msgid "Adding..."
+msgstr "添加中..."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:62
 msgid "Adjust the appearance and layout to suit your preferences."
 msgstr "调整外观和布局以符合你的偏好。"
@@ -156,6 +169,11 @@ msgstr "允许他人在目录中找到你"
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:24
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "确定要退出登录吗?你需要重新登录才能访问账户。"
+
+#. placeholder {0}: removeMemberDialog.name
+#: src/features/groups/group-detail.tsx:245
+msgid "Are you sure you want to remove <0>{0}</0> from this group?"
+msgstr "确定要将 <0>{0}</0> 从此群组中移除吗?"
 
 #: ../../../lib/web/src/components/data-table/column-header.tsx:56
 msgid "Asc"
@@ -198,9 +216,17 @@ msgstr "浏览器图标"
 msgid "Cancel"
 msgstr "取消"
 
+#: src/features/invitations/index.tsx:91
+msgid "Cancelled invitation to {friendName}."
+msgstr "已取消对 {friendName} 的邀请。"
+
 #: ../../../lib/web/src/components/notification-category-button.tsx:131
 msgid "Category for this notification"
 msgstr "该通知的分类"
+
+#: src/features/profile/index.tsx:212
+msgid "Change banner"
+msgstr "更换横幅"
 
 #: ../../../lib/web/src/components/notification-category-button.tsx:115
 msgid "Change notification category"
@@ -306,7 +332,13 @@ msgstr "复制"
 msgid "Core information about this group"
 msgstr "关于此群组的核心信息"
 
-#: src/components/layout/people-layout.tsx:73
+#: src/features/profile/index.tsx:455
+msgid "Could not process {slot} image"
+msgstr "无法处理 {slot} 图片"
+
+#: src/components/layout/people-layout.tsx:74
+#: src/features/groups/group-dialog.tsx:86
+#: src/features/groups/group-dialog.tsx:88
 #: src/features/groups/group-dialog.tsx:119
 msgid "Create group"
 msgstr "创建群组"
@@ -328,6 +360,10 @@ msgstr "深色模式"
 msgid "Decline"
 msgstr "拒绝"
 
+#: src/features/invitations/index.tsx:75
+msgid "Declined invitation from {friendName}."
+msgstr "已拒绝来自 {friendName} 的邀请。"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:297
 msgid "Default"
 msgstr "默认"
@@ -337,12 +373,18 @@ msgid "Default AI account"
 msgstr "默认 AI 账户"
 
 #: src/features/groups/group-detail.tsx:136
+#: src/features/groups/group-detail.tsx:278
 msgid "Delete"
 msgstr "删除"
 
 #: src/features/groups/group-detail.tsx:276
 msgid "Delete group"
 msgstr "删除群组"
+
+#. placeholder {0}: group?.name
+#: src/features/groups/group-detail.tsx:277
+msgid "Delete group \"{0}\"? This cannot be undone."
+msgstr "删除群组「{0}」?此操作无法撤销。"
 
 #: ../../../lib/web/src/components/data-table/column-header.tsx:60
 msgid "Desc"
@@ -384,6 +426,11 @@ msgstr "下载"
 msgid "Edit"
 msgstr "编辑"
 
+#: src/features/groups/group-dialog.tsx:86
+#: src/features/groups/group-dialog.tsx:88
+msgid "Edit group"
+msgstr "编辑群组"
+
 #: src/features/profile/index.tsx:251
 #: src/features/profile/index.tsx:392
 msgid "Edit name"
@@ -409,6 +456,10 @@ msgstr "添加成员失败"
 #: src/features/invitations/index.tsx:95
 msgid "Failed to cancel invitation"
 msgstr "取消邀请失败"
+
+#: src/features/groups/group-dialog.tsx:73
+msgid "Failed to create group"
+msgstr "创建群组失败"
 
 #: src/features/invitations/index.tsx:79
 msgid "Failed to decline invitation"
@@ -458,6 +509,18 @@ msgstr "更新分类失败"
 msgid "Failed to update directory listing"
 msgstr "更新目录列表失败"
 
+#: src/features/groups/group-dialog.tsx:62
+msgid "Failed to update group"
+msgstr "更新群组失败"
+
+#: src/features/profile/index.tsx:463
+msgid "Failed to upload {slot}"
+msgstr "上传 {slot} 失败"
+
+#: src/features/profile/index.tsx:327
+msgid "Favicon"
+msgstr "网站图标"
+
 #: src/features/profile/index.tsx:443
 msgid "File too large"
 msgstr "文件过大"
@@ -470,7 +533,7 @@ msgstr "浮动"
 msgid "Friday"
 msgstr "星期五"
 
-#: src/components/layout/people-layout.tsx:59
+#: src/components/layout/people-layout.tsx:60
 #: src/features/friends/index.tsx:27
 #: src/features/friends/index.tsx:86
 msgid "Friends"
@@ -507,6 +570,9 @@ msgid "Go to previous page"
 msgstr "跳转到上一页"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:159
+#: src/features/groups/group-detail.tsx:54
+#: src/features/groups/group-detail.tsx:112
+#: src/features/groups/group-detail.tsx:212
 #: src/features/groups/member-dialog.tsx:101
 msgid "Group"
 msgstr "群组"
@@ -539,7 +605,7 @@ msgstr "群组未找到"
 msgid "Group updated"
 msgstr "已更新群组"
 
-#: src/components/layout/people-layout.tsx:69
+#: src/components/layout/people-layout.tsx:70
 msgid "Groups"
 msgstr "群组"
 
@@ -594,7 +660,7 @@ msgstr "已取消邀请"
 msgid "Invitation declined"
 msgstr "已拒绝邀请"
 
-#: src/components/layout/people-layout.tsx:61
+#: src/components/layout/people-layout.tsx:62
 #: src/features/invitations/index.tsx:29
 #: src/features/invitations/index.tsx:118
 msgid "Invitations"
@@ -854,7 +920,7 @@ msgstr "所有者"
 msgid "Pending"
 msgstr "待处理"
 
-#: src/components/layout/people-layout.tsx:56
+#: src/components/layout/people-layout.tsx:57
 msgid "People"
 msgstr "人员"
 
@@ -862,18 +928,24 @@ msgstr "人员"
 msgid "Preview"
 msgstr "预览"
 
+#. placeholder {0}: preview.user.name
+#: src/features/friends/components/add-friend-dialog.tsx:168
+msgid "Preview {0}'s profile before sending a friend request."
+msgstr "在发送好友请求前预览 {0} 的个人资料。"
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:332
 msgid "Previous image"
 msgstr "上一张图片"
 
 #: ../../../lib/web/src/components/layout/nav-user.tsx:134
 #: ../../../lib/web/src/components/profile-dropdown.tsx:111
-#: src/components/layout/people-layout.tsx:58
+#: src/components/layout/people-layout.tsx:59
 #: src/features/profile/index.tsx:48
 #: src/features/profile/index.tsx:56
 #: src/features/profile/index.tsx:67
 #: src/features/profile/index.tsx:77
 #: src/features/profile/index.tsx:263
+#: src/features/profile/public.tsx:46
 msgid "Profile"
 msgstr "个人资料"
 
@@ -884,6 +956,11 @@ msgstr "资料预览"
 #: src/features/profile/index.tsx:160
 msgid "Profile saved"
 msgstr "资料已保存"
+
+#. placeholder {0}: filteredReceived.length
+#: src/features/invitations/index.tsx:186
+msgid "Received ({0})"
+msgstr "已收到 ({0})"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
 #: ../../../lib/web/src/components/search-entity-page.tsx:191
@@ -914,6 +991,18 @@ msgstr "24 小时内显示相对时间,否则显示绝对时间"
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
 msgid "Remove"
 msgstr "移除"
+
+#. placeholder {0}: friend.name
+#: src/features/friends/index.tsx:162
+msgid "Remove {0}"
+msgstr "移除 {0}"
+
+#. placeholder {0}: member.type
+#. placeholder {1}: member.name
+#: src/features/groups/group-detail.tsx:224
+#: src/features/groups/group-detail.tsx:225
+msgid "Remove {0} {1}"
+msgstr "移除 {0} {1}"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:241
 #: ../../../lib/web/src/features/access/access-list.tsx:242
@@ -960,9 +1049,23 @@ msgstr "每页行数"
 msgid "Saturday"
 msgstr "星期六"
 
+#: src/features/groups/group-dialog.tsx:119
 #: src/features/invitations/invite-settings-dialog.tsx:113
+#: src/features/profile/index.tsx:293
+#: src/features/profile/index.tsx:313
+#: src/features/profile/index.tsx:415
 msgid "Save"
 msgstr "保存"
+
+#: src/features/groups/group-dialog.tsx:119
+msgid "Saving..."
+msgstr "正在保存..."
+
+#: src/features/profile/index.tsx:293
+#: src/features/profile/index.tsx:313
+#: src/features/profile/index.tsx:415
+msgid "Saving…"
+msgstr "保存中…"
 
 #: ../../../lib/web/src/components/place-picker.tsx:82
 msgid "Search for a place"
@@ -975,6 +1078,10 @@ msgstr "搜索目的地..."
 #: ../../../lib/web/src/components/travelling-picker.tsx:173
 msgid "Search for origin..."
 msgstr "搜索起点..."
+
+#: src/features/friends/components/add-friend-dialog.tsx:169
+msgid "Search for people and send a friend request."
+msgstr "搜索用户并发送好友请求。"
 
 #: src/features/friends/index.tsx:95
 msgid "Search friends"
@@ -1038,6 +1145,18 @@ msgstr "选择站点方向"
 #: ../../../lib/web/src/components/config-drawer.tsx:189
 msgid "Select theme preference"
 msgstr "选择主题偏好"
+
+#. placeholder {0}: selectedGroup.name
+#. placeholder {0}: selectedUser.name
+#: src/features/groups/member-dialog.tsx:173
+#: src/features/groups/member-dialog.tsx:231
+msgid "Selected: <0>{0}</0>"
+msgstr "已选择: <0>{0}</0>"
+
+#. placeholder {0}: filteredSent.length
+#: src/features/invitations/index.tsx:242
+msgid "Sent ({0})"
+msgstr "已发送 ({0})"
 
 #: ../../../lib/web/src/lib/api-client.ts:224
 msgid "Session expired"
@@ -1142,6 +1261,7 @@ msgstr "顶部"
 msgid "Travelling"
 msgstr "行进中"
 
+#: src/features/friends/index.tsx:133
 #: src/features/invitations/index.tsx:176
 msgid "Try adjusting your search"
 msgstr "尝试调整您的搜索"
@@ -1200,11 +1320,21 @@ msgstr "美国"
 msgid "Unverified"
 msgstr "未验证"
 
+#: src/features/profile/index.tsx:340
+msgid "Upload"
+msgstr "上传"
+
 #: src/features/profile/index.tsx:235
 msgid "Upload avatar"
 msgstr "上传头像"
 
+#: src/features/profile/index.tsx:212
+#: src/features/profile/index.tsx:340
+msgid "Uploading…"
+msgstr "上传中…"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:155
+#: src/features/groups/group-detail.tsx:214
 #: src/features/groups/member-dialog.tsx:97
 msgid "User"
 msgstr "用户"
@@ -1256,3 +1386,11 @@ msgstr "网站正在维护中!"
 #: ../../../lib/web/src/lib/preference-utils.ts:71
 msgid "Wednesday"
 msgstr "星期三"
+
+#: src/features/invitations/index.tsx:59
+msgid "You are now friends with {friendName}."
+msgstr "您现在是 {friendName} 的好友。"
+
+#: src/features/friends/components/add-friend-dialog.tsx:73
+msgid "You are now friends!"
+msgstr "你们现在是好友了!"

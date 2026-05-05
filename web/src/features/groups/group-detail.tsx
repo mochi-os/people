@@ -51,7 +51,7 @@ export function GroupDetail() {
   const [editDialogOpen, setEditDialogOpen] = useState(false)
   const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false)
 
-  usePageTitle(data?.group?.name ?? 'Group')
+  usePageTitle(data?.group?.name ?? t`Group`)
 
   // Register with sidebar context
   useEffect(() => {
@@ -109,7 +109,7 @@ export function GroupDetail() {
   return (
     <>
       <PageHeader
-        title={group?.name ?? 'Group'}
+        title={group?.name ?? t`Group`}
         icon={<UsersRound className='size-4 md:size-5' />}
         description={group?.description}
         back={{ label: t`Back to friends`, onFallback: goBackToFriends }}
@@ -209,9 +209,9 @@ export function GroupDetail() {
                           <TableCell>
                             <div className="flex items-center gap-2">
                               {member.type === 'group' ? (
-                                <DataChip value="Group" icon={<UsersRound className='size-3.5' />} copyable={false} />
+                                <DataChip value={t`Group`} icon={<UsersRound className='size-3.5' />} copyable={false} />
                               ) : (
-                                <DataChip value="User" icon={<User className='size-3.5' />} copyable={false} />
+                                <DataChip value={t`User`} icon={<User className='size-3.5' />} copyable={false} />
                               )}
                             </div>
                           </TableCell>
@@ -221,8 +221,8 @@ export function GroupDetail() {
                               size='icon'
                               className="h-8 w-8 text-muted-foreground"
                               onClick={() => handleRemoveMember(member.member, member.name, member.type)}
-                              aria-label={`Remove ${member.type} ${member.name}`}
-                              title={`Remove ${member.type} ${member.name}`}
+                              aria-label={t`Remove ${member.type} ${member.name}`}
+                              title={t`Remove ${member.type} ${member.name}`}
                             >
                               <X className='h-4 w-4' />
                             </Button>
@@ -242,13 +242,13 @@ export function GroupDetail() {
           onOpenChange={(open) => setRemoveMemberDialog({ ...removeMemberDialog, open })}
           title={t`Remove member`}
           desc={
-            <>
+            <Trans>
               Are you sure you want to remove{' '}
               <span className='text-foreground font-semibold'>
                 {removeMemberDialog.name}
               </span>{' '}
               from this group?
-            </>
+            </Trans>
           }
           confirmText={removeMemberMutation.isPending ? t`Removing...` : t`Remove Member`}
           destructive
@@ -274,8 +274,8 @@ export function GroupDetail() {
           open={confirmDeleteOpen}
           onOpenChange={setConfirmDeleteOpen}
           title={t`Delete group`}
-          desc={`Delete group "${group?.name}"? This cannot be undone.`}
-          confirmText='Delete'
+          desc={t`Delete group "${group?.name}"? This cannot be undone.`}
+          confirmText={t`Delete`}
           destructive
           isLoading={deleteMutation.isPending}
           handleConfirm={handleConfirmDelete}

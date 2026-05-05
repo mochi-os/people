@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/profile/index.tsx:462
+msgid "{slotLabel} updated"
+msgstr "{slotLabel} dikemas kini"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:52
 msgid "12 hours"
 msgstr "12 jam"
@@ -92,9 +96,14 @@ msgstr "Tambah akaun untuk menerima pemberitahuan dan menggunakan perkhidmatan."
 msgid "Add friend"
 msgstr "Tambah rakan"
 
+#: src/features/friends/index.tsx:133
+msgid "Add friends to start connecting"
+msgstr "Tambah rakan untuk mula berhubung"
+
 #: src/features/groups/group-detail.tsx:121
 #: src/features/groups/member-dialog.tsx:87
 #: src/features/groups/member-dialog.tsx:89
+#: src/features/groups/member-dialog.tsx:244
 msgid "Add member"
 msgstr "Tambah ahli"
 
@@ -129,6 +138,10 @@ msgstr "Tambah paparan"
 msgid "Added {0} to the group"
 msgstr "Menambah {0} ke kumpulan"
 
+#: src/features/groups/member-dialog.tsx:244
+msgid "Adding..."
+msgstr "Menambah..."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:62
 msgid "Adjust the appearance and layout to suit your preferences."
 msgstr "Laraskan rupa dan susun atur mengikut keutamaan anda."
@@ -156,6 +169,11 @@ msgstr "Benarkan orang lain mencari anda dalam direktori"
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:24
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "Adakah anda pasti mahu log keluar? Anda perlu log masuk semula untuk mengakses akaun anda."
+
+#. placeholder {0}: removeMemberDialog.name
+#: src/features/groups/group-detail.tsx:245
+msgid "Are you sure you want to remove <0>{0}</0> from this group?"
+msgstr "Adakah anda pasti mahu mengeluarkan <0>{0}</0> dari kumpulan ini?"
 
 #: ../../../lib/web/src/components/data-table/column-header.tsx:56
 msgid "Asc"
@@ -198,9 +216,17 @@ msgstr "Ikon pelayar"
 msgid "Cancel"
 msgstr "Batal"
 
+#: src/features/invitations/index.tsx:91
+msgid "Cancelled invitation to {friendName}."
+msgstr "Jemputan kepada {friendName} dibatalkan."
+
 #: ../../../lib/web/src/components/notification-category-button.tsx:131
 msgid "Category for this notification"
 msgstr "Kategori untuk pemberitahuan ini"
+
+#: src/features/profile/index.tsx:212
+msgid "Change banner"
+msgstr "Tukar banner"
 
 #: ../../../lib/web/src/components/notification-category-button.tsx:115
 msgid "Change notification category"
@@ -306,7 +332,13 @@ msgstr "Salin"
 msgid "Core information about this group"
 msgstr "Maklumat teras tentang kumpulan ini"
 
-#: src/components/layout/people-layout.tsx:73
+#: src/features/profile/index.tsx:455
+msgid "Could not process {slot} image"
+msgstr "Tidak dapat memproses imej {slot}"
+
+#: src/components/layout/people-layout.tsx:74
+#: src/features/groups/group-dialog.tsx:86
+#: src/features/groups/group-dialog.tsx:88
 #: src/features/groups/group-dialog.tsx:119
 msgid "Create group"
 msgstr "Cipta kumpulan"
@@ -328,6 +360,10 @@ msgstr "Mod gelap"
 msgid "Decline"
 msgstr "Tolak"
 
+#: src/features/invitations/index.tsx:75
+msgid "Declined invitation from {friendName}."
+msgstr "Jemputan dari {friendName} ditolak."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:297
 msgid "Default"
 msgstr "Lalai"
@@ -337,12 +373,18 @@ msgid "Default AI account"
 msgstr "Akaun AI lalai"
 
 #: src/features/groups/group-detail.tsx:136
+#: src/features/groups/group-detail.tsx:278
 msgid "Delete"
 msgstr "Padam"
 
 #: src/features/groups/group-detail.tsx:276
 msgid "Delete group"
 msgstr "Padam kumpulan"
+
+#. placeholder {0}: group?.name
+#: src/features/groups/group-detail.tsx:277
+msgid "Delete group \"{0}\"? This cannot be undone."
+msgstr "Padam kumpulan \"{0}\"? Tindakan ini tidak boleh dibuat asal."
 
 #: ../../../lib/web/src/components/data-table/column-header.tsx:60
 msgid "Desc"
@@ -384,6 +426,11 @@ msgstr "Muat turun"
 msgid "Edit"
 msgstr "Edit"
 
+#: src/features/groups/group-dialog.tsx:86
+#: src/features/groups/group-dialog.tsx:88
+msgid "Edit group"
+msgstr "Edit kumpulan"
+
 #: src/features/profile/index.tsx:251
 #: src/features/profile/index.tsx:392
 msgid "Edit name"
@@ -409,6 +456,10 @@ msgstr "Gagal menambah ahli"
 #: src/features/invitations/index.tsx:95
 msgid "Failed to cancel invitation"
 msgstr "Gagal membatalkan jemputan"
+
+#: src/features/groups/group-dialog.tsx:73
+msgid "Failed to create group"
+msgstr "Gagal mencipta kumpulan"
 
 #: src/features/invitations/index.tsx:79
 msgid "Failed to decline invitation"
@@ -458,6 +509,18 @@ msgstr "Gagal mengemas kini kategori"
 msgid "Failed to update directory listing"
 msgstr "Gagal mengemas kini penyenaraian direktori"
 
+#: src/features/groups/group-dialog.tsx:62
+msgid "Failed to update group"
+msgstr "Gagal mengemas kini kumpulan"
+
+#: src/features/profile/index.tsx:463
+msgid "Failed to upload {slot}"
+msgstr "Gagal memuat naik {slot}"
+
+#: src/features/profile/index.tsx:327
+msgid "Favicon"
+msgstr "Favicon"
+
 #: src/features/profile/index.tsx:443
 msgid "File too large"
 msgstr "Fail terlalu besar"
@@ -470,7 +533,7 @@ msgstr "Terapung"
 msgid "Friday"
 msgstr "Jumaat"
 
-#: src/components/layout/people-layout.tsx:59
+#: src/components/layout/people-layout.tsx:60
 #: src/features/friends/index.tsx:27
 #: src/features/friends/index.tsx:86
 msgid "Friends"
@@ -507,6 +570,9 @@ msgid "Go to previous page"
 msgstr "Pergi ke halaman sebelumnya"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:159
+#: src/features/groups/group-detail.tsx:54
+#: src/features/groups/group-detail.tsx:112
+#: src/features/groups/group-detail.tsx:212
 #: src/features/groups/member-dialog.tsx:101
 msgid "Group"
 msgstr "Kumpulan"
@@ -539,7 +605,7 @@ msgstr "Kumpulan tidak ditemui"
 msgid "Group updated"
 msgstr "Kumpulan dikemas kini"
 
-#: src/components/layout/people-layout.tsx:69
+#: src/components/layout/people-layout.tsx:70
 msgid "Groups"
 msgstr "Kumpulan"
 
@@ -594,7 +660,7 @@ msgstr "Jemputan dibatalkan"
 msgid "Invitation declined"
 msgstr "Jemputan ditolak"
 
-#: src/components/layout/people-layout.tsx:61
+#: src/components/layout/people-layout.tsx:62
 #: src/features/invitations/index.tsx:29
 #: src/features/invitations/index.tsx:118
 msgid "Invitations"
@@ -854,7 +920,7 @@ msgstr "Pemilik"
 msgid "Pending"
 msgstr "Tertunggak"
 
-#: src/components/layout/people-layout.tsx:56
+#: src/components/layout/people-layout.tsx:57
 msgid "People"
 msgstr "Orang"
 
@@ -862,18 +928,24 @@ msgstr "Orang"
 msgid "Preview"
 msgstr "Pratonton"
 
+#. placeholder {0}: preview.user.name
+#: src/features/friends/components/add-friend-dialog.tsx:168
+msgid "Preview {0}'s profile before sending a friend request."
+msgstr "Pratonton profil {0} sebelum menghantar permintaan rakan."
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:332
 msgid "Previous image"
 msgstr "Imej sebelumnya"
 
 #: ../../../lib/web/src/components/layout/nav-user.tsx:134
 #: ../../../lib/web/src/components/profile-dropdown.tsx:111
-#: src/components/layout/people-layout.tsx:58
+#: src/components/layout/people-layout.tsx:59
 #: src/features/profile/index.tsx:48
 #: src/features/profile/index.tsx:56
 #: src/features/profile/index.tsx:67
 #: src/features/profile/index.tsx:77
 #: src/features/profile/index.tsx:263
+#: src/features/profile/public.tsx:46
 msgid "Profile"
 msgstr "Profil"
 
@@ -884,6 +956,11 @@ msgstr "Pratonton profil"
 #: src/features/profile/index.tsx:160
 msgid "Profile saved"
 msgstr "Profil disimpan"
+
+#. placeholder {0}: filteredReceived.length
+#: src/features/invitations/index.tsx:186
+msgid "Received ({0})"
+msgstr "Diterima ({0})"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
 #: ../../../lib/web/src/components/search-entity-page.tsx:191
@@ -914,6 +991,18 @@ msgstr "Relatif dalam 24 jam, jika tidak mutlak"
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
 msgid "Remove"
 msgstr "Alih keluar"
+
+#. placeholder {0}: friend.name
+#: src/features/friends/index.tsx:162
+msgid "Remove {0}"
+msgstr "Alih keluar {0}"
+
+#. placeholder {0}: member.type
+#. placeholder {1}: member.name
+#: src/features/groups/group-detail.tsx:224
+#: src/features/groups/group-detail.tsx:225
+msgid "Remove {0} {1}"
+msgstr "Keluarkan {0} {1}"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:241
 #: ../../../lib/web/src/features/access/access-list.tsx:242
@@ -960,9 +1049,23 @@ msgstr "Baris setiap halaman"
 msgid "Saturday"
 msgstr "Sabtu"
 
+#: src/features/groups/group-dialog.tsx:119
 #: src/features/invitations/invite-settings-dialog.tsx:113
+#: src/features/profile/index.tsx:293
+#: src/features/profile/index.tsx:313
+#: src/features/profile/index.tsx:415
 msgid "Save"
 msgstr "Simpan"
+
+#: src/features/groups/group-dialog.tsx:119
+msgid "Saving..."
+msgstr "Sedang menyimpan..."
+
+#: src/features/profile/index.tsx:293
+#: src/features/profile/index.tsx:313
+#: src/features/profile/index.tsx:415
+msgid "Saving…"
+msgstr "Menyimpan…"
 
 #: ../../../lib/web/src/components/place-picker.tsx:82
 msgid "Search for a place"
@@ -975,6 +1078,10 @@ msgstr "Cari destinasi..."
 #: ../../../lib/web/src/components/travelling-picker.tsx:173
 msgid "Search for origin..."
 msgstr "Cari asal..."
+
+#: src/features/friends/components/add-friend-dialog.tsx:169
+msgid "Search for people and send a friend request."
+msgstr "Cari orang dan hantar permintaan rakan."
 
 #: src/features/friends/index.tsx:95
 msgid "Search friends"
@@ -1038,6 +1145,18 @@ msgstr "Pilih arah laman"
 #: ../../../lib/web/src/components/config-drawer.tsx:189
 msgid "Select theme preference"
 msgstr "Pilih keutamaan tema"
+
+#. placeholder {0}: selectedGroup.name
+#. placeholder {0}: selectedUser.name
+#: src/features/groups/member-dialog.tsx:173
+#: src/features/groups/member-dialog.tsx:231
+msgid "Selected: <0>{0}</0>"
+msgstr "Dipilih: <0>{0}</0>"
+
+#. placeholder {0}: filteredSent.length
+#: src/features/invitations/index.tsx:242
+msgid "Sent ({0})"
+msgstr "Dihantar ({0})"
 
 #: ../../../lib/web/src/lib/api-client.ts:224
 msgid "Session expired"
@@ -1142,6 +1261,7 @@ msgstr "Atas"
 msgid "Travelling"
 msgstr "Sedang dalam perjalanan"
 
+#: src/features/friends/index.tsx:133
 #: src/features/invitations/index.tsx:176
 msgid "Try adjusting your search"
 msgstr "Cuba laraskan carian anda"
@@ -1200,11 +1320,21 @@ msgstr "Amerika Syarikat"
 msgid "Unverified"
 msgstr "Belum disahkan"
 
+#: src/features/profile/index.tsx:340
+msgid "Upload"
+msgstr "Muat naik"
+
 #: src/features/profile/index.tsx:235
 msgid "Upload avatar"
 msgstr "Muat naik avatar"
 
+#: src/features/profile/index.tsx:212
+#: src/features/profile/index.tsx:340
+msgid "Uploading…"
+msgstr "Memuat naik…"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:155
+#: src/features/groups/group-detail.tsx:214
 #: src/features/groups/member-dialog.tsx:97
 msgid "User"
 msgstr "Pengguna"
@@ -1256,3 +1386,11 @@ msgstr "Laman web sedang dalam penyelenggaraan!"
 #: ../../../lib/web/src/lib/preference-utils.ts:71
 msgid "Wednesday"
 msgstr "Rabu"
+
+#: src/features/invitations/index.tsx:59
+msgid "You are now friends with {friendName}."
+msgstr "Anda kini berkawan dengan {friendName}."
+
+#: src/features/friends/components/add-friend-dialog.tsx:73
+msgid "You are now friends!"
+msgstr "Anda kini berkawan!"

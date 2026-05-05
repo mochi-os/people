@@ -170,8 +170,8 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
 
               {selectedUser && (
                 <p className='text-sm'>
-                  Selected:{' '}
-                  <span className='font-semibold'>{selectedUser.name}</span>
+                  <Trans>Selected:{' '}
+                  <span className='font-semibold'>{selectedUser.name}</span></Trans>
                 </p>
               )}
             </div>
@@ -228,8 +228,8 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
 
               {selectedGroup && (
                 <p className='text-sm'>
-                  Selected:{' '}
-                  <span className='font-semibold'>{selectedGroup.name}</span>
+                  <Trans>Selected:{' '}
+                  <span className='font-semibold'>{selectedGroup.name}</span></Trans>
                 </p>
               )}
             </div>
@@ -241,7 +241,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
             <Trans>Cancel</Trans>
           </Button>
           <Button onClick={handleAddMember} disabled={!canAdd || addMemberMutation.isPending}>
-            {addMemberMutation.isPending ? "Adding..." : "Add member"}
+            {addMemberMutation.isPending ? t`Adding...` : t`Add member`}
           </Button>
         </ResponsiveDialogFooter>
       </ResponsiveDialogContent>

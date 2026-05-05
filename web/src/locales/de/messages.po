@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/profile/index.tsx:462
+msgid "{slotLabel} updated"
+msgstr "{slotLabel} aktualisiert"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:52
 msgid "12 hours"
 msgstr "12 Stunden"
@@ -92,9 +96,14 @@ msgstr "Fügen Sie ein Konto hinzu, um Benachrichtigungen zu erhalten und Dienst
 msgid "Add friend"
 msgstr "Freund hinzufügen"
 
+#: src/features/friends/index.tsx:133
+msgid "Add friends to start connecting"
+msgstr "Füge Freunde hinzu, um Verbindungen zu knüpfen"
+
 #: src/features/groups/group-detail.tsx:121
 #: src/features/groups/member-dialog.tsx:87
 #: src/features/groups/member-dialog.tsx:89
+#: src/features/groups/member-dialog.tsx:244
 msgid "Add member"
 msgstr "Mitglied hinzufügen"
 
@@ -129,6 +138,10 @@ msgstr "Ansicht hinzufügen"
 msgid "Added {0} to the group"
 msgstr "{0} zur Gruppe hinzugefügt"
 
+#: src/features/groups/member-dialog.tsx:244
+msgid "Adding..."
+msgstr "Wird hinzugefügt ..."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:62
 msgid "Adjust the appearance and layout to suit your preferences."
 msgstr "Passen Sie Erscheinungsbild und Layout an Ihre Präferenzen an."
@@ -156,6 +169,11 @@ msgstr "Anderen erlauben, Sie im Verzeichnis zu finden"
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:24
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "Möchten Sie sich wirklich abmelden? Sie müssen sich erneut anmelden, um auf Ihr Konto zuzugreifen."
+
+#. placeholder {0}: removeMemberDialog.name
+#: src/features/groups/group-detail.tsx:245
+msgid "Are you sure you want to remove <0>{0}</0> from this group?"
+msgstr "Möchtest du <0>{0}</0> wirklich aus dieser Gruppe entfernen?"
 
 #: ../../../lib/web/src/components/data-table/column-header.tsx:56
 msgid "Asc"
@@ -198,9 +216,17 @@ msgstr "Browser-Symbol"
 msgid "Cancel"
 msgstr "Abbrechen"
 
+#: src/features/invitations/index.tsx:91
+msgid "Cancelled invitation to {friendName}."
+msgstr "Einladung an {friendName} abgebrochen."
+
 #: ../../../lib/web/src/components/notification-category-button.tsx:131
 msgid "Category for this notification"
 msgstr "Kategorie für diese Benachrichtigung"
+
+#: src/features/profile/index.tsx:212
+msgid "Change banner"
+msgstr "Banner ändern"
 
 #: ../../../lib/web/src/components/notification-category-button.tsx:115
 msgid "Change notification category"
@@ -306,7 +332,13 @@ msgstr "Kopieren"
 msgid "Core information about this group"
 msgstr "Kerninformationen zu dieser Gruppe"
 
-#: src/components/layout/people-layout.tsx:73
+#: src/features/profile/index.tsx:455
+msgid "Could not process {slot} image"
+msgstr "{slot}-Bild konnte nicht verarbeitet werden"
+
+#: src/components/layout/people-layout.tsx:74
+#: src/features/groups/group-dialog.tsx:86
+#: src/features/groups/group-dialog.tsx:88
 #: src/features/groups/group-dialog.tsx:119
 msgid "Create group"
 msgstr "Gruppe erstellen"
@@ -328,6 +360,10 @@ msgstr "Dunkler Modus"
 msgid "Decline"
 msgstr "Ablehnen"
 
+#: src/features/invitations/index.tsx:75
+msgid "Declined invitation from {friendName}."
+msgstr "Einladung von {friendName} abgelehnt."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:297
 msgid "Default"
 msgstr "Standard"
@@ -337,12 +373,18 @@ msgid "Default AI account"
 msgstr "Standard-KI-Konto"
 
 #: src/features/groups/group-detail.tsx:136
+#: src/features/groups/group-detail.tsx:278
 msgid "Delete"
 msgstr "Löschen"
 
 #: src/features/groups/group-detail.tsx:276
 msgid "Delete group"
 msgstr "Gruppe löschen"
+
+#. placeholder {0}: group?.name
+#: src/features/groups/group-detail.tsx:277
+msgid "Delete group \"{0}\"? This cannot be undone."
+msgstr "Gruppe „{0}\" löschen? Dies kann nicht rückgängig gemacht werden."
 
 #: ../../../lib/web/src/components/data-table/column-header.tsx:60
 msgid "Desc"
@@ -384,6 +426,11 @@ msgstr "Herunterladen"
 msgid "Edit"
 msgstr "Bearbeiten"
 
+#: src/features/groups/group-dialog.tsx:86
+#: src/features/groups/group-dialog.tsx:88
+msgid "Edit group"
+msgstr "Gruppe bearbeiten"
+
 #: src/features/profile/index.tsx:251
 #: src/features/profile/index.tsx:392
 msgid "Edit name"
@@ -409,6 +456,10 @@ msgstr "Mitglied konnte nicht hinzugefügt werden"
 #: src/features/invitations/index.tsx:95
 msgid "Failed to cancel invitation"
 msgstr "Einladung konnte nicht storniert werden"
+
+#: src/features/groups/group-dialog.tsx:73
+msgid "Failed to create group"
+msgstr "Gruppe konnte nicht erstellt werden"
 
 #: src/features/invitations/index.tsx:79
 msgid "Failed to decline invitation"
@@ -458,6 +509,18 @@ msgstr "Kategorie konnte nicht aktualisiert werden"
 msgid "Failed to update directory listing"
 msgstr "Verzeichniseintrag konnte nicht aktualisiert werden"
 
+#: src/features/groups/group-dialog.tsx:62
+msgid "Failed to update group"
+msgstr "Gruppe konnte nicht aktualisiert werden"
+
+#: src/features/profile/index.tsx:463
+msgid "Failed to upload {slot}"
+msgstr "{slot} konnte nicht hochgeladen werden"
+
+#: src/features/profile/index.tsx:327
+msgid "Favicon"
+msgstr "Favicon"
+
 #: src/features/profile/index.tsx:443
 msgid "File too large"
 msgstr "Datei zu groß"
@@ -470,7 +533,7 @@ msgstr "Schwebend"
 msgid "Friday"
 msgstr "Freitag"
 
-#: src/components/layout/people-layout.tsx:59
+#: src/components/layout/people-layout.tsx:60
 #: src/features/friends/index.tsx:27
 #: src/features/friends/index.tsx:86
 msgid "Friends"
@@ -507,6 +570,9 @@ msgid "Go to previous page"
 msgstr "Zur vorherigen Seite"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:159
+#: src/features/groups/group-detail.tsx:54
+#: src/features/groups/group-detail.tsx:112
+#: src/features/groups/group-detail.tsx:212
 #: src/features/groups/member-dialog.tsx:101
 msgid "Group"
 msgstr "Gruppe"
@@ -539,7 +605,7 @@ msgstr "Gruppe nicht gefunden"
 msgid "Group updated"
 msgstr "Gruppe aktualisiert"
 
-#: src/components/layout/people-layout.tsx:69
+#: src/components/layout/people-layout.tsx:70
 msgid "Groups"
 msgstr "Gruppen"
 
@@ -594,7 +660,7 @@ msgstr "Einladung storniert"
 msgid "Invitation declined"
 msgstr "Einladung abgelehnt"
 
-#: src/components/layout/people-layout.tsx:61
+#: src/components/layout/people-layout.tsx:62
 #: src/features/invitations/index.tsx:29
 #: src/features/invitations/index.tsx:118
 msgid "Invitations"
@@ -854,7 +920,7 @@ msgstr "Eigentümer"
 msgid "Pending"
 msgstr "Ausstehend"
 
-#: src/components/layout/people-layout.tsx:56
+#: src/components/layout/people-layout.tsx:57
 msgid "People"
 msgstr "Personen"
 
@@ -862,18 +928,24 @@ msgstr "Personen"
 msgid "Preview"
 msgstr "Vorschau"
 
+#. placeholder {0}: preview.user.name
+#: src/features/friends/components/add-friend-dialog.tsx:168
+msgid "Preview {0}'s profile before sending a friend request."
+msgstr "Profil von {0} vor dem Senden einer Freundschaftsanfrage anzeigen."
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:332
 msgid "Previous image"
 msgstr "Vorheriges Bild"
 
 #: ../../../lib/web/src/components/layout/nav-user.tsx:134
 #: ../../../lib/web/src/components/profile-dropdown.tsx:111
-#: src/components/layout/people-layout.tsx:58
+#: src/components/layout/people-layout.tsx:59
 #: src/features/profile/index.tsx:48
 #: src/features/profile/index.tsx:56
 #: src/features/profile/index.tsx:67
 #: src/features/profile/index.tsx:77
 #: src/features/profile/index.tsx:263
+#: src/features/profile/public.tsx:46
 msgid "Profile"
 msgstr "Profil"
 
@@ -884,6 +956,11 @@ msgstr "Profilvorschau"
 #: src/features/profile/index.tsx:160
 msgid "Profile saved"
 msgstr "Profil gespeichert"
+
+#. placeholder {0}: filteredReceived.length
+#: src/features/invitations/index.tsx:186
+msgid "Received ({0})"
+msgstr "Empfangen ({0})"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
 #: ../../../lib/web/src/components/search-entity-page.tsx:191
@@ -914,6 +991,18 @@ msgstr "Relativ innerhalb von 24 Stunden, sonst absolut"
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
 msgid "Remove"
 msgstr "Entfernen"
+
+#. placeholder {0}: friend.name
+#: src/features/friends/index.tsx:162
+msgid "Remove {0}"
+msgstr "{0} entfernen"
+
+#. placeholder {0}: member.type
+#. placeholder {1}: member.name
+#: src/features/groups/group-detail.tsx:224
+#: src/features/groups/group-detail.tsx:225
+msgid "Remove {0} {1}"
+msgstr "{0} {1} entfernen"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:241
 #: ../../../lib/web/src/features/access/access-list.tsx:242
@@ -960,9 +1049,23 @@ msgstr "Zeilen pro Seite"
 msgid "Saturday"
 msgstr "Samstag"
 
+#: src/features/groups/group-dialog.tsx:119
 #: src/features/invitations/invite-settings-dialog.tsx:113
+#: src/features/profile/index.tsx:293
+#: src/features/profile/index.tsx:313
+#: src/features/profile/index.tsx:415
 msgid "Save"
 msgstr "Speichern"
+
+#: src/features/groups/group-dialog.tsx:119
+msgid "Saving..."
+msgstr "Wird gespeichert..."
+
+#: src/features/profile/index.tsx:293
+#: src/features/profile/index.tsx:313
+#: src/features/profile/index.tsx:415
+msgid "Saving…"
+msgstr "Wird gespeichert…"
 
 #: ../../../lib/web/src/components/place-picker.tsx:82
 msgid "Search for a place"
@@ -975,6 +1078,10 @@ msgstr "Nach Ziel suchen..."
 #: ../../../lib/web/src/components/travelling-picker.tsx:173
 msgid "Search for origin..."
 msgstr "Nach Ausgangspunkt suchen..."
+
+#: src/features/friends/components/add-friend-dialog.tsx:169
+msgid "Search for people and send a friend request."
+msgstr "Suche nach Personen und sende eine Freundschaftsanfrage."
 
 #: src/features/friends/index.tsx:95
 msgid "Search friends"
@@ -1038,6 +1145,18 @@ msgstr "Site-Richtung auswählen"
 #: ../../../lib/web/src/components/config-drawer.tsx:189
 msgid "Select theme preference"
 msgstr "Theme-Einstellung auswählen"
+
+#. placeholder {0}: selectedGroup.name
+#. placeholder {0}: selectedUser.name
+#: src/features/groups/member-dialog.tsx:173
+#: src/features/groups/member-dialog.tsx:231
+msgid "Selected: <0>{0}</0>"
+msgstr "Ausgewählt: <0>{0}</0>"
+
+#. placeholder {0}: filteredSent.length
+#: src/features/invitations/index.tsx:242
+msgid "Sent ({0})"
+msgstr "Gesendet ({0})"
 
 #: ../../../lib/web/src/lib/api-client.ts:224
 msgid "Session expired"
@@ -1142,6 +1261,7 @@ msgstr "Oben"
 msgid "Travelling"
 msgstr "Unterwegs"
 
+#: src/features/friends/index.tsx:133
 #: src/features/invitations/index.tsx:176
 msgid "Try adjusting your search"
 msgstr "Passen Sie Ihre Suche an"
@@ -1200,11 +1320,21 @@ msgstr "Vereinigte Staaten"
 msgid "Unverified"
 msgstr "Nicht verifiziert"
 
+#: src/features/profile/index.tsx:340
+msgid "Upload"
+msgstr "Hochladen"
+
 #: src/features/profile/index.tsx:235
 msgid "Upload avatar"
 msgstr "Avatar hochladen"
 
+#: src/features/profile/index.tsx:212
+#: src/features/profile/index.tsx:340
+msgid "Uploading…"
+msgstr "Wird hochgeladen…"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:155
+#: src/features/groups/group-detail.tsx:214
 #: src/features/groups/member-dialog.tsx:97
 msgid "User"
 msgstr "Benutzer"
@@ -1256,3 +1386,11 @@ msgstr "Die Website wird derzeit gewartet!"
 #: ../../../lib/web/src/lib/preference-utils.ts:71
 msgid "Wednesday"
 msgstr "Mittwoch"
+
+#: src/features/invitations/index.tsx:59
+msgid "You are now friends with {friendName}."
+msgstr "Du bist jetzt mit {friendName} befreundet."
+
+#: src/features/friends/components/add-friend-dialog.tsx:73
+msgid "You are now friends!"
+msgstr "Ihr seid jetzt Freunde!"

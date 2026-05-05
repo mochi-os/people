@@ -130,7 +130,7 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
             title={t`No friends found`}
             description={
               search
-                ? "Try adjusting your search" : "Add friends to start connecting"
+                ? t`Try adjusting your search` : t`Add friends to start connecting`
             }
           />
         ) : (
@@ -159,7 +159,7 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
                   <Button
                     variant='ghost'
                     size='sm'
-                    aria-label={`Remove ${friend.name}`}
+                    aria-label={t`Remove ${friend.name}`}
                     disabled={removeFriendMutation.isPending}
                     onClick={() => handleRemoveFriend(friend.id, friend.name)}
                   >

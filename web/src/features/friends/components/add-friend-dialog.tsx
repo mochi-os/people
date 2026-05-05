@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from 'react'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import { useLingui } from '@lingui/react/macro'
 import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban, ArrowLeft } from 'lucide-react'
 import { cn, toast, getAppPath, getErrorMessage, GeneralError, Button, EntityAvatar, EntityBanner, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Input, EmptyState, ScrollArea, useScreenSize } from '@mochi/web'
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation } from '@/hooks/useFriends'
@@ -24,6 +25,7 @@ function hasProfileContent(info: PersonInformation): boolean {
 }
 
 export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
+  const { t } = useLingui()
   const [searchQuery, setSearchQuery] = useState('')
   const [debouncedQuery, setDebouncedQuery] = useState('')
   const [invitedUserIds, setInvitedUserIds] = useState<Set<string>>(new Set())
@@ -68,7 +70,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
       setPendingUserId(null)
       setPreview(null)
       toast.success(FRIENDS_STRINGS.ALREADY_FRIENDS, {
-        description: "You are now friends!",
+        description: t`You are now friends!`,
       })
     },
     onError: (error) => {
@@ -163,8 +165,8 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
           </ResponsiveDialogTitle>
           <ResponsiveDialogDescription className='sr-only'>
             {preview
-              ? `Preview ${preview.user.name}'s profile before sending a friend request.`
-              : 'Search for people and send a friend request.'}
+              ? t`Preview ${preview.user.name}'s profile before sending a friend request.`
+              : t`Search for people and send a friend request.`}
           </ResponsiveDialogDescription>
         </ResponsiveDialogHeader>
 

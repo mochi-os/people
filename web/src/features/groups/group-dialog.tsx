@@ -59,7 +59,7 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
             toast.success(t`Group updated`)
             onOpenChange(false)
           },
-          onError: (error) => handleError(error, 'Failed to update group'),
+          onError: (error) => handleError(error, t`Failed to update group`),
         }
       )
     } else {
@@ -70,7 +70,7 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
             toast.success(t`Group created`)
             onOpenChange(false)
           },
-          onError: (error) => handleError(error, 'Failed to create group'),
+          onError: (error) => handleError(error, t`Failed to create group`),
         }
       )
     }
@@ -83,9 +83,9 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
       <ResponsiveDialogContent className='sm:max-w-[425px]'>
         <form onSubmit={handleSubmit}>
           <ResponsiveDialogHeader>
-            <ResponsiveDialogTitle>{isEditing ? "Edit group" : "Create group"}</ResponsiveDialogTitle>
+            <ResponsiveDialogTitle>{isEditing ? t`Edit group` : t`Create group`}</ResponsiveDialogTitle>
             <ResponsiveDialogDescription className="sr-only">
-              {isEditing ? "Edit group" : "Create group"}
+              {isEditing ? t`Edit group` : t`Create group`}
             </ResponsiveDialogDescription>
           </ResponsiveDialogHeader>
           <div className='grid gap-4 py-4'>
@@ -116,7 +116,7 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
               <Trans>Cancel</Trans>
             </Button>
             <Button type='submit' disabled={isPending}>
-              {isPending ? 'Saving...' : isEditing ? 'Save' : <><Plus className="me-2 h-4 w-4" /><Trans>Create group</Trans></>}
+              {isPending ? t`Saving...` : isEditing ? t`Save` : <><Plus className="me-2 h-4 w-4" /><Trans>Create group</Trans></>}
             </Button>
           </ResponsiveDialogFooter>
         </form>

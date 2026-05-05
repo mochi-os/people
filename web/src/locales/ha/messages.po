@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/profile/index.tsx:462
+msgid "{slotLabel} updated"
+msgstr "An sabunta {slotLabel}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:52
 msgid "12 hours"
 msgstr "Awa 12"
@@ -92,9 +96,14 @@ msgstr "Ƙara asusu don karɓar sanarwa da amfani da ayyuka."
 msgid "Add friend"
 msgstr "Ƙara aboki"
 
+#: src/features/friends/index.tsx:133
+msgid "Add friends to start connecting"
+msgstr "Ƙara abokai don fara haɗawa"
+
 #: src/features/groups/group-detail.tsx:121
 #: src/features/groups/member-dialog.tsx:87
 #: src/features/groups/member-dialog.tsx:89
+#: src/features/groups/member-dialog.tsx:244
 msgid "Add member"
 msgstr "Ƙara memba"
 
@@ -129,6 +138,10 @@ msgstr "Ƙara view"
 msgid "Added {0} to the group"
 msgstr "An ƙara {0} cikin ƙungiyar"
 
+#: src/features/groups/member-dialog.tsx:244
+msgid "Adding..."
+msgstr "Ana ƙarawa..."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:62
 msgid "Adjust the appearance and layout to suit your preferences."
 msgstr "Daidaita kamannin da tsarin don dacewa da ra'ayinka."
@@ -156,6 +169,11 @@ msgstr "Ba wasu damar nemo ka a directory"
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:24
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "Ka tabbata kana son fita? Za ka buƙaci shiga kuma don shiga asusunka."
+
+#. placeholder {0}: removeMemberDialog.name
+#: src/features/groups/group-detail.tsx:245
+msgid "Are you sure you want to remove <0>{0}</0> from this group?"
+msgstr "Kana da tabbacin kana son cire <0>{0}</0> daga wannan ƙungiyar?"
 
 #: ../../../lib/web/src/components/data-table/column-header.tsx:56
 msgid "Asc"
@@ -198,9 +216,17 @@ msgstr "Icon na browser"
 msgid "Cancel"
 msgstr "Soke"
 
+#: src/features/invitations/index.tsx:91
+msgid "Cancelled invitation to {friendName}."
+msgstr "An soke gayyata zuwa {friendName}."
+
 #: ../../../lib/web/src/components/notification-category-button.tsx:131
 msgid "Category for this notification"
 msgstr "Rukuni don wannan sanarwa"
+
+#: src/features/profile/index.tsx:212
+msgid "Change banner"
+msgstr "Canza tuta"
 
 #: ../../../lib/web/src/components/notification-category-button.tsx:115
 msgid "Change notification category"
@@ -306,7 +332,13 @@ msgstr "Kwafi"
 msgid "Core information about this group"
 msgstr "Tsakiyar bayani game da wannan ƙungiya"
 
-#: src/components/layout/people-layout.tsx:73
+#: src/features/profile/index.tsx:455
+msgid "Could not process {slot} image"
+msgstr "Ba a iya sarrafa hoton {slot} ba"
+
+#: src/components/layout/people-layout.tsx:74
+#: src/features/groups/group-dialog.tsx:86
+#: src/features/groups/group-dialog.tsx:88
 #: src/features/groups/group-dialog.tsx:119
 msgid "Create group"
 msgstr "Ƙirƙira ƙungiya"
@@ -328,6 +360,10 @@ msgstr "Dark mode"
 msgid "Decline"
 msgstr "Ƙi"
 
+#: src/features/invitations/index.tsx:75
+msgid "Declined invitation from {friendName}."
+msgstr "An ƙi gayyata daga {friendName}."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:297
 msgid "Default"
 msgstr "Default"
@@ -337,12 +373,18 @@ msgid "Default AI account"
 msgstr "Default AI asusu"
 
 #: src/features/groups/group-detail.tsx:136
+#: src/features/groups/group-detail.tsx:278
 msgid "Delete"
 msgstr "Goge"
 
 #: src/features/groups/group-detail.tsx:276
 msgid "Delete group"
 msgstr "Goge ƙungiya"
+
+#. placeholder {0}: group?.name
+#: src/features/groups/group-detail.tsx:277
+msgid "Delete group \"{0}\"? This cannot be undone."
+msgstr "A goge ƙungiyar \"{0}\"? Wannan ba za a iya jurewa ba."
 
 #: ../../../lib/web/src/components/data-table/column-header.tsx:60
 msgid "Desc"
@@ -384,6 +426,11 @@ msgstr "Sauke"
 msgid "Edit"
 msgstr "Gyara"
 
+#: src/features/groups/group-dialog.tsx:86
+#: src/features/groups/group-dialog.tsx:88
+msgid "Edit group"
+msgstr "Gyara ƙungiya"
+
 #: src/features/profile/index.tsx:251
 #: src/features/profile/index.tsx:392
 msgid "Edit name"
@@ -409,6 +456,10 @@ msgstr "An gaza ƙara memba"
 #: src/features/invitations/index.tsx:95
 msgid "Failed to cancel invitation"
 msgstr "An gaza soke gayyata"
+
+#: src/features/groups/group-dialog.tsx:73
+msgid "Failed to create group"
+msgstr "An kasa ƙirƙirar ƙungiya"
 
 #: src/features/invitations/index.tsx:79
 msgid "Failed to decline invitation"
@@ -458,6 +509,18 @@ msgstr "An gaza sabunta category"
 msgid "Failed to update directory listing"
 msgstr "An gaza sabunta listing na directory"
 
+#: src/features/groups/group-dialog.tsx:62
+msgid "Failed to update group"
+msgstr "An kasa sabunta ƙungiya"
+
+#: src/features/profile/index.tsx:463
+msgid "Failed to upload {slot}"
+msgstr "An kasa loda {slot}"
+
+#: src/features/profile/index.tsx:327
+msgid "Favicon"
+msgstr "Favicon"
+
 #: src/features/profile/index.tsx:443
 msgid "File too large"
 msgstr "Fayil ya yi yawa"
@@ -470,7 +533,7 @@ msgstr "Mai yawo"
 msgid "Friday"
 msgstr "Jumma'a"
 
-#: src/components/layout/people-layout.tsx:59
+#: src/components/layout/people-layout.tsx:60
 #: src/features/friends/index.tsx:27
 #: src/features/friends/index.tsx:86
 msgid "Friends"
@@ -507,6 +570,9 @@ msgid "Go to previous page"
 msgstr "Tafi shafi na baya"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:159
+#: src/features/groups/group-detail.tsx:54
+#: src/features/groups/group-detail.tsx:112
+#: src/features/groups/group-detail.tsx:212
 #: src/features/groups/member-dialog.tsx:101
 msgid "Group"
 msgstr "Group"
@@ -539,7 +605,7 @@ msgstr "Ba a samu group ba"
 msgid "Group updated"
 msgstr "An sabunta group"
 
-#: src/components/layout/people-layout.tsx:69
+#: src/components/layout/people-layout.tsx:70
 msgid "Groups"
 msgstr "Groups"
 
@@ -594,7 +660,7 @@ msgstr "An soke gayyata"
 msgid "Invitation declined"
 msgstr "An ƙi gayyata"
 
-#: src/components/layout/people-layout.tsx:61
+#: src/components/layout/people-layout.tsx:62
 #: src/features/invitations/index.tsx:29
 #: src/features/invitations/index.tsx:118
 msgid "Invitations"
@@ -854,7 +920,7 @@ msgstr "Mai shi"
 msgid "Pending"
 msgstr "Jiran"
 
-#: src/components/layout/people-layout.tsx:56
+#: src/components/layout/people-layout.tsx:57
 msgid "People"
 msgstr "Mutane"
 
@@ -862,18 +928,24 @@ msgstr "Mutane"
 msgid "Preview"
 msgstr "Duba"
 
+#. placeholder {0}: preview.user.name
+#: src/features/friends/components/add-friend-dialog.tsx:168
+msgid "Preview {0}'s profile before sending a friend request."
+msgstr "Duba bayanan martabar {0} kafin a aika buƙatar aminci."
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:332
 msgid "Previous image"
 msgstr "Hoton da ya gabata"
 
 #: ../../../lib/web/src/components/layout/nav-user.tsx:134
 #: ../../../lib/web/src/components/profile-dropdown.tsx:111
-#: src/components/layout/people-layout.tsx:58
+#: src/components/layout/people-layout.tsx:59
 #: src/features/profile/index.tsx:48
 #: src/features/profile/index.tsx:56
 #: src/features/profile/index.tsx:67
 #: src/features/profile/index.tsx:77
 #: src/features/profile/index.tsx:263
+#: src/features/profile/public.tsx:46
 msgid "Profile"
 msgstr "Profile"
 
@@ -884,6 +956,11 @@ msgstr "Duba profile"
 #: src/features/profile/index.tsx:160
 msgid "Profile saved"
 msgstr "An adana profile"
+
+#. placeholder {0}: filteredReceived.length
+#: src/features/invitations/index.tsx:186
+msgid "Received ({0})"
+msgstr "An karɓa ({0})"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
 #: ../../../lib/web/src/components/search-entity-page.tsx:191
@@ -914,6 +991,18 @@ msgstr "Relative cikin sa'o'i 24, in ba haka ba absolute"
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
 msgid "Remove"
 msgstr "Cire"
+
+#. placeholder {0}: friend.name
+#: src/features/friends/index.tsx:162
+msgid "Remove {0}"
+msgstr "Cire {0}"
+
+#. placeholder {0}: member.type
+#. placeholder {1}: member.name
+#: src/features/groups/group-detail.tsx:224
+#: src/features/groups/group-detail.tsx:225
+msgid "Remove {0} {1}"
+msgstr "Cire {0} {1}"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:241
 #: ../../../lib/web/src/features/access/access-list.tsx:242
@@ -960,9 +1049,23 @@ msgstr "Layuka kowane shafi"
 msgid "Saturday"
 msgstr "Asabar"
 
+#: src/features/groups/group-dialog.tsx:119
 #: src/features/invitations/invite-settings-dialog.tsx:113
+#: src/features/profile/index.tsx:293
+#: src/features/profile/index.tsx:313
+#: src/features/profile/index.tsx:415
 msgid "Save"
 msgstr "Adana"
+
+#: src/features/groups/group-dialog.tsx:119
+msgid "Saving..."
+msgstr "Ana adanawa..."
+
+#: src/features/profile/index.tsx:293
+#: src/features/profile/index.tsx:313
+#: src/features/profile/index.tsx:415
+msgid "Saving…"
+msgstr "Ana ajiyewa…"
 
 #: ../../../lib/web/src/components/place-picker.tsx:82
 msgid "Search for a place"
@@ -975,6 +1078,10 @@ msgstr "Bincika makoma..."
 #: ../../../lib/web/src/components/travelling-picker.tsx:173
 msgid "Search for origin..."
 msgstr "Bincika tushe..."
+
+#: src/features/friends/components/add-friend-dialog.tsx:169
+msgid "Search for people and send a friend request."
+msgstr "Bincika mutane kuma aika buƙatar aminci."
 
 #: src/features/friends/index.tsx:95
 msgid "Search friends"
@@ -1038,6 +1145,18 @@ msgstr "Zaɓi alkiblar shafin"
 #: ../../../lib/web/src/components/config-drawer.tsx:189
 msgid "Select theme preference"
 msgstr "Zaɓi zaɓin theme"
+
+#. placeholder {0}: selectedGroup.name
+#. placeholder {0}: selectedUser.name
+#: src/features/groups/member-dialog.tsx:173
+#: src/features/groups/member-dialog.tsx:231
+msgid "Selected: <0>{0}</0>"
+msgstr "An zaɓa: <0>{0}</0>"
+
+#. placeholder {0}: filteredSent.length
+#: src/features/invitations/index.tsx:242
+msgid "Sent ({0})"
+msgstr "An aika ({0})"
 
 #: ../../../lib/web/src/lib/api-client.ts:224
 msgid "Session expired"
@@ -1142,6 +1261,7 @@ msgstr "Sama"
 msgid "Travelling"
 msgstr "Tafiya"
 
+#: src/features/friends/index.tsx:133
 #: src/features/invitations/index.tsx:176
 msgid "Try adjusting your search"
 msgstr "Gwada gyara binciken ku"
@@ -1200,11 +1320,21 @@ msgstr "Amurka"
 msgid "Unverified"
 msgstr "Ba a tabbatar ba"
 
+#: src/features/profile/index.tsx:340
+msgid "Upload"
+msgstr "Loda"
+
 #: src/features/profile/index.tsx:235
 msgid "Upload avatar"
 msgstr "Loda avatar"
 
+#: src/features/profile/index.tsx:212
+#: src/features/profile/index.tsx:340
+msgid "Uploading…"
+msgstr "Ana lodawa…"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:155
+#: src/features/groups/group-detail.tsx:214
 #: src/features/groups/member-dialog.tsx:97
 msgid "User"
 msgstr "Mai amfani"
@@ -1256,3 +1386,11 @@ msgstr "Shafin yana cikin kulawa!"
 #: ../../../lib/web/src/lib/preference-utils.ts:71
 msgid "Wednesday"
 msgstr "Laraba"
+
+#: src/features/invitations/index.tsx:59
+msgid "You are now friends with {friendName}."
+msgstr "Yanzu kai aboki ne da {friendName}."
+
+#: src/features/friends/components/add-friend-dialog.tsx:73
+msgid "You are now friends!"
+msgstr "Yanzu ku abokai ne!"

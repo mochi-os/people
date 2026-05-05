@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/features/profile/index.tsx:462
+msgid "{slotLabel} updated"
+msgstr "{slotLabel} oppdatert"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:52
 msgid "12 hours"
 msgstr "12 timer"
@@ -92,9 +96,14 @@ msgstr "Legg til en konto for å motta varsler og bruke tjenester."
 msgid "Add friend"
 msgstr "Legg til venn"
 
+#: src/features/friends/index.tsx:133
+msgid "Add friends to start connecting"
+msgstr "Legg til venner for å begynne å koble til"
+
 #: src/features/groups/group-detail.tsx:121
 #: src/features/groups/member-dialog.tsx:87
 #: src/features/groups/member-dialog.tsx:89
+#: src/features/groups/member-dialog.tsx:244
 msgid "Add member"
 msgstr "Legg til medlem"
 
@@ -129,6 +138,10 @@ msgstr "Legg til visning"
 msgid "Added {0} to the group"
 msgstr "La {0} til i gruppen"
 
+#: src/features/groups/member-dialog.tsx:244
+msgid "Adding..."
+msgstr "Legger til …"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:62
 msgid "Adjust the appearance and layout to suit your preferences."
 msgstr "Juster utseendet og layouten etter dine preferanser."
@@ -156,6 +169,11 @@ msgstr "Tillat at andre finner deg i katalogen"
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:24
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "Er du sikker på at du vil logge ut? Du må logge inn igjen for å få tilgang til kontoen din."
+
+#. placeholder {0}: removeMemberDialog.name
+#: src/features/groups/group-detail.tsx:245
+msgid "Are you sure you want to remove <0>{0}</0> from this group?"
+msgstr "Er du sikker på at du vil fjerne <0>{0}</0> fra denne gruppen?"
 
 #: ../../../lib/web/src/components/data-table/column-header.tsx:56
 msgid "Asc"
@@ -198,9 +216,17 @@ msgstr "Nettleserikon"
 msgid "Cancel"
 msgstr "Avbryt"
 
+#: src/features/invitations/index.tsx:91
+msgid "Cancelled invitation to {friendName}."
+msgstr "Invitasjon til {friendName} avbrutt."
+
 #: ../../../lib/web/src/components/notification-category-button.tsx:131
 msgid "Category for this notification"
 msgstr "Kategori for dette varselet"
+
+#: src/features/profile/index.tsx:212
+msgid "Change banner"
+msgstr "Endre banner"
 
 #: ../../../lib/web/src/components/notification-category-button.tsx:115
 msgid "Change notification category"
@@ -306,7 +332,13 @@ msgstr "Kopier"
 msgid "Core information about this group"
 msgstr "Kjerneinformasjon om denne gruppen"
 
-#: src/components/layout/people-layout.tsx:73
+#: src/features/profile/index.tsx:455
+msgid "Could not process {slot} image"
+msgstr "Kunne ikke behandle {slot}-bilde"
+
+#: src/components/layout/people-layout.tsx:74
+#: src/features/groups/group-dialog.tsx:86
+#: src/features/groups/group-dialog.tsx:88
 #: src/features/groups/group-dialog.tsx:119
 msgid "Create group"
 msgstr "Opprett gruppe"
@@ -328,6 +360,10 @@ msgstr "Mørkt utseende"
 msgid "Decline"
 msgstr "Avslå"
 
+#: src/features/invitations/index.tsx:75
+msgid "Declined invitation from {friendName}."
+msgstr "Invitasjon fra {friendName} avslått."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:297
 msgid "Default"
 msgstr "Standard"
@@ -337,12 +373,18 @@ msgid "Default AI account"
 msgstr "Standard KI-konto"
 
 #: src/features/groups/group-detail.tsx:136
+#: src/features/groups/group-detail.tsx:278
 msgid "Delete"
 msgstr "Slett"
 
 #: src/features/groups/group-detail.tsx:276
 msgid "Delete group"
 msgstr "Slett gruppe"
+
+#. placeholder {0}: group?.name
+#: src/features/groups/group-detail.tsx:277
+msgid "Delete group \"{0}\"? This cannot be undone."
+msgstr "Slett gruppen \"{0}\"? Dette kan ikke angres."
 
 #: ../../../lib/web/src/components/data-table/column-header.tsx:60
 msgid "Desc"
@@ -384,6 +426,11 @@ msgstr "Last ned"
 msgid "Edit"
 msgstr "Rediger"
 
+#: src/features/groups/group-dialog.tsx:86
+#: src/features/groups/group-dialog.tsx:88
+msgid "Edit group"
+msgstr "Rediger gruppe"
+
 #: src/features/profile/index.tsx:251
 #: src/features/profile/index.tsx:392
 msgid "Edit name"
@@ -409,6 +456,10 @@ msgstr "Kunne ikke legge til medlem"
 #: src/features/invitations/index.tsx:95
 msgid "Failed to cancel invitation"
 msgstr "Kunne ikke avbryte invitasjon"
+
+#: src/features/groups/group-dialog.tsx:73
+msgid "Failed to create group"
+msgstr "Kunne ikke opprette gruppe"
 
 #: src/features/invitations/index.tsx:79
 msgid "Failed to decline invitation"
@@ -458,6 +509,18 @@ msgstr "Kunne ikke oppdatere kategori"
 msgid "Failed to update directory listing"
 msgstr "Kunne ikke oppdatere katalogoppføring"
 
+#: src/features/groups/group-dialog.tsx:62
+msgid "Failed to update group"
+msgstr "Kunne ikke oppdatere gruppe"
+
+#: src/features/profile/index.tsx:463
+msgid "Failed to upload {slot}"
+msgstr "Kunne ikke laste opp {slot}"
+
+#: src/features/profile/index.tsx:327
+msgid "Favicon"
+msgstr "Favicon"
+
 #: src/features/profile/index.tsx:443
 msgid "File too large"
 msgstr "Filen er for stor"
@@ -470,7 +533,7 @@ msgstr "Flytende"
 msgid "Friday"
 msgstr "Fredag"
 
-#: src/components/layout/people-layout.tsx:59
+#: src/components/layout/people-layout.tsx:60
 #: src/features/friends/index.tsx:27
 #: src/features/friends/index.tsx:86
 msgid "Friends"
@@ -507,6 +570,9 @@ msgid "Go to previous page"
 msgstr "Gå til forrige side"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:159
+#: src/features/groups/group-detail.tsx:54
+#: src/features/groups/group-detail.tsx:112
+#: src/features/groups/group-detail.tsx:212
 #: src/features/groups/member-dialog.tsx:101
 msgid "Group"
 msgstr "Gruppe"
@@ -539,7 +605,7 @@ msgstr "Fant ikke gruppe"
 msgid "Group updated"
 msgstr "Gruppe oppdatert"
 
-#: src/components/layout/people-layout.tsx:69
+#: src/components/layout/people-layout.tsx:70
 msgid "Groups"
 msgstr "Grupper"
 
@@ -594,7 +660,7 @@ msgstr "Invitasjon avbrutt"
 msgid "Invitation declined"
 msgstr "Invitasjon avslått"
 
-#: src/components/layout/people-layout.tsx:61
+#: src/components/layout/people-layout.tsx:62
 #: src/features/invitations/index.tsx:29
 #: src/features/invitations/index.tsx:118
 msgid "Invitations"
@@ -854,7 +920,7 @@ msgstr "Eier"
 msgid "Pending"
 msgstr "Venter"
 
-#: src/components/layout/people-layout.tsx:56
+#: src/components/layout/people-layout.tsx:57
 msgid "People"
 msgstr "Personer"
 
@@ -862,18 +928,24 @@ msgstr "Personer"
 msgid "Preview"
 msgstr "Forhåndsvisning"
 
+#. placeholder {0}: preview.user.name
+#: src/features/friends/components/add-friend-dialog.tsx:168
+msgid "Preview {0}'s profile before sending a friend request."
+msgstr "Forhåndsvis profilen til {0} før du sender en venneforespørsel."
+
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:332
 msgid "Previous image"
 msgstr "Forrige bilde"
 
 #: ../../../lib/web/src/components/layout/nav-user.tsx:134
 #: ../../../lib/web/src/components/profile-dropdown.tsx:111
-#: src/components/layout/people-layout.tsx:58
+#: src/components/layout/people-layout.tsx:59
 #: src/features/profile/index.tsx:48
 #: src/features/profile/index.tsx:56
 #: src/features/profile/index.tsx:67
 #: src/features/profile/index.tsx:77
 #: src/features/profile/index.tsx:263
+#: src/features/profile/public.tsx:46
 msgid "Profile"
 msgstr "Profil"
 
@@ -884,6 +956,11 @@ msgstr "Profilforhåndsvisning"
 #: src/features/profile/index.tsx:160
 msgid "Profile saved"
 msgstr "Profil lagret"
+
+#. placeholder {0}: filteredReceived.length
+#: src/features/invitations/index.tsx:186
+msgid "Received ({0})"
+msgstr "Mottatt ({0})"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
 #: ../../../lib/web/src/components/search-entity-page.tsx:191
@@ -914,6 +991,18 @@ msgstr "Relativ innen 24 timer, ellers absolutt"
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
 msgid "Remove"
 msgstr "Fjern"
+
+#. placeholder {0}: friend.name
+#: src/features/friends/index.tsx:162
+msgid "Remove {0}"
+msgstr "Fjern {0}"
+
+#. placeholder {0}: member.type
+#. placeholder {1}: member.name
+#: src/features/groups/group-detail.tsx:224
+#: src/features/groups/group-detail.tsx:225
+msgid "Remove {0} {1}"
+msgstr "Fjern {0} {1}"
 
 #: ../../../lib/web/src/features/access/access-list.tsx:241
 #: ../../../lib/web/src/features/access/access-list.tsx:242
@@ -960,9 +1049,23 @@ msgstr "Rader per side"
 msgid "Saturday"
 msgstr "Lørdag"
 
+#: src/features/groups/group-dialog.tsx:119
 #: src/features/invitations/invite-settings-dialog.tsx:113
+#: src/features/profile/index.tsx:293
+#: src/features/profile/index.tsx:313
+#: src/features/profile/index.tsx:415
 msgid "Save"
 msgstr "Lagre"
+
+#: src/features/groups/group-dialog.tsx:119
+msgid "Saving..."
+msgstr "Lagrer ..."
+
+#: src/features/profile/index.tsx:293
+#: src/features/profile/index.tsx:313
+#: src/features/profile/index.tsx:415
+msgid "Saving…"
+msgstr "Lagrer…"
 
 #: ../../../lib/web/src/components/place-picker.tsx:82
 msgid "Search for a place"
@@ -975,6 +1078,10 @@ msgstr "Søk etter destinasjon ..."
 #: ../../../lib/web/src/components/travelling-picker.tsx:173
 msgid "Search for origin..."
 msgstr "Søk etter opprinnelse ..."
+
+#: src/features/friends/components/add-friend-dialog.tsx:169
+msgid "Search for people and send a friend request."
+msgstr "Søk etter folk og send en venneforespørsel."
 
 #: src/features/friends/index.tsx:95
 msgid "Search friends"
@@ -1038,6 +1145,18 @@ msgstr "Velg nettstedsretning"
 #: ../../../lib/web/src/components/config-drawer.tsx:189
 msgid "Select theme preference"
 msgstr "Velg temapreferanse"
+
+#. placeholder {0}: selectedGroup.name
+#. placeholder {0}: selectedUser.name
+#: src/features/groups/member-dialog.tsx:173
+#: src/features/groups/member-dialog.tsx:231
+msgid "Selected: <0>{0}</0>"
+msgstr "Valgt: <0>{0}</0>"
+
+#. placeholder {0}: filteredSent.length
+#: src/features/invitations/index.tsx:242
+msgid "Sent ({0})"
+msgstr "Sendt ({0})"
 
 #: ../../../lib/web/src/lib/api-client.ts:224
 msgid "Session expired"
@@ -1142,6 +1261,7 @@ msgstr "Topp"
 msgid "Travelling"
 msgstr "På reise"
 
+#: src/features/friends/index.tsx:133
 #: src/features/invitations/index.tsx:176
 msgid "Try adjusting your search"
 msgstr "Prøv å justere søket"
@@ -1200,11 +1320,21 @@ msgstr "USA"
 msgid "Unverified"
 msgstr "Ikke verifisert"
 
+#: src/features/profile/index.tsx:340
+msgid "Upload"
+msgstr "Last opp"
+
 #: src/features/profile/index.tsx:235
 msgid "Upload avatar"
 msgstr "Last opp avatar"
 
+#: src/features/profile/index.tsx:212
+#: src/features/profile/index.tsx:340
+msgid "Uploading…"
+msgstr "Laster opp…"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx:155
+#: src/features/groups/group-detail.tsx:214
 #: src/features/groups/member-dialog.tsx:97
 msgid "User"
 msgstr "Bruker"
@@ -1256,3 +1386,11 @@ msgstr "Nettstedet er under vedlikehold!"
 #: ../../../lib/web/src/lib/preference-utils.ts:71
 msgid "Wednesday"
 msgstr "Onsdag"
+
+#: src/features/invitations/index.tsx:59
+msgid "You are now friends with {friendName}."
+msgstr "Du er nå venn med {friendName}."
+
+#: src/features/friends/components/add-friend-dialog.tsx:73
+msgid "You are now friends!"
+msgstr "Dere er nå venner!"

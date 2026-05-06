@@ -107,7 +107,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
               <div className='grid gap-2'>
                 <Label htmlFor='user-search'><Trans>Search users</Trans></Label>
                 <div className='relative'>
-                  <Search className='text-muted-foreground absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2' />
+                  <Search className='text-muted-foreground absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2' />
                   <Input
                     id='user-search'
                     value={userSearch}
@@ -170,8 +170,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
 
               {selectedUser && (
                 <p className='text-sm'>
-                  Selected:{' '}
-                  <span className='font-semibold'>{selectedUser.name}</span>
+                  <Trans>Selected: <span className='font-semibold'>{selectedUser.name}</span></Trans>
                 </p>
               )}
             </div>
@@ -228,8 +227,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
 
               {selectedGroup && (
                 <p className='text-sm'>
-                  Selected:{' '}
-                  <span className='font-semibold'>{selectedGroup.name}</span>
+                  <Trans>Selected: <span className='font-semibold'>{selectedGroup.name}</span></Trans>
                 </p>
               )}
             </div>

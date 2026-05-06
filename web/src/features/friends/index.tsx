@@ -20,7 +20,6 @@ import {
 import { UserPlus, Users, MessageSquare, UserX } from 'lucide-react'
 import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
 import { AddFriendDialog } from './components/add-friend-dialog'
-import { FRIENDS_STRINGS } from './constants'
 
 export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
   const { t } = useLingui()
@@ -130,7 +129,7 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
             title={t`No friends found`}
             description={
               search
-                ? "Try adjusting your search" : "Add friends to start connecting"
+                ? t`Try adjusting your search` : t`Add friends to start connecting`
             }
           />
         ) : (
@@ -182,17 +181,17 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
           onOpenChange={(open) =>
             setRemoveFriendDialog({ ...removeFriendDialog, open })
           }
-          title={FRIENDS_STRINGS.REMOVE_FRIEND_DIALOG_TITLE}
+          title={t`Remove friend`}
           desc={
-            <>
-              {FRIENDS_STRINGS.REMOVE_FRIEND_CONFIRM_PRE}{' '}
+            <Trans>
+              Are you sure you want to remove{' '}
               <span className='text-foreground font-semibold'>
                 {removeFriendDialog.friendName}
               </span>{' '}
-              {FRIENDS_STRINGS.REMOVE_FRIEND_CONFIRM_POST}
-            </>
+              from your friends list? This action cannot be undone.
+            </Trans>
           }
-          confirmText={removeFriendMutation.isPending ? FRIENDS_STRINGS.REMOVING : FRIENDS_STRINGS.REMOVE_FRIEND}
+          confirmText={removeFriendMutation.isPending ? t`Removing...` : t`Remove friend`}
           destructive
           handleConfirm={confirmRemoveFriend}
           isLoading={removeFriendMutation.isPending}

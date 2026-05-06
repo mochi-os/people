@@ -56,7 +56,7 @@ export function Invitations() {
       {
         onSuccess: () => {
           toast.success(t`Invitation accepted`, {
-            description: `You are now friends with ${friendName}.`,
+            description: t`You are now friends with ${friendName}.`,
           })
         },
         onError: (error) => {
@@ -72,7 +72,7 @@ export function Invitations() {
       {
         onSuccess: () => {
           toast.success(t`Invitation declined`, {
-            description: `Declined invitation from ${friendName}.`,
+            description: t`Declined invitation from ${friendName}.`,
           })
         },
         onError: (error) => {
@@ -88,7 +88,7 @@ export function Invitations() {
       {
         onSuccess: () => {
           toast.success(t`Invitation cancelled`, {
-            description: `Cancelled invitation to ${friendName}.`,
+            description: t`Cancelled invitation to ${friendName}.`,
           })
         },
         onError: (error) => {
@@ -183,7 +183,7 @@ export function Invitations() {
               <div className='space-y-3'>
                 <h2 className='text-muted-foreground flex items-center gap-2 text-sm font-medium'>
                   <UserPlus className='h-4 w-4' />
-                  Received ({filteredReceived.length})
+                  {t`Received (${filteredReceived.length})`}
                 </h2>
                 <div className='divide-border divide-y rounded-md border'>
                   {filteredReceived.map((invite) => (
@@ -239,7 +239,7 @@ export function Invitations() {
               <div className='space-y-3'>
                 <h2 className='text-muted-foreground flex items-center gap-2 text-sm font-medium'>
                   <Send className='h-4 w-4' />
-                  Sent ({filteredSent.length})
+                  {t`Sent (${filteredSent.length})`}
                 </h2>
                 <div className='divide-border divide-y rounded-md border'>
                   {filteredSent.map((invite) => (

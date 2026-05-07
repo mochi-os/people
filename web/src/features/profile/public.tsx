@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useLingui } from '@lingui/react/macro'
 import {
   GeneralError,
   Skeleton,
@@ -36,12 +37,13 @@ function setFavicon(href: string) {
 }
 
 export function PublicProfile({ fingerprint }: { fingerprint: string }) {
+  const { t } = useLingui()
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['person', 'public-information', fingerprint],
     queryFn: () => requestHelpers.get<PersonInformation>('information'),
   })
 
-  usePageTitle(data?.name ?? 'Profile')
+  usePageTitle(data?.name ?? t`Profile`)
 
   useEffect(() => {
     if (data?.favicon) setFavicon(`/${fingerprint}/-/favicon?v=${data.favicon}`)

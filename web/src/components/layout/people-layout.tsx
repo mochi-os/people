@@ -21,6 +21,7 @@ function profileIcon(identityId: string): React.FC {
         />
       )
     }
+    // eslint-disable-next-line lingui/no-unlocalized-strings -- React displayName, dev tooling only
     Icon.displayName = `ProfileIcon(${identityId})`
     profileIconCache.set(identityId, Icon)
   }

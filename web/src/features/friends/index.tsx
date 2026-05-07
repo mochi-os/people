@@ -158,7 +158,7 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
                   <Button
                     variant='ghost'
                     size='sm'
-                    aria-label={`Remove ${friend.name}`}
+                    aria-label={t`Remove ${friend.name}`}
                     disabled={removeFriendMutation.isPending}
                     onClick={() => handleRemoveFriend(friend.id, friend.name)}
                   >

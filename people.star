@@ -305,7 +305,7 @@ def event_accept(e):
 	mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, e.header("from"), i["name"])
 
 	mochi.db.execute("delete from invites where identity=? and id=?", identity, e.header("from"))
-	notify("accept/accepted", "", "Friend request accepted", i["name"] + " accepted your friend invitation", "/people", e.header("from"))
+	notify("accept/accepted", "", mochi.app.label("notifications.title.friend_request_accepted"), mochi.app.label("notifications.body.accepted_invitation", name=i["name"]), "/people", e.header("from"))
 
 def event_invite(e):
 	# Incoming friend invite. The user-configurable `invite_policy` preference
@@ -324,7 +324,7 @@ def event_invite(e):
 		mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, sender, name)
 		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
 		mochi.db.execute("delete from invites where identity=? and id=?", identity, sender)
-		notify("accept/matched", "", "New friend", name + " is now your friend", "/people", sender)
+		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender)
 		return
 
 	policy = e.user.preference.get("invite_policy") or "notify"
@@ -336,14 +336,14 @@ def event_invite(e):
 		# Auto-accept: mirror mutual-invite path without writing to invites.
 		mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, sender, name)
 		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
-		notify("accept/matched", "", "New friend", name + " is now your friend", "/people", sender)
+		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender)
 		return
 
 	# silent or notify: store pending invite
 	mochi.db.execute("replace into invites ( identity, id, direction, name, updated ) values ( ?, ?, 'from', ?, ? )", identity, sender, name, mochi.time.now())
 
 	if policy == "notify":
-		notify("invite/received", "", "Friend invitation", name + " invited you to be friends", "/people/invitations", sender)
+		notify("invite/received", "", mochi.app.label("notifications.title.friend_invitation"), mochi.app.label("notifications.body.invited_you", name=name), "/people/invitations", sender)
 
 def event_cancel(e):
 	# Remove the invitation from the recipient's side
@@ -819,11 +819,15 @@ def action_privacy_set(a):
 
 def opengraph_person(params):
 	person_id = params.get("entity", "") or params.get("person", "")
-	og = {"title": "Mochi", "description": "A person on Mochi", "type": "profile"}
+	og = {
+		"title": mochi.app.label("opengraph.fallback.title"),
+		"description": mochi.app.label("opengraph.fallback.description"),
+		"type": "profile",
+	}
 	entity = get_person_entity(person_id)
 	if not entity:
 		return og
-	og["title"] = entity.get("name", "Mochi")
+	og["title"] = entity.get("name") or mochi.app.label("opengraph.fallback.title")
 	profile = get_profile_row(person_id)
 	if profile.get("profile"):
 		# Flatten whitespace so multi-line markdown doesn't break meta attributes

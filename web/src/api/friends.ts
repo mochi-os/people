@@ -26,6 +26,7 @@ const devConsole = globalThis.console
 
 const logUnexpectedStructure = (payload: unknown) => {
   if (import.meta.env.DEV) {
+    // eslint-disable-next-line lingui/no-unlocalized-strings -- dev-only diagnostic log, not user-facing
     devConsole?.warn?.('[API] friends response shape unexpected', payload)
   }
 }

@@ -20,6 +20,7 @@ import {
   Textarea,
   getErrorMessage,
   toast,
+  useFormat,
   usePageTitle,
 } from '@mochi/web'
 import { Eye, Image as ImageIcon, Pencil, Save, Upload } from 'lucide-react'
@@ -143,6 +144,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
   const accentMutation = useSetAccentMutation(person)
   const nameMutation = useSetNameMutation(person)
   const privacyMutation = useSetPrivacyMutation(person)
+  const { formatNumber } = useFormat()
 
   const profileDirty = profile !== info.profile
   const tooLong = profile.length > PROFILE_MAX
@@ -209,7 +211,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
                   className="shadow-md"
                 >
                   <Upload className="size-3.5" />
-                  {pending ? 'Uploading…' : 'Change banner'}
+                  {pending ? t`Uploading…` : t`Change banner`}
                 </Button>
               )}
             </SlotUploader>
@@ -281,7 +283,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
               className={`shrink-0 text-xs tabular-nums ${tooLong ? 'text-destructive' : 'text-muted-foreground'
                 }`}
             >
-              {profile.length.toLocaleString()} / {PROFILE_MAX.toLocaleString()}
+              {formatNumber(profile.length, 0)} / {formatNumber(PROFILE_MAX, 0)}
             </p>
             <Button
               size="sm"
@@ -290,7 +292,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
               onClick={handleSaveProfile}
             >
               <Save className="size-3.5" />
-              {profileMutation.isPending ? 'Saving…' : 'Save'}
+              {profileMutation.isPending ? t`Saving…` : t`Save`}
             </Button>
           </div>
         </div>
@@ -310,7 +312,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
                   onClick={handleSaveAccent}
                 >
                   <Save className="size-3.5" />
-                  {accentMutation.isPending ? 'Saving…' : 'Save'}
+                  {accentMutation.isPending ? t`Saving…` : t`Save`}
                 </Button>
               }
             />
@@ -324,7 +326,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
                 {faviconUrl ? (
                   <img
                     src={faviconUrl}
-                    alt={"Favicon"}
+                    alt={t`Favicon`}
                     className="size-full object-contain"
                   />
                 ) : (
@@ -337,7 +339,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
                 {(open, pending) => (
                   <Button variant="outline" size="sm" onClick={open} disabled={pending}>
                     <Upload className="size-3.5" />
-                    {pending ? 'Uploading…' : 'Upload'}
+                    {pending ? t`Uploading…` : t`Upload`}
                   </Button>
                 )}
               </SlotUploader>
@@ -412,7 +414,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
             </Button>
             <Button onClick={handleSaveName} disabled={!nameDirty || nameMutation.isPending}>
               <Save className="size-3.5" />
-              {nameMutation.isPending ? 'Saving…' : 'Save'}
+              {nameMutation.isPending ? t`Saving…` : t`Save`}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -452,14 +454,15 @@ function SlotUploader({
       upload = new File([blob], `${slot}.${ext}`, { type: blob.type })
     } catch (err) {
       setResizing(false)
-      toast.error(getErrorMessage(err, `Could not process ${slot} image`))
+      toast.error(getErrorMessage(err, t`Could not process ${slot} image`))
       return
     }
     setResizing(false)
+    const slotLabel = slot.charAt(0).toUpperCase() + slot.slice(1)
     mutation.mutate(upload, {
       onSuccess: () =>
-        toast.success(`${slot.charAt(0).toUpperCase() + slot.slice(1)} updated`),
-      onError: (err) => toast.error(getErrorMessage(err, `Failed to upload ${slot}`)),
+        toast.success(t`${slotLabel} updated`),
+      onError: (err) => toast.error(getErrorMessage(err, t`Failed to upload ${slot}`)),
     })
   }
 

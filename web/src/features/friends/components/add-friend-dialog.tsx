@@ -1,13 +1,12 @@
 import { useEffect, useState, useMemo } from 'react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { useLingui } from '@lingui/react/macro'
 import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban, ArrowLeft } from 'lucide-react'
 import { cn, toast, getAppPath, getErrorMessage, GeneralError, Button, EntityAvatar, EntityBanner, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Input, EmptyState, ScrollArea, useScreenSize } from '@mochi/web'
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation } from '@/hooks/useFriends'
 import { personApi } from '@/api/person'
 import type { PersonInformation } from '@/api/types/person'
-import { FRIENDS_STRINGS } from '../constants'
 
 type AddFriendDialogProps = {
   open: boolean
@@ -49,33 +48,31 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
 
   const createFriendMutation = useCreateFriendMutation({
     onSuccess: (_, variables) => {
-      // Add user to invited set
       setInvitedUserIds((prev) => new Set(prev).add(variables.id))
       setPendingUserId(null)
       setPreview(null)
-      toast.success(FRIENDS_STRINGS.SUCCESS_INVITATION_SENT, {
-        description: `${FRIENDS_STRINGS.SUCCESS_INVITATION_SENT_DESC} ${variables.name}.`,
+      toast.success(t`Invitation sent`, {
+        description: t`A friend invitation has been sent to ${variables.name}.`,
       })
     },
     onError: (error) => {
       setPendingUserId(null)
-      toast.error(getErrorMessage(error, FRIENDS_STRINGS.ERR_ADD_FRIEND))
+      toast.error(getErrorMessage(error, t`Failed to add friend`))
     },
   })
 
   const acceptFriendMutation = useAcceptFriendInviteMutation({
     onSuccess: (_, variables) => {
-      // Mark as accepted by adding to invitedUserIds (which we'll repurpose for tracking processed users)
       setInvitedUserIds((prev) => new Set(prev).add(variables.friendId))
       setPendingUserId(null)
       setPreview(null)
-      toast.success(FRIENDS_STRINGS.ALREADY_FRIENDS, {
+      toast.success(t`Already friends`, {
         description: t`You are now friends!`,
       })
     },
     onError: (error) => {
       setPendingUserId(null)
-      toast.error(getErrorMessage(error, FRIENDS_STRINGS.ERR_ADD_FRIEND))
+      toast.error(getErrorMessage(error, t`Failed to add friend`))
     },
   })
 
@@ -149,8 +146,8 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
 
   const previewBusy = preview ? pendingUserId === preview.user.id : false
   const previewConfirmLabel = preview?.intent === 'accept'
-    ? FRIENDS_STRINGS.ACCEPT
-    : FRIENDS_STRINGS.SEND_INVITATION
+    ? t`Accept`
+    : t`Send invitation`
 
   return (
     <ResponsiveDialog
@@ -161,7 +158,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
       <ResponsiveDialogContent className='gap-0 sm:max-w-[640px]'>
         <ResponsiveDialogHeader className='gap-1.5'>
           <ResponsiveDialogTitle>
-            {preview ? preview.user.name : FRIENDS_STRINGS.ADD_FRIEND_DIALOG_TITLE}
+            {preview ? preview.user.name : t`Add friend`}
           </ResponsiveDialogTitle>
           <ResponsiveDialogDescription className='sr-only'>
             {preview
@@ -176,9 +173,9 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
           <div className='space-y-4 px-4 pb-4 sm:px-0 sm:pb-0'>
             <div className='space-y-2'>
               <div className='relative'>
-                <Search className='text-muted-foreground pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 transform' />
+                <Search className='text-muted-foreground pointer-events-none absolute top-1/2 start-3 h-4 w-4 -translate-y-1/2 transform' />
                 <Input
-                  placeholder={FRIENDS_STRINGS.SEARCH_USERS_PLACEHOLDER}
+                  placeholder={t`Enter name to search...`}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className='ps-9'
@@ -197,8 +194,8 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                 {viewState === 'idle' && (
                   <EmptyState
                     icon={Search}
-                    title={FRIENDS_STRINGS.SEARCH_PROMPT_TITLE}
-                    description={FRIENDS_STRINGS.SEARCH_PROMPT_DESC}
+                    title={t`Start typing to search for users`}
+                    description={t`Enter a name to find people you want to add`}
                     className='border-0 bg-transparent px-4 py-5 shadow-none'
                   />
                 )}
@@ -222,8 +219,8 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                 {viewState === 'empty' && (
                   <EmptyState
                     icon={Search}
-                    title={FRIENDS_STRINGS.NO_USERS_FOUND}
-                    description={FRIENDS_STRINGS.TRY_DIFFERENT_TERM}
+                    title={t`No people found`}
+                    description={t`Try a different search term`}
                     className='border-0 bg-transparent px-4 py-5 shadow-none'
                   />
                 )}
@@ -265,7 +262,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                         if (isPendingForThisUser) {
                           return (
                             <>
-                              {FRIENDS_STRINGS.ADDING}
+                              {t`Adding...`}
                               <Loader2 className='ms-2 h-4 w-4 animate-spin' />
                             </>
                           )
@@ -275,14 +272,14 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                           case 'self':
                             return (
                               <>
-                                {FRIENDS_STRINGS.THATS_YOU}
+                                {t`That's you`}
                                 <Ban className='ms-2 h-4 w-4' />
                               </>
                             )
                           case 'friend':
                             return (
                               <>
-                                {FRIENDS_STRINGS.ALREADY_FRIENDS}
+                                {t`Already friends`}
                                 <UserCheck className='ms-2 h-4 w-4' />
                               </>
                             )
@@ -290,13 +287,13 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                             return (
                               <>
                                 <Send className='me-2 h-4 w-4' />
-                                {FRIENDS_STRINGS.INVITATION_SENT}
+                                {t`Invitation sent`}
                               </>
                             )
                           case 'pending':
                             return (
                               <>
-                                {FRIENDS_STRINGS.PENDING_INVITE}
+                                {t`Accept invite`}
                                 <Check className='ms-2 h-4 w-4' />
                               </>
                             )
@@ -304,7 +301,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                             return (
                               <>
                                 <UserPlus className='me-2 h-4 w-4' />
-                                {FRIENDS_STRINGS.ADD_FRIEND}
+                                {t`Add friend`}
                               </>
                             )
                         }
@@ -362,12 +359,12 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                 disabled={previewBusy}
               >
                 <ArrowLeft className='h-4 w-4 rtl:rotate-180' />
-                {FRIENDS_STRINGS.BACK}
+                <Trans>Back</Trans>
               </Button>
               <Button onClick={handleConfirmFromPreview} disabled={previewBusy}>
                 {previewBusy ? (
                   <>
-                    {FRIENDS_STRINGS.ADDING}
+                    {t`Adding...`}
                     <Loader2 className='ms-2 h-4 w-4 animate-spin' />
                   </>
                 ) : (
@@ -384,7 +381,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
             </>
           ) : (
             <Button variant='outline' onClick={() => onOpenChange(false)}>
-              {FRIENDS_STRINGS.CLOSE}
+              <Trans>Close</Trans>
             </Button>
           )}
         </ResponsiveDialogFooter>

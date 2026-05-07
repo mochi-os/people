@@ -183,7 +183,7 @@ export function Invitations() {
               <div className='space-y-3'>
                 <h2 className='text-muted-foreground flex items-center gap-2 text-sm font-medium'>
                   <UserPlus className='h-4 w-4' />
-                  <Trans>Received ({filteredReceived.length})</Trans>
+                  {t`Received (${filteredReceived.length})`}
                 </h2>
                 <div className='divide-border divide-y rounded-md border'>
                   {filteredReceived.map((invite) => (
@@ -239,7 +239,7 @@ export function Invitations() {
               <div className='space-y-3'>
                 <h2 className='text-muted-foreground flex items-center gap-2 text-sm font-medium'>
                   <Send className='h-4 w-4' />
-                  <Trans>Sent ({filteredSent.length})</Trans>
+                  {t`Sent (${filteredSent.length})`}
                 </h2>
                 <div className='divide-border divide-y rounded-md border'>
                   {filteredSent.map((invite) => (

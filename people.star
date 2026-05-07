@@ -819,11 +819,15 @@ def action_privacy_set(a):
 
 def opengraph_person(params):
 	person_id = params.get("entity", "") or params.get("person", "")
-	og = {"title": "Mochi", "description": "A person on Mochi", "type": "profile"}
+	og = {
+		"title": mochi.app.label("opengraph.fallback.title"),
+		"description": mochi.app.label("opengraph.fallback.description"),
+		"type": "profile",
+	}
 	entity = get_person_entity(person_id)
 	if not entity:
 		return og
-	og["title"] = entity.get("name", "Mochi")
+	og["title"] = entity.get("name") or mochi.app.label("opengraph.fallback.title")
 	profile = get_profile_row(person_id)
 	if profile.get("profile"):
 		# Flatten whitespace so multi-line markdown doesn't break meta attributes

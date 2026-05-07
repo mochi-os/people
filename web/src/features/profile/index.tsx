@@ -20,6 +20,7 @@ import {
   Textarea,
   getErrorMessage,
   toast,
+  useFormat,
   usePageTitle,
 } from '@mochi/web'
 import { Eye, Image as ImageIcon, Pencil, Save, Upload } from 'lucide-react'
@@ -143,6 +144,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
   const accentMutation = useSetAccentMutation(person)
   const nameMutation = useSetNameMutation(person)
   const privacyMutation = useSetPrivacyMutation(person)
+  const { formatNumber } = useFormat()
 
   const profileDirty = profile !== info.profile
   const tooLong = profile.length > PROFILE_MAX
@@ -281,7 +283,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
               className={`shrink-0 text-xs tabular-nums ${tooLong ? 'text-destructive' : 'text-muted-foreground'
                 }`}
             >
-              {profile.length.toLocaleString()} / {PROFILE_MAX.toLocaleString()}
+              {formatNumber(profile.length, 0)} / {formatNumber(PROFILE_MAX, 0)}
             </p>
             <Button
               size="sm"

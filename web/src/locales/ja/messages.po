@@ -13,30 +13,36 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/profile/index.tsx:462
+#: src/features/profile/index.tsx:464
 msgid "{slotLabel} updated"
 msgstr "{slotLabel}を更新しました"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:52
+#: ../../../lib/web/src/lib/preference-utils.ts:39
 msgid "12 hours"
 msgstr "12時間"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:51
+#: ../../../lib/web/src/lib/preference-utils.ts:38
 msgid "24 hours"
 msgstr "24時間"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:61
+#. placeholder {0}: variables.name
+#: src/features/friends/components/add-friend-dialog.tsx:55
+msgid "A friend invitation has been sent to {0}."
+msgstr ""
+
+#: ../../../lib/web/src/lib/preference-utils.ts:48
 msgid "Absolute (date and time)"
 msgstr "絶対 (日付と時刻)"
 
-#: src/features/profile/index.tsx:301
+#: src/features/profile/index.tsx:303
 msgid "Accent"
 msgstr "アクセントカラー"
 
-#: src/features/profile/index.tsx:167
+#: src/features/profile/index.tsx:169
 msgid "Accent saved"
 msgstr "アクセントカラーを保存しました"
 
+#: src/features/friends/components/add-friend-dialog.tsx:149
 #: src/features/invitations/index.tsx:217
 msgid "Accept"
 msgstr "承認"
@@ -44,6 +50,10 @@ msgstr "承認"
 #: src/features/invitations/invite-settings-dialog.tsx:48
 msgid "Accept automatically"
 msgstr "自動的に受け入れる"
+
+#: src/features/friends/components/add-friend-dialog.tsx:296
+msgid "Accept invite"
+msgstr ""
 
 #: ../../../lib/web/src/features/errors/forbidden.tsx:12
 msgid "Access Forbidden"
@@ -90,20 +100,22 @@ msgstr "アカウントを追加"
 msgid "Add an account to receive notifications and use services."
 msgstr "通知を受け取り、サービスを利用するには、アカウントを追加してください。"
 
-#: src/features/friends/index.tsx:98
-#: src/features/friends/index.tsx:110
+#: src/features/friends/components/add-friend-dialog.tsx:161
+#: src/features/friends/components/add-friend-dialog.tsx:304
+#: src/features/friends/index.tsx:97
+#: src/features/friends/index.tsx:109
 #: src/features/invitations/index.tsx:128
 msgid "Add friend"
 msgstr "友だちを追加"
 
-#: src/features/friends/index.tsx:133
+#: src/features/friends/index.tsx:132
 msgid "Add friends to start connecting"
 msgstr "つながりを始めるために友達を追加"
 
 #: src/features/groups/group-detail.tsx:121
 #: src/features/groups/member-dialog.tsx:87
 #: src/features/groups/member-dialog.tsx:89
-#: src/features/groups/member-dialog.tsx:244
+#: src/features/groups/member-dialog.tsx:242
 msgid "Add member"
 msgstr "メンバーを追加"
 
@@ -138,7 +150,9 @@ msgstr "ビューを追加"
 msgid "Added {0} to the group"
 msgstr "{0} をグループに追加しました"
 
-#: src/features/groups/member-dialog.tsx:244
+#: src/features/friends/components/add-friend-dialog.tsx:265
+#: src/features/friends/components/add-friend-dialog.tsx:367
+#: src/features/groups/member-dialog.tsx:242
 msgid "Adding..."
 msgstr "追加中..."
 
@@ -154,7 +168,7 @@ msgstr "AI"
 msgid "All"
 msgstr "すべて"
 
-#: src/features/groups/member-dialog.tsx:198
+#: src/features/groups/member-dialog.tsx:197
 msgid "All available groups are already added"
 msgstr "利用可能なグループはすべて追加済みです"
 
@@ -162,9 +176,14 @@ msgstr "利用可能なグループはすべて追加済みです"
 msgid "All invites are accepted without your approval."
 msgstr "すべての招待が承認なしで受け入れられます。"
 
-#: src/features/profile/index.tsx:350
+#: src/features/profile/index.tsx:352
 msgid "Allow others to find you in directory"
 msgstr "ディレクトリで他のユーザーが自分を見つけられるようにする"
+
+#: src/features/friends/components/add-friend-dialog.tsx:69
+#: src/features/friends/components/add-friend-dialog.tsx:282
+msgid "Already friends"
+msgstr ""
 
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:24
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
@@ -175,11 +194,17 @@ msgstr "本当にログアウトしますか？再度アクセスするにはロ
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "このグループから <0>{0}</0> を削除してもよろしいですか?"
 
+#. placeholder {0}: removeFriendDialog.friendName
+#: src/features/friends/index.tsx:186
+msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
+msgstr ""
+
 #: ../../../lib/web/src/components/data-table/column-header.tsx:56
 msgid "Asc"
 msgstr "昇順"
 
 #: ../../../lib/web/src/components/place-picker.tsx:152
+#: src/features/friends/components/add-friend-dialog.tsx:362
 msgid "Back"
 msgstr "戻る"
 
@@ -197,7 +222,7 @@ msgstr "ホームに戻る"
 msgid "Boost interest"
 msgstr "関心を高める"
 
-#: src/features/profile/index.tsx:321
+#: src/features/profile/index.tsx:323
 msgid "Browser icon"
 msgstr "ブラウザアイコン"
 
@@ -209,10 +234,10 @@ msgstr "ブラウザアイコン"
 #: ../../../lib/web/src/features/accounts/account-add.tsx:185
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:86
 #: src/features/groups/group-dialog.tsx:116
-#: src/features/groups/member-dialog.tsx:241
+#: src/features/groups/member-dialog.tsx:239
 #: src/features/invitations/index.tsx:273
 #: src/features/invitations/invite-settings-dialog.tsx:110
-#: src/features/profile/index.tsx:411
+#: src/features/profile/index.tsx:413
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -224,7 +249,7 @@ msgstr "{friendName}への招待をキャンセルしました。"
 msgid "Category for this notification"
 msgstr "この通知のカテゴリ"
 
-#: src/features/profile/index.tsx:212
+#: src/features/profile/index.tsx:214
 msgid "Change banner"
 msgstr "バナーを変更"
 
@@ -232,7 +257,7 @@ msgstr "バナーを変更"
 msgid "Change notification category"
 msgstr "通知カテゴリを変更"
 
-#: src/features/friends/index.tsx:157
+#: src/features/friends/index.tsx:156
 msgid "Chat"
 msgstr "チャット"
 
@@ -280,6 +305,7 @@ msgstr "選択をクリア（Esc）"
 #: ../../../lib/web/src/components/ui/dialog.tsx:75
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:318
 #: ../../../lib/web/src/components/ui/sheet.tsx:76
+#: src/features/friends/components/add-friend-dialog.tsx:384
 msgid "Close"
 msgstr "閉じる"
 
@@ -332,7 +358,7 @@ msgstr "コピー"
 msgid "Core information about this group"
 msgstr "このグループの基本情報"
 
-#: src/features/profile/index.tsx:455
+#: src/features/profile/index.tsx:457
 msgid "Could not process {slot} image"
 msgstr "{slot}画像を処理できませんでした"
 
@@ -402,11 +428,11 @@ msgstr "詳細パネル"
 #: ../../../lib/web/src/components/language-picker.tsx:145
 #: ../../../lib/web/src/components/timezone-select.tsx:43
 #: ../../../lib/web/src/components/timezone-select.tsx:80
-#: ../../../lib/web/src/lib/preference-utils.ts:38
-#: ../../../lib/web/src/lib/preference-utils.ts:50
-#: ../../../lib/web/src/lib/preference-utils.ts:68
-#: ../../../lib/web/src/lib/preference-utils.ts:82
-#: ../../../lib/web/src/lib/preference-utils.ts:94
+#: ../../../lib/web/src/lib/preference-utils.ts:25
+#: ../../../lib/web/src/lib/preference-utils.ts:37
+#: ../../../lib/web/src/lib/preference-utils.ts:55
+#: ../../../lib/web/src/lib/preference-utils.ts:69
+#: ../../../lib/web/src/lib/preference-utils.ts:81
 msgid "Detect from web browser"
 msgstr "ウェブブラウザから検出"
 
@@ -431,10 +457,18 @@ msgstr "編集"
 msgid "Edit group"
 msgstr "グループを編集"
 
-#: src/features/profile/index.tsx:251
-#: src/features/profile/index.tsx:392
+#: src/features/profile/index.tsx:253
+#: src/features/profile/index.tsx:394
 msgid "Edit name"
 msgstr "名前を編集"
+
+#: src/features/friends/components/add-friend-dialog.tsx:198
+msgid "Enter a name to find people you want to add"
+msgstr ""
+
+#: src/features/friends/components/add-friend-dialog.tsx:178
+msgid "Enter name to search..."
+msgstr ""
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx:35
 msgid "Expand sidebar"
@@ -447,6 +481,11 @@ msgstr "招待の承認に失敗しました"
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:217
 msgid "Failed to add account"
 msgstr "アカウントの追加に失敗しました"
+
+#: src/features/friends/components/add-friend-dialog.tsx:60
+#: src/features/friends/components/add-friend-dialog.tsx:75
+msgid "Failed to add friend"
+msgstr ""
 
 #: src/features/groups/member-dialog.tsx:52
 #: src/features/groups/member-dialog.tsx:65
@@ -473,7 +512,7 @@ msgstr "グループの削除に失敗しました"
 msgid "Failed to remove account"
 msgstr "アカウントの削除に失敗しました"
 
-#: src/features/friends/index.tsx:71
+#: src/features/friends/index.tsx:70
 msgid "Failed to remove friend"
 msgstr "友だちの削除に失敗しました"
 
@@ -485,15 +524,15 @@ msgstr "メンバーの削除に失敗しました"
 msgid "Failed to save"
 msgstr "保存に失敗しました"
 
-#: src/features/profile/index.tsx:168
+#: src/features/profile/index.tsx:170
 msgid "Failed to save accent"
 msgstr "アクセントカラーの保存に失敗しました"
 
-#: src/features/profile/index.tsx:179
+#: src/features/profile/index.tsx:181
 msgid "Failed to save name"
 msgstr "名前の保存に失敗しました"
 
-#: src/features/profile/index.tsx:161
+#: src/features/profile/index.tsx:163
 msgid "Failed to save profile"
 msgstr "プロフィールの保存に失敗しました"
 
@@ -505,7 +544,7 @@ msgstr "確認コードの送信に失敗しました"
 msgid "Failed to update category"
 msgstr "カテゴリの更新に失敗しました"
 
-#: src/features/profile/index.tsx:185
+#: src/features/profile/index.tsx:187
 msgid "Failed to update directory listing"
 msgstr "ディレクトリ掲載の更新に失敗しました"
 
@@ -513,15 +552,15 @@ msgstr "ディレクトリ掲載の更新に失敗しました"
 msgid "Failed to update group"
 msgstr "グループの更新に失敗しました"
 
-#: src/features/profile/index.tsx:463
+#: src/features/profile/index.tsx:465
 msgid "Failed to upload {slot}"
 msgstr "{slot}のアップロードに失敗しました"
 
-#: src/features/profile/index.tsx:327
+#: src/features/profile/index.tsx:329
 msgid "Favicon"
 msgstr "ファビコン"
 
-#: src/features/profile/index.tsx:443
+#: src/features/profile/index.tsx:445
 msgid "File too large"
 msgstr "ファイルが大きすぎます"
 
@@ -529,13 +568,13 @@ msgstr "ファイルが大きすぎます"
 msgid "Floating"
 msgstr "フローティング"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:73
+#: ../../../lib/web/src/lib/preference-utils.ts:60
 msgid "Friday"
 msgstr "金曜日"
 
 #: src/components/layout/people-layout.tsx:60
-#: src/features/friends/index.tsx:27
-#: src/features/friends/index.tsx:86
+#: src/features/friends/index.tsx:26
+#: src/features/friends/index.tsx:85
 msgid "Friends"
 msgstr "友だち"
 
@@ -628,7 +667,7 @@ msgstr "人気"
 msgid "Identity"
 msgstr "アイデンティティ"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:96
+#: ../../../lib/web/src/lib/preference-utils.ts:83
 msgid "Imperial"
 msgstr "ヤード・ポンド法"
 
@@ -659,6 +698,11 @@ msgstr "招待をキャンセルしました"
 #: src/features/invitations/index.tsx:74
 msgid "Invitation declined"
 msgstr "招待を拒否しました"
+
+#: src/features/friends/components/add-friend-dialog.tsx:54
+#: src/features/friends/components/add-friend-dialog.tsx:290
+msgid "Invitation sent"
+msgstr ""
 
 #: src/components/layout/people-layout.tsx:62
 #: src/features/invitations/index.tsx:29
@@ -707,7 +751,7 @@ msgstr "ライト"
 msgid "Load more"
 msgstr "もっと読み込む"
 
-#: src/features/groups/member-dialog.tsx:185
+#: src/features/groups/member-dialog.tsx:184
 msgid "Loading groups..."
 msgstr "グループを読み込み中..."
 
@@ -737,16 +781,12 @@ msgstr "ログアウトしました"
 msgid "Logging out…"
 msgstr "ログアウトしています…"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:25
-msgid "Luma (Default)"
-msgstr "Luma（デフォルト）"
-
 #: ../../../lib/web/src/components/layout/notification-menu.tsx:86
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:220
 msgid "Mark all as read"
 msgstr "すべて既読にする"
 
-#: src/features/profile/index.tsx:268
+#: src/features/profile/index.tsx:270
 msgid "Markdown supported"
 msgstr "Markdown対応"
 
@@ -770,16 +810,16 @@ msgstr "メンバー数"
 msgid "Menu"
 msgstr "メニュー"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:95
+#: ../../../lib/web/src/lib/preference-utils.ts:82
 msgid "Metric"
 msgstr "メートル法"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:69
+#: ../../../lib/web/src/lib/preference-utils.ts:56
 msgid "Monday"
 msgstr "月曜日"
 
 #: src/features/groups/group-dialog.tsx:93
-#: src/features/profile/index.tsx:395
+#: src/features/profile/index.tsx:397
 msgid "Name"
 msgstr "名前"
 
@@ -787,7 +827,7 @@ msgstr "名前"
 msgid "Name is required"
 msgstr "名前が必要です"
 
-#: src/features/profile/index.tsx:176
+#: src/features/profile/index.tsx:178
 msgid "Name saved"
 msgstr "名前を保存しました"
 
@@ -807,7 +847,7 @@ msgstr "次の画像"
 msgid "No access rules configured. Add rules to control who can access this resource."
 msgstr "アクセスルールが設定されていません。このリソースへのアクセスを制御するルールを追加してください。"
 
-#: src/features/profile/index.tsx:198
+#: src/features/profile/index.tsx:200
 msgid "No banner set"
 msgstr "バナーが設定されていません"
 
@@ -815,7 +855,7 @@ msgstr "バナーが設定されていません"
 msgid "No connected accounts"
 msgstr "接続されたアカウントがありません"
 
-#: src/features/friends/index.tsx:130
+#: src/features/friends/index.tsx:129
 msgid "No friends found"
 msgstr "友だちが見つかりません"
 
@@ -831,7 +871,7 @@ msgstr "一致するものがありません。"
 msgid "No members"
 msgstr "メンバーがいません"
 
-#: src/features/groups/member-dialog.tsx:197
+#: src/features/groups/member-dialog.tsx:196
 msgid "No other groups"
 msgstr "他のグループはありません"
 
@@ -839,6 +879,7 @@ msgstr "他のグループはありません"
 msgid "No pending invitations"
 msgstr "保留中の招待はありません"
 
+#: src/features/friends/components/add-friend-dialog.tsx:222
 #: src/features/groups/member-dialog.tsx:142
 msgid "No people found"
 msgstr "人が見つかりません"
@@ -915,6 +956,7 @@ msgstr "その他"
 #: ../../../lib/web/src/features/access/access-list.tsx:213
 msgid "Owner"
 msgstr "オーナー"
+
 #: src/features/invitations/index.tsx:262
 msgid "Pending"
 msgstr "保留中"
@@ -923,12 +965,12 @@ msgstr "保留中"
 msgid "People"
 msgstr "ピープル"
 
-#: src/features/profile/index.tsx:363
+#: src/features/profile/index.tsx:365
 msgid "Preview"
 msgstr "プレビュー"
 
 #. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx:168
+#: src/features/friends/components/add-friend-dialog.tsx:165
 msgid "Preview {0}'s profile before sending a friend request."
 msgstr "友達リクエストを送る前に{0}のプロフィールをプレビュー。"
 
@@ -939,20 +981,20 @@ msgstr "前の画像"
 #: ../../../lib/web/src/components/layout/nav-user.tsx:134
 #: ../../../lib/web/src/components/profile-dropdown.tsx:111
 #: src/components/layout/people-layout.tsx:59
-#: src/features/profile/index.tsx:48
-#: src/features/profile/index.tsx:56
-#: src/features/profile/index.tsx:67
-#: src/features/profile/index.tsx:77
-#: src/features/profile/index.tsx:263
+#: src/features/profile/index.tsx:49
+#: src/features/profile/index.tsx:57
+#: src/features/profile/index.tsx:68
+#: src/features/profile/index.tsx:78
+#: src/features/profile/index.tsx:265
 #: src/features/profile/public.tsx:46
 msgid "Profile"
 msgstr "プロフィール"
 
-#: src/features/profile/index.tsx:371
+#: src/features/profile/index.tsx:373
 msgid "Profile preview"
 msgstr "プロフィールプレビュー"
 
-#: src/features/profile/index.tsx:160
+#: src/features/profile/index.tsx:162
 msgid "Profile saved"
 msgstr "プロフィールを保存しました"
 
@@ -978,11 +1020,11 @@ msgstr "関心を下げる"
 msgid "Reject all"
 msgstr "すべて拒否"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:60
+#: ../../../lib/web/src/lib/preference-utils.ts:47
 msgid "Relative (5m, 3h, 2d)"
 msgstr "相対 (5分、3時間、2日)"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:59
+#: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Relative within 24 hours, else absolute"
 msgstr "24時間以内は相対、それ以外は絶対"
 
@@ -992,7 +1034,7 @@ msgid "Remove"
 msgstr "削除"
 
 #. placeholder {0}: friend.name
-#: src/features/friends/index.tsx:162
+#: src/features/friends/index.tsx:161
 msgid "Remove {0}"
 msgstr "{0}を削除"
 
@@ -1012,6 +1054,11 @@ msgstr "アクセスルールを削除"
 msgid "Remove access?"
 msgstr "アクセスを削除しますか?"
 
+#: src/features/friends/index.tsx:184
+#: src/features/friends/index.tsx:194
+msgid "Remove friend"
+msgstr ""
+
 #: ../../../lib/web/src/components/post-tags.tsx:190
 msgid "Remove interest"
 msgstr "関心を削除"
@@ -1024,6 +1071,7 @@ msgstr "メンバーを削除"
 msgid "Remove Member"
 msgstr "メンバーを削除"
 
+#: src/features/friends/index.tsx:194
 #: src/features/groups/group-detail.tsx:253
 msgid "Removing..."
 msgstr "削除中..."
@@ -1044,15 +1092,15 @@ msgstr "右から左"
 msgid "Rows per page"
 msgstr "ページあたりの行数"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:74
+#: ../../../lib/web/src/lib/preference-utils.ts:61
 msgid "Saturday"
 msgstr "土曜日"
 
 #: src/features/groups/group-dialog.tsx:119
 #: src/features/invitations/invite-settings-dialog.tsx:113
-#: src/features/profile/index.tsx:293
-#: src/features/profile/index.tsx:313
-#: src/features/profile/index.tsx:415
+#: src/features/profile/index.tsx:295
+#: src/features/profile/index.tsx:315
+#: src/features/profile/index.tsx:417
 msgid "Save"
 msgstr "保存"
 
@@ -1060,9 +1108,9 @@ msgstr "保存"
 msgid "Saving..."
 msgstr "保存中..."
 
-#: src/features/profile/index.tsx:293
-#: src/features/profile/index.tsx:313
-#: src/features/profile/index.tsx:415
+#: src/features/profile/index.tsx:295
+#: src/features/profile/index.tsx:315
+#: src/features/profile/index.tsx:417
 msgid "Saving…"
 msgstr "保存中…"
 
@@ -1078,11 +1126,11 @@ msgstr "目的地を検索…"
 msgid "Search for origin..."
 msgstr "出発地を検索…"
 
-#: src/features/friends/components/add-friend-dialog.tsx:169
+#: src/features/friends/components/add-friend-dialog.tsx:166
 msgid "Search for people and send a friend request."
 msgstr "人を検索して友達リクエストを送信。"
 
-#: src/features/friends/index.tsx:95
+#: src/features/friends/index.tsx:94
 msgid "Search friends"
 msgstr "友達を検索"
 
@@ -1096,7 +1144,7 @@ msgid "Search users"
 msgstr "ユーザーを検索"
 
 #: ../../../lib/web/src/components/person-picker.tsx:323
-#: src/features/friends/index.tsx:94
+#: src/features/friends/index.tsx:93
 #: src/features/invitations/index.tsx:108
 msgid "Search..."
 msgstr "検索…"
@@ -1125,7 +1173,7 @@ msgid "Select account type"
 msgstr "アカウントの種類を選択"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:228
-#: src/features/groups/member-dialog.tsx:182
+#: src/features/groups/member-dialog.tsx:181
 msgid "Select group"
 msgstr "グループを選択"
 
@@ -1148,9 +1196,13 @@ msgstr "テーマの設定を選択"
 #. placeholder {0}: selectedGroup.name
 #. placeholder {0}: selectedUser.name
 #: src/features/groups/member-dialog.tsx:173
-#: src/features/groups/member-dialog.tsx:231
+#: src/features/groups/member-dialog.tsx:230
 msgid "Selected: <0>{0}</0>"
 msgstr "選択中: <0>{0}</0>"
+
+#: src/features/friends/components/add-friend-dialog.tsx:150
+msgid "Send invitation"
+msgstr ""
 
 #. placeholder {0}: filteredSent.length
 #: src/features/invitations/index.tsx:242
@@ -1189,6 +1241,10 @@ msgstr "サインアウト中..."
 msgid "Skip to Main"
 msgstr "メインコンテンツへスキップ"
 
+#: src/features/friends/components/add-friend-dialog.tsx:197
+msgid "Start typing to search for users"
+msgstr ""
+
 #: ../../../lib/web/src/components/coming-soon.tsx:12
 msgid "Stay tuned though!"
 msgstr "今後の更新にご期待ください!"
@@ -1201,7 +1257,7 @@ msgstr "サイレントで保存"
 msgid "Subject"
 msgstr "件名"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:75
+#: ../../../lib/web/src/lib/preference-utils.ts:62
 msgid "Sunday"
 msgstr "日曜日"
 
@@ -1218,6 +1274,10 @@ msgstr "タグ"
 msgid "Teams/Apps"
 msgstr "チーム/アプリ"
 
+#: src/features/friends/components/add-friend-dialog.tsx:275
+msgid "That's you"
+msgstr ""
+
 #: ../../../lib/web/src/components/config-drawer.tsx:181
 msgid "Theme"
 msgstr "テーマ"
@@ -1230,7 +1290,7 @@ msgstr "テーマ設定"
 msgid "This group may have been removed or is unavailable."
 msgstr "このグループは削除されたか、利用できません。"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:72
+#: ../../../lib/web/src/lib/preference-utils.ts:59
 msgid "Thursday"
 msgstr "木曜日"
 
@@ -1260,7 +1320,11 @@ msgstr "トップ"
 msgid "Travelling"
 msgstr "移動中"
 
-#: src/features/friends/index.tsx:133
+#: src/features/friends/components/add-friend-dialog.tsx:223
+msgid "Try a different search term"
+msgstr ""
+
+#: src/features/friends/index.tsx:132
 #: src/features/invitations/index.tsx:176
 msgid "Try adjusting your search"
 msgstr "検索条件を変えてみてください"
@@ -1276,7 +1340,7 @@ msgstr "検索語を変えてみてください"
 msgid "Try again"
 msgstr "再試行"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:70
+#: ../../../lib/web/src/lib/preference-utils.ts:57
 msgid "Tuesday"
 msgstr "火曜日"
 
@@ -1311,7 +1375,7 @@ msgstr "未割り当て"
 msgid "Unauthorized Access"
 msgstr "認証されていないアクセス"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:97
+#: ../../../lib/web/src/lib/preference-utils.ts:84
 msgid "United States"
 msgstr "アメリカ合衆国"
 
@@ -1319,16 +1383,16 @@ msgstr "アメリカ合衆国"
 msgid "Unverified"
 msgstr "未認証"
 
-#: src/features/profile/index.tsx:340
+#: src/features/profile/index.tsx:342
 msgid "Upload"
 msgstr "アップロード"
 
-#: src/features/profile/index.tsx:235
+#: src/features/profile/index.tsx:237
 msgid "Upload avatar"
 msgstr "アバターをアップロード"
 
-#: src/features/profile/index.tsx:212
-#: src/features/profile/index.tsx:340
+#: src/features/profile/index.tsx:214
+#: src/features/profile/index.tsx:342
 msgid "Uploading…"
 msgstr "アップロード中…"
 
@@ -1382,7 +1446,7 @@ msgstr "まもなく復旧します。"
 msgid "Website is under maintenance!"
 msgstr "ウェブサイトはメンテナンス中です!"
 
-#: ../../../lib/web/src/lib/preference-utils.ts:71
+#: ../../../lib/web/src/lib/preference-utils.ts:58
 msgid "Wednesday"
 msgstr "水曜日"
 
@@ -1390,6 +1454,6 @@ msgstr "水曜日"
 msgid "You are now friends with {friendName}."
 msgstr "{friendName}と友達になりました。"
 
-#: src/features/friends/components/add-friend-dialog.tsx:73
+#: src/features/friends/components/add-friend-dialog.tsx:70
 msgid "You are now friends!"
 msgstr "友達になりました!"

@@ -277,7 +277,7 @@ msgstr "Odaberite između smjera stranice s lijeva na desno ili s desna na lijev
 msgid "Choose between system preference, light mode, or dark mode"
 msgstr "Odaberite između sistemske postavke, svijetlog ili tamnog načina rada"
 
-#: ../../../lib/web/src/components/language-picker.tsx:167
+#: ../../../lib/web/src/components/language-picker.tsx:174
 msgid "Choose language"
 msgstr "Odaberite jezik"
 
@@ -325,11 +325,16 @@ msgstr "Zatvori pretragu"
 msgid "Collapse sidebar"
 msgstr "Sažmi bočnu traku"
 
+#: ../../../lib/web/src/lib/preference-utils.ts:93
+msgid "Comfortable"
+msgstr "Ugodno"
+
 #: ../../../lib/web/src/components/coming-soon.tsx:9
 msgid "Coming Soon!"
 msgstr "Uskoro!"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:302
+#: ../../../lib/web/src/lib/preference-utils.ts:92
 msgid "Compact"
 msgstr "Kompaktno"
 
@@ -357,6 +362,10 @@ msgstr "Kopiraj"
 #: src/features/groups/group-detail.tsx:158
 msgid "Core information about this group"
 msgstr "Osnovne informacije o ovoj grupi"
+
+#: ../../../lib/web/src/features/document/document-page.tsx:81
+msgid "Could not load this document. Please try again later."
+msgstr "Nije moguće učitati ovaj dokument. Pokušajte ponovno kasnije."
 
 #: src/features/profile/index.tsx:457
 msgid "Could not process {slot} image"
@@ -425,7 +434,7 @@ msgstr "Opis"
 msgid "Details Panel"
 msgstr "Panel s detaljima"
 
-#: ../../../lib/web/src/components/language-picker.tsx:145
+#: ../../../lib/web/src/components/language-picker.tsx:152
 #: ../../../lib/web/src/components/timezone-select.tsx:43
 #: ../../../lib/web/src/components/timezone-select.tsx:80
 #: ../../../lib/web/src/lib/preference-utils.ts:25
@@ -447,6 +456,10 @@ msgstr "Prikazuje mobilnu bočnu traku."
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:312
 msgid "Download"
 msgstr "Preuzmi"
+
+#: ../../../lib/web/src/lib/preference-utils.ts:134
+msgid "Dyslexia-friendly"
+msgstr "Prilagođeno disleksiji"
 
 #: src/features/groups/group-detail.tsx:132
 msgid "Edit"
@@ -473,6 +486,10 @@ msgstr "Unesite ime za pretraživanje..."
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx:35
 msgid "Expand sidebar"
 msgstr "Proširi bočnu traku"
+
+#: ../../../lib/web/src/lib/preference-utils.ts:124
+msgid "Extra large"
+msgstr "Ekstra veliko"
 
 #: src/features/invitations/index.tsx:63
 msgid "Failed to accept invitation"
@@ -581,6 +598,14 @@ msgstr "Prijatelji"
 #: ../../../lib/web/src/components/travelling-picker.tsx:149
 msgid "From"
 msgstr "Od"
+
+#: ../../../lib/web/src/lib/preference-utils.ts:91
+#: ../../../lib/web/src/lib/preference-utils.ts:101
+#: ../../../lib/web/src/lib/preference-utils.ts:112
+#: ../../../lib/web/src/lib/preference-utils.ts:120
+#: ../../../lib/web/src/lib/preference-utils.ts:131
+msgid "From theme"
+msgstr "Iz teme"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:307
 msgid "Full layout"
@@ -730,6 +755,11 @@ msgstr "Pozivnice se pojavljuju u pozivnicama. Ne šalje se obavijest."
 msgid "Invites from unknown senders are dropped. Mutual invites still connect."
 msgstr "Pozivnice od nepoznatih pošiljatelja se odbacuju. Međusobne pozivnice se i dalje povezuju."
 
+#: ../../../lib/web/src/lib/preference-utils.ts:105
+#: ../../../lib/web/src/lib/preference-utils.ts:123
+msgid "Large"
+msgstr "Veliko"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:273
 msgid "Layout"
 msgstr "Izgled"
@@ -756,6 +786,7 @@ msgid "Loading groups..."
 msgstr "Učitavanje grupa..."
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:32
+#: ../../../lib/web/src/features/document/document-page.tsx:87
 msgid "Loading…"
 msgstr "Učitavanje…"
 
@@ -789,6 +820,10 @@ msgstr "Označi sve kao pročitano"
 #: src/features/profile/index.tsx:270
 msgid "Markdown supported"
 msgstr "Markdown podržan"
+
+#: ../../../lib/web/src/lib/preference-utils.ts:104
+msgid "Medium"
+msgstr "Srednje"
 
 #: src/features/groups/group-detail.tsx:188
 msgid "Member"
@@ -863,10 +898,6 @@ msgstr "Nije pronađen nijedan prijatelj"
 msgid "No groups available"
 msgstr "Nema dostupnih grupa"
 
-#: ../../../lib/web/src/components/language-picker.tsx:177
-msgid "No matches."
-msgstr "Nema rezultata."
-
 #: src/features/groups/group-detail.tsx:179
 msgid "No members"
 msgstr "Nema članova"
@@ -910,8 +941,14 @@ msgid "No users found"
 msgstr "Nije pronađen nijedan korisnik"
 
 #: ../../../lib/web/src/components/person-picker.tsx:349
+#: ../../../lib/web/src/lib/preference-utils.ts:102
+#: ../../../lib/web/src/lib/preference-utils.ts:113
 msgid "None"
 msgstr "Ništa"
+
+#: ../../../lib/web/src/lib/preference-utils.ts:122
+msgid "Normal"
+msgstr "Normalno"
 
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:132
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:146
@@ -977,6 +1014,11 @@ msgstr "Pregledajte profil korisnika {0} prije slanja zahtjeva za prijateljstvo.
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:332
 msgid "Previous image"
 msgstr "Prethodna slika"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx:24
+#: ../../../lib/web/src/features/document/document-page.tsx:41
+msgid "Privacy"
+msgstr "Privatnost"
 
 #: ../../../lib/web/src/components/layout/nav-user.tsx:134
 #: ../../../lib/web/src/components/profile-dropdown.tsx:111
@@ -1149,10 +1191,6 @@ msgstr "Pretraži korisnike"
 msgid "Search..."
 msgstr "Pretraži..."
 
-#: ../../../lib/web/src/components/language-picker.tsx:175
-msgid "Search…"
-msgstr "Pretraži…"
-
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
 #: ../../../lib/web/src/components/search-entity-page.tsx:149
 #: ../../../lib/web/src/features/access/access-dialog.tsx:199
@@ -1209,6 +1247,15 @@ msgstr "Pošalji pozivnicu"
 msgid "Sent ({0})"
 msgstr "Poslano ({0})"
 
+#: ../../../lib/web/src/lib/preference-utils.ts:133
+msgid "Serif"
+msgstr "Serifno"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx:16
+#: ../../../lib/web/src/features/document/document-page.tsx:37
+msgid "Server rules"
+msgstr "Pravila poslužitelja"
+
 #: ../../../lib/web/src/lib/api-client.ts:224
 msgid "Session expired"
 msgstr "Sesija je istekla"
@@ -1241,6 +1288,15 @@ msgstr "Odjavljivanje..."
 msgid "Skip to Main"
 msgstr "Preskoči na glavni sadržaj"
 
+#: ../../../lib/web/src/lib/preference-utils.ts:103
+#: ../../../lib/web/src/lib/preference-utils.ts:121
+msgid "Small"
+msgstr "Malo"
+
+#: ../../../lib/web/src/lib/preference-utils.ts:94
+msgid "Spacious"
+msgstr "Prostrano"
+
 #: src/features/friends/components/add-friend-dialog.tsx:197
 msgid "Start typing to search for users"
 msgstr "Počnite tipkati za pretragu korisnika"
@@ -1263,6 +1319,7 @@ msgstr "Nedjelja"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:195
 #: ../../../lib/web/src/lib/preference-utils.ts:18
+#: ../../../lib/web/src/lib/preference-utils.ts:132
 msgid "System"
 msgstr "Sustav"
 
@@ -1273,6 +1330,11 @@ msgstr "Oznaka"
 #: ../../../lib/web/src/components/layout/team-switcher.tsx:60
 msgid "Teams/Apps"
 msgstr "Timovi/Aplikacije"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx:20
+#: ../../../lib/web/src/features/document/document-page.tsx:39
+msgid "Terms and conditions"
+msgstr "Uvjeti korištenja"
 
 #: src/features/friends/components/add-friend-dialog.tsx:275
 msgid "That's you"

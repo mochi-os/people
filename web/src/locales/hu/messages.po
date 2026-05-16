@@ -277,7 +277,7 @@ msgstr "Választhat balról jobbra vagy jobbról balra olvasási irány között
 msgid "Choose between system preference, light mode, or dark mode"
 msgstr "Választhat rendszerbeállítás, világos vagy sötét mód között"
 
-#: ../../../lib/web/src/components/language-picker.tsx:167
+#: ../../../lib/web/src/components/language-picker.tsx:174
 msgid "Choose language"
 msgstr "Nyelv kiválasztása"
 
@@ -325,11 +325,16 @@ msgstr "Keresés bezárása"
 msgid "Collapse sidebar"
 msgstr "Oldalsáv összecsukása"
 
+#: ../../../lib/web/src/lib/preference-utils.ts:93
+msgid "Comfortable"
+msgstr "Kényelmes"
+
 #: ../../../lib/web/src/components/coming-soon.tsx:9
 msgid "Coming Soon!"
 msgstr "Hamarosan!"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:302
+#: ../../../lib/web/src/lib/preference-utils.ts:92
 msgid "Compact"
 msgstr "Kompakt"
 
@@ -357,6 +362,10 @@ msgstr "Másolás"
 #: src/features/groups/group-detail.tsx:158
 msgid "Core information about this group"
 msgstr "Alapvető információk erről a csoportról"
+
+#: ../../../lib/web/src/features/document/document-page.tsx:81
+msgid "Could not load this document. Please try again later."
+msgstr "Nem sikerült betölteni ezt a dokumentumot. Kérjük, próbáld meg később."
 
 #: src/features/profile/index.tsx:457
 msgid "Could not process {slot} image"
@@ -425,7 +434,7 @@ msgstr "Leírás"
 msgid "Details Panel"
 msgstr "Részletek panel"
 
-#: ../../../lib/web/src/components/language-picker.tsx:145
+#: ../../../lib/web/src/components/language-picker.tsx:152
 #: ../../../lib/web/src/components/timezone-select.tsx:43
 #: ../../../lib/web/src/components/timezone-select.tsx:80
 #: ../../../lib/web/src/lib/preference-utils.ts:25
@@ -447,6 +456,10 @@ msgstr "Megjeleníti a mobil oldalsávot."
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:312
 msgid "Download"
 msgstr "Letöltés"
+
+#: ../../../lib/web/src/lib/preference-utils.ts:134
+msgid "Dyslexia-friendly"
+msgstr "Diszlexiabarát"
 
 #: src/features/groups/group-detail.tsx:132
 msgid "Edit"
@@ -473,6 +486,10 @@ msgstr "Adj meg egy nevet a kereséshez..."
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx:35
 msgid "Expand sidebar"
 msgstr "Oldalsáv kibontása"
+
+#: ../../../lib/web/src/lib/preference-utils.ts:124
+msgid "Extra large"
+msgstr "Extra nagy"
 
 #: src/features/invitations/index.tsx:63
 msgid "Failed to accept invitation"
@@ -581,6 +598,14 @@ msgstr "Barátok"
 #: ../../../lib/web/src/components/travelling-picker.tsx:149
 msgid "From"
 msgstr "Kezdete"
+
+#: ../../../lib/web/src/lib/preference-utils.ts:91
+#: ../../../lib/web/src/lib/preference-utils.ts:101
+#: ../../../lib/web/src/lib/preference-utils.ts:112
+#: ../../../lib/web/src/lib/preference-utils.ts:120
+#: ../../../lib/web/src/lib/preference-utils.ts:131
+msgid "From theme"
+msgstr "Témából"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:307
 msgid "Full layout"
@@ -730,6 +755,11 @@ msgstr "A meghívások megjelennek a meghívások között. Nem küldünk értes
 msgid "Invites from unknown senders are dropped. Mutual invites still connect."
 msgstr "Az ismeretlen küldőktől érkező meghívásokat eldobjuk. A kölcsönös meghívások továbbra is kapcsolódnak."
 
+#: ../../../lib/web/src/lib/preference-utils.ts:105
+#: ../../../lib/web/src/lib/preference-utils.ts:123
+msgid "Large"
+msgstr "Nagy"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:273
 msgid "Layout"
 msgstr "Elrendezés"
@@ -756,6 +786,7 @@ msgid "Loading groups..."
 msgstr "Csoportok betöltése..."
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:32
+#: ../../../lib/web/src/features/document/document-page.tsx:87
 msgid "Loading…"
 msgstr "Betöltés…"
 
@@ -789,6 +820,10 @@ msgstr "Összes megjelölése olvasottként"
 #: src/features/profile/index.tsx:270
 msgid "Markdown supported"
 msgstr "Markdown támogatott"
+
+#: ../../../lib/web/src/lib/preference-utils.ts:104
+msgid "Medium"
+msgstr "Közepes"
 
 #: src/features/groups/group-detail.tsx:188
 msgid "Member"
@@ -863,10 +898,6 @@ msgstr "Nem találhatók barátok"
 msgid "No groups available"
 msgstr "Nincsenek elérhető csoportok"
 
-#: ../../../lib/web/src/components/language-picker.tsx:177
-msgid "No matches."
-msgstr "Nincs találat."
-
 #: src/features/groups/group-detail.tsx:179
 msgid "No members"
 msgstr "Nincsenek tagok"
@@ -910,8 +941,14 @@ msgid "No users found"
 msgstr "Nem találhatók felhasználók"
 
 #: ../../../lib/web/src/components/person-picker.tsx:349
+#: ../../../lib/web/src/lib/preference-utils.ts:102
+#: ../../../lib/web/src/lib/preference-utils.ts:113
 msgid "None"
 msgstr "Nincs"
+
+#: ../../../lib/web/src/lib/preference-utils.ts:122
+msgid "Normal"
+msgstr "Normál"
 
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:132
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:146
@@ -977,6 +1014,11 @@ msgstr "Tekintsd meg {0} profilját, mielőtt barátkérést küldenél."
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:332
 msgid "Previous image"
 msgstr "Előző kép"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx:24
+#: ../../../lib/web/src/features/document/document-page.tsx:41
+msgid "Privacy"
+msgstr "Adatvédelem"
 
 #: ../../../lib/web/src/components/layout/nav-user.tsx:134
 #: ../../../lib/web/src/components/profile-dropdown.tsx:111
@@ -1149,10 +1191,6 @@ msgstr "Felhasználók keresése"
 msgid "Search..."
 msgstr "Keresés..."
 
-#: ../../../lib/web/src/components/language-picker.tsx:175
-msgid "Search…"
-msgstr "Keresés…"
-
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
 #: ../../../lib/web/src/components/search-entity-page.tsx:149
 #: ../../../lib/web/src/features/access/access-dialog.tsx:199
@@ -1209,6 +1247,15 @@ msgstr "Meghívó küldése"
 msgid "Sent ({0})"
 msgstr "Küldött ({0})"
 
+#: ../../../lib/web/src/lib/preference-utils.ts:133
+msgid "Serif"
+msgstr "Talpas"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx:16
+#: ../../../lib/web/src/features/document/document-page.tsx:37
+msgid "Server rules"
+msgstr "Szerverszabályzat"
+
 #: ../../../lib/web/src/lib/api-client.ts:224
 msgid "Session expired"
 msgstr "A munkamenet lejárt"
@@ -1241,6 +1288,15 @@ msgstr "Kijelentkezés..."
 msgid "Skip to Main"
 msgstr "Ugrás a fő tartalomra"
 
+#: ../../../lib/web/src/lib/preference-utils.ts:103
+#: ../../../lib/web/src/lib/preference-utils.ts:121
+msgid "Small"
+msgstr "Kicsi"
+
+#: ../../../lib/web/src/lib/preference-utils.ts:94
+msgid "Spacious"
+msgstr "Tágas"
+
 #: src/features/friends/components/add-friend-dialog.tsx:197
 msgid "Start typing to search for users"
 msgstr "Kezdj el gépelni a felhasználók kereséséhez"
@@ -1263,6 +1319,7 @@ msgstr "Vasárnap"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:195
 #: ../../../lib/web/src/lib/preference-utils.ts:18
+#: ../../../lib/web/src/lib/preference-utils.ts:132
 msgid "System"
 msgstr "Rendszer"
 
@@ -1273,6 +1330,11 @@ msgstr "Címke"
 #: ../../../lib/web/src/components/layout/team-switcher.tsx:60
 msgid "Teams/Apps"
 msgstr "Csapatok/Alkalmazások"
+
+#: ../../../lib/web/src/components/server-documents-footer.tsx:20
+#: ../../../lib/web/src/features/document/document-page.tsx:39
+msgid "Terms and conditions"
+msgstr "Általános szerződési feltételek"
 
 #: src/features/friends/components/add-friend-dialog.tsx:275
 msgid "That's you"

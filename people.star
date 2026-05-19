@@ -447,13 +447,13 @@ def action_group_get(a):
 		name = member["member"]
 		member_id = member["member"]
 		if member["type"] == "user":
-			# Check if it's a numeric user ID or an entity ID
-			if member_id.isdigit():
-				user = mochi.user.get(int(member_id))
-				if user:
-					name = user["username"]
+			# Group membership 'user' subjects are local user uids; resolve
+			# to username when present, otherwise try the directory in case
+			# the value happens to be an entity id from older data.
+			user = mochi.user.get(member_id)
+			if user:
+				name = user["username"]
 			elif mochi.text.valid(member_id, "entity"):
-				# Entity from directory
 				entity = mochi.directory.get(member_id)
 				if entity:
 					name = entity["name"]

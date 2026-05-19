@@ -204,7 +204,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
             <SlotUploader person={person} slot="banner">
               {(open, pending) => (
                 <Button
-                  variant="secondary"
+                  variant="outline"
                   size="sm"
                   onClick={open}
                   disabled={pending}

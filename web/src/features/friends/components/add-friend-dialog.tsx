@@ -245,7 +245,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                       const getButtonVariant = () => {
                         if (status === 'pending') return 'default'
                         if (status === 'none') return 'default'
-                        return 'secondary'
+                        return 'outline'
                       }
 
                       // Determine button action

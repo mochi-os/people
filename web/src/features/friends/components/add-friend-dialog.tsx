@@ -155,7 +155,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
       onOpenChange={onOpenChange}
       shouldCloseOnInteractOutside={false}
     >
-      <ResponsiveDialogContent className='gap-0 sm:max-w-[640px]'>
+      <ResponsiveDialogContent className='sm:max-w-160'>
         <ResponsiveDialogHeader className='gap-1.5'>
           <ResponsiveDialogTitle>
             {preview ? preview.user.name : t`Add friend`}

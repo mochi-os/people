@@ -2,8 +2,8 @@
 # REST-style JSON responses version with default identity for API calls
 # Copyright Alistair Cunningham 2024-2026
 
-def notify(topic, object="", title="", body="", url="", sender=""):
-	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender)
+def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
+	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event_id=event_id)
 
 def database_create():
 	mochi.db.execute("create table if not exists friends ( identity text not null, id text not null, name text not null, class text not null, primary key ( identity, id ) )")
@@ -305,7 +305,7 @@ def event_accept(e):
 	mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, e.header("from"), i["name"])
 
 	mochi.db.execute("delete from invites where identity=? and id=?", identity, e.header("from"))
-	notify("accept/accepted", "", mochi.app.label("notifications.title.friend_request_accepted"), mochi.app.label("notifications.body.accepted_invitation", name=i["name"]), "/people", e.header("from"))
+	notify("accept/accepted", "", mochi.app.label("notifications.title.friend_request_accepted"), mochi.app.label("notifications.body.accepted_invitation", name=i["name"]), "/people", e.header("from"), event_id="accept/accepted:" + e.header("from") + ":" + identity)
 
 def event_invite(e):
 	# Incoming friend invite. The user-configurable `invite_policy` preference
@@ -324,7 +324,7 @@ def event_invite(e):
 		mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, sender, name)
 		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
 		mochi.db.execute("delete from invites where identity=? and id=?", identity, sender)
-		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender)
+		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event_id="accept/matched:" + sender + ":" + identity)
 		return
 
 	policy = e.user.preference.get("invite_policy") or "notify"
@@ -336,14 +336,14 @@ def event_invite(e):
 		# Auto-accept: mirror mutual-invite path without writing to invites.
 		mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, sender, name)
 		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
-		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender)
+		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event_id="accept/matched:" + sender + ":" + identity)
 		return
 
 	# silent or notify: store pending invite
 	mochi.db.execute("replace into invites ( identity, id, direction, name, updated ) values ( ?, ?, 'from', ?, ? )", identity, sender, name, mochi.time.now())
 
 	if policy == "notify":
-		notify("invite/received", "", mochi.app.label("notifications.title.friend_invitation"), mochi.app.label("notifications.body.invited_you", name=name), "/people/invitations", sender)
+		notify("invite/received", "", mochi.app.label("notifications.title.friend_invitation"), mochi.app.label("notifications.body.invited_you", name=name), "/people/invitations", sender, event_id="invite/received:" + sender + ":" + identity)
 
 def event_cancel(e):
 	# Remove the invitation from the recipient's side

@@ -401,7 +401,7 @@ function FriendPreview({ info }: { info: PersonInformation }) {
       <div className='space-y-3 px-4 pb-4 sm:px-0 sm:pb-0'>
         {bannerUrl && <EntityBanner src={bannerUrl} className='rounded-lg' />}
         <div className='flex items-center gap-3'>
-          <EntityAvatar src={avatarUrl} name={info.name} size={64} accent={accent} />
+          <EntityAvatar src={avatarUrl} name={info.name} size="2xl" accent={accent} />
           <div className='min-w-0'>
             <p className='truncate font-medium'>{info.name}</p>
             <p className='text-muted-foreground truncate text-xs'>

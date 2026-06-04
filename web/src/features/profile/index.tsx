@@ -37,7 +37,8 @@ import {
 import type { PersonInformation } from '@/api/types/person'
 import { resizeImage, SLOT_RESIZE } from '@/lib/resize-image'
 
-const PROFILE_MAX = 100 * 100
+// Matches the server cap (_PROFILE_MAX = 100 * 1024 in people.star).
+const PROFILE_MAX = 100 * 1024
 const ACCENT_PATTERN = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i
 
 // Sanity cap on the *source* file the user picks — well above any real photo.

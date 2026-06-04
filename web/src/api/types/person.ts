@@ -10,8 +10,4 @@ export interface PersonInformation {
   favicon: string
 }
 
-export interface PersonStyle {
-  accent?: string
-}
-
 export type MutationSuccess = Record<string, unknown>

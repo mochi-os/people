@@ -3,14 +3,10 @@ import endpoints from '@/api/endpoints'
 import type {
   MutationSuccess,
   PersonInformation,
-  PersonStyle,
 } from '@/api/types/person'
 
 const getInformation = (person: string): Promise<PersonInformation> =>
   requestHelpers.get<PersonInformation>(endpoints.person.information(person))
-
-const getStyle = (person: string): Promise<PersonStyle> =>
-  requestHelpers.get<PersonStyle>(endpoints.person.style(person))
 
 const setProfile = (person: string, profile: string): Promise<MutationSuccess> =>
   requestHelpers.post<MutationSuccess>(endpoints.person.profileSet(person), { profile })
@@ -44,7 +40,6 @@ const setFavicon = (person: string, file: File) =>
 
 export const personApi = {
   getInformation,
-  getStyle,
   setProfile,
   setAccent,
   setName,

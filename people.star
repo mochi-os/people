@@ -18,9 +18,6 @@ def database_upgrade(version):
 	if version == 2:
 		mochi.db.execute("create table if not exists profiles ( person text not null primary key, profile text not null default '', accent text not null default '', updated integer not null default 0 )")
 
-def json_error(message, code=400):
-	return {"status": code, "error": message, "data": {}}
-
 def resolve_identity(id):
 	entry = mochi.directory.get(id)
 	if entry and entry.get("id"):
@@ -32,13 +29,16 @@ def action_accept(a):
 	identity = a.user.identity.id
 	id = a.input("id")
 	if not id:
-		return json_error("Missing friend ID")
+		a.error.label(400, "errors.missing_friend_id")
+		return
 	if not mochi.text.valid(id, "entity"):
-		return json_error("Invalid friend ID format")
+		a.error.label(400, "errors.invalid_friend_id_format")
+		return
 
 	i = mochi.db.row("select * from invites where identity=? and id=? and direction='from'", identity, id)
 	if not i:
-		return json_error("Invitation from friend not found")
+		a.error.label(400, "errors.invitation_not_found")
+		return
 
 	mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, id, i["name"])
 	mochi.message.send({"from": identity, "to": id, "service": "friends", "event": "friend/accept"})
@@ -51,19 +51,25 @@ def action_create(a):
 	identity = a.user.identity.id
 	id = a.input("id")
 	if not id:
-		return json_error("Missing friend ID")
+		a.error.label(400, "errors.missing_friend_id")
+		return
 	if not mochi.text.valid(id, "entity"):
-		return json_error("Invalid friend ID format")
+		a.error.label(400, "errors.invalid_friend_id_format")
+		return
 	if id == identity:
-		return json_error("Cannot add yourself as a friend")
+		a.error.label(400, "errors.cannot_add_yourself")
+		return
 
 	name = a.input("name")
 	if not name:
-		return json_error("Missing friend name")
+		a.error.label(400, "errors.missing_friend_name")
+		return
 	if not mochi.text.valid(name, "line"):
-		return json_error("Invalid friend name")
+		a.error.label(400, "errors.invalid_friend_name")
+		return
 	if len(name) > 255:
-		return json_error("Friend name too long")
+		a.error.label(400, "errors.friend_name_too_long")
+		return
 
 	# Check if there's an existing invitation from them
 	if mochi.db.exists("select id from invites where identity=? and id=? and direction='from'", identity, id):
@@ -83,9 +89,11 @@ def action_delete(a):
 	identity = a.user.identity.id
 	id = a.input("id")
 	if not id:
-		return json_error("Missing friend ID")
+		a.error.label(400, "errors.missing_friend_id")
+		return
 	if not mochi.text.valid(id, "entity"):
-		return json_error("Invalid friend ID format")
+		a.error.label(400, "errors.invalid_friend_id_format")
+		return
 
 	# Check if this is an existing friendship - notify remote to remove us
 	if mochi.db.exists("select id from friends where identity=? and id=?", identity, id):
@@ -105,9 +113,11 @@ def action_ignore(a):
 	identity = a.user.identity.id
 	id = a.input("id")
 	if not id:
-		return json_error("Missing friend ID")
+		a.error.label(400, "errors.missing_friend_id")
+		return
 	if not mochi.text.valid(id, "entity"):
-		return json_error("Invalid friend ID format")
+		a.error.label(400, "errors.invalid_friend_id_format")
+		return
 
 	mochi.db.execute("delete from invites where identity=? and id=? and direction='from'", identity, id)
 
@@ -136,7 +146,8 @@ def action_search(a):
 	identity = a.user.identity.id
 	search = a.input("search", "").strip()
 	if len(search) > 200:
-		return json_error("Search query too long")
+		a.error.label(400, "errors.search_query_too_long")
+		return
 
 	results = []
 
@@ -248,7 +259,8 @@ def action_search(a):
 def action_users_search(a):
 	search = a.input("search", "").strip()
 	if len(search) > 200:
-		return json_error("Search query too long")
+		a.error.label(400, "errors.search_query_too_long")
+		return
 	if len(search) < 1:
 		return {"data": {"results": []}}
 
@@ -433,11 +445,13 @@ def action_groups(a):
 def action_group_get(a):
 	id = a.input("id")
 	if not id:
-		return json_error("Missing group ID")
+		a.error.label(400, "errors.missing_group_id")
+		return
 
 	group = mochi.group.get(id)
 	if not group:
-		return json_error("Group not found", 404)
+		a.error.label(404, "errors.group_not_found")
+		return
 
 	members = mochi.group.members(id)
 
@@ -476,15 +490,19 @@ def action_group_create(a):
 
 	name = a.input("name")
 	if not name:
-		return json_error("Missing group name")
+		a.error.label(400, "errors.missing_group_name")
+		return
 	if not mochi.text.valid(name, "line"):
-		return json_error("Invalid group name")
+		a.error.label(400, "errors.invalid_group_name")
+		return
 	if len(name) > 255:
-		return json_error("Group name too long")
+		a.error.label(400, "errors.group_name_too_long")
+		return
 
 	description = a.input("description", "")
 	if description and not mochi.text.valid(description, "text"):
-		return json_error("Invalid description")
+		a.error.label(400, "errors.invalid_description")
+		return
 
 	mochi.group.create(id, name, description)
 	return {"data": {"id": id}}
@@ -492,26 +510,32 @@ def action_group_create(a):
 def action_group_update(a):
 	id = a.input("id")
 	if not id:
-		return json_error("Missing group ID")
+		a.error.label(400, "errors.missing_group_id")
+		return
 
 	group = mochi.group.get(id)
 	if not group:
-		return json_error("Group not found", 404)
+		a.error.label(404, "errors.group_not_found")
+		return
 
 	name = a.input("name", "")
 	description = a.input("description", "")
 
 	if not name and not description:
-		return json_error("No fields to update")
+		a.error.label(400, "errors.no_fields_to_update")
+		return
 
 	if name:
 		if not mochi.text.valid(name, "line"):
-			return json_error("Invalid group name")
+			a.error.label(400, "errors.invalid_group_name")
+			return
 		if len(name) > 255:
-			return json_error("Group name too long")
+			a.error.label(400, "errors.group_name_too_long")
+			return
 
 	if description and not mochi.text.valid(description, "text"):
-		return json_error("Invalid description")
+		a.error.label(400, "errors.invalid_description")
+		return
 
 	kwargs = {}
 	if name:
@@ -524,11 +548,13 @@ def action_group_update(a):
 def action_group_delete(a):
 	id = a.input("id")
 	if not id:
-		return json_error("Missing group ID")
+		a.error.label(400, "errors.missing_group_id")
+		return
 
 	group = mochi.group.get(id)
 	if not group:
-		return json_error("Group not found", 404)
+		a.error.label(404, "errors.group_not_found")
+		return
 
 	mochi.group.delete(id)
 	return {"data": {}}
@@ -536,22 +562,27 @@ def action_group_delete(a):
 def action_group_member_add(a):
 	group = a.input("group")
 	if not group:
-		return json_error("Missing group ID")
+		a.error.label(400, "errors.missing_group_id")
+		return
 
 	g = mochi.group.get(group)
 	if not g:
-		return json_error("Group not found", 404)
+		a.error.label(404, "errors.group_not_found")
+		return
 
 	member = a.input("member", "").strip()
 	if not member or len(member) > 256:
-		return json_error("Invalid member ID")
+		a.error.label(400, "errors.invalid_member_id")
+		return
 
 	type = a.input("type", "user")
 	if type not in ["user", "group"]:
-		return json_error("Invalid member type")
+		a.error.label(400, "errors.invalid_member_type")
+		return
 
 	if type == "user" and not member.isdigit():
-		return json_error("Invalid user ID")
+		a.error.label(400, "errors.invalid_user_id")
+		return
 
 	mochi.group.add(group, member, type)
 	return {"data": {}}
@@ -559,15 +590,18 @@ def action_group_member_add(a):
 def action_group_member_remove(a):
 	group = a.input("group")
 	if not group:
-		return json_error("Missing group ID")
+		a.error.label(400, "errors.missing_group_id")
+		return
 
 	g = mochi.group.get(group)
 	if not g:
-		return json_error("Group not found", 404)
+		a.error.label(404, "errors.group_not_found")
+		return
 
 	member = a.input("member")
 	if not member:
-		return json_error("Missing member ID")
+		a.error.label(400, "errors.missing_member_id")
+		return
 
 	mochi.group.remove(group, member)
 	return {"data": {}}
@@ -593,7 +627,8 @@ def action_preferences_get(a):
 def action_preferences_set(a):
 	policy = a.input("invite_policy", "").strip()
 	if policy not in _VALID_INVITE_POLICIES:
-		return json_error("Invalid invite_policy")
+		a.error.label(400, "errors.invalid_invite_policy")
+		return
 	a.user.preference.set("invite_policy", policy)
 	return {"data": {}}
 
@@ -733,20 +768,25 @@ def action_favicon(a):
 def set_image(a, slot):
 	person_id = a.input("person")
 	if not get_person_entity(person_id):
-		return json_error("Person not found", 404)
+		a.error.label(404, "errors.person_not_found")
+		return
 	if not is_person_owner(a, person_id):
-		return json_error("Not the owner", 403)
+		a.error.label(403, "errors.not_the_owner")
+		return
 	object = slot_object(person_id, slot)
 	saved = mochi.attachment.save(object, "file", [], [], [])
 	if not saved or len(saved) == 0:
-		return json_error("No file uploaded")
+		a.error.label(400, "errors.no_file_uploaded")
+		return
 	att = saved[0]
 	if att.get("size", 0) > _SLOT_CAPS[slot]:
 		mochi.attachment.delete(att["id"])
-		return json_error(slot + " too large")
+		a.error.label(400, "errors.asset_too_large", slot=slot)
+		return
 	if not att.get("content_type", "").startswith("image/"):
 		mochi.attachment.delete(att["id"])
-		return json_error(slot + " must be an image")
+		a.error.label(400, "errors.asset_must_be_image", slot=slot)
+		return
 	# Validation passed — remove any previous attachment for this slot
 	for old in mochi.attachment.list(object):
 		if old["id"] != att["id"]:
@@ -768,50 +808,63 @@ def action_style(a):
 def action_style_set(a):
 	person_id = a.input("person")
 	if not get_person_entity(person_id):
-		return json_error("Person not found", 404)
+		a.error.label(404, "errors.person_not_found")
+		return
 	if not is_person_owner(a, person_id):
-		return json_error("Not the owner", 403)
+		a.error.label(403, "errors.not_the_owner")
+		return
 	accent = a.input("accent", "").strip()
 	if accent and not valid_hex_colour(accent):
-		return json_error("Invalid accent colour")
+		a.error.label(400, "errors.invalid_accent_colour")
+		return
 	upsert_profile(person_id, accent=accent)
 	return {"data": {}}
 
 def action_profile_set(a):
 	person_id = a.input("person")
 	if not get_person_entity(person_id):
-		return json_error("Person not found", 404)
+		a.error.label(404, "errors.person_not_found")
+		return
 	if not is_person_owner(a, person_id):
-		return json_error("Not the owner", 403)
+		a.error.label(403, "errors.not_the_owner")
+		return
 	profile = a.input("profile", "")
 	if len(profile) > _PROFILE_MAX:
-		return json_error("Profile too long")
+		a.error.label(400, "errors.profile_too_long")
+		return
 	upsert_profile(person_id, profile=profile)
 	return {"data": {}}
 
 def action_name_set(a):
 	person_id = a.input("person")
 	if not get_person_entity(person_id):
-		return json_error("Person not found", 404)
+		a.error.label(404, "errors.person_not_found")
+		return
 	if not is_person_owner(a, person_id):
-		return json_error("Not the owner", 403)
+		a.error.label(403, "errors.not_the_owner")
+		return
 	name = a.input("name", "").strip()
 	if not name:
-		return json_error("Name cannot be empty")
+		a.error.label(400, "errors.name_cannot_be_empty")
+		return
 	if not mochi.text.valid(name, "name"):
-		return json_error("Invalid name")
+		a.error.label(400, "errors.invalid_name")
+		return
 	mochi.entity.update(person_id, name=name)
 	return {"data": {}}
 
 def action_privacy_set(a):
 	person_id = a.input("person")
 	if not get_person_entity(person_id):
-		return json_error("Person not found", 404)
+		a.error.label(404, "errors.person_not_found")
+		return
 	if not is_person_owner(a, person_id):
-		return json_error("Not the owner", 403)
+		a.error.label(403, "errors.not_the_owner")
+		return
 	privacy = a.input("privacy", "")
 	if privacy != "public" and privacy != "private":
-		return json_error("Privacy must be 'public' or 'private'")
+		a.error.label(400, "errors.invalid_privacy")
+		return
 	mochi.entity.update(person_id, privacy=privacy)
 	return {"data": {}}
 

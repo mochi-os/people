@@ -98,6 +98,67 @@ export function Invitations() {
     )
   }
 
+  const [acceptingAll, setAcceptingAll] = useState(false)
+  const [decliningAll, setDecliningAll] = useState(false)
+  const [cancellingAll, setCancellingAll] = useState(false)
+
+  const handleAcceptAll = async () => {
+    setAcceptingAll(true)
+    try {
+      const results = await Promise.allSettled(
+        (friendsData?.received ?? []).map(({ id }) =>
+          acceptInviteMutation.mutateAsync({ friendId: id })
+        )
+      )
+      const failed = results.filter((r) => r.status === 'rejected').length
+      if (failed > 0) {
+        toast.error(t`Some invitations could not be accepted`)
+      } else {
+        toast.success(t`All invitations accepted`)
+      }
+    } finally {
+      setAcceptingAll(false)
+    }
+  }
+
+  const handleDeclineAll = async () => {
+    setDecliningAll(true)
+    try {
+      const results = await Promise.allSettled(
+        (friendsData?.received ?? []).map(({ id }) =>
+          declineInviteMutation.mutateAsync({ friendId: id })
+        )
+      )
+      const failed = results.filter((r) => r.status === 'rejected').length
+      if (failed > 0) {
+        toast.error(t`Some invitations could not be declined`)
+      } else {
+        toast.success(t`All invitations declined`)
+      }
+    } finally {
+      setDecliningAll(false)
+    }
+  }
+
+  const handleCancelAll = async () => {
+    setCancellingAll(true)
+    try {
+      const results = await Promise.allSettled(
+        (friendsData?.sent ?? []).map(({ id }) =>
+          removeMutation.mutateAsync({ friendId: id })
+        )
+      )
+      const failed = results.filter((r) => r.status === 'rejected').length
+      if (failed > 0) {
+        toast.error(t`Some invitations could not be cancelled`)
+      } else {
+        toast.success(t`All invitations cancelled`)
+      }
+    } finally {
+      setCancellingAll(false)
+    }
+  }
+
   const hasReceived = filteredReceived.length > 0
   const hasSent = filteredSent.length > 0
   const hasAny = hasReceived || hasSent
@@ -181,10 +242,33 @@ export function Invitations() {
             {/* Received Invitations */}
             {hasReceived && (
               <div className='space-y-3'>
-                <h2 className='text-muted-foreground flex items-center gap-2 text-sm font-medium'>
-                  <UserPlus className='h-4 w-4' />
-                  {t`Received (${filteredReceived.length})`}
-                </h2>
+                <div className='flex items-center justify-between'>
+                  <h2 className='text-muted-foreground flex items-center gap-2 text-sm font-medium'>
+                    <UserPlus className='h-4 w-4' />
+                    {t`Received (${filteredReceived.length})`}
+                  </h2>
+                  {filteredReceived.length > 1 && (
+                    <div className='flex items-center gap-2'>
+                      <Button
+                        size='sm'
+                        variant='outline'
+                        disabled={decliningAll || acceptingAll}
+                        onClick={handleDeclineAll}
+                      >
+                        <UserX className='h-3.5 w-3.5' />
+                        <Trans>Decline all</Trans>
+                      </Button>
+                      <Button
+                        size='sm'
+                        disabled={acceptingAll || decliningAll}
+                        onClick={handleAcceptAll}
+                      >
+                        <Check className='h-3.5 w-3.5' />
+                        <Trans>Accept all</Trans>
+                      </Button>
+                    </div>
+                  )}
+                </div>
                 <div className='divide-border divide-y rounded-md border'>
                   {filteredReceived.map((invite) => (
                     <div
@@ -237,10 +321,23 @@ export function Invitations() {
             {/* Sent Invitations */}
             {hasSent && (
               <div className='space-y-3'>
-                <h2 className='text-muted-foreground flex items-center gap-2 text-sm font-medium'>
-                  <Send className='h-4 w-4' />
-                  {t`Sent (${filteredSent.length})`}
-                </h2>
+                <div className='flex items-center justify-between'>
+                  <h2 className='text-muted-foreground flex items-center gap-2 text-sm font-medium'>
+                    <Send className='h-4 w-4' />
+                    {t`Sent (${filteredSent.length})`}
+                  </h2>
+                  {filteredSent.length > 1 && (
+                    <Button
+                      size='sm'
+                      variant='outline'
+                      disabled={cancellingAll}
+                      onClick={handleCancelAll}
+                    >
+                      <X className='h-3.5 w-3.5' />
+                      <Trans>Cancel all</Trans>
+                    </Button>
+                  )}
+                </div>
                 <div className='divide-border divide-y rounded-md border'>
                   {filteredSent.map((invite) => (
                     <div

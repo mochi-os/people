@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { APP_ROUTES } from '@/config/app-routes'
 import {
@@ -16,26 +16,34 @@ import {
   getAppPath,
   toast,
   getErrorMessage,
-  shellNavigateExternal, naturalCompare} from '@mochi/web'
+  shellNavigateExternal,
+  naturalCompare,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@mochi/web'
 import { UserPlus, Users, MessageSquare, UserX } from 'lucide-react'
 import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
 import { AddFriendDialog } from './components/add-friend-dialog'
+
+type SortBy = 'name' | 'recent'
 
 export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
   const { t } = useLingui()
   usePageTitle(t`Friends`)
   const appPath = getAppPath()
   const [search, setSearch] = useState('')
-  const [addFriendDialogOpen, setAddFriendDialogOpen] = useState(false)
+  const [sortBy, setSortBy] = useState<SortBy>('name')
+  const [addFriendDialogOpen, setAddFriendDialogOpen] = useState(autoAdd ?? false)
 
-  useEffect(() => {
-    if (autoAdd) setAddFriendDialogOpen(true)
-  }, [autoAdd])
   const [removeFriendDialog, setRemoveFriendDialog] = useState<{
     open: boolean
     friendId: string
     friendName: string
   }>({ open: false, friendId: '', friendName: '' })
+
   const {
     data: friendsData,
     isLoading,
@@ -50,10 +58,13 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
       .filter((friend) =>
         friend.name.toLowerCase().includes(search.toLowerCase())
       )
-      .sort((a, b) =>
-        naturalCompare(a.name, b.name)
-      )
-  }, [friendsData?.friends, search])
+      .sort((a, b) => {
+        if (sortBy === 'recent') {
+          return ((b.created as number) ?? 0) - ((a.created as number) ?? 0)
+        }
+        return naturalCompare(a.name, b.name)
+      })
+  }, [friendsData?.friends, search, sortBy])
 
   const handleRemoveFriend = (friendId: string, friendName: string) => {
     setRemoveFriendDialog({ open: true, friendId, friendName })
@@ -126,53 +137,76 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
           />
         ) : null}
         {isLoading && !friendsData ? (
-          <ListSkeleton count={5} variant="simple" height="h-16" />
+          <ListSkeleton count={5} variant='simple' height='h-16' />
         ) : error && !friendsData ? null : filteredFriends.length === 0 ? (
           <EmptyState
             icon={Users}
             title={search ? t`No results for "${search}"` : t`No friends yet`}
             description={
               search
-                ? t`Try a different name` : t`Add friends to start connecting`
+                ? t`Try a different name`
+                : t`Add friends to start connecting`
             }
           />
         ) : (
-          <div className='divide-border divide-y rounded-lg border'>
-            {filteredFriends.map((friend) => (
-              <div
-                key={friend.id}
-                className='hover:bg-muted/50 flex items-center gap-3 px-4 py-3 transition-colors'
+          <div className='space-y-2'>
+            <div className='flex justify-end'>
+              <Select
+                value={sortBy}
+                onValueChange={(v) => setSortBy(v as SortBy)}
               >
-                <EntityAvatar
-                  src={`${appPath}/${friend.id}/-/avatar`}
-                  styleUrl={`${appPath}/${friend.id}/-/style`}
-                  name={friend.name}
-                  size="lg"
-                />
-                <span className='flex-1 truncate font-medium'>
-                  <HighlightText text={friend.name} query={search} />
-                </span>
-                <div className='flex items-center gap-2'>
-                  <Button
-                    variant='outline'
-                    size='sm'
-                    onClick={() => handleStartChat(friend.id, friend.name)}
-                  >
-                    <MessageSquare className='h-4 w-4' />
-                    <Trans>Chat</Trans>
-                  </Button>
-                  <Button
-                    variant='ghost'
-                    size='sm'
-                    aria-label={t`Remove ${friend.name}`}
-                    disabled={removeFriendMutation.isPending}
-                    onClick={() => handleRemoveFriend(friend.id, friend.name)}
-                  >
-                    <UserX className='h-4 w-4' />
-                  </Button>
+                <SelectTrigger className='h-8 w-auto gap-1.5 border-0 bg-transparent text-xs shadow-none focus:ring-0'>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent align='end'>
+                  <SelectItem value='name'>
+                    <Trans>Name (A–Z)</Trans>
+                  </SelectItem>
+                  <SelectItem value='recent'>
+                    <Trans>Recently added</Trans>
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className='divide-border divide-y rounded-lg border'>
+              {filteredFriends.map((friend) => (
+                <div
+                  key={friend.id}
+                  className='hover:bg-muted/50 flex items-center gap-3 px-4 py-3 transition-colors'
+                >
+                  <EntityAvatar
+                    src={`${appPath}/${friend.id}/-/avatar`}
+                    styleUrl={`${appPath}/${friend.id}/-/style`}
+                    name={friend.name}
+                    size='lg'
+                  />
+                  <span className='flex-1 truncate font-medium'>
+                    <HighlightText text={friend.name} query={search} />
+                  </span>
+                  <div className='flex items-center gap-2'>
+                    <Button
+                      variant='outline'
+                      size='sm'
+                      onClick={() => handleStartChat(friend.id, friend.name)}
+                    >
+                      <MessageSquare className='h-4 w-4' />
+                      <Trans>Chat</Trans>
+                    </Button>
+                    <Button
+                      variant='ghost'
+                      size='sm'
+                      aria-label={t`Remove ${friend.name}`}
+                      disabled={removeFriendMutation.isPending}
+                      onClick={() =>
+                        handleRemoveFriend(friend.id, friend.name)
+                      }
+                    >
+                      <UserX className='h-4 w-4' />
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         )}
 
@@ -181,7 +215,6 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
           onOpenChange={setAddFriendDialogOpen}
         />
 
-        {/* Remove Friend Confirmation Dialog */}
         <ConfirmDialog
           open={removeFriendDialog.open}
           onOpenChange={(open) =>
@@ -197,7 +230,9 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
               from your friends list? This action cannot be undone.
             </Trans>
           }
-          confirmText={removeFriendMutation.isPending ? t`Removing...` : t`Remove friend`}
+          confirmText={
+            removeFriendMutation.isPending ? t`Removing...` : t`Remove friend`
+          }
           destructive
           handleConfirm={confirmRemoveFriend}
           isLoading={removeFriendMutation.isPending}

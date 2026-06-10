@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/profile/index.tsx:465
+#: src/features/profile/index.tsx:490
 msgid "{slotLabel} updated"
 msgstr "{slotLabel} е обновено"
 
@@ -26,7 +26,7 @@ msgid "24 hours"
 msgstr "24 часа"
 
 #. placeholder {0}: variables.name
-#: src/features/friends/components/add-friend-dialog.tsx:60
+#: src/features/friends/components/add-friend-dialog.tsx:61
 msgid "A friend invitation has been sent to {0}."
 msgstr "Изпратена е покана за приятелство до {0}."
 
@@ -34,24 +34,28 @@ msgstr "Изпратена е покана за приятелство до {0}.
 msgid "Absolute (date and time)"
 msgstr "Абсолютно (дата и час)"
 
-#: src/features/profile/index.tsx:304
+#: src/features/profile/index.tsx:318
 msgid "Accent"
 msgstr "Акцент"
 
-#: src/features/profile/index.tsx:170
+#: src/features/profile/index.tsx:172
 msgid "Accent saved"
 msgstr "Акцентът е запазен"
 
-#: src/features/friends/components/add-friend-dialog.tsx:154
-#: src/features/invitations/index.tsx:217
+#: src/features/friends/components/add-friend-dialog.tsx:157
+#: src/features/invitations/index.tsx:301
 msgid "Accept"
 msgstr "Приеми"
+
+#: src/features/invitations/index.tsx:267
+msgid "Accept all"
+msgstr ""
 
 #: src/features/invitations/invite-settings-dialog.tsx:48
 msgid "Accept automatically"
 msgstr "Приемай автоматично"
 
-#: src/features/friends/components/add-friend-dialog.tsx:312
+#: src/features/friends/components/add-friend-dialog.tsx:303
 msgid "Accept invite"
 msgstr "Приеми поканата"
 
@@ -104,15 +108,15 @@ msgstr "Добави акаунт"
 msgid "Add an account to receive notifications and use services."
 msgstr "Добавете акаунт, за да получавате известия и да използвате услуги."
 
-#: src/features/friends/components/add-friend-dialog.tsx:166
-#: src/features/friends/components/add-friend-dialog.tsx:320
-#: src/features/friends/index.tsx:101
-#: src/features/friends/index.tsx:113
-#: src/features/invitations/index.tsx:128
+#: src/features/friends/components/add-friend-dialog.tsx:169
+#: src/features/friends/components/add-friend-dialog.tsx:311
+#: src/features/friends/index.tsx:126
+#: src/features/friends/index.tsx:138
+#: src/features/invitations/index.tsx:189
 msgid "Add friend"
 msgstr "Добави приятел"
 
-#: src/features/friends/index.tsx:136
+#: src/features/friends/index.tsx:162
 msgid "Add friends to start connecting"
 msgstr "Добавете приятели, за да започнете да се свързвате"
 
@@ -154,8 +158,8 @@ msgstr "Добави изглед"
 msgid "Added {0} to the group"
 msgstr "{0} е добавен към групата"
 
-#: src/features/friends/components/add-friend-dialog.tsx:281
-#: src/features/friends/components/add-friend-dialog.tsx:383
+#: src/features/friends/components/add-friend-dialog.tsx:272
+#: src/features/friends/components/add-friend-dialog.tsx:374
 #: src/features/groups/member-dialog.tsx:242
 msgid "Adding..."
 msgstr "Добавяне..."
@@ -176,16 +180,28 @@ msgstr "Всички"
 msgid "All available groups are already added"
 msgstr "Всички налични групи вече са добавени"
 
+#: src/features/invitations/index.tsx:117
+msgid "All invitations accepted"
+msgstr ""
+
+#: src/features/invitations/index.tsx:155
+msgid "All invitations cancelled"
+msgstr ""
+
+#: src/features/invitations/index.tsx:136
+msgid "All invitations declined"
+msgstr ""
+
 #: src/features/invitations/invite-settings-dialog.tsx:49
 msgid "All invites are accepted without your approval."
 msgstr "Всички покани се приемат без вашето одобрение."
 
-#: src/features/profile/index.tsx:353
+#: src/features/profile/index.tsx:367
 msgid "Allow others to find you in directory"
 msgstr "Позволи на другите да ви намират в директорията"
 
-#: src/features/friends/components/add-friend-dialog.tsx:74
-#: src/features/friends/components/add-friend-dialog.tsx:298
+#: src/features/friends/components/add-friend-dialog.tsx:75
+#: src/features/friends/components/add-friend-dialog.tsx:289
 msgid "Already friends"
 msgstr "Вече сте приятели"
 
@@ -207,7 +223,7 @@ msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Сигурни ли сте, че искате да премахнете <0>{0}</0> от тази група?"
 
 #. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx:192
+#: src/features/friends/index.tsx:260
 msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
 msgstr "Сигурни ли сте, че искате да премахнете <0>{0}</0> от списъка с приятели? Действието не може да бъде отменено."
 
@@ -220,7 +236,7 @@ msgid "Authenticator code"
 msgstr "Код от authenticator"
 
 #: ../../../lib/web/src/components/place-picker.tsx:152
-#: src/features/friends/components/add-friend-dialog.tsx:378
+#: src/features/friends/components/add-friend-dialog.tsx:369
 msgid "Back"
 msgstr "Назад"
 
@@ -238,7 +254,7 @@ msgstr "Назад към началото"
 msgid "Boost interest"
 msgstr "Усили интереса"
 
-#: src/features/profile/index.tsx:324
+#: src/features/profile/index.tsx:338
 msgid "Browser icon"
 msgstr "Икона на браузъра"
 
@@ -252,11 +268,15 @@ msgstr "Икона на браузъра"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:86
 #: src/features/groups/group-dialog.tsx:116
 #: src/features/groups/member-dialog.tsx:239
-#: src/features/invitations/index.tsx:273
+#: src/features/invitations/index.tsx:370
 #: src/features/invitations/invite-settings-dialog.tsx:110
-#: src/features/profile/index.tsx:414
+#: src/features/profile/index.tsx:439
 msgid "Cancel"
 msgstr "Отказ"
+
+#: src/features/invitations/index.tsx:337
+msgid "Cancel all"
+msgstr ""
 
 #: src/features/invitations/index.tsx:91
 msgid "Cancelled invitation to {friendName}."
@@ -266,7 +286,7 @@ msgstr "Поканата до {friendName} е отказана."
 msgid "Category for this notification"
 msgstr "Категория за това известие"
 
-#: src/features/profile/index.tsx:215
+#: src/features/profile/index.tsx:229
 msgid "Change banner"
 msgstr "Смени банера"
 
@@ -274,11 +294,11 @@ msgstr "Смени банера"
 msgid "Change notification category"
 msgstr "Смени категорията на известие"
 
-#: src/features/friends/index.tsx:162
+#: src/features/friends/index.tsx:214
 msgid "Chat"
 msgstr "Чат"
 
-#: src/features/friends/index.tsx:79
+#: src/features/friends/index.tsx:100
 msgid "Chat is not configured"
 msgstr ""
 
@@ -326,7 +346,7 @@ msgstr "Изчисти избраното (Escape)"
 #: ../../../lib/web/src/components/ui/dialog.tsx:75
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:321
 #: ../../../lib/web/src/components/ui/sheet.tsx:76
-#: src/features/friends/components/add-friend-dialog.tsx:400
+#: src/features/friends/components/add-friend-dialog.tsx:391
 msgid "Close"
 msgstr "Затвори"
 
@@ -384,6 +404,10 @@ msgstr "Продължи с {label}"
 msgid "Copy"
 msgstr "Копирай"
 
+#: src/features/profile/index.tsx:384
+msgid "Copy invite link"
+msgstr ""
+
 #: src/features/groups/group-detail.tsx:158
 msgid "Core information about this group"
 msgstr "Основна информация за тази група"
@@ -392,7 +416,7 @@ msgstr "Основна информация за тази група"
 msgid "Could not load this document. Please try again later."
 msgstr "Документът не може да бъде зареден. Моля, опитайте по-късно."
 
-#: src/features/profile/index.tsx:458
+#: src/features/profile/index.tsx:483
 msgid "Could not process {slot} image"
 msgstr "Изображението {slot} не може да бъде обработено"
 
@@ -428,9 +452,13 @@ msgstr "Тъмно"
 msgid "Dark mode"
 msgstr "Тъмен режим"
 
-#: src/features/invitations/index.tsx:228
+#: src/features/invitations/index.tsx:312
 msgid "Decline"
 msgstr "Откажи"
+
+#: src/features/invitations/index.tsx:259
+msgid "Decline all"
+msgstr ""
 
 #: src/features/invitations/index.tsx:75
 msgid "Declined invitation from {friendName}."
@@ -515,8 +543,8 @@ msgstr "Редактиране"
 msgid "Edit group"
 msgstr "Редактиране на група"
 
-#: src/features/profile/index.tsx:254
-#: src/features/profile/index.tsx:395
+#: src/features/profile/index.tsx:268
+#: src/features/profile/index.tsx:420
 msgid "Edit name"
 msgstr "Редактиране на име"
 
@@ -524,11 +552,11 @@ msgstr "Редактиране на име"
 msgid "Email code"
 msgstr "Имейл код"
 
-#: src/features/friends/components/add-friend-dialog.tsx:215
+#: src/features/friends/components/add-friend-dialog.tsx:206
 msgid "Enter a name to find people you want to add"
 msgstr "Въведете име, за да намерите хора, които искате да добавите"
 
-#: src/features/friends/components/add-friend-dialog.tsx:195
+#: src/features/friends/components/add-friend-dialog.tsx:186
 msgid "Enter name to search..."
 msgstr "Въведете име за търсене..."
 
@@ -556,8 +584,8 @@ msgstr "Неуспешно приемане на покана"
 msgid "Failed to add account"
 msgstr "Неуспешно добавяне на акаунт"
 
-#: src/features/friends/components/add-friend-dialog.tsx:65
-#: src/features/friends/components/add-friend-dialog.tsx:80
+#: src/features/friends/components/add-friend-dialog.tsx:66
+#: src/features/friends/components/add-friend-dialog.tsx:81
 msgid "Failed to add friend"
 msgstr "Неуспешно добавяне на приятел"
 
@@ -569,6 +597,10 @@ msgstr "Неуспешно добавяне на член"
 #: src/features/invitations/index.tsx:95
 msgid "Failed to cancel invitation"
 msgstr "Неуспешно отказване на покана"
+
+#: src/features/profile/index.tsx:202
+msgid "Failed to copy link"
+msgstr ""
 
 #: src/features/groups/group-dialog.tsx:73
 msgid "Failed to create group"
@@ -586,7 +618,7 @@ msgstr "Неуспешно изтриване на група"
 msgid "Failed to remove account"
 msgstr "Неуспешно премахване на акаунт"
 
-#: src/features/friends/index.tsx:70
+#: src/features/friends/index.tsx:91
 msgid "Failed to remove friend"
 msgstr "Неуспешно премахване на приятел"
 
@@ -598,15 +630,15 @@ msgstr "Неуспешно премахване на член"
 msgid "Failed to save"
 msgstr "Неуспешно записване"
 
-#: src/features/profile/index.tsx:171
+#: src/features/profile/index.tsx:173
 msgid "Failed to save accent"
 msgstr "Неуспешно записване на акцент"
 
-#: src/features/profile/index.tsx:182
+#: src/features/profile/index.tsx:184
 msgid "Failed to save name"
 msgstr "Неуспешно записване на име"
 
-#: src/features/profile/index.tsx:164
+#: src/features/profile/index.tsx:166
 msgid "Failed to save profile"
 msgstr "Неуспешно записване на профил"
 
@@ -618,7 +650,7 @@ msgstr "Неуспешно изпращане на код за потвържд�
 msgid "Failed to update category"
 msgstr "Неуспешна актуализация на категория"
 
-#: src/features/profile/index.tsx:188
+#: src/features/profile/index.tsx:190
 msgid "Failed to update directory listing"
 msgstr "Неуспешна актуализация на списъка в директорията"
 
@@ -626,17 +658,21 @@ msgstr "Неуспешна актуализация на списъка в ди�
 msgid "Failed to update group"
 msgstr "Неуспешна актуализация на група"
 
-#: src/features/profile/index.tsx:466
+#: src/features/profile/index.tsx:491
 msgid "Failed to upload {slot}"
 msgstr "Неуспешно качване на {slot}"
 
-#: src/features/profile/index.tsx:330
+#: src/features/profile/index.tsx:344
 msgid "Favicon"
 msgstr "Favicon"
 
-#: src/features/profile/index.tsx:446
+#: src/features/profile/index.tsx:471
 msgid "File too large"
 msgstr "Файлът е твърде голям"
+
+#: src/features/profile/index.tsx:379
+msgid "Fingerprint"
+msgstr ""
 
 #: ../../../lib/web/src/components/restore-banner.tsx:79
 msgid "Finish moving your account"
@@ -651,8 +687,8 @@ msgid "Friday"
 msgstr "Петък"
 
 #: src/components/layout/people-layout.tsx:60
-#: src/features/friends/index.tsx:26
-#: src/features/friends/index.tsx:89
+#: src/features/friends/index.tsx:40
+#: src/features/friends/index.tsx:114
 msgid "Friends"
 msgstr "Приятели"
 
@@ -789,22 +825,26 @@ msgstr "Поканата е отменена"
 msgid "Invitation declined"
 msgstr "Поканата е отхвърлена"
 
-#: src/features/friends/components/add-friend-dialog.tsx:59
-#: src/features/friends/components/add-friend-dialog.tsx:306
+#: src/features/friends/components/add-friend-dialog.tsx:60
+#: src/features/friends/components/add-friend-dialog.tsx:297
 msgid "Invitation sent"
 msgstr "Поканата е изпратена"
 
 #: src/components/layout/people-layout.tsx:62
 #: src/features/invitations/index.tsx:29
-#: src/features/invitations/index.tsx:118
+#: src/features/invitations/index.tsx:179
 msgid "Invitations"
 msgstr "Покани"
+
+#: src/features/profile/index.tsx:198
+msgid "Invite link copied"
+msgstr ""
 
 #: src/features/invitations/invite-settings-dialog.tsx:63
 msgid "Invite policy updated"
 msgstr "Политиката за покани е актуализирана"
 
-#: src/features/invitations/index.tsx:123
+#: src/features/invitations/index.tsx:184
 msgid "Invite settings"
 msgstr "Настройки на поканите"
 
@@ -882,7 +922,7 @@ msgstr "Излизане…"
 msgid "Mark all as read"
 msgstr "Маркирай всички като прочетени"
 
-#: src/features/profile/index.tsx:271
+#: src/features/profile/index.tsx:285
 msgid "Markdown supported"
 msgstr "Поддържа се markdown"
 
@@ -919,15 +959,19 @@ msgid "Monday"
 msgstr "Понеделник"
 
 #: src/features/groups/group-dialog.tsx:93
-#: src/features/profile/index.tsx:398
+#: src/features/profile/index.tsx:423
 msgid "Name"
 msgstr "Име"
+
+#: src/features/friends/index.tsx:177
+msgid "Name (A–Z)"
+msgstr ""
 
 #: src/features/groups/group-dialog.tsx:42
 msgid "Name is required"
 msgstr "Името е задължително"
 
-#: src/features/profile/index.tsx:179
+#: src/features/profile/index.tsx:181
 msgid "Name saved"
 msgstr "Името е запазено"
 
@@ -939,7 +983,7 @@ msgstr "Мрежова грешка"
 msgid "New"
 msgstr "Ново"
 
-#: src/features/invitations/index.tsx:176
+#: src/features/invitations/index.tsx:237
 msgid "New invitations will appear here"
 msgstr "Новите покани ще се появят тук"
 
@@ -951,7 +995,7 @@ msgstr "Следващо изображение"
 msgid "No access rules configured. Add rules to control who can access this resource."
 msgstr "Няма конфигурирани правила за достъп. Добавете правила, за да контролирате кой има достъп до този ресурс."
 
-#: src/features/profile/index.tsx:201
+#: src/features/profile/index.tsx:215
 msgid "No banner set"
 msgstr "Няма зададен банер"
 
@@ -963,7 +1007,7 @@ msgstr "Няма свързани акаунти"
 #~ msgid "No friends found"
 #~ msgstr "Не са намерени приятели"
 
-#: src/features/friends/index.tsx:133
+#: src/features/friends/index.tsx:158
 msgid "No friends yet"
 msgstr ""
 
@@ -979,11 +1023,11 @@ msgstr "Няма членове"
 msgid "No other groups"
 msgstr "Няма други групи"
 
-#: src/features/invitations/index.tsx:173
+#: src/features/invitations/index.tsx:234
 msgid "No pending invitations"
 msgstr "Няма чакащи покани"
 
-#: src/features/friends/components/add-friend-dialog.tsx:239
+#: src/features/friends/components/add-friend-dialog.tsx:230
 #: src/features/groups/member-dialog.tsx:142
 msgid "No people found"
 msgstr "Не са намерени хора"
@@ -996,7 +1040,7 @@ msgstr "Не са намерени места"
 msgid "No profile"
 msgstr "Няма профил"
 
-#: src/features/friends/index.tsx:133
+#: src/features/friends/index.tsx:158
 msgid "No results for \"{search}\""
 msgstr ""
 
@@ -1087,7 +1131,7 @@ msgstr "Проверката на ключа за достъп беше неус
 msgid "Passkeys"
 msgstr "Ключове за достъп"
 
-#: src/features/invitations/index.tsx:262
+#: src/features/invitations/index.tsx:359
 msgid "Pending"
 msgstr "В очакване"
 
@@ -1099,12 +1143,12 @@ msgstr "Хора"
 msgid "Please check your internet connection and try again."
 msgstr "Проверете интернет връзката си и опитайте отново."
 
-#: src/features/profile/index.tsx:366
+#: src/features/profile/index.tsx:391
 msgid "Preview"
 msgstr "Преглед"
 
 #. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx:170
+#: src/features/friends/components/add-friend-dialog.tsx:173
 msgid "Preview {0}'s profile before sending a friend request."
 msgstr "Прегледайте профила на {0} преди да изпратите покана за приятелство."
 
@@ -1120,20 +1164,20 @@ msgstr "Поверителност"
 #: ../../../lib/web/src/components/layout/nav-user.tsx:134
 #: ../../../lib/web/src/components/profile-dropdown.tsx:111
 #: src/components/layout/people-layout.tsx:59
-#: src/features/profile/index.tsx:50
-#: src/features/profile/index.tsx:58
-#: src/features/profile/index.tsx:69
-#: src/features/profile/index.tsx:79
-#: src/features/profile/index.tsx:266
+#: src/features/profile/index.tsx:52
+#: src/features/profile/index.tsx:60
+#: src/features/profile/index.tsx:71
+#: src/features/profile/index.tsx:81
+#: src/features/profile/index.tsx:280
 #: src/features/profile/public.tsx:46
 msgid "Profile"
 msgstr "Профил"
 
-#: src/features/profile/index.tsx:374
+#: src/features/profile/index.tsx:399
 msgid "Profile preview"
 msgstr "Преглед на профила"
 
-#: src/features/profile/index.tsx:163
+#: src/features/profile/index.tsx:165
 msgid "Profile saved"
 msgstr "Профилът е запазен"
 
@@ -1146,9 +1190,13 @@ msgid "Re-register your passkeys on this server"
 msgstr "Регистрирайте отново ключовете си за достъп на този сървър"
 
 #. placeholder {0}: filteredReceived.length
-#: src/features/invitations/index.tsx:186
+#: src/features/invitations/index.tsx:248
 msgid "Received ({0})"
 msgstr "Получено ({0})"
+
+#: src/features/friends/index.tsx:180
+msgid "Recently added"
+msgstr ""
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
 #: ../../../lib/web/src/components/search-entity-page.tsx:191
@@ -1181,7 +1229,7 @@ msgid "Remove"
 msgstr "Премахни"
 
 #. placeholder {0}: friend.name
-#: src/features/friends/index.tsx:167
+#: src/features/friends/index.tsx:219
 msgid "Remove {0}"
 msgstr "Премахни {0}"
 
@@ -1201,8 +1249,8 @@ msgstr "Премахни правило за достъп"
 msgid "Remove access?"
 msgstr "Премахни достъпа?"
 
-#: src/features/friends/index.tsx:190
-#: src/features/friends/index.tsx:200
+#: src/features/friends/index.tsx:258
+#: src/features/friends/index.tsx:269
 msgid "Remove friend"
 msgstr "Премахни приятел"
 
@@ -1218,7 +1266,7 @@ msgstr "Премахни член"
 msgid "Remove Member"
 msgstr "Премахни член"
 
-#: src/features/friends/index.tsx:200
+#: src/features/friends/index.tsx:269
 #: src/features/groups/group-detail.tsx:253
 msgid "Removing..."
 msgstr "Премахва се..."
@@ -1251,9 +1299,9 @@ msgstr "Събота"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:74
 #: src/features/groups/group-dialog.tsx:119
 #: src/features/invitations/invite-settings-dialog.tsx:113
-#: src/features/profile/index.tsx:296
-#: src/features/profile/index.tsx:316
-#: src/features/profile/index.tsx:418
+#: src/features/profile/index.tsx:310
+#: src/features/profile/index.tsx:330
+#: src/features/profile/index.tsx:443
 msgid "Save"
 msgstr "Запази"
 
@@ -1261,9 +1309,9 @@ msgstr "Запази"
 msgid "Saving..."
 msgstr "Запазва се..."
 
-#: src/features/profile/index.tsx:296
-#: src/features/profile/index.tsx:316
-#: src/features/profile/index.tsx:418
+#: src/features/profile/index.tsx:310
+#: src/features/profile/index.tsx:330
+#: src/features/profile/index.tsx:443
 msgid "Saving…"
 msgstr "Запазва се…"
 
@@ -1279,11 +1327,11 @@ msgstr "Търси дестинация..."
 msgid "Search for origin..."
 msgstr "Търси произход..."
 
-#: src/features/friends/components/add-friend-dialog.tsx:171
+#: src/features/friends/components/add-friend-dialog.tsx:174
 msgid "Search for people and send a friend request."
 msgstr "Търсете хора и изпратете покана за приятелство."
 
-#: src/features/friends/index.tsx:98
+#: src/features/friends/index.tsx:123
 msgid "Search friends"
 msgstr "Търси приятели"
 
@@ -1297,8 +1345,8 @@ msgid "Search users"
 msgstr "Търси потребители"
 
 #: ../../../lib/web/src/components/person-picker.tsx:323
-#: src/features/friends/index.tsx:97
-#: src/features/invitations/index.tsx:108
+#: src/features/friends/index.tsx:122
+#: src/features/invitations/index.tsx:169
 msgid "Search..."
 msgstr "Търси..."
 
@@ -1357,12 +1405,12 @@ msgstr "Изпрати отново"
 msgid "Send email"
 msgstr "Изпрати имейл"
 
-#: src/features/friends/components/add-friend-dialog.tsx:155
+#: src/features/friends/components/add-friend-dialog.tsx:158
 msgid "Send invitation"
 msgstr "Изпрати покана"
 
 #. placeholder {0}: filteredSent.length
-#: src/features/invitations/index.tsx:242
+#: src/features/invitations/index.tsx:327
 msgid "Sent ({0})"
 msgstr "Изпратено ({0})"
 
@@ -1394,6 +1442,10 @@ msgstr "Задай начало и край"
 msgid "Settings"
 msgstr "Настройки"
 
+#: src/features/profile/index.tsx:199
+msgid "Share this link so others can find and add you."
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/load-more.tsx:36
 msgid "Showing {totalShown} of {total}"
 msgstr "Показани са {totalShown} от {total}"
@@ -1417,11 +1469,23 @@ msgstr "Прескочи към съдържанието"
 msgid "Small"
 msgstr "Малък"
 
+#: src/features/invitations/index.tsx:115
+msgid "Some invitations could not be accepted"
+msgstr ""
+
+#: src/features/invitations/index.tsx:153
+msgid "Some invitations could not be cancelled"
+msgstr ""
+
+#: src/features/invitations/index.tsx:134
+msgid "Some invitations could not be declined"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:94
 msgid "Spacious"
 msgstr "Просторно"
 
-#: src/features/friends/components/add-friend-dialog.tsx:214
+#: src/features/friends/components/add-friend-dialog.tsx:205
 msgid "Start typing to search for users"
 msgstr "Започнете да пишете, за да търсите потребители"
 
@@ -1464,7 +1528,7 @@ msgstr "Общи условия"
 msgid "That code is incorrect or has expired."
 msgstr "Този код е неправилен или е изтекъл."
 
-#: src/features/friends/components/add-friend-dialog.tsx:291
+#: src/features/friends/components/add-friend-dialog.tsx:282
 msgid "That's you"
 msgstr "Това сте вие"
 
@@ -1513,15 +1577,15 @@ msgstr "Най-горе"
 msgid "Travelling"
 msgstr "Пътуване"
 
-#: src/features/friends/index.tsx:136
+#: src/features/friends/index.tsx:161
 msgid "Try a different name"
 msgstr ""
 
-#: src/features/friends/components/add-friend-dialog.tsx:240
+#: src/features/friends/components/add-friend-dialog.tsx:231
 msgid "Try a different search term"
 msgstr "Опитайте друг термин за търсене"
 
-#: src/features/invitations/index.tsx:176
+#: src/features/invitations/index.tsx:237
 msgid "Try adjusting your search"
 msgstr "Опитайте да коригирате търсенето си"
 
@@ -1583,16 +1647,16 @@ msgstr "Съединени щати"
 msgid "Unverified"
 msgstr "Непотвърдено"
 
-#: src/features/profile/index.tsx:343
+#: src/features/profile/index.tsx:357
 msgid "Upload"
 msgstr "Качи"
 
-#: src/features/profile/index.tsx:238
+#: src/features/profile/index.tsx:252
 msgid "Upload avatar"
 msgstr "Качи аватар"
 
-#: src/features/profile/index.tsx:215
-#: src/features/profile/index.tsx:343
+#: src/features/profile/index.tsx:229
+#: src/features/profile/index.tsx:357
 msgid "Uploading…"
 msgstr "Качване…"
 
@@ -1664,7 +1728,7 @@ msgstr "Сряда"
 msgid "You are now friends with {friendName}."
 msgstr "Вече сте приятели с {friendName}."
 
-#: src/features/friends/components/add-friend-dialog.tsx:75
+#: src/features/friends/components/add-friend-dialog.tsx:76
 msgid "You are now friends!"
 msgstr "Вече сте приятели!"
 

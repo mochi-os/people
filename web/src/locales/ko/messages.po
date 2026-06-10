@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/profile/index.tsx:465
+#: src/features/profile/index.tsx:490
 msgid "{slotLabel} updated"
 msgstr "{slotLabel} 업데이트됨"
 
@@ -26,7 +26,7 @@ msgid "24 hours"
 msgstr "24시간"
 
 #. placeholder {0}: variables.name
-#: src/features/friends/components/add-friend-dialog.tsx:60
+#: src/features/friends/components/add-friend-dialog.tsx:61
 msgid "A friend invitation has been sent to {0}."
 msgstr "{0}에게 친구 초대를 보냈습니다."
 
@@ -34,24 +34,28 @@ msgstr "{0}에게 친구 초대를 보냈습니다."
 msgid "Absolute (date and time)"
 msgstr "절대값 (날짜 및 시간)"
 
-#: src/features/profile/index.tsx:304
+#: src/features/profile/index.tsx:318
 msgid "Accent"
 msgstr "강조"
 
-#: src/features/profile/index.tsx:170
+#: src/features/profile/index.tsx:172
 msgid "Accent saved"
 msgstr "강조가 저장되었어요"
 
-#: src/features/friends/components/add-friend-dialog.tsx:154
-#: src/features/invitations/index.tsx:217
+#: src/features/friends/components/add-friend-dialog.tsx:157
+#: src/features/invitations/index.tsx:301
 msgid "Accept"
 msgstr "수락"
+
+#: src/features/invitations/index.tsx:267
+msgid "Accept all"
+msgstr ""
 
 #: src/features/invitations/invite-settings-dialog.tsx:48
 msgid "Accept automatically"
 msgstr "자동으로 수락"
 
-#: src/features/friends/components/add-friend-dialog.tsx:312
+#: src/features/friends/components/add-friend-dialog.tsx:303
 msgid "Accept invite"
 msgstr "초대 수락"
 
@@ -104,15 +108,15 @@ msgstr "계정 추가"
 msgid "Add an account to receive notifications and use services."
 msgstr "알림을 받고 서비스를 이용하려면 계정을 추가하세요."
 
-#: src/features/friends/components/add-friend-dialog.tsx:166
-#: src/features/friends/components/add-friend-dialog.tsx:320
-#: src/features/friends/index.tsx:101
-#: src/features/friends/index.tsx:113
-#: src/features/invitations/index.tsx:128
+#: src/features/friends/components/add-friend-dialog.tsx:169
+#: src/features/friends/components/add-friend-dialog.tsx:311
+#: src/features/friends/index.tsx:126
+#: src/features/friends/index.tsx:138
+#: src/features/invitations/index.tsx:189
 msgid "Add friend"
 msgstr "친구 추가"
 
-#: src/features/friends/index.tsx:136
+#: src/features/friends/index.tsx:162
 msgid "Add friends to start connecting"
 msgstr "연결을 시작하려면 친구를 추가하세요"
 
@@ -154,8 +158,8 @@ msgstr "뷰 추가"
 msgid "Added {0} to the group"
 msgstr "{0}이(가) 그룹에 추가되었어요"
 
-#: src/features/friends/components/add-friend-dialog.tsx:281
-#: src/features/friends/components/add-friend-dialog.tsx:383
+#: src/features/friends/components/add-friend-dialog.tsx:272
+#: src/features/friends/components/add-friend-dialog.tsx:374
 #: src/features/groups/member-dialog.tsx:242
 msgid "Adding..."
 msgstr "추가 중..."
@@ -176,16 +180,28 @@ msgstr "전체"
 msgid "All available groups are already added"
 msgstr "사용 가능한 모든 그룹이 이미 추가되었어요"
 
+#: src/features/invitations/index.tsx:117
+msgid "All invitations accepted"
+msgstr ""
+
+#: src/features/invitations/index.tsx:155
+msgid "All invitations cancelled"
+msgstr ""
+
+#: src/features/invitations/index.tsx:136
+msgid "All invitations declined"
+msgstr ""
+
 #: src/features/invitations/invite-settings-dialog.tsx:49
 msgid "All invites are accepted without your approval."
 msgstr "모든 초대가 승인 없이 자동으로 수락돼요."
 
-#: src/features/profile/index.tsx:353
+#: src/features/profile/index.tsx:367
 msgid "Allow others to find you in directory"
 msgstr "다른 사람이 디렉터리에서 회원님을 찾을 수 있도록 허용"
 
-#: src/features/friends/components/add-friend-dialog.tsx:74
-#: src/features/friends/components/add-friend-dialog.tsx:298
+#: src/features/friends/components/add-friend-dialog.tsx:75
+#: src/features/friends/components/add-friend-dialog.tsx:289
 msgid "Already friends"
 msgstr "이미 친구"
 
@@ -207,7 +223,7 @@ msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "이 그룹에서 <0>{0}</0>을(를) 삭제하시겠습니까?"
 
 #. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx:192
+#: src/features/friends/index.tsx:260
 msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
 msgstr "<0>{0}</0>을(를) 친구 목록에서 제거하시겠습니까? 이 작업은 취소할 수 없습니다."
 
@@ -220,7 +236,7 @@ msgid "Authenticator code"
 msgstr "인증 코드"
 
 #: ../../../lib/web/src/components/place-picker.tsx:152
-#: src/features/friends/components/add-friend-dialog.tsx:378
+#: src/features/friends/components/add-friend-dialog.tsx:369
 msgid "Back"
 msgstr "뒤로"
 
@@ -238,7 +254,7 @@ msgstr "홈으로 돌아가기"
 msgid "Boost interest"
 msgstr "관심도 부스트"
 
-#: src/features/profile/index.tsx:324
+#: src/features/profile/index.tsx:338
 msgid "Browser icon"
 msgstr "브라우저 아이콘"
 
@@ -252,11 +268,15 @@ msgstr "브라우저 아이콘"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:86
 #: src/features/groups/group-dialog.tsx:116
 #: src/features/groups/member-dialog.tsx:239
-#: src/features/invitations/index.tsx:273
+#: src/features/invitations/index.tsx:370
 #: src/features/invitations/invite-settings-dialog.tsx:110
-#: src/features/profile/index.tsx:414
+#: src/features/profile/index.tsx:439
 msgid "Cancel"
 msgstr "취소"
+
+#: src/features/invitations/index.tsx:337
+msgid "Cancel all"
+msgstr ""
 
 #: src/features/invitations/index.tsx:91
 msgid "Cancelled invitation to {friendName}."
@@ -266,7 +286,7 @@ msgstr "{friendName}님에 대한 초대가 취소되었습니다."
 msgid "Category for this notification"
 msgstr "이 알림의 카테고리"
 
-#: src/features/profile/index.tsx:215
+#: src/features/profile/index.tsx:229
 msgid "Change banner"
 msgstr "배너 변경"
 
@@ -274,11 +294,11 @@ msgstr "배너 변경"
 msgid "Change notification category"
 msgstr "알림 카테고리 변경"
 
-#: src/features/friends/index.tsx:162
+#: src/features/friends/index.tsx:214
 msgid "Chat"
 msgstr "채팅"
 
-#: src/features/friends/index.tsx:79
+#: src/features/friends/index.tsx:100
 msgid "Chat is not configured"
 msgstr ""
 
@@ -326,7 +346,7 @@ msgstr "선택 해제 (Escape)"
 #: ../../../lib/web/src/components/ui/dialog.tsx:75
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:321
 #: ../../../lib/web/src/components/ui/sheet.tsx:76
-#: src/features/friends/components/add-friend-dialog.tsx:400
+#: src/features/friends/components/add-friend-dialog.tsx:391
 msgid "Close"
 msgstr "닫기"
 
@@ -384,6 +404,10 @@ msgstr "{label}(으)로 계속하기"
 msgid "Copy"
 msgstr "복사"
 
+#: src/features/profile/index.tsx:384
+msgid "Copy invite link"
+msgstr ""
+
 #: src/features/groups/group-detail.tsx:158
 msgid "Core information about this group"
 msgstr "이 그룹에 대한 핵심 정보"
@@ -392,7 +416,7 @@ msgstr "이 그룹에 대한 핵심 정보"
 msgid "Could not load this document. Please try again later."
 msgstr "이 문서를 불러올 수 없었습니다. 잠시 후 다시 시도해 주세요."
 
-#: src/features/profile/index.tsx:458
+#: src/features/profile/index.tsx:483
 msgid "Could not process {slot} image"
 msgstr "{slot} 이미지를 처리할 수 없습니다"
 
@@ -428,9 +452,13 @@ msgstr "다크"
 msgid "Dark mode"
 msgstr "다크 모드"
 
-#: src/features/invitations/index.tsx:228
+#: src/features/invitations/index.tsx:312
 msgid "Decline"
 msgstr "거절"
+
+#: src/features/invitations/index.tsx:259
+msgid "Decline all"
+msgstr ""
 
 #: src/features/invitations/index.tsx:75
 msgid "Declined invitation from {friendName}."
@@ -515,8 +543,8 @@ msgstr "편집"
 msgid "Edit group"
 msgstr "그룹 편집"
 
-#: src/features/profile/index.tsx:254
-#: src/features/profile/index.tsx:395
+#: src/features/profile/index.tsx:268
+#: src/features/profile/index.tsx:420
 msgid "Edit name"
 msgstr "이름 편집"
 
@@ -524,11 +552,11 @@ msgstr "이름 편집"
 msgid "Email code"
 msgstr "이메일 코드"
 
-#: src/features/friends/components/add-friend-dialog.tsx:215
+#: src/features/friends/components/add-friend-dialog.tsx:206
 msgid "Enter a name to find people you want to add"
 msgstr "추가할 사람을 찾으려면 이름을 입력하세요"
 
-#: src/features/friends/components/add-friend-dialog.tsx:195
+#: src/features/friends/components/add-friend-dialog.tsx:186
 msgid "Enter name to search..."
 msgstr "검색할 이름 입력..."
 
@@ -556,8 +584,8 @@ msgstr "초대 수락에 실패했어요"
 msgid "Failed to add account"
 msgstr "계정 추가에 실패했어요"
 
-#: src/features/friends/components/add-friend-dialog.tsx:65
-#: src/features/friends/components/add-friend-dialog.tsx:80
+#: src/features/friends/components/add-friend-dialog.tsx:66
+#: src/features/friends/components/add-friend-dialog.tsx:81
 msgid "Failed to add friend"
 msgstr "친구 추가 실패"
 
@@ -569,6 +597,10 @@ msgstr "멤버 추가에 실패했어요"
 #: src/features/invitations/index.tsx:95
 msgid "Failed to cancel invitation"
 msgstr "초대 취소에 실패했어요"
+
+#: src/features/profile/index.tsx:202
+msgid "Failed to copy link"
+msgstr ""
 
 #: src/features/groups/group-dialog.tsx:73
 msgid "Failed to create group"
@@ -586,7 +618,7 @@ msgstr "그룹 삭제에 실패했어요"
 msgid "Failed to remove account"
 msgstr "계정 제거에 실패했어요"
 
-#: src/features/friends/index.tsx:70
+#: src/features/friends/index.tsx:91
 msgid "Failed to remove friend"
 msgstr "친구 제거에 실패했어요"
 
@@ -598,15 +630,15 @@ msgstr "멤버 제거에 실패했어요"
 msgid "Failed to save"
 msgstr "저장에 실패했어요"
 
-#: src/features/profile/index.tsx:171
+#: src/features/profile/index.tsx:173
 msgid "Failed to save accent"
 msgstr "악센트 저장에 실패했어요"
 
-#: src/features/profile/index.tsx:182
+#: src/features/profile/index.tsx:184
 msgid "Failed to save name"
 msgstr "이름 저장에 실패했어요"
 
-#: src/features/profile/index.tsx:164
+#: src/features/profile/index.tsx:166
 msgid "Failed to save profile"
 msgstr "프로필 저장에 실패했어요"
 
@@ -618,7 +650,7 @@ msgstr "인증 코드 전송에 실패했어요"
 msgid "Failed to update category"
 msgstr "카테고리 업데이트에 실패했어요"
 
-#: src/features/profile/index.tsx:188
+#: src/features/profile/index.tsx:190
 msgid "Failed to update directory listing"
 msgstr "디렉터리 목록 업데이트에 실패했어요"
 
@@ -626,17 +658,21 @@ msgstr "디렉터리 목록 업데이트에 실패했어요"
 msgid "Failed to update group"
 msgstr "그룹 업데이트 실패"
 
-#: src/features/profile/index.tsx:466
+#: src/features/profile/index.tsx:491
 msgid "Failed to upload {slot}"
 msgstr "{slot} 업로드 실패"
 
-#: src/features/profile/index.tsx:330
+#: src/features/profile/index.tsx:344
 msgid "Favicon"
 msgstr "파비콘"
 
-#: src/features/profile/index.tsx:446
+#: src/features/profile/index.tsx:471
 msgid "File too large"
 msgstr "파일이 너무 커요"
+
+#: src/features/profile/index.tsx:379
+msgid "Fingerprint"
+msgstr ""
 
 #: ../../../lib/web/src/components/restore-banner.tsx:79
 msgid "Finish moving your account"
@@ -651,8 +687,8 @@ msgid "Friday"
 msgstr "금요일"
 
 #: src/components/layout/people-layout.tsx:60
-#: src/features/friends/index.tsx:26
-#: src/features/friends/index.tsx:89
+#: src/features/friends/index.tsx:40
+#: src/features/friends/index.tsx:114
 msgid "Friends"
 msgstr "친구"
 
@@ -789,22 +825,26 @@ msgstr "초대가 취소되었어요"
 msgid "Invitation declined"
 msgstr "초대가 거절되었어요"
 
-#: src/features/friends/components/add-friend-dialog.tsx:59
-#: src/features/friends/components/add-friend-dialog.tsx:306
+#: src/features/friends/components/add-friend-dialog.tsx:60
+#: src/features/friends/components/add-friend-dialog.tsx:297
 msgid "Invitation sent"
 msgstr "초대를 보냈습니다"
 
 #: src/components/layout/people-layout.tsx:62
 #: src/features/invitations/index.tsx:29
-#: src/features/invitations/index.tsx:118
+#: src/features/invitations/index.tsx:179
 msgid "Invitations"
 msgstr "초대"
+
+#: src/features/profile/index.tsx:198
+msgid "Invite link copied"
+msgstr ""
 
 #: src/features/invitations/invite-settings-dialog.tsx:63
 msgid "Invite policy updated"
 msgstr "초대 정책이 업데이트되었어요"
 
-#: src/features/invitations/index.tsx:123
+#: src/features/invitations/index.tsx:184
 msgid "Invite settings"
 msgstr "초대 설정"
 
@@ -882,7 +922,7 @@ msgstr "로그아웃 중…"
 msgid "Mark all as read"
 msgstr "모두 읽음으로 표시"
 
-#: src/features/profile/index.tsx:271
+#: src/features/profile/index.tsx:285
 msgid "Markdown supported"
 msgstr "마크다운 지원됨"
 
@@ -919,15 +959,19 @@ msgid "Monday"
 msgstr "월요일"
 
 #: src/features/groups/group-dialog.tsx:93
-#: src/features/profile/index.tsx:398
+#: src/features/profile/index.tsx:423
 msgid "Name"
 msgstr "이름"
+
+#: src/features/friends/index.tsx:177
+msgid "Name (A–Z)"
+msgstr ""
 
 #: src/features/groups/group-dialog.tsx:42
 msgid "Name is required"
 msgstr "이름은 필수예요"
 
-#: src/features/profile/index.tsx:179
+#: src/features/profile/index.tsx:181
 msgid "Name saved"
 msgstr "이름이 저장되었어요"
 
@@ -939,7 +983,7 @@ msgstr "네트워크 오류"
 msgid "New"
 msgstr "새로 만들기"
 
-#: src/features/invitations/index.tsx:176
+#: src/features/invitations/index.tsx:237
 msgid "New invitations will appear here"
 msgstr "새 초대가 여기에 표시돼요"
 
@@ -951,7 +995,7 @@ msgstr "다음 이미지"
 msgid "No access rules configured. Add rules to control who can access this resource."
 msgstr "설정된 접근 규칙이 없어요. 이 리소스에 접근할 수 있는 사용자를 제어하려면 규칙을 추가하세요."
 
-#: src/features/profile/index.tsx:201
+#: src/features/profile/index.tsx:215
 msgid "No banner set"
 msgstr "설정된 배너가 없어요"
 
@@ -963,7 +1007,7 @@ msgstr "연결된 계정이 없어요"
 #~ msgid "No friends found"
 #~ msgstr "친구를 찾을 수 없어요"
 
-#: src/features/friends/index.tsx:133
+#: src/features/friends/index.tsx:158
 msgid "No friends yet"
 msgstr ""
 
@@ -979,11 +1023,11 @@ msgstr "멤버가 없어요"
 msgid "No other groups"
 msgstr "다른 그룹이 없어요"
 
-#: src/features/invitations/index.tsx:173
+#: src/features/invitations/index.tsx:234
 msgid "No pending invitations"
 msgstr "대기 중인 초대가 없어요"
 
-#: src/features/friends/components/add-friend-dialog.tsx:239
+#: src/features/friends/components/add-friend-dialog.tsx:230
 #: src/features/groups/member-dialog.tsx:142
 msgid "No people found"
 msgstr "사람을 찾을 수 없어요"
@@ -996,7 +1040,7 @@ msgstr "장소를 찾을 수 없어요"
 msgid "No profile"
 msgstr "프로필이 없어요"
 
-#: src/features/friends/index.tsx:133
+#: src/features/friends/index.tsx:158
 msgid "No results for \"{search}\""
 msgstr ""
 
@@ -1087,7 +1131,7 @@ msgstr "패스키 인증에 실패했습니다. 다시 시도해 주세요."
 msgid "Passkeys"
 msgstr "패스키"
 
-#: src/features/invitations/index.tsx:262
+#: src/features/invitations/index.tsx:359
 msgid "Pending"
 msgstr "대기 중"
 
@@ -1099,12 +1143,12 @@ msgstr "사람"
 msgid "Please check your internet connection and try again."
 msgstr "인터넷 연결을 확인하고 다시 시도하세요."
 
-#: src/features/profile/index.tsx:366
+#: src/features/profile/index.tsx:391
 msgid "Preview"
 msgstr "미리보기"
 
 #. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx:170
+#: src/features/friends/components/add-friend-dialog.tsx:173
 msgid "Preview {0}'s profile before sending a friend request."
 msgstr "친구 요청을 보내기 전에 {0}님의 프로필을 미리 봅니다."
 
@@ -1120,20 +1164,20 @@ msgstr "개인정보"
 #: ../../../lib/web/src/components/layout/nav-user.tsx:134
 #: ../../../lib/web/src/components/profile-dropdown.tsx:111
 #: src/components/layout/people-layout.tsx:59
-#: src/features/profile/index.tsx:50
-#: src/features/profile/index.tsx:58
-#: src/features/profile/index.tsx:69
-#: src/features/profile/index.tsx:79
-#: src/features/profile/index.tsx:266
+#: src/features/profile/index.tsx:52
+#: src/features/profile/index.tsx:60
+#: src/features/profile/index.tsx:71
+#: src/features/profile/index.tsx:81
+#: src/features/profile/index.tsx:280
 #: src/features/profile/public.tsx:46
 msgid "Profile"
 msgstr "프로필"
 
-#: src/features/profile/index.tsx:374
+#: src/features/profile/index.tsx:399
 msgid "Profile preview"
 msgstr "프로필 미리보기"
 
-#: src/features/profile/index.tsx:163
+#: src/features/profile/index.tsx:165
 msgid "Profile saved"
 msgstr "프로필이 저장되었어요"
 
@@ -1146,9 +1190,13 @@ msgid "Re-register your passkeys on this server"
 msgstr "이 서버에서 패스키를 다시 등록하세요"
 
 #. placeholder {0}: filteredReceived.length
-#: src/features/invitations/index.tsx:186
+#: src/features/invitations/index.tsx:248
 msgid "Received ({0})"
 msgstr "받음 ({0})"
+
+#: src/features/friends/index.tsx:180
+msgid "Recently added"
+msgstr ""
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
 #: ../../../lib/web/src/components/search-entity-page.tsx:191
@@ -1181,7 +1229,7 @@ msgid "Remove"
 msgstr "제거"
 
 #. placeholder {0}: friend.name
-#: src/features/friends/index.tsx:167
+#: src/features/friends/index.tsx:219
 msgid "Remove {0}"
 msgstr "{0} 제거"
 
@@ -1201,8 +1249,8 @@ msgstr "접근 규칙 제거"
 msgid "Remove access?"
 msgstr "접근 권한을 제거할까요?"
 
-#: src/features/friends/index.tsx:190
-#: src/features/friends/index.tsx:200
+#: src/features/friends/index.tsx:258
+#: src/features/friends/index.tsx:269
 msgid "Remove friend"
 msgstr "친구 제거"
 
@@ -1218,7 +1266,7 @@ msgstr "멤버 제거"
 msgid "Remove Member"
 msgstr "멤버 제거"
 
-#: src/features/friends/index.tsx:200
+#: src/features/friends/index.tsx:269
 #: src/features/groups/group-detail.tsx:253
 msgid "Removing..."
 msgstr "제거 중..."
@@ -1251,9 +1299,9 @@ msgstr "토요일"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:74
 #: src/features/groups/group-dialog.tsx:119
 #: src/features/invitations/invite-settings-dialog.tsx:113
-#: src/features/profile/index.tsx:296
-#: src/features/profile/index.tsx:316
-#: src/features/profile/index.tsx:418
+#: src/features/profile/index.tsx:310
+#: src/features/profile/index.tsx:330
+#: src/features/profile/index.tsx:443
 msgid "Save"
 msgstr "저장"
 
@@ -1261,9 +1309,9 @@ msgstr "저장"
 msgid "Saving..."
 msgstr "저장 중..."
 
-#: src/features/profile/index.tsx:296
-#: src/features/profile/index.tsx:316
-#: src/features/profile/index.tsx:418
+#: src/features/profile/index.tsx:310
+#: src/features/profile/index.tsx:330
+#: src/features/profile/index.tsx:443
 msgid "Saving…"
 msgstr "저장 중…"
 
@@ -1279,11 +1327,11 @@ msgstr "도착지 검색..."
 msgid "Search for origin..."
 msgstr "출발지 검색..."
 
-#: src/features/friends/components/add-friend-dialog.tsx:171
+#: src/features/friends/components/add-friend-dialog.tsx:174
 msgid "Search for people and send a friend request."
 msgstr "사람을 검색하고 친구 요청을 보냅니다."
 
-#: src/features/friends/index.tsx:98
+#: src/features/friends/index.tsx:123
 msgid "Search friends"
 msgstr "친구 검색"
 
@@ -1297,8 +1345,8 @@ msgid "Search users"
 msgstr "사용자 검색"
 
 #: ../../../lib/web/src/components/person-picker.tsx:323
-#: src/features/friends/index.tsx:97
-#: src/features/invitations/index.tsx:108
+#: src/features/friends/index.tsx:122
+#: src/features/invitations/index.tsx:169
 msgid "Search..."
 msgstr "검색..."
 
@@ -1357,12 +1405,12 @@ msgstr "다시 보내기"
 msgid "Send email"
 msgstr "이메일 보내기"
 
-#: src/features/friends/components/add-friend-dialog.tsx:155
+#: src/features/friends/components/add-friend-dialog.tsx:158
 msgid "Send invitation"
 msgstr "초대 보내기"
 
 #. placeholder {0}: filteredSent.length
-#: src/features/invitations/index.tsx:242
+#: src/features/invitations/index.tsx:327
 msgid "Sent ({0})"
 msgstr "보냄 ({0})"
 
@@ -1394,6 +1442,10 @@ msgstr "출발지와 도착지 설정"
 msgid "Settings"
 msgstr "설정"
 
+#: src/features/profile/index.tsx:199
+msgid "Share this link so others can find and add you."
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/load-more.tsx:36
 msgid "Showing {totalShown} of {total}"
 msgstr "{total} 중 {totalShown} 표시 중"
@@ -1417,11 +1469,23 @@ msgstr "본문으로 건너뛰기"
 msgid "Small"
 msgstr "작게"
 
+#: src/features/invitations/index.tsx:115
+msgid "Some invitations could not be accepted"
+msgstr ""
+
+#: src/features/invitations/index.tsx:153
+msgid "Some invitations could not be cancelled"
+msgstr ""
+
+#: src/features/invitations/index.tsx:134
+msgid "Some invitations could not be declined"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:94
 msgid "Spacious"
 msgstr "여유로운"
 
-#: src/features/friends/components/add-friend-dialog.tsx:214
+#: src/features/friends/components/add-friend-dialog.tsx:205
 msgid "Start typing to search for users"
 msgstr "사용자를 검색하려면 입력을 시작하세요"
 
@@ -1464,7 +1528,7 @@ msgstr "이용 약관"
 msgid "That code is incorrect or has expired."
 msgstr "코드가 올바르지 않거나 만료되었습니다."
 
-#: src/features/friends/components/add-friend-dialog.tsx:291
+#: src/features/friends/components/add-friend-dialog.tsx:282
 msgid "That's you"
 msgstr "그건 본인입니다"
 
@@ -1513,15 +1577,15 @@ msgstr "위"
 msgid "Travelling"
 msgstr "이동 중"
 
-#: src/features/friends/index.tsx:136
+#: src/features/friends/index.tsx:161
 msgid "Try a different name"
 msgstr ""
 
-#: src/features/friends/components/add-friend-dialog.tsx:240
+#: src/features/friends/components/add-friend-dialog.tsx:231
 msgid "Try a different search term"
 msgstr "다른 검색어를 시도하세요"
 
-#: src/features/invitations/index.tsx:176
+#: src/features/invitations/index.tsx:237
 msgid "Try adjusting your search"
 msgstr "검색을 조정해 보세요"
 
@@ -1583,16 +1647,16 @@ msgstr "미국"
 msgid "Unverified"
 msgstr "확인되지 않음"
 
-#: src/features/profile/index.tsx:343
+#: src/features/profile/index.tsx:357
 msgid "Upload"
 msgstr "업로드"
 
-#: src/features/profile/index.tsx:238
+#: src/features/profile/index.tsx:252
 msgid "Upload avatar"
 msgstr "아바타 업로드"
 
-#: src/features/profile/index.tsx:215
-#: src/features/profile/index.tsx:343
+#: src/features/profile/index.tsx:229
+#: src/features/profile/index.tsx:357
 msgid "Uploading…"
 msgstr "업로드 중…"
 
@@ -1664,7 +1728,7 @@ msgstr "수요일"
 msgid "You are now friends with {friendName}."
 msgstr "이제 {friendName}님과 친구입니다."
 
-#: src/features/friends/components/add-friend-dialog.tsx:75
+#: src/features/friends/components/add-friend-dialog.tsx:76
 msgid "You are now friends!"
 msgstr "이제 친구가 되었습니다!"
 

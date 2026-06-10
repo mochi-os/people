@@ -189,7 +189,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
     })
   }
 
-  return (
+return (
     <div className="bg-card border-border overflow-hidden rounded-lg border shadow-sm">
       <div className="relative" style={{ paddingBottom: 40 }}>
         <div className="relative bg-muted overflow-hidden">
@@ -480,3 +480,4 @@ function SlotUploader({
     </>
   )
 }
+

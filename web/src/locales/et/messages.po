@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/profile/index.tsx:465
+#: src/features/profile/index.tsx:490
 msgid "{slotLabel} updated"
 msgstr "{slotLabel} uuendatud"
 
@@ -26,7 +26,7 @@ msgid "24 hours"
 msgstr "24 tundi"
 
 #. placeholder {0}: variables.name
-#: src/features/friends/components/add-friend-dialog.tsx:60
+#: src/features/friends/components/add-friend-dialog.tsx:61
 msgid "A friend invitation has been sent to {0}."
 msgstr "Sõbrakutse on saadetud aadressile {0}."
 
@@ -34,24 +34,28 @@ msgstr "Sõbrakutse on saadetud aadressile {0}."
 msgid "Absolute (date and time)"
 msgstr "Absoluutne (kuupäev ja kellaaeg)"
 
-#: src/features/profile/index.tsx:304
+#: src/features/profile/index.tsx:318
 msgid "Accent"
 msgstr "Aktsent"
 
-#: src/features/profile/index.tsx:170
+#: src/features/profile/index.tsx:172
 msgid "Accent saved"
 msgstr "Aktsent salvestatud"
 
-#: src/features/friends/components/add-friend-dialog.tsx:154
-#: src/features/invitations/index.tsx:217
+#: src/features/friends/components/add-friend-dialog.tsx:157
+#: src/features/invitations/index.tsx:301
 msgid "Accept"
 msgstr "Nõustu"
+
+#: src/features/invitations/index.tsx:267
+msgid "Accept all"
+msgstr ""
 
 #: src/features/invitations/invite-settings-dialog.tsx:48
 msgid "Accept automatically"
 msgstr "Aktsepteeri automaatselt"
 
-#: src/features/friends/components/add-friend-dialog.tsx:312
+#: src/features/friends/components/add-friend-dialog.tsx:303
 msgid "Accept invite"
 msgstr "Võta kutse vastu"
 
@@ -104,15 +108,15 @@ msgstr "Lisa konto"
 msgid "Add an account to receive notifications and use services."
 msgstr "Lisa konto teavituste saamiseks ja teenuste kasutamiseks."
 
-#: src/features/friends/components/add-friend-dialog.tsx:166
-#: src/features/friends/components/add-friend-dialog.tsx:320
-#: src/features/friends/index.tsx:101
-#: src/features/friends/index.tsx:113
-#: src/features/invitations/index.tsx:128
+#: src/features/friends/components/add-friend-dialog.tsx:169
+#: src/features/friends/components/add-friend-dialog.tsx:311
+#: src/features/friends/index.tsx:126
+#: src/features/friends/index.tsx:138
+#: src/features/invitations/index.tsx:189
 msgid "Add friend"
 msgstr "Lisa sõber"
 
-#: src/features/friends/index.tsx:136
+#: src/features/friends/index.tsx:162
 msgid "Add friends to start connecting"
 msgstr "Lisa sõpru, et alustada suhtlust"
 
@@ -154,8 +158,8 @@ msgstr "Lisa vaade"
 msgid "Added {0} to the group"
 msgstr "Lisas {0} gruppi"
 
-#: src/features/friends/components/add-friend-dialog.tsx:281
-#: src/features/friends/components/add-friend-dialog.tsx:383
+#: src/features/friends/components/add-friend-dialog.tsx:272
+#: src/features/friends/components/add-friend-dialog.tsx:374
 #: src/features/groups/member-dialog.tsx:242
 msgid "Adding..."
 msgstr "Lisamine..."
@@ -176,16 +180,28 @@ msgstr "Kõik"
 msgid "All available groups are already added"
 msgstr "Kõik saadaolevad grupid on juba lisatud"
 
+#: src/features/invitations/index.tsx:117
+msgid "All invitations accepted"
+msgstr ""
+
+#: src/features/invitations/index.tsx:155
+msgid "All invitations cancelled"
+msgstr ""
+
+#: src/features/invitations/index.tsx:136
+msgid "All invitations declined"
+msgstr ""
+
 #: src/features/invitations/invite-settings-dialog.tsx:49
 msgid "All invites are accepted without your approval."
 msgstr "Kõik kutsed võetakse vastu ilma sinu heakskiiduta."
 
-#: src/features/profile/index.tsx:353
+#: src/features/profile/index.tsx:367
 msgid "Allow others to find you in directory"
 msgstr "Luba teistel sind kataloogist leida"
 
-#: src/features/friends/components/add-friend-dialog.tsx:74
-#: src/features/friends/components/add-friend-dialog.tsx:298
+#: src/features/friends/components/add-friend-dialog.tsx:75
+#: src/features/friends/components/add-friend-dialog.tsx:289
 msgid "Already friends"
 msgstr "Juba sõbrad"
 
@@ -207,7 +223,7 @@ msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Kas oled kindel, et soovid eemaldada <0>{0}</0> sellest grupist?"
 
 #. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx:192
+#: src/features/friends/index.tsx:260
 msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
 msgstr "Kas oled kindel, et soovid eemaldada <0>{0}</0> oma sõbralisti? Seda toimingut ei saa tagasi võtta."
 
@@ -220,7 +236,7 @@ msgid "Authenticator code"
 msgstr "Autentija kood"
 
 #: ../../../lib/web/src/components/place-picker.tsx:152
-#: src/features/friends/components/add-friend-dialog.tsx:378
+#: src/features/friends/components/add-friend-dialog.tsx:369
 msgid "Back"
 msgstr "Tagasi"
 
@@ -238,7 +254,7 @@ msgstr "Tagasi avalehele"
 msgid "Boost interest"
 msgstr "Tõsta huvi"
 
-#: src/features/profile/index.tsx:324
+#: src/features/profile/index.tsx:338
 msgid "Browser icon"
 msgstr "Brauseri ikoon"
 
@@ -252,11 +268,15 @@ msgstr "Brauseri ikoon"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:86
 #: src/features/groups/group-dialog.tsx:116
 #: src/features/groups/member-dialog.tsx:239
-#: src/features/invitations/index.tsx:273
+#: src/features/invitations/index.tsx:370
 #: src/features/invitations/invite-settings-dialog.tsx:110
-#: src/features/profile/index.tsx:414
+#: src/features/profile/index.tsx:439
 msgid "Cancel"
 msgstr "Tühista"
+
+#: src/features/invitations/index.tsx:337
+msgid "Cancel all"
+msgstr ""
 
 #: src/features/invitations/index.tsx:91
 msgid "Cancelled invitation to {friendName}."
@@ -266,7 +286,7 @@ msgstr "Kutse aadressile {friendName} tühistatud."
 msgid "Category for this notification"
 msgstr "Selle teavituse kategooria"
 
-#: src/features/profile/index.tsx:215
+#: src/features/profile/index.tsx:229
 msgid "Change banner"
 msgstr "Muuda bännerit"
 
@@ -274,11 +294,11 @@ msgstr "Muuda bännerit"
 msgid "Change notification category"
 msgstr "Muuda teavituse kategooriat"
 
-#: src/features/friends/index.tsx:162
+#: src/features/friends/index.tsx:214
 msgid "Chat"
 msgstr "Vestlus"
 
-#: src/features/friends/index.tsx:79
+#: src/features/friends/index.tsx:100
 msgid "Chat is not configured"
 msgstr ""
 
@@ -326,7 +346,7 @@ msgstr "Tühjenda valik (Escape)"
 #: ../../../lib/web/src/components/ui/dialog.tsx:75
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:321
 #: ../../../lib/web/src/components/ui/sheet.tsx:76
-#: src/features/friends/components/add-friend-dialog.tsx:400
+#: src/features/friends/components/add-friend-dialog.tsx:391
 msgid "Close"
 msgstr "Sulge"
 
@@ -384,6 +404,10 @@ msgstr "Jätka teenusega {label}"
 msgid "Copy"
 msgstr "Kopeeri"
 
+#: src/features/profile/index.tsx:384
+msgid "Copy invite link"
+msgstr ""
+
 #: src/features/groups/group-detail.tsx:158
 msgid "Core information about this group"
 msgstr "Selle grupi põhiteave"
@@ -392,7 +416,7 @@ msgstr "Selle grupi põhiteave"
 msgid "Could not load this document. Please try again later."
 msgstr "Selle dokumendi laadimine ebaõnnestus. Palun proovi hiljem uuesti."
 
-#: src/features/profile/index.tsx:458
+#: src/features/profile/index.tsx:483
 msgid "Could not process {slot} image"
 msgstr "{slot} pildi töötlemine ebaõnnestus"
 
@@ -428,9 +452,13 @@ msgstr "Tume"
 msgid "Dark mode"
 msgstr "Tume režiim"
 
-#: src/features/invitations/index.tsx:228
+#: src/features/invitations/index.tsx:312
 msgid "Decline"
 msgstr "Keeldu"
+
+#: src/features/invitations/index.tsx:259
+msgid "Decline all"
+msgstr ""
 
 #: src/features/invitations/index.tsx:75
 msgid "Declined invitation from {friendName}."
@@ -515,8 +543,8 @@ msgstr "Muuda"
 msgid "Edit group"
 msgstr "Muuda gruppi"
 
-#: src/features/profile/index.tsx:254
-#: src/features/profile/index.tsx:395
+#: src/features/profile/index.tsx:268
+#: src/features/profile/index.tsx:420
 msgid "Edit name"
 msgstr "Muuda nime"
 
@@ -524,11 +552,11 @@ msgstr "Muuda nime"
 msgid "Email code"
 msgstr "E-posti kood"
 
-#: src/features/friends/components/add-friend-dialog.tsx:215
+#: src/features/friends/components/add-friend-dialog.tsx:206
 msgid "Enter a name to find people you want to add"
 msgstr "Sisesta nimi, et leida inimesi, keda lisada"
 
-#: src/features/friends/components/add-friend-dialog.tsx:195
+#: src/features/friends/components/add-friend-dialog.tsx:186
 msgid "Enter name to search..."
 msgstr "Sisesta otsitav nimi…"
 
@@ -556,8 +584,8 @@ msgstr "Kutse vastuvõtmine ebaõnnestus"
 msgid "Failed to add account"
 msgstr "Konto lisamine ebaõnnestus"
 
-#: src/features/friends/components/add-friend-dialog.tsx:65
-#: src/features/friends/components/add-friend-dialog.tsx:80
+#: src/features/friends/components/add-friend-dialog.tsx:66
+#: src/features/friends/components/add-friend-dialog.tsx:81
 msgid "Failed to add friend"
 msgstr "Sõbra lisamine ebaõnnestus"
 
@@ -569,6 +597,10 @@ msgstr "Liikme lisamine ebaõnnestus"
 #: src/features/invitations/index.tsx:95
 msgid "Failed to cancel invitation"
 msgstr "Kutse tühistamine ebaõnnestus"
+
+#: src/features/profile/index.tsx:202
+msgid "Failed to copy link"
+msgstr ""
 
 #: src/features/groups/group-dialog.tsx:73
 msgid "Failed to create group"
@@ -586,7 +618,7 @@ msgstr "Grupi kustutamine ebaõnnestus"
 msgid "Failed to remove account"
 msgstr "Konto eemaldamine ebaõnnestus"
 
-#: src/features/friends/index.tsx:70
+#: src/features/friends/index.tsx:91
 msgid "Failed to remove friend"
 msgstr "Sõbra eemaldamine ebaõnnestus"
 
@@ -598,15 +630,15 @@ msgstr "Liikme eemaldamine ebaõnnestus"
 msgid "Failed to save"
 msgstr "Salvestamine ebaõnnestus"
 
-#: src/features/profile/index.tsx:171
+#: src/features/profile/index.tsx:173
 msgid "Failed to save accent"
 msgstr "Aktsendi salvestamine ebaõnnestus"
 
-#: src/features/profile/index.tsx:182
+#: src/features/profile/index.tsx:184
 msgid "Failed to save name"
 msgstr "Nime salvestamine ebaõnnestus"
 
-#: src/features/profile/index.tsx:164
+#: src/features/profile/index.tsx:166
 msgid "Failed to save profile"
 msgstr "Profiili salvestamine ebaõnnestus"
 
@@ -618,7 +650,7 @@ msgstr "Kinnituskoodi saatmine ebaõnnestus"
 msgid "Failed to update category"
 msgstr "Kategooria värskendamine ebaõnnestus"
 
-#: src/features/profile/index.tsx:188
+#: src/features/profile/index.tsx:190
 msgid "Failed to update directory listing"
 msgstr "Kataloogi loendi värskendamine ebaõnnestus"
 
@@ -626,17 +658,21 @@ msgstr "Kataloogi loendi värskendamine ebaõnnestus"
 msgid "Failed to update group"
 msgstr "Grupi värskendamine ebaõnnestus"
 
-#: src/features/profile/index.tsx:466
+#: src/features/profile/index.tsx:491
 msgid "Failed to upload {slot}"
 msgstr "Faili {slot} üleslaadimine ebaõnnestus"
 
-#: src/features/profile/index.tsx:330
+#: src/features/profile/index.tsx:344
 msgid "Favicon"
 msgstr "Favicon"
 
-#: src/features/profile/index.tsx:446
+#: src/features/profile/index.tsx:471
 msgid "File too large"
 msgstr "Fail on liiga suur"
+
+#: src/features/profile/index.tsx:379
+msgid "Fingerprint"
+msgstr ""
 
 #: ../../../lib/web/src/components/restore-banner.tsx:79
 msgid "Finish moving your account"
@@ -651,8 +687,8 @@ msgid "Friday"
 msgstr "Reede"
 
 #: src/components/layout/people-layout.tsx:60
-#: src/features/friends/index.tsx:26
-#: src/features/friends/index.tsx:89
+#: src/features/friends/index.tsx:40
+#: src/features/friends/index.tsx:114
 msgid "Friends"
 msgstr "Sõbrad"
 
@@ -789,22 +825,26 @@ msgstr "Kutse tühistatud"
 msgid "Invitation declined"
 msgstr "Kutsest keelduti"
 
-#: src/features/friends/components/add-friend-dialog.tsx:59
-#: src/features/friends/components/add-friend-dialog.tsx:306
+#: src/features/friends/components/add-friend-dialog.tsx:60
+#: src/features/friends/components/add-friend-dialog.tsx:297
 msgid "Invitation sent"
 msgstr "Kutse saadetud"
 
 #: src/components/layout/people-layout.tsx:62
 #: src/features/invitations/index.tsx:29
-#: src/features/invitations/index.tsx:118
+#: src/features/invitations/index.tsx:179
 msgid "Invitations"
 msgstr "Kutsed"
+
+#: src/features/profile/index.tsx:198
+msgid "Invite link copied"
+msgstr ""
 
 #: src/features/invitations/invite-settings-dialog.tsx:63
 msgid "Invite policy updated"
 msgstr "Kutsereeglid värskendatud"
 
-#: src/features/invitations/index.tsx:123
+#: src/features/invitations/index.tsx:184
 msgid "Invite settings"
 msgstr "Kutsete seaded"
 
@@ -882,7 +922,7 @@ msgstr "Välja logimine…"
 msgid "Mark all as read"
 msgstr "Märgi kõik loetuks"
 
-#: src/features/profile/index.tsx:271
+#: src/features/profile/index.tsx:285
 msgid "Markdown supported"
 msgstr "Markdown toetatud"
 
@@ -919,15 +959,19 @@ msgid "Monday"
 msgstr "Esmaspäev"
 
 #: src/features/groups/group-dialog.tsx:93
-#: src/features/profile/index.tsx:398
+#: src/features/profile/index.tsx:423
 msgid "Name"
 msgstr "Nimi"
+
+#: src/features/friends/index.tsx:177
+msgid "Name (A–Z)"
+msgstr ""
 
 #: src/features/groups/group-dialog.tsx:42
 msgid "Name is required"
 msgstr "Nimi on kohustuslik"
 
-#: src/features/profile/index.tsx:179
+#: src/features/profile/index.tsx:181
 msgid "Name saved"
 msgstr "Nimi salvestatud"
 
@@ -939,7 +983,7 @@ msgstr "Võrguviga"
 msgid "New"
 msgstr "Uus"
 
-#: src/features/invitations/index.tsx:176
+#: src/features/invitations/index.tsx:237
 msgid "New invitations will appear here"
 msgstr "Uued kutsed ilmuvad siia"
 
@@ -951,7 +995,7 @@ msgstr "Järgmine pilt"
 msgid "No access rules configured. Add rules to control who can access this resource."
 msgstr "Juurdepääsureegleid pole seadistatud. Lisa reeglid, et määrata, kes pääseb sellele ressursile ligi."
 
-#: src/features/profile/index.tsx:201
+#: src/features/profile/index.tsx:215
 msgid "No banner set"
 msgstr "Bännerit pole määratud"
 
@@ -963,7 +1007,7 @@ msgstr "Seotud kontosid pole"
 #~ msgid "No friends found"
 #~ msgstr "Sõpru ei leitud"
 
-#: src/features/friends/index.tsx:133
+#: src/features/friends/index.tsx:158
 msgid "No friends yet"
 msgstr ""
 
@@ -979,11 +1023,11 @@ msgstr "Liikmeid pole"
 msgid "No other groups"
 msgstr "Teisi gruppe pole"
 
-#: src/features/invitations/index.tsx:173
+#: src/features/invitations/index.tsx:234
 msgid "No pending invitations"
 msgstr "Ootel kutseid pole"
 
-#: src/features/friends/components/add-friend-dialog.tsx:239
+#: src/features/friends/components/add-friend-dialog.tsx:230
 #: src/features/groups/member-dialog.tsx:142
 msgid "No people found"
 msgstr "Inimesi ei leitud"
@@ -996,7 +1040,7 @@ msgstr "Kohti ei leitud"
 msgid "No profile"
 msgstr "Profiili pole"
 
-#: src/features/friends/index.tsx:133
+#: src/features/friends/index.tsx:158
 msgid "No results for \"{search}\""
 msgstr ""
 
@@ -1087,7 +1131,7 @@ msgstr "Pääsuvõtmega kinnitamine ebaõnnestus. Proovige uuesti."
 msgid "Passkeys"
 msgstr "Pääsuvõtmed"
 
-#: src/features/invitations/index.tsx:262
+#: src/features/invitations/index.tsx:359
 msgid "Pending"
 msgstr "Ootel"
 
@@ -1099,12 +1143,12 @@ msgstr "Inimesed"
 msgid "Please check your internet connection and try again."
 msgstr "Kontrolli internetiühendust ja proovi uuesti."
 
-#: src/features/profile/index.tsx:366
+#: src/features/profile/index.tsx:391
 msgid "Preview"
 msgstr "Eelvaade"
 
 #. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx:170
+#: src/features/friends/components/add-friend-dialog.tsx:173
 msgid "Preview {0}'s profile before sending a friend request."
 msgstr "Vaata kasutaja {0} profiili enne sõbrakutse saatmist."
 
@@ -1120,20 +1164,20 @@ msgstr "Privaatsus"
 #: ../../../lib/web/src/components/layout/nav-user.tsx:134
 #: ../../../lib/web/src/components/profile-dropdown.tsx:111
 #: src/components/layout/people-layout.tsx:59
-#: src/features/profile/index.tsx:50
-#: src/features/profile/index.tsx:58
-#: src/features/profile/index.tsx:69
-#: src/features/profile/index.tsx:79
-#: src/features/profile/index.tsx:266
+#: src/features/profile/index.tsx:52
+#: src/features/profile/index.tsx:60
+#: src/features/profile/index.tsx:71
+#: src/features/profile/index.tsx:81
+#: src/features/profile/index.tsx:280
 #: src/features/profile/public.tsx:46
 msgid "Profile"
 msgstr "Profiil"
 
-#: src/features/profile/index.tsx:374
+#: src/features/profile/index.tsx:399
 msgid "Profile preview"
 msgstr "Profiili eelvaade"
 
-#: src/features/profile/index.tsx:163
+#: src/features/profile/index.tsx:165
 msgid "Profile saved"
 msgstr "Profiil salvestatud"
 
@@ -1146,9 +1190,13 @@ msgid "Re-register your passkeys on this server"
 msgstr "Registreerige oma pääsuvõtmed selles serveris uuesti"
 
 #. placeholder {0}: filteredReceived.length
-#: src/features/invitations/index.tsx:186
+#: src/features/invitations/index.tsx:248
 msgid "Received ({0})"
 msgstr "Vastu võetud ({0})"
+
+#: src/features/friends/index.tsx:180
+msgid "Recently added"
+msgstr ""
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
 #: ../../../lib/web/src/components/search-entity-page.tsx:191
@@ -1181,7 +1229,7 @@ msgid "Remove"
 msgstr "Eemalda"
 
 #. placeholder {0}: friend.name
-#: src/features/friends/index.tsx:167
+#: src/features/friends/index.tsx:219
 msgid "Remove {0}"
 msgstr "Eemalda {0}"
 
@@ -1201,8 +1249,8 @@ msgstr "Eemalda juurdepääsureegel"
 msgid "Remove access?"
 msgstr "Kas eemaldada juurdepääs?"
 
-#: src/features/friends/index.tsx:190
-#: src/features/friends/index.tsx:200
+#: src/features/friends/index.tsx:258
+#: src/features/friends/index.tsx:269
 msgid "Remove friend"
 msgstr "Eemalda sõber"
 
@@ -1218,7 +1266,7 @@ msgstr "Eemalda liige"
 msgid "Remove Member"
 msgstr "Eemalda liige"
 
-#: src/features/friends/index.tsx:200
+#: src/features/friends/index.tsx:269
 #: src/features/groups/group-detail.tsx:253
 msgid "Removing..."
 msgstr "Eemaldamine..."
@@ -1251,9 +1299,9 @@ msgstr "Laupäev"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:74
 #: src/features/groups/group-dialog.tsx:119
 #: src/features/invitations/invite-settings-dialog.tsx:113
-#: src/features/profile/index.tsx:296
-#: src/features/profile/index.tsx:316
-#: src/features/profile/index.tsx:418
+#: src/features/profile/index.tsx:310
+#: src/features/profile/index.tsx:330
+#: src/features/profile/index.tsx:443
 msgid "Save"
 msgstr "Salvesta"
 
@@ -1261,9 +1309,9 @@ msgstr "Salvesta"
 msgid "Saving..."
 msgstr "Salvestamine..."
 
-#: src/features/profile/index.tsx:296
-#: src/features/profile/index.tsx:316
-#: src/features/profile/index.tsx:418
+#: src/features/profile/index.tsx:310
+#: src/features/profile/index.tsx:330
+#: src/features/profile/index.tsx:443
 msgid "Saving…"
 msgstr "Salvestamine…"
 
@@ -1279,11 +1327,11 @@ msgstr "Otsi sihtkohta..."
 msgid "Search for origin..."
 msgstr "Otsi lähtekohta..."
 
-#: src/features/friends/components/add-friend-dialog.tsx:171
+#: src/features/friends/components/add-friend-dialog.tsx:174
 msgid "Search for people and send a friend request."
 msgstr "Otsi inimesi ja saada sõbrakutse."
 
-#: src/features/friends/index.tsx:98
+#: src/features/friends/index.tsx:123
 msgid "Search friends"
 msgstr "Otsi sõpru"
 
@@ -1297,8 +1345,8 @@ msgid "Search users"
 msgstr "Otsi kasutajaid"
 
 #: ../../../lib/web/src/components/person-picker.tsx:323
-#: src/features/friends/index.tsx:97
-#: src/features/invitations/index.tsx:108
+#: src/features/friends/index.tsx:122
+#: src/features/invitations/index.tsx:169
 msgid "Search..."
 msgstr "Otsi..."
 
@@ -1357,12 +1405,12 @@ msgstr "Saada uuesti"
 msgid "Send email"
 msgstr "Saada e-kiri"
 
-#: src/features/friends/components/add-friend-dialog.tsx:155
+#: src/features/friends/components/add-friend-dialog.tsx:158
 msgid "Send invitation"
 msgstr "Saada kutse"
 
 #. placeholder {0}: filteredSent.length
-#: src/features/invitations/index.tsx:242
+#: src/features/invitations/index.tsx:327
 msgid "Sent ({0})"
 msgstr "Saadetud ({0})"
 
@@ -1394,6 +1442,10 @@ msgstr "Määra lähtekoht ja sihtkoht"
 msgid "Settings"
 msgstr "Seaded"
 
+#: src/features/profile/index.tsx:199
+msgid "Share this link so others can find and add you."
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/load-more.tsx:36
 msgid "Showing {totalShown} of {total}"
 msgstr "Näidatakse {totalShown} / {total}"
@@ -1417,11 +1469,23 @@ msgstr "Liigu põhisisule"
 msgid "Small"
 msgstr "Väike"
 
+#: src/features/invitations/index.tsx:115
+msgid "Some invitations could not be accepted"
+msgstr ""
+
+#: src/features/invitations/index.tsx:153
+msgid "Some invitations could not be cancelled"
+msgstr ""
+
+#: src/features/invitations/index.tsx:134
+msgid "Some invitations could not be declined"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:94
 msgid "Spacious"
 msgstr "Avar"
 
-#: src/features/friends/components/add-friend-dialog.tsx:214
+#: src/features/friends/components/add-friend-dialog.tsx:205
 msgid "Start typing to search for users"
 msgstr "Hakka kirjutama, et kasutajaid otsida"
 
@@ -1464,7 +1528,7 @@ msgstr "Tingimused"
 msgid "That code is incorrect or has expired."
 msgstr "See kood on vale või aegunud."
 
-#: src/features/friends/components/add-friend-dialog.tsx:291
+#: src/features/friends/components/add-friend-dialog.tsx:282
 msgid "That's you"
 msgstr "See oled sina"
 
@@ -1513,15 +1577,15 @@ msgstr "Üles"
 msgid "Travelling"
 msgstr "Reisil"
 
-#: src/features/friends/index.tsx:136
+#: src/features/friends/index.tsx:161
 msgid "Try a different name"
 msgstr ""
 
-#: src/features/friends/components/add-friend-dialog.tsx:240
+#: src/features/friends/components/add-friend-dialog.tsx:231
 msgid "Try a different search term"
 msgstr "Proovi teist otsingusõna"
 
-#: src/features/invitations/index.tsx:176
+#: src/features/invitations/index.tsx:237
 msgid "Try adjusting your search"
 msgstr "Proovi otsingut kohandada"
 
@@ -1583,16 +1647,16 @@ msgstr "Ameerika Ühendriigid"
 msgid "Unverified"
 msgstr "Kontrollimata"
 
-#: src/features/profile/index.tsx:343
+#: src/features/profile/index.tsx:357
 msgid "Upload"
 msgstr "Lae üles"
 
-#: src/features/profile/index.tsx:238
+#: src/features/profile/index.tsx:252
 msgid "Upload avatar"
 msgstr "Lae üles avatar"
 
-#: src/features/profile/index.tsx:215
-#: src/features/profile/index.tsx:343
+#: src/features/profile/index.tsx:229
+#: src/features/profile/index.tsx:357
 msgid "Uploading…"
 msgstr "Laadin üles…"
 
@@ -1664,7 +1728,7 @@ msgstr "Kolmapäev"
 msgid "You are now friends with {friendName}."
 msgstr "Oled nüüd sõber kasutajaga {friendName}."
 
-#: src/features/friends/components/add-friend-dialog.tsx:75
+#: src/features/friends/components/add-friend-dialog.tsx:76
 msgid "You are now friends!"
 msgstr "Olete nüüd sõbrad!"
 

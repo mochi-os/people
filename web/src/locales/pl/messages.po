@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/profile/index.tsx:465
+#: src/features/profile/index.tsx:490
 msgid "{slotLabel} updated"
 msgstr "Zaktualizowano {slotLabel}"
 
@@ -26,7 +26,7 @@ msgid "24 hours"
 msgstr "24 godziny"
 
 #. placeholder {0}: variables.name
-#: src/features/friends/components/add-friend-dialog.tsx:60
+#: src/features/friends/components/add-friend-dialog.tsx:61
 msgid "A friend invitation has been sent to {0}."
 msgstr "Zaproszenie do znajomych zostało wysłane do {0}."
 
@@ -34,24 +34,28 @@ msgstr "Zaproszenie do znajomych zostało wysłane do {0}."
 msgid "Absolute (date and time)"
 msgstr "Bezwzględna (data i godzina)"
 
-#: src/features/profile/index.tsx:304
+#: src/features/profile/index.tsx:318
 msgid "Accent"
 msgstr "Akcent"
 
-#: src/features/profile/index.tsx:170
+#: src/features/profile/index.tsx:172
 msgid "Accent saved"
 msgstr "Akcent zapisany"
 
-#: src/features/friends/components/add-friend-dialog.tsx:154
-#: src/features/invitations/index.tsx:217
+#: src/features/friends/components/add-friend-dialog.tsx:157
+#: src/features/invitations/index.tsx:301
 msgid "Accept"
 msgstr "Akceptuj"
+
+#: src/features/invitations/index.tsx:267
+msgid "Accept all"
+msgstr ""
 
 #: src/features/invitations/invite-settings-dialog.tsx:48
 msgid "Accept automatically"
 msgstr "Akceptuj automatycznie"
 
-#: src/features/friends/components/add-friend-dialog.tsx:312
+#: src/features/friends/components/add-friend-dialog.tsx:303
 msgid "Accept invite"
 msgstr "Zaakceptuj zaproszenie"
 
@@ -104,15 +108,15 @@ msgstr "Dodaj konto"
 msgid "Add an account to receive notifications and use services."
 msgstr "Dodaj konto, aby otrzymywać powiadomienia i korzystać z usług."
 
-#: src/features/friends/components/add-friend-dialog.tsx:166
-#: src/features/friends/components/add-friend-dialog.tsx:320
-#: src/features/friends/index.tsx:101
-#: src/features/friends/index.tsx:113
-#: src/features/invitations/index.tsx:128
+#: src/features/friends/components/add-friend-dialog.tsx:169
+#: src/features/friends/components/add-friend-dialog.tsx:311
+#: src/features/friends/index.tsx:126
+#: src/features/friends/index.tsx:138
+#: src/features/invitations/index.tsx:189
 msgid "Add friend"
 msgstr "Dodaj znajomego"
 
-#: src/features/friends/index.tsx:136
+#: src/features/friends/index.tsx:162
 msgid "Add friends to start connecting"
 msgstr "Dodaj znajomych, aby zacząć się łączyć"
 
@@ -154,8 +158,8 @@ msgstr "Dodaj widok"
 msgid "Added {0} to the group"
 msgstr "Dodano {0} do grupy"
 
-#: src/features/friends/components/add-friend-dialog.tsx:281
-#: src/features/friends/components/add-friend-dialog.tsx:383
+#: src/features/friends/components/add-friend-dialog.tsx:272
+#: src/features/friends/components/add-friend-dialog.tsx:374
 #: src/features/groups/member-dialog.tsx:242
 msgid "Adding..."
 msgstr "Dodawanie..."
@@ -176,16 +180,28 @@ msgstr "Wszystko"
 msgid "All available groups are already added"
 msgstr "Wszystkie dostępne grupy są już dodane"
 
+#: src/features/invitations/index.tsx:117
+msgid "All invitations accepted"
+msgstr ""
+
+#: src/features/invitations/index.tsx:155
+msgid "All invitations cancelled"
+msgstr ""
+
+#: src/features/invitations/index.tsx:136
+msgid "All invitations declined"
+msgstr ""
+
 #: src/features/invitations/invite-settings-dialog.tsx:49
 msgid "All invites are accepted without your approval."
 msgstr "Wszystkie zaproszenia są akceptowane bez twojego zatwierdzenia."
 
-#: src/features/profile/index.tsx:353
+#: src/features/profile/index.tsx:367
 msgid "Allow others to find you in directory"
 msgstr "Zezwól innym znaleźć cię w katalogu"
 
-#: src/features/friends/components/add-friend-dialog.tsx:74
-#: src/features/friends/components/add-friend-dialog.tsx:298
+#: src/features/friends/components/add-friend-dialog.tsx:75
+#: src/features/friends/components/add-friend-dialog.tsx:289
 msgid "Already friends"
 msgstr "Już znajomi"
 
@@ -207,7 +223,7 @@ msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Czy na pewno chcesz usunąć <0>{0}</0> z tej grupy?"
 
 #. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx:192
+#: src/features/friends/index.tsx:260
 msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
 msgstr "Czy na pewno chcesz usunąć <0>{0}</0> z listy znajomych? Tej akcji nie można cofnąć."
 
@@ -220,7 +236,7 @@ msgid "Authenticator code"
 msgstr "Kod uwierzytelniający"
 
 #: ../../../lib/web/src/components/place-picker.tsx:152
-#: src/features/friends/components/add-friend-dialog.tsx:378
+#: src/features/friends/components/add-friend-dialog.tsx:369
 msgid "Back"
 msgstr "Wstecz"
 
@@ -238,7 +254,7 @@ msgstr "Wróć na stronę główną"
 msgid "Boost interest"
 msgstr "Zwiększ zainteresowanie"
 
-#: src/features/profile/index.tsx:324
+#: src/features/profile/index.tsx:338
 msgid "Browser icon"
 msgstr "Ikona przeglądarki"
 
@@ -252,11 +268,15 @@ msgstr "Ikona przeglądarki"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:86
 #: src/features/groups/group-dialog.tsx:116
 #: src/features/groups/member-dialog.tsx:239
-#: src/features/invitations/index.tsx:273
+#: src/features/invitations/index.tsx:370
 #: src/features/invitations/invite-settings-dialog.tsx:110
-#: src/features/profile/index.tsx:414
+#: src/features/profile/index.tsx:439
 msgid "Cancel"
 msgstr "Anuluj"
+
+#: src/features/invitations/index.tsx:337
+msgid "Cancel all"
+msgstr ""
 
 #: src/features/invitations/index.tsx:91
 msgid "Cancelled invitation to {friendName}."
@@ -266,7 +286,7 @@ msgstr "Zaproszenie do {friendName} zostało anulowane."
 msgid "Category for this notification"
 msgstr "Kategoria tego powiadomienia"
 
-#: src/features/profile/index.tsx:215
+#: src/features/profile/index.tsx:229
 msgid "Change banner"
 msgstr "Zmień baner"
 
@@ -274,11 +294,11 @@ msgstr "Zmień baner"
 msgid "Change notification category"
 msgstr "Zmień kategorię powiadomienia"
 
-#: src/features/friends/index.tsx:162
+#: src/features/friends/index.tsx:214
 msgid "Chat"
 msgstr "Czat"
 
-#: src/features/friends/index.tsx:79
+#: src/features/friends/index.tsx:100
 msgid "Chat is not configured"
 msgstr ""
 
@@ -326,7 +346,7 @@ msgstr "Wyczyść zaznaczenie (Escape)"
 #: ../../../lib/web/src/components/ui/dialog.tsx:75
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:321
 #: ../../../lib/web/src/components/ui/sheet.tsx:76
-#: src/features/friends/components/add-friend-dialog.tsx:400
+#: src/features/friends/components/add-friend-dialog.tsx:391
 msgid "Close"
 msgstr "Zamknij"
 
@@ -384,6 +404,10 @@ msgstr "Kontynuuj z {label}"
 msgid "Copy"
 msgstr "Kopiuj"
 
+#: src/features/profile/index.tsx:384
+msgid "Copy invite link"
+msgstr ""
+
 #: src/features/groups/group-detail.tsx:158
 msgid "Core information about this group"
 msgstr "Podstawowe informacje o tej grupie"
@@ -392,7 +416,7 @@ msgstr "Podstawowe informacje o tej grupie"
 msgid "Could not load this document. Please try again later."
 msgstr "Nie można wczytać tego dokumentu. Spróbuj ponownie później."
 
-#: src/features/profile/index.tsx:458
+#: src/features/profile/index.tsx:483
 msgid "Could not process {slot} image"
 msgstr "Nie można przetworzyć obrazu {slot}"
 
@@ -428,9 +452,13 @@ msgstr "Ciemny"
 msgid "Dark mode"
 msgstr "Tryb ciemny"
 
-#: src/features/invitations/index.tsx:228
+#: src/features/invitations/index.tsx:312
 msgid "Decline"
 msgstr "Odrzuć"
+
+#: src/features/invitations/index.tsx:259
+msgid "Decline all"
+msgstr ""
 
 #: src/features/invitations/index.tsx:75
 msgid "Declined invitation from {friendName}."
@@ -515,8 +543,8 @@ msgstr "Edytuj"
 msgid "Edit group"
 msgstr "Edytuj grupę"
 
-#: src/features/profile/index.tsx:254
-#: src/features/profile/index.tsx:395
+#: src/features/profile/index.tsx:268
+#: src/features/profile/index.tsx:420
 msgid "Edit name"
 msgstr "Edytuj nazwę"
 
@@ -524,11 +552,11 @@ msgstr "Edytuj nazwę"
 msgid "Email code"
 msgstr "Kod e-mail"
 
-#: src/features/friends/components/add-friend-dialog.tsx:215
+#: src/features/friends/components/add-friend-dialog.tsx:206
 msgid "Enter a name to find people you want to add"
 msgstr "Wpisz nazwę, aby znaleźć osoby, które chcesz dodać"
 
-#: src/features/friends/components/add-friend-dialog.tsx:195
+#: src/features/friends/components/add-friend-dialog.tsx:186
 msgid "Enter name to search..."
 msgstr "Wpisz nazwę, aby wyszukać..."
 
@@ -556,8 +584,8 @@ msgstr "Nie udało się zaakceptować zaproszenia"
 msgid "Failed to add account"
 msgstr "Nie udało się dodać konta"
 
-#: src/features/friends/components/add-friend-dialog.tsx:65
-#: src/features/friends/components/add-friend-dialog.tsx:80
+#: src/features/friends/components/add-friend-dialog.tsx:66
+#: src/features/friends/components/add-friend-dialog.tsx:81
 msgid "Failed to add friend"
 msgstr "Nie udało się dodać znajomego"
 
@@ -569,6 +597,10 @@ msgstr "Nie udało się dodać członka"
 #: src/features/invitations/index.tsx:95
 msgid "Failed to cancel invitation"
 msgstr "Nie udało się anulować zaproszenia"
+
+#: src/features/profile/index.tsx:202
+msgid "Failed to copy link"
+msgstr ""
 
 #: src/features/groups/group-dialog.tsx:73
 msgid "Failed to create group"
@@ -586,7 +618,7 @@ msgstr "Nie udało się usunąć grupy"
 msgid "Failed to remove account"
 msgstr "Nie udało się usunąć konta"
 
-#: src/features/friends/index.tsx:70
+#: src/features/friends/index.tsx:91
 msgid "Failed to remove friend"
 msgstr "Nie udało się usunąć znajomego"
 
@@ -598,15 +630,15 @@ msgstr "Nie udało się usunąć członka"
 msgid "Failed to save"
 msgstr "Nie udało się zapisać"
 
-#: src/features/profile/index.tsx:171
+#: src/features/profile/index.tsx:173
 msgid "Failed to save accent"
 msgstr "Nie udało się zapisać akcentu"
 
-#: src/features/profile/index.tsx:182
+#: src/features/profile/index.tsx:184
 msgid "Failed to save name"
 msgstr "Nie udało się zapisać nazwy"
 
-#: src/features/profile/index.tsx:164
+#: src/features/profile/index.tsx:166
 msgid "Failed to save profile"
 msgstr "Nie udało się zapisać profilu"
 
@@ -618,7 +650,7 @@ msgstr "Nie udało się wysłać kodu weryfikacyjnego"
 msgid "Failed to update category"
 msgstr "Nie udało się zaktualizować kategorii"
 
-#: src/features/profile/index.tsx:188
+#: src/features/profile/index.tsx:190
 msgid "Failed to update directory listing"
 msgstr "Nie udało się zaktualizować wpisu w katalogu"
 
@@ -626,17 +658,21 @@ msgstr "Nie udało się zaktualizować wpisu w katalogu"
 msgid "Failed to update group"
 msgstr "Nie udało się zaktualizować grupy"
 
-#: src/features/profile/index.tsx:466
+#: src/features/profile/index.tsx:491
 msgid "Failed to upload {slot}"
 msgstr "Nie udało się przesłać {slot}"
 
-#: src/features/profile/index.tsx:330
+#: src/features/profile/index.tsx:344
 msgid "Favicon"
 msgstr "Favicon"
 
-#: src/features/profile/index.tsx:446
+#: src/features/profile/index.tsx:471
 msgid "File too large"
 msgstr "Plik zbyt duży"
+
+#: src/features/profile/index.tsx:379
+msgid "Fingerprint"
+msgstr ""
 
 #: ../../../lib/web/src/components/restore-banner.tsx:79
 msgid "Finish moving your account"
@@ -651,8 +687,8 @@ msgid "Friday"
 msgstr "Piątek"
 
 #: src/components/layout/people-layout.tsx:60
-#: src/features/friends/index.tsx:26
-#: src/features/friends/index.tsx:89
+#: src/features/friends/index.tsx:40
+#: src/features/friends/index.tsx:114
 msgid "Friends"
 msgstr "Znajomi"
 
@@ -789,22 +825,26 @@ msgstr "Zaproszenie anulowane"
 msgid "Invitation declined"
 msgstr "Zaproszenie odrzucone"
 
-#: src/features/friends/components/add-friend-dialog.tsx:59
-#: src/features/friends/components/add-friend-dialog.tsx:306
+#: src/features/friends/components/add-friend-dialog.tsx:60
+#: src/features/friends/components/add-friend-dialog.tsx:297
 msgid "Invitation sent"
 msgstr "Zaproszenie wysłane"
 
 #: src/components/layout/people-layout.tsx:62
 #: src/features/invitations/index.tsx:29
-#: src/features/invitations/index.tsx:118
+#: src/features/invitations/index.tsx:179
 msgid "Invitations"
 msgstr "Zaproszenia"
+
+#: src/features/profile/index.tsx:198
+msgid "Invite link copied"
+msgstr ""
 
 #: src/features/invitations/invite-settings-dialog.tsx:63
 msgid "Invite policy updated"
 msgstr "Zaktualizowano politykę zaproszeń"
 
-#: src/features/invitations/index.tsx:123
+#: src/features/invitations/index.tsx:184
 msgid "Invite settings"
 msgstr "Ustawienia zaproszeń"
 
@@ -882,7 +922,7 @@ msgstr "Wylogowywanie…"
 msgid "Mark all as read"
 msgstr "Oznacz wszystkie jako przeczytane"
 
-#: src/features/profile/index.tsx:271
+#: src/features/profile/index.tsx:285
 msgid "Markdown supported"
 msgstr "Obsługa formatu Markdown"
 
@@ -919,15 +959,19 @@ msgid "Monday"
 msgstr "Poniedziałek"
 
 #: src/features/groups/group-dialog.tsx:93
-#: src/features/profile/index.tsx:398
+#: src/features/profile/index.tsx:423
 msgid "Name"
 msgstr "Nazwa"
+
+#: src/features/friends/index.tsx:177
+msgid "Name (A–Z)"
+msgstr ""
 
 #: src/features/groups/group-dialog.tsx:42
 msgid "Name is required"
 msgstr "Nazwa jest wymagana"
 
-#: src/features/profile/index.tsx:179
+#: src/features/profile/index.tsx:181
 msgid "Name saved"
 msgstr "Nazwa zapisana"
 
@@ -939,7 +983,7 @@ msgstr "Błąd sieci"
 msgid "New"
 msgstr "Nowy"
 
-#: src/features/invitations/index.tsx:176
+#: src/features/invitations/index.tsx:237
 msgid "New invitations will appear here"
 msgstr "Nowe zaproszenia pojawią się tutaj"
 
@@ -951,7 +995,7 @@ msgstr "Następny obraz"
 msgid "No access rules configured. Add rules to control who can access this resource."
 msgstr "Nie skonfigurowano żadnych reguł dostępu. Dodaj reguły, aby kontrolować, kto ma dostęp do tego zasobu."
 
-#: src/features/profile/index.tsx:201
+#: src/features/profile/index.tsx:215
 msgid "No banner set"
 msgstr "Nie ustawiono banera"
 
@@ -963,7 +1007,7 @@ msgstr "Brak połączonych kont"
 #~ msgid "No friends found"
 #~ msgstr "Nie znaleziono znajomych"
 
-#: src/features/friends/index.tsx:133
+#: src/features/friends/index.tsx:158
 msgid "No friends yet"
 msgstr ""
 
@@ -979,11 +1023,11 @@ msgstr "Brak członków"
 msgid "No other groups"
 msgstr "Brak innych grup"
 
-#: src/features/invitations/index.tsx:173
+#: src/features/invitations/index.tsx:234
 msgid "No pending invitations"
 msgstr "Brak oczekujących zaproszeń"
 
-#: src/features/friends/components/add-friend-dialog.tsx:239
+#: src/features/friends/components/add-friend-dialog.tsx:230
 #: src/features/groups/member-dialog.tsx:142
 msgid "No people found"
 msgstr "Nie znaleziono osób"
@@ -996,7 +1040,7 @@ msgstr "Nie znaleziono miejsc"
 msgid "No profile"
 msgstr "Brak profilu"
 
-#: src/features/friends/index.tsx:133
+#: src/features/friends/index.tsx:158
 msgid "No results for \"{search}\""
 msgstr ""
 
@@ -1087,7 +1131,7 @@ msgstr "Weryfikacja kluczem dostępu nie powiodła się. Spróbuj ponownie."
 msgid "Passkeys"
 msgstr "Klucze dostępu"
 
-#: src/features/invitations/index.tsx:262
+#: src/features/invitations/index.tsx:359
 msgid "Pending"
 msgstr "Oczekujące"
 
@@ -1099,12 +1143,12 @@ msgstr "Osoby"
 msgid "Please check your internet connection and try again."
 msgstr "Sprawdź połączenie internetowe i spróbuj ponownie."
 
-#: src/features/profile/index.tsx:366
+#: src/features/profile/index.tsx:391
 msgid "Preview"
 msgstr "Podgląd"
 
 #. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx:170
+#: src/features/friends/components/add-friend-dialog.tsx:173
 msgid "Preview {0}'s profile before sending a friend request."
 msgstr "Podejrzyj profil {0} przed wysłaniem zaproszenia do znajomych."
 
@@ -1120,20 +1164,20 @@ msgstr "Prywatność"
 #: ../../../lib/web/src/components/layout/nav-user.tsx:134
 #: ../../../lib/web/src/components/profile-dropdown.tsx:111
 #: src/components/layout/people-layout.tsx:59
-#: src/features/profile/index.tsx:50
-#: src/features/profile/index.tsx:58
-#: src/features/profile/index.tsx:69
-#: src/features/profile/index.tsx:79
-#: src/features/profile/index.tsx:266
+#: src/features/profile/index.tsx:52
+#: src/features/profile/index.tsx:60
+#: src/features/profile/index.tsx:71
+#: src/features/profile/index.tsx:81
+#: src/features/profile/index.tsx:280
 #: src/features/profile/public.tsx:46
 msgid "Profile"
 msgstr "Profil"
 
-#: src/features/profile/index.tsx:374
+#: src/features/profile/index.tsx:399
 msgid "Profile preview"
 msgstr "Podgląd profilu"
 
-#: src/features/profile/index.tsx:163
+#: src/features/profile/index.tsx:165
 msgid "Profile saved"
 msgstr "Zapisano profil"
 
@@ -1146,9 +1190,13 @@ msgid "Re-register your passkeys on this server"
 msgstr "Zarejestruj ponownie swoje klucze dostępu na tym serwerze"
 
 #. placeholder {0}: filteredReceived.length
-#: src/features/invitations/index.tsx:186
+#: src/features/invitations/index.tsx:248
 msgid "Received ({0})"
 msgstr "Otrzymane ({0})"
+
+#: src/features/friends/index.tsx:180
+msgid "Recently added"
+msgstr ""
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
 #: ../../../lib/web/src/components/search-entity-page.tsx:191
@@ -1181,7 +1229,7 @@ msgid "Remove"
 msgstr "Usuń"
 
 #. placeholder {0}: friend.name
-#: src/features/friends/index.tsx:167
+#: src/features/friends/index.tsx:219
 msgid "Remove {0}"
 msgstr "Usuń {0}"
 
@@ -1201,8 +1249,8 @@ msgstr "Usuń regułę dostępu"
 msgid "Remove access?"
 msgstr "Usunąć dostęp?"
 
-#: src/features/friends/index.tsx:190
-#: src/features/friends/index.tsx:200
+#: src/features/friends/index.tsx:258
+#: src/features/friends/index.tsx:269
 msgid "Remove friend"
 msgstr "Usuń znajomego"
 
@@ -1218,7 +1266,7 @@ msgstr "Usuń członka"
 msgid "Remove Member"
 msgstr "Usuń członka"
 
-#: src/features/friends/index.tsx:200
+#: src/features/friends/index.tsx:269
 #: src/features/groups/group-detail.tsx:253
 msgid "Removing..."
 msgstr "Usuwanie..."
@@ -1251,9 +1299,9 @@ msgstr "Sobota"
 #: ../../../lib/web/src/components/ui/secret-field.tsx:74
 #: src/features/groups/group-dialog.tsx:119
 #: src/features/invitations/invite-settings-dialog.tsx:113
-#: src/features/profile/index.tsx:296
-#: src/features/profile/index.tsx:316
-#: src/features/profile/index.tsx:418
+#: src/features/profile/index.tsx:310
+#: src/features/profile/index.tsx:330
+#: src/features/profile/index.tsx:443
 msgid "Save"
 msgstr "Zapisz"
 
@@ -1261,9 +1309,9 @@ msgstr "Zapisz"
 msgid "Saving..."
 msgstr "Zapisywanie..."
 
-#: src/features/profile/index.tsx:296
-#: src/features/profile/index.tsx:316
-#: src/features/profile/index.tsx:418
+#: src/features/profile/index.tsx:310
+#: src/features/profile/index.tsx:330
+#: src/features/profile/index.tsx:443
 msgid "Saving…"
 msgstr "Zapisywanie…"
 
@@ -1279,11 +1327,11 @@ msgstr "Szukaj celu..."
 msgid "Search for origin..."
 msgstr "Szukaj źródła..."
 
-#: src/features/friends/components/add-friend-dialog.tsx:171
+#: src/features/friends/components/add-friend-dialog.tsx:174
 msgid "Search for people and send a friend request."
 msgstr "Znajdź osoby i wyślij zaproszenie do znajomych."
 
-#: src/features/friends/index.tsx:98
+#: src/features/friends/index.tsx:123
 msgid "Search friends"
 msgstr "Szukaj znajomych"
 
@@ -1297,8 +1345,8 @@ msgid "Search users"
 msgstr "Szukaj użytkowników"
 
 #: ../../../lib/web/src/components/person-picker.tsx:323
-#: src/features/friends/index.tsx:97
-#: src/features/invitations/index.tsx:108
+#: src/features/friends/index.tsx:122
+#: src/features/invitations/index.tsx:169
 msgid "Search..."
 msgstr "Szukaj..."
 
@@ -1357,12 +1405,12 @@ msgstr "Wyślij ponownie"
 msgid "Send email"
 msgstr "Wyślij e-mail"
 
-#: src/features/friends/components/add-friend-dialog.tsx:155
+#: src/features/friends/components/add-friend-dialog.tsx:158
 msgid "Send invitation"
 msgstr "Wyślij zaproszenie"
 
 #. placeholder {0}: filteredSent.length
-#: src/features/invitations/index.tsx:242
+#: src/features/invitations/index.tsx:327
 msgid "Sent ({0})"
 msgstr "Wysłane ({0})"
 
@@ -1394,6 +1442,10 @@ msgstr "Ustaw źródło i cel"
 msgid "Settings"
 msgstr "Ustawienia"
 
+#: src/features/profile/index.tsx:199
+msgid "Share this link so others can find and add you."
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/load-more.tsx:36
 msgid "Showing {totalShown} of {total}"
 msgstr "Wyświetlanie {totalShown} z {total}"
@@ -1417,11 +1469,23 @@ msgstr "Przejdź do głównej"
 msgid "Small"
 msgstr "Mały"
 
+#: src/features/invitations/index.tsx:115
+msgid "Some invitations could not be accepted"
+msgstr ""
+
+#: src/features/invitations/index.tsx:153
+msgid "Some invitations could not be cancelled"
+msgstr ""
+
+#: src/features/invitations/index.tsx:134
+msgid "Some invitations could not be declined"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:94
 msgid "Spacious"
 msgstr "Przestronne"
 
-#: src/features/friends/components/add-friend-dialog.tsx:214
+#: src/features/friends/components/add-friend-dialog.tsx:205
 msgid "Start typing to search for users"
 msgstr "Zacznij pisać, aby wyszukać użytkowników"
 
@@ -1464,7 +1528,7 @@ msgstr "Regulamin"
 msgid "That code is incorrect or has expired."
 msgstr "Ten kod jest nieprawidłowy lub wygasł."
 
-#: src/features/friends/components/add-friend-dialog.tsx:291
+#: src/features/friends/components/add-friend-dialog.tsx:282
 msgid "That's you"
 msgstr "To ty"
 
@@ -1513,15 +1577,15 @@ msgstr "Góra"
 msgid "Travelling"
 msgstr "Podróż"
 
-#: src/features/friends/index.tsx:136
+#: src/features/friends/index.tsx:161
 msgid "Try a different name"
 msgstr ""
 
-#: src/features/friends/components/add-friend-dialog.tsx:240
+#: src/features/friends/components/add-friend-dialog.tsx:231
 msgid "Try a different search term"
 msgstr "Spróbuj innego wyrażenia wyszukiwania"
 
-#: src/features/invitations/index.tsx:176
+#: src/features/invitations/index.tsx:237
 msgid "Try adjusting your search"
 msgstr "Spróbuj dostosować wyszukiwanie"
 
@@ -1583,16 +1647,16 @@ msgstr "Stany Zjednoczone"
 msgid "Unverified"
 msgstr "Niezweryfikowane"
 
-#: src/features/profile/index.tsx:343
+#: src/features/profile/index.tsx:357
 msgid "Upload"
 msgstr "Prześlij"
 
-#: src/features/profile/index.tsx:238
+#: src/features/profile/index.tsx:252
 msgid "Upload avatar"
 msgstr "Prześlij awatar"
 
-#: src/features/profile/index.tsx:215
-#: src/features/profile/index.tsx:343
+#: src/features/profile/index.tsx:229
+#: src/features/profile/index.tsx:357
 msgid "Uploading…"
 msgstr "Przesyłanie…"
 
@@ -1664,7 +1728,7 @@ msgstr "Środa"
 msgid "You are now friends with {friendName}."
 msgstr "Jesteś teraz znajomym z {friendName}."
 
-#: src/features/friends/components/add-friend-dialog.tsx:75
+#: src/features/friends/components/add-friend-dialog.tsx:76
 msgid "You are now friends!"
 msgstr "Jesteście teraz znajomymi!"
 

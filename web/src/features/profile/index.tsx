@@ -5,7 +5,6 @@ import {
   ColourPicker,
   Dialog,
   DialogContent,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   EntityAvatar,
@@ -19,11 +18,12 @@ import {
   Switch,
   Textarea,
   getErrorMessage,
+  shellClipboardWrite,
   toast,
   useFormat,
   usePageTitle,
 } from '@mochi/web'
-import { Eye, Image as ImageIcon, Pencil, Save, Upload } from 'lucide-react'
+import { Check, Copy, Eye, Image as ImageIcon, Loader2, Pencil, Save, Upload, X } from 'lucide-react'
 import { ProfileView } from './profile-view'
 import {
   useMyIdentity,
@@ -137,7 +137,7 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
   useEffect(() => setAccent(info.style.accent ?? ''), [info.style.accent])
 
   const [previewOpen, setPreviewOpen] = useState(false)
-  const [nameDialogOpen, setNameDialogOpen] = useState(false)
+  const [editingName, setEditingName] = useState(false)
   const [nameDraft, setNameDraft] = useState(info.name)
   useEffect(() => setNameDraft(info.name), [info.name])
 
@@ -172,12 +172,22 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
     })
   }
 
+  const startNameEdit = () => {
+    setNameDraft(info.name)
+    setEditingName(true)
+  }
+
+  const cancelNameEdit = () => {
+    setEditingName(false)
+    setNameDraft(info.name)
+  }
+
   const handleSaveName = () => {
     if (!nameDirty) return
     nameMutation.mutate(nameTrimmed, {
       onSuccess: () => {
         toast.success(t`Name saved`)
-        setNameDialogOpen(false)
+        setEditingName(false)
       },
       onError: (err) => toast.error(getErrorMessage(err, t`Failed to save name`)),
     })
@@ -191,37 +201,39 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
 
 return (
     <div className="bg-card border-border overflow-hidden rounded-lg border shadow-sm">
-      <div className="relative" style={{ paddingBottom: 40 }}>
-        <div className="relative bg-muted overflow-hidden">
-          {bannerUrl ? (
-            <EntityBanner src={bannerUrl} aspectRatio="3 / 1" />
-          ) : (
-            <div className="flex aspect-[5/2] min-h-[100px] flex-col items-center justify-center gap-2 text-muted-foreground sm:aspect-[3/1]">
-              <ImageIcon className="size-8 opacity-30" />
-              <span className="text-xs opacity-50"><Trans>No banner set</Trans></span>
-            </div>
-          )}
-          <div className="absolute top-3 right-3">
-            <SlotUploader person={person} slot="banner">
-              {(open, pending) => (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={open}
-                  disabled={pending}
-                  className="shadow-md"
-                >
-                  <Upload className="size-3.5" />
-                  {pending ? t`Uploading…` : t`Change banner`}
-                </Button>
-              )}
-            </SlotUploader>
+      {/* ── Banner ─────────────────────────────────────────── */}
+      <div className="relative bg-muted overflow-hidden">
+        {bannerUrl ? (
+          <EntityBanner src={bannerUrl} aspectRatio="3 / 1" />
+        ) : (
+          <div className="flex aspect-[5/2] min-h-[100px] flex-col items-center justify-center gap-2 text-muted-foreground sm:aspect-[3/1]">
+            <ImageIcon className="size-8 opacity-30" />
+            <span className="text-xs opacity-50"><Trans>No banner set</Trans></span>
           </div>
+        )}
+        <div className="absolute top-3 right-3">
+          <SlotUploader person={person} slot="banner">
+            {(open, pending) => (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={open}
+                disabled={pending}
+                className="shadow-md"
+              >
+                <Upload className="size-3.5" />
+                {pending ? t`Uploading…` : t`Change banner`}
+              </Button>
+            )}
+          </SlotUploader>
         </div>
+      </div>
 
-        <div className="absolute bottom-0 left-5 right-5 flex items-end gap-3">
-          <div className="relative shrink-0" style={{ width: 80, height: 80 }}>
-            <div className="rounded-full ring-4 ring-card overflow-hidden size-full">
+      {/* ── Identity ───────────────────────────────────────── */}
+      <div className="px-5 pb-1">
+        <div className="flex items-start justify-between gap-3">
+          <div className="relative -mt-10 shrink-0" style={{ width: 80, height: 80 }}>
+            <div className="ring-card size-full overflow-hidden rounded-full ring-4">
               <EntityAvatar
                 src={avatarUrl}
                 name={info.name}
@@ -236,30 +248,82 @@ return (
                   onClick={open}
                   disabled={pending}
                   aria-label={t`Upload avatar`}
-                  className="absolute bottom-0 right-0 flex size-6 items-center justify-center rounded-full border border-border bg-muted text-muted-foreground shadow-sm transition-colors hover:bg-interactive-hover hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+                  className="border-border bg-muted text-muted-foreground hover:bg-interactive-hover hover:text-foreground focus-visible:ring-ring absolute bottom-0 right-0 flex size-6 items-center justify-center rounded-full border shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:opacity-50"
                 >
                   <Upload className="size-3" />
                 </button>
               )}
             </SlotUploader>
           </div>
-          <h1 className="min-w-0 translate-y-2 truncate text-2xl font-semibold">
-            {info.name}
-          </h1>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="translate-y-2"
-            onClick={() => setNameDialogOpen(true)}
-            aria-label={t`Edit name`}
-          >
-            <Pencil className="size-3.5" />
+          <Button variant="outline" className="mt-4 shrink-0" onClick={() => setPreviewOpen(true)}>
+            <Eye className="size-3.5" />
+            <Trans>Preview</Trans>
           </Button>
+        </div>
+        <div className="mt-2">
+          {editingName ? (
+            <div className="flex items-center gap-2">
+              <Input
+                value={nameDraft}
+                autoFocus
+                onChange={(e) => setNameDraft(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && nameDirty && !nameMutation.isPending) {
+                    e.preventDefault()
+                    handleSaveName()
+                  } else if (e.key === 'Escape') {
+                    cancelNameEdit()
+                  }
+                }}
+                onBlur={() => {
+                  if (!nameDirty) cancelNameEdit()
+                }}
+                className="h-10 max-w-xs text-xl font-semibold"
+              />
+              <Button
+                variant="ghost"
+                size="sm"
+                className="size-9 shrink-0 p-0"
+                onClick={handleSaveName}
+                disabled={!nameDirty || nameMutation.isPending}
+                aria-label={t`Save name`}
+              >
+                {nameMutation.isPending ? (
+                  <Loader2 className="size-4 animate-spin" />
+                ) : (
+                  <Check className="size-4" />
+                )}
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="size-9 shrink-0 p-0"
+                onClick={cancelNameEdit}
+                aria-label={t`Cancel`}
+              >
+                <X className="size-4" />
+              </Button>
+            </div>
+          ) : (
+            <div className="flex items-center gap-1">
+              <h1 className="min-w-0 truncate text-2xl font-semibold">{info.name}</h1>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="size-7 shrink-0 p-0"
+                onClick={startNameEdit}
+                aria-label={t`Edit name`}
+              >
+                <Pencil className="size-3.5" />
+              </Button>
+            </div>
+          )}
+          <FingerprintRow fingerprint={info.fingerprint} />
         </div>
       </div>
 
       {/* ── Main content ─────────────────────────────────────── */}
-      <div className="p-5 space-y-5">
+      <div className="p-5 space-y-6">
 
         {/* ── Bio ───────────────────────────────────────────── */}
         <div className="space-y-2">
@@ -298,73 +362,88 @@ return (
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {/* Accent colour */}
-          <div className="space-y-2 sm:col-span-2">
-            <p className="text-sm font-medium"><Trans>Accent</Trans></p>
-            <ColourPicker
-              value={accentValid ? accentTrimmed : ''}
-              onChange={setAccent}
-              onClear={() => setAccent('')}
-              actions={
-                <Button
-                  size="sm"
-                  disabled={!accentDirty || !accentValid || accentMutation.isPending}
-                  onClick={handleSaveAccent}
-                >
-                  <Save className="size-3.5" />
-                  {accentMutation.isPending ? t`Saving…` : t`Save`}
-                </Button>
-              }
-            />
+        {/* ── Appearance ────────────────────────────────────── */}
+        <div className="space-y-3 border-t border-border/60 pt-5">
+          <div>
+            <p className="text-sm font-medium"><Trans>Appearance</Trans></p>
+            <p className="text-muted-foreground text-xs">
+              <Trans>Personalise how your profile and app look to others.</Trans>
+            </p>
           </div>
-
-          {/* Favicon */}
-          <div className="space-y-2">
-            <p className="text-sm font-medium"><Trans>Browser icon</Trans></p>
-            <div className="flex flex-col items-start gap-2">
-              <div className="border-border flex size-8 shrink-0 items-center justify-center overflow-hidden border bg-muted">
-                {faviconUrl ? (
-                  <img
-                    src={faviconUrl}
-                    alt={t`Favicon`}
-                    className="size-full object-contain"
-                  />
-                ) : (
-                  <span className="text-muted-foreground text-xs font-medium">
-                    {info.name?.[0]?.toUpperCase() ?? '?'}
-                  </span>
-                )}
-              </div>
-              <SlotUploader person={person} slot="favicon">
-                {(open, pending) => (
-                  <Button variant="outline" size="sm" onClick={open} disabled={pending}>
-                    <Upload className="size-3.5" />
-                    {pending ? t`Uploading…` : t`Upload`}
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+            {/* Accent colour */}
+            <div className="space-y-2 sm:col-span-2">
+              <Label><Trans>Accent colour</Trans></Label>
+              <ColourPicker
+                collapsible
+                value={accentValid ? accentTrimmed : ''}
+                onChange={setAccent}
+                onClear={() => setAccent('')}
+                actions={
+                  <Button
+                    size="sm"
+                    disabled={!accentDirty || !accentValid || accentMutation.isPending}
+                    onClick={handleSaveAccent}
+                  >
+                    <Save className="size-3.5" />
+                    {accentMutation.isPending ? t`Saving…` : t`Save`}
                   </Button>
-                )}
-              </SlotUploader>
+                }
+              />
+            </div>
+
+            {/* Favicon */}
+            <div className="space-y-2">
+              <Label><Trans>Browser icon</Trans></Label>
+              <div className="flex items-center gap-3">
+                <div className="border-border flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-md border bg-muted">
+                  {faviconUrl ? (
+                    <img
+                      src={faviconUrl}
+                      alt={t`Favicon`}
+                      className="size-full object-contain"
+                    />
+                  ) : (
+                    <span className="text-muted-foreground text-sm font-medium">
+                      {info.name?.[0]?.toUpperCase() ?? '?'}
+                    </span>
+                  )}
+                </div>
+                <SlotUploader person={person} slot="favicon">
+                  {(open, pending) => (
+                    <Button variant="outline" size="sm" onClick={open} disabled={pending}>
+                      <Upload className="size-3.5" />
+                      {pending ? t`Uploading…` : t`Upload`}
+                    </Button>
+                  )}
+                </SlotUploader>
+              </div>
+              <p className="text-muted-foreground text-xs">
+                <Trans>Shown in browser tabs.</Trans>
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center gap-3 border-t border-border/40 pt-4">
-          <Label htmlFor="privacy-public" className="text-sm font-medium">
-            <Trans>Allow others to find you in directory</Trans>
-          </Label>
-          <Switch
-            id="privacy-public"
-            checked={info.privacy === 'public'}
-            onCheckedChange={handleTogglePrivacy}
-            disabled={privacyMutation.isPending}
-          />
-        </div>
-
-        <div className="flex justify-end">
-          <Button variant="outline" onClick={() => setPreviewOpen(true)}>
-            <Eye className="size-3.5" />
-            <Trans>Preview</Trans>
-          </Button>
+        {/* ── Privacy ───────────────────────────────────────── */}
+        <div className="space-y-3 border-t border-border/60 pt-5">
+          <p className="text-sm font-medium"><Trans>Privacy</Trans></p>
+          <div className="border-border/60 flex items-center justify-between gap-4 rounded-lg border p-3">
+            <div className="min-w-0 space-y-0.5">
+              <Label htmlFor="privacy-public" className="text-sm font-medium">
+                <Trans>Directory listing</Trans>
+              </Label>
+              <p className="text-muted-foreground text-xs">
+                <Trans>Allow others to find you in the directory.</Trans>
+              </p>
+            </div>
+            <Switch
+              id="privacy-public"
+              checked={info.privacy === 'public'}
+              onCheckedChange={handleTogglePrivacy}
+              disabled={privacyMutation.isPending}
+            />
+          </div>
         </div>
       </div>
 
@@ -382,45 +461,46 @@ return (
           />
         </DialogContent>
       </Dialog>
-
-      <Dialog
-        open={nameDialogOpen}
-        onOpenChange={(open) => {
-          setNameDialogOpen(open)
-          if (!open) setNameDraft(info.name)
-        }}
-      >
-        <DialogContent className="sm:max-w-[420px]">
-          <DialogHeader>
-            <DialogTitle><Trans>Edit name</Trans></DialogTitle>
-          </DialogHeader>
-          <div className="space-y-2 py-2">
-            <Label htmlFor="name-input"><Trans>Name</Trans></Label>
-            <Input
-              id="name-input"
-              value={nameDraft}
-              autoFocus
-              onChange={(e) => setNameDraft(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' && nameDirty && !nameMutation.isPending) {
-                  e.preventDefault()
-                  handleSaveName()
-                }
-              }}
-            />
-          </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setNameDialogOpen(false)}>
-              <Trans>Cancel</Trans>
-            </Button>
-            <Button onClick={handleSaveName} disabled={!nameDirty || nameMutation.isPending}>
-              <Save className="size-3.5" />
-              {nameMutation.isPending ? t`Saving…` : t`Save`}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
     </div>
+  )
+}
+
+function formatFingerprint(fingerprint: string): string {
+  if (!fingerprint || fingerprint.length !== 9) return fingerprint
+  return `${fingerprint.slice(0, 3)}-${fingerprint.slice(3, 6)}-${fingerprint.slice(6)}`
+}
+
+function FingerprintRow({ fingerprint }: { fingerprint: string }) {
+  const { t } = useLingui()
+  const [copied, setCopied] = useState(false)
+  const formatted = formatFingerprint(fingerprint)
+
+  if (!fingerprint) return null
+
+  const handleCopy = async () => {
+    const ok = await shellClipboardWrite(formatted)
+    if (ok) {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1500)
+    } else {
+      toast.error(t`Failed to copy`)
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      title={t`Copy your ID`}
+      className="group text-muted-foreground hover:text-foreground -ms-1 inline-flex items-center gap-1.5 rounded px-1 py-0.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+    >
+      <span className="font-mono text-xs">{formatted}</span>
+      {copied ? (
+        <Check className="text-primary size-3" />
+      ) : (
+        <Copy className="size-3 opacity-0 transition-opacity group-hover:opacity-100" />
+      )}
+    </button>
   )
 }
 

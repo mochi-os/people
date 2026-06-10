@@ -4,7 +4,7 @@ import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban, ArrowLeft } from 'lucide-react'
 import { cn, toast, getAppPath, getErrorMessage, GeneralError, Button, EntityAvatar, EntityBanner, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Input, EmptyState, ScrollArea, useScreenSize } from '@mochi/web'
-import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation } from '@/hooks/useFriends'
+import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation, useFriendsQuery } from '@/hooks/useFriends'
 import { personApi } from '@/api/person'
 import type { PersonInformation } from '@/api/types/person'
 
@@ -31,13 +31,18 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
   const [pendingUserId, setPendingUserId] = useState<string | null>(null)
   const [preview, setPreview] = useState<PreviewState | null>(null)
   const { isMobile } = useScreenSize()
+  const { data: friendsData } = useFriendsQuery()
+  const sentUserIds = useMemo(
+    () => new Set((friendsData?.sent ?? []).map((s) => s.id)),
+    [friendsData?.sent]
+  )
 
 
   // Debounce search query
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedQuery(searchQuery)
-    }, 500) // 500ms debounce
+    }, 300)
 
     return () => clearTimeout(timer)
   }, [searchQuery])
@@ -168,7 +173,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
         </ResponsiveDialogHeader>
 
         {preview ? (
-          <FriendPreview info={preview.info} />
+            <FriendPreview info={preview.info} />
         ) : (
           <div className='space-y-4 px-4 pb-4 sm:px-0 sm:pb-0'>
             <div className='space-y-2'>
@@ -228,10 +233,9 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                 {viewState === 'results' && (
                   <div className='space-y-1'>
                     {users.map((user) => {
-                      const sessionInvited = invitedUserIds.has(user.id)
+                      const sessionInvited = invitedUserIds.has(user.id) || sentUserIds.has(user.id)
                       const isPendingForThisUser = pendingUserId === user.id
 
-                      // Determine the effective status considering both API response and session state
                       const status = sessionInvited ? 'invited' : (user.relationshipStatus ?? 'none')
 
                       // Determine if button should be disabled

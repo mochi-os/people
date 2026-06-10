@@ -74,7 +74,11 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
   }
 
   const handleStartChat = (friendId: string, friendName: string) => {
-    const base = import.meta.env.VITE_APP_CHAT_URL ?? APP_ROUTES.CHAT.HOME
+    const base = import.meta.env.VITE_APP_CHAT_URL || APP_ROUTES.CHAT.HOME
+    if (!base) {
+      toast.error(t`Chat is not configured`)
+      return
+    }
     const url = `${base}?with=${encodeURIComponent(friendId)}&name=${encodeURIComponent(friendName)}`
     shellNavigateExternal(url)
   }
@@ -126,10 +130,10 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
         ) : error && !friendsData ? null : filteredFriends.length === 0 ? (
           <EmptyState
             icon={Users}
-            title={t`No friends found`}
+            title={search ? t`No results for "${search}"` : t`No friends yet`}
             description={
               search
-                ? t`Try adjusting your search` : t`Add friends to start connecting`
+                ? t`Try a different name` : t`Add friends to start connecting`
             }
           />
         ) : (
@@ -145,7 +149,9 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
                   name={friend.name}
                   size="lg"
                 />
-                <span className='flex-1 truncate font-medium'>{friend.name}</span>
+                <span className='flex-1 truncate font-medium'>
+                  <HighlightText text={friend.name} query={search} />
+                </span>
                 <div className='flex items-center gap-2'>
                   <Button
                     variant='outline'
@@ -197,6 +203,19 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
           isLoading={removeFriendMutation.isPending}
         />
       </Main>
+    </>
+  )
+}
+
+function HighlightText({ text, query }: { text: string; query: string }) {
+  if (!query.trim()) return <>{text}</>
+  const i = text.toLowerCase().indexOf(query.toLowerCase())
+  if (i === -1) return <>{text}</>
+  return (
+    <>
+      <span className='text-muted-foreground'>{text.slice(0, i)}</span>
+      {text.slice(i, i + query.length)}
+      <span className='text-muted-foreground'>{text.slice(i + query.length)}</span>
     </>
   )
 }

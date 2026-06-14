@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
+import { Check } from 'lucide-react'
 import {
   Button,
   Dialog,
@@ -110,6 +111,7 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
             <Trans>Cancel</Trans>
           </Button>
           <Button onClick={handleSave} disabled={setPolicy.isPending || isLoading}>
+            <Check className='size-4' />
             <Trans>Save</Trans>
           </Button>
         </DialogFooter>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { User, UsersRound, Search } from 'lucide-react'
+import { User, UsersRound, Search, Loader2, UserPlus } from 'lucide-react'
 import { toast, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, EntityAvatar, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, getAppPath, getErrorMessage, EmptyState, GeneralError } from '@mochi/web'
 import {
   useAddGroupMemberMutation,
@@ -239,6 +239,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
             <Trans>Cancel</Trans>
           </Button>
           <Button onClick={handleAddMember} disabled={!canAdd || addMemberMutation.isPending}>
+            {addMemberMutation.isPending ? <Loader2 className='size-4 animate-spin' /> : <UserPlus className='size-4' />}
             {addMemberMutation.isPending ? t`Adding...` : t`Add member`}
           </Button>
         </ResponsiveDialogFooter>

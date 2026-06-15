@@ -3,7 +3,7 @@ import { Trans, useLingui } from '@lingui/react/macro'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban, ArrowLeft } from 'lucide-react'
-import { cn, toast, getAppPath, getErrorMessage, GeneralError, Button, EntityAvatar, EntityBanner, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Input, EmptyState, ScrollArea, useScreenSize } from '@mochi/web'
+import { cn, toast, getAppPath, getErrorMessage, GeneralError, Button, EntityAvatar, EntityBanner, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, SearchInput, EmptyState, ScrollArea, useScreenSize } from '@mochi/web'
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation, useFriendsQuery } from '@/hooks/useFriends'
 import { personApi } from '@/api/person'
 import type { PersonInformation } from '@/api/types/person'
@@ -177,16 +177,13 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
         ) : (
           <div className='space-y-4 px-4 pb-4 sm:px-0 sm:pb-0'>
             <div className='space-y-2'>
-              <div className='relative'>
-                <Search className='text-muted-foreground pointer-events-none absolute top-1/2 start-3 h-4 w-4 -translate-y-1/2 transform' />
-                <Input
-                  placeholder={t`Enter name to search...`}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className='ps-9'
-                  autoFocus={!isMobile}
-                />
-              </div>
+              <SearchInput
+                placeholder={t`Enter name to search...`}
+                value={searchQuery}
+                onValueChange={setSearchQuery}
+                clearLabel={t`Clear search`}
+                autoFocus={!isMobile}
+              />
             </div>
 
             <ScrollArea

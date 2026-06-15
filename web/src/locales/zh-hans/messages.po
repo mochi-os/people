@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/features/profile/index.tsx:465
+#: src/features/profile/index.tsx:545
 msgid "{slotLabel} updated"
 msgstr "{slotLabel} 已更新"
 
@@ -26,7 +26,7 @@ msgid "24 hours"
 msgstr "24 小时"
 
 #. placeholder {0}: variables.name
-#: src/features/friends/components/add-friend-dialog.tsx:55
+#: src/features/friends/components/add-friend-dialog.tsx:60
 msgid "A friend invitation has been sent to {0}."
 msgstr "已向 {0} 发送好友邀请。"
 
@@ -35,23 +35,31 @@ msgid "Absolute (date and time)"
 msgstr "绝对(日期和时间)"
 
 #: src/features/profile/index.tsx:304
-msgid "Accent"
-msgstr "强调色"
+#~ msgid "Accent"
+#~ msgstr "强调色"
+
+#: src/features/profile/index.tsx:376
+msgid "Accent colour"
+msgstr ""
 
 #: src/features/profile/index.tsx:170
 msgid "Accent saved"
 msgstr "强调色已保存"
 
-#: src/features/friends/components/add-friend-dialog.tsx:149
-#: src/features/invitations/index.tsx:217
+#: src/features/friends/components/add-friend-dialog.tsx:154
+#: src/features/invitations/index.tsx:301
 msgid "Accept"
 msgstr "接受"
 
-#: src/features/invitations/invite-settings-dialog.tsx:48
+#: src/features/invitations/index.tsx:267
+msgid "Accept all"
+msgstr ""
+
+#: src/features/invitations/invite-settings-dialog.tsx:49
 msgid "Accept automatically"
 msgstr "自动接受"
 
-#: src/features/friends/components/add-friend-dialog.tsx:296
+#: src/features/friends/components/add-friend-dialog.tsx:297
 msgid "Accept invite"
 msgstr "接受邀请"
 
@@ -104,22 +112,22 @@ msgstr "添加账户"
 msgid "Add an account to receive notifications and use services."
 msgstr "添加账户以接收通知并使用服务。"
 
-#: src/features/friends/components/add-friend-dialog.tsx:161
-#: src/features/friends/components/add-friend-dialog.tsx:304
-#: src/features/friends/index.tsx:97
-#: src/features/friends/index.tsx:109
-#: src/features/invitations/index.tsx:128
+#: src/features/friends/components/add-friend-dialog.tsx:166
+#: src/features/friends/components/add-friend-dialog.tsx:305
+#: src/features/friends/index.tsx:112
+#: src/features/friends/index.tsx:124
+#: src/features/invitations/index.tsx:189
 msgid "Add friend"
 msgstr "添加好友"
 
-#: src/features/friends/index.tsx:132
+#: src/features/friends/index.tsx:148
 msgid "Add friends to start connecting"
 msgstr "添加好友以开始联系"
 
 #: src/features/groups/group-detail.tsx:121
 #: src/features/groups/member-dialog.tsx:87
 #: src/features/groups/member-dialog.tsx:89
-#: src/features/groups/member-dialog.tsx:242
+#: src/features/groups/member-dialog.tsx:243
 msgid "Add member"
 msgstr "添加成员"
 
@@ -143,7 +151,8 @@ msgstr "添加到现有通知"
 msgid "Add users or groups to get started"
 msgstr "添加用户或群组以开始使用"
 
-#: ../../../lib/web/src/components/view-tabs.tsx:57
+#: ../../../lib/web/src/components/view-tabs.tsx:54
+#: ../../../lib/web/src/components/view-tabs.tsx:55
 msgid "Add view"
 msgstr "添加视图"
 
@@ -154,9 +163,9 @@ msgstr "添加视图"
 msgid "Added {0} to the group"
 msgstr "已将 {0} 添加到群组"
 
-#: src/features/friends/components/add-friend-dialog.tsx:265
-#: src/features/friends/components/add-friend-dialog.tsx:367
-#: src/features/groups/member-dialog.tsx:242
+#: src/features/friends/components/add-friend-dialog.tsx:266
+#: src/features/friends/components/add-friend-dialog.tsx:368
+#: src/features/groups/member-dialog.tsx:243
 msgid "Adding..."
 msgstr "添加中..."
 
@@ -176,16 +185,32 @@ msgstr "全部"
 msgid "All available groups are already added"
 msgstr "所有可用群组均已添加"
 
-#: src/features/invitations/invite-settings-dialog.tsx:49
+#: src/features/invitations/index.tsx:117
+msgid "All invitations accepted"
+msgstr ""
+
+#: src/features/invitations/index.tsx:155
+msgid "All invitations cancelled"
+msgstr ""
+
+#: src/features/invitations/index.tsx:136
+msgid "All invitations declined"
+msgstr ""
+
+#: src/features/invitations/invite-settings-dialog.tsx:50
 msgid "All invites are accepted without your approval."
 msgstr "所有邀请将自动接受,无需你的批准。"
 
 #: src/features/profile/index.tsx:353
-msgid "Allow others to find you in directory"
-msgstr "允许他人在目录中找到你"
+#~ msgid "Allow others to find you in directory"
+#~ msgstr "允许他人在目录中找到你"
 
-#: src/features/friends/components/add-friend-dialog.tsx:69
-#: src/features/friends/components/add-friend-dialog.tsx:282
+#: src/features/profile/index.tsx:437
+msgid "Allow others to find you in the directory."
+msgstr ""
+
+#: src/features/friends/components/add-friend-dialog.tsx:74
+#: src/features/friends/components/add-friend-dialog.tsx:283
 msgid "Already friends"
 msgstr "已是好友"
 
@@ -197,6 +222,10 @@ msgstr "发生错误"
 msgid "An unexpected error occurred"
 msgstr "发生意外错误"
 
+#: src/features/profile/index.tsx:368
+msgid "Appearance"
+msgstr ""
+
 #: ../../../lib/web/src/components/sign-out-dialog.tsx:24
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
 msgstr "确定要退出登录吗?你需要重新登录才能访问账户。"
@@ -207,7 +236,7 @@ msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "确定要将 <0>{0}</0> 从此群组中移除吗?"
 
 #. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx:186
+#: src/features/friends/index.tsx:225
 msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
 msgstr "确定要将 <0>{0}</0> 从好友列表中移除吗？此操作无法撤销。"
 
@@ -220,7 +249,7 @@ msgid "Authenticator code"
 msgstr "身份验证码"
 
 #: ../../../lib/web/src/components/place-picker.tsx:152
-#: src/features/friends/components/add-friend-dialog.tsx:362
+#: src/features/friends/components/add-friend-dialog.tsx:363
 msgid "Back"
 msgstr "返回"
 
@@ -238,7 +267,7 @@ msgstr "返回首页"
 msgid "Boost interest"
 msgstr "提升兴趣"
 
-#: src/features/profile/index.tsx:324
+#: src/features/profile/index.tsx:397
 msgid "Browser icon"
 msgstr "浏览器图标"
 
@@ -252,11 +281,15 @@ msgstr "浏览器图标"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:86
 #: src/features/groups/group-dialog.tsx:116
 #: src/features/groups/member-dialog.tsx:239
-#: src/features/invitations/index.tsx:273
-#: src/features/invitations/invite-settings-dialog.tsx:110
-#: src/features/profile/index.tsx:414
+#: src/features/invitations/index.tsx:370
+#: src/features/invitations/invite-settings-dialog.tsx:111
+#: src/features/profile/index.tsx:302
 msgid "Cancel"
 msgstr "取消"
+
+#: src/features/invitations/index.tsx:337
+msgid "Cancel all"
+msgstr ""
 
 #: src/features/invitations/index.tsx:91
 msgid "Cancelled invitation to {friendName}."
@@ -266,7 +299,7 @@ msgstr "已取消对 {friendName} 的邀请。"
 msgid "Category for this notification"
 msgstr "该通知的分类"
 
-#: src/features/profile/index.tsx:215
+#: src/features/profile/index.tsx:225
 msgid "Change banner"
 msgstr "更换横幅"
 
@@ -274,9 +307,13 @@ msgstr "更换横幅"
 msgid "Change notification category"
 msgstr "更改通知分类"
 
-#: src/features/friends/index.tsx:156
+#: src/features/friends/index.tsx:193
 msgid "Chat"
 msgstr "聊天"
+
+#: src/features/friends/index.tsx:90
+msgid "Chat is not configured"
+msgstr ""
 
 #: ../../../lib/web/src/components/config-drawer.tsx:315
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
@@ -311,6 +348,10 @@ msgstr "全部清除"
 msgid "Clear filters"
 msgstr "清除筛选"
 
+#: src/features/friends/components/add-friend-dialog.tsx:184
+msgid "Clear search"
+msgstr ""
+
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:164
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
 msgid "Clear selection"
@@ -323,7 +364,7 @@ msgstr "清除选择(Esc)"
 #: ../../../lib/web/src/components/ui/dialog.tsx:75
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:321
 #: ../../../lib/web/src/components/ui/sheet.tsx:76
-#: src/features/friends/components/add-friend-dialog.tsx:384
+#: src/features/friends/components/add-friend-dialog.tsx:385
 msgid "Close"
 msgstr "关闭"
 
@@ -356,8 +397,8 @@ msgstr "即将推出!"
 msgid "Compact"
 msgstr "紧凑"
 
-#: ../../../lib/web/src/components/place-picker.tsx:155
-#: ../../../lib/web/src/components/travelling-picker.tsx:299
+#: ../../../lib/web/src/components/place-picker.tsx:156
+#: ../../../lib/web/src/components/travelling-picker.tsx:300
 msgid "Confirm"
 msgstr "确认"
 
@@ -381,6 +422,10 @@ msgstr "使用 {label} 继续"
 msgid "Copy"
 msgstr "复制"
 
+#: src/features/profile/index.tsx:494
+msgid "Copy your ID"
+msgstr ""
+
 #: src/features/groups/group-detail.tsx:158
 msgid "Core information about this group"
 msgstr "关于此群组的核心信息"
@@ -389,7 +434,7 @@ msgstr "关于此群组的核心信息"
 msgid "Could not load this document. Please try again later."
 msgstr "无法加载此文档。请稍后重试。"
 
-#: src/features/profile/index.tsx:458
+#: src/features/profile/index.tsx:538
 msgid "Could not process {slot} image"
 msgstr "无法处理 {slot} 图片"
 
@@ -429,9 +474,13 @@ msgstr "深色"
 msgid "Dark mode"
 msgstr "深色模式"
 
-#: src/features/invitations/index.tsx:228
+#: src/features/invitations/index.tsx:312
 msgid "Decline"
 msgstr "拒绝"
+
+#: src/features/invitations/index.tsx:259
+msgid "Decline all"
+msgstr ""
 
 #: src/features/invitations/index.tsx:75
 msgid "Declined invitation from {friendName}."
@@ -491,6 +540,10 @@ msgstr "从浏览器检测"
 msgid "Direction"
 msgstr "方向"
 
+#: src/features/profile/index.tsx:434
+msgid "Directory listing"
+msgstr ""
+
 #: ../../../lib/web/src/components/restore-banner.tsx:73
 msgid "Dismiss"
 msgstr "关闭"
@@ -516,8 +569,7 @@ msgstr "编辑"
 msgid "Edit group"
 msgstr "编辑群组"
 
-#: src/features/profile/index.tsx:254
-#: src/features/profile/index.tsx:395
+#: src/features/profile/index.tsx:315
 msgid "Edit name"
 msgstr "编辑名称"
 
@@ -525,11 +577,11 @@ msgstr "编辑名称"
 msgid "Email code"
 msgstr "邮箱验证码"
 
-#: src/features/friends/components/add-friend-dialog.tsx:198
+#: src/features/friends/components/add-friend-dialog.tsx:200
 msgid "Enter a name to find people you want to add"
 msgstr "输入姓名以查找您要添加的人"
 
-#: src/features/friends/components/add-friend-dialog.tsx:178
+#: src/features/friends/components/add-friend-dialog.tsx:181
 msgid "Enter name to search..."
 msgstr "输入姓名搜索..."
 
@@ -557,8 +609,8 @@ msgstr "接受邀请失败"
 msgid "Failed to add account"
 msgstr "添加账户失败"
 
-#: src/features/friends/components/add-friend-dialog.tsx:60
-#: src/features/friends/components/add-friend-dialog.tsx:75
+#: src/features/friends/components/add-friend-dialog.tsx:65
+#: src/features/friends/components/add-friend-dialog.tsx:80
 msgid "Failed to add friend"
 msgstr "添加好友失败"
 
@@ -570,6 +622,10 @@ msgstr "添加成员失败"
 #: src/features/invitations/index.tsx:95
 msgid "Failed to cancel invitation"
 msgstr "取消邀请失败"
+
+#: src/features/profile/index.tsx:486
+msgid "Failed to copy"
+msgstr ""
 
 #: src/features/groups/group-dialog.tsx:73
 msgid "Failed to create group"
@@ -587,7 +643,7 @@ msgstr "删除群组失败"
 msgid "Failed to remove account"
 msgstr "移除账户失败"
 
-#: src/features/friends/index.tsx:70
+#: src/features/friends/index.tsx:81
 msgid "Failed to remove friend"
 msgstr "移除好友失败"
 
@@ -595,7 +651,7 @@ msgstr "移除好友失败"
 msgid "Failed to remove member"
 msgstr "移除成员失败"
 
-#: src/features/invitations/invite-settings-dialog.tsx:67
+#: src/features/invitations/invite-settings-dialog.tsx:68
 msgid "Failed to save"
 msgstr "保存失败"
 
@@ -603,7 +659,7 @@ msgstr "保存失败"
 msgid "Failed to save accent"
 msgstr "保存强调色失败"
 
-#: src/features/profile/index.tsx:182
+#: src/features/profile/index.tsx:192
 msgid "Failed to save name"
 msgstr "保存名称失败"
 
@@ -619,7 +675,7 @@ msgstr "发送验证码失败"
 msgid "Failed to update category"
 msgstr "更新分类失败"
 
-#: src/features/profile/index.tsx:188
+#: src/features/profile/index.tsx:198
 msgid "Failed to update directory listing"
 msgstr "更新目录列表失败"
 
@@ -627,15 +683,15 @@ msgstr "更新目录列表失败"
 msgid "Failed to update group"
 msgstr "更新群组失败"
 
-#: src/features/profile/index.tsx:466
+#: src/features/profile/index.tsx:546
 msgid "Failed to upload {slot}"
 msgstr "上传 {slot} 失败"
 
-#: src/features/profile/index.tsx:330
+#: src/features/profile/index.tsx:403
 msgid "Favicon"
 msgstr "网站图标"
 
-#: src/features/profile/index.tsx:446
+#: src/features/profile/index.tsx:526
 msgid "File too large"
 msgstr "文件过大"
 
@@ -652,8 +708,8 @@ msgid "Friday"
 msgstr "星期五"
 
 #: src/components/layout/people-layout.tsx:60
-#: src/features/friends/index.tsx:26
-#: src/features/friends/index.tsx:85
+#: src/features/friends/index.tsx:35
+#: src/features/friends/index.tsx:100
 msgid "Friends"
 msgstr "好友"
 
@@ -762,7 +818,7 @@ msgstr "身份"
 msgid "Imperial"
 msgstr "英制"
 
-#: src/features/invitations/invite-settings-dialog.tsx:76
+#: src/features/invitations/invite-settings-dialog.tsx:77
 msgid "Incoming invitations"
 msgstr "收到的邀请"
 
@@ -790,34 +846,34 @@ msgstr "已取消邀请"
 msgid "Invitation declined"
 msgstr "已拒绝邀请"
 
-#: src/features/friends/components/add-friend-dialog.tsx:54
-#: src/features/friends/components/add-friend-dialog.tsx:290
+#: src/features/friends/components/add-friend-dialog.tsx:59
+#: src/features/friends/components/add-friend-dialog.tsx:291
 msgid "Invitation sent"
 msgstr "邀请已发送"
 
 #: src/components/layout/people-layout.tsx:62
 #: src/features/invitations/index.tsx:29
-#: src/features/invitations/index.tsx:118
+#: src/features/invitations/index.tsx:179
 msgid "Invitations"
 msgstr "邀请"
 
-#: src/features/invitations/invite-settings-dialog.tsx:63
+#: src/features/invitations/invite-settings-dialog.tsx:64
 msgid "Invite policy updated"
 msgstr "邀请策略已更新"
 
-#: src/features/invitations/index.tsx:123
+#: src/features/invitations/index.tsx:184
 msgid "Invite settings"
 msgstr "邀请设置"
 
-#: src/features/invitations/invite-settings-dialog.tsx:34
+#: src/features/invitations/invite-settings-dialog.tsx:35
 msgid "Invites appear in invitations and you are sent a notification (default)."
 msgstr "邀请会出现在邀请列表中,并向你发送通知(默认)。"
 
-#: src/features/invitations/invite-settings-dialog.tsx:39
+#: src/features/invitations/invite-settings-dialog.tsx:40
 msgid "Invites appear in invitations. No notification is sent."
 msgstr "邀请会出现在邀请列表中,但不发送通知。"
 
-#: src/features/invitations/invite-settings-dialog.tsx:44
+#: src/features/invitations/invite-settings-dialog.tsx:45
 msgid "Invites from unknown senders are dropped. Mutual invites still connect."
 msgstr "来自陌生人的邀请将被丢弃。互相邀请仍可建立连接。"
 
@@ -883,7 +939,7 @@ msgstr "正在退出登录…"
 msgid "Mark all as read"
 msgstr "全部标为已读"
 
-#: src/features/profile/index.tsx:271
+#: src/features/profile/index.tsx:335
 msgid "Markdown supported"
 msgstr "支持 Markdown"
 
@@ -920,15 +976,18 @@ msgid "Monday"
 msgstr "星期一"
 
 #: src/features/groups/group-dialog.tsx:93
-#: src/features/profile/index.tsx:398
 msgid "Name"
 msgstr "名称"
+
+#: src/features/friends/index.tsx:163
+msgid "Name (A–Z)"
+msgstr ""
 
 #: src/features/groups/group-dialog.tsx:42
 msgid "Name is required"
 msgstr "名称为必填项"
 
-#: src/features/profile/index.tsx:179
+#: src/features/profile/index.tsx:189
 msgid "Name saved"
 msgstr "名称已保存"
 
@@ -940,7 +999,7 @@ msgstr "网络错误"
 msgid "New"
 msgstr "新建"
 
-#: src/features/invitations/index.tsx:176
+#: src/features/invitations/index.tsx:237
 msgid "New invitations will appear here"
 msgstr "新的邀请将显示在此处"
 
@@ -952,7 +1011,7 @@ msgstr "下一张图片"
 msgid "No access rules configured. Add rules to control who can access this resource."
 msgstr "尚未配置访问规则。添加规则以控制谁可以访问此资源。"
 
-#: src/features/profile/index.tsx:201
+#: src/features/profile/index.tsx:211
 msgid "No banner set"
 msgstr "未设置横幅"
 
@@ -961,8 +1020,12 @@ msgid "No connected accounts"
 msgstr "无已连接的账户"
 
 #: src/features/friends/index.tsx:129
-msgid "No friends found"
-msgstr "未找到好友"
+#~ msgid "No friends found"
+#~ msgstr "未找到好友"
+
+#: src/features/friends/index.tsx:144
+msgid "No friends yet"
+msgstr ""
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:238
 msgid "No groups available"
@@ -976,11 +1039,11 @@ msgstr "无成员"
 msgid "No other groups"
 msgstr "无其他群组"
 
-#: src/features/invitations/index.tsx:173
+#: src/features/invitations/index.tsx:234
 msgid "No pending invitations"
 msgstr "无待处理的邀请"
 
-#: src/features/friends/components/add-friend-dialog.tsx:222
+#: src/features/friends/components/add-friend-dialog.tsx:224
 #: src/features/groups/member-dialog.tsx:142
 msgid "No people found"
 msgstr "未找到任何人"
@@ -992,6 +1055,10 @@ msgstr "未找到地点"
 #: ../../../lib/web/src/components/profile-dropdown.tsx:55
 msgid "No profile"
 msgstr "无资料"
+
+#: src/features/friends/index.tsx:144
+msgid "No results for \"{search}\""
+msgstr ""
 
 #: ../../../lib/web/src/components/command-menu.tsx:52
 #: ../../../lib/web/src/components/data-table/faceted-filter.tsx:87
@@ -1026,7 +1093,7 @@ msgstr "标准"
 msgid "Notifications"
 msgstr "通知"
 
-#: src/features/invitations/invite-settings-dialog.tsx:33
+#: src/features/invitations/invite-settings-dialog.tsx:34
 msgid "Notify me"
 msgstr "通知我"
 
@@ -1080,7 +1147,7 @@ msgstr "通行密钥验证失败。请重试。"
 msgid "Passkeys"
 msgstr "通行密钥"
 
-#: src/features/invitations/index.tsx:262
+#: src/features/invitations/index.tsx:359
 msgid "Pending"
 msgstr "待处理"
 
@@ -1088,16 +1155,20 @@ msgstr "待处理"
 msgid "People"
 msgstr "人员"
 
+#: src/features/profile/index.tsx:370
+msgid "Personalise how your profile and app look to others."
+msgstr ""
+
 #: ../../../lib/web/src/lib/api-client.ts:298
 msgid "Please check your internet connection and try again."
 msgstr "请检查您的网络连接后重试。"
 
-#: src/features/profile/index.tsx:366
+#: src/features/profile/index.tsx:260
 msgid "Preview"
 msgstr "预览"
 
 #. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx:165
+#: src/features/friends/components/add-friend-dialog.tsx:170
 msgid "Preview {0}'s profile before sending a friend request."
 msgstr "在发送好友请求前预览 {0} 的个人资料。"
 
@@ -1107,6 +1178,7 @@ msgstr "上一张图片"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx:24
 #: ../../../lib/web/src/features/document/document-page.tsx:41
+#: src/features/profile/index.tsx:430
 msgid "Privacy"
 msgstr "隐私"
 
@@ -1117,12 +1189,12 @@ msgstr "隐私"
 #: src/features/profile/index.tsx:58
 #: src/features/profile/index.tsx:69
 #: src/features/profile/index.tsx:79
-#: src/features/profile/index.tsx:266
+#: src/features/profile/index.tsx:330
 #: src/features/profile/public.tsx:46
 msgid "Profile"
 msgstr "个人资料"
 
-#: src/features/profile/index.tsx:374
+#: src/features/profile/index.tsx:453
 msgid "Profile preview"
 msgstr "资料预览"
 
@@ -1139,9 +1211,13 @@ msgid "Re-register your passkeys on this server"
 msgstr "在此服务器上重新注册您的通行密钥"
 
 #. placeholder {0}: filteredReceived.length
-#: src/features/invitations/index.tsx:186
+#: src/features/invitations/index.tsx:248
 msgid "Received ({0})"
 msgstr "已收到 ({0})"
+
+#: src/features/friends/index.tsx:166
+msgid "Recently added"
+msgstr ""
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
 #: ../../../lib/web/src/components/search-entity-page.tsx:191
@@ -1156,7 +1232,7 @@ msgstr "正在重定向到登录。"
 msgid "Reduce interest"
 msgstr "降低兴趣"
 
-#: src/features/invitations/invite-settings-dialog.tsx:43
+#: src/features/invitations/invite-settings-dialog.tsx:44
 msgid "Reject all"
 msgstr "全部拒绝"
 
@@ -1174,7 +1250,7 @@ msgid "Remove"
 msgstr "移除"
 
 #. placeholder {0}: friend.name
-#: src/features/friends/index.tsx:161
+#: src/features/friends/index.tsx:198
 msgid "Remove {0}"
 msgstr "移除 {0}"
 
@@ -1194,8 +1270,8 @@ msgstr "移除访问规则"
 msgid "Remove access?"
 msgstr "移除访问权限?"
 
-#: src/features/friends/index.tsx:184
-#: src/features/friends/index.tsx:194
+#: src/features/friends/index.tsx:223
+#: src/features/friends/index.tsx:234
 msgid "Remove friend"
 msgstr "移除好友"
 
@@ -1211,7 +1287,7 @@ msgstr "移除成员"
 msgid "Remove Member"
 msgstr "移除成员"
 
-#: src/features/friends/index.tsx:194
+#: src/features/friends/index.tsx:234
 #: src/features/groups/group-detail.tsx:253
 msgid "Removing..."
 msgstr "正在移除..."
@@ -1243,20 +1319,22 @@ msgstr "星期六"
 
 #: ../../../lib/web/src/components/ui/secret-field.tsx:74
 #: src/features/groups/group-dialog.tsx:119
-#: src/features/invitations/invite-settings-dialog.tsx:113
-#: src/features/profile/index.tsx:296
-#: src/features/profile/index.tsx:316
-#: src/features/profile/index.tsx:418
+#: src/features/invitations/invite-settings-dialog.tsx:115
+#: src/features/profile/index.tsx:360
+#: src/features/profile/index.tsx:389
 msgid "Save"
 msgstr "保存"
+
+#: src/features/profile/index.tsx:289
+msgid "Save name"
+msgstr ""
 
 #: src/features/groups/group-dialog.tsx:119
 msgid "Saving..."
 msgstr "正在保存..."
 
-#: src/features/profile/index.tsx:296
-#: src/features/profile/index.tsx:316
-#: src/features/profile/index.tsx:418
+#: src/features/profile/index.tsx:360
+#: src/features/profile/index.tsx:389
 msgid "Saving…"
 msgstr "保存中…"
 
@@ -1272,11 +1350,11 @@ msgstr "搜索目的地..."
 msgid "Search for origin..."
 msgstr "搜索起点..."
 
-#: src/features/friends/components/add-friend-dialog.tsx:166
+#: src/features/friends/components/add-friend-dialog.tsx:171
 msgid "Search for people and send a friend request."
 msgstr "搜索用户并发送好友请求。"
 
-#: src/features/friends/index.tsx:94
+#: src/features/friends/index.tsx:109
 msgid "Search friends"
 msgstr "搜索好友"
 
@@ -1290,8 +1368,8 @@ msgid "Search users"
 msgstr "搜索用户"
 
 #: ../../../lib/web/src/components/person-picker.tsx:323
-#: src/features/friends/index.tsx:93
-#: src/features/invitations/index.tsx:108
+#: src/features/friends/index.tsx:108
+#: src/features/invitations/index.tsx:169
 msgid "Search..."
 msgstr "搜索..."
 
@@ -1350,12 +1428,12 @@ msgstr "再次发送"
 msgid "Send email"
 msgstr "发送邮件"
 
-#: src/features/friends/components/add-friend-dialog.tsx:150
+#: src/features/friends/components/add-friend-dialog.tsx:155
 msgid "Send invitation"
 msgstr "发送邀请"
 
 #. placeholder {0}: filteredSent.length
-#: src/features/invitations/index.tsx:242
+#: src/features/invitations/index.tsx:327
 msgid "Sent ({0})"
 msgstr "已发送 ({0})"
 
@@ -1391,6 +1469,10 @@ msgstr "设置"
 msgid "Showing {totalShown} of {total}"
 msgstr "显示 {total} 中的 {totalShown} 条"
 
+#: src/features/profile/index.tsx:422
+msgid "Shown in browser tabs."
+msgstr ""
+
 #: ../../../lib/web/src/components/config-drawer.tsx:225
 #: ../../../lib/web/src/components/config-drawer.tsx:249
 #: ../../../lib/web/src/components/ui/sidebar.tsx:234
@@ -1410,11 +1492,23 @@ msgstr "跳至主内容"
 msgid "Small"
 msgstr "小"
 
+#: src/features/invitations/index.tsx:115
+msgid "Some invitations could not be accepted"
+msgstr ""
+
+#: src/features/invitations/index.tsx:153
+msgid "Some invitations could not be cancelled"
+msgstr ""
+
+#: src/features/invitations/index.tsx:134
+msgid "Some invitations could not be declined"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:94
 msgid "Spacious"
 msgstr "宽松"
 
-#: src/features/friends/components/add-friend-dialog.tsx:197
+#: src/features/friends/components/add-friend-dialog.tsx:199
 msgid "Start typing to search for users"
 msgstr "开始输入以搜索用户"
 
@@ -1422,7 +1516,7 @@ msgstr "开始输入以搜索用户"
 msgid "Stay tuned though!"
 msgstr "敬请期待!"
 
-#: src/features/invitations/invite-settings-dialog.tsx:38
+#: src/features/invitations/invite-settings-dialog.tsx:39
 msgid "Store silently"
 msgstr "静默存储"
 
@@ -1457,7 +1551,7 @@ msgstr "服务条款"
 msgid "That code is incorrect or has expired."
 msgstr "该代码不正确或已过期。"
 
-#: src/features/friends/components/add-friend-dialog.tsx:275
+#: src/features/friends/components/add-friend-dialog.tsx:276
 msgid "That's you"
 msgstr "那是您"
 
@@ -1506,12 +1600,15 @@ msgstr "顶部"
 msgid "Travelling"
 msgstr "行进中"
 
-#: src/features/friends/components/add-friend-dialog.tsx:223
+#: src/features/friends/index.tsx:147
+msgid "Try a different name"
+msgstr ""
+
+#: src/features/friends/components/add-friend-dialog.tsx:225
 msgid "Try a different search term"
 msgstr "尝试其他搜索词"
 
-#: src/features/friends/index.tsx:132
-#: src/features/invitations/index.tsx:176
+#: src/features/invitations/index.tsx:237
 msgid "Try adjusting your search"
 msgstr "尝试调整您的搜索"
 
@@ -1573,16 +1670,16 @@ msgstr "美国"
 msgid "Unverified"
 msgstr "未验证"
 
-#: src/features/profile/index.tsx:343
+#: src/features/profile/index.tsx:416
 msgid "Upload"
 msgstr "上传"
 
-#: src/features/profile/index.tsx:238
+#: src/features/profile/index.tsx:250
 msgid "Upload avatar"
 msgstr "上传头像"
 
-#: src/features/profile/index.tsx:215
-#: src/features/profile/index.tsx:343
+#: src/features/profile/index.tsx:225
+#: src/features/profile/index.tsx:416
 msgid "Uploading…"
 msgstr "上传中…"
 
@@ -1654,7 +1751,7 @@ msgstr "星期三"
 msgid "You are now friends with {friendName}."
 msgstr "您现在是 {friendName} 的好友。"
 
-#: src/features/friends/components/add-friend-dialog.tsx:70
+#: src/features/friends/components/add-friend-dialog.tsx:75
 msgid "You are now friends!"
 msgstr "你们现在是好友了!"
 

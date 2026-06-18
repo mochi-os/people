@@ -6,7 +6,7 @@ def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event_id=event_id)
 
 def database_create():
-	mochi.db.execute("create table if not exists friends ( identity text not null, id text not null, name text not null, class text not null, primary key ( identity, id ) )")
+	mochi.db.execute("create table if not exists friends ( identity text not null, id text not null, name text not null, class text not null, created integer not null default 0, primary key ( identity, id ) )")
 	mochi.db.execute("create index if not exists friends_id on friends( id )")
 	mochi.db.execute("create index if not exists friends_name on friends( name )")
 	mochi.db.execute("create table if not exists invites ( identity text not null, id text not null, direction text not null, name text not null, updated integer not null, primary key ( identity, id, direction ) )")
@@ -17,6 +17,11 @@ def database_create():
 def database_upgrade(version):
 	if version == 2:
 		mochi.db.execute("create table if not exists profiles ( person text not null primary key, profile text not null default '', accent text not null default '', updated integer not null default 0 )")
+	if version == 3:
+		# Timestamp friendships so clients can offer a "recently added" sort.
+		# Pre-existing rows default to 0 (sort oldest), which is correct: their
+		# real add-time is unknown.
+		mochi.db.execute("alter table friends add column created integer not null default 0")
 
 def resolve_identity(id):
 	entry = mochi.directory.get(id)
@@ -40,7 +45,7 @@ def action_accept(a):
 		a.error.label(400, "errors.invitation_not_found")
 		return
 
-	mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, id, i["name"])
+	mochi.db.execute("insert into friends ( identity, id, name, class, created ) values ( ?, ?, ?, 'person', ? ) on conflict ( identity, id ) do update set name=excluded.name", identity, id, i["name"], mochi.time.now())
 	mochi.message.send({"from": identity, "to": id, "service": "friends", "event": "friend/accept"})
 	mochi.db.execute("delete from invites where identity=? and id=?", identity, id)
 
@@ -74,7 +79,7 @@ def action_create(a):
 	# Check if there's an existing invitation from them
 	if mochi.db.exists("select id from invites where identity=? and id=? and direction='from'", identity, id):
 		# They already invited us - accept it by adding as friend
-		mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, id, name)
+		mochi.db.execute("insert into friends ( identity, id, name, class, created ) values ( ?, ?, ?, 'person', ? ) on conflict ( identity, id ) do update set name=excluded.name", identity, id, name, mochi.time.now())
 		mochi.message.send({"from": identity, "to": id, "service": "friends", "event": "friend/accept"})
 		mochi.db.execute("delete from invites where identity=? and id=?", identity, id)
 	else:
@@ -314,7 +319,7 @@ def event_accept(e):
 
 	# Add them as a friend since they accepted our invitation
 	# Use e.header values consistently instead of i[] for safety
-	mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, e.header("from"), i["name"])
+	mochi.db.execute("insert into friends ( identity, id, name, class, created ) values ( ?, ?, ?, 'person', ? ) on conflict ( identity, id ) do update set name=excluded.name", identity, e.header("from"), i["name"], mochi.time.now())
 
 	mochi.db.execute("delete from invites where identity=? and id=?", identity, e.header("from"))
 	notify("accept/accepted", "", mochi.app.label("notifications.title.friend_request_accepted"), mochi.app.label("notifications.body.accepted_invitation", name=i["name"]), "/people", e.header("from"), event_id="accept/accepted:" + e.header("from") + ":" + identity)
@@ -333,7 +338,7 @@ def event_invite(e):
 
 	# Mutual invite — always connect, regardless of policy.
 	if mochi.db.exists("select id from invites where identity=? and id=? and direction='to'", identity, sender):
-		mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, sender, name)
+		mochi.db.execute("insert into friends ( identity, id, name, class, created ) values ( ?, ?, ?, 'person', ? ) on conflict ( identity, id ) do update set name=excluded.name", identity, sender, name, mochi.time.now())
 		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
 		mochi.db.execute("delete from invites where identity=? and id=?", identity, sender)
 		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event_id="accept/matched:" + sender + ":" + identity)
@@ -346,7 +351,7 @@ def event_invite(e):
 
 	if policy == "accept":
 		# Auto-accept: mirror mutual-invite path without writing to invites.
-		mochi.db.execute("replace into friends ( identity, id, name, class ) values ( ?, ?, ?, 'person' )", identity, sender, name)
+		mochi.db.execute("insert into friends ( identity, id, name, class, created ) values ( ?, ?, ?, 'person', ? ) on conflict ( identity, id ) do update set name=excluded.name", identity, sender, name, mochi.time.now())
 		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
 		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event_id="accept/matched:" + sender + ":" + identity)
 		return

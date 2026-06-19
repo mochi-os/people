@@ -93,7 +93,7 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
               <label
                 key={opt.value}
                 htmlFor={`invite-policy-${opt.value}`}
-                className='flex items-start gap-3 rounded-md border p-3 cursor-pointer hover:bg-muted/50'
+                className='flex items-start gap-3 rounded-md border p-3 cursor-pointer hover:bg-hover'
               >
                 <RadioGroupItem value={opt.value} id={`invite-policy-${opt.value}`} className='mt-0.5' />
                 <div className='flex flex-col gap-0.5'>

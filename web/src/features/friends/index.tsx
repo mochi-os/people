@@ -172,7 +172,7 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
               {filteredFriends.map((friend) => (
                 <div
                   key={friend.id}
-                  className='hover:bg-muted/50 flex items-center gap-3 px-4 py-3 transition-colors'
+                  className='hover:bg-hover flex items-center gap-3 px-4 py-3 transition-colors'
                 >
                   <EntityAvatar
                     src={`${appPath}/${friend.id}/-/avatar`}

@@ -248,7 +248,7 @@ return (
                   onClick={open}
                   disabled={pending}
                   aria-label={t`Upload avatar`}
-                  className="border-border bg-muted text-muted-foreground hover:bg-interactive-hover hover:text-foreground focus-visible:ring-ring absolute bottom-0 right-0 flex size-6 items-center justify-center rounded-full border shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:opacity-50"
+                  className="border-border bg-muted text-muted-foreground hover:bg-hover hover:text-foreground focus-visible:ring-ring absolute bottom-0 right-0 flex size-6 items-center justify-center rounded-full border shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:opacity-50"
                 >
                   <Upload className="size-3" />
                 </button>

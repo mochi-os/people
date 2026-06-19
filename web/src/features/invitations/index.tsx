@@ -273,7 +273,7 @@ export function Invitations() {
                   {filteredReceived.map((invite) => (
                     <div
                       key={invite.id}
-                      className='hover:bg-muted/50 flex items-center justify-between px-4 py-3 transition-colors'
+                      className='hover:bg-hover flex items-center justify-between px-4 py-3 transition-colors'
                     >
                       <div className='flex items-center gap-3'>
                         <EntityAvatar
@@ -342,7 +342,7 @@ export function Invitations() {
                   {filteredSent.map((invite) => (
                     <div
                       key={invite.id}
-                      className='hover:bg-muted/50 flex items-center justify-between px-4 py-3 transition-colors'
+                      className='hover:bg-hover flex items-center justify-between px-4 py-3 transition-colors'
                     >
                       <div className='flex items-center gap-3'>
                         <EntityAvatar

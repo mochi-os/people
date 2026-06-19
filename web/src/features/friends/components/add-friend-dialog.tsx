@@ -313,7 +313,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                           key={user.id}
                           className={cn(
                             'flex items-center justify-between gap-3 rounded-lg p-3 transition-all',
-                            status !== 'self' && 'hover:bg-accent hover:text-accent-foreground',
+                            status !== 'self' && 'hover:bg-hover hover:text-hover-foreground',
                             'group'
                           )}
                         >

@@ -150,7 +150,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
                       className={`cursor-pointer transition-colors ${
                         selectedUser?.id === user.id
                           ? 'border-primary'
-                          : 'hover:bg-muted'
+                          : 'hover:bg-hover'
                       }`}
                       onClick={() => setSelectedUser({ id: user.id, name: user.name })}
                     >
@@ -205,7 +205,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
                       className={`cursor-pointer transition-colors ${
                         selectedGroup?.id === group.id
                           ? 'border-primary'
-                          : 'hover:bg-muted'
+                          : 'hover:bg-hover'
                       }`}
                       onClick={() => setSelectedGroup({ id: group.id, name: group.name })}
                     >

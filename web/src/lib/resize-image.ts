@@ -1,3 +1,8 @@
+// Copyright © 2026 Mochi OÜ
+// SPDX-License-Identifier: AGPL-3.0-only
+// This file is part of Mochi, licensed under the GNU AGPL v3 with the
+// Mochi Application Interface Exception - see license.txt and license-exception.md.
+
 // Client-side image resize. Phone photos are routinely 5-15 MB at 4032x3024 —
 // far larger than any avatar/banner needs. We scale down before upload so the
 // user never has to think about file size.

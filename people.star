@@ -585,7 +585,10 @@ def action_group_member_add(a):
 		a.error.label(400, "errors.invalid_member_type")
 		return
 
-	if type == "user" and not member.isdigit():
+	# Group "user" members are person entity IDs — that's what -/users/search
+	# returns and what the member list resolves for display. Older data may
+	# hold a numeric local uid, so accept either form.
+	if type == "user" and not (mochi.text.valid(member, "entity") or member.isdigit()):
 		a.error.label(400, "errors.invalid_user_id")
 		return
 

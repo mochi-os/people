@@ -306,7 +306,7 @@ return (
             </div>
           ) : (
             <div className="flex items-center gap-1">
-              <h1 className="min-w-0 truncate text-2xl font-semibold">{info.name}</h1>
+              <h1 className="min-w-0 truncate text-2xl font-bold">{info.name}</h1>
               <Button
                 variant="ghost"
                 size="sm"

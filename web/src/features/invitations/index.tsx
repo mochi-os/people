@@ -18,6 +18,7 @@ import {
   PageHeader,
   Skeleton,
   toast,
+  useListAutoAnimate,
 } from '@mochi/web'
 import { UserPlus, UserX, Send, X, Check, Settings } from 'lucide-react'
 import {
@@ -40,6 +41,14 @@ export function Invitations() {
   const acceptInviteMutation = useAcceptFriendInviteMutation()
   const declineInviteMutation = useDeclineFriendInviteMutation()
   const removeMutation = useRemoveFriendMutation()
+  const suppressListAnimation =
+    (isLoading && !friendsData) || search.trim().length > 0
+  const [receivedListRef] = useListAutoAnimate<HTMLDivElement>({
+    disabled: suppressListAnimation,
+  })
+  const [sentListRef] = useListAutoAnimate<HTMLDivElement>({
+    disabled: suppressListAnimation,
+  })
 
   const filteredReceived = useMemo(() => {
     const list = friendsData?.received ?? []
@@ -274,7 +283,10 @@ export function Invitations() {
                     </div>
                   )}
                 </div>
-                <div className='divide-border divide-y rounded-md border'>
+                <div
+                  ref={receivedListRef}
+                  className='divide-border divide-y rounded-md border'
+                >
                   {filteredReceived.map((invite) => (
                     <div
                       key={invite.id}
@@ -343,7 +355,10 @@ export function Invitations() {
                     </Button>
                   )}
                 </div>
-                <div className='divide-border divide-y rounded-md border'>
+                <div
+                  ref={sentListRef}
+                  className='divide-border divide-y rounded-md border'
+                >
                   {filteredSent.map((invite) => (
                     <div
                       key={invite.id}

@@ -50,6 +50,7 @@ function PeopleLayoutInner() {
     )
 
     const groupItems: NavItem[] = sortedGroups.map((group) => ({
+      id: group.id,
       title: group.name,
       url: `/groups/${group.id}` as const,
       icon: UsersRound,
@@ -74,9 +75,10 @@ function PeopleLayoutInner() {
       {
         title: t`Groups`,
         separator: true,
+        animateList: true,
         items: [
           ...groupItems,
-          { title: t`Create group`, icon: Plus, onClick: openCreateGroupDialog },
+          { id: 'create-group', title: t`Create group`, icon: Plus, onClick: openCreateGroupDialog },
         ],
       },
     ]

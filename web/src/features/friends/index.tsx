@@ -31,6 +31,7 @@ import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
+  useListAutoAnimate,
 } from '@mochi/web'
 import { UserPlus, Users, MessageSquare, UserX } from 'lucide-react'
 import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
@@ -59,6 +60,9 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
     refetch,
   } = useFriendsQuery()
   const removeFriendMutation = useRemoveFriendMutation()
+  const [friendsListRef] = useListAutoAnimate<HTMLDivElement>({
+    disabled: (isLoading && !friendsData) || search.trim().length > 0,
+  })
 
   const filteredFriends = useMemo(() => {
     const list = friendsData?.friends ?? []
@@ -176,7 +180,10 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
                 </SelectContent>
               </Select>
             </div>
-            <div className='divide-border divide-y rounded-lg border'>
+            <div
+              ref={friendsListRef}
+              className='divide-border divide-y rounded-lg border'
+            >
               {filteredFriends.map((friend) => (
                 <div
                   key={friend.id}

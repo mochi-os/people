@@ -18,6 +18,9 @@ import {
   PageHeader,
   Skeleton,
   toast,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
 } from '@mochi/web'
 import { UserPlus, UserX, Send, X, Check, Settings } from 'lucide-react'
 import {
@@ -186,9 +189,14 @@ export function Invitations() {
         actions={
           <>
             {searchInput}
-            <Button variant='outline' size='icon' onClick={() => setSettingsOpen(true)} aria-label={t`Invite settings`}>
-              <Settings className='h-4 w-4' />
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant='outline' size='icon' onClick={() => setSettingsOpen(true)} aria-label={t`Invite settings`}>
+                  <Settings className='h-4 w-4' />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>{t`Invite settings`}</TooltipContent>
+            </Tooltip>
             <Button onClick={() => setAddFriendDialogOpen(true)}>
               <UserPlus className='h-4 w-4' />
               <Trans>Add friend</Trans>

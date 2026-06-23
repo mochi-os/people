@@ -28,6 +28,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
 } from '@mochi/web'
 import { UserPlus, Users, MessageSquare, UserX } from 'lucide-react'
 import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
@@ -197,17 +200,22 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
                       <MessageSquare className='h-4 w-4' />
                       <Trans>Chat</Trans>
                     </Button>
-                    <Button
-                      variant='ghost'
-                      size='sm'
-                      aria-label={t`Remove ${friend.name}`}
-                      disabled={removeFriendMutation.isPending}
-                      onClick={() =>
-                        handleRemoveFriend(friend.id, friend.name)
-                      }
-                    >
-                      <UserX className='h-4 w-4' />
-                    </Button>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button
+                          variant='ghost'
+                          size='sm'
+                          aria-label={t`Remove ${friend.name}`}
+                          disabled={removeFriendMutation.isPending}
+                          onClick={() =>
+                            handleRemoveFriend(friend.id, friend.name)
+                          }
+                        >
+                          <UserX className='h-4 w-4' />
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>{t`Remove ${friend.name}`}</TooltipContent>
+                    </Tooltip>
                   </div>
                 </div>
               ))}

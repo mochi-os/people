@@ -22,6 +22,9 @@ import {
   Skeleton,
   Switch,
   Textarea,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
   getErrorMessage,
   shellClipboardWrite,
   toast,
@@ -248,15 +251,20 @@ return (
             </div>
             <SlotUploader person={person} slot="avatar">
               {(open, pending) => (
-                <button
-                  type="button"
-                  onClick={open}
-                  disabled={pending}
-                  aria-label={t`Upload avatar`}
-                  className="border-border bg-muted text-muted-foreground hover:bg-hover hover:text-foreground focus-visible:ring-ring absolute bottom-0 right-0 flex size-6 items-center justify-center rounded-full border shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:opacity-50"
-                >
-                  <Upload className="size-3" />
-                </button>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      type="button"
+                      onClick={open}
+                      disabled={pending}
+                      aria-label={t`Upload avatar`}
+                      className="border-border bg-muted text-muted-foreground hover:bg-hover hover:text-foreground focus-visible:ring-ring absolute bottom-0 right-0 flex size-6 items-center justify-center rounded-full border shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:opacity-50"
+                    >
+                      <Upload className="size-3" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent>{t`Upload avatar`}</TooltipContent>
+                </Tooltip>
               )}
             </SlotUploader>
           </div>
@@ -285,42 +293,57 @@ return (
                 }}
                 className="h-10 max-w-xs text-xl font-semibold"
               />
-              <Button
-                variant="ghost"
-                size="sm"
-                className="size-9 shrink-0 p-0"
-                onClick={handleSaveName}
-                disabled={!nameDirty || nameMutation.isPending}
-                aria-label={t`Save name`}
-              >
-                {nameMutation.isPending ? (
-                  <Loader2 className="size-4 animate-spin" />
-                ) : (
-                  <Check className="size-4" />
-                )}
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="size-9 shrink-0 p-0"
-                onClick={cancelNameEdit}
-                aria-label={t`Cancel`}
-              >
-                <X className="size-4" />
-              </Button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="size-9 shrink-0 p-0"
+                    onClick={handleSaveName}
+                    disabled={!nameDirty || nameMutation.isPending}
+                    aria-label={t`Save name`}
+                  >
+                    {nameMutation.isPending ? (
+                      <Loader2 className="size-4 animate-spin" />
+                    ) : (
+                      <Check className="size-4" />
+                    )}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>{t`Save name`}</TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="size-9 shrink-0 p-0"
+                    onClick={cancelNameEdit}
+                    aria-label={t`Cancel`}
+                  >
+                    <X className="size-4" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>{t`Cancel`}</TooltipContent>
+              </Tooltip>
             </div>
           ) : (
             <div className="flex items-center gap-1">
               <h1 className="min-w-0 truncate text-2xl font-bold">{info.name}</h1>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="size-7 shrink-0 p-0"
-                onClick={startNameEdit}
-                aria-label={t`Edit name`}
-              >
-                <Pencil className="size-3.5" />
-              </Button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="size-7 shrink-0 p-0"
+                    onClick={startNameEdit}
+                    aria-label={t`Edit name`}
+                  >
+                    <Pencil className="size-3.5" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>{t`Edit name`}</TooltipContent>
+              </Tooltip>
             </div>
           )}
           <FingerprintRow fingerprint={info.fingerprint} />

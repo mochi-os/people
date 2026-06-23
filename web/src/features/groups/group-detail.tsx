@@ -33,6 +33,9 @@ import {
   DataChip,
   GeneralError,
   ListSkeleton,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
 } from '@mochi/web'
 import {
   useDeleteGroupMutation,
@@ -126,11 +129,16 @@ export function GroupDetail() {
                 <Trans>Add member</Trans>
               </Button>
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant='outline' size='icon' aria-label={t`Group actions`}>
-                    <MoreHorizontal className='h-4 w-4' />
-                  </Button>
-                </DropdownMenuTrigger>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant='outline' size='icon' aria-label={t`Group actions`}>
+                        <MoreHorizontal className='h-4 w-4' />
+                      </Button>
+                    </DropdownMenuTrigger>
+                  </TooltipTrigger>
+                  <TooltipContent>{t`Group actions`}</TooltipContent>
+                </Tooltip>
                 <DropdownMenuContent align='end'>
                   <DropdownMenuItem onClick={() => setEditDialogOpen(true)}>
                     <Pencil className='h-4 w-4' />
@@ -221,16 +229,20 @@ export function GroupDetail() {
                             </div>
                           </TableCell>
                           <TableCell className="text-end">
-                            <Button
-                              variant='ghost'
-                              size='icon'
-                              className="h-8 w-8 text-muted-foreground"
-                              onClick={() => handleRemoveMember(member.member, member.name, member.type)}
-                              aria-label={t`Remove ${member.type} ${member.name}`}
-                              title={t`Remove ${member.type} ${member.name}`}
-                            >
-                              <X className='h-4 w-4' />
-                            </Button>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Button
+                                  variant='ghost'
+                                  size='icon'
+                                  className="h-8 w-8 text-muted-foreground"
+                                  onClick={() => handleRemoveMember(member.member, member.name, member.type)}
+                                  aria-label={t`Remove ${member.type} ${member.name}`}
+                                >
+                                  <X className='h-4 w-4' />
+                                </Button>
+                              </TooltipTrigger>
+                              <TooltipContent>{t`Remove ${member.type} ${member.name}`}</TooltipContent>
+                            </Tooltip>
                           </TableCell>
                         </TableRow>
                       ))}

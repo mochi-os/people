@@ -28,6 +28,7 @@ import {
   getErrorMessage,
   shellClipboardWrite,
   toast,
+  toastAction,
   useFormat,
   usePageTitle,
 } from '@mochi/web'
@@ -166,18 +167,28 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
   const nameTrimmed = nameDraft.trim()
   const nameDirty = nameTrimmed !== info.name && nameTrimmed.length > 0
 
-  const handleSaveProfile = () => {
-    profileMutation.mutate(profile, {
-      onSuccess: () => toast.success(t`Profile saved`),
-      onError: (err) => toast.error(getErrorMessage(err, t`Failed to save profile`)),
-    })
+  const handleSaveProfile = async () => {
+    try {
+      await toastAction(profileMutation.mutateAsync(profile), {
+        loading: t`Saving profile...`,
+        success: t`Profile saved`,
+        error: (err) => getErrorMessage(err, t`Failed to save profile`),
+      })
+    } catch {
+      // toastAction already showed error
+    }
   }
 
-  const handleSaveAccent = () => {
-    accentMutation.mutate(accentTrimmed, {
-      onSuccess: () => toast.success(t`Accent saved`),
-      onError: (err) => toast.error(getErrorMessage(err, t`Failed to save accent`)),
-    })
+  const handleSaveAccent = async () => {
+    try {
+      await toastAction(accentMutation.mutateAsync(accentTrimmed), {
+        loading: t`Saving...`,
+        success: t`Accent saved`,
+        error: (err) => getErrorMessage(err, t`Failed to save accent`),
+      })
+    } catch {
+      // toastAction already showed error
+    }
   }
 
   const startNameEdit = () => {
@@ -190,21 +201,34 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
     setNameDraft(info.name)
   }
 
-  const handleSaveName = () => {
+  const handleSaveName = async () => {
     if (!nameDirty) return
-    nameMutation.mutate(nameTrimmed, {
-      onSuccess: () => {
-        toast.success(t`Name saved`)
-        setEditingName(false)
-      },
-      onError: (err) => toast.error(getErrorMessage(err, t`Failed to save name`)),
-    })
+    try {
+      await toastAction(nameMutation.mutateAsync(nameTrimmed), {
+        loading: t`Saving...`,
+        success: t`Name saved`,
+        error: (err) => getErrorMessage(err, t`Failed to save name`),
+      })
+      setEditingName(false)
+    } catch {
+      // toastAction already showed error
+    }
   }
 
-  const handleTogglePrivacy = (checked: boolean) => {
-    privacyMutation.mutate(checked ? 'public' : 'private', {
-      onError: (err) => toast.error(getErrorMessage(err, t`Failed to update directory listing`)),
-    })
+  const handleTogglePrivacy = async (checked: boolean) => {
+    try {
+      await toastAction(
+        privacyMutation.mutateAsync(checked ? 'public' : 'private'),
+        {
+          loading: t`Saving...`,
+          success: false,
+          error: (err) =>
+            getErrorMessage(err, t`Failed to save privacy setting`),
+        }
+      )
+    } catch {
+      // toastAction already showed error
+    }
   }
 
 return (
@@ -568,11 +592,15 @@ function SlotUploader({
     }
     setResizing(false)
     const slotLabel = slot.charAt(0).toUpperCase() + slot.slice(1)
-    mutation.mutate(upload, {
-      onSuccess: () =>
-        toast.success(t`${slotLabel} updated`),
-      onError: (err) => toast.error(getErrorMessage(err, t`Failed to upload ${slot}`)),
-    })
+    try {
+      await toastAction(mutation.mutateAsync(upload), {
+        loading: t`Uploading...`,
+        success: t`${slotLabel} updated`,
+        error: (err) => getErrorMessage(err, t`Failed to upload ${slot}`),
+      })
+    } catch {
+      // toastAction already showed error
+    }
   }
 
   return (

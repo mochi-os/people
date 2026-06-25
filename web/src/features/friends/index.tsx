@@ -20,6 +20,7 @@ import {
   GeneralError,
   getAppPath,
   toast,
+  toastAction,
   getErrorMessage,
   shellNavigateExternal,
   naturalCompare,
@@ -82,18 +83,22 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
     setRemoveFriendDialog({ open: true, friendId, friendName })
   }
 
-  const confirmRemoveFriend = () => {
-    removeFriendMutation.mutate(
-      { friendId: removeFriendDialog.friendId },
-      {
-        onSuccess: () => {
-          setRemoveFriendDialog({ open: false, friendId: '', friendName: '' })
-        },
-        onError: (error) => {
-          toast.error(getErrorMessage(error, t`Failed to remove friend`))
-        },
-      }
-    )
+  const confirmRemoveFriend = async () => {
+    try {
+      await toastAction(
+        removeFriendMutation.mutateAsync({
+          friendId: removeFriendDialog.friendId,
+        }),
+        {
+          loading: t`Removing friend...`,
+          success: t`Friend removed`,
+          error: (error) => getErrorMessage(error, t`Failed to remove friend`),
+        }
+      )
+      setRemoveFriendDialog({ open: false, friendId: '', friendName: '' })
+    } catch {
+      // toastAction already showed error
+    }
   }
 
   const handleStartChat = (friendId: string, friendName: string) => {

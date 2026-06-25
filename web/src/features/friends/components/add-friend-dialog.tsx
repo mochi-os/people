@@ -8,7 +8,7 @@ import { Trans, useLingui } from '@lingui/react/macro'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban, ArrowLeft } from 'lucide-react'
-import { cn, toast, getAppPath, getErrorMessage, GeneralError, Button, EntityAvatar, EntityBanner, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, SearchInput, EmptyState, ScrollArea, useScreenSize } from '@mochi/web'
+import { cn, toastAction, getAppPath, getErrorMessage, GeneralError, Button, EntityAvatar, EntityBanner, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, SearchInput, EmptyState, ScrollArea, useScreenSize } from '@mochi/web'
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation, useFriendsQuery } from '@/hooks/useFriends'
 import { personApi } from '@/api/person'
 import type { PersonInformation } from '@/api/types/person'
@@ -56,47 +56,48 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
     enabled: open && debouncedQuery.length > 0,
   })
 
-  const createFriendMutation = useCreateFriendMutation({
-    onSuccess: (_, variables) => {
-      setInvitedUserIds((prev) => new Set(prev).add(variables.id))
-      setPendingUserId(null)
-      setPreview(null)
-      toast.success(t`Invitation sent`, {
-        description: t`A friend invitation has been sent to ${variables.name}.`,
-      })
-    },
-    onError: (error) => {
-      setPendingUserId(null)
-      toast.error(getErrorMessage(error, t`Failed to add friend`))
-    },
-  })
-
-  const acceptFriendMutation = useAcceptFriendInviteMutation({
-    onSuccess: (_, variables) => {
-      setInvitedUserIds((prev) => new Set(prev).add(variables.friendId))
-      setPendingUserId(null)
-      setPreview(null)
-      toast.success(t`Already friends`, {
-        description: t`You are now friends!`,
-      })
-    },
-    onError: (error) => {
-      setPendingUserId(null)
-      toast.error(getErrorMessage(error, t`Failed to add friend`))
-    },
-  })
+  const createFriendMutation = useCreateFriendMutation()
+  const acceptFriendMutation = useAcceptFriendInviteMutation()
 
   const users = useMemo(
     () => data?.results ?? [],
     [data?.results]
   )
 
-  const sendInvite = (userId: string, userName: string) => {
-    createFriendMutation.mutate({ id: userId, name: userName })
+  const sendInvite = async (userId: string, userName: string) => {
+    try {
+      await toastAction(
+        createFriendMutation.mutateAsync({ id: userId, name: userName }),
+        {
+          loading: t`Sending invitation...`,
+          success: t`Invitation sent`,
+          error: (error) => getErrorMessage(error, t`Failed to add friend`),
+        }
+      )
+      setInvitedUserIds((prev) => new Set(prev).add(userId))
+      setPendingUserId(null)
+      setPreview(null)
+    } catch {
+      setPendingUserId(null)
+    }
   }
 
-  const acceptInvite = (userId: string) => {
-    acceptFriendMutation.mutate({ friendId: userId })
+  const acceptInvite = async (userId: string) => {
+    try {
+      await toastAction(
+        acceptFriendMutation.mutateAsync({ friendId: userId }),
+        {
+          loading: t`Accepting invitation...`,
+          success: t`Already friends`,
+          error: (error) => getErrorMessage(error, t`Failed to add friend`),
+        }
+      )
+      setInvitedUserIds((prev) => new Set(prev).add(userId))
+      setPendingUserId(null)
+      setPreview(null)
+    } catch {
+      setPendingUserId(null)
+    }
   }
 
   const startConnect = (user: { id: string; name: string }, intent: 'invite' | 'accept') => {

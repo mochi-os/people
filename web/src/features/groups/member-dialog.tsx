@@ -6,7 +6,7 @@
 import { useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { User, UsersRound, Search, Loader2, UserPlus } from 'lucide-react'
-import { toast, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, EntityAvatar, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, getAppPath, getErrorMessage, EmptyState, GeneralError } from '@mochi/web'
+import { toastAction, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, EntityAvatar, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, getAppPath, getErrorMessage, EmptyState, GeneralError } from '@mochi/web'
 import {
   useAddGroupMemberMutation,
   useGroupsQuery,
@@ -44,33 +44,43 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
 
   const availableGroups = (groups ?? []).filter((g) => g.id !== groupId)
 
-  const handleAddMember = () => {
+  const handleAddMember = async () => {
     if (activeTab === 'user' && selectedUser) {
-      addMemberMutation.mutate(
-        { group: groupId, member: selectedUser.id, type: 'user' },
-        {
-          onSuccess: () => {
-            toast.success(t`Added ${selectedUser.name} to the group`)
-            resetAndClose()
-          },
-          onError: (error) => {
-            toast.error(getErrorMessage(error, t`Failed to add member`))
-          },
-        }
-      )
+      try {
+        await toastAction(
+          addMemberMutation.mutateAsync({
+            group: groupId,
+            member: selectedUser.id,
+            type: 'user',
+          }),
+          {
+            loading: t`Adding member...`,
+            success: t`Added ${selectedUser.name} to the group`,
+            error: (error) => getErrorMessage(error, t`Failed to add member`),
+          }
+        )
+        resetAndClose()
+      } catch {
+        // toastAction already showed error
+      }
     } else if (activeTab === 'group' && selectedGroup) {
-      addMemberMutation.mutate(
-        { group: groupId, member: selectedGroup.id, type: 'group' },
-        {
-          onSuccess: () => {
-            toast.success(t`Added ${selectedGroup.name} to the group`)
-            resetAndClose()
-          },
-          onError: (error) => {
-            toast.error(getErrorMessage(error, t`Failed to add member`))
-          },
-        }
-      )
+      try {
+        await toastAction(
+          addMemberMutation.mutateAsync({
+            group: groupId,
+            member: selectedGroup.id,
+            type: 'group',
+          }),
+          {
+            loading: t`Adding member...`,
+            success: t`Added ${selectedGroup.name} to the group`,
+            error: (error) => getErrorMessage(error, t`Failed to add member`),
+          }
+        )
+        resetAndClose()
+      } catch {
+        // toastAction already showed error
+      }
     }
   }
 

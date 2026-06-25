@@ -40,7 +40,7 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
     }
   }, [open, group])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     if (!name.trim()) {
@@ -48,36 +48,34 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
       return
     }
 
-    const handleError = (error: unknown, fallback: string) => {
-      const data = error && typeof error === 'object' && 'data' in error
-        ? (error as { data: unknown }).data
-        : null
-      if (data && handlePermissionError(data)) return
-      toast.error(getErrorMessage(error, fallback))
-    }
+    const payload = isEditing
+      ? { id: group.id, name: name.trim(), description: description.trim() }
+      : { name: name.trim(), description: description.trim() }
 
-    if (isEditing) {
-      updateMutation.mutate(
-        { id: group.id, name: name.trim(), description: description.trim() },
-        {
-          onSuccess: () => {
-            toast.success(t`Group updated`)
-            onOpenChange(false)
-          },
-          onError: (error) => handleError(error, t`Failed to update group`),
-        }
-      )
-    } else {
-      createMutation.mutate(
-        { name: name.trim(), description: description.trim() },
-        {
-          onSuccess: () => {
-            toast.success(t`Group created`)
-            onOpenChange(false)
-          },
-          onError: (error) => handleError(error, t`Failed to create group`),
-        }
-      )
+    const loadingMsg = isEditing ? t`Updating group...` : t`Creating group...`
+    const successMsg = isEditing ? t`Group updated` : t`Group created`
+    const fallbackError = isEditing
+      ? t`Failed to update group`
+      : t`Failed to create group`
+
+    const id = toast.loading(loadingMsg)
+    try {
+      if (isEditing) {
+        await updateMutation.mutateAsync(payload as { id: string; name: string; description: string })
+      } else {
+        await createMutation.mutateAsync(payload as { name: string; description: string })
+      }
+      toast.dismiss(id)
+      toast.success(successMsg)
+      onOpenChange(false)
+    } catch (error) {
+      toast.dismiss(id)
+      const data =
+        error && typeof error === 'object' && 'data' in error
+          ? (error as { data: unknown }).data
+          : null
+      if (data && handlePermissionError(data)) return
+      toast.error(getErrorMessage(error, fallbackError))
     }
   }
 

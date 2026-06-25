@@ -8,7 +8,7 @@ import { Trans, useLingui } from '@lingui/react/macro'
 import { useNavigate, useParams } from '@tanstack/react-router'
 import { MoreHorizontal, Pencil, Trash2, User, UsersRound, X, UserPlus } from 'lucide-react'
 import {
-  toast,
+  toastAction,
   Button,
   ConfirmDialog,
   DropdownMenu,
@@ -80,38 +80,40 @@ export function GroupDetail() {
     setRemoveMemberDialog({ open: true, member, name, type })
   }
 
-  const confirmRemoveMember = () => {
-    removeMemberMutation.mutate(
-      { group: id, member: removeMemberDialog.member },
-      {
-        onSuccess: () => {
-          toast.success(t`Member removed`)
-          setRemoveMemberDialog({ open: false, member: '', name: '', type: 'user' })
-        },
-        onError: (error) => {
-          toast.error(getErrorMessage(error, t`Failed to remove member`))
-        },
-      }
-    )
+  const confirmRemoveMember = async () => {
+    try {
+      await toastAction(
+        removeMemberMutation.mutateAsync({
+          group: id,
+          member: removeMemberDialog.member,
+        }),
+        {
+          loading: t`Removing member...`,
+          success: t`Member removed`,
+          error: (error) => getErrorMessage(error, t`Failed to remove member`),
+        }
+      )
+      setRemoveMemberDialog({ open: false, member: '', name: '', type: 'user' })
+    } catch {
+      // toastAction already showed error
+    }
   }
 
   const group = data?.group
   const members = data?.members ?? []
 
-  const handleConfirmDelete = () => {
-    deleteMutation.mutate(
-      { id },
-      {
-        onSuccess: () => {
-          toast.success(t`Group deleted`)
-          setConfirmDeleteOpen(false)
-          void navigate({ to: '/' })
-        },
-        onError: (error) => {
-          toast.error(getErrorMessage(error, t`Failed to delete group`))
-        },
-      }
-    )
+  const handleConfirmDelete = async () => {
+    try {
+      await toastAction(deleteMutation.mutateAsync({ id }), {
+        loading: t`Deleting group...`,
+        success: t`Group deleted`,
+        error: (error) => getErrorMessage(error, t`Failed to delete group`),
+      })
+      setConfirmDeleteOpen(false)
+      void navigate({ to: '/' })
+    } catch {
+      // toastAction already showed error
+    }
   }
 
   return (

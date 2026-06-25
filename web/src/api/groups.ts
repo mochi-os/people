@@ -17,6 +17,10 @@ import type {
 import type { MutationSuccessResponse } from '@/api/types/friends'
 import { requestHelpers } from '@mochi/web'
 
+const suppressMutationErrorToast = {
+  mochi: { showGlobalErrorToast: false },
+} as const
+
 const listGroups = async (): Promise<Group[]> => {
   const response = await requestHelpers.get<GetGroupsResponse>(
     endpoints.groups.list
@@ -69,6 +73,7 @@ const createGroup = async (payload: CreateGroupRequest): Promise<MutationSuccess
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
+      ...suppressMutationErrorToast,
     }
   )
   return { success: true }
@@ -91,6 +96,7 @@ const updateGroup = async (payload: UpdateGroupRequest): Promise<MutationSuccess
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
+      ...suppressMutationErrorToast,
     }
   )
   return { success: true }
@@ -107,6 +113,7 @@ const deleteGroup = async (id: string): Promise<MutationSuccessResponse> => {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
+      ...suppressMutationErrorToast,
     }
   )
   return { success: true }
@@ -125,6 +132,7 @@ const addMember = async (payload: AddGroupMemberRequest): Promise<MutationSucces
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
+      ...suppressMutationErrorToast,
     }
   )
   return { success: true }
@@ -142,6 +150,7 @@ const removeMember = async (payload: RemoveGroupMemberRequest): Promise<Mutation
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
+      ...suppressMutationErrorToast,
     }
   )
   return { success: true }

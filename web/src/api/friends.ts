@@ -18,6 +18,10 @@ import type {
 } from '@/api/types/friends'
 import { requestHelpers } from '@mochi/web'
 
+const suppressMutationErrorToast = {
+  mochi: { showGlobalErrorToast: false },
+} as const
+
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   Boolean(value) && typeof value === 'object'
 
@@ -145,6 +149,7 @@ const createFriend = (payload: CreateFriendRequest) =>
           id: payload.id,
           name: payload.name,
         },
+        ...suppressMutationErrorToast,
       }
     )
   )
@@ -159,6 +164,7 @@ const acceptFriendInvite = (payload: AcceptInviteRequest) => {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
+      ...suppressMutationErrorToast,
     })
   )
 }
@@ -173,6 +179,7 @@ const declineFriendInvite = (payload: DeclineInviteRequest) => {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
+      ...suppressMutationErrorToast,
     })
   )
 }
@@ -186,6 +193,7 @@ const removeFriend = (friendId: string) =>
         params: {
           id: friendId,
         },
+        ...suppressMutationErrorToast,
       }
     )
   )
@@ -200,7 +208,7 @@ const getWelcome = async (): Promise<WelcomeResponse> => {
 }
 
 const markWelcomeSeen = async (): Promise<MutationSuccessResponse> => {
-  await requestHelpers.post(endpoints.welcome.seen, {})
+  await requestHelpers.post(endpoints.welcome.seen, {}, suppressMutationErrorToast)
   return { success: true }
 }
 
@@ -218,6 +226,7 @@ const setPreferences = async (payload: { invite_policy: InvitePolicy }): Promise
   const body = new URLSearchParams({ invite_policy: payload.invite_policy })
   await requestHelpers.post(endpoints.preferences.set, body.toString(), {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    ...suppressMutationErrorToast,
   })
   return { success: true }
 }

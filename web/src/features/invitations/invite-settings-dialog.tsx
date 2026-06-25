@@ -18,7 +18,7 @@ import {
   RadioGroupItem,
   Skeleton,
   getErrorMessage,
-  toast,
+  toastAction,
 } from '@mochi/web'
 import {
   usePreferencesQuery,
@@ -63,16 +63,17 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
     if (data?.invite_policy) setValue(data.invite_policy)
   }, [data?.invite_policy])
 
-  const handleSave = () => {
-    setPolicy.mutate(value, {
-      onSuccess: () => {
-        toast.success(t`Invite policy updated`)
-        onOpenChange(false)
-      },
-      onError: (error) => {
-        toast.error(getErrorMessage(error, t`Failed to save`))
-      },
-    })
+  const handleSave = async () => {
+    try {
+      await toastAction(setPolicy.mutateAsync(value), {
+        loading: t`Saving...`,
+        success: t`Invite policy updated`,
+        error: (error) => getErrorMessage(error, t`Failed to save`),
+      })
+      onOpenChange(false)
+    } catch {
+      // toastAction already showed error
+    }
   }
 
   return (

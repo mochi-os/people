@@ -18,6 +18,7 @@ import {
   PageHeader,
   Skeleton,
   toast,
+  toastAction,
   Tooltip,
   TooltipTrigger,
   TooltipContent,
@@ -67,52 +68,52 @@ export function Invitations() {
     )
   }, [friendsData?.sent, search])
 
-  const handleAcceptInvite = (friendId: string, friendName: string) => {
-    acceptInviteMutation.mutate(
-      { friendId },
-      {
-        onSuccess: () => {
-          toast.success(t`Invitation accepted`, {
-            description: t`You are now friends with ${friendName}.`,
-          })
-        },
-        onError: (error) => {
-          toast.error(getErrorMessage(error, t`Failed to accept invitation`))
-        },
-      }
-    )
+  const handleAcceptInvite = async (friendId: string) => {
+    try {
+      await toastAction(
+        acceptInviteMutation.mutateAsync({ friendId }),
+        {
+          loading: t`Accepting invitation...`,
+          success: t`Invitation accepted`,
+          error: (error) =>
+            getErrorMessage(error, t`Failed to accept invitation`),
+        }
+      )
+    } catch {
+      // toastAction already showed error
+    }
   }
 
-  const handleDeclineInvite = (friendId: string, friendName: string) => {
-    declineInviteMutation.mutate(
-      { friendId },
-      {
-        onSuccess: () => {
-          toast.success(t`Invitation declined`, {
-            description: t`Declined invitation from ${friendName}.`,
-          })
-        },
-        onError: (error) => {
-          toast.error(getErrorMessage(error, t`Failed to decline invitation`))
-        },
-      }
-    )
+  const handleDeclineInvite = async (friendId: string) => {
+    try {
+      await toastAction(
+        declineInviteMutation.mutateAsync({ friendId }),
+        {
+          loading: t`Declining invitation...`,
+          success: t`Invitation declined`,
+          error: (error) =>
+            getErrorMessage(error, t`Failed to decline invitation`),
+        }
+      )
+    } catch {
+      // toastAction already showed error
+    }
   }
 
-  const handleCancelSent = (friendId: string, friendName: string) => {
-    removeMutation.mutate(
-      { friendId },
-      {
-        onSuccess: () => {
-          toast.success(t`Invitation cancelled`, {
-            description: t`Cancelled invitation to ${friendName}.`,
-          })
-        },
-        onError: (error) => {
-          toast.error(getErrorMessage(error, t`Failed to cancel invitation`))
-        },
-      }
-    )
+  const handleCancelSent = async (friendId: string) => {
+    try {
+      await toastAction(
+        removeMutation.mutateAsync({ friendId }),
+        {
+          loading: t`Cancelling invitation...`,
+          success: t`Invitation cancelled`,
+          error: (error) =>
+            getErrorMessage(error, t`Failed to cancel invitation`),
+        }
+      )
+    } catch {
+      // toastAction already showed error
+    }
   }
 
   const [acceptingAll, setAcceptingAll] = useState(false)
@@ -318,9 +319,7 @@ export function Invitations() {
                           size='sm'
                           variant='default'
                           disabled={acceptInviteMutation.isPending}
-                          onClick={() =>
-                            handleAcceptInvite(invite.id, invite.name)
-                          }
+                          onClick={() => handleAcceptInvite(invite.id)}
                         >
                           <Check className='h-3.5 w-3.5' />
                           <Trans>Accept</Trans>
@@ -329,9 +328,7 @@ export function Invitations() {
                           variant='outline'
                           size='sm'
                           disabled={declineInviteMutation.isPending}
-                          onClick={() =>
-                            handleDeclineInvite(invite.id, invite.name)
-                          }
+                          onClick={() => handleDeclineInvite(invite.id)}
                         >
                           <UserX className='h-3.5 w-3.5' />
                           <Trans>Decline</Trans>
@@ -392,7 +389,7 @@ export function Invitations() {
                         variant='outline'
                         size='sm'
                         disabled={removeMutation.isPending}
-                        onClick={() => handleCancelSent(invite.id, invite.name)}
+                        onClick={() => handleCancelSent(invite.id)}
                       >
                         <X className='h-3.5 w-3.5' />
                         <Trans>Cancel</Trans>

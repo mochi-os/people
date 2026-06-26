@@ -71,6 +71,9 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
         {
           loading: t`Sending invitation...`,
           success: t`Invitation sent`,
+          successOptions: () => ({
+            description: t`A friend invitation has been sent to ${userName}.`,
+          }),
           error: (error) => getErrorMessage(error, t`Failed to add friend`),
         }
       )
@@ -89,6 +92,9 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
         {
           loading: t`Accepting invitation...`,
           success: t`Already friends`,
+          successOptions: () => ({
+            description: t`You are now friends!`,
+          }),
           error: (error) => getErrorMessage(error, t`Failed to add friend`),
         }
       )

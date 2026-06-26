@@ -123,10 +123,18 @@ export function Invitations() {
   const handleAcceptAll = async () => {
     setAcceptingAll(true)
     try {
-      const results = await Promise.allSettled(
-        (friendsData?.received ?? []).map(({ id }) =>
-          acceptInviteMutation.mutateAsync({ friendId: id })
-        )
+      const results = await toastAction(
+        Promise.allSettled(
+          (friendsData?.received ?? []).map(({ id }) =>
+            acceptInviteMutation.mutateAsync({ friendId: id })
+          )
+        ),
+        {
+          loading: t`Accepting invitations...`,
+          success: false,
+          error: (e) =>
+            getErrorMessage(e, t`Failed to accept invitations`),
+        }
       )
       const failed = results.filter((r) => r.status === 'rejected').length
       if (failed > 0) {
@@ -134,6 +142,8 @@ export function Invitations() {
       } else {
         toast.success(t`All invitations accepted`)
       }
+    } catch {
+      // toastAction already showed error
     } finally {
       setAcceptingAll(false)
     }
@@ -142,10 +152,18 @@ export function Invitations() {
   const handleDeclineAll = async () => {
     setDecliningAll(true)
     try {
-      const results = await Promise.allSettled(
-        (friendsData?.received ?? []).map(({ id }) =>
-          declineInviteMutation.mutateAsync({ friendId: id })
-        )
+      const results = await toastAction(
+        Promise.allSettled(
+          (friendsData?.received ?? []).map(({ id }) =>
+            declineInviteMutation.mutateAsync({ friendId: id })
+          )
+        ),
+        {
+          loading: t`Declining invitations...`,
+          success: false,
+          error: (e) =>
+            getErrorMessage(e, t`Failed to decline invitations`),
+        }
       )
       const failed = results.filter((r) => r.status === 'rejected').length
       if (failed > 0) {
@@ -153,6 +171,8 @@ export function Invitations() {
       } else {
         toast.success(t`All invitations declined`)
       }
+    } catch {
+      // toastAction already showed error
     } finally {
       setDecliningAll(false)
     }
@@ -161,10 +181,18 @@ export function Invitations() {
   const handleCancelAll = async () => {
     setCancellingAll(true)
     try {
-      const results = await Promise.allSettled(
-        (friendsData?.sent ?? []).map(({ id }) =>
-          removeMutation.mutateAsync({ friendId: id })
-        )
+      const results = await toastAction(
+        Promise.allSettled(
+          (friendsData?.sent ?? []).map(({ id }) =>
+            removeMutation.mutateAsync({ friendId: id })
+          )
+        ),
+        {
+          loading: t`Cancelling invitations...`,
+          success: false,
+          error: (e) =>
+            getErrorMessage(e, t`Failed to cancel invitations`),
+        }
       )
       const failed = results.filter((r) => r.status === 'rejected').length
       if (failed > 0) {
@@ -172,6 +200,8 @@ export function Invitations() {
       } else {
         toast.success(t`All invitations cancelled`)
       }
+    } catch {
+      // toastAction already showed error
     } finally {
       setCancellingAll(false)
     }

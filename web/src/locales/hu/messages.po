@@ -25,9 +25,9 @@ msgstr "12 óra"
 msgid "24 hours"
 msgstr "24 óra"
 
-#: src/features/friends/components/add-friend-dialog.tsx:65
-#~ msgid "A friend invitation has been sent to {0}."
-#~ msgstr "Barátkérelem elküldve a következőnek: {0}."
+#: src/features/friends/components/add-friend-dialog.tsx:75
+msgid "A friend invitation has been sent to {userName}."
+msgstr "Barátmeghívás elküldve {userName} számára."
 
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "Absolute (date and time)"
@@ -41,7 +41,7 @@ msgstr "Kiemelőszín"
 msgid "Accent saved"
 msgstr "Kiemelő szín mentve"
 
-#: src/features/friends/components/add-friend-dialog.tsx:160
+#: src/features/friends/components/add-friend-dialog.tsx:166
 #: src/features/invitations/index.tsx:355
 msgid "Accept"
 msgstr "Elfogadás"
@@ -54,18 +54,18 @@ msgstr "Összes elfogadása"
 msgid "Accept automatically"
 msgstr "Automatikus elfogadás"
 
-#: src/features/friends/components/add-friend-dialog.tsx:303
+#: src/features/friends/components/add-friend-dialog.tsx:309
 msgid "Accept invite"
 msgstr "Meghívó elfogadása"
 
-#: src/features/friends/components/add-friend-dialog.tsx:90
+#: src/features/friends/components/add-friend-dialog.tsx:93
 #: src/features/invitations/index.tsx:76
 msgid "Accepting invitation..."
-msgstr ""
+msgstr "Meghívás elfogadása..."
 
 #: src/features/invitations/index.tsx:133
 msgid "Accepting invitations..."
-msgstr ""
+msgstr "Meghívások elfogadása..."
 
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
@@ -116,8 +116,8 @@ msgstr "Fiók hozzáadása"
 msgid "Add an account to receive notifications and use services."
 msgstr "Adjon hozzá egy fiókot az értesítések fogadásához és a szolgáltatások használatához."
 
-#: src/features/friends/components/add-friend-dialog.tsx:172
-#: src/features/friends/components/add-friend-dialog.tsx:311
+#: src/features/friends/components/add-friend-dialog.tsx:178
+#: src/features/friends/components/add-friend-dialog.tsx:317
 #: src/features/friends/index.tsx:129
 #: src/features/friends/index.tsx:141
 #: src/features/invitations/index.tsx:242
@@ -139,7 +139,7 @@ msgstr "Tag hozzáadása"
 msgid "Add new account"
 msgstr "Új fiók hozzáadása"
 
-#: ../../../lib/web/src/components/post-tags.tsx:129
+#: ../../../lib/web/src/components/post-tags.tsx:133
 msgid "Add tag..."
 msgstr "Címke hozzáadása..."
 
@@ -170,10 +170,10 @@ msgstr "{0} hozzáadva a csoporthoz"
 #: src/features/groups/member-dialog.tsx:57
 #: src/features/groups/member-dialog.tsx:75
 msgid "Adding member..."
-msgstr ""
+msgstr "Tag hozzáadása..."
 
-#: src/features/friends/components/add-friend-dialog.tsx:272
-#: src/features/friends/components/add-friend-dialog.tsx:374
+#: src/features/friends/components/add-friend-dialog.tsx:278
+#: src/features/friends/components/add-friend-dialog.tsx:380
 #: src/features/groups/member-dialog.tsx:258
 msgid "Adding..."
 msgstr "Hozzáadás..."
@@ -214,8 +214,8 @@ msgstr "Minden meghívást automatikusan elfogad, jóváhagyás nélkül."
 msgid "Allow others to find you in the directory."
 msgstr "Engedélyezd, hogy mások megtaláljanak a címtárban."
 
-#: src/features/friends/components/add-friend-dialog.tsx:91
-#: src/features/friends/components/add-friend-dialog.tsx:289
+#: src/features/friends/components/add-friend-dialog.tsx:94
+#: src/features/friends/components/add-friend-dialog.tsx:295
 msgid "Already friends"
 msgstr "Már barátok"
 
@@ -258,7 +258,7 @@ msgid "Authenticator code"
 msgstr "Hitelesítő kód"
 
 #: ../../../lib/web/src/components/place-picker.tsx:155
-#: src/features/friends/components/add-friend-dialog.tsx:369
+#: src/features/friends/components/add-friend-dialog.tsx:375
 msgid "Back"
 msgstr "Vissza"
 
@@ -272,8 +272,8 @@ msgstr "Vissza a barátokhoz"
 msgid "Back to home"
 msgstr "Vissza a kezdőlapra"
 
-#: ../../../lib/web/src/components/post-tags.tsx:172
-#: ../../../lib/web/src/components/post-tags.tsx:184
+#: ../../../lib/web/src/components/post-tags.tsx:176
+#: ../../../lib/web/src/components/post-tags.tsx:188
 msgid "Boost interest"
 msgstr "Érdeklődés növelése"
 
@@ -303,17 +303,13 @@ msgstr "Mégse"
 msgid "Cancel all"
 msgstr "Összes megszakítása"
 
-#: src/features/invitations/index.tsx:99
-#~ msgid "Cancelled invitation to {friendName}."
-#~ msgstr "{friendName} részére küldött meghívó visszavonva."
-
 #: src/features/invitations/index.tsx:108
 msgid "Cancelling invitation..."
-msgstr ""
+msgstr "Meghívás visszavonása..."
 
 #: src/features/invitations/index.tsx:191
 msgid "Cancelling invitations..."
-msgstr ""
+msgstr "Meghívások visszavonása..."
 
 #: ../../../lib/web/src/components/notification-category-button.tsx:144
 msgid "Category for this notification"
@@ -374,7 +370,7 @@ msgstr "Összes törlése"
 msgid "Clear filters"
 msgstr "Szűrők törlése"
 
-#: src/features/friends/components/add-friend-dialog.tsx:190
+#: src/features/friends/components/add-friend-dialog.tsx:196
 msgid "Clear search"
 msgstr "Keresés törlése"
 
@@ -388,10 +384,10 @@ msgid "Clear selection (Escape)"
 msgstr "Kijelölés törlése (Esc)"
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:332
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:335
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
-#: src/features/friends/components/add-friend-dialog.tsx:391
+#: src/features/friends/components/add-friend-dialog.tsx:397
 msgid "Close"
 msgstr "Bezárás"
 
@@ -495,7 +491,7 @@ msgstr "Csoport létrehozása"
 
 #: src/features/groups/group-dialog.tsx:55
 msgid "Creating group..."
-msgstr ""
+msgstr "Csoport létrehozása..."
 
 #: ../../../lib/web/src/components/colour-picker.tsx:260
 msgid "Custom"
@@ -522,17 +518,13 @@ msgstr "Elutasítás"
 msgid "Decline all"
 msgstr "Összes elutasítása"
 
-#: src/features/invitations/index.tsx:83
-#~ msgid "Declined invitation from {friendName}."
-#~ msgstr "{friendName} meghívója elutasítva."
-
 #: src/features/invitations/index.tsx:92
 msgid "Declining invitation..."
-msgstr ""
+msgstr "Meghívás elutasítása..."
 
 #: src/features/invitations/index.tsx:162
 msgid "Declining invitations..."
-msgstr ""
+msgstr "Meghívások elutasítása..."
 
 #: ../../../lib/web/src/components/config-drawer.tsx:310
 msgid "Default"
@@ -562,7 +554,7 @@ msgstr "Törölje fiókját a régi szerveren"
 
 #: src/features/groups/group-detail.tsx:108
 msgid "Deleting group..."
-msgstr ""
+msgstr "Csoport törlése..."
 
 #: ../../../lib/web/src/components/data-table/column-header.tsx:63
 msgid "Desc"
@@ -609,10 +601,14 @@ msgstr "Elvetés"
 msgid "Displays the mobile sidebar."
 msgstr "Megjeleníti a mobil oldalsávot."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:320
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:326
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
 msgid "Download"
 msgstr "Letöltés"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:68
+msgid "Download failed"
+msgstr "A letöltés sikertelen"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:146
 msgid "Dyslexia-friendly"
@@ -640,11 +636,11 @@ msgstr "Név szerkesztése"
 msgid "Email code"
 msgstr "E-mail kód"
 
-#: src/features/friends/components/add-friend-dialog.tsx:206
+#: src/features/friends/components/add-friend-dialog.tsx:212
 msgid "Enter a name to find people you want to add"
 msgstr "Adj meg egy nevet, hogy megtaláld a hozzáadni kívánt embereket"
 
-#: src/features/friends/components/add-friend-dialog.tsx:187
+#: src/features/friends/components/add-friend-dialog.tsx:193
 msgid "Enter name to search..."
 msgstr "Adj meg egy nevet a kereséshez..."
 
@@ -677,14 +673,14 @@ msgstr "Nem sikerült elfogadni a meghívást"
 
 #: src/features/invitations/index.tsx:136
 msgid "Failed to accept invitations"
-msgstr ""
+msgstr "A meghívások elfogadása sikertelen"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:225
 msgid "Failed to add account"
 msgstr "Nem sikerült hozzáadni a fiókot"
 
-#: src/features/friends/components/add-friend-dialog.tsx:74
-#: src/features/friends/components/add-friend-dialog.tsx:92
+#: src/features/friends/components/add-friend-dialog.tsx:77
+#: src/features/friends/components/add-friend-dialog.tsx:98
 msgid "Failed to add friend"
 msgstr "A barát hozzáadása sikertelen"
 
@@ -699,7 +695,7 @@ msgstr "Nem sikerült törölni a meghívást"
 
 #: src/features/invitations/index.tsx:194
 msgid "Failed to cancel invitations"
-msgstr ""
+msgstr "A meghívások visszavonása sikertelen"
 
 #: src/features/profile/index.tsx:538
 msgid "Failed to copy"
@@ -715,7 +711,7 @@ msgstr "Nem sikerült elutasítani a meghívást"
 
 #: src/features/invitations/index.tsx:165
 msgid "Failed to decline invitations"
-msgstr ""
+msgstr "A meghívások elutasítása sikertelen"
 
 #: src/features/groups/group-detail.tsx:110
 msgid "Failed to delete group"
@@ -747,7 +743,7 @@ msgstr "Nem sikerült menteni a nevet"
 
 #: src/features/profile/index.tsx:226
 msgid "Failed to save privacy setting"
-msgstr ""
+msgstr "Az adatvédelmi beállítás mentése sikertelen"
 
 #: src/features/profile/index.tsx:175
 msgid "Failed to save profile"
@@ -760,10 +756,6 @@ msgstr "Nem sikerült elküldeni az ellenőrző kódot"
 #: ../../../lib/web/src/components/notification-category-button.tsx:112
 msgid "Failed to update category"
 msgstr "Nem sikerült frissíteni a kategóriát"
-
-#: src/features/profile/index.tsx:206
-#~ msgid "Failed to update directory listing"
-#~ msgstr "Nem sikerült frissíteni a könyvtár listáját"
 
 #: src/features/groups/group-dialog.tsx:58
 msgid "Failed to update group"
@@ -799,7 +791,7 @@ msgstr "Péntek"
 
 #: src/features/friends/index.tsx:94
 msgid "Friend removed"
-msgstr ""
+msgstr "Barát eltávolítva"
 
 #: src/components/layout/people-layout.tsx:66
 #: src/features/friends/index.tsx:45
@@ -947,7 +939,7 @@ msgid "Invitation declined"
 msgstr "Meghívás elutasítva"
 
 #: src/features/friends/components/add-friend-dialog.tsx:73
-#: src/features/friends/components/add-friend-dialog.tsx:297
+#: src/features/friends/components/add-friend-dialog.tsx:303
 msgid "Invitation sent"
 msgstr "Meghívó elküldve"
 
@@ -1004,6 +996,10 @@ msgstr "Világos"
 #: ../../../lib/web/src/components/ui/load-more.tsx:35
 msgid "Load more"
 msgstr "Továbbiak betöltése"
+
+#: ../../../lib/web/src/components/ui/loading-content.tsx:29
+msgid "Loading content…"
+msgstr "Tartalom betöltése…"
 
 #: src/features/groups/member-dialog.tsx:199
 msgid "Loading groups..."
@@ -1106,8 +1102,8 @@ msgstr "Új"
 msgid "New invitations will appear here"
 msgstr "Az új meghívók itt jelennek meg"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:366
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:371
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
 msgid "Next image"
 msgstr "Következő kép"
 
@@ -1143,7 +1139,7 @@ msgstr "Nincsenek más csoportok"
 msgid "No pending invitations"
 msgstr "Nincsenek függő meghívók"
 
-#: src/features/friends/components/add-friend-dialog.tsx:230
+#: src/features/friends/components/add-friend-dialog.tsx:236
 #: src/features/groups/member-dialog.tsx:157
 msgid "No people found"
 msgstr "Nem találhatók személyek"
@@ -1277,12 +1273,12 @@ msgid "Preview"
 msgstr "Előnézet"
 
 #. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx:176
+#: src/features/friends/components/add-friend-dialog.tsx:182
 msgid "Preview {0}'s profile before sending a friend request."
 msgstr "Tekintsd meg {0} profilját, mielőtt barátkérést küldenél."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:351
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:356
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
 msgid "Previous image"
 msgstr "Előző kép"
 
@@ -1342,8 +1338,8 @@ msgstr "Ajánlott"
 msgid "Redirecting to login."
 msgstr "Átirányítás a bejelentkezéshez."
 
-#: ../../../lib/web/src/components/post-tags.tsx:192
-#: ../../../lib/web/src/components/post-tags.tsx:204
+#: ../../../lib/web/src/components/post-tags.tsx:196
+#: ../../../lib/web/src/components/post-tags.tsx:208
 msgid "Reduce interest"
 msgstr "Érdeklődés csökkentése"
 
@@ -1391,8 +1387,8 @@ msgstr "Eltávolítja a hozzáférést?"
 msgid "Remove friend"
 msgstr "Barát eltávolítása"
 
-#: ../../../lib/web/src/components/post-tags.tsx:212
-#: ../../../lib/web/src/components/post-tags.tsx:224
+#: ../../../lib/web/src/components/post-tags.tsx:216
+#: ../../../lib/web/src/components/post-tags.tsx:228
 msgid "Remove interest"
 msgstr "Érdeklődés eltávolítása"
 
@@ -1406,11 +1402,11 @@ msgstr "Tag eltávolítása"
 
 #: src/features/friends/index.tsx:93
 msgid "Removing friend..."
-msgstr ""
+msgstr "Barát eltávolítása..."
 
 #: src/features/groups/group-detail.tsx:91
 msgid "Removing member..."
-msgstr ""
+msgstr "Tag eltávolítása..."
 
 #: src/features/friends/index.tsx:259
 #: src/features/groups/group-detail.tsx:272
@@ -1458,7 +1454,7 @@ msgstr "Név mentése"
 
 #: src/features/profile/index.tsx:173
 msgid "Saving profile..."
-msgstr ""
+msgstr "Profil mentése..."
 
 #: src/features/groups/group-dialog.tsx:122
 #: src/features/invitations/invite-settings-dialog.tsx:69
@@ -1485,7 +1481,7 @@ msgstr "Cél keresése..."
 msgid "Search for origin..."
 msgstr "Kiindulási pont keresése..."
 
-#: src/features/friends/components/add-friend-dialog.tsx:177
+#: src/features/friends/components/add-friend-dialog.tsx:183
 msgid "Search for people and send a friend request."
 msgstr "Keress embereket, és küldj barátkérést."
 
@@ -1563,13 +1559,13 @@ msgstr "Újraküldés"
 msgid "Send email"
 msgstr "E-mail küldése"
 
-#: src/features/friends/components/add-friend-dialog.tsx:161
+#: src/features/friends/components/add-friend-dialog.tsx:167
 msgid "Send invitation"
 msgstr "Meghívó küldése"
 
 #: src/features/friends/components/add-friend-dialog.tsx:72
 msgid "Sending invitation..."
-msgstr ""
+msgstr "Meghívás küldése..."
 
 #. placeholder {0}: filteredSent.length
 #: src/features/invitations/index.tsx:379
@@ -1658,7 +1654,7 @@ msgstr "Néhány meghívást nem sikerült elutasítani"
 msgid "Spacious"
 msgstr "Tágas"
 
-#: src/features/friends/components/add-friend-dialog.tsx:205
+#: src/features/friends/components/add-friend-dialog.tsx:211
 msgid "Start typing to search for users"
 msgstr "Kezdj el gépelni a felhasználók kereséséhez"
 
@@ -1688,8 +1684,8 @@ msgstr "Rendszer"
 msgid "Tag"
 msgstr "Címke"
 
-#: ../../../lib/web/src/components/post-tags.tsx:96
-#: ../../../lib/web/src/components/post-tags.tsx:107
+#: ../../../lib/web/src/components/post-tags.tsx:100
+#: ../../../lib/web/src/components/post-tags.tsx:111
 msgid "Tags"
 msgstr "Címkék"
 
@@ -1706,7 +1702,7 @@ msgstr "Általános szerződési feltételek"
 msgid "That code is incorrect or has expired."
 msgstr "Ez a kód helytelen vagy lejárt."
 
-#: src/features/friends/components/add-friend-dialog.tsx:282
+#: src/features/friends/components/add-friend-dialog.tsx:288
 msgid "That's you"
 msgstr "Ez te vagy"
 
@@ -1769,7 +1765,7 @@ msgstr "Utazás"
 msgid "Try a different name"
 msgstr "Próbálj meg másik nevet"
 
-#: src/features/friends/components/add-friend-dialog.tsx:231
+#: src/features/friends/components/add-friend-dialog.tsx:237
 msgid "Try a different search term"
 msgstr "Próbálj meg másik keresési kifejezést"
 
@@ -1837,7 +1833,7 @@ msgstr "Nem ellenőrzött"
 
 #: src/features/groups/group-dialog.tsx:55
 msgid "Updating group..."
-msgstr ""
+msgstr "Csoport frissítése..."
 
 #: src/features/profile/index.tsx:468
 msgid "Upload"
@@ -1850,7 +1846,7 @@ msgstr "Profilkép feltöltése"
 
 #: src/features/profile/index.tsx:597
 msgid "Uploading..."
-msgstr ""
+msgstr "Feltöltés..."
 
 #: src/features/profile/index.tsx:257
 #: src/features/profile/index.tsx:468
@@ -1922,13 +1918,9 @@ msgstr "A webhely karbantartás alatt áll!"
 msgid "Wednesday"
 msgstr "Szerda"
 
-#: src/features/invitations/index.tsx:67
-#~ msgid "You are now friends with {friendName}."
-#~ msgstr "Mostantól {friendName} barátja vagy."
-
-#: src/features/friends/components/add-friend-dialog.tsx:80
-#~ msgid "You are now friends!"
-#~ msgstr "Mostantól barátok vagytok!"
+#: src/features/friends/components/add-friend-dialog.tsx:96
+msgid "You are now friends!"
+msgstr "Mostantól barátok vagytok!"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

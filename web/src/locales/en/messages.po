@@ -25,9 +25,9 @@ msgstr "12 hours"
 msgid "24 hours"
 msgstr "24 hours"
 
-#: src/features/friends/components/add-friend-dialog.tsx:65
-#~ msgid "A friend invitation has been sent to {0}."
-#~ msgstr "A friend invitation has been sent to {0}."
+#: src/features/friends/components/add-friend-dialog.tsx:75
+msgid "A friend invitation has been sent to {userName}."
+msgstr "A friend invitation has been sent to {userName}."
 
 #: ../../../lib/web/src/lib/preference-utils.ts:51
 msgid "Absolute (date and time)"
@@ -41,7 +41,7 @@ msgstr "Accent colour"
 msgid "Accent saved"
 msgstr "Accent saved"
 
-#: src/features/friends/components/add-friend-dialog.tsx:160
+#: src/features/friends/components/add-friend-dialog.tsx:166
 #: src/features/invitations/index.tsx:355
 msgid "Accept"
 msgstr "Accept"
@@ -54,11 +54,11 @@ msgstr "Accept all"
 msgid "Accept automatically"
 msgstr "Accept automatically"
 
-#: src/features/friends/components/add-friend-dialog.tsx:303
+#: src/features/friends/components/add-friend-dialog.tsx:309
 msgid "Accept invite"
 msgstr "Accept invite"
 
-#: src/features/friends/components/add-friend-dialog.tsx:90
+#: src/features/friends/components/add-friend-dialog.tsx:93
 #: src/features/invitations/index.tsx:76
 msgid "Accepting invitation..."
 msgstr "Accepting invitation..."
@@ -116,8 +116,8 @@ msgstr "Add account"
 msgid "Add an account to receive notifications and use services."
 msgstr "Add an account to receive notifications and use services."
 
-#: src/features/friends/components/add-friend-dialog.tsx:172
-#: src/features/friends/components/add-friend-dialog.tsx:311
+#: src/features/friends/components/add-friend-dialog.tsx:178
+#: src/features/friends/components/add-friend-dialog.tsx:317
 #: src/features/friends/index.tsx:129
 #: src/features/friends/index.tsx:141
 #: src/features/invitations/index.tsx:242
@@ -139,7 +139,7 @@ msgstr "Add member"
 msgid "Add new account"
 msgstr "Add new account"
 
-#: ../../../lib/web/src/components/post-tags.tsx:129
+#: ../../../lib/web/src/components/post-tags.tsx:133
 msgid "Add tag..."
 msgstr "Add tag..."
 
@@ -172,8 +172,8 @@ msgstr "Added {0} to the group"
 msgid "Adding member..."
 msgstr "Adding member..."
 
-#: src/features/friends/components/add-friend-dialog.tsx:272
-#: src/features/friends/components/add-friend-dialog.tsx:374
+#: src/features/friends/components/add-friend-dialog.tsx:278
+#: src/features/friends/components/add-friend-dialog.tsx:380
 #: src/features/groups/member-dialog.tsx:258
 msgid "Adding..."
 msgstr "Adding..."
@@ -214,8 +214,8 @@ msgstr "All invites are accepted without your approval."
 msgid "Allow others to find you in the directory."
 msgstr "Allow others to find you in the directory."
 
-#: src/features/friends/components/add-friend-dialog.tsx:91
-#: src/features/friends/components/add-friend-dialog.tsx:289
+#: src/features/friends/components/add-friend-dialog.tsx:94
+#: src/features/friends/components/add-friend-dialog.tsx:295
 msgid "Already friends"
 msgstr "Already friends"
 
@@ -258,7 +258,7 @@ msgid "Authenticator code"
 msgstr "Authenticator code"
 
 #: ../../../lib/web/src/components/place-picker.tsx:155
-#: src/features/friends/components/add-friend-dialog.tsx:369
+#: src/features/friends/components/add-friend-dialog.tsx:375
 msgid "Back"
 msgstr "Back"
 
@@ -272,8 +272,8 @@ msgstr "Back to friends"
 msgid "Back to home"
 msgstr "Back to home"
 
-#: ../../../lib/web/src/components/post-tags.tsx:172
-#: ../../../lib/web/src/components/post-tags.tsx:184
+#: ../../../lib/web/src/components/post-tags.tsx:176
+#: ../../../lib/web/src/components/post-tags.tsx:188
 msgid "Boost interest"
 msgstr "Boost interest"
 
@@ -302,10 +302,6 @@ msgstr "Cancel"
 #: src/features/invitations/index.tsx:389
 msgid "Cancel all"
 msgstr "Cancel all"
-
-#: src/features/invitations/index.tsx:99
-#~ msgid "Cancelled invitation to {friendName}."
-#~ msgstr "Cancelled invitation to {friendName}."
 
 #: src/features/invitations/index.tsx:108
 msgid "Cancelling invitation..."
@@ -374,7 +370,7 @@ msgstr "Clear all"
 msgid "Clear filters"
 msgstr "Clear filters"
 
-#: src/features/friends/components/add-friend-dialog.tsx:190
+#: src/features/friends/components/add-friend-dialog.tsx:196
 msgid "Clear search"
 msgstr "Clear search"
 
@@ -388,10 +384,10 @@ msgid "Clear selection (Escape)"
 msgstr "Clear selection (Escape)"
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:332
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:335
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
-#: src/features/friends/components/add-friend-dialog.tsx:391
+#: src/features/friends/components/add-friend-dialog.tsx:397
 msgid "Close"
 msgstr "Close"
 
@@ -522,10 +518,6 @@ msgstr "Decline"
 msgid "Decline all"
 msgstr "Decline all"
 
-#: src/features/invitations/index.tsx:83
-#~ msgid "Declined invitation from {friendName}."
-#~ msgstr "Declined invitation from {friendName}."
-
 #: src/features/invitations/index.tsx:92
 msgid "Declining invitation..."
 msgstr "Declining invitation..."
@@ -609,10 +601,14 @@ msgstr "Dismiss"
 msgid "Displays the mobile sidebar."
 msgstr "Displays the mobile sidebar."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:320
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:326
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
 msgid "Download"
 msgstr "Download"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:68
+msgid "Download failed"
+msgstr "Download failed"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:146
 msgid "Dyslexia-friendly"
@@ -640,11 +636,11 @@ msgstr "Edit name"
 msgid "Email code"
 msgstr "Email code"
 
-#: src/features/friends/components/add-friend-dialog.tsx:206
+#: src/features/friends/components/add-friend-dialog.tsx:212
 msgid "Enter a name to find people you want to add"
 msgstr "Enter a name to find people you want to add"
 
-#: src/features/friends/components/add-friend-dialog.tsx:187
+#: src/features/friends/components/add-friend-dialog.tsx:193
 msgid "Enter name to search..."
 msgstr "Enter name to search..."
 
@@ -683,8 +679,8 @@ msgstr "Failed to accept invitations"
 msgid "Failed to add account"
 msgstr "Failed to add account"
 
-#: src/features/friends/components/add-friend-dialog.tsx:74
-#: src/features/friends/components/add-friend-dialog.tsx:92
+#: src/features/friends/components/add-friend-dialog.tsx:77
+#: src/features/friends/components/add-friend-dialog.tsx:98
 msgid "Failed to add friend"
 msgstr "Failed to add friend"
 
@@ -760,10 +756,6 @@ msgstr "Failed to send verification code"
 #: ../../../lib/web/src/components/notification-category-button.tsx:112
 msgid "Failed to update category"
 msgstr "Failed to update category"
-
-#: src/features/profile/index.tsx:206
-#~ msgid "Failed to update directory listing"
-#~ msgstr "Failed to update directory listing"
 
 #: src/features/groups/group-dialog.tsx:58
 msgid "Failed to update group"
@@ -947,7 +939,7 @@ msgid "Invitation declined"
 msgstr "Invitation declined"
 
 #: src/features/friends/components/add-friend-dialog.tsx:73
-#: src/features/friends/components/add-friend-dialog.tsx:297
+#: src/features/friends/components/add-friend-dialog.tsx:303
 msgid "Invitation sent"
 msgstr "Invitation sent"
 
@@ -1004,6 +996,10 @@ msgstr "Light"
 #: ../../../lib/web/src/components/ui/load-more.tsx:35
 msgid "Load more"
 msgstr "Load more"
+
+#: ../../../lib/web/src/components/ui/loading-content.tsx:29
+msgid "Loading content…"
+msgstr "Loading content…"
 
 #: src/features/groups/member-dialog.tsx:199
 msgid "Loading groups..."
@@ -1106,8 +1102,8 @@ msgstr "New"
 msgid "New invitations will appear here"
 msgstr "New invitations will appear here"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:366
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:371
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
 msgid "Next image"
 msgstr "Next image"
 
@@ -1143,7 +1139,7 @@ msgstr "No other groups"
 msgid "No pending invitations"
 msgstr "No pending invitations"
 
-#: src/features/friends/components/add-friend-dialog.tsx:230
+#: src/features/friends/components/add-friend-dialog.tsx:236
 #: src/features/groups/member-dialog.tsx:157
 msgid "No people found"
 msgstr "No people found"
@@ -1277,12 +1273,12 @@ msgid "Preview"
 msgstr "Preview"
 
 #. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx:176
+#: src/features/friends/components/add-friend-dialog.tsx:182
 msgid "Preview {0}'s profile before sending a friend request."
 msgstr "Preview {0}'s profile before sending a friend request."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:351
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:356
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
 msgid "Previous image"
 msgstr "Previous image"
 
@@ -1342,8 +1338,8 @@ msgstr "Recommended"
 msgid "Redirecting to login."
 msgstr "Redirecting to login."
 
-#: ../../../lib/web/src/components/post-tags.tsx:192
-#: ../../../lib/web/src/components/post-tags.tsx:204
+#: ../../../lib/web/src/components/post-tags.tsx:196
+#: ../../../lib/web/src/components/post-tags.tsx:208
 msgid "Reduce interest"
 msgstr "Reduce interest"
 
@@ -1391,8 +1387,8 @@ msgstr "Remove access?"
 msgid "Remove friend"
 msgstr "Remove friend"
 
-#: ../../../lib/web/src/components/post-tags.tsx:212
-#: ../../../lib/web/src/components/post-tags.tsx:224
+#: ../../../lib/web/src/components/post-tags.tsx:216
+#: ../../../lib/web/src/components/post-tags.tsx:228
 msgid "Remove interest"
 msgstr "Remove interest"
 
@@ -1485,7 +1481,7 @@ msgstr "Search for destination..."
 msgid "Search for origin..."
 msgstr "Search for origin..."
 
-#: src/features/friends/components/add-friend-dialog.tsx:177
+#: src/features/friends/components/add-friend-dialog.tsx:183
 msgid "Search for people and send a friend request."
 msgstr "Search for people and send a friend request."
 
@@ -1563,7 +1559,7 @@ msgstr "Send again"
 msgid "Send email"
 msgstr "Send email"
 
-#: src/features/friends/components/add-friend-dialog.tsx:161
+#: src/features/friends/components/add-friend-dialog.tsx:167
 msgid "Send invitation"
 msgstr "Send invitation"
 
@@ -1658,7 +1654,7 @@ msgstr "Some invitations could not be declined"
 msgid "Spacious"
 msgstr "Spacious"
 
-#: src/features/friends/components/add-friend-dialog.tsx:205
+#: src/features/friends/components/add-friend-dialog.tsx:211
 msgid "Start typing to search for users"
 msgstr "Start typing to search for users"
 
@@ -1688,8 +1684,8 @@ msgstr "System"
 msgid "Tag"
 msgstr "Tag"
 
-#: ../../../lib/web/src/components/post-tags.tsx:96
-#: ../../../lib/web/src/components/post-tags.tsx:107
+#: ../../../lib/web/src/components/post-tags.tsx:100
+#: ../../../lib/web/src/components/post-tags.tsx:111
 msgid "Tags"
 msgstr "Tags"
 
@@ -1706,7 +1702,7 @@ msgstr "Terms and conditions"
 msgid "That code is incorrect or has expired."
 msgstr "That code is incorrect or has expired."
 
-#: src/features/friends/components/add-friend-dialog.tsx:282
+#: src/features/friends/components/add-friend-dialog.tsx:288
 msgid "That's you"
 msgstr "That's you"
 
@@ -1769,7 +1765,7 @@ msgstr "Travelling"
 msgid "Try a different name"
 msgstr "Try a different name"
 
-#: src/features/friends/components/add-friend-dialog.tsx:231
+#: src/features/friends/components/add-friend-dialog.tsx:237
 msgid "Try a different search term"
 msgstr "Try a different search term"
 
@@ -1922,13 +1918,9 @@ msgstr "Website is under maintenance!"
 msgid "Wednesday"
 msgstr "Wednesday"
 
-#: src/features/invitations/index.tsx:67
-#~ msgid "You are now friends with {friendName}."
-#~ msgstr "You are now friends with {friendName}."
-
-#: src/features/friends/components/add-friend-dialog.tsx:80
-#~ msgid "You are now friends!"
-#~ msgstr "You are now friends!"
+#: src/features/friends/components/add-friend-dialog.tsx:96
+msgid "You are now friends!"
+msgstr "You are now friends!"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

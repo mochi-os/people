@@ -6,7 +6,7 @@
 import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { Plus } from 'lucide-react'
-import { toast, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, Input, Label, Textarea, getErrorMessage, handlePermissionError } from '@mochi/web'
+import { toast, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, Input, Label, Textarea, getErrorMessage, handlePermissionError, textUnchanged } from '@mochi/web'
 import {
   useCreateGroupMutation,
   useUpdateGroupMutation,
@@ -40,11 +40,21 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
     }
   }, [open, group])
 
+  const editUnchanged =
+    isEditing &&
+    textUnchanged(name.trim(), group.name) &&
+    textUnchanged(description.trim(), group.description || '')
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     if (!name.trim()) {
       toast.error(t`Name is required`)
+      return
+    }
+
+    if (isEditing && editUnchanged) {
+      onOpenChange(false)
       return
     }
 
@@ -118,7 +128,7 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
             <Button type='button' variant='outline' onClick={() => onOpenChange(false)} disabled={isPending}>
               <Trans>Cancel</Trans>
             </Button>
-            <Button type='submit' disabled={isPending}>
+            <Button type='submit' disabled={isPending || editUnchanged}>
               {isPending ? t`Saving...` : isEditing ? t`Save` : <><Plus className="me-2 h-4 w-4" /><Trans>Create group</Trans></>}
             </Button>
           </ResponsiveDialogFooter>

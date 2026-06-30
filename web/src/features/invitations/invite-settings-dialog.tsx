@@ -64,6 +64,10 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
   }, [data?.invite_policy])
 
   const handleSave = async () => {
+    if (data?.invite_policy && value === data.invite_policy) {
+      onOpenChange(false)
+      return
+    }
     try {
       await toastAction(setPolicy.mutateAsync(value), {
         loading: t`Saving...`,
@@ -116,7 +120,14 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
           <Button variant='outline' onClick={() => onOpenChange(false)} disabled={setPolicy.isPending}>
             <Trans>Cancel</Trans>
           </Button>
-          <Button onClick={handleSave} disabled={setPolicy.isPending || isLoading}>
+          <Button
+            onClick={handleSave}
+            disabled={
+              setPolicy.isPending ||
+              isLoading ||
+              (!!data?.invite_policy && value === data.invite_policy)
+            }
+          >
             <Check className='size-4' />
             <Trans>Save</Trans>
           </Button>

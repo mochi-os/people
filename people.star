@@ -9,13 +9,13 @@ def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event_id=event_id)
 
 def database_create():
-	mochi.db.execute("create table if not exists friends ( identity text not null, id text not null, name text not null, class text not null, created integer not null default 0, primary key ( identity, id ) )")
+	mochi.db.execute("create table if not exists friends ( identity text not null, id text not null, name text not null default '', class text not null default 'person', created integer not null default 0, writer text not null default '', version integer not null default 0, removed integer not null default 0, primary key ( identity, id ) )")
 	mochi.db.execute("create index if not exists friends_id on friends( id )")
 	mochi.db.execute("create index if not exists friends_name on friends( name )")
-	mochi.db.execute("create table if not exists invites ( identity text not null, id text not null, direction text not null, name text not null, updated integer not null, primary key ( identity, id, direction ) )")
+	mochi.db.execute("create table if not exists invites ( identity text not null, id text not null, direction text not null, name text not null default '', updated integer not null default 0, writer text not null default '', version integer not null default 0, removed integer not null default 0, primary key ( identity, id, direction ) )")
 	mochi.db.execute("create index if not exists invites_identity_id on invites( identity, id )")
 	mochi.db.execute("create index if not exists invites_direction on invites( direction )")
-	mochi.db.execute("create table if not exists profiles ( person text not null primary key, profile text not null default '', accent text not null default '', updated integer not null default 0 )")
+	mochi.db.execute("create table if not exists profiles ( person text not null primary key, profile text not null default '', accent text not null default '', updated integer not null default 0, writer text not null default '', version integer not null default 0, removed integer not null default 0 )")
 
 def database_upgrade(version):
 	if version == 2:
@@ -25,12 +25,59 @@ def database_upgrade(version):
 		# Pre-existing rows default to 0 (sort oldest), which is correct: their
 		# real add-time is unknown.
 		mochi.db.execute("alter table friends add column created integer not null default 0")
+	if version == 4:
+		# friends / invites / profiles become versioned LWW-Registers
+		# (mochi.db.merge / mochi.db.tombstone) so add/remove/edits converge across a
+		# user's hosts and a stale write can't resurrect a removed relationship.
+		# Rebuild friends + invites so every non-key column carries a DEFAULT: a
+		# tombstone upserts only the key columns, so a NOT NULL column without a
+		# default would abort the removal (SQLite can't add a default via ALTER).
+		# profiles already has defaults on its columns, so it only needs the register
+		# columns added.
+		mochi.db.execute("create table friends_new ( identity text not null, id text not null, name text not null default '', class text not null default 'person', created integer not null default 0, writer text not null default '', version integer not null default 0, removed integer not null default 0, primary key ( identity, id ) )")
+		mochi.db.execute("insert into friends_new ( identity, id, name, class, created ) select identity, id, name, class, created from friends")
+		mochi.db.execute("drop table friends")
+		mochi.db.execute("alter table friends_new rename to friends")
+		mochi.db.execute("create index if not exists friends_id on friends( id )")
+		mochi.db.execute("create index if not exists friends_name on friends( name )")
+		mochi.db.execute("create table invites_new ( identity text not null, id text not null, direction text not null, name text not null default '', updated integer not null default 0, writer text not null default '', version integer not null default 0, removed integer not null default 0, primary key ( identity, id, direction ) )")
+		mochi.db.execute("insert into invites_new ( identity, id, direction, name, updated ) select identity, id, direction, name, updated from invites")
+		mochi.db.execute("drop table invites")
+		mochi.db.execute("alter table invites_new rename to invites")
+		mochi.db.execute("create index if not exists invites_identity_id on invites( identity, id )")
+		mochi.db.execute("create index if not exists invites_direction on invites( direction )")
+		for c in ["writer text not null default ''", "version integer not null default 0", "removed integer not null default 0"]:
+			mochi.db.execute("alter table profiles add column " + c)
 
 def resolve_identity(id):
 	entry = mochi.directory.get(id)
 	if entry and entry.get("id"):
 		return entry["id"]
 	return id
+
+# friends / invites are versioned LWW-Registers (mochi.db.merge / mochi.db.tombstone)
+# so a relationship converges across the user's hosts and a stale write can't
+# resurrect a removed one. All reads filter removed=0.
+def friend_add(identity, id, name):
+	# Preserve the original friendship-start time across name re-merges; a fresh
+	# add (or a re-add after removal) stamps now().
+	existing = mochi.db.row("select created from friends where identity=? and id=? and removed=0", identity, id)
+	created = existing["created"] if existing else mochi.time.now()
+	mochi.db.merge("friends", ["identity", "id"], {"identity": identity, "id": id, "name": name, "class": "person", "created": created})
+
+def friend_remove(identity, id):
+	mochi.db.tombstone("friends", ["identity", "id"], {"identity": identity, "id": id})
+
+def invite_set(identity, id, direction, name):
+	mochi.db.merge("invites", ["identity", "id", "direction"], {"identity": identity, "id": id, "direction": direction, "name": name, "updated": mochi.time.now()})
+
+def invite_remove(identity, id, direction=None):
+	# Tombstone the invite(s) between identity and id. direction=None removes both.
+	if direction:
+		mochi.db.tombstone("invites", ["identity", "id", "direction"], {"identity": identity, "id": id, "direction": direction})
+		return
+	for row in mochi.db.rows("select direction from invites where identity=? and id=? and removed=0", identity, id):
+		mochi.db.tombstone("invites", ["identity", "id", "direction"], {"identity": identity, "id": id, "direction": row["direction"]})
 
 # Accept a friend's invitation
 def action_accept(a):
@@ -43,14 +90,14 @@ def action_accept(a):
 		a.error.label(400, "errors.invalid_friend_id_format")
 		return
 
-	i = mochi.db.row("select * from invites where identity=? and id=? and direction='from'", identity, id)
+	i = mochi.db.row("select * from invites where identity=? and id=? and direction='from' and removed=0", identity, id)
 	if not i:
 		a.error.label(400, "errors.invitation_not_found")
 		return
 
-	mochi.db.execute("insert into friends ( identity, id, name, class, created ) values ( ?, ?, ?, 'person', ? ) on conflict ( identity, id ) do update set name=excluded.name", identity, id, i["name"], mochi.time.now())
+	friend_add(identity, id, i["name"])
 	mochi.message.send({"from": identity, "to": id, "service": "friends", "event": "friend/accept"})
-	mochi.db.execute("delete from invites where identity=? and id=?", identity, id)
+	invite_remove(identity, id)
 
 	return {"data": {}}
 
@@ -80,15 +127,15 @@ def action_create(a):
 		return
 
 	# Check if there's an existing invitation from them
-	if mochi.db.exists("select id from invites where identity=? and id=? and direction='from'", identity, id):
+	if mochi.db.exists("select id from invites where identity=? and id=? and direction='from' and removed=0", identity, id):
 		# They already invited us - accept it by adding as friend
-		mochi.db.execute("insert into friends ( identity, id, name, class, created ) values ( ?, ?, ?, 'person', ? ) on conflict ( identity, id ) do update set name=excluded.name", identity, id, name, mochi.time.now())
+		friend_add(identity, id, name)
 		mochi.message.send({"from": identity, "to": id, "service": "friends", "event": "friend/accept"})
-		mochi.db.execute("delete from invites where identity=? and id=?", identity, id)
+		invite_remove(identity, id)
 	else:
 		# No existing invitation - send them an invitation (don't add as friend yet)
 		mochi.message.send({"from": identity, "to": id, "service": "friends", "event": "friend/invite"}, {"name": a.user.identity.name})
-		mochi.db.execute("replace into invites ( identity, id, direction, name, updated ) values ( ?, ?, 'to', ?, ? )", identity, id, name, mochi.time.now())
+		invite_set(identity, id, "to", name)
 
 	return {"data": {}}
 
@@ -104,15 +151,15 @@ def action_delete(a):
 		return
 
 	# Check if this is an existing friendship - notify remote to remove us
-	if mochi.db.exists("select id from friends where identity=? and id=?", identity, id):
+	if mochi.db.exists("select id from friends where identity=? and id=? and removed=0", identity, id):
 		mochi.message.send({"from": identity, "to": id, "service": "friends", "event": "friend/remove"})
 	# Check if this is a sent invitation that needs to be cancelled on the other side
-	elif mochi.db.exists("select id from invites where identity=? and id=? and direction='to'", identity, id):
+	elif mochi.db.exists("select id from invites where identity=? and id=? and direction='to' and removed=0", identity, id):
 		mochi.message.send({"from": identity, "to": id, "service": "friends", "event": "friend/cancel"})
 
 	# Clean up all local data for this relationship (both invite directions and friendship)
-	mochi.db.execute("delete from invites where identity=? and id=?", identity, id)
-	mochi.db.execute("delete from friends where identity=? and id=?", identity, id)
+	invite_remove(identity, id)
+	friend_remove(identity, id)
 
 	return {"data": {}}
 
@@ -127,14 +174,14 @@ def action_ignore(a):
 		a.error.label(400, "errors.invalid_friend_id_format")
 		return
 
-	mochi.db.execute("delete from invites where identity=? and id=? and direction='from'", identity, id)
+	invite_remove(identity, id, "from")
 
 	return {"data": {}}
 
 # List friends
 def action_list(a):
 	identity = a.user.identity.id
-	friends = mochi.db.rows("select * from friends where identity=? order by id", identity)
+	friends = mochi.db.rows("select * from friends where identity=? and removed=0 order by id", identity)
 
 	# Look up current names from directory to avoid stale names
 	for friend in friends:
@@ -144,8 +191,8 @@ def action_list(a):
 
 	return {"data": {
 		"friends": friends,
-		"received": mochi.db.rows("select * from invites where identity=? and direction='from' order by updated desc", identity),
-		"sent": mochi.db.rows("select * from invites where identity=? and direction='to' order by updated desc", identity)
+		"received": mochi.db.rows("select * from invites where identity=? and direction='from' and removed=0 order by updated desc", identity),
+		"sent": mochi.db.rows("select * from invites where identity=? and direction='to' and removed=0 order by updated desc", identity)
 	}}
 
 # Search for friends to add (searches P2P directory)
@@ -213,17 +260,17 @@ def action_search(a):
 	received_invite_ids = set()
 
 	# Get all friends
-	friends = mochi.db.rows("select id from friends where identity=?", identity)
+	friends = mochi.db.rows("select id from friends where identity=? and removed=0", identity)
 	for friend in friends:
 		friend_ids.add(friend["id"])
 
 	# Get all sent invitations (direction='to' means we invited them)
-	sent_invites = mochi.db.rows("select id from invites where identity=? and direction='to'", identity)
+	sent_invites = mochi.db.rows("select id from invites where identity=? and direction='to' and removed=0", identity)
 	for invite in sent_invites:
 		sent_invite_ids.add(invite["id"])
 
 	# Get all received invitations (direction='from' means they invited us)
-	received_invites = mochi.db.rows("select id from invites where identity=? and direction='from'", identity)
+	received_invites = mochi.db.rows("select id from invites where identity=? and direction='from' and removed=0", identity)
 	for invite in received_invites:
 		received_invite_ids.add(invite["id"])
 
@@ -316,15 +363,15 @@ def action_users_search(a):
 
 def event_accept(e):
 	identity = resolve_identity(e.header("to"))
-	i = mochi.db.row("select * from invites where identity=? and id=? and direction='to'", identity, e.header("from"))
+	i = mochi.db.row("select * from invites where identity=? and id=? and direction='to' and removed=0", identity, e.header("from"))
 	if not i:
 		return
 
 	# Add them as a friend since they accepted our invitation
 	# Use e.header values consistently instead of i[] for safety
-	mochi.db.execute("insert into friends ( identity, id, name, class, created ) values ( ?, ?, ?, 'person', ? ) on conflict ( identity, id ) do update set name=excluded.name", identity, e.header("from"), i["name"], mochi.time.now())
+	friend_add(identity, e.header("from"), i["name"])
 
-	mochi.db.execute("delete from invites where identity=? and id=?", identity, e.header("from"))
+	invite_remove(identity, e.header("from"))
 	notify("accept/accepted", "", mochi.app.label("notifications.title.friend_request_accepted"), mochi.app.label("notifications.body.accepted_invitation", name=i["name"]), "/people", e.header("from"), event_id="accept/accepted:" + e.header("from") + ":" + identity)
 
 def event_invite(e):
@@ -340,10 +387,10 @@ def event_invite(e):
 	sender = e.header("from")
 
 	# Mutual invite — always connect, regardless of policy.
-	if mochi.db.exists("select id from invites where identity=? and id=? and direction='to'", identity, sender):
-		mochi.db.execute("insert into friends ( identity, id, name, class, created ) values ( ?, ?, ?, 'person', ? ) on conflict ( identity, id ) do update set name=excluded.name", identity, sender, name, mochi.time.now())
+	if mochi.db.exists("select id from invites where identity=? and id=? and direction='to' and removed=0", identity, sender):
+		friend_add(identity, sender, name)
 		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
-		mochi.db.execute("delete from invites where identity=? and id=?", identity, sender)
+		invite_remove(identity, sender)
 		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event_id="accept/matched:" + sender + ":" + identity)
 		return
 
@@ -354,36 +401,36 @@ def event_invite(e):
 
 	if policy == "accept":
 		# Auto-accept: mirror mutual-invite path without writing to invites.
-		mochi.db.execute("insert into friends ( identity, id, name, class, created ) values ( ?, ?, ?, 'person', ? ) on conflict ( identity, id ) do update set name=excluded.name", identity, sender, name, mochi.time.now())
+		friend_add(identity, sender, name)
 		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
 		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event_id="accept/matched:" + sender + ":" + identity)
 		return
 
 	# silent or notify: store pending invite
-	mochi.db.execute("replace into invites ( identity, id, direction, name, updated ) values ( ?, ?, 'from', ?, ? )", identity, sender, name, mochi.time.now())
+	invite_set(identity, sender, "from", name)
 
 	if policy == "notify":
 		notify("invite/received", "", mochi.app.label("notifications.title.friend_invitation"), mochi.app.label("notifications.body.invited_you", name=name), "/people/invitations", sender, event_id="invite/received:" + sender + ":" + identity)
 
 def event_cancel(e):
 	# Remove the invitation from the recipient's side
-	mochi.db.execute("delete from invites where identity=? and id=? and direction='from'", resolve_identity(e.header("to")), e.header("from"))
+	invite_remove(resolve_identity(e.header("to")), e.header("from"), "from")
 
 def event_remove(e):
 	# Remote friend removed us - clean up local friendship and any pending invites
 	identity = resolve_identity(e.header("to"))
-	mochi.db.execute("delete from friends where identity=? and id=?", identity, e.header("from"))
-	mochi.db.execute("delete from invites where identity=? and id=?", identity, e.header("from"))
+	friend_remove(identity, e.header("from"))
+	invite_remove(identity, e.header("from"))
 
 def function_get(context, identity, id):
 	if not identity:
 		return None
-	return mochi.db.row("select * from friends where identity=? and id=?", identity, id)
+	return mochi.db.row("select * from friends where identity=? and id=? and removed=0", identity, id)
 
 def function_list(context, identity):
 	if not identity:
 		return []
-	return mochi.db.rows("select * from friends where identity=? order by id", identity)
+	return mochi.db.rows("select * from friends where identity=? and removed=0 order by id", identity)
 
 # Service function for user search
 # Supports searching by name, entity ID, fingerprint (with or without hyphens), or URL
@@ -441,7 +488,7 @@ def function_groups_list(context):
 def function_count(context, identity):
 	if not identity:
 		return 0
-	row = mochi.db.row("select count(*) as count from friends where identity=?", identity)
+	row = mochi.db.row("select count(*) as count from friends where identity=? and removed=0", identity)
 	return row["count"] if row else 0
 
 # Group management actions
@@ -621,7 +668,7 @@ def action_group_member_remove(a):
 def action_welcome(a):
 	identity = a.user.identity.id
 	seen = a.user.preference.get("people_welcome_seen") == "true"
-	count = mochi.db.row("select count(*) as count from friends where identity=?", identity)
+	count = mochi.db.row("select count(*) as count from friends where identity=? and removed=0", identity)
 	return {"data": {"seen": seen, "count": count["count"] if count else 0}}
 
 # Mark welcome as seen
@@ -680,18 +727,16 @@ def slot_attachment(person_id, slot):
 	return None
 
 def get_profile_row(person_id):
-	row = mochi.db.row("select * from profiles where person=?", person_id)
+	row = mochi.db.row("select * from profiles where person=? and removed=0", person_id)
 	if row:
 		return row
 	return {"profile": "", "accent": ""}
 
 def upsert_profile(person_id, profile=None, accent=None):
-	existing = mochi.db.row("select profile, accent from profiles where person=?", person_id) or {}
+	existing = mochi.db.row("select profile, accent from profiles where person=? and removed=0", person_id) or {}
 	new_profile = profile if profile != None else existing.get("profile", "")
 	new_accent = accent if accent != None else existing.get("accent", "")
-	mochi.db.execute(
-		"insert into profiles ( person, profile, accent, updated ) values ( ?, ?, ?, ? ) on conflict ( person ) do update set profile=excluded.profile, accent=excluded.accent, updated=excluded.updated",
-		person_id, new_profile, new_accent, mochi.time.now())
+	mochi.db.merge("profiles", ["person"], {"person": person_id, "profile": new_profile, "accent": new_accent, "updated": mochi.time.now()})
 
 def build_information(person_id, entity):
 	profile = get_profile_row(person_id)

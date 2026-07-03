@@ -27,7 +27,7 @@ def database_upgrade(version):
 		mochi.db.execute("alter table friends add column created integer not null default 0")
 	if version == 4:
 		# friends / invites / profiles become versioned LWW-Registers
-		# (mochi.db.merge / mochi.db.tombstone) so add/remove/edits converge across a
+		# (mochi.db.merge / mochi.db.remove) so add/remove/edits converge across a
 		# user's hosts and a stale write can't resurrect a removed relationship.
 		# Rebuild friends + invites so every non-key column carries a DEFAULT: a
 		# tombstone upserts only the key columns, so a NOT NULL column without a
@@ -55,7 +55,7 @@ def resolve_identity(id):
 		return entry["id"]
 	return id
 
-# friends / invites are versioned LWW-Registers (mochi.db.merge / mochi.db.tombstone)
+# friends / invites are versioned LWW-Registers (mochi.db.merge / mochi.db.remove)
 # so a relationship converges across the user's hosts and a stale write can't
 # resurrect a removed one. All reads filter removed=0.
 def friend_add(identity, id, name):
@@ -66,7 +66,7 @@ def friend_add(identity, id, name):
 	mochi.db.merge("friends", ["identity", "id"], {"identity": identity, "id": id, "name": name, "class": "person", "created": created})
 
 def friend_remove(identity, id):
-	mochi.db.tombstone("friends", ["identity", "id"], {"identity": identity, "id": id})
+	mochi.db.remove("friends", ["identity", "id"], {"identity": identity, "id": id})
 
 def invite_set(identity, id, direction, name):
 	mochi.db.merge("invites", ["identity", "id", "direction"], {"identity": identity, "id": id, "direction": direction, "name": name, "updated": mochi.time.now()})
@@ -74,10 +74,10 @@ def invite_set(identity, id, direction, name):
 def invite_remove(identity, id, direction=None):
 	# Tombstone the invite(s) between identity and id. direction=None removes both.
 	if direction:
-		mochi.db.tombstone("invites", ["identity", "id", "direction"], {"identity": identity, "id": id, "direction": direction})
+		mochi.db.remove("invites", ["identity", "id", "direction"], {"identity": identity, "id": id, "direction": direction})
 		return
 	for row in mochi.db.rows("select direction from invites where identity=? and id=? and removed=0", identity, id):
-		mochi.db.tombstone("invites", ["identity", "id", "direction"], {"identity": identity, "id": id, "direction": row["direction"]})
+		mochi.db.remove("invites", ["identity", "id", "direction"], {"identity": identity, "id": id, "direction": row["direction"]})
 
 # Accept a friend's invitation
 def action_accept(a):

@@ -219,11 +219,11 @@ msgstr "Hayaang mahanap ka ng iba sa direktoryo."
 msgid "Already friends"
 msgstr "Magkaibigan na"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "May naganap na error"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "May naganap na hindi inaasahang error"
 
@@ -290,10 +290,10 @@ msgstr "Icon ng browser"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "Hindi ma-verify gamit ang account na iyon. Pakisubukang muli."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "Gumawa ng group"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "Gumagawa ng grupo..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "Pababa"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "Paglalarawan"
 
@@ -622,8 +622,8 @@ msgstr "I-edit"
 msgid "Edit {label}"
 msgstr "I-edit ang {label}"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "I-edit ang grupo"
 
@@ -701,7 +701,7 @@ msgstr "Nabigong kanselahin ang mga imbitasyon"
 msgid "Failed to copy"
 msgstr "Nabigong kumopya"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "Nabigong gumawa ng grupo"
 
@@ -729,7 +729,7 @@ msgstr "Nabigong tanggalin ang friend"
 msgid "Failed to remove member"
 msgstr "Nabigong tanggalin ang member"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "Nabigong i-save"
 
@@ -757,7 +757,7 @@ msgstr "Nabigong magpadala ng verification code"
 msgid "Failed to update category"
 msgstr "Nabigong i-update ang category"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "Nabigong i-update ang grupo"
 
@@ -855,7 +855,7 @@ msgstr "Group"
 msgid "Group actions"
 msgstr "Mga group action"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "Nagawa ang group"
 
@@ -867,7 +867,7 @@ msgstr "Nadelete ang group"
 msgid "Group ID"
 msgstr "Group ID"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "Pangalan ng group"
 
@@ -875,7 +875,7 @@ msgstr "Pangalan ng group"
 msgid "Group not found"
 msgstr "Hindi nahanap ang group"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "Na-update ang group"
 
@@ -910,7 +910,7 @@ msgstr "Identity"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "Mga papasok na invitation"
 
@@ -949,7 +949,7 @@ msgstr "Naipadala ang imbitasyon"
 msgid "Invitations"
 msgstr "Mga invitation"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "Na-update ang invite policy"
 
@@ -1074,7 +1074,7 @@ msgstr "Metric"
 msgid "Monday"
 msgstr "Lunes"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "Pangalan"
 
@@ -1082,7 +1082,7 @@ msgstr "Pangalan"
 msgid "Name (A–Z)"
 msgstr "Pangalan (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "Kailangan ang pangalan"
 
@@ -1090,7 +1090,7 @@ msgstr "Kailangan ang pangalan"
 msgid "Name saved"
 msgstr "Na-save ang pangalan"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "Error sa network"
 
@@ -1228,7 +1228,7 @@ msgstr "Buksan ang navigation menu"
 msgid "Open theme settings"
 msgstr "Buksan ang mga setting ng theme"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "Opsyonal na paglalarawan"
 
@@ -1264,7 +1264,7 @@ msgstr "Mga Tao"
 msgid "Personalise how your profile and app look to others."
 msgstr "I-personalize kung paano makikita ng iba ang iyong profile at app."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "Pakitingnan ang iyong koneksyon sa internet at subukang muli."
 
@@ -1440,8 +1440,8 @@ msgstr "Sabado"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "I-save ang pangalan"
 msgid "Saving profile..."
 msgstr "Sine-save ang profile..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "Naipadala ({0})"
 msgid "Serif"
 msgstr "Serif"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "Error sa server"
 
@@ -1586,7 +1586,7 @@ msgstr "Error sa server"
 msgid "Server rules"
 msgstr "Mga patakaran ng server"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "Nag-expire na ang session"
 
@@ -1806,7 +1806,7 @@ msgstr "Mag-type para maghanap ng user"
 msgid "Type to search..."
 msgstr "Mag-type para maghanap..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "Hindi makakonekta sa malayong server"
 
@@ -1831,7 +1831,7 @@ msgstr "United States"
 msgid "Unverified"
 msgstr "Hindi naberipika"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "Ina-update ang grupo..."
 

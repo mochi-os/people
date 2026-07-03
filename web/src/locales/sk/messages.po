@@ -219,11 +219,11 @@ msgstr "Umožniť ostatným nájsť vás v adresári."
 msgid "Already friends"
 msgstr "Už ste priatelia"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "Vyskytla sa chyba"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "Vyskytla sa neočakávaná chyba"
 
@@ -290,10 +290,10 @@ msgstr "Ikona prehliadača"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "S týmto účtom sa nepodarilo overiť. Skúste to znova."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "Vytvoriť skupinu"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "Vytvára sa skupina..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "Zostupne"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "Popis"
 
@@ -622,8 +622,8 @@ msgstr "Upraviť"
 msgid "Edit {label}"
 msgstr "Upraviť {label}"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "Upraviť skupinu"
 
@@ -701,7 +701,7 @@ msgstr "Zrušenie pozvánok zlyhalo"
 msgid "Failed to copy"
 msgstr "Nepodarilo sa skopírovať"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "Nepodarilo sa vytvoriť skupinu"
 
@@ -729,7 +729,7 @@ msgstr "Nepodarilo sa odstrániť priateľa"
 msgid "Failed to remove member"
 msgstr "Nepodarilo sa odstrániť člena"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "Nepodarilo sa uložiť"
 
@@ -757,7 +757,7 @@ msgstr "Nepodarilo sa odoslať overovací kód"
 msgid "Failed to update category"
 msgstr "Nepodarilo sa aktualizovať kategóriu"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "Nepodarilo sa aktualizovať skupinu"
 
@@ -855,7 +855,7 @@ msgstr "Skupina"
 msgid "Group actions"
 msgstr "Akcie skupiny"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "Skupina vytvorená"
 
@@ -867,7 +867,7 @@ msgstr "Skupina zmazaná"
 msgid "Group ID"
 msgstr "ID skupiny"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "Názov skupiny"
 
@@ -875,7 +875,7 @@ msgstr "Názov skupiny"
 msgid "Group not found"
 msgstr "Skupina sa nenašla"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "Skupina aktualizovaná"
 
@@ -910,7 +910,7 @@ msgstr "Identita"
 msgid "Imperial"
 msgstr "Imperiálne"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "Prichádzajúce pozvánky"
 
@@ -949,7 +949,7 @@ msgstr "Pozvánka odoslaná"
 msgid "Invitations"
 msgstr "Pozvánky"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "Pravidlá pozvánok aktualizované"
 
@@ -1074,7 +1074,7 @@ msgstr "Metrické"
 msgid "Monday"
 msgstr "Pondelok"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "Názov"
 
@@ -1082,7 +1082,7 @@ msgstr "Názov"
 msgid "Name (A–Z)"
 msgstr "Názov (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "Názov je povinný"
 
@@ -1090,7 +1090,7 @@ msgstr "Názov je povinný"
 msgid "Name saved"
 msgstr "Názov uložený"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "Chyba siete"
 
@@ -1228,7 +1228,7 @@ msgstr "Otvoriť navigačné menu"
 msgid "Open theme settings"
 msgstr "Otvoriť nastavenia témy"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "Voliteľný popis"
 
@@ -1264,7 +1264,7 @@ msgstr "Ľudia"
 msgid "Personalise how your profile and app look to others."
 msgstr "Prispôsobte, ako váš profil a aplikácia vyzerajú pre ostatných."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "Skontrolujte pripojenie na internet a skúste to znova."
 
@@ -1440,8 +1440,8 @@ msgstr "Sobota"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "Uložiť názov"
 msgid "Saving profile..."
 msgstr "Ukladá sa profil..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "Odoslané ({0})"
 msgid "Serif"
 msgstr "Pätkové"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "Chyba servera"
 
@@ -1586,7 +1586,7 @@ msgstr "Chyba servera"
 msgid "Server rules"
 msgstr "Pravidlá servera"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "Platnosť relácie vypršala"
 
@@ -1806,7 +1806,7 @@ msgstr "Píšte pre vyhľadanie používateľov"
 msgid "Type to search..."
 msgstr "Píšte pre vyhľadanie..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "Nepodarilo sa pripojiť k vzdialenému serveru"
 
@@ -1831,7 +1831,7 @@ msgstr "Spojené štáty"
 msgid "Unverified"
 msgstr "Neoverené"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "Aktualizuje sa skupina..."
 

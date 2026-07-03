@@ -219,11 +219,11 @@ msgstr "නාමාවලියේ ඔබව සෙවීමට අන් අ�
 msgid "Already friends"
 msgstr "දැනටමත් මිතුරන්"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "දෝෂයක් සිදු විය"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "අනපේක්ෂිත දෝෂයක් සිදු විය"
 
@@ -290,10 +290,10 @@ msgstr "බ්‍රවුසර අයිකනය"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "එම ගිණුම සමඟ සත්‍යාපනය කළ නොහැකි විය. කරුණාකර නැවත උත්සාහ කරන්න."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "කණ්ඩායමක් නිර්මාණය කරන්න"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "කණ්ඩායම සාදමින්..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "අවරෝහණ"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "විස්තරය"
 
@@ -622,8 +622,8 @@ msgstr "සංස්කරණය කරන්න"
 msgid "Edit {label}"
 msgstr "{label} සංස්කරණය කරන්න"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "කණ්ඩායම සංස්කරණය කරන්න"
 
@@ -701,7 +701,7 @@ msgstr "ආරාධනා අවලංගු කිරීමට අසමත්
 msgid "Failed to copy"
 msgstr "පිටපත් කිරීමට අසමත් විය"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "කණ්ඩායම නිර්මාණය කිරීමට අසමත් විය"
 
@@ -729,7 +729,7 @@ msgstr "මිතුරා ඉවත් කිරීමට අසමත් ව�
 msgid "Failed to remove member"
 msgstr "සාමාජිකයා ඉවත් කිරීමට අසමත් විය"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "සුරැකීමට අසමත් විය"
 
@@ -757,7 +757,7 @@ msgstr "සත්‍යාපන කේතය යැවීමට අසමත්
 msgid "Failed to update category"
 msgstr "කාණ්ඩය යාවත්කාලීන කිරීමට අසමත් විය"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "කණ්ඩායම යාවත්කාලීන කිරීමට අසමත් විය"
 
@@ -855,7 +855,7 @@ msgstr "කණ්ඩායම"
 msgid "Group actions"
 msgstr "කණ්ඩායම් ක්‍රියා"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "කණ්ඩායම සාදන ලදී"
 
@@ -867,7 +867,7 @@ msgstr "කණ්ඩායම මකන ලදී"
 msgid "Group ID"
 msgstr "කණ්ඩායම් හැඳුනුම"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "කණ්ඩායම් නාමය"
 
@@ -875,7 +875,7 @@ msgstr "කණ්ඩායම් නාමය"
 msgid "Group not found"
 msgstr "කණ්ඩායම හමු නොවීය"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "කණ්ඩායම යාවත්කාලීන කරන ලදී"
 
@@ -910,7 +910,7 @@ msgstr "අනන්‍යතාවය"
 msgid "Imperial"
 msgstr "ඉම්පීරියල්"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "එන ආරාධනා"
 
@@ -949,7 +949,7 @@ msgstr "ආරාධනය යවා ඇත"
 msgid "Invitations"
 msgstr "ආරාධනා"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "ආරාධන ප්‍රතිපත්තිය යාවත්කාලීන කරන ලදී"
 
@@ -1074,7 +1074,7 @@ msgstr "මිනුම"
 msgid "Monday"
 msgstr "සඳුදා"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "නම"
 
@@ -1082,7 +1082,7 @@ msgstr "නම"
 msgid "Name (A–Z)"
 msgstr "නම (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "නම අවශ්‍යයි"
 
@@ -1090,7 +1090,7 @@ msgstr "නම අවශ්‍යයි"
 msgid "Name saved"
 msgstr "නම සුරකින ලදී"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "ජාල දෝෂය"
 
@@ -1228,7 +1228,7 @@ msgstr "සංචාලන මෙනුව විවෘත කරන්න"
 msgid "Open theme settings"
 msgstr "theme සැකසුම් විවෘත කරන්න"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "විකල්ප විස්තරය"
 
@@ -1264,7 +1264,7 @@ msgstr "පුද්ගලයන්"
 msgid "Personalise how your profile and app look to others."
 msgstr "ඔබේ පැතිකඩ සහ යෙදුම අන් අයට පෙනෙන ආකාරය පෞද්ගලීකරණය කරන්න."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "කරුණාකර ඔබගේ අන්තර්ජාල සම්බන්ධතාවය පරීක්ෂා කර නැවත උත්සාහ කරන්න."
 
@@ -1440,8 +1440,8 @@ msgstr "සෙනසුරාදා"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "නම සුරකින්න"
 msgid "Saving profile..."
 msgstr "පැතිකඩ සුරකිමින්..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "යැවූ ({0})"
 msgid "Serif"
 msgstr "සෙරිෆ්"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "සේවාදායක දෝෂය"
 
@@ -1586,7 +1586,7 @@ msgstr "සේවාදායක දෝෂය"
 msgid "Server rules"
 msgstr "සේවාදායක නීති"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "සැසිය කල් ඉකුත් විය"
 
@@ -1806,7 +1806,7 @@ msgstr "පරිශීලකයින් සෙවීමට ටයිප් ක
 msgid "Type to search..."
 msgstr "සෙවීමට ටයිප් කරන්න..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "දුරස්ථ සේවාදායකයට සම්බන්ධ විය නොහැක"
 
@@ -1831,7 +1831,7 @@ msgstr "එක්සත් ජනපදය"
 msgid "Unverified"
 msgstr "සත්‍යාපනය නොකළ"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "කණ්ඩායම යාවත්කාලීන කරමින්..."
 

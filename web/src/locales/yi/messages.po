@@ -219,11 +219,11 @@ msgstr "דערלאָז אַנדערע צו געפֿינען אײַך אין דע
 msgid "Already friends"
 msgstr "שוין פֿרײַנד"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "אַ פֿעלער איז פֿאָרגעקומען"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "אַן אומדערוואַרטעטער פֿעלער איז פֿאָרגעקומען"
 
@@ -290,10 +290,10 @@ msgstr "בראָוזער ייקאָן"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "מע האָט נישט געקענט באַשטעטיקן מיט יענעם קאָנטע. ביטע פּרובירט נאָך אַ מאָל."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "באַשאַפֿן גרופּע"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "שאַפֿן גרופּע..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "אַראָפּגייענדיק"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "באַשרײַבונג"
 
@@ -622,8 +622,8 @@ msgstr "רעדאַקטירן"
 msgid "Edit {label}"
 msgstr "רעדאַקטירן {label}"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "רעדאַקטירן גרופּע"
 
@@ -701,7 +701,7 @@ msgstr "ניט געקענט אַנולירן פֿאַרבעטונגען"
 msgid "Failed to copy"
 msgstr "ניט געלונגען צו קאָפּירן"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "ניט געלונגען צו שאַפֿן גרופּע"
 
@@ -729,7 +729,7 @@ msgstr "ניט געלונגען צו אַראָפּנעמען חבר"
 msgid "Failed to remove member"
 msgstr "ניט געלונגען צו אַראָפּנעמען מיטגליד"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "ניט געלונגען אויפֿצוהיטן"
 
@@ -757,7 +757,7 @@ msgstr "ניט געלונגען צו שיקן פֿאַרזיכערונג־קאָ
 msgid "Failed to update category"
 msgstr "ניט געלונגען צו דערהײַנטיקן קאַטעגאָריע"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "ניט געלונגען צו דערהײַנטיקן גרופּע"
 
@@ -855,7 +855,7 @@ msgstr "גרופּע"
 msgid "Group actions"
 msgstr "גרופּע־האַנדלונגען"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "גרופּע געשאַפֿן"
 
@@ -867,7 +867,7 @@ msgstr "גרופּע אויסגעמעקט"
 msgid "Group ID"
 msgstr "גרופּע־ID"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "גרופּע־נאָמען"
 
@@ -875,7 +875,7 @@ msgstr "גרופּע־נאָמען"
 msgid "Group not found"
 msgstr "גרופּע ניט געפֿונען"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "גרופּע דערהײַנטיקט"
 
@@ -910,7 +910,7 @@ msgstr "אידענטיטעט"
 msgid "Imperial"
 msgstr "אימפּעריאַל"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "אַרײַנקומענדיקע אײַנלאַדונגען"
 
@@ -949,7 +949,7 @@ msgstr "אײַנלאַדונג געשיקט"
 msgid "Invitations"
 msgstr "אײַנלאַדונגען"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "אײַנלאַדונג־פּאָליטיק דערהײַנטיקט"
 
@@ -1074,7 +1074,7 @@ msgstr "מעטריש"
 msgid "Monday"
 msgstr "מאָנטיק"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "נאָמען"
 
@@ -1082,7 +1082,7 @@ msgstr "נאָמען"
 msgid "Name (A–Z)"
 msgstr "נאָמען (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "נאָמען איז נייטיק"
 
@@ -1090,7 +1090,7 @@ msgstr "נאָמען איז נייטיק"
 msgid "Name saved"
 msgstr "נאָמען אויפֿגעהיט"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "נעץ פֿעלער"
 
@@ -1228,7 +1228,7 @@ msgstr "עפֿן נאַוויגאַציע מעניו"
 msgid "Open theme settings"
 msgstr "עפֿן טעמע אײַנשטעלונגען"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "אָפּציאָנעלע באַשרײַבונג"
 
@@ -1264,7 +1264,7 @@ msgstr "מענטשן"
 msgid "Personalise how your profile and app look to others."
 msgstr "פּערזענלעך מאַכן װי אײַער פּראָפֿיל און אַפּ זעען אויס פֿאַר אַנדערע."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "זײַט אַזוי גוט קאָנטראָלירט אײַער אינטערנעץ פֿאַרבינדונג און פּרוּווט נאָך אַ מאָל."
 
@@ -1440,8 +1440,8 @@ msgstr "שבת"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "היט נאָמען"
 msgid "Saving profile..."
 msgstr "אויפֿהיטן פּראָפֿיל..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "געשיקט ({0})"
 msgid "Serif"
 msgstr "סעריף"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "סערווער פֿעלער"
 
@@ -1586,7 +1586,7 @@ msgstr "סערווער פֿעלער"
 msgid "Server rules"
 msgstr "סערווער־כּללים"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "סעסיע אויסגעגאַנגען"
 
@@ -1806,7 +1806,7 @@ msgstr "טיפּט צו זוכן באַניצערס"
 msgid "Type to search..."
 msgstr "טיפּט צו זוכן..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "ניט געקענט פֿאַרבינדן צום ווײַטן סערווער"
 
@@ -1831,7 +1831,7 @@ msgstr "פֿאַראייניקטע שטאַטן"
 msgid "Unverified"
 msgstr "אומפֿאַריפֿיצירט"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "דערהײַנטיקן גרופּע..."
 

@@ -219,11 +219,11 @@ msgstr "Leiskite kitiems rasti jus kataloge."
 msgid "Already friends"
 msgstr "Jau draugai"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "Įvyko klaida"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "Įvyko netikėta klaida"
 
@@ -290,10 +290,10 @@ msgstr "Naršyklės piktograma"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "Nepavyko patvirtinti su ta paskyra. Bandykite dar kartą."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "Sukurti grupę"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "Kuriama grupė..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "Mažėjančiai"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "Aprašymas"
 
@@ -622,8 +622,8 @@ msgstr "Redaguoti"
 msgid "Edit {label}"
 msgstr "Redaguoti {label}"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "Redaguoti grupę"
 
@@ -701,7 +701,7 @@ msgstr "Nepavyko atšaukti kvietimų"
 msgid "Failed to copy"
 msgstr "Nepavyko nukopijuoti"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "Nepavyko sukurti grupės"
 
@@ -729,7 +729,7 @@ msgstr "Nepavyko pašalinti draugo"
 msgid "Failed to remove member"
 msgstr "Nepavyko pašalinti nario"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "Nepavyko išsaugoti"
 
@@ -757,7 +757,7 @@ msgstr "Nepavyko išsiųsti patvirtinimo kodo"
 msgid "Failed to update category"
 msgstr "Nepavyko atnaujinti kategorijos"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "Nepavyko atnaujinti grupės"
 
@@ -855,7 +855,7 @@ msgstr "Grupė"
 msgid "Group actions"
 msgstr "Grupės veiksmai"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "Grupė sukurta"
 
@@ -867,7 +867,7 @@ msgstr "Grupė ištrinta"
 msgid "Group ID"
 msgstr "Grupės ID"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "Grupės pavadinimas"
 
@@ -875,7 +875,7 @@ msgstr "Grupės pavadinimas"
 msgid "Group not found"
 msgstr "Grupė nerasta"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "Grupė atnaujinta"
 
@@ -910,7 +910,7 @@ msgstr "Tapatybė"
 msgid "Imperial"
 msgstr "Imperinė"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "Gauti kvietimai"
 
@@ -949,7 +949,7 @@ msgstr "Kvietimas išsiųstas"
 msgid "Invitations"
 msgstr "Kvietimai"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "Kvietimų politika atnaujinta"
 
@@ -1074,7 +1074,7 @@ msgstr "Metrinė"
 msgid "Monday"
 msgstr "Pirmadienis"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "Pavadinimas"
 
@@ -1082,7 +1082,7 @@ msgstr "Pavadinimas"
 msgid "Name (A–Z)"
 msgstr "Vardas (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "Pavadinimas yra privalomas"
 
@@ -1090,7 +1090,7 @@ msgstr "Pavadinimas yra privalomas"
 msgid "Name saved"
 msgstr "Pavadinimas išsaugotas"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "Tinklo klaida"
 
@@ -1228,7 +1228,7 @@ msgstr "Atidaryti naršymo meniu"
 msgid "Open theme settings"
 msgstr "Atidaryti temos nustatymus"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "Neprivalomas aprašymas"
 
@@ -1264,7 +1264,7 @@ msgstr "Žmonės"
 msgid "Personalise how your profile and app look to others."
 msgstr "Tinkinkite, kaip jūsų profilis ir programa atrodo kitiems."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "Patikrinkite interneto ryšį ir bandykite dar kartą."
 
@@ -1440,8 +1440,8 @@ msgstr "Šeštadienis"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "Įrašyti vardą"
 msgid "Saving profile..."
 msgstr "Išsaugomas profilis..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "Išsiųsta ({0})"
 msgid "Serif"
 msgstr "Serifinis"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "Serverio klaida"
 
@@ -1586,7 +1586,7 @@ msgstr "Serverio klaida"
 msgid "Server rules"
 msgstr "Serverio taisyklės"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "Sesija pasibaigė"
 
@@ -1806,7 +1806,7 @@ msgstr "Įveskite, kad surastumėte vartotojus"
 msgid "Type to search..."
 msgstr "Įveskite, kad ieškotumėte..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "Nepavyko prisijungti prie nuotolinio serverio"
 
@@ -1831,7 +1831,7 @@ msgstr "Jungtinės Valstijos"
 msgid "Unverified"
 msgstr "Nepatvirtinta"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "Atnaujinama grupė..."
 

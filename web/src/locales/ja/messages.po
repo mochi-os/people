@@ -219,11 +219,11 @@ msgstr "ディレクトリで他のユーザーがあなたを見つけられる
 msgid "Already friends"
 msgstr "すでに友達"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "エラーが発生しました"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "予期しないエラーが発生しました"
 
@@ -290,10 +290,10 @@ msgstr "ブラウザアイコン"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "そのアカウントで確認できませんでした。もう一度お試しください。"
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "グループを作成"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "グループを作成しています..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "降順"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "説明"
 
@@ -622,8 +622,8 @@ msgstr "編集"
 msgid "Edit {label}"
 msgstr "{label} を編集"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "グループを編集"
 
@@ -701,7 +701,7 @@ msgstr "招待をキャンセルできませんでした"
 msgid "Failed to copy"
 msgstr "コピーに失敗しました"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "グループの作成に失敗しました"
 
@@ -729,7 +729,7 @@ msgstr "友だちの削除に失敗しました"
 msgid "Failed to remove member"
 msgstr "メンバーの削除に失敗しました"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "保存に失敗しました"
 
@@ -757,7 +757,7 @@ msgstr "確認コードの送信に失敗しました"
 msgid "Failed to update category"
 msgstr "カテゴリの更新に失敗しました"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "グループの更新に失敗しました"
 
@@ -855,7 +855,7 @@ msgstr "グループ"
 msgid "Group actions"
 msgstr "グループ操作"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "グループを作成しました"
 
@@ -867,7 +867,7 @@ msgstr "グループを削除しました"
 msgid "Group ID"
 msgstr "グループ ID"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "グループ名"
 
@@ -875,7 +875,7 @@ msgstr "グループ名"
 msgid "Group not found"
 msgstr "グループが見つかりません"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "グループを更新しました"
 
@@ -910,7 +910,7 @@ msgstr "アイデンティティ"
 msgid "Imperial"
 msgstr "ヤード・ポンド法"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "受信した招待"
 
@@ -949,7 +949,7 @@ msgstr "招待を送信しました"
 msgid "Invitations"
 msgstr "招待"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "招待ポリシーを更新しました"
 
@@ -1074,7 +1074,7 @@ msgstr "メートル法"
 msgid "Monday"
 msgstr "月曜日"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "名前"
 
@@ -1082,7 +1082,7 @@ msgstr "名前"
 msgid "Name (A–Z)"
 msgstr "名前 (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "名前が必要です"
 
@@ -1090,7 +1090,7 @@ msgstr "名前が必要です"
 msgid "Name saved"
 msgstr "名前を保存しました"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "ネットワークエラー"
 
@@ -1228,7 +1228,7 @@ msgstr "ナビゲーションメニューを開く"
 msgid "Open theme settings"
 msgstr "テーマ設定を開く"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "説明（任意）"
 
@@ -1264,7 +1264,7 @@ msgstr "ピープル"
 msgid "Personalise how your profile and app look to others."
 msgstr "プロフィールとアプリが他のユーザーにどう見えるかをカスタマイズします。"
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "インターネット接続を確認して、もう一度お試しください。"
 
@@ -1440,8 +1440,8 @@ msgstr "土曜日"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "名前を保存"
 msgid "Saving profile..."
 msgstr "プロフィールを保存しています..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "送信済み ({0})"
 msgid "Serif"
 msgstr "セリフ"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "サーバーエラー"
 
@@ -1586,7 +1586,7 @@ msgstr "サーバーエラー"
 msgid "Server rules"
 msgstr "サーバーのルール"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "セッションの有効期限が切れました"
 
@@ -1806,7 +1806,7 @@ msgstr "入力してユーザーを検索"
 msgid "Type to search..."
 msgstr "入力して検索…"
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "リモートサーバーに接続できません"
 
@@ -1831,7 +1831,7 @@ msgstr "アメリカ合衆国"
 msgid "Unverified"
 msgstr "未認証"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "グループを更新しています..."
 

@@ -219,11 +219,11 @@ msgstr "Consenti ad altri di trovarti nell'elenco."
 msgid "Already friends"
 msgstr "Già amici"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "Si è verificato un errore"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "Si è verificato un errore imprevisto"
 
@@ -290,10 +290,10 @@ msgstr "Icona del browser"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "Impossibile verificare con quell'account. Riprova."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "Crea gruppo"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "Creazione gruppo in corso..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "Decrescente"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "Descrizione"
 
@@ -622,8 +622,8 @@ msgstr "Modifica"
 msgid "Edit {label}"
 msgstr "Modifica {label}"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "Modifica gruppo"
 
@@ -701,7 +701,7 @@ msgstr "Impossibile annullare gli inviti"
 msgid "Failed to copy"
 msgstr "Impossibile copiare"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "Impossibile creare il gruppo"
 
@@ -729,7 +729,7 @@ msgstr "Impossibile rimuovere l'amico"
 msgid "Failed to remove member"
 msgstr "Impossibile rimuovere il membro"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "Impossibile salvare"
 
@@ -757,7 +757,7 @@ msgstr "Impossibile inviare il codice di verifica"
 msgid "Failed to update category"
 msgstr "Impossibile aggiornare la categoria"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "Impossibile aggiornare il gruppo"
 
@@ -855,7 +855,7 @@ msgstr "Gruppo"
 msgid "Group actions"
 msgstr "Azioni di gruppo"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "Gruppo creato"
 
@@ -867,7 +867,7 @@ msgstr "Gruppo eliminato"
 msgid "Group ID"
 msgstr "ID gruppo"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "Nome del gruppo"
 
@@ -875,7 +875,7 @@ msgstr "Nome del gruppo"
 msgid "Group not found"
 msgstr "Gruppo non trovato"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "Gruppo aggiornato"
 
@@ -910,7 +910,7 @@ msgstr "Identità"
 msgid "Imperial"
 msgstr "Imperiale"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "Inviti in arrivo"
 
@@ -949,7 +949,7 @@ msgstr "Invito inviato"
 msgid "Invitations"
 msgstr "Inviti"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "Politica degli inviti aggiornata"
 
@@ -1074,7 +1074,7 @@ msgstr "Metrico"
 msgid "Monday"
 msgstr "Lunedì"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "Nome"
 
@@ -1082,7 +1082,7 @@ msgstr "Nome"
 msgid "Name (A–Z)"
 msgstr "Nome (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "Il nome è obbligatorio"
 
@@ -1090,7 +1090,7 @@ msgstr "Il nome è obbligatorio"
 msgid "Name saved"
 msgstr "Nome salvato"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "Errore di rete"
 
@@ -1228,7 +1228,7 @@ msgstr "Apri menu di navigazione"
 msgid "Open theme settings"
 msgstr "Apri impostazioni tema"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "Descrizione facoltativa"
 
@@ -1264,7 +1264,7 @@ msgstr "Persone"
 msgid "Personalise how your profile and app look to others."
 msgstr "Personalizza l'aspetto del tuo profilo e dell'app per gli altri."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "Controlla la connessione a internet e riprova."
 
@@ -1440,8 +1440,8 @@ msgstr "Sabato"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "Salva nome"
 msgid "Saving profile..."
 msgstr "Salvataggio profilo in corso..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "Inviati ({0})"
 msgid "Serif"
 msgstr "Serif"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "Errore del server"
 
@@ -1586,7 +1586,7 @@ msgstr "Errore del server"
 msgid "Server rules"
 msgstr "Regole del server"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "Sessione scaduta"
 
@@ -1806,7 +1806,7 @@ msgstr "Digita per cercare utenti"
 msgid "Type to search..."
 msgstr "Digita per cercare..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "Impossibile connettersi al server remoto"
 
@@ -1831,7 +1831,7 @@ msgstr "Stati Uniti"
 msgid "Unverified"
 msgstr "Non verificato"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "Aggiornamento gruppo in corso..."
 

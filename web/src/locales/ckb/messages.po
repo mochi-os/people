@@ -219,11 +219,11 @@ msgstr "ڕێگە بدە بە کەسانی تر بۆ دۆزینەوەت لە ڕێ
 msgid "Already friends"
 msgstr "پێشتر هاوڕێن"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "هەڵەیەک ڕوویدا"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "هەڵەیەکی چاوەڕواننەکراو ڕوویدا"
 
@@ -290,10 +290,10 @@ msgstr "ئایکۆنی وێبگەڕ"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "نەتوانرا بەو هەژمارە پشتڕاست بکرێتەوە. تکایە دووبارە هەوڵ بدەرەوە."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "دروستکردنی گرووپ"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "دروستکردنی گرووپ..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "داکەوتوو"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "وەسف"
 
@@ -622,8 +622,8 @@ msgstr "دەستکاری"
 msgid "Edit {label}"
 msgstr "دەستکاری {label}"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "دەستکاری گرووپ"
 
@@ -701,7 +701,7 @@ msgstr "هەڵوەشاندنەوەی بانگهێشتەکان سەرکەوتوو
 msgid "Failed to copy"
 msgstr "لەبەرگیرایەوە سەرکەوتوو نەبوو"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "دروستکردنی گرووپ سەرکەوتوو نەبوو"
 
@@ -729,7 +729,7 @@ msgstr "لابردنی هاوڕێ سەرکەوتوو نەبوو"
 msgid "Failed to remove member"
 msgstr "لابردنی ئەندام سەرکەوتوو نەبوو"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "پاشەکەوتکردن سەرکەوتوو نەبوو"
 
@@ -757,7 +757,7 @@ msgstr "ناردنی کۆدی پشتڕاستکردنەوە سەرکەوتوو ن
 msgid "Failed to update category"
 msgstr "نوێکردنەوەی بەش سەرکەوتوو نەبوو"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "نوێکردنەوەی گرووپ سەرکەوتوو نەبوو"
 
@@ -855,7 +855,7 @@ msgstr "گرووپ"
 msgid "Group actions"
 msgstr "کارەکانی گرووپ"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "گرووپ دروست کرا"
 
@@ -867,7 +867,7 @@ msgstr "گرووپ سڕایەوە"
 msgid "Group ID"
 msgstr "ناسنامەی گرووپ"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "ناوی گرووپ"
 
@@ -875,7 +875,7 @@ msgstr "ناوی گرووپ"
 msgid "Group not found"
 msgstr "گرووپ نەدۆزرایەوە"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "گرووپ نوێ کرایەوە"
 
@@ -910,7 +910,7 @@ msgstr "ناسنامە"
 msgid "Imperial"
 msgstr "ئیمپێریاڵ"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "بانگهێشتە هاتووەکان"
 
@@ -949,7 +949,7 @@ msgstr "بانگهێشت نێردرا"
 msgid "Invitations"
 msgstr "بانگهێشتەکان"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "تایبەتمەندی بانگهێشت نوێ کرایەوە"
 
@@ -1074,7 +1074,7 @@ msgstr "Metric"
 msgid "Monday"
 msgstr "دووشەممە"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "ناو"
 
@@ -1082,7 +1082,7 @@ msgstr "ناو"
 msgid "Name (A–Z)"
 msgstr "ناو (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "ناو پێویستە"
 
@@ -1090,7 +1090,7 @@ msgstr "ناو پێویستە"
 msgid "Name saved"
 msgstr "ناو پاشەکەوت کرا"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "هەڵەی تۆڕ"
 
@@ -1228,7 +1228,7 @@ msgstr "کردنەوەی لیستی ڕێدۆزی"
 msgid "Open theme settings"
 msgstr "کردنەوەی ڕێکخستنەکانی ڕووکار"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "وەسفی ئیختیاری"
 
@@ -1264,7 +1264,7 @@ msgstr "کەسەکان"
 msgid "Personalise how your profile and app look to others."
 msgstr "کەسیکردنی ئەوەی پرۆفایل و ئەپەکەت چۆن بۆ کەسانی تر دەردەکەون."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "تکایە پەیوەندی ئینتەرنێتەکەت بپشکنە و دووبارە هەوڵ بدەرەوە."
 
@@ -1440,8 +1440,8 @@ msgstr "شەممە"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "ناو پاشەکەوت بکە"
 msgid "Saving profile..."
 msgstr "پاشەکەوتکردنی پرۆفایل..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "نێردرا ({0})"
 msgid "Serif"
 msgstr "سێریف"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "هەڵەی ڕاژەکار"
 
@@ -1586,7 +1586,7 @@ msgstr "هەڵەی ڕاژەکار"
 msgid "Server rules"
 msgstr "ڕێساکانی ڕاژەکار"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "دانیشتن بەسەرچوو"
 
@@ -1806,7 +1806,7 @@ msgstr "بنووسە بۆ گەڕان لە بەکارهێنەران"
 msgid "Type to search..."
 msgstr "بنووسە بۆ گەڕان..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "نەتوانرا پەیوەندی بە ڕاژەکاری دوور بکرێت"
 
@@ -1831,7 +1831,7 @@ msgstr "ویلایەتە یەکگرتووەکان"
 msgid "Unverified"
 msgstr "پشتڕاستنەکراوەتەوە"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "نوێکردنەوەی گرووپ..."
 

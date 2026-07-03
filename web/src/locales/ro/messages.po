@@ -219,11 +219,11 @@ msgstr "Permite altora să te găsească în director."
 msgid "Already friends"
 msgstr "Deja prieteni"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "A apărut o eroare"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "A apărut o eroare neașteptată"
 
@@ -290,10 +290,10 @@ msgstr "Pictogramă browser"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "Nu s-a putut verifica cu acel cont. Încearcă din nou."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "Creează grup"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "Se creează grupul..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "Descrescător"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "Descriere"
 
@@ -622,8 +622,8 @@ msgstr "Editează"
 msgid "Edit {label}"
 msgstr "Editează {label}"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "Editează grupul"
 
@@ -701,7 +701,7 @@ msgstr "Anularea invitațiilor a eșuat"
 msgid "Failed to copy"
 msgstr "Copierea a eșuat"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "Crearea grupului a eșuat"
 
@@ -729,7 +729,7 @@ msgstr "Eliminarea prietenului a eșuat"
 msgid "Failed to remove member"
 msgstr "Eliminarea membrului a eșuat"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "Salvarea a eșuat"
 
@@ -757,7 +757,7 @@ msgstr "Trimiterea codului de verificare a eșuat"
 msgid "Failed to update category"
 msgstr "Actualizarea categoriei a eșuat"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "Actualizarea grupului a eșuat"
 
@@ -855,7 +855,7 @@ msgstr "Grup"
 msgid "Group actions"
 msgstr "Acțiuni grup"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "Grup creat"
 
@@ -867,7 +867,7 @@ msgstr "Grup șters"
 msgid "Group ID"
 msgstr "ID grup"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "Numele grupului"
 
@@ -875,7 +875,7 @@ msgstr "Numele grupului"
 msgid "Group not found"
 msgstr "Grup negăsit"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "Grup actualizat"
 
@@ -910,7 +910,7 @@ msgstr "Identitate"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "Invitații primite"
 
@@ -949,7 +949,7 @@ msgstr "Invitație trimisă"
 msgid "Invitations"
 msgstr "Invitații"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "Politica de invitații a fost actualizată"
 
@@ -1074,7 +1074,7 @@ msgstr "Metric"
 msgid "Monday"
 msgstr "Luni"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "Nume"
 
@@ -1082,7 +1082,7 @@ msgstr "Nume"
 msgid "Name (A–Z)"
 msgstr "Nume (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "Numele este obligatoriu"
 
@@ -1090,7 +1090,7 @@ msgstr "Numele este obligatoriu"
 msgid "Name saved"
 msgstr "Nume salvat"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "Eroare de rețea"
 
@@ -1228,7 +1228,7 @@ msgstr "Deschide meniul de navigare"
 msgid "Open theme settings"
 msgstr "Deschide setările temei"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "Descriere opțională"
 
@@ -1264,7 +1264,7 @@ msgstr "Persoane"
 msgid "Personalise how your profile and app look to others."
 msgstr "Personalizează cum apar profilul și aplicația ta pentru ceilalți."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "Verifică conexiunea la internet și încearcă din nou."
 
@@ -1440,8 +1440,8 @@ msgstr "Sâmbătă"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "Salvează numele"
 msgid "Saving profile..."
 msgstr "Se salvează profilul..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "Trimis ({0})"
 msgid "Serif"
 msgstr "Cu serife"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "Eroare de server"
 
@@ -1586,7 +1586,7 @@ msgstr "Eroare de server"
 msgid "Server rules"
 msgstr "Regulile serverului"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "Sesiunea a expirat"
 
@@ -1806,7 +1806,7 @@ msgstr "Tastează pentru a căuta utilizatori"
 msgid "Type to search..."
 msgstr "Tastează pentru a căuta..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "Nu se poate conecta la serverul la distanță"
 
@@ -1831,7 +1831,7 @@ msgstr "Statele Unite"
 msgid "Unverified"
 msgstr "Neverificat"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "Se actualizează grupul..."
 

@@ -219,11 +219,11 @@ msgstr "Bari wasu su same ka a cikin jagora."
 msgid "Already friends"
 msgstr "Tuni abokai"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "An samu kuskure"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "An samu kuskuren da ba a zata ba"
 
@@ -290,10 +290,10 @@ msgstr "Icon na browser"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "An kasa tabbatar da wannan asusun. Da fatan za a sake gwadawa."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "Ƙirƙira ƙungiya"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "Ana ƙirƙirar ƙungiya..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "Sauka ƙasa"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "Bayani"
 
@@ -622,8 +622,8 @@ msgstr "Gyara"
 msgid "Edit {label}"
 msgstr "Gyara {label}"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "Gyara ƙungiya"
 
@@ -701,7 +701,7 @@ msgstr "An gaza soke gayyatu"
 msgid "Failed to copy"
 msgstr "An gaza kwafewa"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "An kasa ƙirƙirar ƙungiya"
 
@@ -729,7 +729,7 @@ msgstr "An gaza cire aboki"
 msgid "Failed to remove member"
 msgstr "An gaza cire memba"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "An gaza ajiyewa"
 
@@ -757,7 +757,7 @@ msgstr "An gaza aika verification code"
 msgid "Failed to update category"
 msgstr "An gaza sabunta category"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "An kasa sabunta ƙungiya"
 
@@ -855,7 +855,7 @@ msgstr "Group"
 msgid "Group actions"
 msgstr "Ayyukan group"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "An ƙirƙiri group"
 
@@ -867,7 +867,7 @@ msgstr "An share group"
 msgid "Group ID"
 msgstr "Group ID"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "Sunan group"
 
@@ -875,7 +875,7 @@ msgstr "Sunan group"
 msgid "Group not found"
 msgstr "Ba a samu group ba"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "An sabunta group"
 
@@ -910,7 +910,7 @@ msgstr "Asali"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "Gayyata masu shigowa"
 
@@ -949,7 +949,7 @@ msgstr "An aika gayyata"
 msgid "Invitations"
 msgstr "Gayyata"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "An sabunta manufar gayyata"
 
@@ -1074,7 +1074,7 @@ msgstr "Metric"
 msgid "Monday"
 msgstr "Litinin"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "Suna"
 
@@ -1082,7 +1082,7 @@ msgstr "Suna"
 msgid "Name (A–Z)"
 msgstr "Suna (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "Ana buƙatar suna"
 
@@ -1090,7 +1090,7 @@ msgstr "Ana buƙatar suna"
 msgid "Name saved"
 msgstr "An adana suna"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "Kuskuren hanyar sadarwa"
 
@@ -1228,7 +1228,7 @@ msgstr "Buɗe menu ɗin navigation"
 msgid "Open theme settings"
 msgstr "Buɗe saitunan theme"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "Bayani na zaɓi"
 
@@ -1264,7 +1264,7 @@ msgstr "Mutane"
 msgid "Personalise how your profile and app look to others."
 msgstr "Daidaita yadda bayananka da manhajar ke bayyana ga wasu."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "Da fatan a duba haɗin intanet ɗinka sannan a sake gwadawa."
 
@@ -1440,8 +1440,8 @@ msgstr "Asabar"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "Ajiye suna"
 msgid "Saving profile..."
 msgstr "Ana ajiye bayanin martaba..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "An aika ({0})"
 msgid "Serif"
 msgstr "Serif"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "Kuskuren saba"
 
@@ -1586,7 +1586,7 @@ msgstr "Kuskuren saba"
 msgid "Server rules"
 msgstr "Ƙa'idojin sabar"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "Session ya ƙare"
 
@@ -1806,7 +1806,7 @@ msgstr "Buga don bincika masu amfani"
 msgid "Type to search..."
 msgstr "Buga don bincika..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "An kasa haɗawa da saba mai nesa"
 
@@ -1831,7 +1831,7 @@ msgstr "Amurka"
 msgid "Unverified"
 msgstr "Ba a tabbatar ba"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "Ana sabunta ƙungiya..."
 

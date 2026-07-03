@@ -219,11 +219,11 @@ msgstr "Ħalli lil oħrajn isibuk fid-direttorju."
 msgid "Already friends"
 msgstr "Diġà ħbieb"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "Seħħet żball"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "Seħħ żball mhux mistenni"
 
@@ -290,10 +290,10 @@ msgstr "Ikona tal-browser"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "Ma stajniex nivverifikaw b'dak il-kont. Jekk jogħġbok erġa' pprova."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "Oħloq grupp"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "Qed noħloq grupp..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "Dixxendenti"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "Deskrizzjoni"
 
@@ -622,8 +622,8 @@ msgstr "Editja"
 msgid "Edit {label}"
 msgstr "Editja {label}"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "Editja l-grupp"
 
@@ -701,7 +701,7 @@ msgstr "Ma rnexxiex li jiġu kkanċellati l-istediniet"
 msgid "Failed to copy"
 msgstr "Ma rnexxiex jiġi kkupjat"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "Ma rnexxiex jinħoloq il-grupp"
 
@@ -729,7 +729,7 @@ msgstr "Ma rnexxiex jitneħħa l-ħabib"
 msgid "Failed to remove member"
 msgstr "Ma rnexxiex jitneħħa l-membru"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "Ma rnexxiex jiġi ssejvjat"
 
@@ -757,7 +757,7 @@ msgstr "Ma rnexxiex jintbagħat il-kodiċi tal-verifika"
 msgid "Failed to update category"
 msgstr "Ma rnexxiex tiġi aġġornata l-kategorija"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "Ma rnexxiex jiġi aġġornat il-grupp"
 
@@ -855,7 +855,7 @@ msgstr "Grupp"
 msgid "Group actions"
 msgstr "Azzjonijiet tal-grupp"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "Inħoloq il-grupp"
 
@@ -867,7 +867,7 @@ msgstr "Tħassar il-grupp"
 msgid "Group ID"
 msgstr "ID tal-grupp"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "Isem il-grupp"
 
@@ -875,7 +875,7 @@ msgstr "Isem il-grupp"
 msgid "Group not found"
 msgstr "Il-grupp ma nstabx"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "Il-grupp ġie aġġornat"
 
@@ -910,7 +910,7 @@ msgstr "Identità"
 msgid "Imperial"
 msgstr "Imperjali"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "Stediniet deħlin"
 
@@ -949,7 +949,7 @@ msgstr "L-istedina ntbagħtet"
 msgid "Invitations"
 msgstr "Stediniet"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "Il-politika tal-istedina ġiet aġġornata"
 
@@ -1074,7 +1074,7 @@ msgstr "Metriku"
 msgid "Monday"
 msgstr "It-Tnejn"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "Isem"
 
@@ -1082,7 +1082,7 @@ msgstr "Isem"
 msgid "Name (A–Z)"
 msgstr "Isem (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "L-isem huwa meħtieġ"
 
@@ -1090,7 +1090,7 @@ msgstr "L-isem huwa meħtieġ"
 msgid "Name saved"
 msgstr "Isem issejvjat"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "Żball tan-network"
 
@@ -1228,7 +1228,7 @@ msgstr "Iftaħ menu tan-navigazzjoni"
 msgid "Open theme settings"
 msgstr "Iftaħ settings tat-tema"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "Deskrizzjoni fakultattiva"
 
@@ -1264,7 +1264,7 @@ msgstr "Nies"
 msgid "Personalise how your profile and app look to others."
 msgstr "Ippersonalizza kif jidhru l-profil u l-app tiegħek għal oħrajn."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "Jekk jogħġbok iċċekkja l-konnessjoni tal-internet tiegħek u erġa' pprova."
 
@@ -1440,8 +1440,8 @@ msgstr "Is-Sibt"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "Issejvja l-isem"
 msgid "Saving profile..."
 msgstr "Qed insalva l-profil..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "Mibgħut ({0})"
 msgid "Serif"
 msgstr "Serif"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "Żball tas-server"
 
@@ -1586,7 +1586,7 @@ msgstr "Żball tas-server"
 msgid "Server rules"
 msgstr "Regoli tas-server"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "Sessjoni skadiet"
 
@@ -1806,7 +1806,7 @@ msgstr "Ittajpja biex tfittex utenti"
 msgid "Type to search..."
 msgstr "Ittajpja biex tfittex..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "Ma jistax jaqbad mas-server remot"
 
@@ -1831,7 +1831,7 @@ msgstr "Stati Uniti"
 msgid "Unverified"
 msgstr "Mhux ivverifikat"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "Qed naġġorna l-grupp..."
 

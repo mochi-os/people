@@ -219,11 +219,11 @@ msgstr "ອະນຸຍາດໃຫ້ຄົນອື່ນຊອກຫາທ່
 msgid "Already friends"
 msgstr "ເປັນເພື່ອນກັນແລ້ວ"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "ເກີດຂໍ້ຜິດພາດ"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "ເກີດຂໍ້ຜິດພາດທີ່ບໍ່ຄາດຄິດ"
 
@@ -290,10 +290,10 @@ msgstr "ໄອຄອນຕົວທ່ອງເວັບ"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "ບໍ່ສາມາດຢືນຢັນດ້ວຍບັນຊີນັ້ນໄດ້. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "ສ້າງກຸ່ມ"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "ກຳລັງສ້າງກຸ່ມ..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "ຈາກຫຼາຍຫາໜ້ອຍ"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "ລາຍລະອຽດ"
 
@@ -622,8 +622,8 @@ msgstr "ແກ້ໄຂ"
 msgid "Edit {label}"
 msgstr "ແກ້ໄຂ {label}"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "ແກ້ໄຂກຸ່ມ"
 
@@ -701,7 +701,7 @@ msgstr "ຍົກເລີກຄຳເຊີນບໍ່ສຳເລັດ"
 msgid "Failed to copy"
 msgstr "ສຳເນົາລົ້ມເຫຼວ"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "ສ້າງກຸ່ມລົ້ມເຫຼວ"
 
@@ -729,7 +729,7 @@ msgstr "ຍ້າຍໝູ່ລົ້ມເຫຼວ"
 msgid "Failed to remove member"
 msgstr "ຍ້າຍສະມາຊິກລົ້ມເຫຼວ"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "ບັນທຶກລົ້ມເຫຼວ"
 
@@ -757,7 +757,7 @@ msgstr "ສົ່ງລະຫັດຢືນຢັນລົ້ມເຫຼວ"
 msgid "Failed to update category"
 msgstr "ອັບເດດໝວດໝູ່ລົ້ມເຫຼວ"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "ອັບເດດກຸ່ມລົ້ມເຫຼວ"
 
@@ -855,7 +855,7 @@ msgstr "ກຸ່ມ"
 msgid "Group actions"
 msgstr "ການກະທຳກຸ່ມ"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "ສ້າງກຸ່ມແລ້ວ"
 
@@ -867,7 +867,7 @@ msgstr "ລຶບກຸ່ມແລ້ວ"
 msgid "Group ID"
 msgstr "ID ກຸ່ມ"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "ຊື່ກຸ່ມ"
 
@@ -875,7 +875,7 @@ msgstr "ຊື່ກຸ່ມ"
 msgid "Group not found"
 msgstr "ບໍ່ພົບກຸ່ມ"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "ອັບເດດກຸ່ມແລ້ວ"
 
@@ -910,7 +910,7 @@ msgstr "ຕົວຕົນ"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "ຄຳເຊີນຂາເຂົ້າ"
 
@@ -949,7 +949,7 @@ msgstr "ສົ່ງຄຳເຊີນແລ້ວ"
 msgid "Invitations"
 msgstr "ຄຳເຊີນ"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "ອັບເດດນະໂຍບາຍຄຳເຊີນແລ້ວ"
 
@@ -1074,7 +1074,7 @@ msgstr "Metric"
 msgid "Monday"
 msgstr "ວັນຈັນ"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "ຊື່"
 
@@ -1082,7 +1082,7 @@ msgstr "ຊື່"
 msgid "Name (A–Z)"
 msgstr "ຊື່ (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "ຕ້ອງການຊື່"
 
@@ -1090,7 +1090,7 @@ msgstr "ຕ້ອງການຊື່"
 msgid "Name saved"
 msgstr "ບັນທຶກຊື່ແລ້ວ"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "ຂໍ້ຜິດພາດເຄືອຂ່າຍ"
 
@@ -1228,7 +1228,7 @@ msgstr "ເປີດເມນູການນຳທາງ"
 msgid "Open theme settings"
 msgstr "ເປີດການຕັ້ງຄ່າທີມ"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "ລາຍລະອຽດເພີ່ມເຕີມ"
 
@@ -1264,7 +1264,7 @@ msgstr "ຄົນ"
 msgid "Personalise how your profile and app look to others."
 msgstr "ປັບแต่งว່າโปຣไฟล์ແລະແອັບຂອງທ່ານປະກົດແນວໃດต่ออื่น."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "ກະລຸນາກວດສອບການເຊື່ອມຕໍ່ອິນເຕີເນັດຂອງທ່ານ ແລະ ລອງໃໝ່ອີກຄັ້ງ."
 
@@ -1440,8 +1440,8 @@ msgstr "ວັນເສົາ"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "ບັນທຶກຊື່"
 msgid "Saving profile..."
 msgstr "ກຳລັງບັນທຶກໂປຣໄຟລ໌..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "ສົ່ງແລ້ວ ({0})"
 msgid "Serif"
 msgstr "ເຊຣິບ"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "ຂໍ້ຜິດພາດເຊີບເວີ"
 
@@ -1586,7 +1586,7 @@ msgstr "ຂໍ້ຜິດພາດເຊີບເວີ"
 msgid "Server rules"
 msgstr "ກົດລະບຽບເຊີບເວີ"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "Session ໝົດອາຍຸແລ້ວ"
 
@@ -1806,7 +1806,7 @@ msgstr "ພິມເພື່ອຄົ້ນຫາຜູ້ໃຊ້"
 msgid "Type to search..."
 msgstr "ພິມເພື່ອຄົ້ນຫາ..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "ບໍ່ສາມາດເຊື່ອມຕໍ່ກັບເຊີບເວີໄລຍະໄກໄດ້"
 
@@ -1831,7 +1831,7 @@ msgstr "ສະຫະລັດອາເມລິກາ"
 msgid "Unverified"
 msgstr "ບໍ່ໄດ້ຢືນຢັນ"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "ກຳລັງອັບເດດກຸ່ມ..."
 

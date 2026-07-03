@@ -219,11 +219,11 @@ msgstr "Başgalaryň sizi katalogda tapmagyna rugsat beriň."
 msgid "Already friends"
 msgstr "Eýýäm dostlar"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "Ýalňyşlyk ýüze çykdy"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "Garaşylmadyk ýalňyşlyk ýüze çykdy"
 
@@ -290,10 +290,10 @@ msgstr "Brauzer nyşany"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "Şol hasap bilen barlap bolmady. Täzeden synanyşyň."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "Topar döretmek"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "Topar döredilýär..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "Kemelýän tertipde"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "Düşündiriş"
 
@@ -622,8 +622,8 @@ msgstr "Düzet"
 msgid "Edit {label}"
 msgstr "{label} redaktirle"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "Topary düzet"
 
@@ -701,7 +701,7 @@ msgstr "Çakylyklary ýatyrmak başartmady"
 msgid "Failed to copy"
 msgstr "Göçürilmedi"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "Topar döredilmedi"
 
@@ -729,7 +729,7 @@ msgstr "Dost aýrylmady"
 msgid "Failed to remove member"
 msgstr "Agza aýrylmady"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "Saklanyp galynmady"
 
@@ -757,7 +757,7 @@ msgstr "Tassyklama kody iberilmedi"
 msgid "Failed to update category"
 msgstr "Kategoriýa täzelenmedi"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "Topar täzelenmedi"
 
@@ -855,7 +855,7 @@ msgstr "Topar"
 msgid "Group actions"
 msgstr "Topar hereketleri"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "Topar döredildi"
 
@@ -867,7 +867,7 @@ msgstr "Topar pozuldy"
 msgid "Group ID"
 msgstr "Topar ID"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "Toparyň ady"
 
@@ -875,7 +875,7 @@ msgstr "Toparyň ady"
 msgid "Group not found"
 msgstr "Topar tapylmady"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "Topar täzelendi"
 
@@ -910,7 +910,7 @@ msgstr "Şahsyýet"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "Gelýän çakylyklar"
 
@@ -949,7 +949,7 @@ msgstr "Çakylyk iberildi"
 msgid "Invitations"
 msgstr "Çakylyklar"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "Çakylyk syýasaty täzelendi"
 
@@ -1074,7 +1074,7 @@ msgstr "Metrik"
 msgid "Monday"
 msgstr "Duşenbe"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "At"
 
@@ -1082,7 +1082,7 @@ msgstr "At"
 msgid "Name (A–Z)"
 msgstr "At (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "At hökmandyr"
 
@@ -1090,7 +1090,7 @@ msgstr "At hökmandyr"
 msgid "Name saved"
 msgstr "At saklandy"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "Tor ýalňyşlygy"
 
@@ -1228,7 +1228,7 @@ msgstr "Nawigasiýa menýusyny aç"
 msgid "Open theme settings"
 msgstr "Tema sazlamalaryny aç"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "Hökman däl düşündiriş"
 
@@ -1264,7 +1264,7 @@ msgstr "Adamlar"
 msgid "Personalise how your profile and app look to others."
 msgstr "Profiliňiziň we programmaňyzyň başgalara nähili görünýändigini sazlaň."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "Internet birikmäňizi barlaň we täzeden synanyşyň."
 
@@ -1440,8 +1440,8 @@ msgstr "Şenbe"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "Ady ýatda sakla"
 msgid "Saving profile..."
 msgstr "Profil ýatda saklanýar..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "Iberildi ({0})"
 msgid "Serif"
 msgstr "Serif"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "Server ýalňyşlygy"
 
@@ -1586,7 +1586,7 @@ msgstr "Server ýalňyşlygy"
 msgid "Server rules"
 msgstr "Server düzgünleri"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "Sessiýanyň möhleti gutardy"
 
@@ -1806,7 +1806,7 @@ msgstr "Ulanyjylary gözlemek üçin ýaz"
 msgid "Type to search..."
 msgstr "Gözlemek üçin ýaz..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "Uzakdaky servere birikmek başartmady"
 
@@ -1831,7 +1831,7 @@ msgstr "Birleşen Ştatlar"
 msgid "Unverified"
 msgstr "Tassyklanmadyk"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "Topar täzelenýär..."
 

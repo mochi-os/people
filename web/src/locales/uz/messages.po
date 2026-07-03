@@ -219,11 +219,11 @@ msgstr "Boshqalarga sizni katalogdan topishga ruxsat bering."
 msgid "Already friends"
 msgstr "Allaqachon doʻstsiz"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "Xatolik yuz berdi"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "Kutilmagan xatolik yuz berdi"
 
@@ -290,10 +290,10 @@ msgstr "Brauzer ikonkasi"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "Ushbu hisob bilan tasdiqlab bo‘lmadi. Iltimos, qayta urinib ko‘ring."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "Guruh yaratish"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "Guruh yaratilmoqda..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "Kamayish boʻyicha"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "Tavsif"
 
@@ -622,8 +622,8 @@ msgstr "Tahrirlash"
 msgid "Edit {label}"
 msgstr "{label}ni tahrirlash"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "Guruhni tahrirlash"
 
@@ -701,7 +701,7 @@ msgstr "Takliflarni bekor qilib boʻlmadi"
 msgid "Failed to copy"
 msgstr "Nusxalab boʻlmadi"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "Guruh yaratib boʻlmadi"
 
@@ -729,7 +729,7 @@ msgstr "Doʻstni olib tashlab boʻlmadi"
 msgid "Failed to remove member"
 msgstr "Aʼzoni olib tashlab boʻlmadi"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "Saqlab boʻlmadi"
 
@@ -757,7 +757,7 @@ msgstr "Tasdiqlash kodini yuborib boʻlmadi"
 msgid "Failed to update category"
 msgstr "Toifani yangilab boʻlmadi"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "Guruhni yangilab boʻlmadi"
 
@@ -855,7 +855,7 @@ msgstr "Guruh"
 msgid "Group actions"
 msgstr "Guruh amallari"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "Guruh yaratildi"
 
@@ -867,7 +867,7 @@ msgstr "Guruh oʻchirildi"
 msgid "Group ID"
 msgstr "Guruh ID"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "Guruh nomi"
 
@@ -875,7 +875,7 @@ msgstr "Guruh nomi"
 msgid "Group not found"
 msgstr "Guruh topilmadi"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "Guruh yangilandi"
 
@@ -910,7 +910,7 @@ msgstr "Identifikatsiya"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "Kiruvchi takliflar"
 
@@ -949,7 +949,7 @@ msgstr "Taklif yuborildi"
 msgid "Invitations"
 msgstr "Takliflar"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "Taklif siyosati yangilandi"
 
@@ -1074,7 +1074,7 @@ msgstr "Metrik"
 msgid "Monday"
 msgstr "Dushanba"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "Nomi"
 
@@ -1082,7 +1082,7 @@ msgstr "Nomi"
 msgid "Name (A–Z)"
 msgstr "Ism (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "Nom kerak"
 
@@ -1090,7 +1090,7 @@ msgstr "Nom kerak"
 msgid "Name saved"
 msgstr "Nom saqlandi"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "Tarmoq xatosi"
 
@@ -1228,7 +1228,7 @@ msgstr "Navigatsiya menyusini ochish"
 msgid "Open theme settings"
 msgstr "Mavzu sozlamalarini ochish"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "Ixtiyoriy tavsif"
 
@@ -1264,7 +1264,7 @@ msgstr "Odamlar"
 msgid "Personalise how your profile and app look to others."
 msgstr "Profilingiz va ilova boshqalarga qanday ko'rinishini moslang."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "Internet aloqangizni tekshiring va qayta urinib ko‘ring."
 
@@ -1440,8 +1440,8 @@ msgstr "Shanba"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "Ismni saqlash"
 msgid "Saving profile..."
 msgstr "Profil saqlanmoqda..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "Yuborilgan ({0})"
 msgid "Serif"
 msgstr "Serif"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "Server xatosi"
 
@@ -1586,7 +1586,7 @@ msgstr "Server xatosi"
 msgid "Server rules"
 msgstr "Server qoidalari"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "Sessiya muddati tugadi"
 
@@ -1806,7 +1806,7 @@ msgstr "Foydalanuvchilarni qidirish uchun yozing"
 msgid "Type to search..."
 msgstr "Qidirish uchun yozing..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "Masofaviy serverga ulanib bo‘lmadi"
 
@@ -1831,7 +1831,7 @@ msgstr "Amerika Qoʻshma Shtatlari"
 msgid "Unverified"
 msgstr "Tasdiqlanmagan"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "Guruh yangilanmoqda..."
 

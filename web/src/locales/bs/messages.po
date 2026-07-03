@@ -219,11 +219,11 @@ msgstr "Dozvoli drugima da te pronađu u imeniku."
 msgid "Already friends"
 msgstr "Već prijatelji"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "Došlo je do greške"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "Došlo je do neočekivane greške"
 
@@ -290,10 +290,10 @@ msgstr "Ikona browsera"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "Provjera s tim računom nije uspjela. Molimo pokušajte ponovo."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "Kreiraj grupu"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "Kreiranje grupe..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "Opadajuće"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "Opis"
 
@@ -622,8 +622,8 @@ msgstr "Uredi"
 msgid "Edit {label}"
 msgstr "Uredi {label}"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "Uredi grupu"
 
@@ -701,7 +701,7 @@ msgstr "Otkazivanje pozivnica nije uspjelo"
 msgid "Failed to copy"
 msgstr "Kopiranje nije uspjelo"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "Kreiranje grupe nije uspjelo"
 
@@ -729,7 +729,7 @@ msgstr "Uklanjanje prijatelja nije uspjelo"
 msgid "Failed to remove member"
 msgstr "Uklanjanje člana nije uspjelo"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "Spremanje nije uspjelo"
 
@@ -757,7 +757,7 @@ msgstr "Slanje verifikacionog koda nije uspjelo"
 msgid "Failed to update category"
 msgstr "Ažuriranje kategorije nije uspjelo"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "Ažuriranje grupe nije uspjelo"
 
@@ -855,7 +855,7 @@ msgstr "Grupa"
 msgid "Group actions"
 msgstr "Akcije grupe"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "Grupa kreirana"
 
@@ -867,7 +867,7 @@ msgstr "Grupa obrisana"
 msgid "Group ID"
 msgstr "ID grupe"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "Naziv grupe"
 
@@ -875,7 +875,7 @@ msgstr "Naziv grupe"
 msgid "Group not found"
 msgstr "Grupa nije pronađena"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "Grupa ažurirana"
 
@@ -910,7 +910,7 @@ msgstr "Identitet"
 msgid "Imperial"
 msgstr "Imperijalni"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "Dolazne pozivnice"
 
@@ -949,7 +949,7 @@ msgstr "Pozivnica poslana"
 msgid "Invitations"
 msgstr "Pozivnice"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "Politika pozivnica ažurirana"
 
@@ -1074,7 +1074,7 @@ msgstr "Metrička"
 msgid "Monday"
 msgstr "Ponedjeljak"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "Ime"
 
@@ -1082,7 +1082,7 @@ msgstr "Ime"
 msgid "Name (A–Z)"
 msgstr "Ime (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "Ime je obavezno"
 
@@ -1090,7 +1090,7 @@ msgstr "Ime je obavezno"
 msgid "Name saved"
 msgstr "Ime sačuvano"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "Greška mreže"
 
@@ -1228,7 +1228,7 @@ msgstr "Otvori navigacijski meni"
 msgid "Open theme settings"
 msgstr "Otvori postavke teme"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "Opcionalni opis"
 
@@ -1264,7 +1264,7 @@ msgstr "Ljudi"
 msgid "Personalise how your profile and app look to others."
 msgstr "Personalizirajte kako vaš profil i aplikacija izgledaju drugima."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "Provjerite svoju internetsku vezu i pokušajte ponovo."
 
@@ -1440,8 +1440,8 @@ msgstr "Subota"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "Sačuvaj ime"
 msgid "Saving profile..."
 msgstr "Spremanje profila..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "Poslano ({0})"
 msgid "Serif"
 msgstr "Serifno"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "Greška servera"
 
@@ -1586,7 +1586,7 @@ msgstr "Greška servera"
 msgid "Server rules"
 msgstr "Pravila servera"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "Sesija je istekla"
 
@@ -1806,7 +1806,7 @@ msgstr "Otkucaj za pretragu korisnika"
 msgid "Type to search..."
 msgstr "Otkucaj za pretragu..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "Nije moguće povezati se s udaljenim serverom"
 
@@ -1831,7 +1831,7 @@ msgstr "Sjedinjene Države"
 msgid "Unverified"
 msgstr "Neverifikovano"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "Ažuriranje grupe..."
 

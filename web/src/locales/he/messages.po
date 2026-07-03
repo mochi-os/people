@@ -219,11 +219,11 @@ msgstr "אפשר לאחרים למצוא אותך במדריך."
 msgid "Already friends"
 msgstr "כבר חברים"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "אירעה שגיאה"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "אירעה שגיאה בלתי צפויה"
 
@@ -290,10 +290,10 @@ msgstr "אייקון דפדפן"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "לא ניתן היה לאמת עם החשבון הזה. נסה שוב."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "צור קבוצה"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "יוצר קבוצה..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "סדר יורד"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "תיאור"
 
@@ -622,8 +622,8 @@ msgstr "עריכה"
 msgid "Edit {label}"
 msgstr "עריכת {label}"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "ערוך קבוצה"
 
@@ -701,7 +701,7 @@ msgstr "ביטול ההזמנות נכשל"
 msgid "Failed to copy"
 msgstr "ההעתקה נכשלה"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "יצירת הקבוצה נכשלה"
 
@@ -729,7 +729,7 @@ msgstr "הסרת החבר נכשלה"
 msgid "Failed to remove member"
 msgstr "הסרת החבר נכשלה"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "השמירה נכשלה"
 
@@ -757,7 +757,7 @@ msgstr "שליחת קוד האימות נכשלה"
 msgid "Failed to update category"
 msgstr "עדכון הקטגוריה נכשל"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "עדכון הקבוצה נכשל"
 
@@ -855,7 +855,7 @@ msgstr "קבוצה"
 msgid "Group actions"
 msgstr "פעולות קבוצתיות"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "הקבוצה נוצרה"
 
@@ -867,7 +867,7 @@ msgstr "הקבוצה נמחקה"
 msgid "Group ID"
 msgstr "מזהה קבוצה"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "שם הקבוצה"
 
@@ -875,7 +875,7 @@ msgstr "שם הקבוצה"
 msgid "Group not found"
 msgstr "הקבוצה לא נמצאה"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "הקבוצה עודכנה"
 
@@ -910,7 +910,7 @@ msgstr "זהות"
 msgid "Imperial"
 msgstr "אימפריאלי"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "הזמנות נכנסות"
 
@@ -949,7 +949,7 @@ msgstr "ההזמנה נשלחה"
 msgid "Invitations"
 msgstr "הזמנות"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "מדיניות ההזמנות עודכנה"
 
@@ -1074,7 +1074,7 @@ msgstr "מטרי"
 msgid "Monday"
 msgstr "יום שני"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "שם"
 
@@ -1082,7 +1082,7 @@ msgstr "שם"
 msgid "Name (A–Z)"
 msgstr "שם (א–ת)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "שם נדרש"
 
@@ -1090,7 +1090,7 @@ msgstr "שם נדרש"
 msgid "Name saved"
 msgstr "השם נשמר"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "שגיאת רשת"
 
@@ -1228,7 +1228,7 @@ msgstr "פתח תפריט ניווט"
 msgid "Open theme settings"
 msgstr "פתח הגדרות ערכת נושא"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "תיאור אופציונלי"
 
@@ -1264,7 +1264,7 @@ msgstr "אנשים"
 msgid "Personalise how your profile and app look to others."
 msgstr "התאם אישית כיצד הפרופיל והאפליקציה שלך נראים לאחרים."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "בדקו את חיבור האינטרנט ונסו שוב."
 
@@ -1440,8 +1440,8 @@ msgstr "שבת"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "שמור שם"
 msgid "Saving profile..."
 msgstr "שומר פרופיל..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "נשלחו ({0})"
 msgid "Serif"
 msgstr "סריף"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "שגיאת שרת"
 
@@ -1586,7 +1586,7 @@ msgstr "שגיאת שרת"
 msgid "Server rules"
 msgstr "כללי השרת"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "ההפעלה פגה"
 
@@ -1806,7 +1806,7 @@ msgstr "הקלד לחיפוש משתמשים"
 msgid "Type to search..."
 msgstr "הקלד לחיפוש..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "לא ניתן להתחבר לשרת המרוחק"
 
@@ -1831,7 +1831,7 @@ msgstr "ארצות הברית"
 msgid "Unverified"
 msgstr "לא מאומת"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "מעדכן קבוצה..."
 

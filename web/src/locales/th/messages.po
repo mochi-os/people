@@ -219,11 +219,11 @@ msgstr "อนุญาตให้ผู้อื่นค้นหาคุณ
 msgid "Already friends"
 msgstr "เป็นเพื่อนกันแล้ว"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "เกิดข้อผิดพลาด"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "เกิดข้อผิดพลาดที่ไม่คาดคิด"
 
@@ -290,10 +290,10 @@ msgstr "ไอคอนเบราว์เซอร์"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "ไม่สามารถยืนยันด้วยบัญชีนั้นได้ โปรดลองอีกครั้ง"
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "สร้างกลุ่ม"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "กำลังสร้างกลุ่ม..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "จากมากไปน้อย"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "คำอธิบาย"
 
@@ -622,8 +622,8 @@ msgstr "แก้ไข"
 msgid "Edit {label}"
 msgstr "แก้ไข {label}"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "แก้ไขกลุ่ม"
 
@@ -701,7 +701,7 @@ msgstr "ยกเลิกคำเชิญไม่สำเร็จ"
 msgid "Failed to copy"
 msgstr "ไม่สามารถคัดลอกได้"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "ไม่สามารถสร้างกลุ่มได้"
 
@@ -729,7 +729,7 @@ msgstr "ไม่สามารถเอาเพื่อนออกได้
 msgid "Failed to remove member"
 msgstr "ไม่สามารถเอาสมาชิกออกได้"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "ไม่สามารถบันทึกได้"
 
@@ -757,7 +757,7 @@ msgstr "ไม่สามารถส่งรหัสยืนยันได
 msgid "Failed to update category"
 msgstr "ไม่สามารถอัปเดตหมวดหมู่ได้"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "ไม่สามารถอัปเดตกลุ่มได้"
 
@@ -855,7 +855,7 @@ msgstr "กลุ่ม"
 msgid "Group actions"
 msgstr "การดำเนินการกลุ่ม"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "สร้างกลุ่มแล้ว"
 
@@ -867,7 +867,7 @@ msgstr "ลบกลุ่มแล้ว"
 msgid "Group ID"
 msgstr "ID กลุ่ม"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "ชื่อกลุ่ม"
 
@@ -875,7 +875,7 @@ msgstr "ชื่อกลุ่ม"
 msgid "Group not found"
 msgstr "ไม่พบกลุ่ม"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "อัปเดตกลุ่มแล้ว"
 
@@ -910,7 +910,7 @@ msgstr "Identity"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "คำเชิญเข้ามา"
 
@@ -949,7 +949,7 @@ msgstr "ส่งคำเชิญแล้ว"
 msgid "Invitations"
 msgstr "คำเชิญ"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "อัปเดตนโยบายการเชิญแล้ว"
 
@@ -1074,7 +1074,7 @@ msgstr "เมตริก"
 msgid "Monday"
 msgstr "วันจันทร์"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "ชื่อ"
 
@@ -1082,7 +1082,7 @@ msgstr "ชื่อ"
 msgid "Name (A–Z)"
 msgstr "ชื่อ (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "ต้องระบุชื่อ"
 
@@ -1090,7 +1090,7 @@ msgstr "ต้องระบุชื่อ"
 msgid "Name saved"
 msgstr "บันทึกชื่อแล้ว"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "ข้อผิดพลาดของเครือข่าย"
 
@@ -1228,7 +1228,7 @@ msgstr "เปิดเมนูการนำทาง"
 msgid "Open theme settings"
 msgstr "เปิดการตั้งค่าธีม"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "คำอธิบาย (ไม่บังคับ)"
 
@@ -1264,7 +1264,7 @@ msgstr "ผู้คน"
 msgid "Personalise how your profile and app look to others."
 msgstr "ปรับแต่งวิธีที่โปรไฟล์และแอปของคุณปรากฏต่อผู้อื่น"
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "โปรดตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณแล้วลองอีกครั้ง"
 
@@ -1440,8 +1440,8 @@ msgstr "วันเสาร์"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "บันทึกชื่อ"
 msgid "Saving profile..."
 msgstr "กำลังบันทึกโปรไฟล์..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "ที่ส่ง ({0})"
 msgid "Serif"
 msgstr "เซริฟ"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "ข้อผิดพลาดของเซิร์ฟเวอร์"
 
@@ -1586,7 +1586,7 @@ msgstr "ข้อผิดพลาดของเซิร์ฟเวอร์
 msgid "Server rules"
 msgstr "กฎของเซิร์ฟเวอร์"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "เซสชันหมดอายุ"
 
@@ -1806,7 +1806,7 @@ msgstr "พิมพ์เพื่อค้นหาผู้ใช้"
 msgid "Type to search..."
 msgstr "พิมพ์เพื่อค้นหา..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ระยะไกลได้"
 
@@ -1831,7 +1831,7 @@ msgstr "สหรัฐอเมริกา"
 msgid "Unverified"
 msgstr "ยังไม่ยืนยัน"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "กำลังอัปเดตกลุ่ม..."
 

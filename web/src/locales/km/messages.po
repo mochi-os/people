@@ -219,11 +219,11 @@ msgstr "អនុញ្ញាតឲ្យអ្នកដទៃរកអ្នក
 msgid "Already friends"
 msgstr "ជាមិត្តភក្តិរួចហើយ"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "មានកំហុសកើតឡើង"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "មានកំហុសដែលមិនបានរំពឹងទុកកើតឡើង"
 
@@ -290,10 +290,10 @@ msgstr "រូបតំណាងកម្មវិធីរុករក"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "មិនអាចផ្ទៀងផ្ទាត់ជាមួយគណនីនោះបានទេ។ សូមព្យាយាមម្តងទៀត។"
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "បង្កើតក្រុម"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "កំពុងបង្កើតក្រុម..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "តាមលំដាប់ថយ"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "ការពិពណ៌នា"
 
@@ -622,8 +622,8 @@ msgstr "កែសម្រួល"
 msgid "Edit {label}"
 msgstr "កែ {label}"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "កែសម្រួលក្រុម"
 
@@ -701,7 +701,7 @@ msgstr "មិនអាចលុបចោលការអញ្ជើញបាន
 msgid "Failed to copy"
 msgstr "បរាជ័យក្នុងការចម្លង"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "បរាជ័យក្នុងការបង្កើតក្រុម"
 
@@ -729,7 +729,7 @@ msgstr "បរាជ័យក្នុងការដកមិត្ត"
 msgid "Failed to remove member"
 msgstr "បរាជ័យក្នុងការដកសមាជិក"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "បរាជ័យក្នុងការរក្សាទុក"
 
@@ -757,7 +757,7 @@ msgstr "បរាជ័យក្នុងការផ្ញើកូដផ្ទ
 msgid "Failed to update category"
 msgstr "បរាជ័យក្នុងការធ្វើបច្ចុប្បន្នភាពប្រភេទ"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "បរាជ័យក្នុងការធ្វើបច្ចុប្បន្នភាពក្រុម"
 
@@ -855,7 +855,7 @@ msgstr "ក្រុម"
 msgid "Group actions"
 msgstr "សកម្មភាពក្រុម"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "បានបង្កើតក្រុម"
 
@@ -867,7 +867,7 @@ msgstr "បានលុបក្រុម"
 msgid "Group ID"
 msgstr "លេខសម្គាល់ក្រុម"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "ឈ្មោះក្រុម"
 
@@ -875,7 +875,7 @@ msgstr "ឈ្មោះក្រុម"
 msgid "Group not found"
 msgstr "រកមិនឃើញក្រុម"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "បានធ្វើបច្ចុប្បន្នភាពក្រុម"
 
@@ -910,7 +910,7 @@ msgstr "អត្តសញ្ញាណ"
 msgid "Imperial"
 msgstr "Imperial"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "ការអញ្ជើញចូលមក"
 
@@ -949,7 +949,7 @@ msgstr "បានផ្ញើការអញ្ជើញ"
 msgid "Invitations"
 msgstr "ការអញ្ជើញ"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "បានធ្វើបច្ចុប្បន្នភាពគោលការណ៍អញ្ជើញ"
 
@@ -1074,7 +1074,7 @@ msgstr "ម៉ែត្រ"
 msgid "Monday"
 msgstr "ថ្ងៃច័ន្ទ"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "ឈ្មោះ"
 
@@ -1082,7 +1082,7 @@ msgstr "ឈ្មោះ"
 msgid "Name (A–Z)"
 msgstr "ឈ្មោះ (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "តម្រូវឱ្យបញ្ចូលឈ្មោះ"
 
@@ -1090,7 +1090,7 @@ msgstr "តម្រូវឱ្យបញ្ចូលឈ្មោះ"
 msgid "Name saved"
 msgstr "បានរក្សាទុកឈ្មោះ"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "កំហុសបណ្តាញ"
 
@@ -1228,7 +1228,7 @@ msgstr "បើកម៉ឺនុយរុករក"
 msgid "Open theme settings"
 msgstr "បើកការកំណត់រចនាប័ទ្ម"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "ការពិពណ៌នាស្រេចចិត្ត"
 
@@ -1264,7 +1264,7 @@ msgstr "មនុស្ស"
 msgid "Personalise how your profile and app look to others."
 msgstr "ប្ដូរតាមបំណងពីរបៀបដែលប្រវត្តិរូប និងកម្មវិធីរបស់អ្នកបង្ហាញដល់អ្នកដទៃ។"
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "សូមពិនិត្យការតភ្ជាប់អ៊ីនធឺណិតរបស់អ្នក រួចព្យាយាមម្តងទៀត។"
 
@@ -1440,8 +1440,8 @@ msgstr "ថ្ងៃសៅរ៍"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "រក្សាទុកឈ្មោះ"
 msgid "Saving profile..."
 msgstr "កំពុងរក្សាទុកប្រវត្តិរូប..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "បានផ្ញើ ({0})"
 msgid "Serif"
 msgstr "សេរីហ្វ"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "កំហុសម៉ាស៊ីនមេ"
 
@@ -1586,7 +1586,7 @@ msgstr "កំហុសម៉ាស៊ីនមេ"
 msgid "Server rules"
 msgstr "ច្បាប់ម៉ាស៊ីនមេ"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "វគ្គបានផុតកំណត់"
 
@@ -1806,7 +1806,7 @@ msgstr "វាយដើម្បីស្វែងរកអ្នកប្រើ
 msgid "Type to search..."
 msgstr "វាយដើម្បីស្វែងរក..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "មិនអាចតភ្ជាប់ទៅម៉ាស៊ីនមេពីចម្ងាយបានទេ"
 
@@ -1831,7 +1831,7 @@ msgstr "សហរដ្ឋអាមេរិក"
 msgid "Unverified"
 msgstr "មិនបានផ្ទៀងផ្ទាត់"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "កំពុងធ្វើបច្ចុប្បន្នភាពក្រុម..."
 

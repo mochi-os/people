@@ -219,11 +219,11 @@ msgstr "Sta anderen toe je in de gids te vinden."
 msgid "Already friends"
 msgstr "Al vrienden"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "Er is een fout opgetreden"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "Er is een onverwachte fout opgetreden"
 
@@ -290,10 +290,10 @@ msgstr "Browser-icoon"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "Kan niet verifiëren met dat account. Probeer het opnieuw."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "Groep aanmaken"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "Groep aanmaken..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "Aflopend"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "Beschrijving"
 
@@ -622,8 +622,8 @@ msgstr "Bewerken"
 msgid "Edit {label}"
 msgstr "{label} bewerken"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "Groep bewerken"
 
@@ -701,7 +701,7 @@ msgstr "Annuleren van uitnodigingen mislukt"
 msgid "Failed to copy"
 msgstr "Kopiëren mislukt"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "Kan groep niet aanmaken"
 
@@ -729,7 +729,7 @@ msgstr "Vriend verwijderen mislukt"
 msgid "Failed to remove member"
 msgstr "Lid verwijderen mislukt"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "Opslaan mislukt"
 
@@ -757,7 +757,7 @@ msgstr "Verificatiecode verzenden mislukt"
 msgid "Failed to update category"
 msgstr "Categorie bijwerken mislukt"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "Kan groep niet bijwerken"
 
@@ -855,7 +855,7 @@ msgstr "Groep"
 msgid "Group actions"
 msgstr "Groepsacties"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "Groep aangemaakt"
 
@@ -867,7 +867,7 @@ msgstr "Groep verwijderd"
 msgid "Group ID"
 msgstr "Groep-ID"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "Groepsnaam"
 
@@ -875,7 +875,7 @@ msgstr "Groepsnaam"
 msgid "Group not found"
 msgstr "Groep niet gevonden"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "Groep bijgewerkt"
 
@@ -910,7 +910,7 @@ msgstr "Identiteit"
 msgid "Imperial"
 msgstr "Imperiaal"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "Inkomende uitnodigingen"
 
@@ -949,7 +949,7 @@ msgstr "Uitnodiging verzonden"
 msgid "Invitations"
 msgstr "Uitnodigingen"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "Uitnodigingsbeleid bijgewerkt"
 
@@ -1074,7 +1074,7 @@ msgstr "Metriek"
 msgid "Monday"
 msgstr "Maandag"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "Naam"
 
@@ -1082,7 +1082,7 @@ msgstr "Naam"
 msgid "Name (A–Z)"
 msgstr "Naam (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "Naam is verplicht"
 
@@ -1090,7 +1090,7 @@ msgstr "Naam is verplicht"
 msgid "Name saved"
 msgstr "Naam opgeslagen"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "Netwerkfout"
 
@@ -1228,7 +1228,7 @@ msgstr "Navigatiemenu openen"
 msgid "Open theme settings"
 msgstr "Thema-instellingen openen"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "Optionele beschrijving"
 
@@ -1264,7 +1264,7 @@ msgstr "Mensen"
 msgid "Personalise how your profile and app look to others."
 msgstr "Personaliseer hoe je profiel en de app er voor anderen uitzien."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "Controleer je internetverbinding en probeer het opnieuw."
 
@@ -1440,8 +1440,8 @@ msgstr "Zaterdag"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "Naam opslaan"
 msgid "Saving profile..."
 msgstr "Profiel opslaan..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "Verzonden ({0})"
 msgid "Serif"
 msgstr "Schreefletter"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "Serverfout"
 
@@ -1586,7 +1586,7 @@ msgstr "Serverfout"
 msgid "Server rules"
 msgstr "Serverregels"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "Sessie verlopen"
 
@@ -1806,7 +1806,7 @@ msgstr "Typ om gebruikers te zoeken"
 msgid "Type to search..."
 msgstr "Typ om te zoeken..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "Kan geen verbinding maken met externe server"
 
@@ -1831,7 +1831,7 @@ msgstr "Verenigde Staten"
 msgid "Unverified"
 msgstr "Niet geverifieerd"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "Groep bijwerken..."
 

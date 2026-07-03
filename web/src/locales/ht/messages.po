@@ -219,11 +219,11 @@ msgstr "Kite lòt moun jwenn ou nan anyè a."
 msgid "Already friends"
 msgstr "Deja zanmi"
 
-#: ../../../lib/web/src/lib/api-client.ts:192
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:159
 msgid "An error occurred"
 msgstr "Yon erè te rive"
 
-#: ../../../lib/web/src/lib/api-client.ts:255
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
 msgid "An unexpected error occurred"
 msgstr "Yon erè inatandi te rive"
 
@@ -290,10 +290,10 @@ msgstr "Ikon navigatè"
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:89
-#: src/features/groups/group-dialog.tsx:119
+#: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
-#: src/features/invitations/invite-settings-dialog.tsx:117
+#: src/features/invitations/invite-settings-dialog.tsx:121
 #: src/features/profile/index.tsx:346
 #: src/features/profile/index.tsx:351
 msgid "Cancel"
@@ -483,13 +483,13 @@ msgid "Couldn't verify with that account. Please try again."
 msgstr "Nou pa t kapab verifye ak kont sa a. Tanpri eseye ankò."
 
 #: src/components/layout/people-layout.tsx:81
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
-#: src/features/groups/group-dialog.tsx:122
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:132
 msgid "Create group"
 msgstr "Kreye gwoup"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "Ap kreye gwoup..."
 
@@ -565,7 +565,7 @@ msgid "Descending"
 msgstr "Desann"
 
 #: src/features/groups/group-detail.tsx:179
-#: src/features/groups/group-dialog.tsx:106
+#: src/features/groups/group-dialog.tsx:116
 msgid "Description"
 msgstr "Deskripsyon"
 
@@ -622,8 +622,8 @@ msgstr "Modifye"
 msgid "Edit {label}"
 msgstr "Modifye {label}"
 
-#: src/features/groups/group-dialog.tsx:89
-#: src/features/groups/group-dialog.tsx:91
+#: src/features/groups/group-dialog.tsx:99
+#: src/features/groups/group-dialog.tsx:101
 msgid "Edit group"
 msgstr "Modifye gwoup"
 
@@ -701,7 +701,7 @@ msgstr "Echèk pou anile envitasyon yo"
 msgid "Failed to copy"
 msgstr "Echwe pou kopye"
 
-#: src/features/groups/group-dialog.tsx:59
+#: src/features/groups/group-dialog.tsx:69
 msgid "Failed to create group"
 msgstr "Echwe pou kreye gwoup"
 
@@ -729,7 +729,7 @@ msgstr "Echwe pou retire zanmi"
 msgid "Failed to remove member"
 msgstr "Echwe pou retire manm"
 
-#: src/features/invitations/invite-settings-dialog.tsx:71
+#: src/features/invitations/invite-settings-dialog.tsx:75
 msgid "Failed to save"
 msgstr "Echwe pou sove"
 
@@ -757,7 +757,7 @@ msgstr "Echwe pou voye kòd verifikasyon"
 msgid "Failed to update category"
 msgstr "Echwe pou mete ajou kategori"
 
-#: src/features/groups/group-dialog.tsx:58
+#: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "Echwe pou mete ajou gwoup"
 
@@ -855,7 +855,7 @@ msgstr "Gwoup"
 msgid "Group actions"
 msgstr "Aksyon gwoup"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group created"
 msgstr "Gwoup kreye"
 
@@ -867,7 +867,7 @@ msgstr "Gwoup efase"
 msgid "Group ID"
 msgstr "ID Gwoup"
 
-#: src/features/groups/group-dialog.tsx:101
+#: src/features/groups/group-dialog.tsx:111
 msgid "Group name"
 msgstr "Non gwoup"
 
@@ -875,7 +875,7 @@ msgstr "Non gwoup"
 msgid "Group not found"
 msgstr "Gwoup pa jwenn"
 
-#: src/features/groups/group-dialog.tsx:56
+#: src/features/groups/group-dialog.tsx:66
 msgid "Group updated"
 msgstr "Gwoup mete ajou"
 
@@ -910,7 +910,7 @@ msgstr "Idantite"
 msgid "Imperial"
 msgstr "Imperyal"
 
-#: src/features/invitations/invite-settings-dialog.tsx:83
+#: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "Envitasyon ki rive"
 
@@ -949,7 +949,7 @@ msgstr "Envitasyon voye"
 msgid "Invitations"
 msgstr "Envitasyon"
 
-#: src/features/invitations/invite-settings-dialog.tsx:70
+#: src/features/invitations/invite-settings-dialog.tsx:74
 msgid "Invite policy updated"
 msgstr "Politik envitasyon mete ajou"
 
@@ -1074,7 +1074,7 @@ msgstr "Metrik"
 msgid "Monday"
 msgstr "Lendi"
 
-#: src/features/groups/group-dialog.tsx:96
+#: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "Non"
 
@@ -1082,7 +1082,7 @@ msgstr "Non"
 msgid "Name (A–Z)"
 msgstr "Non (A–Z)"
 
-#: src/features/groups/group-dialog.tsx:47
+#: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "Non obligatwa"
 
@@ -1090,7 +1090,7 @@ msgstr "Non obligatwa"
 msgid "Name saved"
 msgstr "Non sove"
 
-#: ../../../lib/web/src/lib/api-client.ts:300
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
 msgid "Network error"
 msgstr "Erè rezo"
 
@@ -1228,7 +1228,7 @@ msgstr "Ouvri meni navigasyon"
 msgid "Open theme settings"
 msgstr "Ouvri paramèt tèm"
 
-#: src/features/groups/group-dialog.tsx:111
+#: src/features/groups/group-dialog.tsx:121
 msgid "Optional description"
 msgstr "Deskripsyon opsyonèl"
 
@@ -1264,7 +1264,7 @@ msgstr "Moun"
 msgid "Personalise how your profile and app look to others."
 msgstr "Pèsonalize kijan pwofil ou ak aplikasyon an parèt pou lòt moun."
 
-#: ../../../lib/web/src/lib/api-client.ts:301
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
 msgid "Please check your internet connection and try again."
 msgstr "Tanpri tcheke koneksyon entènèt ou epi eseye ankò."
 
@@ -1440,8 +1440,8 @@ msgstr "Samdi"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
 #: ../../../lib/web/src/components/ui/secret-field.tsx:77
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:121
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:132
 #: src/features/profile/index.tsx:412
 #: src/features/profile/index.tsx:441
 msgid "Save"
@@ -1456,8 +1456,8 @@ msgstr "Anrejistre non"
 msgid "Saving profile..."
 msgstr "Ap anrejistre pwofil..."
 
-#: src/features/groups/group-dialog.tsx:122
-#: src/features/invitations/invite-settings-dialog.tsx:69
+#: src/features/groups/group-dialog.tsx:132
+#: src/features/invitations/invite-settings-dialog.tsx:73
 #: src/features/profile/index.tsx:185
 #: src/features/profile/index.tsx:208
 #: src/features/profile/index.tsx:223
@@ -1576,8 +1576,8 @@ msgstr "Voye ({0})"
 msgid "Serif"
 msgstr "Serif"
 
-#: ../../../lib/web/src/lib/api-client.ts:259
-#: ../../../lib/web/src/lib/api-client.ts:284
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
 msgid "Server error"
 msgstr "Erè sèvè"
 
@@ -1586,7 +1586,7 @@ msgstr "Erè sèvè"
 msgid "Server rules"
 msgstr "Règ sèvè"
 
-#: ../../../lib/web/src/lib/api-client.ts:227
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
 msgid "Session expired"
 msgstr "Sesyon ekspire"
 
@@ -1806,7 +1806,7 @@ msgstr "Tape pou chèche itilizatè"
 msgid "Type to search..."
 msgstr "Tape pou chèche..."
 
-#: ../../../lib/web/src/lib/api-client.ts:280
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
 msgid "Unable to connect to remote server"
 msgstr "Pa kapab konekte ak sèvè aleka a"
 
@@ -1831,7 +1831,7 @@ msgstr "Etazini"
 msgid "Unverified"
 msgstr "Pa verifye"
 
-#: src/features/groups/group-dialog.tsx:55
+#: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "Ap mete gwoup la ajou..."
 

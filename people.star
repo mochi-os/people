@@ -516,16 +516,16 @@ def action_group_get(a):
 		name = member["member"]
 		member_id = member["member"]
 		if member["type"] == "user":
-			# Group membership 'user' subjects are local user uids; resolve
-			# to username when present, otherwise try the directory in case
-			# the value happens to be an entity id from older data.
-			user = mochi.user.get(member_id)
-			if user:
-				name = user["username"]
-			elif mochi.text.valid(member_id, "entity"):
-				entity = mochi.directory.get(member_id)
-				if entity:
-					name = entity["name"]
+			# 'user' subjects are person entity IDs (see
+			# action_group_member_add). Resolve the display name via
+			# mochi.entity.name (local entities then the directory) — NOT
+			# mochi.user.get, which is administrator-only and raises, so a
+			# normal group viewer got a 500 the moment the group had any user
+			# member.
+			if mochi.text.valid(member_id, "entity"):
+				resolved = mochi.entity.name(member_id)
+				if resolved:
+					name = resolved
 		elif member["type"] == "group":
 			g = mochi.group.get(member_id)
 			if g:

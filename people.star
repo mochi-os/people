@@ -17,48 +17,6 @@ def database_create():
 	mochi.db.execute("create index if not exists invites_direction on invites( direction )")
 	mochi.db.execute("create table if not exists profiles ( person text not null primary key, profile text not null default '', accent text not null default '', updated integer not null default 0 )")
 
-def database_upgrade(version):
-	if version == 2:
-		mochi.db.execute("create table if not exists profiles ( person text not null primary key, profile text not null default '', accent text not null default '', updated integer not null default 0 )")
-	if version == 3:
-		# Timestamp friendships so clients can offer a "recently added" sort.
-		# Pre-existing rows default to 0 (sort oldest), which is correct: their
-		# real add-time is unknown.
-		mochi.db.execute("alter table friends add column created integer not null default 0")
-	if version == 4:
-		# friends / invites / profiles become versioned LWW-Registers
-		# (mochi.db.merge / mochi.db.remove) so add/remove/edits converge across a
-		# user's hosts and a stale write can't resurrect a removed relationship.
-		# Rebuild friends + invites so every non-key column carries a DEFAULT: a
-		# tombstone upserts only the key columns, so a NOT NULL column without a
-		# default would abort the removal (SQLite can't add a default via ALTER).
-		# profiles already has defaults on its columns, so it only needs the register
-		# columns added.
-		mochi.db.execute("create table friends_new ( identity text not null, id text not null, name text not null default '', class text not null default 'person', created integer not null default 0, writer text not null default '', version integer not null default 0, removed integer not null default 0, primary key ( identity, id ) )")
-		mochi.db.execute("insert into friends_new ( identity, id, name, class, created ) select identity, id, name, class, created from friends")
-		mochi.db.execute("drop table friends")
-		mochi.db.execute("alter table friends_new rename to friends")
-		mochi.db.execute("create index if not exists friends_id on friends( id )")
-		mochi.db.execute("create index if not exists friends_name on friends( name )")
-		mochi.db.execute("create table invites_new ( identity text not null, id text not null, direction text not null, name text not null default '', updated integer not null default 0, writer text not null default '', version integer not null default 0, removed integer not null default 0, primary key ( identity, id, direction ) )")
-		mochi.db.execute("insert into invites_new ( identity, id, direction, name, updated ) select identity, id, direction, name, updated from invites")
-		mochi.db.execute("drop table invites")
-		mochi.db.execute("alter table invites_new rename to invites")
-		mochi.db.execute("create index if not exists invites_identity_id on invites( identity, id )")
-		mochi.db.execute("create index if not exists invites_direction on invites( direction )")
-		for c in ["writer text not null default ''", "version integer not null default 0", "removed integer not null default 0"]:
-			mochi.db.execute("alter table profiles add column " + c)
-	if version == 5:
-		# Replication is removed: purge tombstones and drop the LWW-Register
-		# columns v4 added. Idempotent per table so a partial run heals.
-		for t in ["friends", "invites", "profiles"]:
-			cols = [r["name"] for r in mochi.db.table(t) or []]
-			if "removed" in cols:
-				mochi.db.execute("delete from " + t + " where removed=1")
-			for c in ["writer", "version", "removed"]:
-				if c in cols:
-					mochi.db.execute("alter table " + t + " drop column " + c)
-
 def resolve_identity(id):
 	entry = mochi.directory.get(id)
 	if entry and entry.get("id"):

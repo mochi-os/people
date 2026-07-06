@@ -67,6 +67,10 @@ msgstr "正在接受邀请..."
 msgid "Accepting invitations..."
 msgstr "正在接受邀请..."
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:60
+msgid "Access denied"
+msgstr "访问被拒绝"
+
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
 msgstr "禁止访问"
@@ -223,7 +227,7 @@ msgstr "已是好友"
 msgid "An error occurred"
 msgstr "发生错误"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "发生意外错误"
 
@@ -311,7 +315,7 @@ msgstr "正在取消邀请..."
 msgid "Cancelling invitations..."
 msgstr "正在取消邀请..."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:144
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "该通知的分类"
 
@@ -319,8 +323,8 @@ msgstr "该通知的分类"
 msgid "Change banner"
 msgstr "更换横幅"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
-#: ../../../lib/web/src/components/notification-category-button.tsx:136
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "更改通知分类"
 
@@ -509,6 +513,10 @@ msgstr "深色"
 #: ../../../lib/web/src/components/profile-dropdown.tsx:123
 msgid "Dark mode"
 msgstr "深色模式"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
+msgid "Data conflict"
+msgstr "数据冲突"
 
 #: src/features/invitations/index.tsx:364
 msgid "Decline"
@@ -753,7 +761,7 @@ msgstr "保存个人资料失败"
 msgid "Failed to send verification code"
 msgstr "发送验证码失败"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "更新分类失败"
 
@@ -1090,7 +1098,8 @@ msgstr "名称为必填项"
 msgid "Name saved"
 msgstr "名称已保存"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
+#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
 msgid "Network error"
 msgstr "网络错误"
 
@@ -1165,7 +1174,7 @@ msgstr "未找到结果。"
 msgid "No time zone found."
 msgstr "未找到时区。"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:148
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "暂无主题记录,请在下次通知后重试。"
 
@@ -1182,6 +1191,10 @@ msgstr "无"
 #: ../../../lib/web/src/lib/preference-utils.ts:134
 msgid "Normal"
 msgstr "标准"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:67
+msgid "Not found"
+msgstr "未找到"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:146
 msgid "Not set"
@@ -1264,9 +1277,19 @@ msgstr "人员"
 msgid "Personalise how your profile and app look to others."
 msgstr "个性化设置你的个人资料和应用在他人眼中的呈现方式。"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
+#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
+#: ../../../lib/web/src/lib/error-normalizer.ts:201
 msgid "Please check your internet connection and try again."
 msgstr "请检查您的网络连接后重试。"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:83
+msgid "Please try again."
+msgstr "请重试。"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:75
+msgid "Please wait a moment and try again."
+msgstr "请稍等片刻，然后重试。"
 
 #: src/features/profile/index.tsx:297
 msgid "Preview"
@@ -1329,8 +1352,8 @@ msgstr "已收到 ({0})"
 msgid "Recently added"
 msgstr "最近添加"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
+#: ../../../lib/web/src/components/search-entity-page.tsx:240
 msgid "Recommended"
 msgstr "推荐"
 
@@ -1504,8 +1527,8 @@ msgstr "搜索用户"
 msgid "Search..."
 msgstr "搜索..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/search-entity-page.tsx:198
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 #: src/features/groups/member-dialog.tsx:145
 msgid "Searching..."
@@ -1576,8 +1599,8 @@ msgstr "已发送 ({0})"
 msgid "Serif"
 msgstr "衬线体"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
 msgid "Server error"
 msgstr "服务器错误"
 
@@ -1586,9 +1609,9 @@ msgstr "服务器错误"
 msgid "Server rules"
 msgstr "服务器规则"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
-msgid "Session expired"
-msgstr "会话已过期"
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
+msgid "Session expired. Please log in again."
+msgstr "会话已过期，请重新登录。"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx:147
 msgid "Set origin and destination"
@@ -1706,6 +1729,10 @@ msgstr "该代码不正确或已过期。"
 msgid "That's you"
 msgstr "那是您"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:68
+msgid "The requested content could not be found."
+msgstr "找不到请求的内容。"
+
 #: ../../../lib/web/src/components/config-drawer.tsx:194
 msgid "Theme"
 msgstr "主题"
@@ -1753,6 +1780,10 @@ msgstr "切换侧边栏"
 msgid "Toggle theme"
 msgstr "切换主题"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:74
+msgid "Too many requests"
+msgstr "请求次数过多"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:45
 msgid "Top"
 msgstr "顶部"
@@ -1773,13 +1804,13 @@ msgstr "尝试其他搜索词"
 msgid "Try adjusting your search"
 msgstr "尝试调整您的搜索"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
+#: ../../../lib/web/src/components/search-entity-page.tsx:214
 msgid "Try adjusting your search terms"
 msgstr "尝试调整您的搜索词"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:128
-#: ../../../lib/web/src/features/errors/general-error.tsx:168
+#: ../../../lib/web/src/features/errors/general-error.tsx:140
+#: ../../../lib/web/src/features/errors/general-error.tsx:180
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "重试"
@@ -1806,7 +1837,7 @@ msgstr "输入以搜索用户"
 msgid "Type to search..."
 msgstr "输入以搜索..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
 msgid "Unable to connect to remote server"
 msgstr "无法连接到远程服务器"
 
@@ -1815,7 +1846,7 @@ msgstr "无法连接到远程服务器"
 msgid "Unable to redirect to login. Please try again."
 msgstr "无法重定向到登录页面。请重试。"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:156
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "未分配"
 
@@ -1921,6 +1952,10 @@ msgstr "星期三"
 #: src/features/friends/components/add-friend-dialog.tsx:96
 msgid "You are now friends!"
 msgstr "你们现在是好友了!"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:61
+msgid "You do not have access to this section."
+msgstr "您无权访问此部分。"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

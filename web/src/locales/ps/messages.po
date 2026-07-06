@@ -67,6 +67,10 @@ msgstr "بلنه منل کیږي..."
 msgid "Accepting invitations..."
 msgstr "بلنې منل کیږي..."
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:60
+msgid "Access denied"
+msgstr "لاسرسی رد شو"
+
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
 msgstr "لاسرسی منع دی"
@@ -223,7 +227,7 @@ msgstr "دمخه ملګري دي"
 msgid "An error occurred"
 msgstr "یوه تېروتنه رامنځته شوه"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "یوه ناڅاپي تېروتنه رامنځته شوه"
 
@@ -311,7 +315,7 @@ msgstr "بلنه لغوه کیږي..."
 msgid "Cancelling invitations..."
 msgstr "بلنې لغوه کیږي..."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:144
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "د دې خبرتیا لپاره کټګورۍ"
 
@@ -319,8 +323,8 @@ msgstr "د دې خبرتیا لپاره کټګورۍ"
 msgid "Change banner"
 msgstr "بانر بدل کړه"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
-#: ../../../lib/web/src/components/notification-category-button.tsx:136
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "د خبرتیا کټګورۍ بدله کړه"
 
@@ -509,6 +513,10 @@ msgstr "تیاره"
 #: ../../../lib/web/src/components/profile-dropdown.tsx:123
 msgid "Dark mode"
 msgstr "تیاره حالت"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
+msgid "Data conflict"
+msgstr "د ډېټا ټکر"
 
 #: src/features/invitations/index.tsx:364
 msgid "Decline"
@@ -753,7 +761,7 @@ msgstr "د پروفایل د خوندي کولو پاتې راغلل"
 msgid "Failed to send verification code"
 msgstr "د تصدیق کوډ لیږلو پاتې راغلل"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "د کټګورۍ تازه کولو پاتې راغلل"
 
@@ -1090,7 +1098,8 @@ msgstr "نوم اړین دی"
 msgid "Name saved"
 msgstr "نوم خوندي شو"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
+#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
 msgid "Network error"
 msgstr "د شبکې تېروتنه"
 
@@ -1165,7 +1174,7 @@ msgstr "هیڅ پایلې ونه موندل شوې."
 msgid "No time zone found."
 msgstr "هیڅ وخت زون ونه موندل شو."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:148
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "تر اوسه د موضوع هیڅ ریکارډ نشته — د راتلونکې خبرتیا وروسته بیا هڅه وکړئ."
 
@@ -1182,6 +1191,10 @@ msgstr "هیڅوک"
 #: ../../../lib/web/src/lib/preference-utils.ts:134
 msgid "Normal"
 msgstr "عادي"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:67
+msgid "Not found"
+msgstr "ونه موندل شو"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:146
 msgid "Not set"
@@ -1264,9 +1277,19 @@ msgstr "خلک"
 msgid "Personalise how your profile and app look to others."
 msgstr "دا شخصي کړئ چې ستاسو پروفایل او اپ نورو ته څنګه ښکاري."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
+#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
+#: ../../../lib/web/src/lib/error-normalizer.ts:201
 msgid "Please check your internet connection and try again."
 msgstr "مهرباني وکړئ خپل د انټرنیټ اړیکه وګورئ او بیا هڅه وکړئ."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:83
+msgid "Please try again."
+msgstr "مهرباني وکړئ بیا هڅه وکړئ."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:75
+msgid "Please wait a moment and try again."
+msgstr "مهرباني وکړئ یوه شېبه انتظار وکړئ او بیا هڅه وکړئ."
 
 #: src/features/profile/index.tsx:297
 msgid "Preview"
@@ -1329,8 +1352,8 @@ msgstr "ترلاسه شوی ({0})"
 msgid "Recently added"
 msgstr "پدې وروستیو کې اضافه شوی"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
+#: ../../../lib/web/src/components/search-entity-page.tsx:240
 msgid "Recommended"
 msgstr "سپارښتل شوی"
 
@@ -1504,8 +1527,8 @@ msgstr "کاروونکي وپلټئ"
 msgid "Search..."
 msgstr "لټون..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/search-entity-page.tsx:198
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 #: src/features/groups/member-dialog.tsx:145
 msgid "Searching..."
@@ -1576,8 +1599,8 @@ msgstr "ولېږل شو ({0})"
 msgid "Serif"
 msgstr "سيريف"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
 msgid "Server error"
 msgstr "د سرور تېروتنه"
 
@@ -1586,9 +1609,9 @@ msgstr "د سرور تېروتنه"
 msgid "Server rules"
 msgstr "د Server قواعد"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
-msgid "Session expired"
-msgstr "ناسته پای ته ورسېده"
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
+msgid "Session expired. Please log in again."
+msgstr "سیشن پای ته ورسېد. مهرباني وکړئ بیا ننوځئ."
 
 #: ../../../lib/web/src/components/travelling-picker.tsx:147
 msgid "Set origin and destination"
@@ -1706,6 +1729,10 @@ msgstr "هغه کوډ غلط دی یا یې موده تېره ده."
 msgid "That's you"
 msgstr "دا تاسو یاست"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:68
+msgid "The requested content could not be found."
+msgstr "غوښتل شوې منځپانګه ونه موندل شوه."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:194
 msgid "Theme"
 msgstr "ښکارندوی"
@@ -1753,6 +1780,10 @@ msgstr "سایډبار بدل کړئ"
 msgid "Toggle theme"
 msgstr "ښکارندوی بدل کړئ"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:74
+msgid "Too many requests"
+msgstr "ډېرې زیاتې غوښتنې"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:45
 msgid "Top"
 msgstr "بره"
@@ -1773,13 +1804,13 @@ msgstr "بل د لټون اصطلاح هڅه وکړئ"
 msgid "Try adjusting your search"
 msgstr "خپل لټون سمول هڅه وکړئ"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
+#: ../../../lib/web/src/components/search-entity-page.tsx:214
 msgid "Try adjusting your search terms"
 msgstr "د خپل لټون اصطلاحات سمول هڅه وکړئ"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:128
-#: ../../../lib/web/src/features/errors/general-error.tsx:168
+#: ../../../lib/web/src/features/errors/general-error.tsx:140
+#: ../../../lib/web/src/features/errors/general-error.tsx:180
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "بیا هڅه وکړئ"
@@ -1806,7 +1837,7 @@ msgstr "د کاروونکو لټون لپاره ولیکئ"
 msgid "Type to search..."
 msgstr "د لټون لپاره ولیکئ..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
 msgid "Unable to connect to remote server"
 msgstr "له لرې پرتي سرور سره نښلېدل ونشول"
 
@@ -1815,7 +1846,7 @@ msgstr "له لرې پرتي سرور سره نښلېدل ونشول"
 msgid "Unable to redirect to login. Please try again."
 msgstr "ننوتلو ته لارښوونه نشي کیدلی. مهرباني وکړئ بیا هڅه وکړئ."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:156
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "نه ګمارل شوی"
 
@@ -1921,6 +1952,10 @@ msgstr "چهارشنبه"
 #: src/features/friends/components/add-friend-dialog.tsx:96
 msgid "You are now friends!"
 msgstr "تاسو اوس ملګري یاست!"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:61
+msgid "You do not have access to this section."
+msgstr "تاسو دې برخې ته لاسرسی نه لرئ."
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

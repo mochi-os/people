@@ -67,6 +67,10 @@ msgstr "Aceitando convite..."
 msgid "Accepting invitations..."
 msgstr "Aceitando convites..."
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:60
+msgid "Access denied"
+msgstr "Acesso negado"
+
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
 msgstr "Acesso proibido"
@@ -223,7 +227,7 @@ msgstr "Já são amigos"
 msgid "An error occurred"
 msgstr "Ocorreu um erro"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "Ocorreu um erro inesperado"
 
@@ -311,7 +315,7 @@ msgstr "Cancelando convite..."
 msgid "Cancelling invitations..."
 msgstr "Cancelando convites..."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:144
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "Categoria desta notificação"
 
@@ -319,8 +323,8 @@ msgstr "Categoria desta notificação"
 msgid "Change banner"
 msgstr "Alterar banner"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
-#: ../../../lib/web/src/components/notification-category-button.tsx:136
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "Alterar categoria da notificação"
 
@@ -509,6 +513,10 @@ msgstr "Escuro"
 #: ../../../lib/web/src/components/profile-dropdown.tsx:123
 msgid "Dark mode"
 msgstr "Modo escuro"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
+msgid "Data conflict"
+msgstr "Conflito de dados"
 
 #: src/features/invitations/index.tsx:364
 msgid "Decline"
@@ -753,7 +761,7 @@ msgstr "Falha ao salvar perfil"
 msgid "Failed to send verification code"
 msgstr "Falha ao enviar código de verificação"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "Falha ao atualizar categoria"
 
@@ -1090,7 +1098,8 @@ msgstr "O nome é obrigatório"
 msgid "Name saved"
 msgstr "Nome salvo"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
+#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
 msgid "Network error"
 msgstr "Erro de rede"
 
@@ -1165,7 +1174,7 @@ msgstr "Nenhum resultado encontrado."
 msgid "No time zone found."
 msgstr "Nenhum fuso horário encontrado."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:148
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "Ainda não há registro do tópico — tente novamente após a próxima notificação."
 
@@ -1182,6 +1191,10 @@ msgstr "Nenhum"
 #: ../../../lib/web/src/lib/preference-utils.ts:134
 msgid "Normal"
 msgstr "Normal"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:67
+msgid "Not found"
+msgstr "Não encontrado"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:146
 msgid "Not set"
@@ -1264,9 +1277,19 @@ msgstr "Pessoas"
 msgid "Personalise how your profile and app look to others."
 msgstr "Personalize como seu perfil e o app aparecem para os outros."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
+#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
+#: ../../../lib/web/src/lib/error-normalizer.ts:201
 msgid "Please check your internet connection and try again."
 msgstr "Verifique sua conexão com a internet e tente novamente."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:83
+msgid "Please try again."
+msgstr "Tente novamente."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:75
+msgid "Please wait a moment and try again."
+msgstr "Aguarde um momento e tente novamente."
 
 #: src/features/profile/index.tsx:297
 msgid "Preview"
@@ -1329,8 +1352,8 @@ msgstr "Recebidos ({0})"
 msgid "Recently added"
 msgstr "Adicionado recentemente"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
+#: ../../../lib/web/src/components/search-entity-page.tsx:240
 msgid "Recommended"
 msgstr "Recomendado"
 
@@ -1504,8 +1527,8 @@ msgstr "Pesquisar usuários"
 msgid "Search..."
 msgstr "Pesquisar..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/search-entity-page.tsx:198
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 #: src/features/groups/member-dialog.tsx:145
 msgid "Searching..."
@@ -1576,8 +1599,8 @@ msgstr "Enviados ({0})"
 msgid "Serif"
 msgstr "Com serifa"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
 msgid "Server error"
 msgstr "Erro no servidor"
 
@@ -1586,9 +1609,9 @@ msgstr "Erro no servidor"
 msgid "Server rules"
 msgstr "Regras do servidor"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
-msgid "Session expired"
-msgstr "Sessão expirada"
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
+msgid "Session expired. Please log in again."
+msgstr "Sessão expirada. Faça login novamente."
 
 #: ../../../lib/web/src/components/travelling-picker.tsx:147
 msgid "Set origin and destination"
@@ -1706,6 +1729,10 @@ msgstr "Esse código está incorreto ou expirou."
 msgid "That's you"
 msgstr "Esse é você"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:68
+msgid "The requested content could not be found."
+msgstr "Não foi possível encontrar o conteúdo solicitado."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:194
 msgid "Theme"
 msgstr "Tema"
@@ -1753,6 +1780,10 @@ msgstr "Alternar barra lateral"
 msgid "Toggle theme"
 msgstr "Alternar tema"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:74
+msgid "Too many requests"
+msgstr "Muitas solicitações"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:45
 msgid "Top"
 msgstr "Topo"
@@ -1773,13 +1804,13 @@ msgstr "Tente um termo de pesquisa diferente"
 msgid "Try adjusting your search"
 msgstr "Tente ajustar sua pesquisa"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
+#: ../../../lib/web/src/components/search-entity-page.tsx:214
 msgid "Try adjusting your search terms"
 msgstr "Tente ajustar seus termos de pesquisa"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:128
-#: ../../../lib/web/src/features/errors/general-error.tsx:168
+#: ../../../lib/web/src/features/errors/general-error.tsx:140
+#: ../../../lib/web/src/features/errors/general-error.tsx:180
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "Tentar novamente"
@@ -1806,7 +1837,7 @@ msgstr "Digite para pesquisar usuários"
 msgid "Type to search..."
 msgstr "Digite para pesquisar..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
 msgid "Unable to connect to remote server"
 msgstr "Não foi possível conectar ao servidor remoto"
 
@@ -1815,7 +1846,7 @@ msgstr "Não foi possível conectar ao servidor remoto"
 msgid "Unable to redirect to login. Please try again."
 msgstr "Não foi possível redirecionar para o login. Tente novamente."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:156
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "Não atribuído"
 
@@ -1921,6 +1952,10 @@ msgstr "Quarta-feira"
 #: src/features/friends/components/add-friend-dialog.tsx:96
 msgid "You are now friends!"
 msgstr "Agora vocês são amigos!"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:61
+msgid "You do not have access to this section."
+msgstr "Você não tem acesso a esta seção."
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

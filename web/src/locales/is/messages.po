@@ -67,6 +67,10 @@ msgstr "Samþykki beiðni..."
 msgid "Accepting invitations..."
 msgstr "Samþykki beiðnir..."
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:60
+msgid "Access denied"
+msgstr "Aðgangi hafnað"
+
 #: ../../../lib/web/src/features/errors/forbidden.tsx:16
 msgid "Access Forbidden"
 msgstr "Aðgangur bannaður"
@@ -223,7 +227,7 @@ msgstr "Þegar vinir"
 msgid "An error occurred"
 msgstr "Villa kom upp"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:241
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "Óvænt villa kom upp"
 
@@ -311,7 +315,7 @@ msgstr "Hætti við beiðni..."
 msgid "Cancelling invitations..."
 msgstr "Hætti við beiðnir..."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:144
+#: ../../../lib/web/src/components/notification-category-button.tsx:143
 msgid "Category for this notification"
 msgstr "Flokkur fyrir þessa tilkynningu"
 
@@ -319,8 +323,8 @@ msgstr "Flokkur fyrir þessa tilkynningu"
 msgid "Change banner"
 msgstr "Breyta borða"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:125
-#: ../../../lib/web/src/components/notification-category-button.tsx:136
+#: ../../../lib/web/src/components/notification-category-button.tsx:124
+#: ../../../lib/web/src/components/notification-category-button.tsx:135
 msgid "Change notification category"
 msgstr "Breyta flokki tilkynningar"
 
@@ -509,6 +513,10 @@ msgstr "Dökkt"
 #: ../../../lib/web/src/components/profile-dropdown.tsx:123
 msgid "Dark mode"
 msgstr "Dökkur hamur"
+
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:240
+msgid "Data conflict"
+msgstr "Gagnaárekstur"
 
 #: src/features/invitations/index.tsx:364
 msgid "Decline"
@@ -753,7 +761,7 @@ msgstr "Tókst ekki að vista auðkenni"
 msgid "Failed to send verification code"
 msgstr "Tókst ekki að senda staðfestingarkóða"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:112
+#: ../../../lib/web/src/components/notification-category-button.tsx:111
 msgid "Failed to update category"
 msgstr "Tókst ekki að uppfæra flokk"
 
@@ -1090,7 +1098,8 @@ msgstr "Nafn er nauðsynlegt"
 msgid "Name saved"
 msgstr "Nafn vistað"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:288
+#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:303
 msgid "Network error"
 msgstr "Netvilla"
 
@@ -1165,7 +1174,7 @@ msgstr "Engar niðurstöður fundust."
 msgid "No time zone found."
 msgstr "Ekkert tímabelti fannst."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:148
+#: ../../../lib/web/src/components/notification-category-button.tsx:147
 msgid "No topic record yet — try again after the next notification."
 msgstr "Engin færsla um efni ennþá — reyndu aftur eftir næstu tilkynningu."
 
@@ -1182,6 +1191,10 @@ msgstr "Ekkert"
 #: ../../../lib/web/src/lib/preference-utils.ts:134
 msgid "Normal"
 msgstr "Venjulegt"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:67
+msgid "Not found"
+msgstr "Fannst ekki"
 
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:146
 msgid "Not set"
@@ -1264,9 +1277,19 @@ msgstr "Fólk"
 msgid "Personalise how your profile and app look to others."
 msgstr "Sérsníddu hvernig prófíllinn þinn og forritið líta út fyrir aðra."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:289
+#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:304
+#: ../../../lib/web/src/lib/error-normalizer.ts:201
 msgid "Please check your internet connection and try again."
 msgstr "Athugaðu nettenginguna og reyndu aftur."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:83
+msgid "Please try again."
+msgstr "Reyndu aftur."
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:75
+msgid "Please wait a moment and try again."
+msgstr "Bíddu aðeins og reyndu aftur."
 
 #: src/features/profile/index.tsx:297
 msgid "Preview"
@@ -1329,8 +1352,8 @@ msgstr "Móttekið ({0})"
 msgid "Recently added"
 msgstr "Nýlega bætt við"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:219
-#: ../../../lib/web/src/components/search-entity-page.tsx:194
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
+#: ../../../lib/web/src/components/search-entity-page.tsx:240
 msgid "Recommended"
 msgstr "Mælt með"
 
@@ -1504,8 +1527,8 @@ msgstr "Leita að notendum"
 msgid "Search..."
 msgstr "Leita..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:177
-#: ../../../lib/web/src/components/search-entity-page.tsx:152
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/search-entity-page.tsx:198
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 #: src/features/groups/member-dialog.tsx:145
 msgid "Searching..."
@@ -1576,8 +1599,8 @@ msgstr "Sent ({0})"
 msgid "Serif"
 msgstr "Þverstrik"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:245
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:271
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:260
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:286
 msgid "Server error"
 msgstr "Þjónsvilla"
 
@@ -1586,9 +1609,9 @@ msgstr "Þjónsvilla"
 msgid "Server rules"
 msgstr "Reglur þjónsins"
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:209
-msgid "Session expired"
-msgstr "Seta rann út"
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:210
+msgid "Session expired. Please log in again."
+msgstr "Setan er útrunnin. Skráðu þig aftur inn."
 
 #: ../../../lib/web/src/components/travelling-picker.tsx:147
 msgid "Set origin and destination"
@@ -1706,6 +1729,10 @@ msgstr "Þessi kóði er rangur eða útrunninn."
 msgid "That's you"
 msgstr "Það ert þú"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:68
+msgid "The requested content could not be found."
+msgstr "Umbeðið efni fannst ekki."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:194
 msgid "Theme"
 msgstr "Þema"
@@ -1753,6 +1780,10 @@ msgstr "Skipta um hliðarstiku"
 msgid "Toggle theme"
 msgstr "Skipta um þema"
 
+#: ../../../lib/web/src/features/errors/general-error.tsx:74
+msgid "Too many requests"
+msgstr "Of margar beiðnir"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:45
 msgid "Top"
 msgstr "Efst"
@@ -1773,13 +1804,13 @@ msgstr "Prófaðu annað leitarorð"
 msgid "Try adjusting your search"
 msgstr "Reyndu að breyta leitinni þinni"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:193
-#: ../../../lib/web/src/components/search-entity-page.tsx:168
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
+#: ../../../lib/web/src/components/search-entity-page.tsx:214
 msgid "Try adjusting your search terms"
 msgstr "Reyndu að breyta leitarskilyrðum þínum"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:128
-#: ../../../lib/web/src/features/errors/general-error.tsx:168
+#: ../../../lib/web/src/features/errors/general-error.tsx:140
+#: ../../../lib/web/src/features/errors/general-error.tsx:180
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:19
 msgid "Try again"
 msgstr "Reyna aftur"
@@ -1806,7 +1837,7 @@ msgstr "Skrifaðu til að leita að notendum"
 msgid "Type to search..."
 msgstr "Skrifaðu til að leita..."
 
-#: ../../../lib/web/src/lib/api-response-interceptors.ts:267
+#: ../../../lib/web/src/lib/api-response-interceptors.ts:282
 msgid "Unable to connect to remote server"
 msgstr "Ekki tókst að tengjast fjarþjóni"
 
@@ -1815,7 +1846,7 @@ msgstr "Ekki tókst að tengjast fjarþjóni"
 msgid "Unable to redirect to login. Please try again."
 msgstr "Ekki tókst að endurbeina á innskráningu. Reyndu aftur."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:156
+#: ../../../lib/web/src/components/notification-category-button.tsx:155
 msgid "Unassigned"
 msgstr "Ekki úthlutað"
 
@@ -1921,6 +1952,10 @@ msgstr "Miðvikudagur"
 #: src/features/friends/components/add-friend-dialog.tsx:96
 msgid "You are now friends!"
 msgstr "Þið eruð núna vinir!"
+
+#: ../../../lib/web/src/features/errors/general-error.tsx:61
+msgid "You do not have access to this section."
+msgstr "Þú hefur ekki aðgang að þessum hluta."
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

@@ -8,6 +8,14 @@
 def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event_id=event_id)
 
+def database_upgrade(version):
+	if version == 2:
+		# Drop the pre-2026-07 broadcast tables left in the app data DB when
+		# broadcast state moved to the per-app system DB - inert, but stale
+		# sequence/log copies mislead diagnosis.
+		for table in ["sequence", "log", "acknowledged", "received"]:
+			mochi.db.execute("drop table if exists " + table)
+
 def database_create():
 	mochi.db.execute("create table if not exists friends ( identity text not null, id text not null, name text not null default '', class text not null default 'person', created integer not null default 0, primary key ( identity, id ) )")
 	mochi.db.execute("create index if not exists friends_id on friends( id )")

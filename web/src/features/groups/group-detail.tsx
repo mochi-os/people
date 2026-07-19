@@ -170,7 +170,7 @@ export function GroupDetail() {
           />
         ) : !group ? null : (
           <>
-            <Section title={t`Identity`} description={t`Core information about this group`}>
+            <Section title={t`Identity`}>
               <div className="divide-y-0">
                 <FieldRow label={t`Group ID`}>
                   <DataChip value={id} truncate='middle' />
@@ -180,13 +180,13 @@ export function GroupDetail() {
                     <span className="text-sm text-foreground">{group.description}</span>
                   </FieldRow>
                 )}
-                <FieldRow label={t`Members Count`}>
+                <FieldRow label={t`Members count`}>
                   <DataChip value={members.length.toString()} copyable={false} />
                 </FieldRow>
               </div>
             </Section>
 
-            <Section title={t`Members`} description={t`Users and groups that belong to this group`}>
+            <Section title={t`Members`}>
               {members.length === 0 ? (
                 <div className="py-8">
                   <EmptyState
@@ -269,7 +269,7 @@ export function GroupDetail() {
               from this group?
             </Trans>
           }
-          confirmText={removeMemberMutation.isPending ? t`Removing...` : t`Remove Member`}
+          confirmText={removeMemberMutation.isPending ? t`Removing...` : t`Remove member`}
           destructive
           handleConfirm={confirmRemoveMember}
           isLoading={removeMemberMutation.isPending}

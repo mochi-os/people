@@ -13,6 +13,11 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. js-lingui-explicit-id
+#: ../../../lib/web/src/lib/error-normalizer.ts:204
+msgid "Please check your internet connection and try again."
+msgstr "ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+
 #: src/features/profile/index.tsx:598
 msgid "{slotLabel} updated"
 msgstr "{slotLabel} ನವೀಕರಿಸಲಾಗಿದೆ"
@@ -143,7 +148,7 @@ msgstr "ಸದಸ್ಯರನ್ನು ಸೇರಿಸಿ"
 msgid "Add new account"
 msgstr "ಹೊಸ ಖಾತೆ ಸೇರಿಸಿ"
 
-#: ../../../lib/web/src/components/post-tags.tsx:133
+#: ../../../lib/web/src/components/post-tags.tsx:137
 msgid "Add tag..."
 msgstr "ಟ್ಯಾಗ್ ಸೇರಿಸಿ..."
 
@@ -276,8 +281,8 @@ msgstr "ಸ್ನೇಹಿತರಿಗೆ ಹಿಂದೆ"
 msgid "Back to home"
 msgstr "ಮುಖಪುಟಕ್ಕೆ ಹಿಂತಿರುಗಿ"
 
-#: ../../../lib/web/src/components/post-tags.tsx:176
-#: ../../../lib/web/src/components/post-tags.tsx:188
+#: ../../../lib/web/src/components/post-tags.tsx:180
+#: ../../../lib/web/src/components/post-tags.tsx:192
 msgid "Boost interest"
 msgstr "ಆಸಕ್ತಿಯನ್ನು ಹೆಚ್ಚಿಸಿ"
 
@@ -461,10 +466,6 @@ msgstr "ನಕಲಿಸಿ"
 #: src/features/profile/index.tsx:546
 msgid "Copy your ID"
 msgstr "ನಿಮ್ಮ ID ಕಾಪಿ ಮಾಡಿ"
-
-#: src/features/groups/group-detail.tsx:173
-msgid "Core information about this group"
-msgstr "ಈ ಗುಂಪಿನ ಬಗ್ಗೆ ಮುಖ್ಯ ಮಾಹಿತಿ"
 
 #: ../../../lib/web/src/features/document/document-page.tsx:84
 msgid "Could not load this document. Please try again later."
@@ -1067,7 +1068,7 @@ msgid "Members"
 msgstr "ಸದಸ್ಯರು"
 
 #: src/features/groups/group-detail.tsx:183
-msgid "Members Count"
+msgid "Members count"
 msgstr "ಸದಸ್ಯರ ಸಂಖ್ಯೆ"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:173
@@ -1279,7 +1280,6 @@ msgstr "ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಮತ್ತು ಆ್ಯಪ್
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
-#: ../../../lib/web/src/lib/error-normalizer.ts:201
 msgid "Please check your internet connection and try again."
 msgstr "ನಿಮ್ಮ ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
 
@@ -1353,7 +1353,7 @@ msgid "Recently added"
 msgstr "ಇತ್ತೀಚೆಗೆ ಸೇರಿಸಲಾಗಿದೆ"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:240
+#: ../../../lib/web/src/components/search-entity-page.tsx:242
 msgid "Recommended"
 msgstr "ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ"
 
@@ -1361,8 +1361,8 @@ msgstr "ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ"
 msgid "Redirecting to login."
 msgstr "ಲಾಗಿನ್‌ಗೆ ರಿಡೈರೆಕ್ಟ್ ಮಾಡಲಾಗುತ್ತಿದೆ."
 
-#: ../../../lib/web/src/components/post-tags.tsx:196
-#: ../../../lib/web/src/components/post-tags.tsx:208
+#: ../../../lib/web/src/components/post-tags.tsx:200
+#: ../../../lib/web/src/components/post-tags.tsx:212
 msgid "Reduce interest"
 msgstr "ಆಸಕ್ತಿ ಕಡಿಮೆಗೊಳಿಸಿ"
 
@@ -1410,17 +1410,14 @@ msgstr "ಪ್ರವೇಶ ತೆಗೆದುಹಾಕಬೇಕೆ?"
 msgid "Remove friend"
 msgstr "ಸ್ನೇಹಿತರನ್ನು ತೆಗೆದುಹಾಕಿ"
 
-#: ../../../lib/web/src/components/post-tags.tsx:216
-#: ../../../lib/web/src/components/post-tags.tsx:228
+#: ../../../lib/web/src/components/post-tags.tsx:220
+#: ../../../lib/web/src/components/post-tags.tsx:232
 msgid "Remove interest"
 msgstr "ಆಸಕ್ತಿ ತೆಗೆದುಹಾಕಿ"
 
 #: src/features/groups/group-detail.tsx:262
-msgid "Remove member"
-msgstr "ಸದಸ್ಯರನ್ನು ತೆಗೆದುಹಾಕಿ"
-
 #: src/features/groups/group-detail.tsx:272
-msgid "Remove Member"
+msgid "Remove member"
 msgstr "ಸದಸ್ಯರನ್ನು ತೆಗೆದುಹಾಕಿ"
 
 #: src/features/friends/index.tsx:93
@@ -1528,7 +1525,7 @@ msgid "Search..."
 msgstr "ಹುಡುಕಿ..."
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:198
+#: ../../../lib/web/src/components/search-entity-page.tsx:200
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 #: src/features/groups/member-dialog.tsx:145
 msgid "Searching..."
@@ -1707,8 +1704,8 @@ msgstr "ಸಿಸ್ಟಮ್"
 msgid "Tag"
 msgstr "ಟ್ಯಾಗ್"
 
-#: ../../../lib/web/src/components/post-tags.tsx:100
-#: ../../../lib/web/src/components/post-tags.tsx:111
+#: ../../../lib/web/src/components/post-tags.tsx:101
+#: ../../../lib/web/src/components/post-tags.tsx:115
 msgid "Tags"
 msgstr "ಟ್ಯಾಗ್‌ಗಳು"
 
@@ -1805,7 +1802,7 @@ msgid "Try adjusting your search"
 msgstr "ನಿಮ್ಮ ಹುಡುಕಾಟವನ್ನು ಸರಿಹೊಂದಿಸಲು ಪ್ರಯತ್ನಿಸಿ"
 
 #: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:214
+#: ../../../lib/web/src/components/search-entity-page.tsx:216
 msgid "Try adjusting your search terms"
 msgstr "ನಿಮ್ಮ ಹುಡುಕಾಟ ಪದಗಳನ್ನು ಸರಿಹೊಂದಿಸಲು ಪ್ರಯತ್ನಿಸಿ"
 
@@ -1894,10 +1891,6 @@ msgstr "ನಿಮ್ಮ ಪಾಸ್‌ಕೀ ಬಳಸಿ"
 msgid "User"
 msgstr "ಬಳಕೆದಾರ"
 
-#: src/features/groups/group-detail.tsx:189
-msgid "Users and groups that belong to this group"
-msgstr "ಈ ಗುಂಪಿಗೆ ಸೇರಿದ ಬಳಕೆದಾರರು ಮತ್ತು ಗುಂಪುಗಳು"
-
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:71
 msgid "Verification code"
 msgstr "ಪರಿಶೀಲನೆ ಕೋಡ್"
@@ -1920,7 +1913,7 @@ msgstr "ಪರಿಶೀಲಿಸಿ"
 msgid "Verify email address"
 msgstr "ಇಮೇಲ್ ವಿಳಾಸವನ್ನು ಪರಿಶೀಲಿಸಿ"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:66
+#: ../../../lib/web/src/components/attachment-gallery.tsx:74
 msgid "Video thumbnail"
 msgstr "ವಿಡಿಯೋ ಥಂಬ್‌ನೇಲ್"
 

@@ -908,6 +908,17 @@ def opengraph_person(params):
 	entity = get_person_entity(person_id)
 	if not entity:
 		return og
+	# OpenGraph is rendered for anonymous crawlers and link previews, and core
+	# runs it as the entity owner regardless of who asked, so treat every
+	# request as untrusted. A person who set their profile private should not
+	# have their name and bio emitted into meta tags, which exist precisely to
+	# be harvested and indexed by third parties. Matches opengraph_feed.
+	#
+	# This does NOT make a private profile unreadable: the person routes and the
+	# anonymous P2P handlers still serve the same fields by design (see the
+	# people privacy task). What it removes is the indexing path.
+	if entity.get("privacy", "public") == "private":
+		return og
 	og["title"] = entity.get("name") or mochi.app.label("opengraph.fallback.title")
 	profile = get_profile_row(person_id)
 	if profile.get("profile"):

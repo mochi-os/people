@@ -771,8 +771,11 @@ def stream_person_asset(a, person_id, asset):
 		code = 404
 		if header and header.get("status"):
 			code = int(header["status"])
-		message = (header.get("error") if header else None) or "Person not found"
-		a.error(code, message)
+		# The far end sends a stable label key, so resolve it in the caller's
+		# language. a.error() does NOT resolve labels - it would render the raw
+		# key (or the English fallback) straight to the user.
+		key = (header.get("error") if header else None) or "errors.person_not_found"
+		a.error.label(code, key)
 		return None
 	if "data" in header:
 		return {"data": header["data"]}

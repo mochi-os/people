@@ -254,7 +254,7 @@ return (
                 className="shadow-md"
               >
                 <Upload className="size-3.5" />
-                {pending ? t`Uploading…` : t`Change banner`}
+                {pending ? t`Uploading...` : t`Change banner`}
               </Button>
             )}
           </SlotUploader>
@@ -409,7 +409,7 @@ return (
               onClick={handleSaveProfile}
             >
               <Save className="size-3.5" />
-              {profileMutation.isPending ? t`Saving…` : t`Save`}
+              {profileMutation.isPending ? t`Saving...` : t`Save`}
             </Button>
           </div>
         </div>
@@ -438,7 +438,7 @@ return (
                     onClick={handleSaveAccent}
                   >
                     <Save className="size-3.5" />
-                    {accentMutation.isPending ? t`Saving…` : t`Save`}
+                    {accentMutation.isPending ? t`Saving...` : t`Save`}
                   </Button>
                 }
               />
@@ -465,7 +465,7 @@ return (
                   {(open, pending) => (
                     <Button variant="outline" size="sm" onClick={open} disabled={pending}>
                       <Upload className="size-3.5" />
-                      {pending ? t`Uploading…` : t`Upload`}
+                      {pending ? t`Uploading...` : t`Upload`}
                     </Button>
                   )}
                 </SlotUploader>

@@ -18,6 +18,31 @@ msgstr ""
 msgid "Please check your internet connection and try again."
 msgstr "Preverite internetno povezavo in poskusite znova."
 
+#. placeholder {0}: selectedValues.size
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:66
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# izbran} two {# izbrana} few {# izbrani} other {# izbranih}}"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+msgid "{entityLabel} name"
+msgstr "Ime {entityLabel}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
+msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
+msgstr "{selectedCount, plural, one {{entityName} izbran} two {{manyName} izbrana} few {{manyName} izbrani} other {{manyName} izbranih}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:52
+msgid "{selectedCount, plural, one {# {entityName} selected. Bulk actions toolbar is available.} other {# {manyName} selected. Bulk actions toolbar is available.}}"
+msgstr "{selectedCount, plural, one {# {entityName} izbran. Orodna vrstica množičnih dejanj je na voljo.} two {# {manyName} izbrana. Orodna vrstica množičnih dejanj je na voljo.} few {# {manyName} izbrani. Orodna vrstica množičnih dejanj je na voljo.} other {# {manyName} izbranih. Orodna vrstica množičnih dejanj je na voljo.}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:202
+msgid "{selectedCount, plural, one {# selected} other {# selected}}"
+msgstr "{selectedCount, plural, one {# izbranih} two {# izbranih} few {# izbranih} other {# izbranih}}"
+
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:149
+msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
+msgstr "{selectedCount, plural, one {Množična dejanja za # izbran {entityName}} two {Množična dejanja za # izbrana {manyName}} few {Množična dejanja za # izbrane {manyName}} other {Množična dejanja za # izbranih {manyName}}}"
+
 #: src/features/profile/index.tsx:598
 msgid "{slotLabel} updated"
 msgstr "{slotLabel} posodobljen"
@@ -275,9 +300,9 @@ msgstr "Nazaj"
 msgid "Back to friends"
 msgstr "Nazaj na prijatelje"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:26
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
+#: ../../../lib/web/src/features/errors/forbidden.tsx:28
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:28
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Nazaj na začetek"
 
@@ -298,7 +323,7 @@ msgstr "Ikona brskalnika"
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:263
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:89
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/groups/group-dialog.tsx:129
 #: src/features/groups/member-dialog.tsx:254
 #: src/features/invitations/index.tsx:425
@@ -375,7 +400,7 @@ msgstr "Počisti"
 msgid "Clear all"
 msgstr "Počisti vse"
 
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:140
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:144
 msgid "Clear filters"
 msgstr "Počisti filtre"
 
@@ -383,25 +408,26 @@ msgstr "Počisti filtre"
 msgid "Clear search"
 msgstr "Počisti iskanje"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:167
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:171
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:177
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:181
 msgid "Clear selection"
 msgstr "Počisti izbor"
 
-#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:168
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:178
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:185
 msgid "Clear selection (Escape)"
 msgstr "Počisti izbor (Escape)"
 
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:354
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:357
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:358
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:361
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 #: src/features/friends/components/add-friend-dialog.tsx:397
 msgid "Close"
 msgstr "Zapri"
 
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:107
-#: ../../../lib/web/src/components/layout/app-sidebar.tsx:112
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:108
+#: ../../../lib/web/src/components/layout/app-sidebar.tsx:113
 msgid "Close navigation"
 msgstr "Zapri navigacijo"
 
@@ -503,6 +529,7 @@ msgid "Custom"
 msgstr "Po meri"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
 msgstr "Temno"
@@ -610,8 +637,8 @@ msgstr "Opusti"
 msgid "Displays the mobile sidebar."
 msgstr "Prikaže mobilno stransko vrstico."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:348
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:342
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:352
 msgid "Download"
 msgstr "Prenesi"
 
@@ -726,6 +753,14 @@ msgstr "Zavračanje povabil ni uspelo"
 msgid "Failed to delete group"
 msgstr "Neuspešno brisanje skupine"
 
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load image"
+msgstr "Slike ni bilo mogoče naložiti"
+
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
+msgid "Failed to load video"
+msgstr "Videa ni bilo mogoče naložiti"
+
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:234
 msgid "Failed to remove account"
 msgstr "Neuspešna odstranitev računa"
@@ -825,29 +860,29 @@ msgstr "Iz teme"
 msgid "Full layout"
 msgstr "Polna postavitev"
 
-#: ../../../lib/web/src/features/errors/forbidden.tsx:24
-#: ../../../lib/web/src/features/errors/not-found-error.tsx:24
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:24
+#: ../../../lib/web/src/features/errors/forbidden.tsx:26
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:26
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Nazaj"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:78
+#: ../../../lib/web/src/components/data-table/pagination.tsx:82
 msgid "Go to first page"
 msgstr "Pojdi na prvo stran"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:124
+#: ../../../lib/web/src/components/data-table/pagination.tsx:128
 msgid "Go to last page"
 msgstr "Pojdi na zadnjo stran"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:115
+#: ../../../lib/web/src/components/data-table/pagination.tsx:119
 msgid "Go to next page"
 msgstr "Pojdi na naslednjo stran"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:102
+#: ../../../lib/web/src/components/data-table/pagination.tsx:106
 msgid "Go to page {pageNumber}"
 msgstr "Pojdi na stran {pageNumber}"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:87
+#: ../../../lib/web/src/components/data-table/pagination.tsx:91
 msgid "Go to previous page"
 msgstr "Pojdi na prejšnjo stran"
 
@@ -915,6 +950,11 @@ msgstr "Vroče"
 msgid "Identity"
 msgstr "Identiteta"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:247
+msgid "Image viewer: {0}"
+msgstr "Pregledovalnik slik: {0}"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:86
 msgid "Imperial"
 msgstr "Imperialne enote"
@@ -979,6 +1019,10 @@ msgstr "Povabila se pojavijo med povabili. Obvestilo ni poslano."
 msgid "Invites from unknown senders are dropped. Mutual invites still connect."
 msgstr "Povabila od neznanih pošiljateljev so zavržena. Vzajemna povabila se še vedno povežejo."
 
+#: ../../../lib/web/src/features/errors/not-found-error.tsx:18
+msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
+msgstr "Videti je, da stran, ki jo iščete, <0/>ne obstaja ali je bila odstranjena."
+
 #: ../../../lib/web/src/lib/preference-utils.ts:108
 #: ../../../lib/web/src/lib/preference-utils.ts:135
 msgid "Large"
@@ -998,6 +1042,7 @@ msgid "Left to Right"
 msgstr "Z leve proti desni"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
 msgstr "Svetlo"
@@ -1041,8 +1086,8 @@ msgstr "Uspešna odjava"
 msgid "Logging out…"
 msgstr "Odjavljanje…"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:92
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:99
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:93
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
 msgid "Mark all as read"
 msgstr "Označi vse kot prebrano"
@@ -1112,8 +1157,8 @@ msgstr "Novo"
 msgid "New invitations will appear here"
 msgstr "Nova povabila se bodo prikazala tukaj"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:388
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:393
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:392
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:397
 msgid "Next image"
 msgstr "Naslednja slika"
 
@@ -1167,7 +1212,7 @@ msgid "No results for \"{search}\""
 msgstr "Ni rezultatov za »{search}«"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
-#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:90
+#: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
 msgid "No results found."
 msgstr "Ni najdenih rezultatov."
 
@@ -1208,6 +1253,11 @@ msgstr "Ni nastavljeno"
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:261
 msgid "Notifications"
 msgstr "Obvestila"
+
+#. placeholder {0}: unread.length
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:86
+msgid "Notifications: {0}"
+msgstr "Obvestila: {0}"
 
 #: src/features/invitations/invite-settings-dialog.tsx:39
 msgid "Notify me"
@@ -1254,6 +1304,11 @@ msgstr "Drugo"
 msgid "Owner"
 msgstr "Lastnik"
 
+#: ../../../lib/web/src/components/data-table/pagination.tsx:43
+#: ../../../lib/web/src/components/data-table/pagination.tsx:71
+msgid "Page {currentPage} of {totalPages}"
+msgstr "Stran {currentPage} od {totalPages}"
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:334
 msgid "Passkey"
 msgstr "Geslo-ključ"
@@ -1283,6 +1338,10 @@ msgstr "Prilagodi, kako sta tvoj profil in aplikacija videti drugim."
 msgid "Please check your internet connection and try again."
 msgstr "Preverite internetno povezavo in poskusite znova."
 
+#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
+msgid "Please log in with the appropriate credentials <0/> to access this resource."
+msgstr "Prijavite se z ustreznimi poverilnicami, <0/> da dostopate do tega vira."
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:83
 msgid "Please try again."
 msgstr "Poskusite znova."
@@ -1300,8 +1359,8 @@ msgstr "Predogled"
 msgid "Preview {0}'s profile before sending a friend request."
 msgstr "Oglejte si profil uporabnika {0} pred pošiljanjem zahteve za prijateljstvo."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:373
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:378
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:377
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:382
 msgid "Previous image"
 msgstr "Prejšnja slika"
 
@@ -1401,6 +1460,11 @@ msgstr "Odstrani {0} {1}"
 msgid "Remove access rule"
 msgstr "Odstrani pravilo dostopa"
 
+#. placeholder {0}: formatSubject(subject, data.name)
+#: ../../../lib/web/src/features/access/access-list.tsx:259
+msgid "Remove access rule for \"{0}\"?"
+msgstr "Ali želite odstraniti pravilo dostopa za »{0}«?"
+
 #: ../../../lib/web/src/features/access/access-list.tsx:257
 msgid "Remove access?"
 msgstr "Odstrani dostop?"
@@ -1450,7 +1514,7 @@ msgstr "Ponastavi vse nastavitve na privzete vrednosti"
 msgid "Right to Left"
 msgstr "Z desne v levo"
 
-#: ../../../lib/web/src/components/data-table/pagination.tsx:63
+#: ../../../lib/web/src/components/data-table/pagination.tsx:65
 msgid "Rows per page"
 msgstr "Vrstic na stran"
 
@@ -1561,14 +1625,20 @@ msgstr "Izberi smer strani"
 msgid "Select theme preference"
 msgstr "Izberi nastavitve teme"
 
+#: ../../../lib/web/src/components/data-table/bulk-actions.tsx:216
+msgid "selected"
+msgstr "izbrano"
+
+#. placeholder {0}: getSelectedName()
 #. placeholder {0}: selectedGroup.name
 #. placeholder {0}: selectedUser.name
+#: ../../../lib/web/src/features/access/access-dialog.tsx:309
 #: src/features/groups/member-dialog.tsx:188
 #: src/features/groups/member-dialog.tsx:245
 msgid "Selected: <0>{0}</0>"
 msgstr "Izbrano: <0>{0}</0>"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:98
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:100
 msgid "Send again"
 msgstr "Pošlji znova"
 
@@ -1692,6 +1762,7 @@ msgid "Sunday"
 msgstr "Nedelja"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 msgid "System"
@@ -1727,6 +1798,10 @@ msgstr "To si ti"
 msgid "The requested content could not be found."
 msgstr "Zahtevane vsebine ni bilo mogoče najti."
 
+#: ../../../lib/web/src/features/errors/maintenance-error.tsx:15
+msgid "The site is not available at the moment."
+msgstr "Spletno mesto trenutno ni na voljo."
+
 #: ../../../lib/web/src/components/config-drawer.tsx:194
 msgid "Theme"
 msgstr "Tema"
@@ -1739,9 +1814,17 @@ msgstr "Nastavitve teme"
 msgid "This group may have been removed or is unavailable."
 msgstr "Ta skupina je morda odstranjena ali ni na voljo."
 
+#: ../../../lib/web/src/components/coming-soon.tsx:14
+msgid "This page has not been created yet."
+msgstr "Ta stran še ni bila ustvarjena."
+
 #: ../../../lib/web/src/lib/preference-utils.ts:62
 msgid "Thursday"
 msgstr "Četrtek"
+
+#: ../../../lib/web/src/components/travelling-picker.tsx:220
+msgid "To"
+msgstr "Kam"
 
 #: ../../../lib/web/src/components/data-table/view-options.tsx:37
 msgid "Toggle columns"
@@ -1885,7 +1968,7 @@ msgstr "Uporabite svoj ključ za dostop"
 msgid "User"
 msgstr "Uporabnik"
 
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:71
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:73
 msgid "Verification code"
 msgstr "Koda za preverjanje"
 
@@ -1899,7 +1982,7 @@ msgstr "Preverjanje ni uspelo"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:388
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:172
-#: ../../../lib/web/src/features/accounts/account-verify.tsx:109
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Preveri"
 
@@ -1911,6 +1994,11 @@ msgstr "Preveri e-poštni naslov"
 msgid "Video thumbnail"
 msgstr "Sličica videoposnetka"
 
+#. placeholder {0}: currentMedia.name
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:246
+msgid "Video viewer: {0}"
+msgstr "Pregledovalnik videov: {0}"
+
 #: ../../../lib/web/src/components/data-table/view-options.tsx:33
 msgid "View"
 msgstr "Pogled"
@@ -1919,10 +2007,15 @@ msgstr "Pogled"
 msgid "View all"
 msgstr "Prikaži vse"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:105
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:113
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:106
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:114
 msgid "View all notifications"
 msgstr "Prikaži vsa obvestila"
+
+#. placeholder {0}: account.identifier
+#: ../../../lib/web/src/features/accounts/account-verify.tsx:63
+msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
+msgstr "Poslali smo potrditveno kodo na <0>{0}</0>. Spodaj vnesite kodo za potrditev svojega e-poštnega naslova."
 
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:16
 msgid "We'll be back online shortly."
@@ -1943,6 +2036,10 @@ msgstr "Zdaj sta prijatelja!"
 #: ../../../lib/web/src/features/errors/general-error.tsx:61
 msgid "You do not have access to this section."
 msgstr "Nimate dostopa do tega razdelka."
+
+#: ../../../lib/web/src/features/errors/forbidden.tsx:18
+msgid "You don't have necessary permission <0/>to view this resource."
+msgstr "Nimate potrebnega dovoljenja <0/>za ogled tega vira."
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

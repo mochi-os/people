@@ -5,6 +5,17 @@
 # This file is part of Mochi, licensed under the GNU AGPL v3 with the
 # Mochi Application Interface Exception - see license.txt and license-exception.md.
 
+# decimal(value) -> bool: whether value is a non-empty ASCII decimal string.
+# This is what .isdigit() was reached for, but isdigit() also accepts Unicode
+# digit forms (Arabic-Indic "٣", Devanagari "३") that int() rejects,
+# which aborts the action as a 500 instead of taking the guard's else branch.
+def decimal(value):
+    if not value:
+        return False
+    for c in value.elems():
+        if c not in "0123456789":
+            return False
+    return True
 def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event_id=event_id)
 
@@ -610,7 +621,7 @@ def action_group_member_add(a):
 	# Group "user" members are person entity IDs — that's what -/users/search
 	# returns and what the member list resolves for display. Older data may
 	# hold a numeric local uid, so accept either form.
-	if type == "user" and not (mochi.text.valid(member, "entity") or member.isdigit()):
+	if type == "user" and not (mochi.text.valid(member, "entity") or decimal(member)):
 		a.error.label(400, "errors.invalid_user_id")
 		return
 

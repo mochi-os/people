@@ -79,11 +79,16 @@
 		"style": {"function": "event_style", "anonymous": true}
 	},
 
+	// Friend rows live in this app's database and no core API exposes them, so
+	// these declarations are the only thing standing between another installed
+	// app and the user's social graph. users/search is deliberately ungated: it
+	// searches the public directory, which mochi.directory.search already offers
+	// any app directly, so a permission here would be theatre.
 	"functions": {
-		"get": {"function": "function_get"},
-		"list": {"function": "function_list"},
-		"count": {"function": "function_count"},
+		"get": {"function": "function_get", "permission": "friends/read"},
+		"list": {"function": "function_list", "permission": "friends/read"},
+		"count": {"function": "function_count", "permission": "friends/read"},
 		"users/search": {"function": "function_users_search"},
-		"groups/list": {"function": "function_groups_list"}
+		"groups/list": {"function": "function_groups_list", "permission": "groups/read"}
 	}
 }

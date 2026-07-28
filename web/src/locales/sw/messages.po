@@ -23,9 +23,18 @@ msgstr "Tafadhali angalia muunganisho wako wa intaneti na ujaribu tena."
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# imechaguliwa} other {# zimechaguliwa}}"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:173
+#. placeholder {0}: item.label
+#: ../../../lib/web/src/components/config-drawer.tsx:160
+msgid "{0} option preview"
+msgstr ""
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:174
 msgid "{entityLabel} name"
 msgstr "Jina la {entityLabel}"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:99
+msgid "{entityLabel} name is required"
+msgstr ""
 
 #: ../../../lib/web/src/components/data-table/bulk-actions.tsx:210
 msgid "{selectedCount, plural, one {{entityName} selected} other {{manyName} selected}}"
@@ -46,6 +55,10 @@ msgstr "{selectedCount, plural, one {Vitendo vya wingi kwa {entityName} # iliyoc
 #: src/features/profile/index.tsx:598
 msgid "{slotLabel} updated"
 msgstr "{slotLabel} imesasishwa"
+
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:132
+msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:42
 msgid "12 hours"
@@ -105,7 +118,7 @@ msgstr "Ufikiaji umekataliwa"
 msgid "Access Forbidden"
 msgstr "Ufikiaji Umekatazwa"
 
-#: ../../../lib/web/src/features/access/access-list.tsx:192
+#: ../../../lib/web/src/features/access/access-list.tsx:197
 msgid "Access level"
 msgstr "Kiwango cha ufikiaji"
 
@@ -129,6 +142,7 @@ msgstr "Akaunti imethibitishwa"
 msgid "Actions"
 msgstr "Vitendo"
 
+#: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:196
 msgid "Add"
 msgstr "Ongeza"
@@ -169,11 +183,12 @@ msgstr "Ongeza marafiki ili kuanza kuunganisha"
 msgid "Add member"
 msgstr "Ongeza mwanachama"
 
-#: ../../../lib/web/src/features/accounts/account-picker.tsx:101
+#: ../../../lib/web/src/features/accounts/account-picker.tsx:102
 msgid "Add new account"
 msgstr "Ongeza akaunti mpya"
 
 #: ../../../lib/web/src/components/post-tags.tsx:137
+#: ../../../lib/web/src/components/tag-input.tsx:40
 msgid "Add tag..."
 msgstr "Ongeza tagi..."
 
@@ -206,13 +221,14 @@ msgstr "Imeongeza {0} kwenye kikundi"
 msgid "Adding member..."
 msgstr "Inaongeza mwanachama..."
 
+#: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: src/features/friends/components/add-friend-dialog.tsx:278
 #: src/features/friends/components/add-friend-dialog.tsx:380
 #: src/features/groups/member-dialog.tsx:258
 msgid "Adding..."
 msgstr "Inaongezwa..."
 
-#: ../../../lib/web/src/components/config-drawer.tsx:71
+#: ../../../lib/web/src/components/config-drawer.tsx:72
 msgid "Adjust the appearance and layout to suit your preferences."
 msgstr "Rekebisha muonekano na mpangilio kulingana na mapendeleo yako."
 
@@ -244,6 +260,11 @@ msgstr "Mialiko yote imekataliwa"
 msgid "All invites are accepted without your approval."
 msgstr "Mialiko yote inakubaliwa bila idhini yako."
 
+#. placeholder {0}: entityLabel.toLowerCase()
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
+msgid "Allow anyone to search for {0}"
+msgstr ""
+
 #: src/features/profile/index.tsx:489
 msgid "Allow others to find you in the directory."
 msgstr "Ruhusu wengine wakupate kwenye saraka."
@@ -260,6 +281,19 @@ msgstr "Hitilafu imetokea"
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:256
 msgid "An unexpected error occurred"
 msgstr "Hitilafu isiyotarajiwa imetokea"
+
+#: ../../../lib/web/src/features/accounts/types.ts:16
+msgid "Android push"
+msgstr ""
+
+#: ../../../lib/web/src/features/access/access-list.tsx:45
+#: ../../../lib/web/src/features/access/types.ts:42
+msgid "Anyone"
+msgstr "Mtu yeyote"
+
+#: ../../../lib/web/src/features/access/types.ts:41
+msgid "Anyone who is logged in"
+msgstr ""
 
 #: src/features/profile/index.tsx:420
 msgid "Appearance"
@@ -287,11 +321,24 @@ msgstr "Pandisha"
 msgid "Ascending"
 msgstr "Kupanda"
 
+#: ../../../lib/web/src/features/access/access-list.tsx:46
+#: ../../../lib/web/src/features/access/types.ts:41
+msgid "Authenticated users"
+msgstr "Watumiaji waliothibitishwa"
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:315
 msgid "Authenticator code"
 msgstr "Msimbo wa mthibitishaji"
 
-#: ../../../lib/web/src/components/place-picker.tsx:155
+#: ../../../lib/web/src/components/entity-avatar.tsx:99
+msgid "Avatar"
+msgstr "Avatar"
+
+#: ../../../lib/web/src/components/entity-avatar.tsx:99
+msgid "Avatar for {name}"
+msgstr ""
+
+#: ../../../lib/web/src/components/place-picker.tsx:156
 #: src/features/friends/components/add-friend-dialog.tsx:375
 msgid "Back"
 msgstr "Rudi"
@@ -306,6 +353,10 @@ msgstr "Rudi kwa marafiki"
 msgid "Back to home"
 msgstr "Rudi mwanzo"
 
+#: ../../../lib/web/src/components/entity-banner.tsx:17
+msgid "Banner"
+msgstr "Bango"
+
 #: ../../../lib/web/src/components/post-tags.tsx:180
 #: ../../../lib/web/src/components/post-tags.tsx:192
 msgid "Boost interest"
@@ -315,13 +366,17 @@ msgstr "Ongeza mvuto"
 msgid "Browser icon"
 msgstr "Aikoni ya kivinjari"
 
+#: ../../../lib/web/src/features/accounts/types.ts:13
+msgid "Browser notifications"
+msgstr "Arifa za kivinjari"
+
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
 #: ../../../lib/web/src/components/step-up-dialog.tsx:363
 #: ../../../lib/web/src/components/travelling-picker.tsx:308
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:248
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:249
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:132
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
-#: ../../../lib/web/src/features/access/access-list.tsx:263
+#: ../../../lib/web/src/features/access/access-list.tsx:268
 #: ../../../lib/web/src/features/accounts/account-add.tsx:188
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:91
 #: src/features/groups/group-dialog.tsx:129
@@ -366,19 +421,23 @@ msgstr "Gumzo"
 msgid "Chat is not configured"
 msgstr "Gumzo halijasanidiwa"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:328
+#: ../../../lib/web/src/components/notifications-dropdown.tsx:198
+msgid "Check \"All\" to see your past notifications."
+msgstr "Chagua \"Zote\" ili kuona arifa zako za awali."
+
+#: ../../../lib/web/src/components/config-drawer.tsx:329
 msgid "Choose between default expanded, compact icon-only, or full layout mode"
 msgstr "Chagua kati ya iliyopanuliwa kwa chaguo-msingi, fupi ya aikoni pekee, au hali ya mpangilio kamili"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:270
+#: ../../../lib/web/src/components/config-drawer.tsx:271
 msgid "Choose between inset, floating, or standard sidebar layout"
 msgstr "Chagua kati ya mpangilio wa upau wa pembeni wa ndani, unaoelea, au wa kawaida"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:371
+#: ../../../lib/web/src/components/config-drawer.tsx:372
 msgid "Choose between left-to-right or right-to-left site direction"
 msgstr "Chagua kati ya mwelekeo wa tovuti wa kushoto kwenda kulia au kulia kwenda kushoto"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:226
+#: ../../../lib/web/src/components/config-drawer.tsx:227
 msgid "Choose between system preference, light mode, or dark mode"
 msgstr "Chagua kati ya mapendeleo ya mfumo, hali ya mwanga, au hali ya giza"
 
@@ -387,8 +446,8 @@ msgstr "Chagua kati ya mapendeleo ya mfumo, hali ya mwanga, au hali ya giza"
 msgid "Choose language"
 msgstr "Chagua lugha"
 
-#: ../../../lib/web/src/components/colour-picker.tsx:269
-#: ../../../lib/web/src/components/colour-picker.tsx:350
+#: ../../../lib/web/src/components/colour-picker.tsx:270
+#: ../../../lib/web/src/components/colour-picker.tsx:351
 #: ../../../lib/web/src/components/travelling-picker.tsx:164
 #: ../../../lib/web/src/components/travelling-picker.tsx:170
 #: ../../../lib/web/src/components/travelling-picker.tsx:231
@@ -396,7 +455,7 @@ msgstr "Chagua lugha"
 msgid "Clear"
 msgstr "Futa"
 
-#: ../../../lib/web/src/components/filter-bar.tsx:73
+#: ../../../lib/web/src/components/filter-bar.tsx:74
 msgid "Clear all"
 msgstr "Futa vyote"
 
@@ -404,6 +463,7 @@ msgstr "Futa vyote"
 msgid "Clear filters"
 msgstr "Futa vichujio"
 
+#: ../../../lib/web/src/components/search-input.tsx:26
 #: src/features/friends/components/add-friend-dialog.tsx:196
 msgid "Clear search"
 msgstr "Futa utafutaji"
@@ -459,15 +519,35 @@ msgstr "Starehe"
 msgid "Coming Soon!"
 msgstr "Inakuja Karibuni!"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:315
+#: ../../../lib/web/src/components/ui/command.tsx:34
+msgid "Command Palette"
+msgstr ""
+
+#: ../../../lib/web/src/components/config-drawer.tsx:316
 #: ../../../lib/web/src/lib/preference-utils.ts:95
 msgid "Compact"
 msgstr "Fupi"
 
-#: ../../../lib/web/src/components/place-picker.tsx:159
+#: ../../../lib/web/src/components/place-picker.tsx:160
 #: ../../../lib/web/src/components/travelling-picker.tsx:316
 msgid "Confirm"
 msgstr "Thibitisha"
+
+#: ../../../lib/web/src/lib/chat-ui.ts:18
+msgid "Connected"
+msgstr "Imeunganishwa"
+
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:191
+msgid "Connected accounts"
+msgstr "Akaunti zilizounganishwa"
+
+#: ../../../lib/web/src/lib/chat-ui.ts:21
+msgid "Connecting..."
+msgstr "Inaunganisha..."
+
+#: ../../../lib/web/src/lib/handle-server-error.ts:18
+msgid "Content not found."
+msgstr "Maudhui hayakupatikana."
 
 #: ../../../lib/web/src/lib/query-client.ts:81
 msgid "Content not modified"
@@ -485,7 +565,15 @@ msgstr "Endelea"
 msgid "Continue with {label}"
 msgstr "Endelea na {label}"
 
-#: ../../../lib/web/src/components/ui/copy-button.tsx:63
+#: ../../../lib/web/src/lib/toast-utils.ts:42
+msgid "Copied"
+msgstr "Imenakiliwa"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx:25
+msgid "Copied to clipboard"
+msgstr "Imenakiliwa kwenye ubao wa kunakili"
+
+#: ../../../lib/web/src/components/ui/copy-button.tsx:64
 msgid "Copy"
 msgstr "Nakili"
 
@@ -513,6 +601,11 @@ msgstr "Imeshindwa kuanza uthibitishaji upya. Tafadhali jaribu tena."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Imeshindwa kuthibitisha kwa akaunti hiyo. Tafadhali jaribu tena."
 
+#. placeholder {0}: entityLabel.toLowerCase()
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:144
+msgid "Create {0}"
+msgstr ""
+
 #: src/components/layout/people-layout.tsx:81
 #: src/features/groups/group-dialog.tsx:99
 #: src/features/groups/group-dialog.tsx:101
@@ -524,11 +617,19 @@ msgstr "Unda kikundi"
 msgid "Creating group..."
 msgstr "Inaunda kikundi..."
 
-#: ../../../lib/web/src/components/colour-picker.tsx:260
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
+msgid "Creating..."
+msgstr "Inaunda..."
+
+#: ../../../lib/web/src/components/map-view.tsx:208
+msgid "Current location"
+msgstr "Mahali pa sasa"
+
+#: ../../../lib/web/src/components/colour-picker.tsx:261
 msgid "Custom"
 msgstr "Maalum"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:218
+#: ../../../lib/web/src/components/config-drawer.tsx:219
 #: ../../../lib/web/src/components/theme-switch.tsx:52
 #: ../../../lib/web/src/lib/preference-utils.ts:20
 msgid "Dark"
@@ -562,7 +663,7 @@ msgstr "Inakataa mwaliko..."
 msgid "Declining invitations..."
 msgstr "Inakataa mialiko..."
 
-#: ../../../lib/web/src/components/config-drawer.tsx:310
+#: ../../../lib/web/src/components/config-drawer.tsx:311
 msgid "Default"
 msgstr "Chaguo-msingi"
 
@@ -600,6 +701,7 @@ msgstr "Shusha"
 msgid "Descending"
 msgstr "Kushuka"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:83
 #: src/features/groups/group-detail.tsx:179
 #: src/features/groups/group-dialog.tsx:116
 msgid "Description"
@@ -620,13 +722,22 @@ msgstr "Paneli ya Undani"
 msgid "Detect from web browser"
 msgstr "Tambua kutoka kwa kivinjari cha wavuti"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:340
+#: ../../../lib/web/src/components/config-drawer.tsx:341
 msgid "Direction"
 msgstr "Mwelekeo"
+
+#: ../../../lib/web/src/components/person-picker.tsx:214
+msgid "Directory"
+msgstr "Saraka"
 
 #: src/features/profile/index.tsx:486
 msgid "Directory listing"
 msgstr "Orodha ya saraka"
+
+#: ../../../lib/web/src/lib/chat-ui.ts:25
+#: ../../../lib/web/src/lib/chat-ui.ts:29
+msgid "Disconnected"
+msgstr "Imetenganishwa"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:79
 #: ../../../lib/web/src/components/restore-banner.tsx:85
@@ -668,6 +779,10 @@ msgstr "Hariri kikundi"
 msgid "Edit name"
 msgstr "Hariri jina"
 
+#: ../../../lib/web/src/features/accounts/types.ts:15
+msgid "Email"
+msgstr "Barua pepe"
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx:289
 msgid "Email code"
 msgstr "Msimbo wa barua pepe"
@@ -699,6 +814,10 @@ msgstr "Panua"
 msgid "Expand sidebar"
 msgstr "Panua utepe"
 
+#: ../../../lib/web/src/features/accounts/types.ts:22
+msgid "External URL"
+msgstr "URL ya nje"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:136
 msgid "Extra large"
 msgstr "Kubwa zaidi"
@@ -725,6 +844,10 @@ msgstr "Imeshindwa kuongeza rafiki"
 msgid "Failed to add member"
 msgstr "Imeshindwa kuongeza mwanachama"
 
+#: ../../../lib/web/src/components/tag-input.tsx:39
+msgid "Failed to add tag"
+msgstr "Imeshindwa kuongeza tagi"
+
 #: src/features/invitations/index.tsx:111
 msgid "Failed to cancel invitation"
 msgstr "Imeshindwa kughairi mwaliko"
@@ -733,6 +856,8 @@ msgstr "Imeshindwa kughairi mwaliko"
 msgid "Failed to cancel invitations"
 msgstr "Imeshindwa kughairi mialiko"
 
+#: ../../../lib/web/src/components/ui/copy-button.tsx:26
+#: ../../../lib/web/src/lib/toast-utils.ts:44
 #: src/features/profile/index.tsx:538
 msgid "Failed to copy"
 msgstr "Imeshindwa kunakili"
@@ -752,6 +877,10 @@ msgstr "Imeshindwa kukataa mialiko"
 #: src/features/groups/group-detail.tsx:110
 msgid "Failed to delete group"
 msgstr "Imeshindwa kufuta kikundi"
+
+#: ../../../lib/web/src/hooks/use-load-more.ts:74
+msgid "Failed to load"
+msgstr "Imeshindwa kupakia"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:263
 msgid "Failed to load image"
@@ -817,6 +946,10 @@ msgstr "Favicon"
 msgid "File too large"
 msgstr "Faili kubwa sana"
 
+#: ../../../lib/web/src/components/data-table/toolbar.tsx:30
+msgid "Filter..."
+msgstr "Chuja..."
+
 #: ../../../lib/web/src/components/restore-banner.tsx:88
 msgid "Finish moving your account"
 msgstr "Maliza kuhamisha akaunti yako"
@@ -825,7 +958,7 @@ msgstr "Maliza kuhamisha akaunti yako"
 msgid "Flat"
 msgstr "Tambarare"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:257
+#: ../../../lib/web/src/components/config-drawer.tsx:258
 msgid "Floating"
 msgstr "Inayoelea"
 
@@ -837,6 +970,7 @@ msgstr "Ijumaa"
 msgid "Friend removed"
 msgstr "Rafiki ameondolewa"
 
+#: ../../../lib/web/src/components/person-picker.tsx:207
 #: src/components/layout/people-layout.tsx:66
 #: src/features/friends/index.tsx:45
 #: src/features/friends/index.tsx:117
@@ -856,7 +990,7 @@ msgstr "Kutoka"
 msgid "From theme"
 msgstr "Kutoka mandhari"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:320
+#: ../../../lib/web/src/components/config-drawer.tsx:321
 msgid "Full layout"
 msgstr "Mpangilio kamili"
 
@@ -923,6 +1057,11 @@ msgstr "Kikundi hakikupatikana"
 msgid "Group updated"
 msgstr "Kikundi kimesasishwa"
 
+#. placeholder {0}: name || subject.slice(1)
+#: ../../../lib/web/src/features/access/access-list.tsx:68
+msgid "Group: {0}"
+msgstr "Kikundi: {0}"
+
 #: src/components/layout/people-layout.tsx:76
 msgid "Groups"
 msgstr "Vikundi"
@@ -959,17 +1098,33 @@ msgstr "Kitazamaji picha: {0}"
 msgid "Imperial"
 msgstr "Imperial"
 
+#: ../../../lib/web/src/features/access/types.ts:42
+msgid "Including anonymous users"
+msgstr ""
+
 #: src/features/invitations/invite-settings-dialog.tsx:87
 msgid "Incoming invitations"
 msgstr "Mialiko inayoingia"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:252
+#: ../../../lib/web/src/components/faceless-avatar.tsx:69
+msgid "Initials avatar"
+msgstr ""
+
+#: ../../../lib/web/src/components/faceless-avatar.tsx:69
+msgid "Initials avatar for {name}"
+msgstr ""
+
+#: ../../../lib/web/src/components/config-drawer.tsx:253
 msgid "Inset"
 msgstr "Ndani"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:42
 msgid "Interests"
 msgstr "Mivuto"
+
+#: ../../../lib/web/src/components/tag-input.tsx:38
+msgid "Invalid tag: letters, numbers, spaces, hyphens, and slashes only (max 50 chars)"
+msgstr ""
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:245
 msgid "Invalid verification code"
@@ -1023,12 +1178,16 @@ msgstr "Mialiko kutoka kwa watumaji wasiojulikana huangushwa. Mialiko ya pande z
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Inaonekana ukurasa unaoutafuta <0/>haupo au umeondolewa."
 
+#: ../../../lib/web/src/lib/locale-format.ts:62
+msgid "Just now"
+msgstr "Sasa hivi"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:108
 #: ../../../lib/web/src/lib/preference-utils.ts:135
 msgid "Large"
 msgstr "Kubwa"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:286
+#: ../../../lib/web/src/components/config-drawer.tsx:287
 msgid "Layout"
 msgstr "Mpangilio"
 
@@ -1037,11 +1196,15 @@ msgstr "Mpangilio"
 msgid "Learn more"
 msgstr "Jifunze zaidi"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:354
+#: ../../../lib/web/src/components/config-drawer.tsx:355
 msgid "Left to Right"
 msgstr "Kushoto kwenda Kulia"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:213
+#: ../../../lib/web/src/components/post-tags.tsx:72
+msgid "Letters, numbers, spaces, and hyphens only"
+msgstr "Herufi, nambari, nafasi na vistari pekee"
+
+#: ../../../lib/web/src/components/config-drawer.tsx:214
 #: ../../../lib/web/src/components/theme-switch.tsx:45
 #: ../../../lib/web/src/lib/preference-utils.ts:19
 msgid "Light"
@@ -1086,6 +1249,10 @@ msgstr "Umetoka kwa ufanisi"
 msgid "Logging out…"
 msgstr "Inatoka…"
 
+#: ../../../lib/web/src/features/accounts/account-manager.tsx:192
+msgid "Manage your connected accounts for notifications and services."
+msgstr ""
+
 #: ../../../lib/web/src/components/layout/notification-menu.tsx:93
 #: ../../../lib/web/src/components/layout/notification-menu.tsx:100
 #: ../../../lib/web/src/components/notifications-dropdown.tsx:224
@@ -1095,6 +1262,10 @@ msgstr "Weka zote kama zilizosomwa"
 #: src/features/profile/index.tsx:387
 msgid "Markdown supported"
 msgstr "Markdown inatumika"
+
+#: ../../../lib/web/src/features/accounts/types.ts:17
+msgid "MCP server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/preference-utils.ts:107
 msgid "Medium"
@@ -1124,6 +1295,10 @@ msgstr "Menyu"
 msgid "Metric"
 msgstr "Metriki"
 
+#: ../../../lib/web/src/features/accounts/types.ts:23
+msgid "Mochi web"
+msgstr "Mochi wavuti"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:59
 msgid "Monday"
 msgstr "Jumatatu"
@@ -1136,9 +1311,17 @@ msgstr "Jina"
 msgid "Name (A–Z)"
 msgstr "Jina (A–Z)"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
+msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
+msgstr ""
+
 #: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "Jina linahitajika"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
+msgid "Name must be 1000 characters or less"
+msgstr "Jina lazima liwe na herufi 1000 au chini"
 
 #: src/features/profile/index.tsx:209
 msgid "Name saved"
@@ -1162,7 +1345,7 @@ msgstr "Mialiko mipya itaonekana hapa"
 msgid "Next image"
 msgstr "Picha inayofuata"
 
-#: ../../../lib/web/src/features/access/access-list.tsx:160
+#: ../../../lib/web/src/features/access/access-list.tsx:165
 msgid "No access rules configured. Add rules to control who can access this resource."
 msgstr "Hakuna sheria za ufikiaji zilizosanidiwa. Ongeza sheria kudhibiti nani anaweza kufikia rasilimali hii."
 
@@ -1186,6 +1369,10 @@ msgstr "Hakuna vikundi vinavyopatikana"
 msgid "No members"
 msgstr "Hakuna wanachama"
 
+#: ../../../lib/web/src/components/notifications-dropdown.tsx:193
+msgid "No notifications yet"
+msgstr "Bado hakuna arifa"
+
 #: src/features/groups/member-dialog.tsx:211
 msgid "No other groups"
 msgstr "Hakuna vikundi vingine"
@@ -1194,12 +1381,13 @@ msgstr "Hakuna vikundi vingine"
 msgid "No pending invitations"
 msgstr "Hakuna mialiko inayosubiri"
 
+#: ../../../lib/web/src/components/person-picker.tsx:84
 #: src/features/friends/components/add-friend-dialog.tsx:236
 #: src/features/groups/member-dialog.tsx:157
 msgid "No people found"
 msgstr "Hakuna watu waliopatikana"
 
-#: ../../../lib/web/src/components/place-picker.tsx:132
+#: ../../../lib/web/src/components/place-picker.tsx:133
 msgid "No places found"
 msgstr "Hakuna mahali palipopatikana"
 
@@ -1210,6 +1398,11 @@ msgstr "Hakuna wasifu"
 #: src/features/friends/index.tsx:161
 msgid "No results for \"{search}\""
 msgstr "Hakuna matokeo ya \"{search}\""
+
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:82
+#: ../../../lib/web/src/components/search-entity-page.tsx:73
+msgid "No results found"
+msgstr "Hakuna matokeo yaliyopatikana"
 
 #: ../../../lib/web/src/components/command-menu.tsx:55
 #: ../../../lib/web/src/components/data-table/faceted-filter.tsx:94
@@ -1228,6 +1421,7 @@ msgstr "Hakuna rekodi ya mada bado — jaribu tena baada ya arifa inayofuata."
 msgid "No users found"
 msgstr "Hakuna watumiaji waliopatikana"
 
+#: ../../../lib/web/src/components/colour-picker.tsx:345
 #: ../../../lib/web/src/components/person-picker.tsx:350
 #: ../../../lib/web/src/lib/preference-utils.ts:105
 #: ../../../lib/web/src/lib/preference-utils.ts:125
@@ -1263,6 +1457,10 @@ msgstr "Arifa: {0}"
 msgid "Notify me"
 msgstr "Niarifu"
 
+#: ../../../lib/web/src/components/filter-bar.tsx:35
+msgid "On"
+msgstr "Imewashwa"
+
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:16
 msgid "Oops! Page Not Found!"
 msgstr "Lo! Ukurasa Haukupatikana!"
@@ -1277,6 +1475,10 @@ msgstr "Fungua vitendo vya akaunti"
 msgid "Open actions"
 msgstr "Fungua vitendo"
 
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:133
+msgid "Open menu"
+msgstr "Fungua menyu"
+
 #: ../../../lib/web/src/components/layout/top-bar.tsx:63
 #: ../../../lib/web/src/components/layout/top-bar.tsx:68
 msgid "Open navigation"
@@ -1287,8 +1489,8 @@ msgstr "Fungua urambazaji"
 msgid "Open navigation menu"
 msgstr "Fungua menyu ya urambazaji"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:57
-#: ../../../lib/web/src/components/config-drawer.tsx:65
+#: ../../../lib/web/src/components/config-drawer.tsx:58
+#: ../../../lib/web/src/components/config-drawer.tsx:66
 msgid "Open theme settings"
 msgstr "Fungua mipangilio ya mandhari"
 
@@ -1300,7 +1502,7 @@ msgstr "Maelezo ya hiari"
 msgid "Other"
 msgstr "Nyingine"
 
-#: ../../../lib/web/src/features/access/access-list.tsx:217
+#: ../../../lib/web/src/features/access/access-list.tsx:222
 msgid "Owner"
 msgstr "Mmiliki"
 
@@ -1332,6 +1534,10 @@ msgstr "Watu"
 #: src/features/profile/index.tsx:422
 msgid "Personalise how your profile and app look to others."
 msgstr "Geuza jinsi wasifu na programu yako vinavyoonekana kwa wengine."
+
+#: ../../../lib/web/src/components/date-picker.tsx:20
+msgid "Pick a date"
+msgstr "Chagua tarehe"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
@@ -1390,6 +1596,14 @@ msgstr "Hakiki ya wasifu"
 msgid "Profile saved"
 msgstr "Wasifu umehifadhiwa"
 
+#: ../../../lib/web/src/components/person-picker.tsx:200
+msgid "Project members"
+msgstr "Wanachama wa mradi"
+
+#: ../../../lib/web/src/features/accounts/types.ts:21
+msgid "Push notification"
+msgstr ""
+
 #: ../../../lib/web/src/lib/preference-utils.ts:117
 msgid "Raised"
 msgstr "Iliyoinuliwa"
@@ -1411,10 +1625,14 @@ msgstr "Imepokelewa ({0})"
 msgid "Recently added"
 msgstr "Imeongezwa hivi karibuni"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:216
-#: ../../../lib/web/src/components/search-entity-page.tsx:242
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:217
+#: ../../../lib/web/src/components/search-entity-page.tsx:243
 msgid "Recommended"
 msgstr "Inapendekezwa"
+
+#: ../../../lib/web/src/lib/chat-ui.ts:21
+msgid "Reconnecting ({retries})..."
+msgstr ""
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:133
 msgid "Redirecting to login."
@@ -1437,7 +1655,7 @@ msgstr "Linganifu (5d, 3s, 2sk)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Linganifu ndani ya saa 24, vinginevyo kamili"
 
-#: ../../../lib/web/src/features/access/access-list.tsx:265
+#: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
 msgid "Remove"
 msgstr "Ondoa"
@@ -1455,17 +1673,23 @@ msgstr "Ondoa {0}"
 msgid "Remove {0} {1}"
 msgstr "Ondoa {0} {1}"
 
-#: ../../../lib/web/src/features/access/access-list.tsx:247
-#: ../../../lib/web/src/features/access/access-list.tsx:253
+#. placeholder {0}: filter.label
+#: ../../../lib/web/src/components/filter-bar.tsx:56
+#: ../../../lib/web/src/components/filter-bar.tsx:62
+msgid "Remove {0} filter"
+msgstr "Ondoa kichujio cha {0}"
+
+#: ../../../lib/web/src/features/access/access-list.tsx:252
+#: ../../../lib/web/src/features/access/access-list.tsx:258
 msgid "Remove access rule"
 msgstr "Ondoa sheria ya ufikiaji"
 
 #. placeholder {0}: formatSubject(subject, data.name)
-#: ../../../lib/web/src/features/access/access-list.tsx:259
+#: ../../../lib/web/src/features/access/access-list.tsx:264
 msgid "Remove access rule for \"{0}\"?"
 msgstr "Ondoa sheria ya ufikiaji ya \"{0}\"?"
 
-#: ../../../lib/web/src/features/access/access-list.tsx:257
+#: ../../../lib/web/src/features/access/access-list.tsx:262
 msgid "Remove access?"
 msgstr "Ondoa ufikiaji?"
 
@@ -1501,16 +1725,21 @@ msgstr "Inaondoa..."
 msgid "Resend email"
 msgstr "Tuma barua pepe tena"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:86
-#: ../../../lib/web/src/components/data-table/toolbar.tsx:81
+#: ../../../lib/web/src/components/config-drawer.tsx:87
+#: ../../../lib/web/src/components/data-table/toolbar.tsx:82
 msgid "Reset"
 msgstr "Weka upya"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:84
+#: ../../../lib/web/src/components/config-drawer.tsx:122
+#: ../../../lib/web/src/components/config-drawer.tsx:127
+msgid "Reset {title}"
+msgstr ""
+
+#: ../../../lib/web/src/components/config-drawer.tsx:85
 msgid "Reset all settings to default values"
 msgstr "Weka upya mipangilio yote kwa thamani chaguo-msingi"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:361
+#: ../../../lib/web/src/components/config-drawer.tsx:362
 msgid "Right to Left"
 msgstr "Kulia kwenda Kushoto"
 
@@ -1550,9 +1779,23 @@ msgstr "Inahifadhi wasifu..."
 msgid "Saving..."
 msgstr "Inahifadhi..."
 
-#: ../../../lib/web/src/components/place-picker.tsx:85
+#: ../../../lib/web/src/components/filter-bar.tsx:32
+#: ../../../lib/web/src/components/header-search.tsx:22
+#: ../../../lib/web/src/components/search.tsx:18
+msgid "Search"
+msgstr "Tafuta"
+
+#: ../../../lib/web/src/components/ui/command.tsx:35
+msgid "Search for a command to run..."
+msgstr ""
+
+#: ../../../lib/web/src/components/place-picker.tsx:86
 msgid "Search for a place"
 msgstr "Tafuta mahali"
+
+#: ../../../lib/web/src/components/place-picker.tsx:50
+msgid "Search for a place..."
+msgstr ""
 
 #: ../../../lib/web/src/components/travelling-picker.tsx:250
 msgid "Search for destination..."
@@ -1580,17 +1823,24 @@ msgid "Search users"
 msgstr "Tafuta watumiaji"
 
 #: ../../../lib/web/src/components/person-picker.tsx:324
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:81
+#: ../../../lib/web/src/components/search-entity-page.tsx:72
 #: src/features/friends/index.tsx:125
 #: src/features/invitations/index.tsx:217
 msgid "Search..."
 msgstr "Tafuta..."
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:174
-#: ../../../lib/web/src/components/search-entity-page.tsx:200
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:175
+#: ../../../lib/web/src/components/search-entity-page.tsx:201
 #: ../../../lib/web/src/features/access/access-dialog.tsx:202
 #: src/features/groups/member-dialog.tsx:145
 msgid "Searching..."
 msgstr "Inatafuta..."
+
+#. placeholder {0}: item.label.toLowerCase()
+#: ../../../lib/web/src/components/config-drawer.tsx:149
+msgid "Select {0}"
+msgstr ""
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx:150
 msgid "Select a user, group, or other rule to grant access."
@@ -1599,6 +1849,10 @@ msgstr "Chagua mtumiaji, kikundi, au sheria nyingine kutoa ufikiaji."
 #: ../../../lib/web/src/features/access/access-dialog.tsx:273
 msgid "Select access rule"
 msgstr "Chagua sheria ya ufikiaji"
+
+#: ../../../lib/web/src/features/accounts/account-picker.tsx:34
+msgid "Select account"
+msgstr ""
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx:129
 msgid "Select account type"
@@ -1609,19 +1863,27 @@ msgstr "Chagua aina ya akaunti"
 msgid "Select group"
 msgstr "Chagua kikundi"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:304
+#: ../../../lib/web/src/components/config-drawer.tsx:305
 msgid "Select layout style"
 msgstr "Chagua mtindo wa muundo"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:246
+#: ../../../lib/web/src/components/place-picker.tsx:49
+msgid "Select location"
+msgstr "Chagua mahali"
+
+#: ../../../lib/web/src/components/person-picker.tsx:83
+msgid "Select person..."
+msgstr ""
+
+#: ../../../lib/web/src/components/config-drawer.tsx:247
 msgid "Select sidebar style"
 msgstr "Chagua mtindo wa upau wa kando"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:348
+#: ../../../lib/web/src/components/config-drawer.tsx:349
 msgid "Select site direction"
 msgstr "Chagua mwelekeo wa tovuti"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:202
+#: ../../../lib/web/src/components/config-drawer.tsx:203
 msgid "Select theme preference"
 msgstr "Chagua mapendeleo ya mandhari"
 
@@ -1701,8 +1963,8 @@ msgstr "Inaonyesha {totalShown} kati ya {total}"
 msgid "Shown in browser tabs."
 msgstr "Inaonyeshwa kwenye vichupo vya kivinjari."
 
-#: ../../../lib/web/src/components/config-drawer.tsx:238
-#: ../../../lib/web/src/components/config-drawer.tsx:262
+#: ../../../lib/web/src/components/config-drawer.tsx:239
+#: ../../../lib/web/src/components/config-drawer.tsx:263
 #: ../../../lib/web/src/components/ui/sidebar.tsx:237
 msgid "Sidebar"
 msgstr "Upau wa kando"
@@ -1753,24 +2015,37 @@ msgstr "Endelea kufuatilia!"
 msgid "Store silently"
 msgstr "Hifadhi kimya"
 
-#: ../../../lib/web/src/features/access/access-list.tsx:191
+#: ../../../lib/web/src/features/access/access-list.tsx:196
 msgid "Subject"
 msgstr "Mada"
+
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:83
+#: ../../../lib/web/src/components/search-entity-page.tsx:74
+msgid "Subscribe"
+msgstr "Jiunge"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:65
 msgid "Sunday"
 msgstr "Jumapili"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:208
+#: ../../../lib/web/src/components/config-drawer.tsx:209
 #: ../../../lib/web/src/components/theme-switch.tsx:59
 #: ../../../lib/web/src/lib/preference-utils.ts:21
 #: ../../../lib/web/src/lib/preference-utils.ts:144
 msgid "System"
 msgstr "Mfumo"
 
-#: ../../../lib/web/src/components/tag-input.tsx:94
+#: ../../../lib/web/src/components/tag-input.tsx:95
 msgid "Tag"
 msgstr "Lebo"
+
+#: ../../../lib/web/src/components/post-tags.tsx:76
+msgid "Tag already exists"
+msgstr "Lebo tayari ipo"
+
+#: ../../../lib/web/src/components/post-tags.tsx:68
+msgid "Tag must be 50 characters or less"
+msgstr "Lebo lazima iwe herufi 50 au chini"
 
 #: ../../../lib/web/src/components/post-tags.tsx:101
 #: ../../../lib/web/src/components/post-tags.tsx:115
@@ -1802,11 +2077,11 @@ msgstr "Maudhui yaliyoombwa hayakupatikana."
 msgid "The site is not available at the moment."
 msgstr "Tovuti haipatikani kwa sasa."
 
-#: ../../../lib/web/src/components/config-drawer.tsx:194
+#: ../../../lib/web/src/components/config-drawer.tsx:195
 msgid "Theme"
 msgstr "Mandhari"
 
-#: ../../../lib/web/src/components/config-drawer.tsx:69
+#: ../../../lib/web/src/components/config-drawer.tsx:70
 msgid "Theme Settings"
 msgstr "Mipangilio ya Mandhari"
 
@@ -1881,8 +2156,8 @@ msgstr "Jaribu neno la utafutaji tofauti"
 msgid "Try adjusting your search"
 msgstr "Jaribu kurekebisha utafutaji wako"
 
-#: ../../../lib/web/src/components/search-entity-dialog.tsx:190
-#: ../../../lib/web/src/components/search-entity-page.tsx:216
+#: ../../../lib/web/src/components/search-entity-dialog.tsx:191
+#: ../../../lib/web/src/components/search-entity-page.tsx:217
 msgid "Try adjusting your search terms"
 msgstr "Jaribu kurekebisha maneno yako ya utafutaji"
 
@@ -1931,9 +2206,18 @@ msgstr "Haijapewa"
 msgid "Unauthorized Access"
 msgstr "Ufikiaji Usioruhusiwa"
 
+#: ../../../lib/web/src/lib/request.ts:133
+#: ../../../lib/web/src/lib/request.ts:206
+msgid "Unexpected API error"
+msgstr "Hitilafu ya API isiyotarajiwa"
+
 #: ../../../lib/web/src/lib/preference-utils.ts:87
 msgid "United States"
 msgstr "Marekani"
+
+#: ../../../lib/web/src/features/accounts/types.ts:29
+msgid "Unknown"
+msgstr "Haijulikani"
 
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:135
 msgid "Unverified"
@@ -1962,6 +2246,7 @@ msgstr "Inapakia..."
 msgid "Use your passkey"
 msgstr "Tumia ufunguo wako"
 
+#: ../../../lib/web/src/components/layout/mochi-menu.tsx:86
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
 #: src/features/groups/group-detail.tsx:229
 #: src/features/groups/member-dialog.tsx:112
@@ -2012,6 +2297,10 @@ msgstr "Tazama vyote"
 msgid "View all notifications"
 msgstr "Tazama arifa zote"
 
+#: ../../../lib/web/src/components/filter-bar.tsx:35
+msgid "Watched"
+msgstr "Imetazamwa"
+
 #. placeholder {0}: account.identifier
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:63
 msgid "We sent a verification code to <0>{0}</0>. Enter the code below to verify your email address."
@@ -2020,6 +2309,10 @@ msgstr "Tumetuma msimbo wa uthibitishaji kwa <0>{0}</0>. Weka msimbo hapa chini 
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:16
 msgid "We'll be back online shortly."
 msgstr "Tutarudi mtandaoni hivi karibuni."
+
+#: ../../../lib/web/src/components/notifications-dropdown.tsx:197
+msgid "We'll notify you when something important happens."
+msgstr "Tutakujulisha jambo muhimu litakapotokea."
 
 #: ../../../lib/web/src/features/errors/maintenance-error.tsx:13
 msgid "Website is under maintenance!"
@@ -2040,6 +2333,14 @@ msgstr "Huna ruhusa ya kufikia sehemu hii."
 #: ../../../lib/web/src/features/errors/forbidden.tsx:18
 msgid "You don't have necessary permission <0/>to view this resource."
 msgstr "Huna ruhusa inayohitajika <0/>ya kutazama rasilimali hii."
+
+#: ../../../lib/web/src/lib/show-submitted-data.tsx:9
+msgid "You submitted the following values:"
+msgstr ""
+
+#: ../../../lib/web/src/components/notifications-dropdown.tsx:193
+msgid "You're all caught up!"
+msgstr "Umesoma yote!"
 
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."

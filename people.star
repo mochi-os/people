@@ -678,6 +678,21 @@ _PROFILE_MAX = 100 * 1024
 _IMAGE_SLOTS = ("avatar", "banner", "favicon")
 _SLOT_CAPS = {"avatar": _AVATAR_MAX, "banner": _BANNER_MAX, "favicon": _FAVICON_MAX}
 
+# Image types a profile slot may hold. An explicit list rather than an
+# "image/" prefix test, because the prefix admits any subtype a client cares to
+# invent and the browser decides what to do with the ones it recognises. SVG is
+# allowed: core sanitizes it and serves it under a script-blocking CSP.
+_IMAGE_TYPES = (
+	"image/png",
+	"image/jpeg",
+	"image/gif",
+	"image/webp",
+	"image/avif",
+	"image/svg+xml",
+	"image/x-icon",
+	"image/vnd.microsoft.icon",
+)
+
 def is_person_owner(a, person_id):
 	if not a.user or not a.user.identity:
 		return False
@@ -780,7 +795,15 @@ def stream_person_asset(a, person_id, asset):
 	if "data" in header:
 		return {"data": header["data"]}
 	a.header("Cache-Control", "private, max-age=300")
-	a.header("Content-Type", header.get("content_type", "application/octet-stream"))
+	# The content type comes from whoever hosts the person, so for a remote
+	# profile it is a claim by another server rather than by us. These routes
+	# serve images and nothing else, so anything outside that set is served as
+	# an opaque download - core stops it rendering in our origin either way, but
+	# there is no reason to repeat a stranger's claim about what their bytes are.
+	content_type = header.get("content_type", "")
+	if content_type not in _IMAGE_TYPES:
+		content_type = "application/octet-stream"
+	a.header("Content-Type", content_type)
 	a.write.stream(s)
 	return None
 
@@ -814,7 +837,7 @@ def set_image(a, slot):
 		mochi.attachment.delete(att["id"])
 		a.error.label(400, "errors.asset_too_large", slot=slot)
 		return
-	if not att.get("content_type", "").startswith("image/"):
+	if att.get("content_type", "") not in _IMAGE_TYPES:
 		mochi.attachment.delete(att["id"])
 		a.error.label(400, "errors.asset_must_be_image", slot=slot)
 		return

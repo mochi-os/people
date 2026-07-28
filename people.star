@@ -556,14 +556,28 @@ def action_group_update(a):
 		a.error.label(404, "errors.group_not_found")
 		return
 
-	name = a.input("name", "")
-	description = a.input("description", "")
+	# Clearing a field and leaving it alone have to be told apart, and a.input()
+	# cannot do it for the form body this action receives: it falls back to the
+	# form only when the value is non-empty, so a field sent empty and a field
+	# never sent both read as None. a.inputs() returns the raw value list, where
+	# the two are distinct - [""] against []. Testing truthiness instead meant an
+	# empty description never reached mochi.group.update, which applies only the
+	# kwargs it receives, so the request succeeded, the dialog reported the group
+	# updated, and the old description stayed.
+	sent_name = len(a.inputs("name")) > 0
+	sent_description = len(a.inputs("description")) > 0
 
-	if not name and not description:
+	if not sent_name and not sent_description:
 		a.error.label(400, "errors.no_fields_to_update")
 		return
 
-	if name:
+	name = a.input("name", "")
+	description = a.input("description", "")
+
+	if sent_name:
+		if not name:
+			a.error.label(400, "errors.missing_group_name")
+			return
 		if not mochi.text.valid(name, "line"):
 			a.error.label(400, "errors.invalid_group_name")
 			return
@@ -576,9 +590,9 @@ def action_group_update(a):
 		return
 
 	kwargs = {}
-	if name:
+	if sent_name:
 		kwargs["name"] = name
-	if description:
+	if sent_description:
 		kwargs["description"] = description
 	mochi.group.update(id, **kwargs)
 	return {"data": {}}

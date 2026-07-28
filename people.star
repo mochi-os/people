@@ -811,11 +811,16 @@ def stream_person_asset(a, person_id, asset):
 		code = 404
 		if header and header.get("status"):
 			code = int(header["status"])
-		# The far end sends a stable label key, so resolve it in the caller's
-		# language. a.error() does NOT resolve labels - it would render the raw
-		# key (or the English fallback) straight to the user.
-		key = (header.get("error") if header else None) or "errors.person_not_found"
-		a.error.label(code, key)
+		# Word the failure from what we asked for, not from what the far end
+		# said. The error field in the response is a diagnostic written by
+		# whoever hosts this person, so it is English prose at best and a remote
+		# server's choice of message at worst - resolving it as a label key let
+		# another server pick which of our strings the user sees. Matches how
+		# feeds, forums, wikis and staff bridge the same event.
+		if asset in _IMAGE_SLOTS:
+			a.error.label(code, "errors.asset_not_set", asset=asset)
+		else:
+			a.error.label(code, "errors.person_not_found")
 		return None
 	if "data" in header:
 		return {"data": header["data"]}
@@ -983,6 +988,12 @@ def opengraph_person(params):
 	return og
 
 # === P2P events (cross-server reads) ===
+#
+# The `error` field these handlers send is a diagnostic for the operator of the
+# requesting server, never user-facing text: the bridge on the other side words
+# its own message from the asset it asked for, because a message chosen by a
+# remote server has no business reaching our user. Keep them stable and English
+# for that reason - translating them would imply they are shown to someone.
 
 def event_information(e):
 	person_id = e.header("to")

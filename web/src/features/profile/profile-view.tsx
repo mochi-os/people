@@ -3,9 +3,13 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import Markdown from 'react-markdown'
+import Markdown, { defaultUrlTransform } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { EntityAvatar, EntityBanner } from '@mochi/web'
+import { EntityAvatar, EntityBanner, markdownUrlTransform } from '@mochi/web'
+
+// A profile is written by the person being viewed, including strangers and
+// anonymous readers of the public page, so its images stay on this origin.
+const urlTransform = markdownUrlTransform(defaultUrlTransform)
 
 interface ProfileViewProps {
   name: string
@@ -31,7 +35,7 @@ export function ProfileView({ name, profile, accent, avatarUrl, bannerUrl }: Pro
       </div>
       {profile && (
         <div className="markdown-body p-4 text-sm leading-relaxed">
-          <Markdown remarkPlugins={[remarkGfm]}>{profile}</Markdown>
+          <Markdown remarkPlugins={[remarkGfm]} urlTransform={urlTransform}>{profile}</Markdown>
         </div>
       )}
     </div>

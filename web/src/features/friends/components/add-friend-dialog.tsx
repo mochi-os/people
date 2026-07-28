@@ -5,10 +5,10 @@
 
 import { useEffect, useState, useMemo } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
-import Markdown from 'react-markdown'
+import Markdown, { defaultUrlTransform } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban, ArrowLeft } from 'lucide-react'
-import { cn, toastAction, getAppPath, getErrorMessage, GeneralError, Button, EntityAvatar, EntityBanner, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, SearchInput, EmptyState, ScrollArea, useScreenSize } from '@mochi/web'
+import { cn, toastAction, getAppPath, getErrorMessage, GeneralError, Button, EntityAvatar, EntityBanner, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, SearchInput, EmptyState, ScrollArea, useScreenSize, markdownUrlTransform } from '@mochi/web'
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation, useFriendsQuery } from '@/hooks/useFriends'
 import { personApi } from '@/api/person'
 import type { PersonInformation } from '@/api/types/person'
@@ -403,6 +403,10 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
   )
 }
 
+// This preview shows the bio of someone whose request has not been accepted,
+// so merely opening it must not fetch anything from a server they chose.
+const previewUrlTransform = markdownUrlTransform(defaultUrlTransform)
+
 function FriendPreview({ info }: { info: PersonInformation }) {
   const appPath = getAppPath()
   const avatarUrl = info.avatar ? `${appPath}/${info.id}/-/avatar?v=${info.avatar}` : null
@@ -424,7 +428,7 @@ function FriendPreview({ info }: { info: PersonInformation }) {
         </div>
         {info.profile?.trim() && (
           <div className='markdown-body text-sm leading-relaxed'>
-            <Markdown remarkPlugins={[remarkGfm]}>{info.profile}</Markdown>
+            <Markdown remarkPlugins={[remarkGfm]} urlTransform={previewUrlTransform}>{info.profile}</Markdown>
           </div>
         )}
       </div>

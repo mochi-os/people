@@ -635,8 +635,23 @@ def action_group_member_add(a):
 	# Group "user" members are person entity IDs — that's what -/users/search
 	# returns and what the member list resolves for display. Older data may
 	# hold a numeric local uid, so accept either form.
-	if type == "user" and not (mochi.text.valid(member, "entity") or decimal(member)):
-		a.error.label(400, "errors.invalid_user_id")
+	if type == "user":
+		if not decimal(member):
+			if not mochi.text.valid(member, "entity"):
+				a.error.label(400, "errors.invalid_user_id")
+				return
+			# Refuse an id that is nobody here. mochi.entity.name resolves local
+			# entities and then the learned directory, which is where
+			# -/users/search results come from, so a person on another server is
+			# still addable - only ids this server has never heard of are not.
+			# A numeric uid is exempt above: there is no entity behind it to find.
+			if not mochi.entity.name(member):
+				a.error.label(404, "errors.person_not_found")
+				return
+	elif not mochi.group.get(member):
+		# Nested groups are the caller's own, so an unknown one is a mistake
+		# rather than a remote lookup that might legitimately miss.
+		a.error.label(404, "errors.group_not_found")
 		return
 
 	mochi.group.add(group, member, type)

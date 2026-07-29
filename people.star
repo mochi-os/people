@@ -521,8 +521,28 @@ def action_group_get(a):
 
 	return {"data": {"group": group, "members": enriched_members}}
 
+# uid(id) -> bool: whether id has the shape mochi.uid() produces - a UUIDv7 with
+# its hyphens stripped, so 32 hex characters.
+def uid(id):
+	if len(id) != 32:
+		return False
+	for c in id.elems():
+		if c not in "0123456789abcdef":
+			return False
+	return True
+
 def action_group_create(a):
+	# A caller may supply the id - an import restoring groups under their
+	# original ids needs to - but only in the shape this app generates. Core
+	# leaves mochi.group.get ungated on the grounds that a group id cannot be
+	# guessed, so an app without groups/read cannot read a group it was never
+	# told about; a group created as "family" would make that false. Enforcing
+	# the shape here is what makes that assumption true, since this is the only
+	# app that creates groups.
 	id = a.input("id", "")
+	if id and not uid(id):
+		a.error.label(400, "errors.invalid_group_id")
+		return
 	if not id:
 		id = mochi.uid()
 

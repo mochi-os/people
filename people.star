@@ -849,6 +849,14 @@ def stream_person_asset(a, person_id, asset):
 	if not person_id:
 		a.error.label(404, "errors.person_not_found")
 		return None
+	# Reject a malformed id before opening a stream: mochi.remote.stream errors
+	# out on an invalid entity, and a builtin error aborts the whole action as a
+	# 500 quoting the internal API name. These routes are public and the id is
+	# the route segment, so anyone can trigger it. Both forms are legitimate
+	# here - the UI links profiles by fingerprint. Mirrors projects/market/staff.
+	if not mochi.text.valid(person_id, "entity") and not mochi.text.valid(person_id, "fingerprint"):
+		a.error.label(404, "errors.person_not_found")
+		return None
 	s = mochi.remote.stream(person_id, "people", asset, {})
 	if not s:
 		a.error.label(502, "errors.person_unavailable")

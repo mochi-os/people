@@ -556,16 +556,18 @@ def action_group_update(a):
 		a.error.label(404, "errors.group_not_found")
 		return
 
-	# Clearing a field and leaving it alone have to be told apart, and a.input()
-	# cannot do it for the form body this action receives: it falls back to the
-	# form only when the value is non-empty, so a field sent empty and a field
-	# never sent both read as None. a.inputs() returns the raw value list, where
-	# the two are distinct - [""] against []. Testing truthiness instead meant an
-	# empty description never reached mochi.group.update, which applies only the
-	# kwargs it receives, so the request succeeded, the dialog reported the group
-	# updated, and the old description stayed.
-	sent_name = len(a.inputs("name")) > 0
-	sent_description = len(a.inputs("description")) > 0
+	# Clearing a field and leaving it alone have to be told apart, and neither
+	# accessor manages it alone. a.input() reads the JSON body first, where ""
+	# survives, but falls back to the form only for a non-empty value - so over a
+	# form, sent-empty and never-sent both read as None. a.inputs() returns the
+	# raw query/form list, where the two are distinct ([""] against []), but it
+	# never looks at a JSON body at all. Checking both covers either encoding:
+	# this app's own client posts a form, and JSON callers exist too.
+	def sent(field):
+		return len(a.inputs(field)) > 0 or a.input(field) != None
+
+	sent_name = sent("name")
+	sent_description = sent("description")
 
 	if not sent_name and not sent_description:
 		a.error.label(400, "errors.no_fields_to_update")
@@ -611,6 +613,17 @@ def action_group_delete(a):
 	mochi.group.delete(id)
 	return {"data": {}}
 
+# Whether an entity id belongs to a person, wherever that person lives. Local
+# first, because a person whose profile is private is deliberately absent from
+# the directory; then the directory, which is what -/users/search offers and so
+# covers people hosted on other servers.
+def person_exists(id):
+	local = mochi.entity.info(id)
+	if local:
+		return local.get("class") == "person"
+	entry = mochi.directory.get(id)
+	return entry != None and entry.get("class") == "person"
+
 def action_group_member_add(a):
 	group = a.input("group")
 	if not group:
@@ -640,12 +653,11 @@ def action_group_member_add(a):
 			if not mochi.text.valid(member, "entity"):
 				a.error.label(400, "errors.invalid_user_id")
 				return
-			# Refuse an id that is nobody here. mochi.entity.name resolves local
-			# entities and then the learned directory, which is where
-			# -/users/search results come from, so a person on another server is
-			# still addable - only ids this server has never heard of are not.
+			# Must be a PERSON, not merely something with a name. Any entity has
+			# a name - a project, a wiki, a forum - so an existence check alone
+			# let a container be stored as a user member and rendered as one.
 			# A numeric uid is exempt above: there is no entity behind it to find.
-			if not mochi.entity.name(member):
+			if not person_exists(member):
 				a.error.label(404, "errors.person_not_found")
 				return
 	elif not mochi.group.get(member):

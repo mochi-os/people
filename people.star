@@ -913,7 +913,7 @@ def set_image(a, slot):
 		a.error.label(403, "errors.not_the_owner")
 		return
 	object = slot_object(person_id, slot)
-	saved = mochi.attachment.save(object, "file", [], [], [])
+	saved = mochi.attachment.save(object, "file", [], [])
 	if not saved or len(saved) == 0:
 		a.error.label(400, "errors.no_file_uploaded")
 		return

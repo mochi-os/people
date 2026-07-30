@@ -6,6 +6,7 @@
 import { useEffect } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { authManager, useAuthStore } from '@mochi/web'
+import type { AxiosProgressEvent } from 'axios'
 import { personApi } from '@/api/person'
 import type { PersonInformation } from '@/api/types/person'
 
@@ -76,10 +77,16 @@ export function useUploadImageMutation(
 ) {
   const qc = useQueryClient()
   return useMutation({
-    mutationFn: (file: File) => {
-      if (slot === 'avatar') return personApi.setAvatar(person, file)
-      if (slot === 'banner') return personApi.setBanner(person, file)
-      return personApi.setFavicon(person, file)
+    mutationFn: ({
+      file,
+      onProgress,
+    }: {
+      file: File
+      onProgress?: (event: AxiosProgressEvent) => void
+    }) => {
+      if (slot === 'avatar') return personApi.setAvatar(person, file, onProgress)
+      if (slot === 'banner') return personApi.setBanner(person, file, onProgress)
+      return personApi.setFavicon(person, file, onProgress)
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: informationKey(person) }),
   })

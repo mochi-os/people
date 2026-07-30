@@ -52,6 +52,10 @@ msgstr "{selectedCount, plural, one {# hautatuta} other {# hautatuta}}"
 msgid "{selectedCount, plural, one {Bulk actions for # selected {entityName}} other {Bulk actions for # selected {manyName}}}"
 msgstr "{selectedCount, plural, one {Hautatutako # {entityName}(r)en ekintza masiboak} other {Hautatutako # {manyName}(r)en ekintza masiboak}}"
 
+#: ../../../lib/web/src/components/ui/upload-progress.tsx:52
+msgid "{sentLabel} of {totalLabel}"
+msgstr "{sentLabel} / {totalLabel}"
+
 #: src/features/profile/index.tsx:598
 msgid "{slotLabel} updated"
 msgstr "{slotLabel} eguneratu da"
@@ -400,7 +404,7 @@ msgstr "Gonbidapena ezeztatzen..."
 msgid "Cancelling invitations..."
 msgstr "Gonbidapenak ezeztatzen..."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:143
+#: ../../../lib/web/src/components/notification-category-button.tsx:146
 msgid "Category for this notification"
 msgstr "Jakinarazpen honentzako kategoria"
 
@@ -408,8 +412,8 @@ msgstr "Jakinarazpen honentzako kategoria"
 msgid "Change banner"
 msgstr "Aldatu iragarki-banda"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:124
-#: ../../../lib/web/src/components/notification-category-button.tsx:135
+#: ../../../lib/web/src/components/notification-category-button.tsx:127
+#: ../../../lib/web/src/components/notification-category-button.tsx:138
 msgid "Change notification category"
 msgstr "Aldatu jakinarazpen kategoria"
 
@@ -734,6 +738,14 @@ msgstr "Direktorioa"
 msgid "Directory listing"
 msgstr "Direktorioaren zerrenda"
 
+#: ../../../lib/web/src/components/comment-composer.tsx:300
+msgid "Discard"
+msgstr "Baztertu"
+
+#: ../../../lib/web/src/components/comment-composer.tsx:298
+msgid "Discard draft?"
+msgstr "Zirriborroa baztertu?"
+
 #: ../../../lib/web/src/lib/chat-ui.ts:25
 #: ../../../lib/web/src/lib/chat-ui.ts:29
 msgid "Disconnected"
@@ -926,7 +938,7 @@ msgstr "Ezin izan da profila gorde"
 msgid "Failed to send verification code"
 msgstr "Ezin izan da egiaztapen-kodea bidali"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:111
+#: ../../../lib/web/src/components/notification-category-button.tsx:114
 msgid "Failed to update category"
 msgstr "Ezin izan da kategoria eguneratu"
 
@@ -1413,7 +1425,7 @@ msgstr "Ez da emaitzarik aurkitu."
 msgid "No time zone found."
 msgstr "Ez da ordu-zonarik aurkitu."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:147
+#: ../../../lib/web/src/components/notification-category-button.tsx:150
 msgid "No topic record yet — try again after the next notification."
 msgstr "Oraindik gairik ez — saiatu berriro hurrengo jakinarazpenaren ondoren."
 
@@ -1539,6 +1551,7 @@ msgstr "Pertsonalizatu zure profila eta aplikazioa besteentzat nola ikusten dire
 msgid "Pick a date"
 msgstr "Hautatu data bat"
 
+#: ../../../lib/web/src/components/comment-composer.tsx:95
 #: ../../../lib/web/src/features/errors/general-error.tsx:54
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:304
 msgid "Please check your internet connection and try again."
@@ -1575,6 +1588,10 @@ msgstr "Aurreko irudia"
 #: src/features/profile/index.tsx:482
 msgid "Privacy"
 msgstr "Pribatutasuna"
+
+#: ../../../lib/web/src/components/ui/upload-progress.tsx:50
+msgid "Processing…"
+msgstr "Prozesatzen…"
 
 #: ../../../lib/web/src/components/layout/nav-user.tsx:137
 #: ../../../lib/web/src/components/profile-dropdown.tsx:114
@@ -1655,6 +1672,7 @@ msgstr "Erlatiboa (5m, 3o, 2e)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Erlatiboa 24 ordu barruan, bestela absolutua"
 
+#: ../../../lib/web/src/components/comment-composer.tsx:232
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 #: ../../../lib/web/src/features/accounts/account-manager.tsx:180
 msgid "Remove"
@@ -1738,6 +1756,10 @@ msgstr "Berrezarri {title}"
 #: ../../../lib/web/src/components/config-drawer.tsx:85
 msgid "Reset all settings to default values"
 msgstr "Berrezarri ezarpen guztiak balio lehenetsietara"
+
+#: ../../../lib/web/src/components/comment-composer.tsx:249
+msgid "Retry"
+msgstr "Saiatu berriro"
 
 #: ../../../lib/web/src/components/config-drawer.tsx:362
 msgid "Right to Left"
@@ -2198,7 +2220,7 @@ msgstr "Ezin izan da urruneko zerbitzarira konektatu"
 msgid "Unable to redirect to login. Please try again."
 msgstr "Ezin da saio-hasierara birbideratu. Saiatu berriro."
 
-#: ../../../lib/web/src/components/notification-category-button.tsx:155
+#: ../../../lib/web/src/components/notification-category-button.tsx:158
 msgid "Unassigned"
 msgstr "Esleitu gabe"
 
@@ -2235,6 +2257,10 @@ msgstr "Igo"
 #: src/features/profile/index.tsx:290
 msgid "Upload avatar"
 msgstr "Igo abatarra"
+
+#: ../../../lib/web/src/components/ui/upload-progress.tsx:34
+msgid "Upload progress"
+msgstr "Igoeraren aurrerapena"
 
 #: src/features/profile/index.tsx:257
 #: src/features/profile/index.tsx:468
@@ -2345,3 +2371,15 @@ msgstr "Dena irakurri duzu!"
 #: ../../../lib/web/src/components/restore-banner.tsx:91
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Zure kontua {source}-etik hona mugitu da. Han ezabatu arte, mezuak eta jakinarazpenak bi zerbitzarietara irits daitezke, zure edukiaren zati bat zerbitzari zaharretik ematen jarraitzen du, eta jarraitzaileek minutu batzuk behar izan ditzakete zu hemen aurkitzeko."
+
+#: ../../../lib/web/src/components/comment-composer.tsx:291
+msgid "Your attachments will be lost."
+msgstr "Zure eranskinak galduko dira."
+
+#: ../../../lib/web/src/components/comment-composer.tsx:289
+msgid "Your text and attachments will be lost."
+msgstr "Zure testua eta eranskinak galduko dira."
+
+#: ../../../lib/web/src/components/comment-composer.tsx:292
+msgid "Your text will be lost."
+msgstr "Zure testua galduko da."

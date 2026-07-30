@@ -4,6 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 import { requestHelpers } from '@mochi/web'
+import type { AxiosProgressEvent } from 'axios'
 import endpoints from '@/api/endpoints'
 import type {
   MutationSuccess,
@@ -47,21 +48,34 @@ const setPrivacy = (person: string, privacy: string): Promise<MutationSuccess> =
 
 const uploadImage = (
   url: string,
-  file: File
+  file: File,
+  onProgress?: (event: AxiosProgressEvent) => void
 ): Promise<MutationSuccess> => {
   const form = new FormData()
   form.append('file', file)
-  return requestHelpers.post<MutationSuccess>(url, form, suppressMutationErrorToast)
+  return requestHelpers.post<MutationSuccess>(url, form, {
+    ...suppressMutationErrorToast,
+    onUploadProgress: onProgress,
+  })
 }
 
-const setAvatar = (person: string, file: File) =>
-  uploadImage(endpoints.person.avatarSet(person), file)
+const setAvatar = (
+  person: string,
+  file: File,
+  onProgress?: (event: AxiosProgressEvent) => void
+) => uploadImage(endpoints.person.avatarSet(person), file, onProgress)
 
-const setBanner = (person: string, file: File) =>
-  uploadImage(endpoints.person.bannerSet(person), file)
+const setBanner = (
+  person: string,
+  file: File,
+  onProgress?: (event: AxiosProgressEvent) => void
+) => uploadImage(endpoints.person.bannerSet(person), file, onProgress)
 
-const setFavicon = (person: string, file: File) =>
-  uploadImage(endpoints.person.faviconSet(person), file)
+const setFavicon = (
+  person: string,
+  file: File,
+  onProgress?: (event: AxiosProgressEvent) => void
+) => uploadImage(endpoints.person.faviconSet(person), file, onProgress)
 
 export const personApi = {
   getInformation,

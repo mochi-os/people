@@ -25,14 +25,17 @@ import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
+  UploadProgress,
+  type Upload,
   getErrorMessage,
   shellClipboardWrite,
   toast,
   toastAction,
   useFormat,
   usePageTitle,
+  useUploadProgress,
 } from '@mochi/web'
-import { Check, Copy, Eye, Image as ImageIcon, Loader2, Pencil, Save, Upload, X } from 'lucide-react'
+import { Check, Copy, Eye, Image as ImageIcon, Loader2, Pencil, Save, Upload as UploadIcon, X } from 'lucide-react'
 import { ProfileView } from './profile-view'
 import {
   useMyIdentity,
@@ -245,17 +248,23 @@ return (
         )}
         <div className="absolute top-3 right-3">
           <SlotUploader person={person} slot="banner">
-            {(open, pending) => (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={open}
-                disabled={pending}
-                className="shadow-md"
-              >
-                <Upload className="size-3.5" />
-                {pending ? t`Uploading...` : t`Change banner`}
-              </Button>
+            {(open, pending, progress) => (
+              <>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={open}
+                  disabled={pending}
+                  className="shadow-md"
+                >
+                  <UploadIcon className="size-3.5" />
+                  {pending ? t`Uploading...` : t`Change banner`}
+                </Button>
+                <UploadProgress
+                  progress={progress}
+                  className="bg-card mt-2 rounded-md px-2 py-1.5 shadow-md"
+                />
+              </>
             )}
           </SlotUploader>
         </div>
@@ -284,7 +293,7 @@ return (
                       aria-label={t`Upload avatar`}
                       className="border-border bg-muted text-muted-foreground hover:bg-hover hover:text-foreground focus-visible:ring-ring absolute bottom-0 right-0 flex size-6 items-center justify-center rounded-full border shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:opacity-50"
                     >
-                      <Upload className="size-3" />
+                      <UploadIcon className="size-3" />
                     </button>
                   </TooltipTrigger>
                   <TooltipContent>{t`Upload avatar`}</TooltipContent>
@@ -462,11 +471,14 @@ return (
                   )}
                 </div>
                 <SlotUploader person={person} slot="favicon">
-                  {(open, pending) => (
-                    <Button variant="outline" size="sm" onClick={open} disabled={pending}>
-                      <Upload className="size-3.5" />
-                      {pending ? t`Uploading...` : t`Upload`}
-                    </Button>
+                  {(open, pending, progress) => (
+                    <>
+                      <Button variant="outline" size="sm" onClick={open} disabled={pending}>
+                        <UploadIcon className="size-3.5" />
+                        {pending ? t`Uploading...` : t`Upload`}
+                      </Button>
+                      <UploadProgress progress={progress} className="flex-1" />
+                    </>
                   )}
                 </SlotUploader>
               </div>
@@ -563,11 +575,12 @@ function SlotUploader({
 }: {
   person: string
   slot: 'avatar' | 'banner' | 'favicon'
-  children: (open: () => void, pending: boolean) => React.ReactNode
+  children: (open: () => void, pending: boolean, progress: Upload | null) => React.ReactNode
 }) {
   const { t } = useLingui()
   const inputRef = useRef<HTMLInputElement>(null)
   const mutation = useUploadImageMutation(person, slot)
+  const { progress, upload } = useUploadProgress()
   const [resizing, setResizing] = useState(false)
 
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -579,12 +592,12 @@ function SlotUploader({
       return
     }
     setResizing(true)
-    let upload: File
+    let resized: File
     try {
       const opts = SLOT_RESIZE[slot]
       const blob = await resizeImage(file, opts)
       const ext = opts.mime === 'image/png' ? 'png' : opts.mime === 'image/webp' ? 'webp' : 'jpg'
-      upload = new File([blob], `${slot}.${ext}`, { type: blob.type })
+      resized = new File([blob], `${slot}.${ext}`, { type: blob.type })
     } catch (err) {
       setResizing(false)
       toast.error(getErrorMessage(err, t`Could not process ${slot} image`))
@@ -593,11 +606,14 @@ function SlotUploader({
     setResizing(false)
     const slotLabel = slot.charAt(0).toUpperCase() + slot.slice(1)
     try {
-      await toastAction(mutation.mutateAsync(upload), {
-        loading: t`Uploading...`,
-        success: t`${slotLabel} updated`,
-        error: (err) => getErrorMessage(err, t`Failed to upload ${slot}`),
-      })
+      await toastAction(
+        upload((onProgress) => mutation.mutateAsync({ file: resized, onProgress })),
+        {
+          loading: t`Uploading...`,
+          success: t`${slotLabel} updated`,
+          error: (err) => getErrorMessage(err, t`Failed to upload ${slot}`),
+        }
+      )
     } catch {
       // toastAction already showed error
     }
@@ -612,7 +628,7 @@ function SlotUploader({
         className="hidden"
         onChange={handleChange}
       />
-      {children(() => inputRef.current?.click(), resizing || mutation.isPending)}
+      {children(() => inputRef.current?.click(), resizing || mutation.isPending, progress)}
     </>
   )
 }

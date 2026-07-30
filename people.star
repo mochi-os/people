@@ -766,15 +766,19 @@ _IMAGE_TYPES = (
 )
 
 def is_person_owner(a, person_id):
+	# a.owner is core's answer for the routed entity, computed against the
+	# authenticated caller. person_id is the same route segment core resolved to
+	# a.entity, so there is nothing to compare - and nothing to get wrong: the
+	# id and fingerprint forms both reach here, and comparing a.entity["id"]
+	# against person_id would reject every fingerprint-addressed request.
+	#
+	# The class check stays because the route resolves an entity by id without
+	# requiring it to be a person.
 	if not a.user or not a.user.identity:
 		return False
-	owned = mochi.entity.get(person_id)
-	if not owned:
+	if a.entity == None or a.entity["class"] != "person":
 		return False
-	for e in owned:
-		if e.get("class") == "person":
-			return True
-	return False
+	return a.owner
 
 def slot_object(person_id, slot):
 	return person_id + "/" + slot

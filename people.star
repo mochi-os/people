@@ -867,9 +867,25 @@ def stream_person_asset(a, person_id, asset):
 		return None
 	header = s.read()
 	if not header or header.get("status") != "200":
+		# The status is the far end's claim, exactly like the error text below, so
+		# it gets the same treatment. Adopting it raw was reachable by anyone who
+		# can name a person this server will dial: int() aborts the whole action
+		# as a 500 on a non-decimal string, and int() on a non-string aborts it
+		# too, while a value outside 100-999 panics net/http inside
+		# a.error.label - gin recovers that, so it surfaces as a 500 and a stack
+		# trace rather than a crash.
+		#
+		# Only a 4xx or 5xx is adopted. We are in this branch because the reply
+		# was not a 200, so a peer claiming 2xx or 3xx is malformed by
+		# definition, and passing one on is worse than saying not found: a 204
+		# answers an image request with nothing, and a 301 from a route that
+		# sets no Location is simply broken.
 		code = 404
-		if header and header.get("status"):
-			code = int(header["status"])
+		remote = header.get("status") if header else None
+		if type(remote) == "string" and decimal(remote):
+			status = int(remote)
+			if status >= 400 and status <= 599:
+				code = status
 		# Word the failure from what we asked for, not from what the far end
 		# said. The error field in the response is a diagnostic written by
 		# whoever hosts this person, so it is English prose at best and a remote

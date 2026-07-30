@@ -20,6 +20,27 @@ def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event_id=event_id)
 
 def database_upgrade(version):
+	if version == 5:
+		# Person images move out of core's attachment store into plain file
+		# storage at "images/<person>/<slot>", with a new images table holding
+		# content type and size. Relocate existing slot attachments (object
+		# "<person>/<slot>") across the transition bridge; abort without
+		# advancing if the bridge is gone, so the step retries later.
+		mochi.db.execute("create table if not exists images ( person text not null, slot text not null, content_type text not null default '', size integer not null default 0, updated integer not null default 0, primary key ( person, slot ) )")
+		rows = mochi.attachment.export()
+		if rows == None:
+			mochi.db.abort("attachment bridge unavailable")
+			return
+		for att in rows:
+			parts = att.get("object", "").split("/")
+			if len(parts) != 2 or parts[1] not in ("avatar", "banner", "favicon"):
+				continue
+			person, slot = parts[0], parts[1]
+			old = mochi.attachment.path(att["id"])
+			if old:
+				mochi.file.move(old, "images/" + person + "/" + slot)
+				mochi.db.execute("insert or replace into images ( person, slot, content_type, size, updated ) values ( ?, ?, ?, ?, ? )",
+					person, slot, att.get("content_type", ""), att.get("size", 0), att.get("created", 0) or mochi.time.now())
 	if version == 4:
 		# Four indexes that no query can use. friends is keyed ( identity, id )
 		# and every lookup gives both, so an index on id alone is never chosen;
@@ -50,6 +71,11 @@ def database_create():
 	mochi.db.execute("create table if not exists sent ( identity text not null, created integer not null )")
 	mochi.db.execute("create index if not exists sent_identity_created on sent( identity, created )")
 	mochi.db.execute("create table if not exists profiles ( person text not null primary key, profile text not null default '', accent text not null default '', updated integer not null default 0 )")
+
+	# Per-slot image metadata (avatar/banner/favicon). The bytes live in file
+	# storage at "images/<person>/<slot>"; this holds the content type and size.
+	# One row per person and slot, so an upload replaces rather than accumulates.
+	mochi.db.execute("create table if not exists images ( person text not null, slot text not null, content_type text not null default '', size integer not null default 0, updated integer not null default 0, primary key ( person, slot ) )")
 
 def resolve_identity(id):
 	entry = mochi.directory.get(id)
@@ -739,11 +765,17 @@ def is_person_owner(a, person_id):
 def slot_object(person_id, slot):
 	return person_id + "/" + slot
 
+def slot_path(person_id, slot):
+	return "images/" + person_id + "/" + slot
+
+# slot_attachment returns a person's slot image as {id, content_type, size}, or
+# None. `id` is the update timestamp - a non-empty presence-and-cache-bust
+# marker, since the image URL is built from the person id, not this value.
 def slot_attachment(person_id, slot):
-	atts = mochi.attachment.list(slot_object(person_id, slot))
-	if atts and len(atts) > 0:
-		return atts[0]
-	return None
+	row = mochi.db.row("select content_type, size, updated from images where person=? and slot=?", person_id, slot)
+	if not row:
+		return None
+	return {"id": str(row["updated"]), "content_type": row.get("content_type", ""), "size": row.get("size", 0)}
 
 def get_profile_row(person_id):
 	row = mochi.db.row("select * from profiles where person=?", person_id)
@@ -935,17 +967,17 @@ def set_image(a, slot):
 	if file.get("content_type", "") not in _IMAGE_TYPES:
 		a.error.label(400, "errors.asset_must_be_image", slot=slot)
 		return
-	object = slot_object(person_id, slot)
-	saved = mochi.attachment.save(object, "file", [], [])
-	if not saved or len(saved) == 0:
+	# One image per slot: stream the bytes to file storage at a fixed per-slot
+	# path (so an upload overwrites the previous one, no accumulation) and upsert
+	# its metadata. No attachment machinery - a slot holds exactly one file.
+	size = a.upload("file", slot_path(person_id, slot))
+	if not size:
 		a.error.label(400, "errors.no_file_uploaded")
 		return
-	att = saved[0]
-	# Validation passed — remove any previous attachment for this slot
-	for old in mochi.attachment.list(object):
-		if old["id"] != att["id"]:
-			mochi.attachment.delete(old["id"])
-	return {"data": {"id": att["id"]}}
+	now = mochi.time.now()
+	mochi.db.execute("insert or replace into images ( person, slot, content_type, size, updated ) values ( ?, ?, ?, ?, ? )",
+		person_id, slot, file.get("content_type", ""), size, now)
+	return {"data": {"id": str(now)}}
 
 def action_avatar_set(a):
 	return set_image(a, "avatar")
@@ -1078,18 +1110,16 @@ def serve_image_event(e, slot, fallback_slot=""):
 	if not get_person_entity(person_id):
 		e.stream.write({"status": "404", "error": "Person not found"})
 		return
+	resolved = slot
 	att = slot_attachment(person_id, slot)
 	if not att and fallback_slot:
 		att = slot_attachment(person_id, fallback_slot)
+		resolved = fallback_slot
 	if not att:
 		e.stream.write({"status": "404", "error": slot + " not set"})
 		return
-	path = mochi.attachment.path(att["id"])
-	if not path:
-		e.stream.write({"status": "404", "error": slot + " unavailable"})
-		return
 	e.stream.write({"status": "200", "content_type": att.get("content_type", "application/octet-stream"), "size": att.get("size", 0)})
-	e.write.file(path)
+	e.write.file(slot_path(person_id, resolved))
 
 def event_avatar(e):
 	serve_image_event(e, "avatar")

@@ -5,7 +5,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 {
-	"version": "2.58",
+	"version": "2.59",
 	"label": "app.name",
 	"classes": ["person"],
 	"paths": ["people"],
@@ -14,8 +14,10 @@
 	"architecture": {"engine": "starlark", "version": 4},
 	"execute": ["people.star"],
 
+	"require": {"version": {"minimum": "0.4.227"}},
+
 	"database": {
-		"schema": 4,
+		"schema": 5,
 		"file": "people.db",
 		"create": {"function": "database_create"},
 		"upgrade": {"function": "database_upgrade"},

@@ -12,10 +12,6 @@ const endpoints = {
     ignore: '-/friends/ignore',
     delete: '-/friends/delete',
   },
-  welcome: {
-    get: '-/welcome',
-    seen: '-/welcome/seen',
-  },
   preferences: {
     get: '-/preferences/get',
     set: '-/preferences/set',

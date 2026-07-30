@@ -20,6 +20,16 @@ def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event_id=event_id)
 
 def database_upgrade(version):
+	if version == 4:
+		# Four indexes that no query can use. friends is keyed ( identity, id )
+		# and every lookup gives both, so an index on id alone is never chosen;
+		# nothing filters or orders by friends.name. invites is keyed
+		# ( identity, id, direction ), so invites_identity_id just repeats that
+		# key's own prefix, and an index on direction alone leads with a column
+		# of two values and cannot serve the identity-first queries that read it.
+		# They cost a write on every insert and buy nothing.
+		for index in ["friends_id", "friends_name", "invites_identity_id", "invites_direction"]:
+			mochi.db.execute("drop index if exists " + index)
 	if version == 3:
 		# Log of invites sent, for the rate limit in action_create. Kept apart
 		# from the invites table because that one is the live relationship state:
@@ -36,11 +46,7 @@ def database_upgrade(version):
 
 def database_create():
 	mochi.db.execute("create table if not exists friends ( identity text not null, id text not null, name text not null default '', class text not null default 'person', created integer not null default 0, primary key ( identity, id ) )")
-	mochi.db.execute("create index if not exists friends_id on friends( id )")
-	mochi.db.execute("create index if not exists friends_name on friends( name )")
 	mochi.db.execute("create table if not exists invites ( identity text not null, id text not null, direction text not null, name text not null default '', updated integer not null default 0, primary key ( identity, id, direction ) )")
-	mochi.db.execute("create index if not exists invites_identity_id on invites( identity, id )")
-	mochi.db.execute("create index if not exists invites_direction on invites( direction )")
 	mochi.db.execute("create table if not exists sent ( identity text not null, created integer not null )")
 	mochi.db.execute("create index if not exists sent_identity_created on sent( identity, created )")
 	mochi.db.execute("create table if not exists profiles ( person text not null primary key, profile text not null default '', accent text not null default '', updated integer not null default 0 )")
@@ -749,18 +755,6 @@ def action_group_member_remove(a):
 		return
 
 	mochi.group.remove(group, member)
-	return {"data": {}}
-
-# Welcome page data - returns whether user has seen welcome and friends count
-def action_welcome(a):
-	identity = a.user.identity.id
-	seen = a.user.preference.get("people_welcome_seen") == "true"
-	count = mochi.db.row("select count(*) as count from friends where identity=?", identity)
-	return {"data": {"seen": seen, "count": count["count"] if count else 0}}
-
-# Mark welcome as seen
-def action_welcome_seen(a):
-	a.user.preference.set("people_welcome_seen", "true")
 	return {"data": {}}
 
 # Preferences: incoming friend invite policy

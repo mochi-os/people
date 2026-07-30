@@ -9,7 +9,7 @@
 
 set -e
 
-CURL="/home/alistair/mochi/test/claude/curl.sh"
+CURL="/home/alistair/mochi/claude/scripts/curl.sh"
 
 PASSED=0
 FAILED=0
@@ -36,22 +36,22 @@ echo ""
 echo "--- Setup: Get Identities and Clean State ---"
 
 # Get identity IDs from current friends list
-RESULT1=$("$CURL" -i 1 -a admin -X GET "/people/friends")
+RESULT1=$("$CURL" -i 1 -a admin -X GET "/people/-/friends")
 IDENTITY1=$(echo "$RESULT1" | python3 -c "import sys, json; d=json.load(sys.stdin)['data']; print(d['friends'][0]['identity'] if d['friends'] else '')" 2>/dev/null)
 
-RESULT2=$("$CURL" -i 2 -a admin -X GET "/people/friends")
+RESULT2=$("$CURL" -i 2 -a admin -X GET "/people/-/friends")
 IDENTITY2=$(echo "$RESULT2" | python3 -c "import sys, json; d=json.load(sys.stdin)['data']; print(d['friends'][0]['identity'] if d['friends'] else '')" 2>/dev/null)
 
 # If identities not found from friends, search directory
 if [ -z "$IDENTITY1" ]; then
     # Get identity from directory search on instance 2 looking for instance 1
-    RESULT=$("$CURL" -i 2 -a admin -X GET "/people/friends/search?search=test")
+    RESULT=$("$CURL" -i 2 -a admin -X GET "/people/-/friends/search?search=test")
     IDENTITY1=$(echo "$RESULT" | python3 -c "import sys, json; results=json.load(sys.stdin)['data']['results']; print(results[0]['id'] if results else '')" 2>/dev/null)
 fi
 
 if [ -z "$IDENTITY2" ]; then
     # Get identity from directory search on instance 1
-    RESULT=$("$CURL" -i 1 -a admin -X GET "/people/friends/search?search=User")
+    RESULT=$("$CURL" -i 1 -a admin -X GET "/people/-/friends/search?search=User")
     IDENTITY2=$(echo "$RESULT" | python3 -c "import sys, json; results=json.load(sys.stdin)['data']['results']; print([r for r in results if 'User 21' in r['name']][0]['id'] if results else '')" 2>/dev/null)
 fi
 
@@ -67,21 +67,21 @@ echo "Identity 2: $IDENTITY2"
 
 # Clean up any existing friendship
 "$CURL" -i 1 -a admin -X POST -H "Content-Type: application/json" \
-    -d "{\"id\":\"$IDENTITY2\"}" "/people/friends/delete" >/dev/null 2>&1 || true
+    -d "{\"id\":\"$IDENTITY2\"}" "/people/-/friends/delete" >/dev/null 2>&1 || true
 "$CURL" -i 2 -a admin -X POST -H "Content-Type: application/json" \
-    -d "{\"id\":\"$IDENTITY1\"}" "/people/friends/delete" >/dev/null 2>&1 || true
+    -d "{\"id\":\"$IDENTITY1\"}" "/people/-/friends/delete" >/dev/null 2>&1 || true
 
 sleep 1
 
 # Verify no friendship exists
-RESULT=$("$CURL" -i 1 -a admin -X GET "/people/friends")
+RESULT=$("$CURL" -i 1 -a admin -X GET "/people/-/friends")
 if ! echo "$RESULT" | grep -q "\"$IDENTITY2\""; then
     pass "Cleaned up existing friendship on instance 1"
 else
     fail "Clean up friendship on instance 1" "$RESULT"
 fi
 
-RESULT=$("$CURL" -i 2 -a admin -X GET "/people/friends")
+RESULT=$("$CURL" -i 2 -a admin -X GET "/people/-/friends")
 if ! echo "$RESULT" | grep -q "\"$IDENTITY1\""; then
     pass "Cleaned up existing friendship on instance 2"
 else
@@ -99,7 +99,7 @@ echo "--- Friend Invite Test ---"
 NAME2="User 21"
 
 RESULT=$("$CURL" -i 1 -a admin -X POST -H "Content-Type: application/json" \
-    -d "{\"id\":\"$IDENTITY2\",\"name\":\"$NAME2\"}" "/people/friends/create")
+    -d "{\"id\":\"$IDENTITY2\",\"name\":\"$NAME2\"}" "/people/-/friends/create")
 if echo "$RESULT" | grep -q '"data":{}'; then
     pass "Send friend invite from instance 1 to instance 2"
 else
@@ -109,7 +109,7 @@ fi
 sleep 2
 
 # Check that instance 1 has a sent invite
-RESULT=$("$CURL" -i 1 -a admin -X GET "/people/friends")
+RESULT=$("$CURL" -i 1 -a admin -X GET "/people/-/friends")
 if echo "$RESULT" | grep -q '"sent":\[{'; then
     pass "Instance 1 has sent invite"
 else
@@ -117,7 +117,7 @@ else
 fi
 
 # Check that instance 2 received the invite
-RESULT=$("$CURL" -i 2 -a admin -X GET "/people/friends")
+RESULT=$("$CURL" -i 2 -a admin -X GET "/people/-/friends")
 if echo "$RESULT" | grep -q '"received":\[{'; then
     pass "Instance 2 received invite"
 else
@@ -132,7 +132,7 @@ echo ""
 echo "--- Accept Friend Invite Test ---"
 
 RESULT=$("$CURL" -i 2 -a admin -X POST -H "Content-Type: application/json" \
-    -d "{\"id\":\"$IDENTITY1\"}" "/people/friends/accept")
+    -d "{\"id\":\"$IDENTITY1\"}" "/people/-/friends/accept")
 if echo "$RESULT" | grep -q '"data":{}'; then
     pass "Instance 2 accepts friend invite"
 else
@@ -142,14 +142,14 @@ fi
 sleep 2
 
 # Verify both are now friends
-RESULT=$("$CURL" -i 1 -a admin -X GET "/people/friends")
+RESULT=$("$CURL" -i 1 -a admin -X GET "/people/-/friends")
 if echo "$RESULT" | grep -q "\"id\":\"$IDENTITY2\""; then
     pass "Instance 1 now has instance 2 as friend"
 else
     fail "Instance 1 has friend" "$RESULT"
 fi
 
-RESULT=$("$CURL" -i 2 -a admin -X GET "/people/friends")
+RESULT=$("$CURL" -i 2 -a admin -X GET "/people/-/friends")
 if echo "$RESULT" | grep -q "\"id\":\"$IDENTITY1\""; then
     pass "Instance 2 now has instance 1 as friend"
 else
@@ -157,14 +157,14 @@ else
 fi
 
 # Verify no pending invites on either side
-RESULT=$("$CURL" -i 1 -a admin -X GET "/people/friends")
+RESULT=$("$CURL" -i 1 -a admin -X GET "/people/-/friends")
 if echo "$RESULT" | grep -q '"sent":\[\]'; then
     pass "Instance 1 has no pending sent invites"
 else
     fail "Instance 1 sent invites cleared" "$RESULT"
 fi
 
-RESULT=$("$CURL" -i 2 -a admin -X GET "/people/friends")
+RESULT=$("$CURL" -i 2 -a admin -X GET "/people/-/friends")
 if echo "$RESULT" | grep -q '"received":\[\]'; then
     pass "Instance 2 has no pending received invites"
 else
@@ -179,7 +179,7 @@ echo ""
 echo "--- Unfriend Test ---"
 
 RESULT=$("$CURL" -i 1 -a admin -X POST -H "Content-Type: application/json" \
-    -d "{\"id\":\"$IDENTITY2\"}" "/people/friends/delete")
+    -d "{\"id\":\"$IDENTITY2\"}" "/people/-/friends/delete")
 if echo "$RESULT" | grep -q '"data":{}'; then
     pass "Instance 1 unfriends instance 2"
 else
@@ -187,7 +187,7 @@ else
 fi
 
 # Note: Unfriend is local-only, doesn't send P2P event to remove from other side
-RESULT=$("$CURL" -i 1 -a admin -X GET "/people/friends")
+RESULT=$("$CURL" -i 1 -a admin -X GET "/people/-/friends")
 if ! echo "$RESULT" | grep -q "\"id\":\"$IDENTITY2\""; then
     pass "Instance 1 no longer has instance 2 as friend"
 else
@@ -196,7 +196,7 @@ fi
 
 # Clean up instance 2 as well
 "$CURL" -i 2 -a admin -X POST -H "Content-Type: application/json" \
-    -d "{\"id\":\"$IDENTITY1\"}" "/people/friends/delete" >/dev/null 2>&1 || true
+    -d "{\"id\":\"$IDENTITY1\"}" "/people/-/friends/delete" >/dev/null 2>&1 || true
 
 sleep 1
 
@@ -209,7 +209,7 @@ echo "--- Cancel Sent Invite Test ---"
 
 # Send invite
 RESULT=$("$CURL" -i 1 -a admin -X POST -H "Content-Type: application/json" \
-    -d "{\"id\":\"$IDENTITY2\",\"name\":\"$NAME2\"}" "/people/friends/create")
+    -d "{\"id\":\"$IDENTITY2\",\"name\":\"$NAME2\"}" "/people/-/friends/create")
 if echo "$RESULT" | grep -q '"data":{}'; then
     pass "Send friend invite for cancel test"
 else
@@ -219,7 +219,7 @@ fi
 sleep 2
 
 # Verify instance 2 received it
-RESULT=$("$CURL" -i 2 -a admin -X GET "/people/friends")
+RESULT=$("$CURL" -i 2 -a admin -X GET "/people/-/friends")
 if echo "$RESULT" | grep -q '"received":\[{'; then
     pass "Instance 2 received invite (for cancel test)"
 else
@@ -228,7 +228,7 @@ fi
 
 # Cancel the invite from instance 1
 RESULT=$("$CURL" -i 1 -a admin -X POST -H "Content-Type: application/json" \
-    -d "{\"id\":\"$IDENTITY2\"}" "/people/friends/delete")
+    -d "{\"id\":\"$IDENTITY2\"}" "/people/-/friends/delete")
 if echo "$RESULT" | grep -q '"data":{}'; then
     pass "Instance 1 cancels sent invite"
 else
@@ -238,14 +238,14 @@ fi
 sleep 2
 
 # Verify invite removed from both sides
-RESULT=$("$CURL" -i 1 -a admin -X GET "/people/friends")
+RESULT=$("$CURL" -i 1 -a admin -X GET "/people/-/friends")
 if echo "$RESULT" | grep -q '"sent":\[\]'; then
     pass "Instance 1 sent invites cleared after cancel"
 else
     fail "Instance 1 sent invites after cancel" "$RESULT"
 fi
 
-RESULT=$("$CURL" -i 2 -a admin -X GET "/people/friends")
+RESULT=$("$CURL" -i 2 -a admin -X GET "/people/-/friends")
 if echo "$RESULT" | grep -q '"received":\[\]'; then
     pass "Instance 2 received invite removed after cancel"
 else
@@ -261,7 +261,7 @@ echo "--- Ignore Invite Test ---"
 
 # Send invite
 RESULT=$("$CURL" -i 1 -a admin -X POST -H "Content-Type: application/json" \
-    -d "{\"id\":\"$IDENTITY2\",\"name\":\"$NAME2\"}" "/people/friends/create")
+    -d "{\"id\":\"$IDENTITY2\",\"name\":\"$NAME2\"}" "/people/-/friends/create")
 if echo "$RESULT" | grep -q '"data":{}'; then
     pass "Send friend invite for ignore test"
 else
@@ -272,7 +272,7 @@ sleep 2
 
 # Instance 2 ignores the invite
 RESULT=$("$CURL" -i 2 -a admin -X POST -H "Content-Type: application/json" \
-    -d "{\"id\":\"$IDENTITY1\"}" "/people/friends/ignore")
+    -d "{\"id\":\"$IDENTITY1\"}" "/people/-/friends/ignore")
 if echo "$RESULT" | grep -q '"data":{}'; then
     pass "Instance 2 ignores invite"
 else
@@ -280,7 +280,7 @@ else
 fi
 
 # Verify invite removed from instance 2
-RESULT=$("$CURL" -i 2 -a admin -X GET "/people/friends")
+RESULT=$("$CURL" -i 2 -a admin -X GET "/people/-/friends")
 if echo "$RESULT" | grep -q '"received":\[\]'; then
     pass "Instance 2 received invite removed after ignore"
 else
@@ -290,7 +290,7 @@ fi
 # Note: Instance 1 still shows sent invite (ignore doesn't notify sender)
 # Clean up instance 1's sent invite
 "$CURL" -i 1 -a admin -X POST -H "Content-Type: application/json" \
-    -d "{\"id\":\"$IDENTITY2\"}" "/people/friends/delete" >/dev/null 2>&1 || true
+    -d "{\"id\":\"$IDENTITY2\"}" "/people/-/friends/delete" >/dev/null 2>&1 || true
 
 sleep 1
 
@@ -306,7 +306,7 @@ NAME1="test"
 
 # Instance 1 sends invite to instance 2
 RESULT=$("$CURL" -i 1 -a admin -X POST -H "Content-Type: application/json" \
-    -d "{\"id\":\"$IDENTITY2\",\"name\":\"$NAME2\"}" "/people/friends/create")
+    -d "{\"id\":\"$IDENTITY2\",\"name\":\"$NAME2\"}" "/people/-/friends/create")
 if echo "$RESULT" | grep -q '"data":{}'; then
     pass "Instance 1 sends mutual invite"
 else
@@ -317,7 +317,7 @@ sleep 1
 
 # Instance 2 also sends invite to instance 1 (should auto-accept)
 RESULT=$("$CURL" -i 2 -a admin -X POST -H "Content-Type: application/json" \
-    -d "{\"id\":\"$IDENTITY1\",\"name\":\"$NAME1\"}" "/people/friends/create")
+    -d "{\"id\":\"$IDENTITY1\",\"name\":\"$NAME1\"}" "/people/-/friends/create")
 if echo "$RESULT" | grep -q '"data":{}'; then
     pass "Instance 2 sends mutual invite (triggers auto-accept)"
 else
@@ -327,14 +327,14 @@ fi
 sleep 2
 
 # Verify both are now friends (auto-accepted)
-RESULT=$("$CURL" -i 1 -a admin -X GET "/people/friends")
+RESULT=$("$CURL" -i 1 -a admin -X GET "/people/-/friends")
 if echo "$RESULT" | grep -q "\"id\":\"$IDENTITY2\""; then
     pass "Instance 1 is friends after mutual invite"
 else
     fail "Instance 1 friends after mutual" "$RESULT"
 fi
 
-RESULT=$("$CURL" -i 2 -a admin -X GET "/people/friends")
+RESULT=$("$CURL" -i 2 -a admin -X GET "/people/-/friends")
 if echo "$RESULT" | grep -q "\"id\":\"$IDENTITY1\""; then
     pass "Instance 2 is friends after mutual invite"
 else

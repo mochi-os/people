@@ -198,20 +198,6 @@ const removeFriend = (friendId: string) =>
     )
   )
 
-export interface WelcomeResponse {
-  seen: boolean
-  count: number
-}
-
-const getWelcome = async (): Promise<WelcomeResponse> => {
-  return requestHelpers.get<WelcomeResponse>(endpoints.welcome.get)
-}
-
-const markWelcomeSeen = async (): Promise<MutationSuccessResponse> => {
-  await requestHelpers.post(endpoints.welcome.seen, {}, suppressMutationErrorToast)
-  return { success: true }
-}
-
 export type InvitePolicy = 'silent' | 'notify' | 'reject' | 'accept'
 
 export interface PreferencesResponse {
@@ -239,8 +225,6 @@ export const friendsApi = {
   acceptInvite: acceptFriendInvite,
   declineInvite: declineFriendInvite,
   remove: removeFriend,
-  getWelcome,
-  markWelcomeSeen,
   getPreferences,
   setPreferences,
 }

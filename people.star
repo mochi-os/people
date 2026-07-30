@@ -883,6 +883,24 @@ def stream_person_asset(a, person_id, asset):
 		return None
 	if "data" in header:
 		return {"data": header["data"]}
+	# Only the image slots stream bytes; information and style answer with data in
+	# the header and returned above. Anything else asking to be streamed is not a
+	# slot we have a size for, so there is nothing to bound it with.
+	cap = _SLOT_CAPS.get(asset)
+	if cap == None:
+		a.error.label(404, "errors.person_not_found")
+		return None
+	# The far end declares a length alongside the type. Checking it here turns an
+	# honestly-oversized asset into a clean error, because once a.write.stream
+	# starts copying, the status and headers are already sent and the response
+	# cannot be retracted - the caller would receive a truncated image under a 200.
+	# A peer that under-declares, or declares nothing, is still stopped by the
+	# maximum passed to a.write.stream below; this check is for the common case,
+	# that one being the cheaper and clearer failure.
+	declared = header.get("size", 0)
+	if type(declared) in ("int", "float") and declared > cap:
+		a.error.label(502, "errors.asset_too_large", slot=asset)
+		return None
 	a.header("Cache-Control", "private, max-age=300")
 	# The content type comes from whoever hosts the person, so for a remote
 	# profile it is a claim by another server rather than by us. These routes
@@ -893,7 +911,11 @@ def stream_person_asset(a, person_id, asset):
 	if content_type not in _IMAGE_TYPES:
 		content_type = "application/octet-stream"
 	a.header("Content-Type", content_type)
-	a.write.stream(s)
+	# The slot's own cap, not core's 1GB backstop: this is a profile image, and the
+	# size we accept on upload is the size we should relay. A peer that ignores it
+	# gets cut off mid-transfer rather than being allowed to stream indefinitely
+	# through a route any anonymous caller can trigger.
+	a.write.stream(s, maximum=cap)
 	return None
 
 def action_information(a):

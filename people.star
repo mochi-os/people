@@ -20,6 +20,13 @@ def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event_id=event_id)
 
 def database_upgrade(version):
+	if version == 3:
+		# Log of invites sent, for the rate limit in action_create. Kept apart
+		# from the invites table because that one is the live relationship state:
+		# cancelling an invite deletes its row, so counting those would let a
+		# sender reset their own budget by cancelling and re-sending.
+		mochi.db.execute("create table if not exists sent ( identity text not null, created integer not null )")
+		mochi.db.execute("create index if not exists sent_identity_created on sent( identity, created )")
 	if version == 2:
 		# Drop the pre-2026-07 broadcast tables left in the app data DB when
 		# broadcast state moved to the per-app system DB - inert, but stale
@@ -34,6 +41,8 @@ def database_create():
 	mochi.db.execute("create table if not exists invites ( identity text not null, id text not null, direction text not null, name text not null default '', updated integer not null default 0, primary key ( identity, id, direction ) )")
 	mochi.db.execute("create index if not exists invites_identity_id on invites( identity, id )")
 	mochi.db.execute("create index if not exists invites_direction on invites( direction )")
+	mochi.db.execute("create table if not exists sent ( identity text not null, created integer not null )")
+	mochi.db.execute("create index if not exists sent_identity_created on sent( identity, created )")
 	mochi.db.execute("create table if not exists profiles ( person text not null primary key, profile text not null default '', accent text not null default '', updated integer not null default 0 )")
 
 def resolve_identity(id):
@@ -51,6 +60,19 @@ def friend_add(identity, id, name):
 
 def friend_remove(identity, id):
 	mochi.db.execute("delete from friends where identity=? and id=?", identity, id)
+
+# How many invites one identity may send per window. A person adding everyone
+# they know in one sitting stays well under this; a script spraying strangers or
+# walking entity ids to see which are real does not.
+_INVITE_LIMIT = 30
+_INVITE_WINDOW = 3600
+
+def invites_recent(identity):
+	# Prunes as it counts, so the log stays proportional to the window rather
+	# than growing for the life of the account.
+	mochi.db.execute("delete from sent where created < ?", mochi.time.now() - _INVITE_WINDOW)
+	row = mochi.db.row("select count(*) as sent from sent where identity=?", identity)
+	return row["sent"] if row else 0
 
 def invite_set(identity, id, direction, name):
 	mochi.db.execute("insert into invites ( identity, id, direction, name, updated ) values ( ?, ?, ?, ?, ? ) on conflict ( identity, id, direction ) do update set name=excluded.name, updated=excluded.updated", identity, id, direction, name, mochi.time.now())
@@ -116,9 +138,19 @@ def action_create(a):
 		mochi.message.send({"from": identity, "to": id, "service": "friends", "event": "friend/accept"})
 		invite_remove(identity, id)
 	else:
+		# An invite is the only friends message that goes to an entity with no
+		# prior relationship, so it is the only one that can be aimed anywhere:
+		# accept, remove and cancel all require a row that already exists. That
+		# makes this the app's one outbound primitive for spraying strangers or
+		# probing which entity ids are real, and core's own send limit (1000 a
+		# second) is far too loose to bound either.
+		if invites_recent(identity) >= _INVITE_LIMIT:
+			a.error.label(429, "errors.too_many_invites")
+			return
 		# No existing invitation - send them an invitation (don't add as friend yet)
 		mochi.message.send({"from": identity, "to": id, "service": "friends", "event": "friend/invite"}, {"name": a.user.identity.name})
 		invite_set(identity, id, "to", name)
+		mochi.db.execute("insert into sent ( identity, created ) values ( ?, ? )", identity, mochi.time.now())
 
 	return {"data": {}}
 
@@ -543,6 +575,14 @@ def action_group_create(a):
 	if id and not uid(id):
 		a.error.label(400, "errors.invalid_group_id")
 		return
+	# mochi.group.create writes by primary key, so a supplied id naming a group
+	# that already exists replaced its name and description while reporting a
+	# creation. An import restoring groups under their original ids is the reason
+	# callers may supply one at all, and silently overwriting is not what an
+	# import wants either - it wants to know the group is already there.
+	if id and mochi.group.get(id):
+		a.error.label(409, "errors.group_exists")
+		return
 	if not id:
 		id = mochi.uid()
 
@@ -666,20 +706,23 @@ def action_group_member_add(a):
 		return
 
 	# Group "user" members are person entity IDs — that's what -/users/search
-	# returns and what the member list resolves for display. Older data may
-	# hold a numeric local uid, so accept either form.
+	# returns and what the member list resolves for display.
+	#
+	# A numeric local uid used to be accepted here as a legacy form, which
+	# exempted it from the check below because there is no entity behind such an
+	# id to find. That exemption was the one remaining way to store a member
+	# pointing at nothing, and no numeric member survives, so it is gone. Only
+	# the entity form is accepted now.
 	if type == "user":
-		if not decimal(member):
-			if not mochi.text.valid(member, "entity"):
-				a.error.label(400, "errors.invalid_user_id")
-				return
-			# Must be a PERSON, not merely something with a name. Any entity has
-			# a name - a project, a wiki, a forum - so an existence check alone
-			# let a container be stored as a user member and rendered as one.
-			# A numeric uid is exempt above: there is no entity behind it to find.
-			if not person_exists(member):
-				a.error.label(404, "errors.person_not_found")
-				return
+		if not mochi.text.valid(member, "entity"):
+			a.error.label(400, "errors.invalid_user_id")
+			return
+		# Must be a PERSON, not merely something with a name. Any entity has a
+		# name - a project, a wiki, a forum - so an existence check alone let a
+		# container be stored as a user member and rendered as one.
+		if not person_exists(member):
+			a.error.label(404, "errors.person_not_found")
+			return
 	elif not mochi.group.get(member):
 		# Nested groups are the caller's own, so an unknown one is a mistake
 		# rather than a remote lookup that might legitimately miss.
@@ -935,7 +978,16 @@ def stream_person_asset(a, person_id, asset):
 	return None
 
 def action_information(a):
-	return stream_person_asset(a, a.input("person"), "information")
+	person = a.input("person")
+	out = stream_person_asset(a, person, "information")
+	# privacy says whether this person is listed in the directory. It is the
+	# owner's own setting and their UI reads it back after changing it, so it
+	# stays in the payload for them - but this route is public, and a stranger
+	# reading someone's profile has no use for it. Rebuilt rather than removed
+	# in place: the dict comes from a decoded response and may be frozen.
+	if out and "data" in out and not is_person_owner(a, person):
+		return {"data": {key: value for key, value in out["data"].items() if key != "privacy"}}
+	return out
 
 def action_avatar(a):
 	return stream_person_asset(a, a.input("person"), "avatar")
@@ -954,20 +1006,28 @@ def set_image(a, slot):
 	if not is_person_owner(a, person_id):
 		a.error.label(403, "errors.not_the_owner")
 		return
+	# Judge the upload before it is stored, not after. These same two checks used
+	# to run on the saved attachment, so a favicon - capped at 64KB - was written
+	# to disk at whatever size arrived and only then measured and deleted.
+	# a.file() reads the multipart field without storing it, and its content_type
+	# is the same value the attachment would carry: core takes the client's
+	# Content-Type header for both, so checking here is equivalent, not weaker.
+	file = a.file("file")
+	if not file:
+		a.error.label(400, "errors.no_file_uploaded")
+		return
+	if file.get("size", 0) > _SLOT_CAPS[slot]:
+		a.error.label(400, "errors.asset_too_large", slot=slot)
+		return
+	if file.get("content_type", "") not in _IMAGE_TYPES:
+		a.error.label(400, "errors.asset_must_be_image", slot=slot)
+		return
 	object = slot_object(person_id, slot)
 	saved = mochi.attachment.save(object, "file", [], [])
 	if not saved or len(saved) == 0:
 		a.error.label(400, "errors.no_file_uploaded")
 		return
 	att = saved[0]
-	if att.get("size", 0) > _SLOT_CAPS[slot]:
-		mochi.attachment.delete(att["id"])
-		a.error.label(400, "errors.asset_too_large", slot=slot)
-		return
-	if att.get("content_type", "") not in _IMAGE_TYPES:
-		mochi.attachment.delete(att["id"])
-		a.error.label(400, "errors.asset_must_be_image", slot=slot)
-		return
 	# Validation passed — remove any previous attachment for this slot
 	for old in mochi.attachment.list(object):
 		if old["id"] != att["id"]:

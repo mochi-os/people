@@ -5,6 +5,9 @@
 
 export const APP_ROUTES = {
   CHAT: {
-    HOME: '/chat',
+    // Trailing slash matters: core redirects /chat -> /chat/ and the redirect
+    // drops the query string, which would lose the ?with=&name= handoff this
+    // route exists to carry.
+    HOME: '/chat/',
   },
 } as const

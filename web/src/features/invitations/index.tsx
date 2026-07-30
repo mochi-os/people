@@ -33,6 +33,7 @@ import {
 } from '@/hooks/useFriends'
 import { AddFriendDialog } from '@/features/friends/components/add-friend-dialog'
 import { InviteSettingsDialog } from './invite-settings-dialog'
+import { searchMatches } from '@/lib/search'
 
 export function Invitations() {
   const { t } = useLingui()
@@ -57,14 +58,14 @@ export function Invitations() {
   const filteredReceived = useMemo(() => {
     const list = friendsData?.received ?? []
     return list.filter((invite) =>
-      invite.name.toLowerCase().includes(search.toLowerCase())
+      searchMatches(invite.name, search)
     )
   }, [friendsData?.received, search])
 
   const filteredSent = useMemo(() => {
     const list = friendsData?.sent ?? []
     return list.filter((invite) =>
-      invite.name.toLowerCase().includes(search.toLowerCase())
+      searchMatches(invite.name, search)
     )
   }, [friendsData?.sent, search])
 

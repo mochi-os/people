@@ -5,7 +5,7 @@
 
 import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { Plus } from 'lucide-react'
+import { Plus, Check, Loader2} from 'lucide-react'
 import { toast, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, Input, Label, Textarea, getErrorMessage, handlePermissionError, textUnchanged } from '@mochi/web'
 import {
   useCreateGroupMutation,
@@ -129,7 +129,13 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
               <Trans>Cancel</Trans>
             </Button>
             <Button type='submit' disabled={isPending || editUnchanged}>
-              {isPending ? t`Saving...` : isEditing ? t`Save` : <><Plus className="me-2 h-4 w-4" /><Trans>Create group</Trans></>}
+              {isPending ? (
+                <><Loader2 className="size-4 animate-spin" />{t`Saving...`}</>
+              ) : isEditing ? (
+                <><Check className="size-4" />{t`Save`}</>
+              ) : (
+                <><Plus className="size-4" /><Trans>Create group</Trans></>
+              )}
             </Button>
           </ResponsiveDialogFooter>
         </form>

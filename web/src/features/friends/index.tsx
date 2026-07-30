@@ -37,6 +37,7 @@ import {
 import { UserPlus, Users, MessageSquare, UserX } from 'lucide-react'
 import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
 import { AddFriendDialog } from './components/add-friend-dialog'
+import { searchMatches } from '@/lib/search'
 
 type SortBy = 'name' | 'recent'
 
@@ -69,7 +70,7 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
     const list = friendsData?.friends ?? []
     return list
       .filter((friend) =>
-        friend.name.toLowerCase().includes(search.toLowerCase())
+        searchMatches(friend.name, search)
       )
       .sort((a, b) => {
         if (sortBy === 'recent') {

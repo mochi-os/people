@@ -5,7 +5,7 @@
 
 import { useMemo } from 'react'
 import { useLingui } from '@lingui/react/macro'
-import { AuthenticatedLayout, EntityAvatar, useAuthStore, type SidebarData, type NavItem, naturalCompare} from '@mochi/web'
+import { AuthenticatedLayout, EntityAvatar, useAuthStore, getAppPath, type SidebarData, type NavItem, naturalCompare} from '@mochi/web'
 import { CircleUserRound, Plus, User, Users, UsersRound } from 'lucide-react'
 import { useGroupsQuery } from '@/hooks/useGroups'
 import { useFriendsQuery } from '@/hooks/useFriends'
@@ -20,8 +20,8 @@ function profileIcon(identityId: string): React.FC {
     Icon = function ProfileIcon() {
       return (
         <EntityAvatar
-          src={`/people/${identityId}/-/avatar`}
-          styleUrl={`/people/${identityId}/-/style`}
+          src={`${getAppPath()}/${identityId}/-/avatar`}
+          styleUrl={`${getAppPath()}/${identityId}/-/style`}
           size="xs"
         />
       )

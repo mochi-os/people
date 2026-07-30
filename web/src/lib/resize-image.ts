@@ -3,6 +3,8 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
+import { t } from '@lingui/core/macro'
+
 // Client-side image resize. Phone photos are routinely 5-15 MB at 4032x3024 —
 // far larger than any avatar/banner needs. We scale down before upload so the
 // user never has to think about file size.
@@ -21,7 +23,7 @@ function loadImage(url: string): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const img = new Image()
     img.onload = () => resolve(img)
-    img.onerror = () => reject(new Error("Could not decode image"))
+    img.onerror = () => reject(new Error(t`Failed to load image`))
     img.src = url
   })
 }
@@ -48,7 +50,7 @@ export async function resizeImage(
     canvas.width = w
     canvas.height = h
     const ctx = canvas.getContext('2d')
-    if (!ctx) throw new Error("Canvas 2D context unavailable")
+    if (!ctx) throw new Error(t`Failed to load image`)
 
     // For JPEG output, paint a white background so transparent PNGs don't
     // composite onto black.
@@ -60,7 +62,7 @@ export async function resizeImage(
 
     return await new Promise<Blob>((resolve, reject) => {
       canvas.toBlob(
-        (blob) => (blob ? resolve(blob) : reject(new Error("Could not encode image"))),
+        (blob) => (blob ? resolve(blob) : reject(new Error(t`Failed to load image`))),
         mime,
         quality
       )

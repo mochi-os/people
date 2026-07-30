@@ -10,6 +10,7 @@ import {
   Skeleton,
   requestHelpers,
   usePageTitle,
+  getAppPath,
 } from '@mochi/web'
 import { useQuery } from '@tanstack/react-query'
 import type { PersonInformation } from '@/api/types/person'
@@ -51,8 +52,8 @@ export function PublicProfile({ fingerprint }: { fingerprint: string }) {
   usePageTitle(data?.name ?? t`Profile`)
 
   useEffect(() => {
-    if (data?.favicon) setFavicon(`/${fingerprint}/-/favicon?v=${data.favicon}`)
-    else if (data?.avatar) setFavicon(`/${fingerprint}/-/favicon?v=${data.avatar}`)
+    if (data?.favicon) setFavicon(`${getAppPath()}/${fingerprint}/-/favicon?v=${data.favicon}`)
+    else if (data?.avatar) setFavicon(`${getAppPath()}/${fingerprint}/-/favicon?v=${data.avatar}`)
   }, [fingerprint, data?.favicon, data?.avatar])
 
   if (isLoading) {
@@ -67,8 +68,8 @@ export function PublicProfile({ fingerprint }: { fingerprint: string }) {
     )
   }
 
-  const avatarUrl = data.avatar ? `/${fingerprint}/-/avatar?v=${data.avatar}` : null
-  const bannerUrl = data.banner ? `/${fingerprint}/-/banner?v=${data.banner}` : null
+  const avatarUrl = data.avatar ? `${getAppPath()}/${fingerprint}/-/avatar?v=${data.avatar}` : null
+  const bannerUrl = data.banner ? `${getAppPath()}/${fingerprint}/-/banner?v=${data.banner}` : null
 
   return (
     <ProfileView

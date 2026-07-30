@@ -3,6 +3,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
+import { t } from '@lingui/core/macro'
 import endpoints from '@/api/endpoints'
 import type {
   AddGroupMemberRequest,
@@ -47,7 +48,7 @@ const getGroup = async (id: string): Promise<{ group: Group; members: GroupMembe
   )
 
   if (!response?.group) {
-    throw new Error("Group not found")
+    throw new Error(t`Group not found`)
   }
 
   return {

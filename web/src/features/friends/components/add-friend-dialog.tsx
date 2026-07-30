@@ -12,6 +12,7 @@ import { cn, toastAction, getAppPath, getErrorMessage, GeneralError, Button, Ent
 import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation, useFriendsQuery } from '@/hooks/useFriends'
 import { personApi } from '@/api/person'
 import type { PersonInformation } from '@/api/types/person'
+import { formatFingerprint } from '@/lib/fingerprint'
 
 type AddFriendDialogProps = {
   open: boolean
@@ -436,7 +437,3 @@ function FriendPreview({ info }: { info: PersonInformation }) {
   )
 }
 
-function formatFingerprint(fingerprint: string): string {
-  if (!fingerprint || fingerprint.length !== 9) return fingerprint
-  return `${fingerprint.slice(0, 3)}-${fingerprint.slice(3, 6)}-${fingerprint.slice(6)}`
-}

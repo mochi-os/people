@@ -36,6 +36,7 @@ import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
+  naturalCompare,
 } from '@mochi/web'
 import {
   useDeleteGroupMutation,
@@ -100,7 +101,12 @@ export function GroupDetail() {
   }
 
   const group = data?.group
-  const members = data?.members ?? []
+  // Sorted here, not in SQL: the server orders by intrinsic columns only, and
+  // naturalCompare is case- and accent-insensitive, so "Ana" and "Ána" sit
+  // together instead of at opposite ends of the list.
+  const members = [...(data?.members ?? [])].sort((a, b) =>
+    naturalCompare(a.name ?? '', b.name ?? '')
+  )
 
   const handleConfirmDelete = async () => {
     try {
@@ -238,12 +244,12 @@ export function GroupDetail() {
                                   size='icon'
                                   className="h-8 w-8 text-muted-foreground"
                                   onClick={() => handleRemoveMember(member.member, member.name, member.type)}
-                                  aria-label={t`Remove ${member.type} ${member.name}`}
+                                  aria-label={t`Remove ${member.name}`}
                                 >
                                   <X className='h-4 w-4' />
                                 </Button>
                               </TooltipTrigger>
-                              <TooltipContent>{t`Remove ${member.type} ${member.name}`}</TooltipContent>
+                              <TooltipContent>{t`Remove ${member.name}`}</TooltipContent>
                             </Tooltip>
                           </TableCell>
                         </TableRow>

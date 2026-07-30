@@ -34,6 +34,7 @@ import {
   useFormat,
   usePageTitle,
   useUploadProgress,
+  getAppPath,
 } from '@mochi/web'
 import { Check, Copy, Eye, Image as ImageIcon, Loader2, Pencil, Save, Upload as UploadIcon, X } from 'lucide-react'
 import { ProfileView } from './profile-view'
@@ -48,6 +49,7 @@ import {
 } from '@/hooks/usePerson'
 import type { PersonInformation } from '@/api/types/person'
 import { resizeImage, SLOT_RESIZE } from '@/lib/resize-image'
+import { formatFingerprint } from '@/lib/fingerprint'
 
 // Matches the server cap (_PROFILE_MAX = 100 * 1024 in people.star).
 const PROFILE_MAX = 100 * 1024
@@ -138,9 +140,9 @@ function ProfileSkeleton() {
 
 function ProfileEditor({ person, info }: { person: string; info: PersonInformation }) {
   const { t } = useLingui()
-  const avatarUrl = info.avatar ? `/${info.fingerprint}/-/avatar?v=${info.avatar}` : null
-  const bannerUrl = info.banner ? `/${info.fingerprint}/-/banner?v=${info.banner}` : null
-  const faviconUrl = info.favicon ? `/${info.fingerprint}/-/favicon?v=${info.favicon}` : null
+  const avatarUrl = info.avatar ? `${getAppPath()}/${info.fingerprint}/-/avatar?v=${info.avatar}` : null
+  const bannerUrl = info.banner ? `${getAppPath()}/${info.fingerprint}/-/banner?v=${info.banner}` : null
+  const faviconUrl = info.favicon ? `${getAppPath()}/${info.fingerprint}/-/favicon?v=${info.favicon}` : null
 
   const [profile, setProfile] = useState(info.profile)
   useEffect(() => setProfile(info.profile), [info.profile])
@@ -529,10 +531,6 @@ return (
   )
 }
 
-function formatFingerprint(fingerprint: string): string {
-  if (!fingerprint || fingerprint.length !== 9) return fingerprint
-  return `${fingerprint.slice(0, 3)}-${fingerprint.slice(3, 6)}-${fingerprint.slice(6)}`
-}
 
 function FingerprintRow({ fingerprint }: { fingerprint: string }) {
   const { t } = useLingui()
@@ -600,18 +598,17 @@ function SlotUploader({
       resized = new File([blob], `${slot}.${ext}`, { type: blob.type })
     } catch (err) {
       setResizing(false)
-      toast.error(getErrorMessage(err, t`Could not process ${slot} image`))
+      toast.error(getErrorMessage(err, t`Failed to load image`))
       return
     }
     setResizing(false)
-    const slotLabel = slot.charAt(0).toUpperCase() + slot.slice(1)
     try {
       await toastAction(
         upload((onProgress) => mutation.mutateAsync({ file: resized, onProgress })),
         {
           loading: t`Uploading...`,
-          success: t`${slotLabel} updated`,
-          error: (err) => getErrorMessage(err, t`Failed to upload ${slot}`),
+          success: t`Updated`,
+          error: (err) => getErrorMessage(err, t`Upload failed`),
         }
       )
     } catch {

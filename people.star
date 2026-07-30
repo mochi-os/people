@@ -199,6 +199,52 @@ def action_ignore(a):
 
 	return {"data": {}}
 
+# Find person entities matching a search term.
+#
+# One implementation of what used to be three near-identical copies - the friends
+# search, the group-member search and the same search exposed as a service
+# function - which had already drifted: two deduped with a dict and one with a
+# nested scan over the results so far, quadratic in the number of matches.
+#
+# Four ways a person can be named, in the order a caller is most likely to mean:
+# a full entity id, a fingerprint (with or without its hyphens), a profile URL
+# with the id somewhere in the path, and finally the display name. Every branch
+# feeds the same dict-keyed dedup, so a term matching several ways yields one row.
+#
+# Returns full directory entries; callers project or annotate what they need.
+def people_search(search):
+	seen = {}
+	results = []
+
+	def add(entry):
+		if not entry or entry.get("class") != "person":
+			return
+		id = entry.get("id")
+		if not id or id in seen:
+			return
+		seen[id] = True
+		results.append(entry)
+
+	if mochi.text.valid(search, "entity"):
+		add(mochi.directory.get(search))
+
+	fingerprint = search.replace("-", "")
+	if mochi.text.valid(fingerprint, "fingerprint"):
+		for entry in mochi.directory.search("person", "", False, fingerprint=fingerprint):
+			add(entry)
+
+	# A profile URL: take the last path segment that looks like an entity id.
+	if search.startswith("http://") or search.startswith("https://"):
+		for part in reversed(search.rstrip("/").split("/")):
+			if mochi.text.valid(part, "entity"):
+				add(mochi.directory.get(part))
+				break
+
+	for entry in mochi.directory.search("person", search, False):
+		add(entry)
+
+	return results
+
 # List friends
 def action_list(a):
 	identity = a.user.identity.id
@@ -225,55 +271,7 @@ def action_search(a):
 		a.error.label(400, "errors.search_query_too_long")
 		return
 
-	results = []
-
-	# Check if search term is an entity ID (49-51 word characters)
-	if mochi.text.valid(search, "entity"):
-		entry = mochi.directory.get(search)
-		if entry and entry.get("class") == "person":
-			results.append(entry)
-
-	# Check if search term is a fingerprint (9 alphanumeric, with or without hyphens)
-	fingerprint = search.replace("-", "")
-	if mochi.text.valid(fingerprint, "fingerprint"):
-		matches = mochi.directory.search("person", "", False, fingerprint=fingerprint)
-		for entry in matches:
-			found = False
-			for r in results:
-				if r.get("id") == entry.get("id"):
-					found = True
-					break
-			if not found:
-				results.append(entry)
-
-	# Check if search term is a URL (e.g., https://example.com/people/ENTITY_ID)
-	if search.startswith("http://") or search.startswith("https://"):
-		parts = search.rstrip("/").split("/")
-		for part in reversed(parts):
-			if mochi.text.valid(part, "entity"):
-				entry = mochi.directory.get(part)
-				if entry and entry.get("class") == "person":
-					# Avoid duplicates
-					found = False
-					for r in results:
-						if r.get("id") == entry.get("id"):
-							found = True
-							break
-					if not found:
-						results.append(entry)
-				break
-
-	# Also search by name
-	name_results = mochi.directory.search("person", search, False)
-	for entry in name_results:
-		# Avoid duplicates
-		found = False
-		for r in results:
-			if r.get("id") == entry.get("id"):
-				found = True
-				break
-		if not found:
-			results.append(entry)
+	results = people_search(search)
 
 	# Build sets of existing relationships for efficient lookup
 	friend_ids = set()
@@ -295,37 +293,37 @@ def action_search(a):
 	for invite in received_invites:
 		received_invite_ids.add(invite["id"])
 
-	# Deduplicate results by ID and add relationship status
-	seen = {}
+	# Annotate each result with this caller's relationship to it. people_search
+	# already returns one row per person, so there is nothing left to deduplicate.
+	# - "friend": Already friends
+	# - "invited": You sent them an invitation (outgoing)
+	# - "pending": They sent you an invitation (incoming)
+	# - "none": No existing relationship
 	unique_results = []
 	for result in results:
 		result_id = result["id"]
-		if result_id not in seen:
-			seen[result_id] = True
+		if result_id == identity:
+			status = "self"
+		elif result_id in friend_ids:
+			status = "friend"
+		elif result_id in sent_invite_ids:
+			status = "invited"
+		elif result_id in received_invite_ids:
+			status = "pending"
+		else:
+			status = "none"
 
-			# Determine relationship status
-			# - "friend": Already friends
-			# - "invited": You sent them an invitation (outgoing)
-			# - "pending": They sent you an invitation (incoming)
-			# - "none": No existing relationship
-			if result_id == identity:
-				status = "self"
-			elif result_id in friend_ids:
-				status = "friend"
-			elif result_id in sent_invite_ids:
-				status = "invited"
-			elif result_id in received_invite_ids:
-				status = "pending"
-			else:
-				status = "none"
+		result["relationshipStatus"] = status
+		unique_results.append(result)
 
-			result["relationshipStatus"] = status
-			unique_results.append(result)
-
-	# Sort by name (case-insensitive), then by created date (oldest first)
-	# Oldest first for same names prevents impersonation attacks
+	# Sort by name, then by created date (oldest first).
+	# Oldest first for same names prevents impersonation attacks.
+	#
+	# sortkey rather than .lower(): the latter folds case but not accents, so
+	# "Ángel" sorted after every unaccented name instead of beside "Angel" -
+	# and these results are the list someone picks a person out of.
 	def sort_key(r):
-		return (r.get("name", "").lower(), r.get("created", 0))
+		return (mochi.text.sortkey(r.get("name", "")), r.get("created", 0))
 	unique_results = sorted(unique_results, key=sort_key)
 
 	return {"data": {"results": unique_results}}
@@ -340,47 +338,8 @@ def action_users_search(a):
 	if len(search) < 1:
 		return {"data": {"results": []}}
 
-	seen = {}
-	unique_results = []
-
-	# Check if search term is an entity ID (49-51 word characters)
-	if mochi.text.valid(search, "entity"):
-		entry = mochi.directory.get(search)
-		if entry and entry.get("class") == "person":
-			if entry["id"] not in seen:
-				seen[entry["id"]] = True
-				unique_results.append({"id": entry["id"], "name": entry["name"]})
-
-	# Check if search term is a fingerprint (9 alphanumeric, with or without hyphens)
-	fingerprint = search.replace("-", "")
-	if mochi.text.valid(fingerprint, "fingerprint"):
-		matches = mochi.directory.search("person", "", False, fingerprint=fingerprint)
-		for entry in matches:
-			if entry["id"] not in seen:
-				seen[entry["id"]] = True
-				unique_results.append({"id": entry["id"], "name": entry["name"]})
-
-	# Check if search term is a URL (e.g., https://example.com/people/ENTITY_ID)
-	if search.startswith("http://") or search.startswith("https://"):
-		# Extract entity ID from URL - look for the last path segment that's a valid entity
-		parts = search.rstrip("/").split("/")
-		for part in reversed(parts):
-			if mochi.text.valid(part, "entity"):
-				entry = mochi.directory.get(part)
-				if entry and entry.get("class") == "person":
-					if entry["id"] not in seen:
-						seen[entry["id"]] = True
-						unique_results.append({"id": entry["id"], "name": entry["name"]})
-				break
-
-	# Also search by name
-	results = mochi.directory.search("person", search, False)
-	for result in results:
-		if result["id"] not in seen:
-			seen[result["id"]] = True
-			unique_results.append({"id": result["id"], "name": result["name"]})
-
-	return {"data": {"results": unique_results}}
+	results = [{"id": entry["id"], "name": entry["name"]} for entry in people_search(search)]
+	return {"data": {"results": results}}
 
 def event_accept(e):
 	identity = resolve_identity(e.header("to"))
@@ -459,47 +418,7 @@ def function_users_search(context, query):
 	if not query or len(query) > 200:
 		return []
 
-	search = query.strip()
-	seen = {}
-	unique_results = []
-
-	# Check if search term is an entity ID (49-51 word characters)
-	if mochi.text.valid(search, "entity"):
-		entry = mochi.directory.get(search)
-		if entry and entry.get("class") == "person":
-			if entry["id"] not in seen:
-				seen[entry["id"]] = True
-				unique_results.append({"id": entry["id"], "name": entry["name"]})
-
-	# Check if search term is a fingerprint (9 alphanumeric, with or without hyphens)
-	fingerprint = search.replace("-", "")
-	if mochi.text.valid(fingerprint, "fingerprint"):
-		matches = mochi.directory.search("person", "", False, fingerprint=fingerprint)
-		for entry in matches:
-			if entry["id"] not in seen:
-				seen[entry["id"]] = True
-				unique_results.append({"id": entry["id"], "name": entry["name"]})
-
-	# Check if search term is a URL (e.g., https://example.com/people/ENTITY_ID)
-	if search.startswith("http://") or search.startswith("https://"):
-		parts = search.rstrip("/").split("/")
-		for part in reversed(parts):
-			if mochi.text.valid(part, "entity"):
-				entry = mochi.directory.get(part)
-				if entry and entry.get("class") == "person":
-					if entry["id"] not in seen:
-						seen[entry["id"]] = True
-						unique_results.append({"id": entry["id"], "name": entry["name"]})
-				break
-
-	# Also search by name
-	results = mochi.directory.search("person", search, False)
-	for result in results:
-		if result["id"] not in seen:
-			seen[result["id"]] = True
-			unique_results.append({"id": result["id"], "name": result["name"]})
-
-	return unique_results
+	return [{"id": entry["id"], "name": entry["name"]} for entry in people_search(query.strip())]
 
 # Service function for groups list
 def function_groups_list(context):

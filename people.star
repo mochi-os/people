@@ -20,12 +20,13 @@ def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event_id=event_id)
 
 def database_upgrade(version):
-	if version == 5:
-		# Person images move out of core's attachment store into plain file
-		# storage at "images/<person>/<slot>", with a new images table holding
-		# content type and size. Relocate existing slot attachments (object
-		# "<person>/<slot>") across the transition bridge; abort without
-		# advancing if the bridge is gone, so the step retries later.
+	if version == 5 or version == 6:
+		# Person images live in plain file storage at "images/<person>/<slot>",
+		# with an images table holding content type and size. Relocate any slot
+		# attachment (object "<person>/<slot>") still held by the transition
+		# bridge, aborting without advancing if the bridge is unavailable. A
+		# slot whose file is already in place is skipped, so the step runs at
+		# either version.
 		mochi.db.execute("create table if not exists images ( person text not null, slot text not null, content_type text not null default '', size integer not null default 0, updated integer not null default 0, primary key ( person, slot ) )")
 		rows = mochi.attachment.export()
 		if rows == None:
@@ -36,9 +37,12 @@ def database_upgrade(version):
 			if len(parts) != 2 or parts[1] not in ("avatar", "banner", "favicon"):
 				continue
 			person, slot = parts[0], parts[1]
+			destination = "images/" + person + "/" + slot
+			if mochi.file.exists(destination):
+				continue
 			old = mochi.attachment.path(att["id"])
-			if old:
-				mochi.file.move(old, "images/" + person + "/" + slot)
+			if old and mochi.file.exists(old):
+				mochi.file.move(old, destination)
 				mochi.db.execute("insert or replace into images ( person, slot, content_type, size, updated ) values ( ?, ?, ?, ?, ? )",
 					person, slot, att.get("content_type", ""), att.get("size", 0), att.get("created", 0) or mochi.time.now())
 	if version == 4:

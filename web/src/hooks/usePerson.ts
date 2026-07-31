@@ -5,7 +5,7 @@
 
 import { useEffect } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { authManager, useAuthStore } from '@mochi/web'
+import { authManager, shellSetAvatar, useAuthStore } from '@mochi/web'
 import type { AxiosProgressEvent } from 'axios'
 import { personApi } from '@/api/person'
 import type { PersonInformation } from '@/api/types/person'
@@ -88,6 +88,14 @@ export function useUploadImageMutation(
       if (slot === 'banner') return personApi.setBanner(person, file, onProgress)
       return personApi.setFavicon(person, file, onProgress)
     },
-    onSuccess: () => qc.invalidateQueries({ queryKey: informationKey(person) }),
+    onSuccess: (result) => {
+      qc.invalidateQueries({ queryKey: informationKey(person) })
+      // Tell the menus the avatar image changed: the server answers with the
+      // new version token, and without it the menu keeps showing the cached
+      // image at the unversioned avatar URL for up to five minutes.
+      if (slot === 'avatar' && typeof result.id === 'string') {
+        shellSetAvatar(person, result.id)
+      }
+    },
   })
 }

@@ -716,6 +716,18 @@ def action_preferences_set(a):
 	a.user.preference.set("invite_policy", policy)
 	return {"data": {}}
 
+# One-shot welcome banner on the friends list, shown until dismissed. Read by
+# the Android client only - the web client has no welcome component - which is
+# why removing this as dead code in 2.57 left the banner silently unable to
+# load. Returns only "seen": the friend count the earlier version also computed
+# was never read by any caller.
+def action_welcome(a):
+	return {"data": {"seen": a.user.preference.get("people_welcome_seen") == "true"}}
+
+def action_welcome_seen(a):
+	a.user.preference.set("people_welcome_seen", "true")
+	return {"data": {}}
+
 # ---------------------------------------------------------------------------
 # Person profiles: avatar / banner / favicon / markdown / style
 #

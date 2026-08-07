@@ -126,7 +126,10 @@ export function Invitations() {
     try {
       const results = await toastAction(
         Promise.allSettled(
-          (friendsData?.received ?? []).map(({ id }) =>
+          // The filtered list, not the whole one: the button sits under a
+          // "Received (n)" heading counting what the search left, so acting on
+          // anything the user cannot see would be acting on the wrong set.
+          filteredReceived.map(({ id }) =>
             acceptInviteMutation.mutateAsync({ friendId: id })
           )
         ),
@@ -155,7 +158,7 @@ export function Invitations() {
     try {
       const results = await toastAction(
         Promise.allSettled(
-          (friendsData?.received ?? []).map(({ id }) =>
+          filteredReceived.map(({ id }) =>
             declineInviteMutation.mutateAsync({ friendId: id })
           )
         ),
@@ -184,7 +187,7 @@ export function Invitations() {
     try {
       const results = await toastAction(
         Promise.allSettled(
-          (friendsData?.sent ?? []).map(({ id }) =>
+          filteredSent.map(({ id }) =>
             removeMutation.mutateAsync({ friendId: id })
           )
         ),

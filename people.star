@@ -300,6 +300,11 @@ def action_search(a):
 	if len(search) > 200:
 		a.error.label(400, "errors.search_query_too_long")
 		return
+	# Only the upper bound was checked. An empty query reaches the directory as
+	# `name like '%%'`, and core applies no LIMIT, so one request returned every
+	# person in the directory. action_users_search below has always had this.
+	if len(search) < 1:
+		return {"data": {"results": []}}
 
 	results = people_search(search)
 

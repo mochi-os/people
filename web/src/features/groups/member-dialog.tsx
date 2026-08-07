@@ -3,7 +3,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { User, UsersRound, Search, Loader2, UserPlus } from 'lucide-react'
 import { toastAction, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, EntityAvatar, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, getAppPath, getErrorMessage, EmptyState, GeneralError } from '@mochi/web'
@@ -22,9 +22,17 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
   const { t } = useLingui()
   const appPath = getAppPath()
   const [userSearch, setUserSearch] = useState('')
+  const [debouncedSearch, setDebouncedSearch] = useState('')
   const [selectedUser, setSelectedUser] = useState<{ id: string; name: string } | null>(null)
   const [selectedGroup, setSelectedGroup] = useState<{ id: string; name: string } | null>(null)
   const [activeTab, setActiveTab] = useState<'user' | 'group'>('user')
+
+  // One directory search per pause, not one per keystroke — the same 300ms the
+  // add-friend dialog uses.
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedSearch(userSearch), 300)
+    return () => clearTimeout(timer)
+  }, [userSearch])
 
   const addMemberMutation = useAddGroupMemberMutation()
   const {
@@ -38,8 +46,8 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
     isLoading: searchLoading,
     error: searchError,
     refetch: refetchSearch,
-  } = useSearchLocalUsersQuery(userSearch, {
-    enabled: userSearch.length >= 1,
+  } = useSearchLocalUsersQuery(debouncedSearch, {
+    enabled: open && debouncedSearch.length >= 1,
   })
 
   const availableGroups = (groups ?? []).filter((g) => g.id !== groupId)

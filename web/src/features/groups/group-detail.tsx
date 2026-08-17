@@ -3,7 +3,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { useNavigate, useParams } from '@tanstack/react-router'
 import { MoreHorizontal, Pencil, Trash2, User, UsersRound, X, UserPlus } from 'lucide-react'
@@ -45,7 +45,6 @@ import {
 } from '@/hooks/useGroups'
 import { GroupDialog } from './group-dialog'
 import { MemberDialog } from './member-dialog'
-import { useSidebarContext } from '@/context/sidebar-context'
 
 export function GroupDetail() {
   const { t } = useLingui()
@@ -55,18 +54,12 @@ export function GroupDetail() {
   const { data, isLoading, error, refetch } = useGroupQuery(id)
   const removeMemberMutation = useRemoveGroupMemberMutation()
   const deleteMutation = useDeleteGroupMutation()
-  const { setGroupId } = useSidebarContext()
   const goBackToFriends = () => navigate({ to: '/' })
   const [editDialogOpen, setEditDialogOpen] = useState(false)
   const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false)
 
   usePageTitle(data?.group?.name ?? t`Group`)
 
-  // Register with sidebar context
-  useEffect(() => {
-    setGroupId(id)
-    return () => setGroupId(null)
-  }, [id, setGroupId])
 
   const [addMemberDialog, setAddMemberDialog] = useState(false)
 

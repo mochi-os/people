@@ -39,9 +39,9 @@ function PeopleLayoutInner() {
   const { data: friendsData } = useFriendsQuery()
   const myIdentity = useAuthStore((s) => s.identity)
   const {
-    createGroupDialogOpen,
-    closeCreateGroupDialog,
-    openCreateGroupDialog,
+    createDialogOpen: createGroupDialogOpen,
+    closeCreateDialog: closeCreateGroupDialog,
+    openCreateDialog: openCreateGroupDialog,
   } = useSidebarContext()
 
   const sidebarData: SidebarData = useMemo(() => {

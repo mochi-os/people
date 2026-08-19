@@ -19,18 +19,45 @@ def decimal(value):
 def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event_id=event_id)
 
-def database_upgrade(version):
-	if version == 5 or version == 6:
-		# Person images live in plain file storage at "images/<person>/<slot>",
-		# with an images table holding content type and size. Relocate any slot
-		# attachment (object "<person>/<slot>") still held by the transition
-		# bridge, aborting without advancing if the bridge is unavailable. A
-		# slot whose file is already in place is skipped, so the step runs at
-		# either version.
-		mochi.db.execute("create table if not exists images ( person text not null, slot text not null, content_type text not null default '', size integer not null default 0, updated integer not null default 0, primary key ( person, slot ) )")
+# attachment_export() returns the rows core's attachment store held for this
+# user and app, each with "file" (an own row's stored filename, relative to
+# file storage; "" for a remote row), or None when the store cannot be read
+# yet. Through the transition bridge while a core still has one, else from the
+# export file core's cleanup wrote before dropping the store. A core without
+# the bridge exported every store that had rows before it served a request, so
+# no file means no rows; a file that exists and cannot be read is damage, not
+# emptiness, and reads as unavailable.
+def attachment_export():
+	if hasattr(mochi, "attachment") and hasattr(mochi.attachment, "export"):
 		rows = mochi.attachment.export()
 		if rows == None:
-			mochi.db.abort("attachment bridge unavailable")
+			return None
+		result = []
+		for row in rows:
+			row = dict(row)
+			row["file"] = mochi.attachment.path(row["id"]) or ""
+			result.append(row)
+		return result
+	if not mochi.file.exists("attachments.json"):
+		return []
+	rows = json.decode(str(mochi.file.read("attachments.json") or ""), None)
+	if type(rows) != "list":
+		return None
+	return rows
+
+def database_upgrade(version):
+	if version == 5 or version == 6 or version == 7:
+		# Person images live in plain file storage at "images/<person>/<slot>",
+		# with an images table holding content type and size. Relocate any slot
+		# attachment (object "<person>/<slot>") still held by core's store,
+		# aborting without advancing if the store cannot be read yet. A slot
+		# whose file is already in place is skipped, so the step runs at any of
+		# its versions; the last re-issues it for a database that paid the
+		# earlier numbers to a raise inside the bridge call.
+		mochi.db.execute("create table if not exists images ( person text not null, slot text not null, content_type text not null default '', size integer not null default 0, updated integer not null default 0, primary key ( person, slot ) )")
+		rows = attachment_export()
+		if rows == None:
+			mochi.db.abort("attachment store unavailable")
 			return
 		for att in rows:
 			parts = att.get("object", "").split("/")
@@ -40,7 +67,7 @@ def database_upgrade(version):
 			destination = "images/" + person + "/" + slot
 			if mochi.file.exists(destination):
 				continue
-			old = mochi.attachment.path(att["id"])
+			old = att.get("file", "")
 			if old and mochi.file.exists(old):
 				mochi.file.move(old, destination)
 				mochi.db.execute("insert or replace into images ( person, slot, content_type, size, updated ) values ( ?, ?, ?, ?, ? )",

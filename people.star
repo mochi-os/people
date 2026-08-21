@@ -19,14 +19,10 @@ def decimal(value):
 def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event_id=event_id)
 
-# attachment_export() returns the rows core's attachment store held for this
-# user and app, each with "file" (an own row's stored filename, relative to
-# file storage; "" for a remote row), or None when the store cannot be read
-# yet. Through the transition bridge while a core still has one, else from the
-# export file core's cleanup wrote before dropping the store. A core without
-# the bridge exported every store that had rows before it served a request, so
-# no file means no rows; a file that exists and cannot be read is damage, not
-# emptiness, and reads as unavailable.
+# attachment_export() -> list | None: the rows core's attachment store held for
+# this user and app, each with "file" (stored filename, "" for a remote row) -
+# from the transition bridge if core still has one, else core's export file.
+# None when the store cannot be read; a missing export file means no rows.
 def attachment_export():
 	if hasattr(mochi, "attachment") and hasattr(mochi.attachment, "export"):
 		rows = mochi.attachment.export()
@@ -47,13 +43,9 @@ def attachment_export():
 
 def database_upgrade(version):
 	if version == 5 or version == 6 or version == 7:
-		# Person images live in plain file storage at "images/<person>/<slot>",
-		# with an images table holding content type and size. Relocate any slot
-		# attachment (object "<person>/<slot>") still held by core's store,
-		# aborting without advancing if the store cannot be read yet. A slot
-		# whose file is already in place is skipped, so the step runs at any of
-		# its versions; the last re-issues it for a database that paid the
-		# earlier numbers to a raise inside the bridge call.
+		# Move slot attachments from core's store to "images/<person>/<slot>",
+		# aborting without advancing if the store cannot be read yet. Idempotent, so
+		# it runs at every version that may have failed mid-way.
 		mochi.db.execute("create table if not exists images ( person text not null, slot text not null, content_type text not null default '', size integer not null default 0, updated integer not null default 0, primary key ( person, slot ) )")
 		rows = attachment_export()
 		if rows == None:
@@ -73,13 +65,8 @@ def database_upgrade(version):
 				mochi.db.execute("insert or replace into images ( person, slot, content_type, size, updated ) values ( ?, ?, ?, ?, ? )",
 					person, slot, att.get("content_type", ""), att.get("size", 0), att.get("created", 0) or mochi.time.now())
 	if version == 4:
-		# Four indexes that no query can use. friends is keyed ( identity, id )
-		# and every lookup gives both, so an index on id alone is never chosen;
-		# nothing filters or orders by friends.name. invites is keyed
-		# ( identity, id, direction ), so invites_identity_id just repeats that
-		# key's own prefix, and an index on direction alone leads with a column
-		# of two values and cannot serve the identity-first queries that read it.
-		# They cost a write on every insert and buy nothing.
+		# Indexes no query can use: each repeats a key prefix or leads with a
+		# low-cardinality column.
 		for index in ["friends_id", "friends_name", "invites_identity_id", "invites_direction"]:
 			mochi.db.execute("drop index if exists " + index)
 	if version == 3:
@@ -90,9 +77,8 @@ def database_upgrade(version):
 		mochi.db.execute("create table if not exists sent ( identity text not null, created integer not null )")
 		mochi.db.execute("create index if not exists sent_identity_created on sent( identity, created )")
 	if version == 2:
-		# Drop the pre-2026-07 broadcast tables left in the app data DB when
-		# broadcast state moved to the per-app system DB - inert, but stale
-		# sequence/log copies mislead diagnosis.
+		# Drop the broadcast tables left in the app data DB when broadcast state moved
+		# to the per-app system DB - stale copies mislead diagnosis.
 		for table in ["sequence", "log", "acknowledged", "received"]:
 			mochi.db.execute("drop table if exists " + table)
 
@@ -201,12 +187,9 @@ def action_create(a):
 		mochi.message.send({"from": identity, "to": id, "service": "friends", "event": "friend/accept"})
 		invite_remove(identity, id)
 	else:
-		# An invite is the only friends message that goes to an entity with no
-		# prior relationship, so it is the only one that can be aimed anywhere:
-		# accept, remove and cancel all require a row that already exists. That
-		# makes this the app's one outbound primitive for spraying strangers or
-		# probing which entity ids are real, and core's own send limit (1000 a
-		# second) is far too loose to bound either.
+		# An invite is the only friends message that can target a stranger, so it is
+		# the one primitive for spraying or probing entity ids; core's send limit is
+		# far looser.
 		if invites_recent(identity) >= _INVITE_LIMIT:
 			a.error.label(429, "errors.too_many_invites")
 			return
@@ -256,19 +239,9 @@ def action_ignore(a):
 
 	return {"data": {}}
 
-# Find person entities matching a search term.
-#
-# One implementation of what used to be three near-identical copies - the friends
-# search, the group-member search and the same search exposed as a service
-# function - which had already drifted: two deduped with a dict and one with a
-# nested scan over the results so far, quadratic in the number of matches.
-#
-# Four ways a person can be named, in the order a caller is most likely to mean:
-# a full entity id, a fingerprint (with or without its hyphens), a profile URL
-# with the id somewhere in the path, and finally the display name. Every branch
-# feeds the same dict-keyed dedup, so a term matching several ways yields one row.
-#
-# Returns full directory entries; callers project or annotate what they need.
+# Find person entities matching a term: a full entity id, a fingerprint (hyphens
+# optional), a profile URL carrying the id, or the display name. Results are
+# deduped by id and are full directory entries.
 def people_search(search):
 	seen = {}
 	results = []
@@ -355,12 +328,7 @@ def action_search(a):
 	for invite in received_invites:
 		received_invite_ids.add(invite["id"])
 
-	# Annotate each result with this caller's relationship to it. people_search
-	# already returns one row per person, so there is nothing left to deduplicate.
-	# - "friend": Already friends
-	# - "invited": You sent them an invitation (outgoing)
-	# - "pending": They sent you an invitation (incoming)
-	# - "none": No existing relationship
+	# Annotate each result with the caller's relationship to it.
 	unique_results = []
 	for result in results:
 		result_id = result["id"]
@@ -378,12 +346,8 @@ def action_search(a):
 		result["relationshipStatus"] = status
 		unique_results.append(result)
 
-	# Sort by name, then by created date (oldest first).
-	# Oldest first for same names prevents impersonation attacks.
-	#
-	# sortkey rather than .lower(): the latter folds case but not accents, so
-	# "Ángel" sorted after every unaccented name instead of beside "Angel" -
-	# and these results are the list someone picks a person out of.
+	# Name, then oldest first - so an impersonator cannot sort above the original.
+	# sortkey folds accents as well as case, unlike .lower().
 	def sort_key(r):
 		return (mochi.text.sortkey(r.get("name", "")), r.get("created", 0))
 	unique_results = sorted(unique_results, key=sort_key)
@@ -518,12 +482,8 @@ def action_group_get(a):
 		name = member["member"]
 		member_id = member["member"]
 		if member["type"] == "user":
-			# 'user' subjects are person entity IDs (see
-			# action_group_member_add). Resolve the display name via
-			# mochi.entity.name (local entities then the directory) — NOT
-			# mochi.user.get, which is administrator-only and raises, so a
-			# normal group viewer got a 500 the moment the group had any user
-			# member.
+			# mochi.entity.name, not mochi.user.get - the latter is administrator-only
+			# and raises.
 			if mochi.text.valid(member_id, "entity"):
 				resolved = mochi.entity.name(member_id)
 				if resolved:
@@ -551,22 +511,14 @@ def uid(id):
 	return True
 
 def action_group_create(a):
-	# A caller may supply the id - an import restoring groups under their
-	# original ids needs to - but only in the shape this app generates. Core
-	# leaves mochi.group.get ungated on the grounds that a group id cannot be
-	# guessed, so an app without groups/read cannot read a group it was never
-	# told about; a group created as "family" would make that false. Enforcing
-	# the shape here is what makes that assumption true, since this is the only
-	# app that creates groups.
+	# A supplied id (imports restoring groups) must have the uid shape: core leaves
+	# mochi.group.get ungated on the assumption that a group id cannot be guessed.
 	id = a.input("id", "")
 	if id and not uid(id):
 		a.error.label(400, "errors.invalid_group_id")
 		return
-	# mochi.group.create writes by primary key, so a supplied id naming a group
-	# that already exists replaced its name and description while reporting a
-	# creation. An import restoring groups under their original ids is the reason
-	# callers may supply one at all, and silently overwriting is not what an
-	# import wants either - it wants to know the group is already there.
+	# mochi.group.create writes by primary key, so an existing id would be silently
+	# overwritten.
 	if id and mochi.group.get(id):
 		a.error.label(409, "errors.group_exists")
 		return
@@ -603,13 +555,9 @@ def action_group_update(a):
 		a.error.label(404, "errors.group_not_found")
 		return
 
-	# Clearing a field and leaving it alone have to be told apart, and neither
-	# accessor manages it alone. a.input() reads the JSON body first, where ""
-	# survives, but falls back to the form only for a non-empty value - so over a
-	# form, sent-empty and never-sent both read as None. a.inputs() returns the
-	# raw query/form list, where the two are distinct ([""] against []), but it
-	# never looks at a JSON body at all. Checking both covers either encoding:
-	# this app's own client posts a form, and JSON callers exist too.
+	# a.input() reads JSON (where "" survives) but over a form reads sent-empty as
+	# None; a.inputs() tells [""] from [] but ignores JSON. Checking both covers
+	# either encoding.
 	def sent(field):
 		return len(a.inputs(field)) > 0 or a.input(field) != None
 
@@ -692,14 +640,7 @@ def action_group_member_add(a):
 		a.error.label(400, "errors.invalid_member_type")
 		return
 
-	# Group "user" members are person entity IDs — that's what -/users/search
-	# returns and what the member list resolves for display.
-	#
-	# A numeric local uid used to be accepted here as a legacy form, which
-	# exempted it from the check below because there is no entity behind such an
-	# id to find. That exemption was the one remaining way to store a member
-	# pointing at nothing, and no numeric member survives, so it is gone. Only
-	# the entity form is accepted now.
+	# Group "user" members are person entity ids, as -/users/search returns.
 	if type == "user":
 		if not mochi.text.valid(member, "entity"):
 			a.error.label(400, "errors.invalid_user_id")
@@ -752,11 +693,8 @@ def action_preferences_set(a):
 	a.user.preference.set("invite_policy", policy)
 	return {"data": {}}
 
-# One-shot welcome banner on the friends list, shown until dismissed. Read by
-# the Android client only - the web client has no welcome component - which is
-# why removing this as dead code in 2.57 left the banner silently unable to
-# load. Returns only "seen": the friend count the earlier version also computed
-# was never read by any caller.
+# Welcome banner on the friends list, shown until dismissed. Read only by the
+# Android client.
 def action_welcome(a):
 	return {"data": {"seen": a.user.preference.get("people_welcome_seen") == "true"}}
 
@@ -765,12 +703,9 @@ def action_welcome_seen(a):
 	return {"data": {}}
 
 # ---------------------------------------------------------------------------
-# Person profiles: avatar / banner / favicon / markdown / style
-#
-# The people app handles the `person` entity class. Each person entity exposes
-# a public profile via :person/-/* HTTP actions (for browsers + domain-routed
-# visits) and matching P2P events (for cross-server access). Other apps fetch
-# person data with mochi.remote.request(person, "people", "<event>", {}).
+# Person profiles: avatar / banner / favicon / markdown / style. Served as
+# public :person/-/* actions and matching P2P events; other apps read them with
+# mochi.remote.request(person, "people", "<event>", {}).
 
 _AVATAR_MAX = 2 * 1024 * 1024
 _BANNER_MAX = 10 * 1024 * 1024
@@ -796,14 +731,9 @@ _IMAGE_TYPES = (
 )
 
 def is_person_owner(a, person_id):
-	# a.owner is core's answer for the routed entity, computed against the
-	# authenticated caller. person_id is the same route segment core resolved to
-	# a.entity, so there is nothing to compare - and nothing to get wrong: the
-	# id and fingerprint forms both reach here, and comparing a.entity["id"]
-	# against person_id would reject every fingerprint-addressed request.
-	#
-	# The class check stays because the route resolves an entity by id without
-	# requiring it to be a person.
+	# a.owner already answers for the routed entity; comparing a.entity["id"]
+	# against person_id would reject fingerprint-addressed requests. The class
+	# check stays because the route resolves any entity by id.
 	if not a.user or not a.user.identity:
 		return False
 	if a.entity == None or a.entity["class"] != "person":
@@ -889,11 +819,8 @@ def stream_person_asset(a, person_id, asset):
 	if not person_id:
 		a.error.label(404, "errors.person_not_found")
 		return None
-	# Reject a malformed id before opening a stream: mochi.remote.stream errors
-	# out on an invalid entity, and a builtin error aborts the whole action as a
-	# 500 quoting the internal API name. These routes are public and the id is
-	# the route segment, so anyone can trigger it. Both forms are legitimate
-	# here - the UI links profiles by fingerprint. Mirrors projects/market/staff.
+	# mochi.remote.stream aborts the action with a 500 on a malformed id; both
+	# forms are valid.
 	if not mochi.text.valid(person_id, "entity") and not mochi.text.valid(person_id, "fingerprint"):
 		a.error.label(404, "errors.person_not_found")
 		return None
@@ -903,31 +830,18 @@ def stream_person_asset(a, person_id, asset):
 		return None
 	header = s.read()
 	if not header or header.get("status") != "200":
-		# The status is the far end's claim, exactly like the error text below, so
-		# it gets the same treatment. Adopting it raw was reachable by anyone who
-		# can name a person this server will dial: int() aborts the whole action
-		# as a 500 on a non-decimal string, and int() on a non-string aborts it
-		# too, while a value outside 100-999 panics net/http inside
-		# a.error.label - gin recovers that, so it surfaces as a 500 and a stack
-		# trace rather than a crash.
-		#
-		# Only a 4xx or 5xx is adopted. We are in this branch because the reply
-		# was not a 200, so a peer claiming 2xx or 3xx is malformed by
-		# definition, and passing one on is worse than saying not found: a 204
-		# answers an image request with nothing, and a 301 from a route that
-		# sets no Location is simply broken.
+		# The status is the far end's claim: int() aborts on a non-decimal and a value
+		# outside 100-999 panics net/http, so only a decimal 4xx or 5xx is adopted - a
+		# non-200 reply claiming 2xx or 3xx is malformed.
 		code = 404
 		remote = header.get("status") if header else None
 		if type(remote) == "string" and decimal(remote):
 			status = int(remote)
 			if status >= 400 and status <= 599:
 				code = status
-		# Word the failure from what we asked for, not from what the far end
-		# said. The error field in the response is a diagnostic written by
-		# whoever hosts this person, so it is English prose at best and a remote
-		# server's choice of message at worst - resolving it as a label key let
-		# another server pick which of our strings the user sees. Matches how
-		# feeds, forums, wikis and staff bridge the same event.
+		# Worded from the asset we asked for: the remote error field is the far end's
+		# diagnostic, and resolving it as a label key let another server pick our
+		# strings.
 		if asset in _IMAGE_SLOTS:
 			a.error.label(code, "errors.asset_not_set", asset=asset)
 		else:
@@ -942,23 +856,16 @@ def stream_person_asset(a, person_id, asset):
 	if cap == None:
 		a.error.label(404, "errors.person_not_found")
 		return None
-	# The far end declares a length alongside the type. Checking it here turns an
-	# honestly-oversized asset into a clean error, because once a.write.stream
-	# starts copying, the status and headers are already sent and the response
-	# cannot be retracted - the caller would receive a truncated image under a 200.
-	# A peer that under-declares, or declares nothing, is still stopped by the
-	# maximum passed to a.write.stream below; this check is for the common case,
-	# that one being the cheaper and clearer failure.
+	# Check the declared size before streaming: once a.write.stream starts, the 200
+	# and headers are sent and cannot be retracted. The maximum below still stops
+	# an under-declaring peer.
 	declared = header.get("size", 0)
 	if type(declared) in ("int", "float") and declared > cap:
 		a.error.label(502, "errors.asset_too_large", slot=asset)
 		return None
 	a.header("Cache-Control", "private, max-age=300")
-	# The content type comes from whoever hosts the person, so for a remote
-	# profile it is a claim by another server rather than by us. These routes
-	# serve images and nothing else, so anything outside that set is served as
-	# an opaque download - core stops it rendering in our origin either way, but
-	# there is no reason to repeat a stranger's claim about what their bytes are.
+	# The content type is the remote host's claim; anything not an image is served
+	# as an opaque download.
 	content_type = header.get("content_type", "")
 	if content_type not in _IMAGE_TYPES:
 		content_type = "application/octet-stream"
@@ -973,11 +880,8 @@ def stream_person_asset(a, person_id, asset):
 def action_information(a):
 	person = a.input("person")
 	out = stream_person_asset(a, person, "information")
-	# privacy says whether this person is listed in the directory. It is the
-	# owner's own setting and their UI reads it back after changing it, so it
-	# stays in the payload for them - but this route is public, and a stranger
-	# reading someone's profile has no use for it. Rebuilt rather than removed
-	# in place: the dict comes from a decoded response and may be frozen.
+	# privacy is the owner's own setting; strip it for anyone else on this public
+	# route. Rebuilt rather than popped: a decoded response dict may be frozen.
 	if out and "data" in out and not is_person_owner(a, person):
 		return {"data": {key: value for key, value in out["data"].items() if key != "privacy"}}
 	return out
@@ -999,12 +903,8 @@ def set_image(a, slot):
 	if not is_person_owner(a, person_id):
 		a.error.label(403, "errors.not_the_owner")
 		return
-	# Judge the upload before it is stored, not after. These same two checks used
-	# to run on the saved attachment, so a favicon - capped at 64KB - was written
-	# to disk at whatever size arrived and only then measured and deleted.
-	# a.file() reads the multipart field without storing it, and its content_type
-	# is the same value the attachment would carry: core takes the client's
-	# Content-Type header for both, so checking here is equivalent, not weaker.
+	# Check size and type from a.file() before anything is written; it carries the
+	# same Content-Type the attachment would.
 	file = a.file("file")
 	if not file:
 		a.error.label(400, "errors.no_file_uploaded")
@@ -1114,15 +1014,10 @@ def opengraph_person(params):
 	entity = get_person_entity(person_id)
 	if not entity:
 		return og
-	# OpenGraph is rendered for anonymous crawlers and link previews, and core
-	# runs it as the entity owner regardless of who asked, so treat every
-	# request as untrusted. A person who set their profile private should not
-	# have their name and bio emitted into meta tags, which exist precisely to
-	# be harvested and indexed by third parties. Matches opengraph_feed.
-	#
-	# This does NOT make a private profile unreadable: the person routes and the
-	# anonymous P2P handlers still serve the same fields by design (see the
-	# people privacy task). What it removes is the indexing path.
+	# OpenGraph runs as the entity owner for anonymous crawlers, so a private
+	# profile emits no name or bio into meta tags. The profile itself stays
+	# readable by design; only the indexing path is removed. Matches
+	# opengraph_feed.
 	if entity.get("privacy", "public") == "private":
 		return og
 	og["title"] = entity.get("name") or mochi.app.label("opengraph.fallback.title")
@@ -1137,13 +1032,9 @@ def opengraph_person(params):
 		og["image"] = "-/avatar"
 	return og
 
-# === P2P events (cross-server reads) ===
-#
-# The `error` field these handlers send is a diagnostic for the operator of the
-# requesting server, never user-facing text: the bridge on the other side words
-# its own message from the asset it asked for, because a message chosen by a
-# remote server has no business reaching our user. Keep them stable and English
-# for that reason - translating them would imply they are shown to someone.
+# === P2P events (cross-server reads) === The `error` field is a diagnostic for
+# the requesting server, never shown to a user: the bridge words its own
+# message. Keep these stable and English.
 
 def event_information(e):
 	person_id = e.header("to")

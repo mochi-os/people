@@ -42,6 +42,16 @@ def attachment_export():
 	return rows
 
 def database_upgrade(version):
+	if version == 8:
+		# When each friend's name was last reconciled with the directory. Without
+		# it action_list had no way to tell a fresh name from a stale one, so it
+		# re-resolved every friend on every request.
+		present = False
+		for column in mochi.db.table("friends"):
+			if column["name"] == "refreshed":
+				present = True
+		if not present:
+			mochi.db.execute("alter table friends add column refreshed integer not null default 0")
 	if version == 5 or version == 6 or version == 7:
 		# Move slot attachments from core's store to "images/<person>/<slot>",
 		# aborting without advancing if the store cannot be read yet. Idempotent, so
@@ -83,7 +93,7 @@ def database_upgrade(version):
 			mochi.db.execute("drop table if exists " + table)
 
 def database_create():
-	mochi.db.execute("create table if not exists friends ( identity text not null, id text not null, name text not null default '', class text not null default 'person', created integer not null default 0, primary key ( identity, id ) )")
+	mochi.db.execute("create table if not exists friends ( identity text not null, id text not null, name text not null default '', class text not null default 'person', created integer not null default 0, refreshed integer not null default 0, primary key ( identity, id ) )")
 	mochi.db.execute("create table if not exists invites ( identity text not null, id text not null, direction text not null, name text not null default '', updated integer not null default 0, primary key ( identity, id, direction ) )")
 	mochi.db.execute("create table if not exists sent ( identity text not null, created integer not null )")
 	mochi.db.execute("create index if not exists sent_identity_created on sent( identity, created )")
@@ -113,6 +123,11 @@ def friend_remove(identity, id):
 # How many invites one identity may send per window. A person adding everyone
 # they know in one sitting stays well under this; a script spraying strangers or
 # walking entity ids to see which are real does not.
+# How long a friend's cached directory name is trusted before action_list
+# re-resolves it. A rename shows up within this window rather than immediately;
+# the alternative was a directory read per friend on every request.
+_FRIEND_NAME_INTERVAL = 86400
+
 _INVITE_LIMIT = 30
 _INVITE_WINDOW = 3600
 
@@ -242,12 +257,19 @@ def action_ignore(a):
 # Find person entities matching a term: a full entity id, a fingerprint (hyphens
 # optional), a profile URL carrying the id, or the display name. Results are
 # deduped by id and are full directory entries.
+# Most results any one search returns. mochi.directory.search takes no limit and
+# core applies none, so a one-character query is `name like '%a%'` across the whole
+# directory; every caller below then walks the result to annotate and sort it.
+_SEARCH_RESULTS_MAXIMUM = 200
+
 def people_search(search):
 	seen = {}
 	results = []
 
 	def add(entry):
 		if not entry or entry.get("class") != "person":
+			return
+		if len(results) >= _SEARCH_RESULTS_MAXIMUM:
 			return
 		id = entry.get("id")
 		if not id or id in seen:
@@ -280,11 +302,19 @@ def action_list(a):
 	identity = a.user.identity.id
 	friends = mochi.db.rows("select * from friends where identity=? order by id", identity)
 
-	# Look up current names from directory to avoid stale names
+	# The directory is the authority on a friend's current name, but reading it
+	# per friend on every request made this route O(friends) directory reads. The
+	# row caches the resolved name and when it was resolved; only rows past the
+	# interval are re-read, so the steady state is none.
+	stale = mochi.time.now() - _FRIEND_NAME_INTERVAL
 	for friend in friends:
+		if friend.get("refreshed", 0) > stale:
+			continue
 		info = mochi.directory.get(friend["id"])
-		if info and info.get("name"):
-			friend["name"] = info["name"]
+		name = info.get("name") if info else None
+		if name:
+			friend["name"] = name
+		mochi.db.execute("update friends set name=?, refreshed=? where identity=? and id=?", friend["name"], mochi.time.now(), identity, friend["id"])
 
 	return {"data": {
 		"friends": friends,
@@ -385,8 +415,11 @@ def event_invite(e):
 	# decides what happens for unsolicited invites (default: silent store, no
 	# notification — invites are a common unsolicited-contact vector).
 	# Mutual invites always transition to friends regardless of policy.
+	# mochi.text.valid raises on a non-string (it answers False only for None), and
+	# a raised error aborts the handler and mails the admin, so a peer sending
+	# {"name": 123} loses the invite silently. Test the type first.
 	name = e.content("name")
-	if not mochi.text.valid(name, "line") or len(name) > 255:
+	if type(name) != "string" or not mochi.text.valid(name, "line") or len(name) > 255:
 		return
 
 	identity = resolve_identity(e.header("to"))
@@ -510,6 +543,10 @@ def uid(id):
 			return False
 	return True
 
+# mochi.text.valid(..., "text") admits just under 1 MB, so without this a group
+# description could be four thousand times the length of the name beside it.
+_GROUP_DESCRIPTION_MAXIMUM = 4096
+
 def action_group_create(a):
 	# A supplied id (imports restoring groups) must have the uid shape: core leaves
 	# mochi.group.get ungated on the assumption that a group id cannot be guessed.
@@ -539,6 +576,9 @@ def action_group_create(a):
 	description = a.input("description", "")
 	if description and not mochi.text.valid(description, "text"):
 		a.error.label(400, "errors.invalid_description")
+		return
+	if len(description) > _GROUP_DESCRIPTION_MAXIMUM:
+		a.error.label(400, "errors.group_description_too_long")
 		return
 
 	mochi.group.create(id, name, description)
@@ -584,6 +624,9 @@ def action_group_update(a):
 
 	if description and not mochi.text.valid(description, "text"):
 		a.error.label(400, "errors.invalid_description")
+		return
+	if len(description) > _GROUP_DESCRIPTION_MAXIMUM:
+		a.error.label(400, "errors.group_description_too_long")
 		return
 
 	kwargs = {}
@@ -730,7 +773,7 @@ _IMAGE_TYPES = (
 	"image/vnd.microsoft.icon",
 )
 
-def is_person_owner(a, person_id):
+def is_person_owner(a):
 	# a.owner already answers for the routed entity; comparing a.entity["id"]
 	# against person_id would reject fingerprint-addressed requests. The class
 	# check stays because the route resolves any entity by id.
@@ -739,9 +782,6 @@ def is_person_owner(a, person_id):
 	if a.entity == None or a.entity["class"] != "person":
 		return False
 	return a.owner
-
-def slot_object(person_id, slot):
-	return person_id + "/" + slot
 
 def slot_path(person_id, slot):
 	return "images/" + person_id + "/" + slot
@@ -767,16 +807,26 @@ def upsert_profile(person_id, profile=None, accent=None):
 	new_accent = accent if accent != None else existing.get("accent", "")
 	mochi.db.execute("insert into profiles ( person, profile, accent, updated ) values ( ?, ?, ?, ? ) on conflict ( person ) do update set profile=excluded.profile, accent=excluded.accent, updated=excluded.updated", person_id, new_profile, new_accent, mochi.time.now())
 
+# What every reader of a person - local, remote peer, proxying app - is allowed
+# to see. privacy is deliberately absent: it is the owner's own setting, and this
+# dict is written straight to an anonymous P2P event, so emitting it here made
+# every consumer responsible for stripping it and two of them forgot. The owner's
+# own view adds it back from the local entity in action_information.
 def build_information(person_id, entity):
 	profile = get_profile_row(person_id)
+	# Not an .get() default: Starlark evaluates arguments before the call, so the
+	# fingerprint would be computed on every read and discarded whenever the
+	# entity already carries one.
+	fingerprint = entity.get("fingerprint")
+	if not fingerprint:
+		fingerprint = mochi.entity.fingerprint(person_id)
 	style = {}
 	if profile.get("accent"):
 		style["accent"] = profile["accent"]
 	out = {
 		"id": entity["id"],
-		"fingerprint": entity.get("fingerprint", mochi.entity.fingerprint(person_id)),
+		"fingerprint": fingerprint,
 		"name": entity.get("name", ""),
-		"privacy": entity.get("privacy", ""),
 		"profile": profile.get("profile", ""),
 		"style": style,
 		"avatar": "",
@@ -880,10 +930,14 @@ def stream_person_asset(a, person_id, asset):
 def action_information(a):
 	person = a.input("person")
 	out = stream_person_asset(a, person, "information")
-	# privacy is the owner's own setting; strip it for anyone else on this public
-	# route. Rebuilt rather than popped: a decoded response dict may be frozen.
-	if out and "data" in out and not is_person_owner(a, person):
-		return {"data": {key: value for key, value in out["data"].items() if key != "privacy"}}
+	# privacy never crosses the wire (see build_information), so the owner's own
+	# view reads it from the local entity instead. Rebuilt rather than assigned
+	# into: a decoded response dict may be frozen.
+	if out and "data" in out and is_person_owner(a):
+		entity = get_person_entity(person) or {}
+		data = {key: value for key, value in out["data"].items()}
+		data["privacy"] = entity.get("privacy", "")
+		return {"data": data}
 	return out
 
 def action_avatar(a):
@@ -900,7 +954,7 @@ def set_image(a, slot):
 	if not get_person_entity(person_id):
 		a.error.label(404, "errors.person_not_found")
 		return
-	if not is_person_owner(a, person_id):
+	if not is_person_owner(a):
 		a.error.label(403, "errors.not_the_owner")
 		return
 	# Check size and type from a.file() before anything is written; it carries the
@@ -944,7 +998,7 @@ def action_style_set(a):
 	if not get_person_entity(person_id):
 		a.error.label(404, "errors.person_not_found")
 		return
-	if not is_person_owner(a, person_id):
+	if not is_person_owner(a):
 		a.error.label(403, "errors.not_the_owner")
 		return
 	accent = a.input("accent", "").strip()
@@ -959,7 +1013,7 @@ def action_profile_set(a):
 	if not get_person_entity(person_id):
 		a.error.label(404, "errors.person_not_found")
 		return
-	if not is_person_owner(a, person_id):
+	if not is_person_owner(a):
 		a.error.label(403, "errors.not_the_owner")
 		return
 	profile = a.input("profile", "")
@@ -974,7 +1028,7 @@ def action_name_set(a):
 	if not get_person_entity(person_id):
 		a.error.label(404, "errors.person_not_found")
 		return
-	if not is_person_owner(a, person_id):
+	if not is_person_owner(a):
 		a.error.label(403, "errors.not_the_owner")
 		return
 	name = a.input("name", "").strip()
@@ -992,7 +1046,7 @@ def action_privacy_set(a):
 	if not get_person_entity(person_id):
 		a.error.label(404, "errors.person_not_found")
 		return
-	if not is_person_owner(a, person_id):
+	if not is_person_owner(a):
 		a.error.label(403, "errors.not_the_owner")
 		return
 	privacy = a.input("privacy", "")
@@ -1014,10 +1068,15 @@ def opengraph_person(params):
 	entity = get_person_entity(person_id)
 	if not entity:
 		return og
-	# OpenGraph runs as the entity owner for anonymous crawlers, so a private
-	# profile emits no name or bio into meta tags. The profile itself stays
-	# readable by design; only the indexing path is removed. Matches
-	# opengraph_feed.
+	# privacy is the right gate here, and this is the one site in the app where
+	# that is true. OpenGraph meta tags ARE the indexing surface, which is
+	# exactly what privacy controls - whether the entity is published to be
+	# found. It is NOT an access gate: the profile itself stays readable, and
+	# every other reader below is gated on ownership or on nothing at all.
+	# Person entities have no mochi.access grant model, so do not "convert"
+	# this to check_event_access the way feeds, forums and wikis were: with no
+	# creation-time "*" view grant, that check is False for every profile and
+	# every public link preview loses its name and bio. Matches opengraph_feed.
 	if entity.get("privacy", "public") == "private":
 		return og
 	og["title"] = entity.get("name") or mochi.app.label("opengraph.fallback.title")

@@ -55,7 +55,10 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
       description: t`All invites are accepted without your approval.`,
     },
   ]
-  const { data, isLoading } = usePreferencesQuery()
+  // The load error matters more than most: without it a failed load left the
+  // radio on its 'notify' default, which looks like the user's real setting,
+  // and saving then overwrote whatever they actually had.
+  const { data, isLoading, isError, error } = usePreferencesQuery()
   const setPolicy = useSetPreferencesMutation()
   const [value, setValue] = useState<InvitePolicy>('notify')
 
@@ -93,6 +96,10 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
             <Skeleton className='h-12 w-full' />
             <Skeleton className='h-12 w-full' />
           </div>
+        ) : isError ? (
+          <p className='text-destructive py-2 text-sm'>
+            {getErrorMessage(error, t`Failed to load your invite policy`)}
+          </p>
         ) : (
           <RadioGroup
             value={value}
@@ -125,6 +132,7 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
             disabled={
               setPolicy.isPending ||
               isLoading ||
+              isError ||
               (!!data?.invite_policy && value === data.invite_policy)
             }
           >

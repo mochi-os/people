@@ -14,25 +14,35 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: ../../../lib/web/src/lib/error-normalizer.ts:215
+#: ../../../lib/web/src/lib/error-normalizer.ts:219
 msgid "Please check your internet connection and try again."
 msgstr "Ji kerema xwe girêdana xwe ya înternetê kontrol bike û dîsa biceribîne."
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:301
-msgid " or "
-msgstr " an "
+#~ msgid " or "
+#~ msgstr " an "
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:190
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:189
 msgid "(edited)"
 msgstr "(hatî sererast kirin)"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:174
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:173
 msgid "(expand)"
 msgstr "(berfireh bike)"
 
 #: ../../../lib/web/src/components/entity/entity-board-container.tsx:753
 msgid "[not set]"
 msgstr "[neyî sazkirin]"
+
+#. placeholder {0}: displayInfo.count
+#: ../../../lib/web/src/components/person-picker.tsx:257
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# hilbijartî} other {# hilbijartî}}"
+
+#. placeholder {0}: countDeepChildren(object.id)
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
+msgid "{0, plural, one {+# nested} other {+# nested}}"
+msgstr "{0, plural, one {+# di nav de} other {+# di nav de}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts:176
 msgid "{count, plural, one {#d} other {#d}}"
@@ -50,13 +60,13 @@ msgstr "{count, plural, one {#xul} other {#xul}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#hef} other {#hef}}"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "Navê {entityLabel}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:99
-msgid "{entityLabel} name is required"
-msgstr "Navê {entityLabel} pêwîst e"
+#~ msgid "{entityLabel} name is required"
+#~ msgstr "Navê {entityLabel} pêwîst e"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
 msgid "{opponentName} offered a draw"
@@ -67,26 +77,29 @@ msgstr "{opponentName} pêşniyara wekheviyê kir"
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} ji {totalLabel}"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:530
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:531
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# hêman} other {# hêman}}"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:170
+msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
+msgstr "{totalDescendants, plural, one {# bersiv} other {+# bersivên zêde}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:158
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Pêşek veke (# agahdariya nexwendî)} other {Pêşek veke (# agahdariyên nexwendî)}}"
 
-#. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx:418
-msgid "+{0} nested"
-msgstr "+{0} hêlînkirî"
+#~ msgid "+{0} nested"
+#~ msgstr "+{0} hêlînkirî"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:171
-msgid "+{totalDescendants} more replies"
-msgstr "+{totalDescendants} bersivên zêdetir"
+#~ msgid "+{totalDescendants} more replies"
+#~ msgstr "+{totalDescendants} bersivên zêdetir"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:170
-msgid "1 reply"
-msgstr "1 bersiv"
+#~ msgid "1 reply"
+#~ msgstr "1 bersiv"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:37
 msgid "12 hours"
@@ -139,7 +152,8 @@ msgstr "Vexwendin tê pejirandin..."
 msgid "Accepting invitations..."
 msgstr "Vexwendin tên pejirandin..."
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:60
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:16
+#: ../../../lib/web/src/features/errors/general-error.tsx:58
 msgid "Access denied"
 msgstr "Gihîştin hat redkirin"
 
@@ -155,13 +169,13 @@ msgstr "Cureyê hesabê"
 msgid "Actions"
 msgstr "Çalakî"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:720
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
 msgid "Add"
 msgstr "Zêde bike"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:312
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:314
 msgid "Add a comment..."
 msgstr "Şîroveyekê zêde bike..."
 
@@ -169,7 +183,7 @@ msgstr "Şîroveyekê zêde bike..."
 msgid "Add a new account"
 msgstr "Hesabeke nû zêde bike"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:106
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:110
 msgid "Add a new field to this class"
 msgstr "Qadeke nû li vê polê zêde bike"
 
@@ -185,28 +199,28 @@ msgstr "Hesab zêde bike"
 msgid "Add caption"
 msgstr "Binnivîsê zêde bike"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:690
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:728
 msgid "Add checklist item"
 msgstr "Hêmana lîsteya kontrolê zêde bike"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:105
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:233
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:235
 msgid "Add field"
 msgstr "Qad zêde bike"
 
 #: src/features/friends/components/add-friend-dialog.tsx:179
 #: src/features/friends/components/add-friend-dialog.tsx:318
-#: src/features/friends/index.tsx:130
-#: src/features/friends/index.tsx:142
+#: src/features/friends/index.tsx:129
+#: src/features/friends/index.tsx:141
 #: src/features/invitations/index.tsx:246
 msgid "Add friend"
 msgstr "Heval zêde bike"
 
-#: src/features/friends/index.tsx:166
+#: src/features/friends/index.tsx:165
 msgid "Add friends to start connecting"
 msgstr "Ji bo destpêkirina pêwendiyê hevalan zêde bike"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:708
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:746
 msgid "Add item..."
 msgstr "Hêman zêde bike..."
 
@@ -221,15 +235,15 @@ msgstr "Girêdan zêde bike"
 msgid "Add member"
 msgstr "Endam zêde bike"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:215
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:220
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:291
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:91
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:191
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:217
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:222
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:295
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:92
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:193
 msgid "Add option"
 msgstr "Vebijêrk zêde bike"
 
-#: ../../../lib/web/src/components/post-tags.tsx:137
+#: ../../../lib/web/src/components/post-tags.tsx:138
 msgid "Add tag..."
 msgstr "Etîket zêde bike..."
 
@@ -241,8 +255,8 @@ msgstr "Li agahdariyên heyî zêde bike"
 msgid "Add users or groups to get started"
 msgstr "Ji bo destpêkirinê bikarhêner an koman zêde bike"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:258
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:513
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:261
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:518
 #: ../../../lib/web/src/components/view-tabs.tsx:87
 #: ../../../lib/web/src/components/view-tabs.tsx:93
 msgid "Add view"
@@ -291,16 +305,19 @@ msgstr "Hemû vexwendin hatin redkirin"
 msgid "All invites are accepted without your approval."
 msgstr "Hemû vexwendin bê erêkirina te tên qebûlkirin."
 
-#. placeholder {0}: entityLabel.toLowerCase()
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-msgid "Allow anyone to search for {0}"
-msgstr "Destûr bide her kesî ku li {0} bigere"
+#~ msgid "Allow anyone to search for {0}"
+#~ msgstr "Destûr bide her kesî ku li {0} bigere"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:87
+msgid "Allow anyone to search for {entityLabel}"
+msgstr "Destûrê bide her kesî ku li {entityLabel} bigere"
 
 #: src/features/profile/index.tsx:503
 msgid "Allow others to find you in the directory."
 msgstr "Bihêle yên din te di pelrêçê de bibînin."
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:225
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:229
 msgid "Allow sort by"
 msgstr "Destûrê bide rêzkirinê li gor"
 
@@ -314,6 +331,7 @@ msgid "An error occurred"
 msgstr "Çewtiyek çêbû"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:266
+#: ../../../lib/web/src/lib/error-normalizer.ts:11
 msgid "An unexpected error occurred"
 msgstr "Çewtiyeke neçaverêkirî çêbû"
 
@@ -339,11 +357,11 @@ msgid "Appearance"
 msgstr "Xuyabûn"
 
 #. placeholder {0}: deleteTarget?.name
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:313
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:316
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Tu bawer î ku dixwazî \"{0}\" jê bibî?"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:629
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:631
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "Tu bawer î ku dixwazî stûna \"{name}\" jê bibî? Ev nikare were vegerandin."
 
@@ -361,7 +379,7 @@ msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Tu bawer î ku dixwazî <0>{0}</0> ji vê komê derxînî?"
 
 #. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx:251
+#: src/features/friends/index.tsx:250
 msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
 msgstr "Tu bawer î ku dixwazî <0>{0}</0> ji lîsteya hevalên xwe derxînî? Ev kar nikare were vegerandin."
 
@@ -369,11 +387,11 @@ msgstr "Tu bawer î ku dixwazî <0>{0}</0> ji lîsteya hevalên xwe derxînî? E
 msgid "Ascending"
 msgstr "Hilkişandî"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:427
+#: ../../../lib/web/src/components/comment-composer.tsx:430
 msgid "Attach comment files"
 msgstr "Pelên şîroveyê pêve bike"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:426
+#: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Attach reply files"
 msgstr "Pelên bersivê pêve bike"
 
@@ -382,7 +400,7 @@ msgstr "Pelên bersivê pêve bike"
 msgid "Authenticated users"
 msgstr "Bikarhênerên pejirandî"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:318
+#: ../../../lib/web/src/components/step-up-dialog.tsx:306
 msgid "Authenticator code"
 msgstr "Koda rastandinê"
 
@@ -390,15 +408,15 @@ msgstr "Koda rastandinê"
 msgid "Available keyboard shortcuts"
 msgstr "Kurtebirên klavyeyê yên berdest"
 
-#: ../../../lib/web/src/components/entity-avatar.tsx:99
+#: ../../../lib/web/src/components/entity-avatar.tsx:98
 msgid "Avatar"
 msgstr "Avatar"
 
-#: ../../../lib/web/src/components/entity-avatar.tsx:99
+#: ../../../lib/web/src/components/entity-avatar.tsx:98
 msgid "Avatar for {name}"
 msgstr "Avatar ji bo {name}"
 
-#: ../../../lib/web/src/components/place-picker.tsx:156
+#: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/friends/components/add-friend-dialog.tsx:376
 msgid "Back"
 msgstr "Vegere"
@@ -407,8 +425,8 @@ msgstr "Vegere"
 msgid "Back to friends"
 msgstr "Vegere hevalan"
 
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:27
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:28
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Vegere ser malê"
 
@@ -421,8 +439,8 @@ msgstr "Banner"
 msgid "Blocked by"
 msgstr "Hat astengkirin ji aliyê"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:242
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:252
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:238
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:248
 msgid "Blocked navigation to untrusted link"
 msgstr "Gihîştin bo girêdaneke nebawer hat astengkirin"
 
@@ -430,16 +448,16 @@ msgstr "Gihîştin bo girêdaneke nebawer hat astengkirin"
 msgid "Blocks"
 msgstr "Blok"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:312
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:315
 msgid "Board"
 msgstr "Tabloya"
 
-#: ../../../lib/web/src/components/post-tags.tsx:180
-#: ../../../lib/web/src/components/post-tags.tsx:192
+#: ../../../lib/web/src/components/post-tags.tsx:194
+#: ../../../lib/web/src/components/post-tags.tsx:206
 msgid "Boost interest"
 msgstr "Berjewendiyê zêde bike"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:399
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:402
 msgid "Border colour"
 msgstr "Rengê sînor"
 
@@ -452,15 +470,15 @@ msgid "Browser notifications"
 msgstr "Agahdariyên geroka"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:426
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:614
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:616
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:211
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:166
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:183
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:168
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:185
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
-#: ../../../lib/web/src/components/step-up-dialog.tsx:366
-#: ../../../lib/web/src/components/travelling-picker.tsx:308
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:249
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:132
+#: ../../../lib/web/src/components/step-up-dialog.tsx:354
+#: ../../../lib/web/src/components/travelling-picker.tsx:288
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:251
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:136
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:268
 #: ../../../lib/web/src/features/accounts/account-add.tsx:201
@@ -478,11 +496,11 @@ msgstr "Betal bike"
 msgid "Cancel all"
 msgstr "Hemûyan betal bike"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:427
+#: ../../../lib/web/src/components/comment-composer.tsx:430
 msgid "Cancel comment"
 msgstr "Şîroveyê betal bike"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:426
+#: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "Bersivê betal bike"
 
@@ -512,7 +530,15 @@ msgstr "Banner biguherîne"
 msgid "Change notification category"
 msgstr "Kategoriya agahdariyê biguherîne"
 
-#: src/features/friends/index.tsx:214
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:62
+msgid "Changed"
+msgstr "Hate guhertin"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:62
+msgid "Changed {field}"
+msgstr "{field} hate guhertin"
+
+#: src/features/friends/index.tsx:213
 msgid "Chat"
 msgstr "Chat"
 
@@ -520,11 +546,11 @@ msgstr "Chat"
 msgid "Chat is not configured"
 msgstr "Sohbet nehatiye sazkirin"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:137
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:12
 msgid "Checkbox"
 msgstr "Qutiya kontrol"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:138
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:13
 msgid "Checklist"
 msgstr "Lîsteya kontrolê"
 
@@ -539,10 +565,10 @@ msgstr "Ziman hilbijêre"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
-#: ../../../lib/web/src/components/travelling-picker.tsx:164
-#: ../../../lib/web/src/components/travelling-picker.tsx:170
-#: ../../../lib/web/src/components/travelling-picker.tsx:231
-#: ../../../lib/web/src/components/travelling-picker.tsx:237
+#: ../../../lib/web/src/components/travelling-picker.tsx:145
+#: ../../../lib/web/src/components/travelling-picker.tsx:151
+#: ../../../lib/web/src/components/travelling-picker.tsx:212
+#: ../../../lib/web/src/components/travelling-picker.tsx:218
 msgid "Clear"
 msgstr "Paqij bike"
 
@@ -555,20 +581,20 @@ msgstr "Hemûyan paqij bike"
 msgid "Clear search"
 msgstr "Lêgerînê paqij bike"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:501
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:506
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:468
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:471
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:479
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:482
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 #: src/features/friends/components/add-friend-dialog.tsx:398
 msgid "Close"
 msgstr "Bigire"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:113
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:263
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:267
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:117
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:266
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:270
 msgid "Close dialog"
 msgstr "Diyalogê bigire"
 
@@ -601,16 +627,16 @@ msgstr "Berhevbike"
 msgid "Collapse sidebar"
 msgstr "Panela kêlekê biçûk bike"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:146
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:148
 msgid "Colour"
 msgstr "Reng"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:539
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:544
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:540
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:545
 msgid "Column actions"
 msgstr "Kiryarên stûnê"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:347
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:350
 msgid "Columns group by"
 msgstr "Stûn li gor … kom dike"
 
@@ -627,8 +653,8 @@ msgstr "Paleta fermanan"
 msgid "Comment actions"
 msgstr "Kiryarên şîroveyê"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:431
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:443
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:442
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:454
 msgid "Comments"
 msgstr "Şîrove"
 
@@ -636,16 +662,16 @@ msgstr "Şîrove"
 msgid "Compact"
 msgstr "Kompakt"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:94
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:95
 msgid "Configure option settings"
 msgstr "Mîhengên vebijêrkê biguherîne"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:259
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:262
 msgid "Configure view settings"
 msgstr "Mîhengên dîtinê biguherîne"
 
-#: ../../../lib/web/src/components/place-picker.tsx:160
-#: ../../../lib/web/src/components/travelling-picker.tsx:316
+#: ../../../lib/web/src/components/place-picker.tsx:146
+#: ../../../lib/web/src/components/travelling-picker.tsx:296
 msgid "Confirm"
 msgstr "Piştrast bike"
 
@@ -661,7 +687,7 @@ msgstr "Tê girêdan..."
 msgid "Content not found."
 msgstr "Naverok nehat dîtin."
 
-#: ../../../lib/web/src/lib/query-client.ts:78
+#: ../../../lib/web/src/lib/query-client.ts:73
 msgid "Content not modified"
 msgstr "Naverok nehat guhertin"
 
@@ -673,7 +699,7 @@ msgstr "Agahî û hûragahiyên kontekstê."
 msgid "Continue"
 msgstr "Berdewam bike"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:355
+#: ../../../lib/web/src/components/step-up-dialog.tsx:343
 msgid "Continue with {label}"
 msgstr "Bi {label} berdewam be"
 
@@ -697,34 +723,37 @@ msgstr "ID-ya xwe kopî bike"
 msgid "Could not load this document. Please try again later."
 msgstr "Ev belge nikarîbû were barkirin. Ji kerema xwe re paşê dîsa biceribîne."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:128
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:124
 msgid "Couldn't load notifications"
 msgstr "Nikarî agahdariyan bar bike"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:182
+#: ../../../lib/web/src/components/step-up-dialog.tsx:170
 msgid "Couldn't send the code. Please try again."
 msgstr "Kod nehate şandin. Ji kerema xwe dîsa biceribîne."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:136
+#: ../../../lib/web/src/components/step-up-dialog.tsx:124
 msgid "Couldn't start re-authentication. Please try again."
 msgstr "Verastkirina ji nû ve nehate destpêkirin. Ji kerema xwe dîsa biceribîne."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:224
+#: ../../../lib/web/src/components/step-up-dialog.tsx:212
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Bi wê hesabê re piştrastkirin pêk nehat. Ji kerema xwe dîsa biceribîne."
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:550
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:689
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:491
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:656
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:675
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Çêbike"
 
-#. placeholder {0}: entityLabel.toLowerCase()
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:144
-msgid "Create {0}"
-msgstr "{0} biafirîne"
+#~ msgid "Create {0}"
+#~ msgstr "{0} biafirîne"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:146
+msgid "Create {entityLabel}"
+msgstr "{entityLabel} çêbike"
 
 #: src/components/layout/people-layout.tsx:81
 #: src/features/groups/group-dialog.tsx:99
@@ -737,21 +766,26 @@ msgstr "Kom çêbike"
 msgid "Create new item"
 msgstr "Hêmana nû çêbike"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:54
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:56
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:492
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:495
 msgid "Created"
 msgstr "Hat çêkirin"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:54
+msgid "Created {field}"
+msgstr "{field} hate afirandin"
 
 #: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "Kom tê çêkirin..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:656
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 msgid "Creating..."
 msgstr "Tê çêkirin..."
 
-#: ../../../lib/web/src/components/map-view.tsx:217
+#: ../../../lib/web/src/components/map-view.tsx:249
 msgid "Current location"
 msgstr "Cihê niha"
 
@@ -768,7 +802,7 @@ msgstr "Tarî"
 msgid "Data conflict"
 msgstr "Nakokiya daneyan"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:139
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:14
 msgid "Date"
 msgstr "Dîrok"
 
@@ -797,29 +831,29 @@ msgstr "Standard"
 msgid "Default AI account"
 msgstr "Hesabê standard yê AI"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:479
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:482
 msgid "Default sort"
 msgstr "Rêzkirina standard"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:569
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:630
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:570
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:632
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:280
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:323
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:353
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:198
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:203
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:314
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: src/features/groups/group-detail.tsx:150
 #: src/features/groups/group-detail.tsx:296
 msgid "Delete"
 msgstr "Jê bibe"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:312
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:315
 msgid "Delete attachment"
 msgstr "Pêvekê jê bibe"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:630
 msgid "Delete column"
 msgstr "Stûnê jê bibe"
 
@@ -827,7 +861,7 @@ msgstr "Stûnê jê bibe"
 msgid "Delete comment"
 msgstr "Şîroveyê jê bibe"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:300
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:304
 msgid "Delete field"
 msgstr "Qadê jê bibe"
 
@@ -840,23 +874,31 @@ msgstr "Komê jê bibe"
 msgid "Delete group \"{0}\"? This cannot be undone."
 msgstr "Koma \"{0}\" jê bibe? Ev nikare were vegerandin."
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:116
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:117
 msgid "Delete option"
 msgstr "Vebijêrkê jê bibe"
 
 #. placeholder {0}: opt.name
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:278
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:283
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:282
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:287
 msgid "Delete option {0}"
 msgstr "Vebijêrka {0} jê bibe"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:284
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:287
 msgid "Delete view"
 msgstr "Dîtinê jê bibe"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:109
+#: ../../../lib/web/src/components/restore-banner.tsx:95
 msgid "Delete your account on the old server"
 msgstr "Hesabê xwe li ser serverê kevn jêbirin"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:58
+msgid "Deleted"
+msgstr "Hate jêbirin"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:58
+msgid "Deleted {field}"
+msgstr "{field} hate jêbirin"
 
 #: src/features/groups/group-detail.tsx:107
 msgid "Deleting group..."
@@ -866,7 +908,7 @@ msgstr "Kom tê jêbirin..."
 msgid "Descending"
 msgstr "Daketî"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:83
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
 #: src/features/groups/group-detail.tsx:178
 #: src/features/groups/group-dialog.tsx:116
 msgid "Description"
@@ -887,7 +929,7 @@ msgstr "Panela hûragahiyan"
 msgid "Detect from web browser"
 msgstr "Ji geroka webê tespît bike"
 
-#: ../../../lib/web/src/components/person-picker.tsx:214
+#: ../../../lib/web/src/components/person-picker.tsx:190
 msgid "Directory"
 msgstr "Peldank"
 
@@ -908,8 +950,8 @@ msgstr "Reşnivîs bê avêtin?"
 msgid "Disconnected"
 msgstr "Veqetandî"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:88
-#: ../../../lib/web/src/components/restore-banner.tsx:94
+#: ../../../lib/web/src/components/restore-banner.tsx:74
+#: ../../../lib/web/src/components/restore-banner.tsx:80
 msgid "Dismiss"
 msgstr "Red bike"
 
@@ -917,18 +959,23 @@ msgstr "Red bike"
 msgid "Displays the mobile sidebar."
 msgstr "Panela kêlekê ya mobîl nîşan dide."
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:305
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:518
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:111
+msgid "Does not match the required pattern"
+msgstr "Bi şablona pêwîst re li hev nake"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 msgid "Done"
 msgstr "Qediya"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:239
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:452
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:462
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:463
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:473
 msgid "Download"
 msgstr "Daxe"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:98
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:149
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:100
 msgid "Download failed"
 msgstr "Daxistin têk çû"
 
@@ -946,7 +993,7 @@ msgstr "Hevhewş ji bo dîslêksiyê"
 msgid "Edit"
 msgstr "Sererast bike"
 
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:154
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:158
 msgid "Edit {label}"
 msgstr "{label} biguherîne"
 
@@ -954,11 +1001,11 @@ msgstr "{label} biguherîne"
 msgid "Edit caption"
 msgstr "Binnivîsê biguherîne"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:137
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:140
 msgid "Edit field"
 msgstr "Qadê sererast bike"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:138
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:141
 msgid "Edit field settings"
 msgstr "Mîhengên qadê sererast bike"
 
@@ -972,13 +1019,13 @@ msgstr "Komê sererast bike"
 msgid "Edit name"
 msgstr "Navê sererast bike"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:91
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:92
 msgid "Edit option"
 msgstr "Vebijarkê sererast bike"
 
 #. placeholder {0}: opt.name
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:263
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:268
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:267
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:272
 msgid "Edit option {0}"
 msgstr "{0} vebijarkê sererast bike"
 
@@ -986,7 +1033,7 @@ msgstr "{0} vebijarkê sererast bike"
 msgid "Edit selected card"
 msgstr "Karta hilbijartî sererast bike"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:258
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:261
 msgid "Edit view"
 msgstr "Dîmenê sererast bike"
 
@@ -994,7 +1041,7 @@ msgstr "Dîmenê sererast bike"
 msgid "Email"
 msgstr "E-name"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:292
+#: ../../../lib/web/src/components/step-up-dialog.tsx:280
 msgid "Email code"
 msgstr "Koda e-nameyê"
 
@@ -1006,11 +1053,11 @@ msgstr "Ji bo dîtina kesên ku tu dixwazî zêde bikî navekî binivîse"
 msgid "Enter name to search..."
 msgstr "Ji bo lêgerînê navê binivîse..."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:302
+#: ../../../lib/web/src/components/step-up-dialog.tsx:290
 msgid "Enter the code from your email"
 msgstr "Koda ji e-nameya xwe binivîse"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:327
+#: ../../../lib/web/src/components/step-up-dialog.tsx:315
 msgid "Enter your authenticator code"
 msgstr "Koda authenticator-a xwe têkevê"
 
@@ -1040,6 +1087,10 @@ msgstr "Qebûlkirina vexwendinê neserkeftî bû"
 #: src/features/invitations/index.tsx:140
 msgid "Failed to accept invitations"
 msgstr "Vexwendin nehatin pejirandin"
+
+#: ../../../lib/web/src/hooks/use-accounts.ts:213
+msgid "Failed to add account"
+msgstr "Zêdekirina hesabê neserkeftî bû"
 
 #: src/features/friends/components/add-friend-dialog.tsx:78
 #: src/features/friends/components/add-friend-dialog.tsx:99
@@ -1086,7 +1137,7 @@ msgstr "Vexwendin nehatin redkirin"
 msgid "Failed to delete attachment"
 msgstr "Jêbirina pêvekê neserkeftî bû"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:191
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:192
 msgid "Failed to delete comment"
 msgstr "Jêbirina şîroveyê neserkeftî bû"
 
@@ -1110,7 +1161,7 @@ msgstr "Barkirin neserkeftî bû"
 msgid "Failed to load history"
 msgstr "Barkirina dîrokê neserkeftî bû"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:349
 #: src/features/profile/index.tsx:601
 #: src/lib/resize-image.ts:26
 #: src/lib/resize-image.ts:53
@@ -1122,7 +1173,7 @@ msgstr "Wêne nehat barkirin"
 msgid "Failed to load prompts"
 msgstr "Barkirina promptan neserkeftî bû"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:349
 msgid "Failed to load video"
 msgstr "Vîdyo nehat barkirin"
 
@@ -1130,7 +1181,7 @@ msgstr "Vîdyo nehat barkirin"
 msgid "Failed to load your invite policy"
 msgstr "Barkirina polîtîkaya vexwendina te neserkeftî bû"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:154
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:155
 msgid "Failed to post comment"
 msgstr "Şandina şîroveyê neserkeftî bû"
 
@@ -1174,7 +1225,7 @@ msgstr "Tomarkirina profîlê neserkeftî bû"
 msgid "Failed to save prompt"
 msgstr "Tomarkirina prompt neserkeftî bû"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:174
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:175
 msgid "Failed to update comment"
 msgstr "Rojanekirina şîroveyê neserkeftî bû"
 
@@ -1194,17 +1245,17 @@ msgstr "Favicon"
 msgid "File too large"
 msgstr "Pel pir mezin e"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:589
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:155
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:175
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
 msgstr "Pelan"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:97
+#: ../../../lib/web/src/components/restore-banner.tsx:83
 msgid "Finish moving your account"
 msgstr "Veguheztina hesabê xwe biqedînin"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:221
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:225
 msgid "Flags"
 msgstr "Ala"
 
@@ -1220,14 +1271,14 @@ msgstr "Înî"
 msgid "Friend removed"
 msgstr "Heval hat rakirin"
 
-#: ../../../lib/web/src/components/person-picker.tsx:207
+#: ../../../lib/web/src/components/person-picker.tsx:183
 #: src/components/layout/people-layout.tsx:66
 #: src/features/friends/index.tsx:46
 #: src/features/friends/index.tsx:118
 msgid "Friends"
 msgstr "Heval"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:153
+#: ../../../lib/web/src/components/travelling-picker.tsx:134
 msgid "From"
 msgstr "Ji"
 
@@ -1239,8 +1290,8 @@ msgstr "Ji"
 msgid "From theme"
 msgstr "Ji temayê"
 
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:25
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Vegere"
 
@@ -1257,7 +1308,7 @@ msgstr "Kom"
 msgid "Group actions"
 msgstr "Tevgerên komê"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:347
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:350
 msgid "Group by"
 msgstr "Li gorî kom bike"
 
@@ -1301,8 +1352,8 @@ msgstr "Dîrok"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx:90
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:185
-#: ../../../lib/web/src/components/layout/top-bar.tsx:71
-#: ../../../lib/web/src/components/layout/top-bar.tsx:100
+#: ../../../lib/web/src/components/layout/top-bar.tsx:86
+#: ../../../lib/web/src/components/layout/top-bar.tsx:115
 msgid "Home"
 msgstr "Mal"
 
@@ -1310,7 +1361,7 @@ msgstr "Mal"
 msgid "Hot"
 msgstr "Germ"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:152
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:156
 msgid "ID"
 msgstr "Nasname"
 
@@ -1319,7 +1370,7 @@ msgid "Identity"
 msgstr "Nasname"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:316
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:327
 msgid "Image viewer: {0}"
 msgstr "Nêrîna wêneyan: {0}"
 
@@ -1343,11 +1394,15 @@ msgstr "Avatara tîpên destpêkê"
 msgid "Initials avatar for {name}"
 msgstr "Avatara tîpên destpêkê ji bo {name}"
 
+#: ../../../lib/web/src/components/post-tags.tsx:168
+msgid "Interest {weight}"
+msgstr "Eleqe {weight}"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:42
 msgid "Interests"
 msgstr "Balkêşî"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:591
 msgid "Invalid date"
 msgstr "Tarîxa nederbasdar"
 
@@ -1412,13 +1467,17 @@ msgstr "Kurtek klavyeyê"
 msgid "Large"
 msgstr "Mezin"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:306
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:309
 msgid "Layout"
 msgstr "Bargeh"
 
 #: ../../../lib/web/src/components/post-tags.tsx:72
-msgid "Letters, numbers, spaces, and hyphens only"
-msgstr "Tenê tîp, hejmar, valahî û kêşan"
+#~ msgid "Letters, numbers, spaces, and hyphens only"
+#~ msgstr "Tenê tîp, hejmar, valahî û kêşan"
+
+#: ../../../lib/web/src/components/post-tags.tsx:73
+msgid "Letters, numbers, spaces, hyphens, and slashes only"
+msgstr "Tenê tîp, hejmar, valahî, kêşan û xêzikên paldayî"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:14
 msgid "Light"
@@ -1432,11 +1491,11 @@ msgstr "Girêdan"
 msgid "Links"
 msgstr "Lînka"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:318
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:321
 msgid "List"
 msgstr "Lîste"
 
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/components/ui/load-more.tsx:39
 msgid "Load more"
 msgstr "Bêtir bar bike"
 
@@ -1448,7 +1507,7 @@ msgstr "Naverok tê barkirin…"
 msgid "Loading groups..."
 msgstr "Kom tên barkirin..."
 
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 msgid "Loading..."
 msgstr "Tê barkirin..."
@@ -1478,8 +1537,8 @@ msgstr "Kategorîyan bi rêve bibe"
 msgid "Manual"
 msgstr "Destî"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:207
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:214
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:203
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:210
 msgid "Mark all as read"
 msgstr "Hemû wek xwendî nîşan bike"
 
@@ -1487,7 +1546,7 @@ msgstr "Hemû wek xwendî nîşan bike"
 msgid "Markdown supported"
 msgstr "Markdown tê piştgirîkirin"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:198
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:202
 msgid "Maximum length"
 msgstr "Dirêjahiya zêdetirîn"
 
@@ -1507,6 +1566,7 @@ msgstr "Endam"
 msgid "Member removed"
 msgstr "Endam hat rakirin"
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:377
 #: src/features/groups/group-detail.tsx:188
 msgid "Members"
 msgstr "Endam"
@@ -1527,7 +1587,7 @@ msgstr "Peyam"
 msgid "Metric"
 msgstr "Mîtrîk"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:187
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
 msgstr "Dirêjahiya kêmtirîn"
 
@@ -1548,28 +1608,41 @@ msgstr "Duşem"
 msgid "More options"
 msgstr "Vebijarkên zêdetir"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:118
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:600
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:142
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:125
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:293
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:60
+msgid "Moved"
+msgstr "Hate guhastin"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:60
+msgid "Moved {field}"
+msgstr "{field} hate guhastin"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:122
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:601
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:145
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:126
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:296
 #: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "Nav"
 
-#: src/features/friends/index.tsx:181
+#: src/features/friends/index.tsx:180
 msgid "Name (A–Z)"
 msgstr "Nav (A–Z)"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
-msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
-msgstr "Nav nikare kevanên goşeyî, xêza paşve, xalpirgul, dunîşan an backtick bihewîne"
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:104
+msgid "Name cannot contain < or > characters"
+msgstr "Nav nikare tîpên < an > bigire nav xwe"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
+#~ msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
+#~ msgstr "Nav nikare kevanên goşeyî, xêza paşve, xalpirgul, dunîşan an backtick bihewîne"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:101
 #: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "Nav pêwîst e"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
 msgid "Name must be 1000 characters or less"
 msgstr "Nav divê 1000 tîp an kêmtir be"
 
@@ -1577,12 +1650,12 @@ msgstr "Nav divê 1000 tîp an kêmtir be"
 msgid "Name saved"
 msgstr "Nav hate tomarkirin"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/features/errors/general-error.tsx:51
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:313
 msgid "Network error"
 msgstr "Çewtiya torê"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:476
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 msgid "New"
 msgstr "Nû"
@@ -1596,12 +1669,12 @@ msgstr "Lîstika nû"
 msgid "New invitations will appear here"
 msgstr "Vexwendinên nû dê li vir xuya bibin"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:525
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:530
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:536
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:541
 msgid "Next image"
 msgstr "Wêneya pêştir"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:555
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
 msgid "No {parentClassNames} to add to"
 msgstr "Tu {parentClassNames} ji bo zêdekirinê tune"
 
@@ -1609,7 +1682,7 @@ msgstr "Tu {parentClassNames} ji bo zêdekirinê tune"
 msgid "No access rules configured. Add rules to control who can access this resource."
 msgstr "Tu rêzikên destpêkirinê nehatine mîhengkirin. Rêzikan zêde bike da ku kontrol bike kî dikare bigihîje vê çavkaniyê."
 
-#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:65
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:74
 msgid "No activity yet"
 msgstr "Hêj tu çalakî tune"
 
@@ -1617,11 +1690,11 @@ msgstr "Hêj tu çalakî tune"
 msgid "No banner set"
 msgstr "Tu banner nehatiye danîn"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:322
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:324
 msgid "No comments yet"
 msgstr "Hêj tu şîrove tune"
 
-#: src/features/friends/index.tsx:162
+#: src/features/friends/index.tsx:161
 msgid "No friends yet"
 msgstr "Hêj tu heval tune"
 
@@ -1633,7 +1706,7 @@ msgstr "Hêj tu lîstik tune"
 msgid "No groups available"
 msgstr "Tu kom berdest nîn in"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Hêj tu cure babetan nikarin werin afirandin. Pêşî babetên dê yên pêwîst biafirîne."
 
@@ -1653,33 +1726,33 @@ msgstr "Tu komên din tune"
 msgid "No pending invitations"
 msgstr "Tu vexwendinên ber-bûyer tune"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:341
-#: ../../../lib/web/src/components/person-picker.tsx:84
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:382
+#: ../../../lib/web/src/components/person-picker.tsx:71
 #: src/features/friends/components/add-friend-dialog.tsx:237
 #: src/features/groups/member-dialog.tsx:165
 msgid "No people found"
 msgstr "Tu kes nehatin dîtin"
 
-#: ../../../lib/web/src/components/place-picker.tsx:133
+#: ../../../lib/web/src/components/place-picker.tsx:120
 msgid "No places found"
 msgstr "Tu cîh nehatin dîtin"
 
-#: src/features/friends/index.tsx:162
+#: src/features/friends/index.tsx:161
 msgid "No results for \"{search}\""
 msgstr "Tu encam ji bo \"{search}\" tune"
 
-#: ../../../lib/web/src/components/inline-entity-search.tsx:64
+#: ../../../lib/web/src/components/inline-entity-search.tsx:65
 #: ../../../lib/web/src/components/search-entity-page.tsx:73
 msgid "No results found"
 msgstr "Encam nehat dîtin"
 
-#: ../../../lib/web/src/components/command-menu.tsx:55
+#: ../../../lib/web/src/components/command-menu.tsx:57
 msgid "No results found."
 msgstr "Tu encam nehatin dîtin."
 
 #: ../../../lib/web/src/components/entity/entity-board-container.tsx:824
 #: ../../../lib/web/src/components/entity/entity-board-container.tsx:869
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:339
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:336
 msgid "No status"
 msgstr "Tu rewş tune"
 
@@ -1691,7 +1764,7 @@ msgstr "Tu herêma demê nehat dîtin."
 msgid "No topic record yet — try again after the next notification."
 msgstr "Hêj tu tomarê mijarê tune — piştî agahdariya pêştir dîsa biceribîne."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:139
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:135
 msgid "No unread notifications"
 msgstr "Tu agahdariyên nexwendî tune"
 
@@ -1704,17 +1777,17 @@ msgid "No views"
 msgstr "Tu dîtin tune"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:541
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:545
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:359
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:382
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:412
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:415
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:488
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
-#: ../../../lib/web/src/components/person-picker.tsx:350
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
+#: ../../../lib/web/src/components/person-picker.tsx:326
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 msgid "None"
 msgstr "Tu"
@@ -1724,20 +1797,20 @@ msgid "Normal"
 msgstr "Asayî"
 
 #: ../../../lib/web/src/components/attachment-image.tsx:50
-#: ../../../lib/web/src/features/errors/general-error.tsx:67
+#: ../../../lib/web/src/features/errors/general-error.tsx:65
 msgid "Not found"
 msgstr "Nehat dîtin"
 
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:146
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:150
 msgid "Not set"
 msgstr "Nehatiye danîn"
 
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:671
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:668
 msgid "Nothing found"
 msgstr "Tiştek nehat dîtin"
 
 #. placeholder {0}: unread.length
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:200
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:196
 msgid "Notifications: {0}"
 msgstr "Agahdarî: {0}"
 
@@ -1745,9 +1818,9 @@ msgstr "Agahdarî: {0}"
 msgid "Notify me"
 msgstr "Min agahdar bike"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:140
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:54
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:493
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:497
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:15
 msgid "Number"
 msgstr "Hejmar"
 
@@ -1759,8 +1832,8 @@ msgstr "Vekirî"
 msgid "Oops! Page Not Found!"
 msgstr "Wey! Rûpel nehat dîtin!"
 
-#: ../../../lib/web/src/components/layout/nav-group.tsx:199
-#: ../../../lib/web/src/components/layout/nav-group.tsx:204
+#: ../../../lib/web/src/components/layout/nav-group.tsx:227
+#: ../../../lib/web/src/components/layout/nav-group.tsx:232
 msgid "Open actions"
 msgstr "Kiryaran veke"
 
@@ -1768,13 +1841,13 @@ msgstr "Kiryaran veke"
 msgid "Open menu"
 msgstr "Menûyê veke"
 
-#: ../../../lib/web/src/components/layout/top-bar.tsx:63
-#: ../../../lib/web/src/components/layout/top-bar.tsx:68
+#: ../../../lib/web/src/components/layout/top-bar.tsx:78
+#: ../../../lib/web/src/components/layout/top-bar.tsx:83
 msgid "Open navigation"
 msgstr "Navîgasyonê veke"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:105
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:111
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:106
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:112
 msgid "Open option actions"
 msgstr "Çalakiyên vebijêrkê veke"
 
@@ -1782,8 +1855,8 @@ msgstr "Çalakiyên vebijêrkê veke"
 msgid "Open selected card"
 msgstr "Karta hilbijartî veke"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:274
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:279
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:277
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:282
 msgid "Open view actions"
 msgstr "Çalakiyên dîtinê veke"
 
@@ -1792,8 +1865,8 @@ msgstr "Çalakiyên dîtinê veke"
 msgid "Open view controls"
 msgstr "Kontrolên dîtinê veke"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:200
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:155
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:202
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:157
 msgid "Option name"
 msgstr "Navê vebijêrkê"
 
@@ -1801,8 +1874,8 @@ msgstr "Navê vebijêrkê"
 msgid "Optional description"
 msgstr "Şirove vebijarkî"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:168
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:240
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:170
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:244
 msgid "Options"
 msgstr "Vebijêrk"
 
@@ -1814,23 +1887,23 @@ msgstr "Yên din"
 msgid "Owner"
 msgstr "Xwedî"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:530
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
 msgid "Parent"
 msgstr "Dêûbav"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:337
+#: ../../../lib/web/src/components/step-up-dialog.tsx:325
 msgid "Passkey"
 msgstr "Passkey"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:207
+#: ../../../lib/web/src/components/step-up-dialog.tsx:195
 msgid "Passkey verification failed. Please try again."
 msgstr "Verastkirina passkey têk çû. Ji kerema xwe dîsa biceribîne."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:146
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Passkeys"
 msgstr "Passkey"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:209
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "Şablon (regex)"
 
@@ -1838,6 +1911,7 @@ msgstr "Şablon (regex)"
 msgid "Pending"
 msgstr "Li bendê"
 
+#: ../../../lib/web/src/components/person-picker.tsx:176
 #: src/components/layout/people-layout.tsx:63
 msgid "People"
 msgstr "Kes"
@@ -1847,20 +1921,20 @@ msgid "Personalise how your profile and app look to others."
 msgstr "Kesane bike ka profîl û sepana te ji yên din re çawa xuya dibe."
 
 #: ../../../lib/web/src/components/comment-composer.tsx:89
-#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/features/errors/general-error.tsx:52
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:314
 msgid "Please check your internet connection and try again."
 msgstr "Ji kerema xwe girêdana xwe ya înternetê kontrol bike û dîsa biceribîne."
 
 #: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
-msgid "Please log in with the appropriate credentials <0/> to access this resource."
-msgstr "Ji kerema xwe ji bo gihîştina vê çavkaniyê <0/> bi pêbaweriyên guncaw têkeve."
+#~ msgid "Please log in with the appropriate credentials <0/> to access this resource."
+#~ msgstr "Ji kerema xwe ji bo gihîştina vê çavkaniyê <0/> bi pêbaweriyên guncaw têkeve."
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:83
+#: ../../../lib/web/src/features/errors/general-error.tsx:81
 msgid "Please try again."
 msgstr "Ji kerema xwe dîsa biceribîne."
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:75
+#: ../../../lib/web/src/features/errors/general-error.tsx:73
 msgid "Please wait a moment and try again."
 msgstr "Ji kerema xwe kêliyekê bisekine û dîsa biceribîne."
 
@@ -1881,8 +1955,8 @@ msgstr "Pêşbînî"
 msgid "Preview {0}'s profile before sending a friend request."
 msgstr "Berî ku daxwaza heval ji {0} re bişînî profîla wî pêşbînî bike."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:509
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:514
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:520
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:525
 msgid "Previous image"
 msgstr "Wêneya pêştir"
 
@@ -1915,8 +1989,8 @@ msgid "Profile saved"
 msgstr "Profîl hate tomarkirin"
 
 #: ../../../lib/web/src/components/person-picker.tsx:200
-msgid "Project members"
-msgstr "Endamên projeyê"
+#~ msgid "Project members"
+#~ msgstr "Endamên projeyê"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:108
 msgid "Prompt saved"
@@ -1930,11 +2004,11 @@ msgstr "Agahdariya push"
 msgid "Raised"
 msgstr "Bilindkirî"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:118
+#: ../../../lib/web/src/components/restore-banner.tsx:104
 msgid "Re-link your accounts on this server"
 msgstr "Hesabên xwe li vî serverî ji nû ve girêdin"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:140
+#: ../../../lib/web/src/components/restore-banner.tsx:126
 msgid "Re-register your passkeys on this server"
 msgstr "Mifteyên gihîştinê yên xwe li ser vî rajeyê ji nû ve qeyd bike"
 
@@ -1943,7 +2017,7 @@ msgstr "Mifteyên gihîştinê yên xwe li ser vî rajeyê ji nû ve qeyd bike"
 msgid "Received ({0})"
 msgstr "Hate stendin ({0})"
 
-#: src/features/friends/index.tsx:184
+#: src/features/friends/index.tsx:183
 msgid "Recently added"
 msgstr "Vê dawiyê hatî zêdekirin"
 
@@ -1955,12 +2029,12 @@ msgstr "Pêşniyarkirî"
 msgid "Reconnecting ({retries})..."
 msgstr "Ji nû ve girêdan ({retries})..."
 
-#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:136
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
 msgstr "Beralîkirin ber bi têketinê ve."
 
-#: ../../../lib/web/src/components/post-tags.tsx:200
-#: ../../../lib/web/src/components/post-tags.tsx:212
+#: ../../../lib/web/src/components/post-tags.tsx:214
+#: ../../../lib/web/src/components/post-tags.tsx:226
 msgid "Reduce interest"
 msgstr "Balkêşî kêm bike"
 
@@ -1980,17 +2054,25 @@ msgstr "Goreyî (5d, 3s, 2r)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Goreyî di nav 24 saetan de, ne wisa be mutleq"
 
+#: ../../../lib/web/src/components/post-tags.tsx:166
+msgid "Relevance {relevance}"
+msgstr "Peywendî {relevance}"
+
+#: ../../../lib/web/src/components/post-tags.tsx:164
+msgid "Relevance {relevance}, interest {weight}"
+msgstr "Peywendî {relevance}, eleqe {weight}"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx:285
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 msgid "Remove"
 msgstr "Rake"
 
 #. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx:221
-#: src/features/friends/index.tsx:230
+#: src/features/friends/index.tsx:220
+#: src/features/friends/index.tsx:229
 #: src/features/groups/group-detail.tsx:240
 #: src/features/groups/group-detail.tsx:245
 msgid "Remove {0}"
@@ -2016,17 +2098,17 @@ msgstr "Rêbaza gihîştinê ya \"{0}\" were rakirin?"
 msgid "Remove access?"
 msgstr "Destpêkirinê rake?"
 
-#: src/features/friends/index.tsx:249
-#: src/features/friends/index.tsx:260
+#: src/features/friends/index.tsx:248
+#: src/features/friends/index.tsx:259
 msgid "Remove friend"
 msgstr "Hevalê rake"
 
-#: ../../../lib/web/src/components/post-tags.tsx:220
-#: ../../../lib/web/src/components/post-tags.tsx:232
+#: ../../../lib/web/src/components/post-tags.tsx:234
+#: ../../../lib/web/src/components/post-tags.tsx:246
 msgid "Remove interest"
 msgstr "Balkêşiyê rake"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:674
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:712
 msgid "Remove item"
 msgstr "Babetê rake"
 
@@ -2048,21 +2130,21 @@ msgstr "Heval tê rakirin..."
 msgid "Removing member..."
 msgstr "Endam tê rakirin..."
 
-#: src/features/friends/index.tsx:260
+#: src/features/friends/index.tsx:259
 #: src/features/groups/group-detail.tsx:271
 msgid "Removing..."
 msgstr "Tê rakirin..."
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:561
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:618
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:562
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:620
 msgid "Rename"
 msgstr "Navê biguhere"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:596
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:597
 msgid "Rename column"
 msgstr "Navê stûnê biguhere"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:597
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:598
 msgid "Rename this board column"
 msgstr "Navê vê stûna paneyê biguhere"
 
@@ -2076,11 +2158,11 @@ msgstr "Bersiv"
 msgid "Reply to {0}..."
 msgstr "Bersiv ji {0} re..."
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:224
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:228
 msgid "Required"
 msgstr "Pêwîst"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:370
+#: ../../../lib/web/src/components/step-up-dialog.tsx:358
 msgid "Resend email"
 msgstr "Dîsa e-nameyê bişîne"
 
@@ -2100,12 +2182,12 @@ msgstr "Gihîştinê betal bike"
 msgid "Revoke RSS access?"
 msgstr "Gihîştina RSS were vekişandin?"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:150
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:168
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:152
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:172
 msgid "Rows"
 msgstr "Rêz"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:373
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:376
 msgid "Rows group by"
 msgstr "Rêz bi vê komê re bibe"
 
@@ -2128,8 +2210,8 @@ msgstr "Şemî"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:170
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
 #: src/features/groups/group-dialog.tsx:135
 #: src/features/invitations/invite-settings-dialog.tsx:140
@@ -2161,7 +2243,7 @@ msgstr "Tê tomarkirin..."
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:175
 #: ../../../lib/web/src/components/filter-bar.tsx:32
 #: ../../../lib/web/src/components/header-search.tsx:22
-#: ../../../lib/web/src/components/search.tsx:18
+#: ../../../lib/web/src/components/search.tsx:17
 msgid "Search"
 msgstr "Lêger"
 
@@ -2169,19 +2251,19 @@ msgstr "Lêger"
 msgid "Search for a command to run..."
 msgstr "Li fermanekê bigere ku bimeşe..."
 
-#: ../../../lib/web/src/components/place-picker.tsx:86
+#: ../../../lib/web/src/components/place-picker.tsx:73
 msgid "Search for a place"
 msgstr "Li cîhekî bigere"
 
-#: ../../../lib/web/src/components/place-picker.tsx:50
+#: ../../../lib/web/src/components/place-picker.tsx:37
 msgid "Search for a place..."
 msgstr "Li cihekî bigere..."
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:250
+#: ../../../lib/web/src/components/travelling-picker.tsx:231
 msgid "Search for destination..."
 msgstr "Li mebestê bigere..."
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:183
+#: ../../../lib/web/src/components/travelling-picker.tsx:164
 msgid "Search for origin..."
 msgstr "Li çavkaniyê bigere..."
 
@@ -2189,7 +2271,7 @@ msgstr "Li çavkaniyê bigere..."
 msgid "Search for people and send a friend request."
 msgstr "Li kesan bigere û daxwaza heval bişîne."
 
-#: src/features/friends/index.tsx:127
+#: src/features/friends/index.tsx:126
 msgid "Search friends"
 msgstr "Li hevalan bigere"
 
@@ -2212,10 +2294,10 @@ msgstr "Bigere, temaşe bike, û vê dîtinê rêz bike."
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
-#: ../../../lib/web/src/components/inline-entity-search.tsx:63
-#: ../../../lib/web/src/components/person-picker.tsx:324
+#: ../../../lib/web/src/components/inline-entity-search.tsx:64
+#: ../../../lib/web/src/components/person-picker.tsx:300
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
-#: src/features/friends/index.tsx:126
+#: src/features/friends/index.tsx:125
 #: src/features/invitations/index.tsx:221
 msgid "Search..."
 msgstr "Bigere..."
@@ -2226,11 +2308,11 @@ msgstr "Bigere..."
 msgid "Searching..."
 msgstr "Tê gerîn..."
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:141
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:16
 msgid "Select"
 msgstr "Hilbijêre"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:356
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:359
 msgid "Select a field"
 msgstr "Qadekê hilbijêre"
 
@@ -2255,7 +2337,7 @@ msgstr "Cureyê hesab hilbijêre"
 msgid "Select group"
 msgstr "Komê hilbijêre"
 
-#: ../../../lib/web/src/components/place-picker.tsx:49
+#: ../../../lib/web/src/components/place-picker.tsx:36
 msgid "Select location"
 msgstr "Cihê hilbijêre"
 
@@ -2263,7 +2345,7 @@ msgstr "Cihê hilbijêre"
 msgid "Select next card"
 msgstr "Karta paşîn hilbijêre"
 
-#: ../../../lib/web/src/components/person-picker.tsx:83
+#: ../../../lib/web/src/components/person-picker.tsx:70
 msgid "Select person..."
 msgstr "Kesek hilbijêre..."
 
@@ -2271,8 +2353,8 @@ msgstr "Kesek hilbijêre..."
 msgid "Select previous card"
 msgstr "Karta berê hilbijêre"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:257
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:340
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:289
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:381
 msgid "Select..."
 msgstr "Hilbijêre..."
 
@@ -2289,7 +2371,7 @@ msgstr "Hilbijartî: <0>{0}</0>"
 msgid "Send again"
 msgstr "Dîsa bişîne"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:310
+#: ../../../lib/web/src/components/step-up-dialog.tsx:298
 msgid "Send email"
 msgstr "E-nameyê bişîne"
 
@@ -2329,7 +2411,7 @@ msgstr "Qaîdeyên server"
 msgid "Session expired. Please log in again."
 msgstr "Danişîn bi dawî bû. Ji kerema xwe dîsa têkeve."
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:147
+#: ../../../lib/web/src/components/travelling-picker.tsx:128
 msgid "Set origin and destination"
 msgstr "Çavkanî û armanc diyar bike"
 
@@ -2339,11 +2421,11 @@ msgstr "Çavkanî û armanc diyar bike"
 msgid "Settings"
 msgstr "Mîheng"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:327
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:330
 msgid "Show classes"
 msgstr "Çînan nîşan bide"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:428
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:431
 msgid "Show fields"
 msgstr "Qadan nîşan bide"
 
@@ -2351,7 +2433,7 @@ msgstr "Qadan nîşan bide"
 msgid "Show this help"
 msgstr "Vê alîkariyê nîşan bide"
 
-#: ../../../lib/web/src/components/ui/load-more.tsx:39
+#: ../../../lib/web/src/components/ui/load-more.tsx:43
 msgid "Showing {totalShown} of {total}"
 msgstr "Nîşandana {totalShown} ji {total}"
 
@@ -2363,17 +2445,21 @@ msgstr "Di tabên geroka de tê nîşandan."
 msgid "Sidebar"
 msgstr "Milê alî"
 
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:18
+msgid "Sign in with an account that has access <0/> to this resource."
+msgstr "Bi hesabekî ku xwedî gihîştina vê çavkaniyê ye <0/> têkeve."
+
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:131
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:137
 msgid "Sign out"
 msgstr "Derkeve"
 
-#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:134
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:133
 msgid "Signing out..."
 msgstr "Derketin tê kirin..."
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:161
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:179
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:163
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:183
 msgid "Single line of text only"
 msgstr "Tenê rêza yek a nivîsê"
 
@@ -2406,7 +2492,7 @@ msgstr "Çavkanî"
 msgid "Spacious"
 msgstr "Berfireh"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:323
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:325
 msgid "Start the discussion by adding the first comment."
 msgstr "Bi zêdekirina şîroveya yekem nîqaşê dest pê bike."
 
@@ -2422,16 +2508,16 @@ msgstr "Bê deng tomar bike"
 msgid "Subject"
 msgstr "Mijar"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:427
+#: ../../../lib/web/src/components/comment-composer.tsx:430
 msgid "Submit comment"
 msgstr "Şîroveya bişîne"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:426
+#: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Submit reply"
 msgstr "Bersivê bişîne"
 
-#: ../../../lib/web/src/components/inline-entity-search.tsx:66
-#: ../../../lib/web/src/components/recommended-entities.tsx:58
+#: ../../../lib/web/src/components/inline-entity-search.tsx:67
+#: ../../../lib/web/src/components/recommended-entities.tsx:59
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 msgid "Subscribe"
 msgstr "Abone bibe"
@@ -2450,16 +2536,16 @@ msgstr "Veguherîne dîtina 1-9"
 msgid "System"
 msgstr "Pergal"
 
-#: ../../../lib/web/src/components/post-tags.tsx:76
+#: ../../../lib/web/src/components/post-tags.tsx:77
 msgid "Tag already exists"
 msgstr "Tag jixwe heye"
 
-#: ../../../lib/web/src/components/post-tags.tsx:68
+#: ../../../lib/web/src/components/post-tags.tsx:69
 msgid "Tag must be 50 characters or less"
 msgstr "Etîket divê 50 tîp an kêmtir be"
 
-#: ../../../lib/web/src/components/post-tags.tsx:101
-#: ../../../lib/web/src/components/post-tags.tsx:115
+#: ../../../lib/web/src/components/post-tags.tsx:102
+#: ../../../lib/web/src/components/post-tags.tsx:116
 msgid "Tags"
 msgstr "Tag"
 
@@ -2468,11 +2554,11 @@ msgstr "Tag"
 msgid "Terms and conditions"
 msgstr "Mercên bikaranînê"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:142
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:17
 msgid "Text"
 msgstr "Nivîs"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:193
+#: ../../../lib/web/src/components/step-up-dialog.tsx:181
 msgid "That code is incorrect or has expired."
 msgstr "Ew kod çewt e an dema wê qediyaye."
 
@@ -2489,7 +2575,7 @@ msgstr "Ji bo barkirinê pir mezin bû. Pelan rake an biçûk bike û dîsa bice
 msgid "That's you"
 msgstr "Ew tu yî"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:68
+#: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "Naveroka xwestî nehat dîtin."
 
@@ -2505,26 +2591,28 @@ msgstr "Dibe ku ev koma hatibe rakirin an ne berdest be."
 msgid "Thursday"
 msgstr "Pêncşem"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:220
+#: ../../../lib/web/src/components/travelling-picker.tsx:201
 msgid "To"
 msgstr "Bo"
 
-#: ../../../lib/web/src/components/layout/nav-group.tsx:365
-#: ../../../lib/web/src/components/layout/nav-group.tsx:372
-#: ../../../lib/web/src/components/layout/nav-group.tsx:490
-#: ../../../lib/web/src/components/layout/nav-group.tsx:497
+#: ../../../lib/web/src/components/layout/nav-group.tsx:393
+#: ../../../lib/web/src/components/layout/nav-group.tsx:400
+#: ../../../lib/web/src/components/layout/nav-group.tsx:522
+#: ../../../lib/web/src/components/layout/nav-group.tsx:529
 msgid "Toggle section"
 msgstr "Beşê biguhêre"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx:337
 #: ../../../lib/web/src/components/ui/sidebar.tsx:340
+#: ../../../lib/web/src/components/ui/sidebar.tsx:352
+#: ../../../lib/web/src/components/ui/sidebar.tsx:355
 msgid "Toggle sidebar"
 msgstr "Darikê alî biguhêre"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx:352
 #: ../../../lib/web/src/components/ui/sidebar.tsx:355
-msgid "Toggle Sidebar"
-msgstr "Milê Alî biguherîne"
+#~ msgid "Toggle Sidebar"
+#~ msgstr "Milê Alî biguherîne"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:26
 msgid "Toggle view options"
@@ -2535,7 +2623,7 @@ msgstr "Vebijarkên dîtinê biguherîne"
 msgid "Toggle watched filter"
 msgstr "Parzûna temaşekirî biguherîne"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:74
+#: ../../../lib/web/src/features/errors/general-error.tsx:72
 msgid "Too many requests"
 msgstr "Daxwazên pir zêde"
 
@@ -2543,11 +2631,11 @@ msgstr "Daxwazên pir zêde"
 msgid "Top"
 msgstr "Jor"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:145
+#: ../../../lib/web/src/components/travelling-picker.tsx:126
 msgid "Travelling"
 msgstr "Rêwîtî"
 
-#: src/features/friends/index.tsx:165
+#: src/features/friends/index.tsx:164
 msgid "Try a different name"
 msgstr "Navekî din biceribîne"
 
@@ -2563,8 +2651,8 @@ msgstr "Lêgerîna xwe eyar bike"
 msgid "Try adjusting your search terms"
 msgstr "Peyvên lêgerîna xwe eyar bike"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:140
-#: ../../../lib/web/src/features/errors/general-error.tsx:180
+#: ../../../lib/web/src/features/errors/general-error.tsx:138
+#: ../../../lib/web/src/features/errors/general-error.tsx:178
 msgid "Try again"
 msgstr "Dîsa biceribîne"
 
@@ -2572,13 +2660,13 @@ msgstr "Dîsa biceribîne"
 msgid "Tuesday"
 msgstr "Sêşem"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:130
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:162
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/groups/group-detail.tsx:203
 msgid "Type"
 msgstr "Cure"
 
-#: ../../../lib/web/src/components/command-menu.tsx:52
+#: ../../../lib/web/src/components/command-menu.tsx:54
 msgid "Type a command or search..."
 msgstr "Fermanek an lêgerînê binivîse..."
 
@@ -2600,8 +2688,8 @@ msgstr "Ji bo lêgerînê binivîse..."
 msgid "Unable to connect to remote server"
 msgstr "Nikare bi rajekarê dûr ve girê bide"
 
-#: ../../../lib/web/src/lib/auth-manager.ts:92
-#: ../../../lib/web/src/lib/auth-manager.ts:104
+#: ../../../lib/web/src/lib/auth-manager.ts:89
+#: ../../../lib/web/src/lib/auth-manager.ts:101
 msgid "Unable to redirect to login. Please try again."
 msgstr "Beralîkirina bo têketinê ne mumkin e. Ji kerema xwe dîsa biceribîne."
 
@@ -2610,15 +2698,15 @@ msgid "Unassigned"
 msgstr "Nehatiye diyarkirin"
 
 #: ../../../lib/web/src/features/errors/unauthorized-error.tsx:16
-msgid "Unauthorized Access"
-msgstr "Gihîştina Bê destûr"
+#~ msgid "Unauthorized Access"
+#~ msgstr "Gihîştina Bê destûr"
 
 #: ../../../lib/web/src/components/attachment-image.tsx:50
 msgid "Unavailable"
 msgstr "Ne berdest"
 
 #: ../../../lib/web/src/lib/request.ts:133
-#: ../../../lib/web/src/lib/request.ts:206
+#: ../../../lib/web/src/lib/request.ts:209
 msgid "Unexpected API error"
 msgstr "Çewtiya API ya nediyar"
 
@@ -2626,6 +2714,11 @@ msgstr "Çewtiya API ya nediyar"
 msgid "United States"
 msgstr "Dewletên Yekbûyî"
 
+#: ../../../lib/web/src/components/audit-timeline.tsx:103
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:167
+#: ../../../lib/web/src/components/tree-row.tsx:219
+#: ../../../lib/web/src/components/tree-row.tsx:373
+#: ../../../lib/web/src/components/tree-table-header.tsx:70
 #: ../../../lib/web/src/features/accounts/types.ts:29
 msgid "Unknown"
 msgstr "Nediyar"
@@ -2634,24 +2727,29 @@ msgstr "Nediyar"
 msgid "Unsubscribe"
 msgstr "Abone yî nebe"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:285
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
 msgid "Untitled"
 msgstr "Bê sernav"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:56
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:57
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:499
 #: src/features/profile/index.tsx:610
 msgid "Updated"
 msgstr "Nûjen kirin"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:56
+msgid "Updated {field}"
+msgstr "{field} hate nûkirin"
 
 #: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "Kom tê nûkirin..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:639
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:301
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 #: src/features/profile/index.tsx:480
 msgid "Upload"
 msgstr "Bar bike"
@@ -2675,13 +2773,13 @@ msgstr "Pêşketina barkirinê"
 msgid "Uploading..."
 msgstr "Tê barkirin..."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:341
+#: ../../../lib/web/src/components/step-up-dialog.tsx:329
 msgid "Use your passkey"
 msgstr "Passkey-ya xwe bikar bîne"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:143
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:112
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:18
 #: src/features/groups/group-detail.tsx:228
 #: src/features/groups/member-dialog.tsx:120
 msgid "User"
@@ -2695,7 +2793,7 @@ msgstr "Guherbar: {variables}"
 msgid "Verification code"
 msgstr "Koda verifîkasyonê"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:391
+#: ../../../lib/web/src/components/step-up-dialog.tsx:379
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Verifîke bike"
@@ -2704,17 +2802,17 @@ msgstr "Verifîke bike"
 msgid "Verify email address"
 msgstr "Navnîşana e-nameyê verifîke bike"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:95
+#: ../../../lib/web/src/components/attachment-gallery.tsx:96
 msgid "Video thumbnail"
 msgstr "Wêneya pêşgir a vîdeoyê"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:315
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:326
 msgid "Video viewer: {0}"
 msgstr "Nêrîna vîdyoyan: {0}"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:220
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:228
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:216
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:224
 msgid "View all notifications"
 msgstr "Hemû agahdariyan bibîne"
 
@@ -2744,11 +2842,11 @@ msgstr "Çarşem"
 msgid "You are now friends!"
 msgstr "Tu niha heval in!"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:61
+#: ../../../lib/web/src/features/errors/general-error.tsx:59
 msgid "You do not have access to this section."
 msgstr "Destûra te ya gihîştina vê beşê tune ye."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:100
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Hesabê we ji {source} hat vir veguheztin. Heya ku hûn wê li wir jênebin, peyam û agahdarî dikarin gihîjin her du servaran, hin naveroka we ji serverê kevn tê dayîn û şopîner dibe ku çend hûrdeman hewce bikin ku we li vir bibînin."
 

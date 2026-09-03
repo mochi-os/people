@@ -90,7 +90,6 @@ function PeopleLayoutInner() {
     <>
       <AuthenticatedLayout
         sidebarData={sidebarData}
-        usePageHeaderForMobileNav
         isLoadingSidebar={groupsLoading && !groups}
       />
 

@@ -117,7 +117,6 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
       <PageHeader
         title={t`Friends`}
         icon={<Users className='size-4 md:size-5' />}
-        showSidebarTrigger
         primaryAction={
           <div className='flex items-center gap-1.5 md:gap-2'>
             <HeaderSearch

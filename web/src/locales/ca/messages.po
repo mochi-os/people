@@ -14,25 +14,35 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: ../../../lib/web/src/lib/error-normalizer.ts:215
+#: ../../../lib/web/src/lib/error-normalizer.ts:219
 msgid "Please check your internet connection and try again."
 msgstr "Comproveu la connexió a Internet i torneu-ho a provar."
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:301
-msgid " or "
-msgstr " o "
+#~ msgid " or "
+#~ msgstr " o "
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:190
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:189
 msgid "(edited)"
 msgstr "(editat)"
 
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:174
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:173
 msgid "(expand)"
 msgstr "(expandeix)"
 
 #: ../../../lib/web/src/components/entity/entity-board-container.tsx:753
 msgid "[not set]"
 msgstr "[no definit]"
+
+#. placeholder {0}: displayInfo.count
+#: ../../../lib/web/src/components/person-picker.tsx:257
+msgid "{0, plural, one {# selected} other {# selected}}"
+msgstr "{0, plural, one {# seleccionat} other {# seleccionats}}"
+
+#. placeholder {0}: countDeepChildren(object.id)
+#: ../../../lib/web/src/components/entity/entity-board-card.tsx:421
+msgid "{0, plural, one {+# nested} other {+# nested}}"
+msgstr "{0, plural, one {+# imbricat} other {+# imbricats}}"
 
 #: ../../../lib/web/src/lib/locale-format.ts:176
 msgid "{count, plural, one {#d} other {#d}}"
@@ -50,13 +60,13 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#set} other {#set}}"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:174
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "Nom de {entityLabel}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:99
-msgid "{entityLabel} name is required"
-msgstr "El nom de {entityLabel} és obligatori"
+#~ msgid "{entityLabel} name is required"
+#~ msgstr "El nom de {entityLabel} és obligatori"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
 msgid "{opponentName} offered a draw"
@@ -67,26 +77,29 @@ msgstr "{opponentName} ha ofert un empat"
 msgid "{sentLabel} of {totalLabel}"
 msgstr "{sentLabel} de {totalLabel}"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:530
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:531
 msgid "{totalCount, plural, one {# item} other {# items}}"
 msgstr "{totalCount, plural, one {# element} other {# elements}}"
+
+#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:170
+msgid "{totalDescendants, plural, one {# reply} other {+# more replies}}"
+msgstr "{totalDescendants, plural, one {# resposta} other {+# respostes més}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:158
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Obre el menú (# notificació no llegida)} other {Obre el menú (# notificacions no llegides)}}"
 
-#. placeholder {0}: countDeepChildren(object.id)
 #: ../../../lib/web/src/components/entity/entity-board-card.tsx:418
-msgid "+{0} nested"
-msgstr "+{0} imbricats"
+#~ msgid "+{0} nested"
+#~ msgstr "+{0} imbricats"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:171
-msgid "+{totalDescendants} more replies"
-msgstr "+{totalDescendants} respostes més"
+#~ msgid "+{totalDescendants} more replies"
+#~ msgstr "+{totalDescendants} respostes més"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:170
-msgid "1 reply"
-msgstr "1 resposta"
+#~ msgid "1 reply"
+#~ msgstr "1 resposta"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:37
 msgid "12 hours"
@@ -139,7 +152,8 @@ msgstr "S'està acceptant la invitació..."
 msgid "Accepting invitations..."
 msgstr "S'estan acceptant les invitacions..."
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:60
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:16
+#: ../../../lib/web/src/features/errors/general-error.tsx:58
 msgid "Access denied"
 msgstr "Accés denegat"
 
@@ -155,13 +169,13 @@ msgstr "Tipus de compte"
 msgid "Actions"
 msgstr "Accions"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:720
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
 msgid "Add"
 msgstr "Afegeix"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:312
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:314
 msgid "Add a comment..."
 msgstr "Afegeix un comentari..."
 
@@ -169,7 +183,7 @@ msgstr "Afegeix un comentari..."
 msgid "Add a new account"
 msgstr "Afegeix un compte nou"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:106
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:110
 msgid "Add a new field to this class"
 msgstr "Afegeix un nou camp a aquesta classe"
 
@@ -185,28 +199,28 @@ msgstr "Afegeix un compte"
 msgid "Add caption"
 msgstr "Afegeix una llegenda"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:690
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:728
 msgid "Add checklist item"
 msgstr "Afegeix un element a la llista"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:105
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:233
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:235
 msgid "Add field"
 msgstr "Afegeix un camp"
 
 #: src/features/friends/components/add-friend-dialog.tsx:179
 #: src/features/friends/components/add-friend-dialog.tsx:318
-#: src/features/friends/index.tsx:130
-#: src/features/friends/index.tsx:142
+#: src/features/friends/index.tsx:129
+#: src/features/friends/index.tsx:141
 #: src/features/invitations/index.tsx:246
 msgid "Add friend"
 msgstr "Afegeix una amistat"
 
-#: src/features/friends/index.tsx:166
+#: src/features/friends/index.tsx:165
 msgid "Add friends to start connecting"
 msgstr "Afegeix amistats per començar a connectar"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:708
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:746
 msgid "Add item..."
 msgstr "Afegeix un element..."
 
@@ -221,15 +235,15 @@ msgstr "Afegeix un enllaç"
 msgid "Add member"
 msgstr "Afegeix un membre"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:215
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:220
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:291
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:91
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:191
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:217
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:222
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:295
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:92
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:193
 msgid "Add option"
 msgstr "Afegeix una opció"
 
-#: ../../../lib/web/src/components/post-tags.tsx:137
+#: ../../../lib/web/src/components/post-tags.tsx:138
 msgid "Add tag..."
 msgstr "Afegeix una etiqueta..."
 
@@ -241,8 +255,8 @@ msgstr "Afegeix a les notificacions existents"
 msgid "Add users or groups to get started"
 msgstr "Afegeix usuaris o grups per començar"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:258
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:513
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:261
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:518
 #: ../../../lib/web/src/components/view-tabs.tsx:87
 #: ../../../lib/web/src/components/view-tabs.tsx:93
 msgid "Add view"
@@ -291,16 +305,19 @@ msgstr "Totes les invitacions rebutjades"
 msgid "All invites are accepted without your approval."
 msgstr "Totes les invitacions s'accepten sense la teva aprovació."
 
-#. placeholder {0}: entityLabel.toLowerCase()
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-msgid "Allow anyone to search for {0}"
-msgstr "Permet que qualsevol cerqui {0}"
+#~ msgid "Allow anyone to search for {0}"
+#~ msgstr "Permet que qualsevol cerqui {0}"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:87
+msgid "Allow anyone to search for {entityLabel}"
+msgstr "Permet que qualsevol persona cerqui {entityLabel}"
 
 #: src/features/profile/index.tsx:503
 msgid "Allow others to find you in the directory."
 msgstr "Permet que altres et trobin al directori."
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:225
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:229
 msgid "Allow sort by"
 msgstr "Permet ordenar per"
 
@@ -314,6 +331,7 @@ msgid "An error occurred"
 msgstr "S'ha produït un error"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:266
+#: ../../../lib/web/src/lib/error-normalizer.ts:11
 msgid "An unexpected error occurred"
 msgstr "S'ha produït un error inesperat"
 
@@ -339,11 +357,11 @@ msgid "Appearance"
 msgstr "Aparença"
 
 #. placeholder {0}: deleteTarget?.name
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:313
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:316
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Segur que vols suprimir «{0}»?"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:629
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:631
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "Segur que vols suprimir la columna «{name}»? Això no es pot desfer."
 
@@ -361,7 +379,7 @@ msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Segur que vols eliminar <0>{0}</0> d'aquest grup?"
 
 #. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx:251
+#: src/features/friends/index.tsx:250
 msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
 msgstr "Segur que vols eliminar <0>{0}</0> de la teva llista d'amistats? Aquesta acció no es pot desfer."
 
@@ -369,11 +387,11 @@ msgstr "Segur que vols eliminar <0>{0}</0> de la teva llista d'amistats? Aquesta
 msgid "Ascending"
 msgstr "Ascendent"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:427
+#: ../../../lib/web/src/components/comment-composer.tsx:430
 msgid "Attach comment files"
 msgstr "Adjunta fitxers de comentari"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:426
+#: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Attach reply files"
 msgstr "Adjunta fitxers de resposta"
 
@@ -382,7 +400,7 @@ msgstr "Adjunta fitxers de resposta"
 msgid "Authenticated users"
 msgstr "Usuaris autenticats"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:318
+#: ../../../lib/web/src/components/step-up-dialog.tsx:306
 msgid "Authenticator code"
 msgstr "Codi de l'autenticador"
 
@@ -390,15 +408,15 @@ msgstr "Codi de l'autenticador"
 msgid "Available keyboard shortcuts"
 msgstr "Dreceres de teclat disponibles"
 
-#: ../../../lib/web/src/components/entity-avatar.tsx:99
+#: ../../../lib/web/src/components/entity-avatar.tsx:98
 msgid "Avatar"
 msgstr "Avatar"
 
-#: ../../../lib/web/src/components/entity-avatar.tsx:99
+#: ../../../lib/web/src/components/entity-avatar.tsx:98
 msgid "Avatar for {name}"
 msgstr "Avatar de {name}"
 
-#: ../../../lib/web/src/components/place-picker.tsx:156
+#: ../../../lib/web/src/components/place-picker.tsx:142
 #: src/features/friends/components/add-friend-dialog.tsx:376
 msgid "Back"
 msgstr "Enrere"
@@ -407,8 +425,8 @@ msgstr "Enrere"
 msgid "Back to friends"
 msgstr "Torna a les amistats"
 
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:27
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:28
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:28
 msgid "Back to home"
 msgstr "Torna a l’inici"
 
@@ -421,8 +439,8 @@ msgstr "Bàner"
 msgid "Blocked by"
 msgstr "Bloquejat per"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:242
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:252
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:238
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:248
 msgid "Blocked navigation to untrusted link"
 msgstr "S'ha bloquejat la navegació a un enllaç no fiable"
 
@@ -430,16 +448,16 @@ msgstr "S'ha bloquejat la navegació a un enllaç no fiable"
 msgid "Blocks"
 msgstr "Blocs"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:312
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:315
 msgid "Board"
 msgstr "Tauler"
 
-#: ../../../lib/web/src/components/post-tags.tsx:180
-#: ../../../lib/web/src/components/post-tags.tsx:192
+#: ../../../lib/web/src/components/post-tags.tsx:194
+#: ../../../lib/web/src/components/post-tags.tsx:206
 msgid "Boost interest"
 msgstr "Augmenta l'interès"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:399
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:402
 msgid "Border colour"
 msgstr "Color de la vora"
 
@@ -452,15 +470,15 @@ msgid "Browser notifications"
 msgstr "Notificacions del navegador"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx:426
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:614
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:616
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:211
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:166
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:183
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:168
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:185
 #: ../../../lib/web/src/components/responsive-confirm-dialog.tsx:67
-#: ../../../lib/web/src/components/step-up-dialog.tsx:366
-#: ../../../lib/web/src/components/travelling-picker.tsx:308
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:249
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:132
+#: ../../../lib/web/src/components/step-up-dialog.tsx:354
+#: ../../../lib/web/src/components/travelling-picker.tsx:288
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:251
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:136
 #: ../../../lib/web/src/features/access/access-dialog.tsx:328
 #: ../../../lib/web/src/features/access/access-list.tsx:268
 #: ../../../lib/web/src/features/accounts/account-add.tsx:201
@@ -478,11 +496,11 @@ msgstr "Cancel·la"
 msgid "Cancel all"
 msgstr "Cancel·la-ho tot"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:427
+#: ../../../lib/web/src/components/comment-composer.tsx:430
 msgid "Cancel comment"
 msgstr "Cancel·la el comentari"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:426
+#: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "Cancel·la la resposta"
 
@@ -512,7 +530,15 @@ msgstr "Canvia el bàner"
 msgid "Change notification category"
 msgstr "Canvia la categoria de notificació"
 
-#: src/features/friends/index.tsx:214
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:62
+msgid "Changed"
+msgstr "Canviat"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:62
+msgid "Changed {field}"
+msgstr "S'ha canviat {field}"
+
+#: src/features/friends/index.tsx:213
 msgid "Chat"
 msgstr "Xat"
 
@@ -520,11 +546,11 @@ msgstr "Xat"
 msgid "Chat is not configured"
 msgstr "El xat no està configurat"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:137
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:12
 msgid "Checkbox"
 msgstr "Casella de selecció"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:138
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:13
 msgid "Checklist"
 msgstr "Llista de comprovació"
 
@@ -539,10 +565,10 @@ msgstr "Tria l'idioma"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
-#: ../../../lib/web/src/components/travelling-picker.tsx:164
-#: ../../../lib/web/src/components/travelling-picker.tsx:170
-#: ../../../lib/web/src/components/travelling-picker.tsx:231
-#: ../../../lib/web/src/components/travelling-picker.tsx:237
+#: ../../../lib/web/src/components/travelling-picker.tsx:145
+#: ../../../lib/web/src/components/travelling-picker.tsx:151
+#: ../../../lib/web/src/components/travelling-picker.tsx:212
+#: ../../../lib/web/src/components/travelling-picker.tsx:218
 msgid "Clear"
 msgstr "Esborra"
 
@@ -555,20 +581,20 @@ msgstr "Esborra-ho tot"
 msgid "Clear search"
 msgstr "Esborra la cerca"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:501
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:506
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:468
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:471
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:479
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:482
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 #: src/features/friends/components/add-friend-dialog.tsx:398
 msgid "Close"
 msgstr "Tanca"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:109
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx:113
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:263
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:267
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:117
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:266
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:270
 msgid "Close dialog"
 msgstr "Tanca el diàleg"
 
@@ -601,16 +627,16 @@ msgstr "Replega"
 msgid "Collapse sidebar"
 msgstr "Replega la barra lateral"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:146
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:148
 msgid "Colour"
 msgstr "Color"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:539
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:544
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:540
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:545
 msgid "Column actions"
 msgstr "Accions de la columna"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:347
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:350
 msgid "Columns group by"
 msgstr "Columnes agrupades per"
 
@@ -627,8 +653,8 @@ msgstr "Paleta d'ordres"
 msgid "Comment actions"
 msgstr "Accions del comentari"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:431
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:443
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:442
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:454
 msgid "Comments"
 msgstr "Comentaris"
 
@@ -636,16 +662,16 @@ msgstr "Comentaris"
 msgid "Compact"
 msgstr "Compacte"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:94
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:95
 msgid "Configure option settings"
 msgstr "Configura les opcions"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:259
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:262
 msgid "Configure view settings"
 msgstr "Configura les opcions de la vista"
 
-#: ../../../lib/web/src/components/place-picker.tsx:160
-#: ../../../lib/web/src/components/travelling-picker.tsx:316
+#: ../../../lib/web/src/components/place-picker.tsx:146
+#: ../../../lib/web/src/components/travelling-picker.tsx:296
 msgid "Confirm"
 msgstr "Confirma"
 
@@ -661,7 +687,7 @@ msgstr "S'està connectant..."
 msgid "Content not found."
 msgstr "No s'ha trobat el contingut."
 
-#: ../../../lib/web/src/lib/query-client.ts:78
+#: ../../../lib/web/src/lib/query-client.ts:73
 msgid "Content not modified"
 msgstr "Contingut no modificat"
 
@@ -673,7 +699,7 @@ msgstr "Informació i detalls de context."
 msgid "Continue"
 msgstr "Continua"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:355
+#: ../../../lib/web/src/components/step-up-dialog.tsx:343
 msgid "Continue with {label}"
 msgstr "Continua amb {label}"
 
@@ -697,34 +723,37 @@ msgstr "Copia el teu ID"
 msgid "Could not load this document. Please try again later."
 msgstr "No s'ha pogut carregar aquest document. Torna-ho a provar més tard."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:128
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:124
 msgid "Couldn't load notifications"
 msgstr "No s'han pogut carregar les notificacions"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:182
+#: ../../../lib/web/src/components/step-up-dialog.tsx:170
 msgid "Couldn't send the code. Please try again."
 msgstr "No s'ha pogut enviar el codi. Torneu-ho a provar."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:136
+#: ../../../lib/web/src/components/step-up-dialog.tsx:124
 msgid "Couldn't start re-authentication. Please try again."
 msgstr "No s'ha pogut iniciar la reautenticació. Torneu-ho a provar."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:224
+#: ../../../lib/web/src/components/step-up-dialog.tsx:212
 msgid "Couldn't verify with that account. Please try again."
 msgstr "No s'ha pogut verificar amb aquest compte. Torneu-ho a provar."
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:550
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:689
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:491
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:656
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:675
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Crea"
 
-#. placeholder {0}: entityLabel.toLowerCase()
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:144
-msgid "Create {0}"
-msgstr "Crea {0}"
+#~ msgid "Create {0}"
+#~ msgstr "Crea {0}"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:146
+msgid "Create {entityLabel}"
+msgstr "Crea {entityLabel}"
 
 #: src/components/layout/people-layout.tsx:81
 #: src/features/groups/group-dialog.tsx:99
@@ -737,21 +766,26 @@ msgstr "Crea un grup"
 msgid "Create new item"
 msgstr "Crea un element nou"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:54
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:56
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:492
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:495
 msgid "Created"
 msgstr "Creat"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:54
+msgid "Created {field}"
+msgstr "S'ha creat {field}"
 
 #: src/features/groups/group-dialog.tsx:65
 msgid "Creating group..."
 msgstr "S'està creant el grup..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:656
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:258
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 msgid "Creating..."
 msgstr "S'està creant..."
 
-#: ../../../lib/web/src/components/map-view.tsx:217
+#: ../../../lib/web/src/components/map-view.tsx:249
 msgid "Current location"
 msgstr "Ubicació actual"
 
@@ -768,7 +802,7 @@ msgstr "Fosc"
 msgid "Data conflict"
 msgstr "Conflicte de dades"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:139
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:14
 msgid "Date"
 msgstr "Data"
 
@@ -797,29 +831,29 @@ msgstr "Per defecte"
 msgid "Default AI account"
 msgstr "Compte d'IA per defecte"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:479
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:482
 msgid "Default sort"
 msgstr "Ordre per defecte"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:569
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:630
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:570
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:632
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:280
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:323
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:353
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:198
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:203
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:252
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:314
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
 #: src/features/groups/group-detail.tsx:150
 #: src/features/groups/group-detail.tsx:296
 msgid "Delete"
 msgstr "Suprimeix"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:312
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:315
 msgid "Delete attachment"
 msgstr "Suprimeix el fitxer adjunt"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:628
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:630
 msgid "Delete column"
 msgstr "Suprimeix la columna"
 
@@ -827,7 +861,7 @@ msgstr "Suprimeix la columna"
 msgid "Delete comment"
 msgstr "Suprimeix el comentari"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:300
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:304
 msgid "Delete field"
 msgstr "Suprimeix el camp"
 
@@ -840,23 +874,31 @@ msgstr "Suprimeix el grup"
 msgid "Delete group \"{0}\"? This cannot be undone."
 msgstr "Vols suprimir el grup «{0}»? Això no es pot desfer."
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:116
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:117
 msgid "Delete option"
 msgstr "Suprimeix l'opció"
 
 #. placeholder {0}: opt.name
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:278
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:283
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:282
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:287
 msgid "Delete option {0}"
 msgstr "Suprimeix l'opció {0}"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:284
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:287
 msgid "Delete view"
 msgstr "Suprimeix la vista"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:109
+#: ../../../lib/web/src/components/restore-banner.tsx:95
 msgid "Delete your account on the old server"
 msgstr "Suprimiu el compte a l'antic servidor"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:58
+msgid "Deleted"
+msgstr "Suprimit"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:58
+msgid "Deleted {field}"
+msgstr "S'ha suprimit {field}"
 
 #: src/features/groups/group-detail.tsx:107
 msgid "Deleting group..."
@@ -866,7 +908,7 @@ msgstr "S'està suprimint el grup..."
 msgid "Descending"
 msgstr "Descendent"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:83
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
 #: src/features/groups/group-detail.tsx:178
 #: src/features/groups/group-dialog.tsx:116
 msgid "Description"
@@ -887,7 +929,7 @@ msgstr "Panell de detalls"
 msgid "Detect from web browser"
 msgstr "Detecta des del navegador"
 
-#: ../../../lib/web/src/components/person-picker.tsx:214
+#: ../../../lib/web/src/components/person-picker.tsx:190
 msgid "Directory"
 msgstr "Directori"
 
@@ -908,8 +950,8 @@ msgstr "Vols descartar l'esborrany?"
 msgid "Disconnected"
 msgstr "Desconnectat"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:88
-#: ../../../lib/web/src/components/restore-banner.tsx:94
+#: ../../../lib/web/src/components/restore-banner.tsx:74
+#: ../../../lib/web/src/components/restore-banner.tsx:80
 msgid "Dismiss"
 msgstr "Descarta"
 
@@ -917,18 +959,23 @@ msgstr "Descarta"
 msgid "Displays the mobile sidebar."
 msgstr "Mostra la barra lateral mòbil."
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:305
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:518
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:111
+msgid "Does not match the required pattern"
+msgstr "No coincideix amb el patró requerit"
+
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 msgid "Done"
 msgstr "Fet"
 
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:239
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:452
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:462
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:463
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:473
 msgid "Download"
 msgstr "Descarrega"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:98
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:149
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:100
 msgid "Download failed"
 msgstr "Ha fallat la baixada"
 
@@ -946,7 +993,7 @@ msgstr "Apte per a la dislèxia"
 msgid "Edit"
 msgstr "Edita"
 
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:154
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:158
 msgid "Edit {label}"
 msgstr "Edita {label}"
 
@@ -954,11 +1001,11 @@ msgstr "Edita {label}"
 msgid "Edit caption"
 msgstr "Edita la llegenda"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:137
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:140
 msgid "Edit field"
 msgstr "Edita el camp"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:138
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:141
 msgid "Edit field settings"
 msgstr "Edita la configuració del camp"
 
@@ -972,13 +1019,13 @@ msgstr "Edita el grup"
 msgid "Edit name"
 msgstr "Edita el nom"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:91
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:92
 msgid "Edit option"
 msgstr "Edita l'opció"
 
 #. placeholder {0}: opt.name
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:263
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:268
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:267
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:272
 msgid "Edit option {0}"
 msgstr "Edita l'opció {0}"
 
@@ -986,7 +1033,7 @@ msgstr "Edita l'opció {0}"
 msgid "Edit selected card"
 msgstr "Edita la targeta seleccionada"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:258
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:261
 msgid "Edit view"
 msgstr "Edita la vista"
 
@@ -994,7 +1041,7 @@ msgstr "Edita la vista"
 msgid "Email"
 msgstr "Correu electrònic"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:292
+#: ../../../lib/web/src/components/step-up-dialog.tsx:280
 msgid "Email code"
 msgstr "Codi per correu"
 
@@ -1006,11 +1053,11 @@ msgstr "Introdueix un nom per trobar persones que vulguis afegir"
 msgid "Enter name to search..."
 msgstr "Introdueix el nom per cercar..."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:302
+#: ../../../lib/web/src/components/step-up-dialog.tsx:290
 msgid "Enter the code from your email"
 msgstr "Introduïu el codi del vostre correu electrònic"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:327
+#: ../../../lib/web/src/components/step-up-dialog.tsx:315
 msgid "Enter your authenticator code"
 msgstr "Introduïu el codi de l'autenticador"
 
@@ -1040,6 +1087,10 @@ msgstr "No s'ha pogut acceptar la invitació"
 #: src/features/invitations/index.tsx:140
 msgid "Failed to accept invitations"
 msgstr "No s'han pogut acceptar les invitacions"
+
+#: ../../../lib/web/src/hooks/use-accounts.ts:213
+msgid "Failed to add account"
+msgstr "No s'ha pogut afegir el compte"
 
 #: src/features/friends/components/add-friend-dialog.tsx:78
 #: src/features/friends/components/add-friend-dialog.tsx:99
@@ -1086,7 +1137,7 @@ msgstr "No s'han pogut rebutjar les invitacions"
 msgid "Failed to delete attachment"
 msgstr "No s'ha pogut suprimir l'adjunt"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:191
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:192
 msgid "Failed to delete comment"
 msgstr "No s'ha pogut suprimir el comentari"
 
@@ -1110,7 +1161,7 @@ msgstr "No s'ha pogut carregar"
 msgid "Failed to load history"
 msgstr "No s'ha pogut carregar l'historial"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:349
 #: src/features/profile/index.tsx:601
 #: src/lib/resize-image.ts:26
 #: src/lib/resize-image.ts:53
@@ -1122,7 +1173,7 @@ msgstr "No s'ha pogut carregar la imatge"
 msgid "Failed to load prompts"
 msgstr "No s'han pogut carregar els indicadors"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:338
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:349
 msgid "Failed to load video"
 msgstr "No s'ha pogut carregar el vídeo"
 
@@ -1130,7 +1181,7 @@ msgstr "No s'ha pogut carregar el vídeo"
 msgid "Failed to load your invite policy"
 msgstr "No s'ha pogut carregar la teva política d'invitacions"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:154
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:155
 msgid "Failed to post comment"
 msgstr "No s'ha pogut publicar el comentari"
 
@@ -1174,7 +1225,7 @@ msgstr "No s'ha pogut desar el perfil"
 msgid "Failed to save prompt"
 msgstr "No s'ha pogut desar l'indicador"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:174
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:175
 msgid "Failed to update comment"
 msgstr "No s'ha pogut actualitzar el comentari"
 
@@ -1194,17 +1245,17 @@ msgstr "Favicon"
 msgid "File too large"
 msgstr "Fitxer massa gran"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:589
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:155
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:175
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
 msgstr "Fitxers"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:97
+#: ../../../lib/web/src/components/restore-banner.tsx:83
 msgid "Finish moving your account"
 msgstr "Acabeu de moure el compte"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:221
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:225
 msgid "Flags"
 msgstr "Banderes"
 
@@ -1220,14 +1271,14 @@ msgstr "Divendres"
 msgid "Friend removed"
 msgstr "Amic suprimit"
 
-#: ../../../lib/web/src/components/person-picker.tsx:207
+#: ../../../lib/web/src/components/person-picker.tsx:183
 #: src/components/layout/people-layout.tsx:66
 #: src/features/friends/index.tsx:46
 #: src/features/friends/index.tsx:118
 msgid "Friends"
 msgstr "Amics"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:153
+#: ../../../lib/web/src/components/travelling-picker.tsx:134
 msgid "From"
 msgstr "De"
 
@@ -1239,8 +1290,8 @@ msgstr "De"
 msgid "From theme"
 msgstr "Del tema"
 
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:25
 #: ../../../lib/web/src/features/errors/not-found-error.tsx:26
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:26
 msgid "Go back"
 msgstr "Torna enrere"
 
@@ -1257,7 +1308,7 @@ msgstr "Grup"
 msgid "Group actions"
 msgstr "Accions del grup"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:347
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:350
 msgid "Group by"
 msgstr "Agrupa per"
 
@@ -1301,8 +1352,8 @@ msgstr "Historial"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx:90
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:185
-#: ../../../lib/web/src/components/layout/top-bar.tsx:71
-#: ../../../lib/web/src/components/layout/top-bar.tsx:100
+#: ../../../lib/web/src/components/layout/top-bar.tsx:86
+#: ../../../lib/web/src/components/layout/top-bar.tsx:115
 msgid "Home"
 msgstr "Inici"
 
@@ -1310,7 +1361,7 @@ msgstr "Inici"
 msgid "Hot"
 msgstr "Popular"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:152
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:156
 msgid "ID"
 msgstr "ID"
 
@@ -1319,7 +1370,7 @@ msgid "Identity"
 msgstr "Identitat"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:316
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:327
 msgid "Image viewer: {0}"
 msgstr "Visor d'imatges: {0}"
 
@@ -1343,11 +1394,15 @@ msgstr "Avatar amb inicials"
 msgid "Initials avatar for {name}"
 msgstr "Avatar amb inicials de {name}"
 
+#: ../../../lib/web/src/components/post-tags.tsx:168
+msgid "Interest {weight}"
+msgstr "Interès {weight}"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:42
 msgid "Interests"
 msgstr "Interessos"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:550
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:591
 msgid "Invalid date"
 msgstr "Data no vàlida"
 
@@ -1412,13 +1467,17 @@ msgstr "Dreceres de teclat"
 msgid "Large"
 msgstr "Gran"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:306
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:309
 msgid "Layout"
 msgstr "Disposició"
 
 #: ../../../lib/web/src/components/post-tags.tsx:72
-msgid "Letters, numbers, spaces, and hyphens only"
-msgstr "Només lletres, xifres, espais i guions"
+#~ msgid "Letters, numbers, spaces, and hyphens only"
+#~ msgstr "Només lletres, xifres, espais i guions"
+
+#: ../../../lib/web/src/components/post-tags.tsx:73
+msgid "Letters, numbers, spaces, hyphens, and slashes only"
+msgstr "Només lletres, números, espais, guions i barres"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:14
 msgid "Light"
@@ -1432,11 +1491,11 @@ msgstr "Enllaç"
 msgid "Links"
 msgstr "Enllaços"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:318
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:321
 msgid "List"
 msgstr "Llista"
 
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/components/ui/load-more.tsx:39
 msgid "Load more"
 msgstr "Carrega'n més"
 
@@ -1448,7 +1507,7 @@ msgstr "S'està carregant el contingut…"
 msgid "Loading groups..."
 msgstr "S'estan carregant els grups..."
 
-#: ../../../lib/web/src/components/ui/load-more.tsx:35
+#: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
 msgid "Loading..."
 msgstr "S'està carregant..."
@@ -1478,8 +1537,8 @@ msgstr "Gestiona les categories"
 msgid "Manual"
 msgstr "Manual"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:207
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:214
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:203
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:210
 msgid "Mark all as read"
 msgstr "Marca-ho tot com a llegit"
 
@@ -1487,7 +1546,7 @@ msgstr "Marca-ho tot com a llegit"
 msgid "Markdown supported"
 msgstr "Admet markdown"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:198
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:202
 msgid "Maximum length"
 msgstr "Longitud màxima"
 
@@ -1507,6 +1566,7 @@ msgstr "Membre"
 msgid "Member removed"
 msgstr "Membre retirat"
 
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:377
 #: src/features/groups/group-detail.tsx:188
 msgid "Members"
 msgstr "Membres"
@@ -1527,7 +1587,7 @@ msgstr "Missatge"
 msgid "Metric"
 msgstr "Mètric"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:187
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
 msgstr "Longitud mínima"
 
@@ -1548,28 +1608,41 @@ msgstr "Dilluns"
 msgid "More options"
 msgstr "Més opcions"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:118
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:600
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:142
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:125
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:293
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:60
+msgid "Moved"
+msgstr "Mogut"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:60
+msgid "Moved {field}"
+msgstr "S'ha mogut {field}"
+
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:122
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:601
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:145
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:126
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:296
 #: src/features/groups/group-dialog.tsx:106
 msgid "Name"
 msgstr "Nom"
 
-#: src/features/friends/index.tsx:181
+#: src/features/friends/index.tsx:180
 msgid "Name (A–Z)"
 msgstr "Nom (A–Z)"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
-msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
-msgstr "El nom no pot contenir claudàtors angulars, barra invertida, punt i coma, cometes ni accents greus"
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:104
+msgid "Name cannot contain < or > characters"
+msgstr "El nom no pot contenir els caràcters < o >"
 
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
+#~ msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
+#~ msgstr "El nom no pot contenir claudàtors angulars, barra invertida, punt i coma, cometes ni accents greus"
+
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:101
 #: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
 msgstr "El nom és obligatori"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:100
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
 msgid "Name must be 1000 characters or less"
 msgstr "El nom ha de tenir 1000 caràcters o menys"
 
@@ -1577,12 +1650,12 @@ msgstr "El nom ha de tenir 1000 caràcters o menys"
 msgid "Name saved"
 msgstr "Nom desat"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:53
+#: ../../../lib/web/src/features/errors/general-error.tsx:51
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:313
 msgid "Network error"
 msgstr "Error de xarxa"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:476
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 msgid "New"
 msgstr "Nou"
@@ -1596,12 +1669,12 @@ msgstr "Joc nou"
 msgid "New invitations will appear here"
 msgstr "Les invitacions noves apareixeran aquí"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:525
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:530
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:536
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:541
 msgid "Next image"
 msgstr "Imatge següent"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:555
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
 msgid "No {parentClassNames} to add to"
 msgstr "No hi ha cap {parentClassNames} on afegir-ho"
 
@@ -1609,7 +1682,7 @@ msgstr "No hi ha cap {parentClassNames} on afegir-ho"
 msgid "No access rules configured. Add rules to control who can access this resource."
 msgstr "No s'han configurat regles d'accés. Afegeix regles per controlar qui pot accedir a aquest recurs."
 
-#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:65
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:74
 msgid "No activity yet"
 msgstr "Encara no hi ha activitat"
 
@@ -1617,11 +1690,11 @@ msgstr "Encara no hi ha activitat"
 msgid "No banner set"
 msgstr "No s'ha definit cap bàner"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:322
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:324
 msgid "No comments yet"
 msgstr "Encara no hi ha comentaris"
 
-#: src/features/friends/index.tsx:162
+#: src/features/friends/index.tsx:161
 msgid "No friends yet"
 msgstr "Encara no tens amics"
 
@@ -1633,7 +1706,7 @@ msgstr "Encara no hi ha jocs"
 msgid "No groups available"
 msgstr "No hi ha cap grup disponible"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Encara no es pot crear cap tipus d'element. Crea primer els elements pare necessaris."
 
@@ -1653,33 +1726,33 @@ msgstr "Cap altre grup"
 msgid "No pending invitations"
 msgstr "Cap invitació pendent"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:341
-#: ../../../lib/web/src/components/person-picker.tsx:84
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:382
+#: ../../../lib/web/src/components/person-picker.tsx:71
 #: src/features/friends/components/add-friend-dialog.tsx:237
 #: src/features/groups/member-dialog.tsx:165
 msgid "No people found"
 msgstr "No s'ha trobat ningú"
 
-#: ../../../lib/web/src/components/place-picker.tsx:133
+#: ../../../lib/web/src/components/place-picker.tsx:120
 msgid "No places found"
 msgstr "No s'ha trobat cap lloc"
 
-#: src/features/friends/index.tsx:162
+#: src/features/friends/index.tsx:161
 msgid "No results for \"{search}\""
 msgstr "Cap resultat per a \"{search}\""
 
-#: ../../../lib/web/src/components/inline-entity-search.tsx:64
+#: ../../../lib/web/src/components/inline-entity-search.tsx:65
 #: ../../../lib/web/src/components/search-entity-page.tsx:73
 msgid "No results found"
 msgstr "No s'han trobat resultats"
 
-#: ../../../lib/web/src/components/command-menu.tsx:55
+#: ../../../lib/web/src/components/command-menu.tsx:57
 msgid "No results found."
 msgstr "No s'ha trobat cap resultat."
 
 #: ../../../lib/web/src/components/entity/entity-board-container.tsx:824
 #: ../../../lib/web/src/components/entity/entity-board-container.tsx:869
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:339
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:336
 msgid "No status"
 msgstr "Sense estat"
 
@@ -1691,7 +1764,7 @@ msgstr "No s'ha trobat cap fus horari."
 msgid "No topic record yet — try again after the next notification."
 msgstr "Encara no hi ha cap registre de tema; torna-ho a provar després de la pròxima notificació."
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:139
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:135
 msgid "No unread notifications"
 msgstr "Sense notificacions no llegides"
 
@@ -1704,17 +1777,17 @@ msgid "No views"
 msgstr "Sense visualitzacions"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:541
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:545
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:359
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:382
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:412
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:415
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:488
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
-#: ../../../lib/web/src/components/person-picker.tsx:350
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
+#: ../../../lib/web/src/components/person-picker.tsx:326
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 msgid "None"
 msgstr "Cap"
@@ -1724,20 +1797,20 @@ msgid "Normal"
 msgstr "Normal"
 
 #: ../../../lib/web/src/components/attachment-image.tsx:50
-#: ../../../lib/web/src/features/errors/general-error.tsx:67
+#: ../../../lib/web/src/features/errors/general-error.tsx:65
 msgid "Not found"
 msgstr "No s'ha trobat"
 
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:146
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:150
 msgid "Not set"
 msgstr "No establert"
 
-#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:671
+#: ../../../lib/web/src/components/entity/entity-tree-view.tsx:668
 msgid "Nothing found"
 msgstr "No s'ha trobat res"
 
 #. placeholder {0}: unread.length
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:200
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:196
 msgid "Notifications: {0}"
 msgstr "Notificacions: {0}"
 
@@ -1745,9 +1818,9 @@ msgstr "Notificacions: {0}"
 msgid "Notify me"
 msgstr "Avisa'm"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:140
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:54
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:493
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:497
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:15
 msgid "Number"
 msgstr "Número"
 
@@ -1759,8 +1832,8 @@ msgstr "Activat"
 msgid "Oops! Page Not Found!"
 msgstr "Vaja! Pàgina no trobada!"
 
-#: ../../../lib/web/src/components/layout/nav-group.tsx:199
-#: ../../../lib/web/src/components/layout/nav-group.tsx:204
+#: ../../../lib/web/src/components/layout/nav-group.tsx:227
+#: ../../../lib/web/src/components/layout/nav-group.tsx:232
 msgid "Open actions"
 msgstr "Obre les accions"
 
@@ -1768,13 +1841,13 @@ msgstr "Obre les accions"
 msgid "Open menu"
 msgstr "Obre el menú"
 
-#: ../../../lib/web/src/components/layout/top-bar.tsx:63
-#: ../../../lib/web/src/components/layout/top-bar.tsx:68
+#: ../../../lib/web/src/components/layout/top-bar.tsx:78
+#: ../../../lib/web/src/components/layout/top-bar.tsx:83
 msgid "Open navigation"
 msgstr "Obre la navegació"
 
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:105
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:111
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:106
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:112
 msgid "Open option actions"
 msgstr "Obre les accions de l'opció"
 
@@ -1782,8 +1855,8 @@ msgstr "Obre les accions de l'opció"
 msgid "Open selected card"
 msgstr "Obre la targeta seleccionada"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:274
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:279
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:277
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:282
 msgid "Open view actions"
 msgstr "Obre les accions de la vista"
 
@@ -1792,8 +1865,8 @@ msgstr "Obre les accions de la vista"
 msgid "Open view controls"
 msgstr "Obre els controls de la vista"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:200
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:155
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:202
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:157
 msgid "Option name"
 msgstr "Nom de l'opció"
 
@@ -1801,8 +1874,8 @@ msgstr "Nom de l'opció"
 msgid "Optional description"
 msgstr "Descripció opcional"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:168
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:240
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:170
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:244
 msgid "Options"
 msgstr "Opcions"
 
@@ -1814,23 +1887,23 @@ msgstr "Altres"
 msgid "Owner"
 msgstr "Propietari"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:530
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
 msgid "Parent"
 msgstr "Pare"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:337
+#: ../../../lib/web/src/components/step-up-dialog.tsx:325
 msgid "Passkey"
 msgstr "Clau d'accés"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:207
+#: ../../../lib/web/src/components/step-up-dialog.tsx:195
 msgid "Passkey verification failed. Please try again."
 msgstr "Ha fallat la verificació de la clau d'accés. Torneu-ho a provar."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:146
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Passkeys"
 msgstr "Claus d'accés"
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:209
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
 msgstr "Patró (regex)"
 
@@ -1838,6 +1911,7 @@ msgstr "Patró (regex)"
 msgid "Pending"
 msgstr "Pendent"
 
+#: ../../../lib/web/src/components/person-picker.tsx:176
 #: src/components/layout/people-layout.tsx:63
 msgid "People"
 msgstr "Persones"
@@ -1847,20 +1921,20 @@ msgid "Personalise how your profile and app look to others."
 msgstr "Personalitza com es veuen el teu perfil i l'aplicació per als altres."
 
 #: ../../../lib/web/src/components/comment-composer.tsx:89
-#: ../../../lib/web/src/features/errors/general-error.tsx:54
+#: ../../../lib/web/src/features/errors/general-error.tsx:52
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:314
 msgid "Please check your internet connection and try again."
 msgstr "Comproveu la connexió a Internet i torneu-ho a provar."
 
 #: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
-msgid "Please log in with the appropriate credentials <0/> to access this resource."
-msgstr "Inicieu la sessió amb les credencials adequades <0/> per accedir a aquest recurs."
+#~ msgid "Please log in with the appropriate credentials <0/> to access this resource."
+#~ msgstr "Inicieu la sessió amb les credencials adequades <0/> per accedir a aquest recurs."
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:83
+#: ../../../lib/web/src/features/errors/general-error.tsx:81
 msgid "Please try again."
 msgstr "Torna-ho a provar."
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:75
+#: ../../../lib/web/src/features/errors/general-error.tsx:73
 msgid "Please wait a moment and try again."
 msgstr "Espereu un moment i torneu-ho a provar."
 
@@ -1881,8 +1955,8 @@ msgstr "Vista prèvia"
 msgid "Preview {0}'s profile before sending a friend request."
 msgstr "Vista prèvia del perfil de {0} abans d'enviar la sol·licitud d'amistat."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:509
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:514
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:520
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:525
 msgid "Previous image"
 msgstr "Imatge anterior"
 
@@ -1915,8 +1989,8 @@ msgid "Profile saved"
 msgstr "Perfil desat"
 
 #: ../../../lib/web/src/components/person-picker.tsx:200
-msgid "Project members"
-msgstr "Membres del projecte"
+#~ msgid "Project members"
+#~ msgstr "Membres del projecte"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:108
 msgid "Prompt saved"
@@ -1930,11 +2004,11 @@ msgstr "Notificació push"
 msgid "Raised"
 msgstr "Elevat"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:118
+#: ../../../lib/web/src/components/restore-banner.tsx:104
 msgid "Re-link your accounts on this server"
 msgstr "Torneu a vincular els comptes en aquest servidor"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:140
+#: ../../../lib/web/src/components/restore-banner.tsx:126
 msgid "Re-register your passkeys on this server"
 msgstr "Torna a registrar les teves claus d'accés en aquest servidor"
 
@@ -1943,7 +2017,7 @@ msgstr "Torna a registrar les teves claus d'accés en aquest servidor"
 msgid "Received ({0})"
 msgstr "Rebuts ({0})"
 
-#: src/features/friends/index.tsx:184
+#: src/features/friends/index.tsx:183
 msgid "Recently added"
 msgstr "Afegit recentment"
 
@@ -1955,12 +2029,12 @@ msgstr "Recomanat"
 msgid "Reconnecting ({retries})..."
 msgstr "S'està reconnectant ({retries})..."
 
-#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:136
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
 msgstr "Redirigint a l'inici de sessió."
 
-#: ../../../lib/web/src/components/post-tags.tsx:200
-#: ../../../lib/web/src/components/post-tags.tsx:212
+#: ../../../lib/web/src/components/post-tags.tsx:214
+#: ../../../lib/web/src/components/post-tags.tsx:226
 msgid "Reduce interest"
 msgstr "Redueix l'interès"
 
@@ -1980,17 +2054,25 @@ msgstr "Relativa (5m, 3h, 2d)"
 msgid "Relative within 24 hours, else absolute"
 msgstr "Relativa en 24 hores, si no absoluta"
 
+#: ../../../lib/web/src/components/post-tags.tsx:166
+msgid "Relevance {relevance}"
+msgstr "Rellevància {relevance}"
+
+#: ../../../lib/web/src/components/post-tags.tsx:164
+msgid "Relevance {relevance}, interest {weight}"
+msgstr "Rellevància {relevance}, interès {weight}"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx:285
 #: ../../../lib/web/src/components/attachment-composer.tsx:330
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:190
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:192
 #: ../../../lib/web/src/features/access/access-list.tsx:270
 msgid "Remove"
 msgstr "Elimina"
 
 #. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx:221
-#: src/features/friends/index.tsx:230
+#: src/features/friends/index.tsx:220
+#: src/features/friends/index.tsx:229
 #: src/features/groups/group-detail.tsx:240
 #: src/features/groups/group-detail.tsx:245
 msgid "Remove {0}"
@@ -2016,17 +2098,17 @@ msgstr "Voleu eliminar la regla d'accés per a «{0}»?"
 msgid "Remove access?"
 msgstr "Vols eliminar l'accés?"
 
-#: src/features/friends/index.tsx:249
-#: src/features/friends/index.tsx:260
+#: src/features/friends/index.tsx:248
+#: src/features/friends/index.tsx:259
 msgid "Remove friend"
 msgstr "Elimina l'amic"
 
-#: ../../../lib/web/src/components/post-tags.tsx:220
-#: ../../../lib/web/src/components/post-tags.tsx:232
+#: ../../../lib/web/src/components/post-tags.tsx:234
+#: ../../../lib/web/src/components/post-tags.tsx:246
 msgid "Remove interest"
 msgstr "Elimina l'interès"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:674
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:712
 msgid "Remove item"
 msgstr "Elimina l'element"
 
@@ -2048,21 +2130,21 @@ msgstr "S'està suprimint l'amic..."
 msgid "Removing member..."
 msgstr "S'està suprimint el membre..."
 
-#: src/features/friends/index.tsx:260
+#: src/features/friends/index.tsx:259
 #: src/features/groups/group-detail.tsx:271
 msgid "Removing..."
 msgstr "Eliminant..."
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:561
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:618
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:562
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:620
 msgid "Rename"
 msgstr "Canvia el nom"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:596
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:597
 msgid "Rename column"
 msgstr "Canvia el nom de la columna"
 
-#: ../../../lib/web/src/components/entity/entity-board-column.tsx:597
+#: ../../../lib/web/src/components/entity/entity-board-column.tsx:598
 msgid "Rename this board column"
 msgstr "Canvia el nom d'aquesta columna del tauler"
 
@@ -2076,11 +2158,11 @@ msgstr "Respon"
 msgid "Reply to {0}..."
 msgstr "Respon a {0}..."
 
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:224
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:228
 msgid "Required"
 msgstr "Obligatori"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:370
+#: ../../../lib/web/src/components/step-up-dialog.tsx:358
 msgid "Resend email"
 msgstr "Torna a enviar el correu"
 
@@ -2100,12 +2182,12 @@ msgstr "Revoca l'accés"
 msgid "Revoke RSS access?"
 msgstr "Voleu revocar l'accés RSS?"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:150
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:168
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:152
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:172
 msgid "Rows"
 msgstr "Files"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:373
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:376
 msgid "Rows group by"
 msgstr "Agrupa les files per"
 
@@ -2128,8 +2210,8 @@ msgstr "Dissabte"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
-#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:170
-#: ../../../lib/web/src/components/ui/editable-field-row.tsx:122
+#: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
+#: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
 #: ../../../lib/web/src/components/ui/secret-field.tsx:79
 #: src/features/groups/group-dialog.tsx:135
 #: src/features/invitations/invite-settings-dialog.tsx:140
@@ -2161,7 +2243,7 @@ msgstr "Desant..."
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:175
 #: ../../../lib/web/src/components/filter-bar.tsx:32
 #: ../../../lib/web/src/components/header-search.tsx:22
-#: ../../../lib/web/src/components/search.tsx:18
+#: ../../../lib/web/src/components/search.tsx:17
 msgid "Search"
 msgstr "Cerca"
 
@@ -2169,19 +2251,19 @@ msgstr "Cerca"
 msgid "Search for a command to run..."
 msgstr "Cerca una ordre per executar..."
 
-#: ../../../lib/web/src/components/place-picker.tsx:86
+#: ../../../lib/web/src/components/place-picker.tsx:73
 msgid "Search for a place"
 msgstr "Cerca un lloc"
 
-#: ../../../lib/web/src/components/place-picker.tsx:50
+#: ../../../lib/web/src/components/place-picker.tsx:37
 msgid "Search for a place..."
 msgstr "Cerca un lloc..."
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:250
+#: ../../../lib/web/src/components/travelling-picker.tsx:231
 msgid "Search for destination..."
 msgstr "Cerca destinació..."
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:183
+#: ../../../lib/web/src/components/travelling-picker.tsx:164
 msgid "Search for origin..."
 msgstr "Cerca origen..."
 
@@ -2189,7 +2271,7 @@ msgstr "Cerca origen..."
 msgid "Search for people and send a friend request."
 msgstr "Cerca persones i envia una sol·licitud d'amistat."
 
-#: src/features/friends/index.tsx:127
+#: src/features/friends/index.tsx:126
 msgid "Search friends"
 msgstr "Cerca amics"
 
@@ -2212,10 +2294,10 @@ msgstr "Cerca, observa i ordena aquesta vista."
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
-#: ../../../lib/web/src/components/inline-entity-search.tsx:63
-#: ../../../lib/web/src/components/person-picker.tsx:324
+#: ../../../lib/web/src/components/inline-entity-search.tsx:64
+#: ../../../lib/web/src/components/person-picker.tsx:300
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
-#: src/features/friends/index.tsx:126
+#: src/features/friends/index.tsx:125
 #: src/features/invitations/index.tsx:221
 msgid "Search..."
 msgstr "Cerca..."
@@ -2226,11 +2308,11 @@ msgstr "Cerca..."
 msgid "Searching..."
 msgstr "Cercant..."
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:141
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:16
 msgid "Select"
 msgstr "Selecciona"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:356
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:359
 msgid "Select a field"
 msgstr "Selecciona un camp"
 
@@ -2255,7 +2337,7 @@ msgstr "Selecciona el tipus de compte"
 msgid "Select group"
 msgstr "Selecciona grup"
 
-#: ../../../lib/web/src/components/place-picker.tsx:49
+#: ../../../lib/web/src/components/place-picker.tsx:36
 msgid "Select location"
 msgstr "Selecciona ubicació"
 
@@ -2263,7 +2345,7 @@ msgstr "Selecciona ubicació"
 msgid "Select next card"
 msgstr "Selecciona la targeta següent"
 
-#: ../../../lib/web/src/components/person-picker.tsx:83
+#: ../../../lib/web/src/components/person-picker.tsx:70
 msgid "Select person..."
 msgstr "Selecciona una persona..."
 
@@ -2271,8 +2353,8 @@ msgstr "Selecciona una persona..."
 msgid "Select previous card"
 msgstr "Selecciona la targeta anterior"
 
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:257
-#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:340
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:289
+#: ../../../lib/web/src/components/entity/entity-field-editor.tsx:381
 msgid "Select..."
 msgstr "Selecciona..."
 
@@ -2289,7 +2371,7 @@ msgstr "Seleccionat: <0>{0}</0>"
 msgid "Send again"
 msgstr "Torna a enviar"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:310
+#: ../../../lib/web/src/components/step-up-dialog.tsx:298
 msgid "Send email"
 msgstr "Envia el correu"
 
@@ -2329,7 +2411,7 @@ msgstr "Regles del servidor"
 msgid "Session expired. Please log in again."
 msgstr "La sessió ha caducat. Torneu a iniciar la sessió."
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:147
+#: ../../../lib/web/src/components/travelling-picker.tsx:128
 msgid "Set origin and destination"
 msgstr "Estableix origen i destinació"
 
@@ -2339,11 +2421,11 @@ msgstr "Estableix origen i destinació"
 msgid "Settings"
 msgstr "Configuració"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:327
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:330
 msgid "Show classes"
 msgstr "Mostra classes"
 
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:428
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:431
 msgid "Show fields"
 msgstr "Mostra camps"
 
@@ -2351,7 +2433,7 @@ msgstr "Mostra camps"
 msgid "Show this help"
 msgstr "Mostra aquesta ajuda"
 
-#: ../../../lib/web/src/components/ui/load-more.tsx:39
+#: ../../../lib/web/src/components/ui/load-more.tsx:43
 msgid "Showing {totalShown} of {total}"
 msgstr "Mostrant {totalShown} de {total}"
 
@@ -2363,17 +2445,21 @@ msgstr "Es mostra a les pestanyes del navegador."
 msgid "Sidebar"
 msgstr "Barra lateral"
 
+#: ../../../lib/web/src/features/errors/access-denied-error.tsx:18
+msgid "Sign in with an account that has access <0/> to this resource."
+msgstr "Inicieu la sessió amb un compte que tingui accés <0/> a aquest recurs."
+
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:131
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:137
 msgid "Sign out"
 msgstr "Tanca la sessió"
 
-#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:134
+#: ../../../lib/web/src/components/layout/authenticated-layout.tsx:133
 msgid "Signing out..."
 msgstr "Tancant sessió..."
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:161
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:179
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:163
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:183
 msgid "Single line of text only"
 msgstr "Només una línia de text"
 
@@ -2406,7 +2492,7 @@ msgstr "Orígens"
 msgid "Spacious"
 msgstr "Espaiós"
 
-#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:323
+#: ../../../lib/web/src/components/entity/entity-comment-list.tsx:325
 msgid "Start the discussion by adding the first comment."
 msgstr "Inicia la discussió afegint el primer comentari."
 
@@ -2422,16 +2508,16 @@ msgstr "Desa en silenci"
 msgid "Subject"
 msgstr "Assumpte"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:427
+#: ../../../lib/web/src/components/comment-composer.tsx:430
 msgid "Submit comment"
 msgstr "Envia comentari"
 
-#: ../../../lib/web/src/components/comment-composer.tsx:426
+#: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Submit reply"
 msgstr "Envia resposta"
 
-#: ../../../lib/web/src/components/inline-entity-search.tsx:66
-#: ../../../lib/web/src/components/recommended-entities.tsx:58
+#: ../../../lib/web/src/components/inline-entity-search.tsx:67
+#: ../../../lib/web/src/components/recommended-entities.tsx:59
 #: ../../../lib/web/src/components/search-entity-page.tsx:74
 msgid "Subscribe"
 msgstr "Subscriu-te"
@@ -2450,16 +2536,16 @@ msgstr "Canvia a la vista 1-9"
 msgid "System"
 msgstr "Sistema"
 
-#: ../../../lib/web/src/components/post-tags.tsx:76
+#: ../../../lib/web/src/components/post-tags.tsx:77
 msgid "Tag already exists"
 msgstr "L'etiqueta ja existeix"
 
-#: ../../../lib/web/src/components/post-tags.tsx:68
+#: ../../../lib/web/src/components/post-tags.tsx:69
 msgid "Tag must be 50 characters or less"
 msgstr "L'etiqueta ha de tenir 50 caràcters o menys"
 
-#: ../../../lib/web/src/components/post-tags.tsx:101
-#: ../../../lib/web/src/components/post-tags.tsx:115
+#: ../../../lib/web/src/components/post-tags.tsx:102
+#: ../../../lib/web/src/components/post-tags.tsx:116
 msgid "Tags"
 msgstr "Etiquetes"
 
@@ -2468,11 +2554,11 @@ msgstr "Etiquetes"
 msgid "Terms and conditions"
 msgstr "Termes i condicions"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:142
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:17
 msgid "Text"
 msgstr "Text"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:193
+#: ../../../lib/web/src/components/step-up-dialog.tsx:181
 msgid "That code is incorrect or has expired."
 msgstr "Aquest codi és incorrecte o ha caducat."
 
@@ -2489,7 +2575,7 @@ msgstr "Era massa gran per pujar. Elimineu o reduïu fitxers i torneu-ho a prova
 msgid "That's you"
 msgstr "Ets tu"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:68
+#: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "No s'ha pogut trobar el contingut sol·licitat."
 
@@ -2505,26 +2591,28 @@ msgstr "És possible que aquest grup s'hagi eliminat o que no estigui disponible
 msgid "Thursday"
 msgstr "Dijous"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:220
+#: ../../../lib/web/src/components/travelling-picker.tsx:201
 msgid "To"
 msgstr "A"
 
-#: ../../../lib/web/src/components/layout/nav-group.tsx:365
-#: ../../../lib/web/src/components/layout/nav-group.tsx:372
-#: ../../../lib/web/src/components/layout/nav-group.tsx:490
-#: ../../../lib/web/src/components/layout/nav-group.tsx:497
+#: ../../../lib/web/src/components/layout/nav-group.tsx:393
+#: ../../../lib/web/src/components/layout/nav-group.tsx:400
+#: ../../../lib/web/src/components/layout/nav-group.tsx:522
+#: ../../../lib/web/src/components/layout/nav-group.tsx:529
 msgid "Toggle section"
 msgstr "Mostra o amaga la secció"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx:337
 #: ../../../lib/web/src/components/ui/sidebar.tsx:340
+#: ../../../lib/web/src/components/ui/sidebar.tsx:352
+#: ../../../lib/web/src/components/ui/sidebar.tsx:355
 msgid "Toggle sidebar"
 msgstr "Commuta la barra lateral"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx:352
 #: ../../../lib/web/src/components/ui/sidebar.tsx:355
-msgid "Toggle Sidebar"
-msgstr "Commuta la barra lateral"
+#~ msgid "Toggle Sidebar"
+#~ msgstr "Commuta la barra lateral"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:26
 msgid "Toggle view options"
@@ -2535,7 +2623,7 @@ msgstr "Commuta les opcions de vista"
 msgid "Toggle watched filter"
 msgstr "Commuta el filtre observat"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:74
+#: ../../../lib/web/src/features/errors/general-error.tsx:72
 msgid "Too many requests"
 msgstr "Massa sol·licituds"
 
@@ -2543,11 +2631,11 @@ msgstr "Massa sol·licituds"
 msgid "Top"
 msgstr "Amunt"
 
-#: ../../../lib/web/src/components/travelling-picker.tsx:145
+#: ../../../lib/web/src/components/travelling-picker.tsx:126
 msgid "Travelling"
 msgstr "Viatjant"
 
-#: src/features/friends/index.tsx:165
+#: src/features/friends/index.tsx:164
 msgid "Try a different name"
 msgstr "Prova un altre nom"
 
@@ -2563,8 +2651,8 @@ msgstr "Prova d'ajustar la cerca"
 msgid "Try adjusting your search terms"
 msgstr "Prova d'ajustar els termes de cerca"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:140
-#: ../../../lib/web/src/features/errors/general-error.tsx:180
+#: ../../../lib/web/src/features/errors/general-error.tsx:138
+#: ../../../lib/web/src/features/errors/general-error.tsx:178
 msgid "Try again"
 msgstr "Torna-ho a provar"
 
@@ -2572,13 +2660,13 @@ msgstr "Torna-ho a provar"
 msgid "Tuesday"
 msgstr "Dimarts"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:130
-#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:162
+#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:134
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:166
 #: src/features/groups/group-detail.tsx:203
 msgid "Type"
 msgstr "Tipus"
 
-#: ../../../lib/web/src/components/command-menu.tsx:52
+#: ../../../lib/web/src/components/command-menu.tsx:54
 msgid "Type a command or search..."
 msgstr "Escriu una ordre o cerca..."
 
@@ -2600,8 +2688,8 @@ msgstr "Escriu per cercar..."
 msgid "Unable to connect to remote server"
 msgstr "No s'ha pogut connectar amb el servidor remot"
 
-#: ../../../lib/web/src/lib/auth-manager.ts:92
-#: ../../../lib/web/src/lib/auth-manager.ts:104
+#: ../../../lib/web/src/lib/auth-manager.ts:89
+#: ../../../lib/web/src/lib/auth-manager.ts:101
 msgid "Unable to redirect to login. Please try again."
 msgstr "No s'ha pogut redirigir a l'inici de sessió. Torna-ho a provar."
 
@@ -2610,15 +2698,15 @@ msgid "Unassigned"
 msgstr "Sense assignar"
 
 #: ../../../lib/web/src/features/errors/unauthorized-error.tsx:16
-msgid "Unauthorized Access"
-msgstr "Accés no autoritzat"
+#~ msgid "Unauthorized Access"
+#~ msgstr "Accés no autoritzat"
 
 #: ../../../lib/web/src/components/attachment-image.tsx:50
 msgid "Unavailable"
 msgstr "No disponible"
 
 #: ../../../lib/web/src/lib/request.ts:133
-#: ../../../lib/web/src/lib/request.ts:206
+#: ../../../lib/web/src/lib/request.ts:209
 msgid "Unexpected API error"
 msgstr "Error inesperat de l'API"
 
@@ -2626,6 +2714,11 @@ msgstr "Error inesperat de l'API"
 msgid "United States"
 msgstr "Estats Units"
 
+#: ../../../lib/web/src/components/audit-timeline.tsx:103
+#: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:167
+#: ../../../lib/web/src/components/tree-row.tsx:219
+#: ../../../lib/web/src/components/tree-row.tsx:373
+#: ../../../lib/web/src/components/tree-table-header.tsx:70
 #: ../../../lib/web/src/features/accounts/types.ts:29
 msgid "Unknown"
 msgstr "Desconegut"
@@ -2634,24 +2727,29 @@ msgstr "Desconegut"
 msgid "Unsubscribe"
 msgstr "Cancel·la la subscripció"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:285
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
 msgid "Untitled"
 msgstr "Sense títol"
 
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:56
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:57
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:499
 #: src/features/profile/index.tsx:610
 msgid "Updated"
 msgstr "Actualitzat"
+
+#: ../../../lib/web/src/components/entity/entity-activity-list.tsx:56
+msgid "Updated {field}"
+msgstr "S'ha actualitzat {field}"
 
 #: src/features/groups/group-dialog.tsx:65
 msgid "Updating group..."
 msgstr "S'està actualitzant el grup..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:639
-#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:301
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 #: src/features/profile/index.tsx:480
 msgid "Upload"
 msgstr "Puja"
@@ -2675,13 +2773,13 @@ msgstr "Progrés de la pujada"
 msgid "Uploading..."
 msgstr "Pujant..."
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:341
+#: ../../../lib/web/src/components/step-up-dialog.tsx:329
 msgid "Use your passkey"
 msgstr "Utilitzeu la vostra clau d'accés"
 
-#: ../../../lib/web/src/components/entity/add-field-dialog.tsx:143
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx:112
 #: ../../../lib/web/src/features/access/access-dialog.tsx:158
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts:18
 #: src/features/groups/group-detail.tsx:228
 #: src/features/groups/member-dialog.tsx:120
 msgid "User"
@@ -2695,7 +2793,7 @@ msgstr "Variables: {variables}"
 msgid "Verification code"
 msgstr "Codi de verificació"
 
-#: ../../../lib/web/src/components/step-up-dialog.tsx:391
+#: ../../../lib/web/src/components/step-up-dialog.tsx:379
 #: ../../../lib/web/src/features/accounts/account-verify.tsx:111
 msgid "Verify"
 msgstr "Verifica"
@@ -2704,17 +2802,17 @@ msgstr "Verifica"
 msgid "Verify email address"
 msgstr "Verifica l'adreça de correu electrònic"
 
-#: ../../../lib/web/src/components/attachment-gallery.tsx:95
+#: ../../../lib/web/src/components/attachment-gallery.tsx:96
 msgid "Video thumbnail"
 msgstr "Miniatura del vídeo"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:315
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:326
 msgid "Video viewer: {0}"
 msgstr "Visor de vídeos: {0}"
 
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:220
-#: ../../../lib/web/src/components/layout/notification-menu.tsx:228
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:216
+#: ../../../lib/web/src/components/layout/notification-menu.tsx:224
 msgid "View all notifications"
 msgstr "Mostra totes les notificacions"
 
@@ -2744,11 +2842,11 @@ msgstr "Dimecres"
 msgid "You are now friends!"
 msgstr "Ara sou amics!"
 
-#: ../../../lib/web/src/features/errors/general-error.tsx:61
+#: ../../../lib/web/src/features/errors/general-error.tsx:59
 msgid "You do not have access to this section."
 msgstr "No teniu accés a aquesta secció."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:100
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "El vostre compte s'ha mogut aquí des de {source}. Fins que no l'elimineu d'allà, els missatges i les notificacions poden arribar als dos servidors, part del vostre contingut es continuarà servint des de l'antic servidor i els seguidors poden trigar uns minuts a trobar-vos aquí."
 

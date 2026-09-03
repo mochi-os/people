@@ -61,6 +61,10 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
   const { data, isLoading, isError, error } = usePreferencesQuery()
   const setPolicy = useSetPreferencesMutation()
   const [value, setValue] = useState<InvitePolicy>('notify')
+  // Only a load that produced nothing counts. A background refetch can fail
+  // while data from the first load is still held, and hiding the radio group
+  // then would take away a setting whose value is known.
+  const loadFailed = isError && !data
 
   useEffect(() => {
     if (data?.invite_policy) setValue(data.invite_policy)
@@ -96,7 +100,7 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
             <Skeleton className='h-12 w-full' />
             <Skeleton className='h-12 w-full' />
           </div>
-        ) : isError ? (
+        ) : loadFailed ? (
           <p className='text-destructive py-2 text-sm'>
             {getErrorMessage(error, t`Failed to load your invite policy`)}
           </p>
@@ -132,7 +136,7 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
             disabled={
               setPolicy.isPending ||
               isLoading ||
-              isError ||
+              loadFailed ||
               (!!data?.invite_policy && value === data.invite_policy)
             }
           >

@@ -19,18 +19,6 @@ def decimal(value):
 def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event_id=event_id)
 
-# attachment_export() -> list | None: the rows core's attachment store held for
-# this user and app, each with "file" (stored filename, "" for a remote row),
-# from the export file core wrote before dropping its own store. None when the
-# export cannot be read; a missing export file means no rows.
-def attachment_export():
-	if not mochi.file.exists("attachments.json"):
-		return []
-	rows = json.decode(str(mochi.file.read("attachments.json") or ""), None)
-	if type(rows) != "list":
-		return None
-	return rows
-
 def database_upgrade(version):
 	if version == 8:
 		# When each friend's name was last reconciled with the directory. Without
@@ -48,9 +36,6 @@ def database_upgrade(version):
 		# it runs at every version that may have failed mid-way.
 		mochi.db.execute("create table if not exists images ( person text not null, slot text not null, content_type text not null default '', size integer not null default 0, updated integer not null default 0, primary key ( person, slot ) )")
 		rows = attachment_export()
-		if rows == None:
-			mochi.db.abort("attachment store unavailable")
-			return
 		for att in rows:
 			parts = att.get("object", "").split("/")
 			if len(parts) != 2 or parts[1] not in ("avatar", "banner", "favicon"):

@@ -18,10 +18,6 @@ msgstr ""
 msgid "Please check your internet connection and try again."
 msgstr "Lütfen internet bağlantınızı kontrol edip tekrar deneyin."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:301
-#~ msgid " or "
-#~ msgstr " veya "
-
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:189
 msgid "(edited)"
 msgstr "(düzenlendi)"
@@ -35,7 +31,7 @@ msgid "[not set]"
 msgstr "[ayarlanmamış]"
 
 #. placeholder {0}: displayInfo.count
-#: ../../../lib/web/src/components/person-picker.tsx:257
+#: ../../../lib/web/src/components/person-picker.tsx:260
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, one {# seçili} other {# seçili}}"
 
@@ -44,29 +40,25 @@ msgstr "{0, plural, one {# seçili} other {# seçili}}"
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# iç içe} other {+# iç içe}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:176
+#: ../../../lib/web/src/lib/locale-format.ts:191
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#g} other {#g}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:172
+#: ../../../lib/web/src/lib/locale-format.ts:187
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#sa} other {#sa}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:168
+#: ../../../lib/web/src/lib/locale-format.ts:183
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#dk} other {#dk}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:180
+#: ../../../lib/web/src/lib/locale-format.ts:195
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#hf} other {#hf}}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "{entityLabel} adı"
-
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:99
-#~ msgid "{entityLabel} name is required"
-#~ msgstr "{entityLabel} adı gerekli"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
 msgid "{opponentName} offered a draw"
@@ -89,18 +81,6 @@ msgstr "{totalDescendants, plural, one {# yanıt} other {+# yanıt daha}}"
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, one {Menüyü aç (# okunmamış bildirim)} other {Menüyü aç (# okunmamış bildirim)}}"
 
-#: ../../../lib/web/src/components/entity/entity-board-card.tsx:418
-#~ msgid "+{0} nested"
-#~ msgstr "+{0} iç içe"
-
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:171
-#~ msgid "+{totalDescendants} more replies"
-#~ msgstr "+{totalDescendants} yanıt daha"
-
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:170
-#~ msgid "1 reply"
-#~ msgstr "1 yanıt"
-
 #: ../../../lib/web/src/lib/preference-utils.ts:37
 msgid "12 hours"
 msgstr "12 saat"
@@ -112,6 +92,10 @@ msgstr "24 saat"
 #: src/features/friends/components/add-friend-dialog.tsx:76
 msgid "A friend invitation has been sent to {userName}."
 msgstr "{userName} kullanıcısına arkadaşlık daveti gönderildi."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:35
+msgid "A recording is already in progress."
+msgstr "Zaten bir kayıt devam ediyor."
 
 #: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Absolute (date and time)"
@@ -305,10 +289,6 @@ msgstr "Tüm davetler reddedildi"
 msgid "All invites are accepted without your approval."
 msgstr "Tüm davetler onayınız olmadan kabul edilir."
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-#~ msgid "Allow anyone to search for {0}"
-#~ msgstr "Herkesin {0} aramasına izin ver"
-
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:87
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "Herkesin {entityLabel} aramasına izin ver"
@@ -469,6 +449,14 @@ msgstr "Tarayıcı simgesi"
 msgid "Browser notifications"
 msgstr "Tarayıcı bildirimleri"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:48
+msgid "Camera permission denied"
+msgstr "Kamera izni reddedildi"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:56
+msgid "Camera unavailable"
+msgstr "Kamera kullanılamıyor"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx:426
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:616
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:211
@@ -503,6 +491,12 @@ msgstr "Yorumu iptal et"
 #: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "Yanıtı iptal et"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:24
+#: ../../../lib/web/src/lib/shell-errors.ts:37
+#: ../../../lib/web/src/lib/shell-errors.ts:52
+msgid "Cancelled"
+msgstr "İptal edildi"
 
 #: src/features/invitations/index.tsx:109
 msgid "Cancelling invitation..."
@@ -584,8 +578,8 @@ msgstr "Aramayı temizle"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:479
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:482
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:480
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:483
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 #: src/features/friends/components/add-friend-dialog.tsx:398
 msgid "Close"
@@ -653,8 +647,8 @@ msgstr "Komut paleti"
 msgid "Comment actions"
 msgstr "Yorum işlemleri"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:442
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:454
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:443
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:455
 msgid "Comments"
 msgstr "Yorumlar"
 
@@ -746,10 +740,6 @@ msgstr "Bu hesapla doğrulama yapılamadı. Lütfen tekrar deneyin."
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Oluştur"
-
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:144
-#~ msgid "Create {0}"
-#~ msgstr "{0} oluştur"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:146
 msgid "Create {entityLabel}"
@@ -888,7 +878,7 @@ msgstr "{0} seçeneğini sil"
 msgid "Delete view"
 msgstr "Görünümü sil"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:95
+#: ../../../lib/web/src/components/restore-banner.tsx:101
 msgid "Delete your account on the old server"
 msgstr "Eski sunucudaki hesabınızı silin"
 
@@ -929,7 +919,7 @@ msgstr "Ayrıntılar paneli"
 msgid "Detect from web browser"
 msgstr "Web tarayıcıdan algıla"
 
-#: ../../../lib/web/src/components/person-picker.tsx:190
+#: ../../../lib/web/src/components/person-picker.tsx:193
 msgid "Directory"
 msgstr "Dizin"
 
@@ -950,8 +940,8 @@ msgstr "Taslak silinsin mi?"
 msgid "Disconnected"
 msgstr "Bağlantı kesildi"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:74
 #: ../../../lib/web/src/components/restore-banner.tsx:80
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Dismiss"
 msgstr "Kapat"
 
@@ -969,8 +959,8 @@ msgid "Done"
 msgstr "Tamamlandı"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:463
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:473
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:464
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:474
 msgid "Download"
 msgstr "İndir"
 
@@ -1161,7 +1151,7 @@ msgstr "Yüklenemedi"
 msgid "Failed to load history"
 msgstr "Geçmiş yüklenemedi"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:349
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:350
 #: src/features/profile/index.tsx:601
 #: src/lib/resize-image.ts:26
 #: src/lib/resize-image.ts:53
@@ -1173,7 +1163,7 @@ msgstr "Görsel yüklenemedi"
 msgid "Failed to load prompts"
 msgstr "Komutlar yüklenemedi"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:349
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:350
 msgid "Failed to load video"
 msgstr "Video yüklenemedi"
 
@@ -1251,7 +1241,7 @@ msgstr "Dosya çok büyük"
 msgid "Files"
 msgstr "Dosyalar"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:83
+#: ../../../lib/web/src/components/restore-banner.tsx:89
 msgid "Finish moving your account"
 msgstr "Hesap taşımayı tamamlayın"
 
@@ -1271,7 +1261,7 @@ msgstr "Cuma"
 msgid "Friend removed"
 msgstr "Arkadaş kaldırıldı"
 
-#: ../../../lib/web/src/components/person-picker.tsx:183
+#: ../../../lib/web/src/components/person-picker.tsx:186
 #: src/components/layout/people-layout.tsx:66
 #: src/features/friends/index.tsx:46
 #: src/features/friends/index.tsx:118
@@ -1370,7 +1360,7 @@ msgid "Identity"
 msgstr "Kimlik"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:327
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:328
 msgid "Image viewer: {0}"
 msgstr "Görsel görüntüleyici: {0}"
 
@@ -1454,7 +1444,7 @@ msgstr "Bilinmeyen göndericilerden gelen davetler düşürülür. Karşılıkl�
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Aradığınız sayfa <0/>mevcut değil veya kaldırılmış görünüyor."
 
-#: ../../../lib/web/src/lib/locale-format.ts:165
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "Az önce"
 
@@ -1470,10 +1460,6 @@ msgstr "Büyük"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:309
 msgid "Layout"
 msgstr "Düzen"
-
-#: ../../../lib/web/src/components/post-tags.tsx:72
-#~ msgid "Letters, numbers, spaces, and hyphens only"
-#~ msgstr "Yalnızca harf, rakam, boşluk ve kısa çizgi"
 
 #: ../../../lib/web/src/components/post-tags.tsx:73
 msgid "Letters, numbers, spaces, hyphens, and slashes only"
@@ -1587,6 +1573,10 @@ msgstr "Mesaj"
 msgid "Metric"
 msgstr "Metrik"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:31
+msgid "Microphone permission denied"
+msgstr "Mikrofon izni reddedildi"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
 msgstr "Asgari uzunluk"
@@ -1633,10 +1623,6 @@ msgstr "Ad (A–Z)"
 msgid "Name cannot contain < or > characters"
 msgstr "Ad < veya > karakterleri içeremez"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
-#~ msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
-#~ msgstr "Ad açılı ayraç, ters eğik çizgi, noktalı virgül, tırnak işareti veya ters tırnak içeremez"
-
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:101
 #: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
@@ -1669,8 +1655,8 @@ msgstr "Yeni oyun"
 msgid "New invitations will appear here"
 msgstr "Yeni davetler burada görünecek"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:536
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:541
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:537
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:542
 msgid "Next image"
 msgstr "Sonraki görsel"
 
@@ -1787,7 +1773,7 @@ msgstr "Görüntüleme yok"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
-#: ../../../lib/web/src/components/person-picker.tsx:326
+#: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 msgid "None"
 msgstr "Yok"
@@ -1896,12 +1882,17 @@ msgid "Passkey"
 msgstr "Geçiş anahtarı"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/lib/shell-errors.ts:26
 msgid "Passkey verification failed. Please try again."
 msgstr "Geçiş anahtarı doğrulaması başarısız oldu. Lütfen tekrar deneyin."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:132
+#: ../../../lib/web/src/components/restore-banner.tsx:138
 msgid "Passkeys"
 msgstr "Passkey'ler"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:19
+msgid "Passkeys are not available in this browser"
+msgstr "Passkey'ler bu tarayıcıda kullanılamıyor"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
@@ -1911,7 +1902,7 @@ msgstr "Desen (regex)"
 msgid "Pending"
 msgstr "Beklemede"
 
-#: ../../../lib/web/src/components/person-picker.tsx:176
+#: ../../../lib/web/src/components/person-picker.tsx:179
 #: src/components/layout/people-layout.tsx:63
 msgid "People"
 msgstr "Kişiler"
@@ -1925,10 +1916,6 @@ msgstr "Profilinizin ve uygulamanın başkalarına nasıl göründüğünü kiş
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:314
 msgid "Please check your internet connection and try again."
 msgstr "Lütfen internet bağlantınızı kontrol edip tekrar deneyin."
-
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
-#~ msgid "Please log in with the appropriate credentials <0/> to access this resource."
-#~ msgstr "Bu kaynağa erişmek için <0/> lütfen uygun kimlik bilgileriyle giriş yapın."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:81
 msgid "Please try again."
@@ -1955,8 +1942,8 @@ msgstr "Önizleme"
 msgid "Preview {0}'s profile before sending a friend request."
 msgstr "Arkadaşlık isteği göndermeden önce {0} profilini önizleyin."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:520
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:525
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:521
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:526
 msgid "Previous image"
 msgstr "Önceki görsel"
 
@@ -1988,10 +1975,6 @@ msgstr "Profil önizleme"
 msgid "Profile saved"
 msgstr "Profil kaydedildi"
 
-#: ../../../lib/web/src/components/person-picker.tsx:200
-#~ msgid "Project members"
-#~ msgstr "Proje üyeleri"
-
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:108
 msgid "Prompt saved"
 msgstr "İstem kaydedildi"
@@ -2004,11 +1987,11 @@ msgstr "Anlık bildirim"
 msgid "Raised"
 msgstr "Yükseltilmiş"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:104
+#: ../../../lib/web/src/components/restore-banner.tsx:110
 msgid "Re-link your accounts on this server"
 msgstr "Hesaplarınızı bu sunucuda yeniden bağlayın"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:126
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Re-register your passkeys on this server"
 msgstr "Bu sunucuda parola anahtarlarınızı yeniden kaydedin"
 
@@ -2028,6 +2011,14 @@ msgstr "Önerilen"
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
 msgstr "Yeniden bağlanıyor ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:43
+msgid "Recording failed. Please try again."
+msgstr "Kayıt başarısız oldu. Lütfen tekrar deneyin."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:39
+msgid "Recording produced no audio"
+msgstr "Kayıtta ses yok"
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
@@ -2295,7 +2286,7 @@ msgstr "Bu görünümü arayın, izleyin ve sıralayın."
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/person-picker.tsx:300
+#: ../../../lib/web/src/components/person-picker.tsx:303
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 #: src/features/friends/index.tsx:125
 #: src/features/invitations/index.tsx:221
@@ -2575,6 +2566,22 @@ msgstr "Yüklemek için çok büyüktü. Dosyaları kaldırın veya küçültün
 msgid "That's you"
 msgstr "Bu sensin"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:50
+msgid "The camera is already in use"
+msgstr "Kamera zaten kullanımda"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:54
+msgid "The camera request was not answered"
+msgstr "Kamera isteği yanıtlanmadı"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:41
+msgid "The microphone request was not answered"
+msgstr "Mikrofon isteği yanıtlanmadı"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:21
+msgid "The passkey request was not answered"
+msgstr "Passkey isteği yanıtlanmadı"
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "İstenen içerik bulunamadı."
@@ -2582,6 +2589,10 @@ msgstr "İstenen içerik bulunamadı."
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "Sunucu veri yerine bir web sayfası döndürdü."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:17
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "Bu uygulamanın passkey'inizi kullanmasına izin verilmiyor. Ayarlar'da, İzinler altında izin verin."
 
 #: src/features/groups/group-detail.tsx:168
 msgid "This group may have been removed or is unavailable."
@@ -2608,11 +2619,6 @@ msgstr "Bölümü aç/kapat"
 #: ../../../lib/web/src/components/ui/sidebar.tsx:355
 msgid "Toggle sidebar"
 msgstr "Kenar çubuğunu aç/kapat"
-
-#: ../../../lib/web/src/components/ui/sidebar.tsx:352
-#: ../../../lib/web/src/components/ui/sidebar.tsx:355
-#~ msgid "Toggle Sidebar"
-#~ msgstr "Kenar çubuğunu aç/kapat"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:26
 msgid "Toggle view options"
@@ -2696,10 +2702,6 @@ msgstr "Giriş sayfasına yönlendirilemedi. Lütfen tekrar dene."
 #: ../../../lib/web/src/components/notification-category-button.tsx:114
 msgid "Unassigned"
 msgstr "Atanmamış"
-
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:16
-#~ msgid "Unauthorized Access"
-#~ msgstr "Yetkisiz erişim"
 
 #: ../../../lib/web/src/components/attachment-image.tsx:50
 msgid "Unavailable"
@@ -2807,7 +2809,7 @@ msgid "Video thumbnail"
 msgstr "Video küçük resmi"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:326
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:327
 msgid "Video viewer: {0}"
 msgstr "Video görüntüleyici: {0}"
 
@@ -2819,6 +2821,10 @@ msgstr "Tüm bildirimleri görüntüle"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:170
 msgid "View controls"
 msgstr "Kontrolleri görüntüle"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:33
+msgid "Voice recording is not supported in this browser"
+msgstr "Ses kaydı bu tarayıcıda desteklenmiyor"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:269
 #: ../../../lib/web/src/components/filter-bar.tsx:35
@@ -2846,7 +2852,7 @@ msgstr "Artık arkadaşsınız!"
 msgid "You do not have access to this section."
 msgstr "Bu bölüme erişiminiz yok."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:86
+#: ../../../lib/web/src/components/restore-banner.tsx:92
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "Hesabınız {source} adresinden buraya taşındı. Orada silene kadar mesajlar ve bildirimler her iki sunucuya da ulaşabilir, bazı içerikleriniz eski sunucudan sunulmaya devam eder ve takipçileriniz sizi burada bulmak için birkaç dakika bekleyebilir."
 

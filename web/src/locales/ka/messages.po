@@ -18,10 +18,6 @@ msgstr ""
 msgid "Please check your internet connection and try again."
 msgstr "გთხოვთ, შეამოწმოთ ინტერნეტთან კავშირი და სცადოთ ხელახლა."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:301
-#~ msgid " or "
-#~ msgstr " ან "
-
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:189
 msgid "(edited)"
 msgstr "(რედაქტირებულია)"
@@ -35,7 +31,7 @@ msgid "[not set]"
 msgstr "[არ არის მითითებული]"
 
 #. placeholder {0}: displayInfo.count
-#: ../../../lib/web/src/components/person-picker.tsx:257
+#: ../../../lib/web/src/components/person-picker.tsx:260
 msgid "{0, plural, one {# selected} other {# selected}}"
 msgstr "{0, plural, other {# გაყიდვა}}"
 
@@ -44,29 +40,25 @@ msgstr "{0, plural, other {# გაყიდვა}}"
 msgid "{0, plural, one {+# nested} other {+# nested}}"
 msgstr "{0, plural, one {+# ჩადგმული} other {+# ჩადგმული}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:176
+#: ../../../lib/web/src/lib/locale-format.ts:191
 msgid "{count, plural, one {#d} other {#d}}"
 msgstr "{count, plural, one {#დღ} other {#დღ}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:172
+#: ../../../lib/web/src/lib/locale-format.ts:187
 msgid "{count, plural, one {#h} other {#h}}"
 msgstr "{count, plural, one {#სთ} other {#სთ}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:168
+#: ../../../lib/web/src/lib/locale-format.ts:183
 msgid "{count, plural, one {#m} other {#m}}"
 msgstr "{count, plural, one {#წთ} other {#წთ}}"
 
-#: ../../../lib/web/src/lib/locale-format.ts:180
+#: ../../../lib/web/src/lib/locale-format.ts:195
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#კვ} other {#კვ}}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:176
 msgid "{entityLabel} name"
 msgstr "{entityLabel}-ის სახელი"
-
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:99
-#~ msgid "{entityLabel} name is required"
-#~ msgstr "{entityLabel}-ის სახელი სავალდებულოა"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx:29
 msgid "{opponentName} offered a draw"
@@ -89,18 +81,6 @@ msgstr "{totalDescendants, plural, other {# პასუხი}}"
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
 msgstr "{unreadCount, plural, other {მენიუს გახსნა (# წაუკითხავი შეტყობინება)}}"
 
-#: ../../../lib/web/src/components/entity/entity-board-card.tsx:418
-#~ msgid "+{0} nested"
-#~ msgstr "+{0} ჩადგმული"
-
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:171
-#~ msgid "+{totalDescendants} more replies"
-#~ msgstr "+{totalDescendants} მეტი პასუხი"
-
-#: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:170
-#~ msgid "1 reply"
-#~ msgstr "1 პასუხი"
-
 #: ../../../lib/web/src/lib/preference-utils.ts:37
 msgid "12 hours"
 msgstr "12 საათი"
@@ -112,6 +92,10 @@ msgstr "24 საათი"
 #: src/features/friends/components/add-friend-dialog.tsx:76
 msgid "A friend invitation has been sent to {userName}."
 msgstr "მეგობრობის მოწვევა გაიგზავნა {userName}-სთვის."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:35
+msgid "A recording is already in progress."
+msgstr "ჩაწერა უკვე მიმდინარეობს."
 
 #: ../../../lib/web/src/lib/preference-utils.ts:46
 msgid "Absolute (date and time)"
@@ -305,10 +289,6 @@ msgstr "ყველა მოწვევა უარყოფილია"
 msgid "All invites are accepted without your approval."
 msgstr "ყველა მოწვევა მიიღება თქვენი დადასტურების გარეშე."
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:85
-#~ msgid "Allow anyone to search for {0}"
-#~ msgstr "ნება დართეთ ყველას მოძებნოს {0}"
-
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:87
 msgid "Allow anyone to search for {entityLabel}"
 msgstr "ყველას შეეძლოს მოძებნოს {entityLabel}"
@@ -469,6 +449,14 @@ msgstr "ბრაუზერის ხატულა"
 msgid "Browser notifications"
 msgstr "ბრაუზერის შეტყობინებები"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:48
+msgid "Camera permission denied"
+msgstr "კამერის უფლება უარყოფილია"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:56
+msgid "Camera unavailable"
+msgstr "კამერა მიუწვდომელია"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx:426
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:616
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:211
@@ -503,6 +491,12 @@ msgstr "კომენტარის გაუქმება"
 #: ../../../lib/web/src/components/comment-composer.tsx:429
 msgid "Cancel reply"
 msgstr "პასუხის გაუქმება"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:24
+#: ../../../lib/web/src/lib/shell-errors.ts:37
+#: ../../../lib/web/src/lib/shell-errors.ts:52
+msgid "Cancelled"
+msgstr "გაუქმდა"
 
 #: src/features/invitations/index.tsx:109
 msgid "Cancelling invitation..."
@@ -584,8 +578,8 @@ msgstr "ძიების გასუფთავება"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:479
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:482
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:480
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:483
 #: ../../../lib/web/src/components/ui/sheet.tsx:79
 #: src/features/friends/components/add-friend-dialog.tsx:398
 msgid "Close"
@@ -653,8 +647,8 @@ msgstr "ბრძანებების პალიტრა"
 msgid "Comment actions"
 msgstr "კომენტარის მოქმედებები"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:442
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:454
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:443
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:455
 msgid "Comments"
 msgstr "კომენტარები"
 
@@ -746,10 +740,6 @@ msgstr "ამ ანგარიშით ვერ მოხერხდა �
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "შექმნა"
-
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:144
-#~ msgid "Create {0}"
-#~ msgstr "{0}-ის შექმნა"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:146
 msgid "Create {entityLabel}"
@@ -888,7 +878,7 @@ msgstr "ვარიანტის წაშლა {0}"
 msgid "Delete view"
 msgstr "ხედის წაშლა"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:95
+#: ../../../lib/web/src/components/restore-banner.tsx:101
 msgid "Delete your account on the old server"
 msgstr "წაშალეთ თქვენი ანგარიში ძველ სერვერზე"
 
@@ -929,7 +919,7 @@ msgstr "დეტალების პანელი"
 msgid "Detect from web browser"
 msgstr "ვებ ბრაუზერიდან აღმოჩენა"
 
-#: ../../../lib/web/src/components/person-picker.tsx:190
+#: ../../../lib/web/src/components/person-picker.tsx:193
 msgid "Directory"
 msgstr "კატალოგი"
 
@@ -950,8 +940,8 @@ msgstr "გავაუქმოთ მონახაზი?"
 msgid "Disconnected"
 msgstr "გათიშულია"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:74
 #: ../../../lib/web/src/components/restore-banner.tsx:80
+#: ../../../lib/web/src/components/restore-banner.tsx:86
 msgid "Dismiss"
 msgstr "უარყოფა"
 
@@ -969,8 +959,8 @@ msgid "Done"
 msgstr "მზადაა"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:243
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:463
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:473
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:464
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:474
 msgid "Download"
 msgstr "ჩამოტვირთვა"
 
@@ -1161,7 +1151,7 @@ msgstr "ჩატვირთვა ვერ მოხერხდა"
 msgid "Failed to load history"
 msgstr "ისტორიის ჩატვირთვა ვერ მოხერხდა"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:349
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:350
 #: src/features/profile/index.tsx:601
 #: src/lib/resize-image.ts:26
 #: src/lib/resize-image.ts:53
@@ -1173,7 +1163,7 @@ msgstr "სურათის ჩატვირთვა ვერ მოხე
 msgid "Failed to load prompts"
 msgstr "მოთხოვნების ჩატვირთვა ვერ მოხერხდა"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:349
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:350
 msgid "Failed to load video"
 msgstr "ვიდეოს ჩატვირთვა ვერ მოხერხდა"
 
@@ -1251,7 +1241,7 @@ msgstr "ფაილი ძალიან დიდია"
 msgid "Files"
 msgstr "ფაილები"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:83
+#: ../../../lib/web/src/components/restore-banner.tsx:89
 msgid "Finish moving your account"
 msgstr "დაასრულეთ ანგარიშის გადატანა"
 
@@ -1271,7 +1261,7 @@ msgstr "პარასკევი"
 msgid "Friend removed"
 msgstr "მეგობარი წაიშალა"
 
-#: ../../../lib/web/src/components/person-picker.tsx:183
+#: ../../../lib/web/src/components/person-picker.tsx:186
 #: src/components/layout/people-layout.tsx:66
 #: src/features/friends/index.tsx:46
 #: src/features/friends/index.tsx:118
@@ -1370,7 +1360,7 @@ msgid "Identity"
 msgstr "ვინაობა"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:327
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:328
 msgid "Image viewer: {0}"
 msgstr "სურათის მნახველი: {0}"
 
@@ -1454,7 +1444,7 @@ msgstr "უცნობი გამომგზავნებისგან �
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "როგორც ჩანს, გვერდი, რომელსაც ეძებთ, <0/>არ არსებობს ან წაშლილია."
 
-#: ../../../lib/web/src/lib/locale-format.ts:165
+#: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "ახლახან"
 
@@ -1470,10 +1460,6 @@ msgstr "დიდი"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:309
 msgid "Layout"
 msgstr "განლაგება"
-
-#: ../../../lib/web/src/components/post-tags.tsx:72
-#~ msgid "Letters, numbers, spaces, and hyphens only"
-#~ msgstr "მხოლოდ ასოები, ციფრები, ჰარები და დეფისები"
 
 #: ../../../lib/web/src/components/post-tags.tsx:73
 msgid "Letters, numbers, spaces, hyphens, and slashes only"
@@ -1587,6 +1573,10 @@ msgstr "შეტყობინება"
 msgid "Metric"
 msgstr "მეტრიკული"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:31
+msgid "Microphone permission denied"
+msgstr "მიკროფონის ნებართვა უარყოფილია"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:191
 msgid "Minimum length"
 msgstr "მინიმალური სიგრძე"
@@ -1633,10 +1623,6 @@ msgstr "სახელი (A–Z)"
 msgid "Name cannot contain < or > characters"
 msgstr "სახელი ვერ შეიცავს < ან > სიმბოლოებს"
 
-#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:102
-#~ msgid "Name cannot contain angle brackets, backslash, semicolon, quotes or backticks"
-#~ msgstr "სახელი არ შეიძლება შეიცავდეს კუთხოვან ფრჩხილებს, უკუწილადს, წერტილმძიმეს, ბრჭყალებს ან უკუბრჭყალებს"
-
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:101
 #: src/features/groups/group-dialog.tsx:52
 msgid "Name is required"
@@ -1669,8 +1655,8 @@ msgstr "ახალი თამაში"
 msgid "New invitations will appear here"
 msgstr "ახალი მოწვევები აქ გამოჩნდება"
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:536
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:541
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:537
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:542
 msgid "Next image"
 msgstr "შემდეგი სურათი"
 
@@ -1787,7 +1773,7 @@ msgstr "ნახვები არ არის"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:418
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:491
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:494
-#: ../../../lib/web/src/components/person-picker.tsx:326
+#: ../../../lib/web/src/components/person-picker.tsx:329
 #: ../../../lib/web/src/lib/preference-utils.ts:100
 msgid "None"
 msgstr "არცერთი"
@@ -1896,12 +1882,17 @@ msgid "Passkey"
 msgstr "წვდომის გასაღები"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx:195
+#: ../../../lib/web/src/lib/shell-errors.ts:26
 msgid "Passkey verification failed. Please try again."
 msgstr "passkey-ის გადამოწმება ვერ მოხერხდა. გთხოვთ, სცადოთ ხელახლა."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:132
+#: ../../../lib/web/src/components/restore-banner.tsx:138
 msgid "Passkeys"
 msgstr "Passkey-ები"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:19
+msgid "Passkeys are not available in this browser"
+msgstr "Passkey-ები ამ ბრაუზერში მიუწვდომელია"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:213
 msgid "Pattern (regex)"
@@ -1911,7 +1902,7 @@ msgstr "შაბლონი (regex)"
 msgid "Pending"
 msgstr "მოლოდინში"
 
-#: ../../../lib/web/src/components/person-picker.tsx:176
+#: ../../../lib/web/src/components/person-picker.tsx:179
 #: src/components/layout/people-layout.tsx:63
 msgid "People"
 msgstr "ხალხი"
@@ -1925,10 +1916,6 @@ msgstr "მოარგეთ, როგორ ჩანს თქვენი �
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:314
 msgid "Please check your internet connection and try again."
 msgstr "გთხოვთ, შეამოწმოთ ინტერნეტთან კავშირი და სცადოთ ხელახლა."
-
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:18
-#~ msgid "Please log in with the appropriate credentials <0/> to access this resource."
-#~ msgstr "ამ რესურსზე წვდომისთვის <0/> გთხოვთ, შეხვიდეთ შესაბამისი მონაცემებით."
 
 #: ../../../lib/web/src/features/errors/general-error.tsx:81
 msgid "Please try again."
@@ -1955,8 +1942,8 @@ msgstr "გადახედვა"
 msgid "Preview {0}'s profile before sending a friend request."
 msgstr "გადახედეთ {0}-ის პროფილს მეგობრობის მოთხოვნის გაგზავნამდე."
 
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:520
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:525
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:521
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:526
 msgid "Previous image"
 msgstr "წინა სურათი"
 
@@ -1988,10 +1975,6 @@ msgstr "პროფილის გადახედვა"
 msgid "Profile saved"
 msgstr "პროფილი შენახულია"
 
-#: ../../../lib/web/src/components/person-picker.tsx:200
-#~ msgid "Project members"
-#~ msgstr "პროექტის წევრები"
-
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:108
 msgid "Prompt saved"
 msgstr "მოთხოვნა შენახულია"
@@ -2004,11 +1987,11 @@ msgstr "Push შეტყობინება"
 msgid "Raised"
 msgstr "აწეული"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:104
+#: ../../../lib/web/src/components/restore-banner.tsx:110
 msgid "Re-link your accounts on this server"
 msgstr "ხელახლა დააკავშირეთ თქვენი ანგარიშები ამ სერვერზე"
 
-#: ../../../lib/web/src/components/restore-banner.tsx:126
+#: ../../../lib/web/src/components/restore-banner.tsx:132
 msgid "Re-register your passkeys on this server"
 msgstr "ხელახლა დაარეგისტრირეთ თქვენი წვდომის გასაღებები ამ სერვერზე"
 
@@ -2028,6 +2011,14 @@ msgstr "რეკომენდებული"
 #: ../../../lib/web/src/lib/chat-ui.ts:21
 msgid "Reconnecting ({retries})..."
 msgstr "ხელახლა დაკავშირება ({retries})..."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:43
+msgid "Recording failed. Please try again."
+msgstr "ჩაწერა ვერ მოხერხდა. სცადეთ ხელახლა."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:39
+msgid "Recording produced no audio"
+msgstr "ჩანაწერი ხმას არ შეიცავს"
 
 #: ../../../lib/web/src/components/layout/authenticated-layout.tsx:135
 msgid "Redirecting to login."
@@ -2295,7 +2286,7 @@ msgstr "ძიება, თვალთვალი და დახარი�
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:179
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:255
 #: ../../../lib/web/src/components/inline-entity-search.tsx:64
-#: ../../../lib/web/src/components/person-picker.tsx:300
+#: ../../../lib/web/src/components/person-picker.tsx:303
 #: ../../../lib/web/src/components/search-entity-page.tsx:72
 #: src/features/friends/index.tsx:125
 #: src/features/invitations/index.tsx:221
@@ -2575,6 +2566,22 @@ msgstr "ატვირთვისთვის ზედმეტად დი�
 msgid "That's you"
 msgstr "ეს თქვენ ხართ"
 
+#: ../../../lib/web/src/lib/shell-errors.ts:50
+msgid "The camera is already in use"
+msgstr "კამერა უკვე გამოიყენება"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:54
+msgid "The camera request was not answered"
+msgstr "კამერის მოთხოვნას პასუხი არ მოჰყვა"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:41
+msgid "The microphone request was not answered"
+msgstr "მიკროფონის მოთხოვნას პასუხი არ მოჰყვა"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:21
+msgid "The passkey request was not answered"
+msgstr "Passkey-ის მოთხოვნას პასუხი არ მოჰყვა"
+
 #: ../../../lib/web/src/features/errors/general-error.tsx:66
 msgid "The requested content could not be found."
 msgstr "მოთხოვნილი კონტენტი ვერ მოიძებნა."
@@ -2582,6 +2589,10 @@ msgstr "მოთხოვნილი კონტენტი ვერ მო
 #: ../../../lib/web/src/lib/api-response-interceptors.ts:152
 msgid "The server returned a web page instead of data."
 msgstr "სერვერმა მონაცემების ნაცვლად ვებგვერდი დააბრუნა."
+
+#: ../../../lib/web/src/lib/shell-errors.ts:17
+msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
+msgstr "ამ აპლიკაციას თქვენი passkey-ის გამოყენების უფლება არ აქვს. დაუშვით პარამეტრებში, უფლებების განყოფილებაში."
 
 #: src/features/groups/group-detail.tsx:168
 msgid "This group may have been removed or is unavailable."
@@ -2608,11 +2619,6 @@ msgstr "სექციის გადართვა"
 #: ../../../lib/web/src/components/ui/sidebar.tsx:355
 msgid "Toggle sidebar"
 msgstr "გვერდითი ზოლის გადართვა"
-
-#: ../../../lib/web/src/components/ui/sidebar.tsx:352
-#: ../../../lib/web/src/components/ui/sidebar.tsx:355
-#~ msgid "Toggle Sidebar"
-#~ msgstr "გვერდითი პანელის გადართვა"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx:26
 msgid "Toggle view options"
@@ -2696,10 +2702,6 @@ msgstr "ვერსიის ინფორმაციის ჩატვი�
 #: ../../../lib/web/src/components/notification-category-button.tsx:114
 msgid "Unassigned"
 msgstr "მიუნიჭებელი"
-
-#: ../../../lib/web/src/features/errors/unauthorized-error.tsx:16
-#~ msgid "Unauthorized Access"
-#~ msgstr "არაავტორიზებული წვდომა"
 
 #: ../../../lib/web/src/components/attachment-image.tsx:50
 msgid "Unavailable"
@@ -2807,7 +2809,7 @@ msgid "Video thumbnail"
 msgstr "ვიდეოს მინიატურა"
 
 #. placeholder {0}: currentMedia.name
-#: ../../../lib/web/src/components/ui/image-lightbox.tsx:326
+#: ../../../lib/web/src/components/ui/image-lightbox.tsx:327
 msgid "Video viewer: {0}"
 msgstr "ვიდეოს მნახველი: {0}"
 
@@ -2819,6 +2821,10 @@ msgstr "ყველას ნახვა"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:170
 msgid "View controls"
 msgstr "ხედის მართვა"
+
+#: ../../../lib/web/src/lib/shell-errors.ts:33
+msgid "Voice recording is not supported in this browser"
+msgstr "ხმის ჩაწერა ამ ბრაუზერში მხარდაჭერილი არ არის"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:269
 #: ../../../lib/web/src/components/filter-bar.tsx:35
@@ -2846,7 +2852,7 @@ msgstr "თქვენ ახლა მეგობრები ხართ!"
 msgid "You do not have access to this section."
 msgstr "ამ განყოფილებაზე წვდომა არ გაქვთ."
 
-#: ../../../lib/web/src/components/restore-banner.tsx:86
+#: ../../../lib/web/src/components/restore-banner.tsx:92
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
 msgstr "თქვენი ანგარიში გადმოტანილია {source}-დან. სანამ იქ წაშლით, შეტყობინებები და ნოტიფიკაციები შეიძლება ორივე სერვერს მიაღწიოს, თქვენი კონტენტის ნაწილი კვლავ ძველი სერვერიდან ხელმისაწვდომია, ხოლო მიმდევრებს შეიძლება რამდენიმე წუთი დასჭირდეთ თქვენი პოვნისთვის."
 

@@ -153,6 +153,10 @@ msgstr "Typ účtu"
 msgid "Actions"
 msgstr "Akce"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:415
+msgid "Activity"
+msgstr "Aktivita"
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
@@ -208,7 +212,7 @@ msgstr "Přidejte přátele a začněte se spojovat"
 msgid "Add item..."
 msgstr "Přidat položku..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:314
 msgid "Add link"
 msgstr "Přidat odkaz"
 
@@ -341,6 +345,10 @@ msgstr "Vzhled"
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Opravdu chcete smazat „{0}“?"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:671
+msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
+msgstr "Opravdu chcete smazat „{title}“? Tuto akci nelze vrátit zpět."
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:631
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "Opravdu chcete smazat sloupec „{name}“? Tuto akci nelze vrátit zpět."
@@ -362,6 +370,14 @@ msgstr "Opravdu chcete odebrat <0>{0}</0> z této skupiny?"
 #: src/features/friends/index.tsx:250
 msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
 msgstr "Opravdu chcete odebrat <0>{0}</0> ze seznamu přátel? Tuto akci nelze vrátit zpět."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:39
+msgid "Are you sure you want to resign?"
+msgstr "Opravdu chcete vzdát hru?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:38
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "Opravdu se chcete vzdát? {opponentName} vyhraje hru."
 
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Ascending"
@@ -410,12 +426,21 @@ msgstr "Zpět na přátele"
 msgid "Back to home"
 msgstr "Zpět na úvod"
 
+#: ../../../lib/web/src/components/banner-section.tsx:80
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Banner"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:68
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:215
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner removed"
+msgstr "Banner odstraněn"
+
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner updated"
+msgstr "Banner aktualizován"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:72
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:209
 msgid "Blocked by"
 msgstr "Blokováno"
 
@@ -424,7 +449,7 @@ msgstr "Blokováno"
 msgid "Blocked navigation to untrusted link"
 msgstr "Navigace na nedůvěryhodný odkaz zablokována"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:66
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:70
 msgid "Blocks"
 msgstr "Blokuje"
 
@@ -557,6 +582,7 @@ msgstr "Vyberte hru z postranního panelu nebo začněte novou."
 msgid "Choose language"
 msgstr "Vyberte jazyk"
 
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -575,8 +601,8 @@ msgstr "Vymazat vše"
 msgid "Clear search"
 msgstr "Vymazat hledání"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:517
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:480
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:483
@@ -651,6 +677,11 @@ msgstr "Akce komentáře"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:455
 msgid "Comments"
 msgstr "Komentáře"
+
+#. placeholder {0}: data.comment_count || 0
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:411
+msgid "Comments ({0})"
+msgstr "Komentáře ({0})"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:90
 msgid "Compact"
@@ -735,8 +766,8 @@ msgstr "S tímto účtem se nepodařilo ověřit. Zkuste to prosím znovu."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Vytvořit"
@@ -770,7 +801,7 @@ msgstr "Vytvořeno {field}"
 msgid "Creating group..."
 msgstr "Vytváření skupiny..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 msgid "Creating..."
 msgstr "Vytváření..."
@@ -834,6 +865,8 @@ msgstr "Výchozí řazení"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
 #: src/features/groups/group-detail.tsx:150
 #: src/features/groups/group-detail.tsx:296
 msgid "Delete"
@@ -855,6 +888,10 @@ msgstr "Smazat komentář"
 msgid "Delete field"
 msgstr "Smazat pole"
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:69
+msgid "Delete game?"
+msgstr "Smazat hru?"
+
 #: src/features/groups/group-detail.tsx:294
 msgid "Delete group"
 msgstr "Smazat skupinu"
@@ -863,6 +900,12 @@ msgstr "Smazat skupinu"
 #: src/features/groups/group-detail.tsx:295
 msgid "Delete group \"{0}\"? This cannot be undone."
 msgstr "Smazat skupinu \"{0}\"? Tuto akci nelze vrátit zpět."
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:486
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:670
+msgid "Delete item"
+msgstr "Smazat položku"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:117
 msgid "Delete option"
@@ -893,6 +936,10 @@ msgstr "Smazáno {field}"
 #: src/features/groups/group-detail.tsx:107
 msgid "Deleting group..."
 msgstr "Mazání skupiny..."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
+msgid "Deleting..."
+msgstr "Mazání..."
 
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Descending"
@@ -954,6 +1001,7 @@ msgid "Does not match the required pattern"
 msgstr "Neodpovídá požadovanému vzoru"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:495
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 msgid "Done"
 msgstr "Hotovo"
@@ -969,7 +1017,7 @@ msgstr "Stáhnout"
 msgid "Download failed"
 msgstr "Stahování se nezdařilo"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:67
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:71
 msgid "Duplicates"
 msgstr "Duplikuje"
 
@@ -1039,6 +1087,10 @@ msgstr "E-mailový kód"
 msgid "Enter a name to find people you want to add"
 msgstr "Zadejte jméno pro vyhledání lidí, které chcete přidat"
 
+#: ../../../lib/web/src/components/banner-section.tsx:88
+msgid "Enter banner text (markdown supported)..."
+msgstr "Zadejte text banneru (podporuje markdown)..."
+
 #: src/features/friends/components/add-friend-dialog.tsx:194
 msgid "Enter name to search..."
 msgstr "Zadejte jméno pro vyhledávání..."
@@ -1050,6 +1102,10 @@ msgstr "Zadejte kód z vašeho e-mailu"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:315
 msgid "Enter your authenticator code"
 msgstr "Zadejte kód z autentizační aplikace"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:381
+msgid "Error"
+msgstr "Chyba"
 
 #: ../../../lib/web/src/components/comment-tree-layout.tsx:101
 #: ../../../lib/web/src/components/comment-tree-layout.tsx:110
@@ -1110,7 +1166,7 @@ msgstr "Nepodařilo se zkopírovat"
 msgid "Failed to create group"
 msgstr "Nepodařilo se vytvořit skupinu"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:131
 #: ../../../lib/web/src/components/options-menu.tsx:98
 msgid "Failed to create link"
 msgstr "Nepodařilo se vytvořit odkaz"
@@ -1122,6 +1178,10 @@ msgstr "Nepodařilo se odmítnout pozvánku"
 #: src/features/invitations/index.tsx:169
 msgid "Failed to decline invitations"
 msgstr "Pozvánky se nepodařilo odmítnout"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
+msgid "Failed to delete"
+msgstr "Nepodařilo se smazat"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:130
 msgid "Failed to delete attachment"
@@ -1135,7 +1195,7 @@ msgstr "Nepodařilo se smazat komentář"
 msgid "Failed to delete group"
 msgstr "Nepodařilo se smazat skupinu"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:153
 msgid "Failed to delete link"
 msgstr "Nepodařilo se smazat odkaz"
 
@@ -1159,6 +1219,11 @@ msgstr "Nepodařilo se načíst historii"
 msgid "Failed to load image"
 msgstr "Obrázek se nepodařilo načíst"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:382
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:385
+msgid "Failed to load item"
+msgstr "Nepodařilo se načíst položku"
+
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:213
 msgid "Failed to load prompts"
 msgstr "Nepodařilo se načíst prompty"
@@ -1170,6 +1235,10 @@ msgstr "Video se nepodařilo načíst"
 #: src/features/invitations/invite-settings-dialog.tsx:101
 msgid "Failed to load your invite policy"
 msgstr "Nepodařilo se načíst vaše zásady pozvánek"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:317
+msgid "Failed to move"
+msgstr "Přesunutí se nezdařilo"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx:155
 msgid "Failed to post comment"
@@ -1191,6 +1260,7 @@ msgstr "Nepodařilo se obnovit prompt"
 msgid "Failed to revoke RSS access"
 msgstr "Zrušení přístupu RSS se nezdařilo"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
 #: src/features/invitations/invite-settings-dialog.tsx:78
 msgid "Failed to save"
 msgstr "Nepodařilo se uložit"
@@ -1215,6 +1285,10 @@ msgstr "Nepodařilo se uložit profil"
 msgid "Failed to save prompt"
 msgstr "Nepodařilo se uložit prompt"
 
+#: ../../../lib/web/src/components/banner-section.tsx:71
+msgid "Failed to update banner"
+msgstr "Nepodařilo se aktualizovat banner"
+
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx:175
 msgid "Failed to update comment"
 msgstr "Nepodařilo se aktualizovat komentář"
@@ -1222,6 +1296,10 @@ msgstr "Nepodařilo se aktualizovat komentář"
 #: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "Nepodařilo se aktualizovat skupinu"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:288
+msgid "Failed to update watching"
+msgstr "Sledování se nepodařilo aktualizovat"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
 msgid "Failed to upload attachment"
@@ -1235,7 +1313,7 @@ msgstr "Favicon"
 msgid "File too large"
 msgstr "Soubor je příliš velký"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:605
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
@@ -1444,6 +1522,10 @@ msgstr "Pozvánky od neznámých odesílatelů jsou zahozeny. Vzájemné pozván
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Zdá se, že stránka, kterou hledáte, <0/>neexistuje nebo byla odebrána."
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:441
+msgid "Item details"
+msgstr "Podrobnosti položky"
+
 #: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "Právě teď"
@@ -1473,7 +1555,7 @@ msgstr "Světlý"
 msgid "Link"
 msgstr "Odkaz"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:279
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:273
 msgid "Links"
 msgstr "Odkazy"
 
@@ -1492,6 +1574,14 @@ msgstr "Načítání obsahu…"
 #: src/features/groups/member-dialog.tsx:207
 msgid "Loading groups..."
 msgstr "Načítám skupiny..."
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:365
+msgid "Loading item"
+msgstr "Načítám položku"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:366
+msgid "Loading item details"
+msgstr "Načítám podrobnosti položky"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
@@ -1641,7 +1731,7 @@ msgstr "Název uložen"
 msgid "Network error"
 msgstr "Chyba sítě"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:492
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 msgid "New"
 msgstr "Nové"
@@ -1660,7 +1750,7 @@ msgstr "Nové pozvánky se zobrazí zde"
 msgid "Next image"
 msgstr "Další obrázek"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:571
 msgid "No {parentClassNames} to add to"
 msgstr "Žádné {parentClassNames} pro přidání"
 
@@ -1692,11 +1782,11 @@ msgstr "Zatím žádné hry"
 msgid "No groups available"
 msgstr "Žádné skupiny k dispozici"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Zatím nelze vytvořit žádné typy položek. Nejprve vytvořte potřebné nadřazené položky."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:360
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:354
 msgid "No matching objects"
 msgstr "Žádné odpovídající objekty"
 
@@ -1763,9 +1853,13 @@ msgid "No views"
 msgstr "Žádná zobrazení"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:554
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:557
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:561
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:557
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:570
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:571
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:575
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
@@ -1873,7 +1967,9 @@ msgstr "Ostatní"
 msgid "Owner"
 msgstr "Vlastník"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:546
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:553
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:569
 msgid "Parent"
 msgstr "Rodič"
 
@@ -1979,6 +2075,10 @@ msgstr "Profil uložen"
 msgid "Prompt saved"
 msgstr "Prompt uložen"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:408
+msgid "Properties"
+msgstr "Vlastnosti"
+
 #: ../../../lib/web/src/features/accounts/types.ts:21
 msgid "Push notification"
 msgstr "Push oznámení"
@@ -2033,7 +2133,7 @@ msgstr "Snížit zájem"
 msgid "Reject all"
 msgstr "Zamítnout vše"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:65
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:69
 msgid "Relates"
 msgstr "Souvisí s"
 
@@ -2103,8 +2203,8 @@ msgstr "Odebrat zájem"
 msgid "Remove item"
 msgstr "Odebrat položku"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:304
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:298
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:303
 msgid "Remove link"
 msgstr "Odebrat odkaz"
 
@@ -2157,6 +2257,18 @@ msgstr "Povinné"
 msgid "Resend email"
 msgstr "Odeslat e-mail znovu"
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:48
+msgid "Resign"
+msgstr "Vzdát"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:35
+msgid "Resign game?"
+msgstr "Vzdát hru?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:45
+msgid "Resigning..."
+msgstr "Vzdávání…"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx:348
 msgid "Retry"
 msgstr "Zkusit znovu"
@@ -2200,6 +2312,7 @@ msgstr "Sobota"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
+#: ../../../lib/web/src/components/banner-section.tsx:99
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
@@ -2266,7 +2379,7 @@ msgstr "Vyhledejte lidi a odešlete žádost o přátelství."
 msgid "Search friends"
 msgstr "Hledat přátele"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:331
 msgid "Search objects..."
 msgstr "Hledat objekty..."
 
@@ -2491,6 +2604,11 @@ msgstr "Začněte diskusi přidáním prvního komentáře."
 msgid "Start typing to search for users"
 msgstr "Začněte psát pro vyhledávání uživatelů"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
+msgid "Stop watching"
+msgstr "Přestat sledovat"
+
 #: src/features/invitations/invite-settings-dialog.tsx:44
 msgid "Store silently"
 msgstr "Uložit potichu"
@@ -2597,6 +2715,10 @@ msgstr "Tato aplikace nemá povolení používat váš passkey. Povolte ji v Nas
 #: src/features/groups/group-detail.tsx:168
 msgid "This group may have been removed or is unavailable."
 msgstr "Tato skupina mohla být odstraněna nebo není dostupná."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:70
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "Tímto trvale smažete hru a její chat. Tuto akci nelze vzít zpět."
 
 #: ../../../lib/web/src/lib/preference-utils.ts:57
 msgid "Thursday"
@@ -2729,9 +2851,8 @@ msgstr "Neznámý"
 msgid "Unsubscribe"
 msgstr "Zrušit odběr"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:178
+#: ../../../lib/web/src/lib/entity-title.ts:40
 msgid "Untitled"
 msgstr "Bez názvu"
 
@@ -2750,7 +2871,7 @@ msgstr "Aktualizováno {field}"
 msgid "Updating group..."
 msgstr "Aktualizace skupiny..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:655
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 #: src/features/profile/index.tsx:480
 msgid "Upload"
@@ -2818,6 +2939,10 @@ msgstr "Přehrávač videa: {0}"
 msgid "View all notifications"
 msgstr "Zobrazit všechna oznámení"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:442
+msgid "View and edit item details"
+msgstr "Zobrazit a upravit detaily položky"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:170
 msgid "View controls"
 msgstr "Zobrazit ovládací prvky"
@@ -2825,6 +2950,11 @@ msgstr "Zobrazit ovládací prvky"
 #: ../../../lib/web/src/lib/shell-errors.ts:33
 msgid "Voice recording is not supported in this browser"
 msgstr "Nahrávání hlasu není v tomto prohlížeči podporováno"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
+msgid "Watch"
+msgstr "Sledovat"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:269
 #: ../../../lib/web/src/components/filter-bar.tsx:35

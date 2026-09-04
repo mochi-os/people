@@ -153,6 +153,10 @@ msgstr "Hesap türü"
 msgid "Actions"
 msgstr "Eylemler"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:415
+msgid "Activity"
+msgstr "Etkinlik"
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
@@ -208,7 +212,7 @@ msgstr "Bağlanmaya başlamak için arkadaş ekleyin"
 msgid "Add item..."
 msgstr "Öğe ekle..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:314
 msgid "Add link"
 msgstr "Bağlantı ekle"
 
@@ -341,6 +345,10 @@ msgstr "Görünüm"
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "\"{0}\" öğesini silmek istediğinizden emin misiniz?"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:671
+msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
+msgstr "\"{title}\" öğesini silmek istediğinizden emin misiniz? Bu işlem geri alınamaz."
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:631
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "\"{name}\" sütununu silmek istediğinizden emin misiniz? Bu geri alınamaz."
@@ -362,6 +370,14 @@ msgstr "<0>{0}</0> kişisini bu gruptan çıkarmak istediğinizden emin misiniz?
 #: src/features/friends/index.tsx:250
 msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
 msgstr "<0>{0}</0> kişisini arkadaş listenizden çıkarmak istediğinizden emin misiniz? Bu işlem geri alınamaz."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:39
+msgid "Are you sure you want to resign?"
+msgstr "Çekilmek istediğinizden emin misiniz?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:38
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "Çekilmek istediğinizden emin misiniz? {opponentName} oyunu kazanacak."
 
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Ascending"
@@ -410,12 +426,21 @@ msgstr "Arkadaşlara dön"
 msgid "Back to home"
 msgstr "Ana sayfaya dön"
 
+#: ../../../lib/web/src/components/banner-section.tsx:80
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Afiş"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:68
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:215
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner removed"
+msgstr "Banner kaldırıldı"
+
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner updated"
+msgstr "Banner güncellendi"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:72
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:209
 msgid "Blocked by"
 msgstr "Engelleyen"
 
@@ -424,7 +449,7 @@ msgstr "Engelleyen"
 msgid "Blocked navigation to untrusted link"
 msgstr "Güvenilmeyen bağlantıya gezinme engellendi"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:66
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:70
 msgid "Blocks"
 msgstr "Bloklar"
 
@@ -557,6 +582,7 @@ msgstr "Kenar çubuğundan bir oyun seçin veya yenisini başlatın."
 msgid "Choose language"
 msgstr "Dil seçin"
 
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -575,8 +601,8 @@ msgstr "Tümünü temizle"
 msgid "Clear search"
 msgstr "Aramayı temizle"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:517
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:480
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:483
@@ -651,6 +677,11 @@ msgstr "Yorum işlemleri"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:455
 msgid "Comments"
 msgstr "Yorumlar"
+
+#. placeholder {0}: data.comment_count || 0
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:411
+msgid "Comments ({0})"
+msgstr "Yorumlar ({0})"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:90
 msgid "Compact"
@@ -735,8 +766,8 @@ msgstr "Bu hesapla doğrulama yapılamadı. Lütfen tekrar deneyin."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Oluştur"
@@ -770,7 +801,7 @@ msgstr "{field} oluşturuldu"
 msgid "Creating group..."
 msgstr "Grup oluşturuluyor..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 msgid "Creating..."
 msgstr "Oluşturuluyor..."
@@ -834,6 +865,8 @@ msgstr "Varsayılan sıralama"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
 #: src/features/groups/group-detail.tsx:150
 #: src/features/groups/group-detail.tsx:296
 msgid "Delete"
@@ -855,6 +888,10 @@ msgstr "Yorumu sil"
 msgid "Delete field"
 msgstr "Alanı sil"
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:69
+msgid "Delete game?"
+msgstr "Oyun silinsin mi?"
+
 #: src/features/groups/group-detail.tsx:294
 msgid "Delete group"
 msgstr "Grubu sil"
@@ -863,6 +900,12 @@ msgstr "Grubu sil"
 #: src/features/groups/group-detail.tsx:295
 msgid "Delete group \"{0}\"? This cannot be undone."
 msgstr "\"{0}\" grubu silinsin mi? Bu geri alınamaz."
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:486
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:670
+msgid "Delete item"
+msgstr "Öğeyi sil"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:117
 msgid "Delete option"
@@ -893,6 +936,10 @@ msgstr "{field} silindi"
 #: src/features/groups/group-detail.tsx:107
 msgid "Deleting group..."
 msgstr "Grup siliniyor..."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
+msgid "Deleting..."
+msgstr "Siliniyor..."
 
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Descending"
@@ -954,6 +1001,7 @@ msgid "Does not match the required pattern"
 msgstr "Gerekli kalıpla eşleşmiyor"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:495
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 msgid "Done"
 msgstr "Tamamlandı"
@@ -969,7 +1017,7 @@ msgstr "İndir"
 msgid "Download failed"
 msgstr "İndirme başarısız oldu"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:67
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:71
 msgid "Duplicates"
 msgstr "Yinelenenler"
 
@@ -1039,6 +1087,10 @@ msgstr "E-posta kodu"
 msgid "Enter a name to find people you want to add"
 msgstr "Eklemek istediğiniz kişileri bulmak için bir ad girin"
 
+#: ../../../lib/web/src/components/banner-section.tsx:88
+msgid "Enter banner text (markdown supported)..."
+msgstr "Afiş metnini girin (markdown destekli)..."
+
 #: src/features/friends/components/add-friend-dialog.tsx:194
 msgid "Enter name to search..."
 msgstr "Aramak için ad girin..."
@@ -1050,6 +1102,10 @@ msgstr "E-postanızdaki kodu girin"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:315
 msgid "Enter your authenticator code"
 msgstr "Kimlik doğrulayıcı kodunuzu girin"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:381
+msgid "Error"
+msgstr "Hata"
 
 #: ../../../lib/web/src/components/comment-tree-layout.tsx:101
 #: ../../../lib/web/src/components/comment-tree-layout.tsx:110
@@ -1110,7 +1166,7 @@ msgstr "Kopyalanamadı"
 msgid "Failed to create group"
 msgstr "Grup oluşturulamadı"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:131
 #: ../../../lib/web/src/components/options-menu.tsx:98
 msgid "Failed to create link"
 msgstr "Bağlantı oluşturulamadı"
@@ -1122,6 +1178,10 @@ msgstr "Davet reddedilemedi"
 #: src/features/invitations/index.tsx:169
 msgid "Failed to decline invitations"
 msgstr "Davetler reddedilemedi"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
+msgid "Failed to delete"
+msgstr "Silinemedi"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:130
 msgid "Failed to delete attachment"
@@ -1135,7 +1195,7 @@ msgstr "Yorum silinemedi"
 msgid "Failed to delete group"
 msgstr "Grup silinemedi"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:153
 msgid "Failed to delete link"
 msgstr "Bağlantı silinemedi"
 
@@ -1159,6 +1219,11 @@ msgstr "Geçmiş yüklenemedi"
 msgid "Failed to load image"
 msgstr "Görsel yüklenemedi"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:382
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:385
+msgid "Failed to load item"
+msgstr "Öğe yüklenemedi"
+
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:213
 msgid "Failed to load prompts"
 msgstr "Komutlar yüklenemedi"
@@ -1170,6 +1235,10 @@ msgstr "Video yüklenemedi"
 #: src/features/invitations/invite-settings-dialog.tsx:101
 msgid "Failed to load your invite policy"
 msgstr "Davet ilkeniz yüklenemedi"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:317
+msgid "Failed to move"
+msgstr "Taşınamadı"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx:155
 msgid "Failed to post comment"
@@ -1191,6 +1260,7 @@ msgstr "Komut sıfırlanamadı"
 msgid "Failed to revoke RSS access"
 msgstr "RSS erişimi iptal edilemedi"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
 #: src/features/invitations/invite-settings-dialog.tsx:78
 msgid "Failed to save"
 msgstr "Kaydedilemedi"
@@ -1215,6 +1285,10 @@ msgstr "Profil kaydedilemedi"
 msgid "Failed to save prompt"
 msgstr "Komut kaydedilemedi"
 
+#: ../../../lib/web/src/components/banner-section.tsx:71
+msgid "Failed to update banner"
+msgstr "Afiş güncellenemedi"
+
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx:175
 msgid "Failed to update comment"
 msgstr "Yorum güncellenemedi"
@@ -1222,6 +1296,10 @@ msgstr "Yorum güncellenemedi"
 #: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "Grup güncellenemedi"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:288
+msgid "Failed to update watching"
+msgstr "İzleme güncellenemedi"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
 msgid "Failed to upload attachment"
@@ -1235,7 +1313,7 @@ msgstr "Favicon"
 msgid "File too large"
 msgstr "Dosya çok büyük"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:605
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
@@ -1444,6 +1522,10 @@ msgstr "Bilinmeyen göndericilerden gelen davetler düşürülür. Karşılıkl�
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Aradığınız sayfa <0/>mevcut değil veya kaldırılmış görünüyor."
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:441
+msgid "Item details"
+msgstr "Öğe ayrıntıları"
+
 #: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "Az önce"
@@ -1473,7 +1555,7 @@ msgstr "Açık"
 msgid "Link"
 msgstr "Bağlantı"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:279
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:273
 msgid "Links"
 msgstr "Bağlantılar"
 
@@ -1492,6 +1574,14 @@ msgstr "İçerik yükleniyor…"
 #: src/features/groups/member-dialog.tsx:207
 msgid "Loading groups..."
 msgstr "Gruplar yükleniyor..."
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:365
+msgid "Loading item"
+msgstr "Öğe yükleniyor"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:366
+msgid "Loading item details"
+msgstr "Öğe ayrıntıları yükleniyor"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
@@ -1641,7 +1731,7 @@ msgstr "Ad kaydedildi"
 msgid "Network error"
 msgstr "Ağ hatası"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:492
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 msgid "New"
 msgstr "Yeni"
@@ -1660,7 +1750,7 @@ msgstr "Yeni davetler burada görünecek"
 msgid "Next image"
 msgstr "Sonraki görsel"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:571
 msgid "No {parentClassNames} to add to"
 msgstr "Eklenecek {parentClassNames} yok"
 
@@ -1692,11 +1782,11 @@ msgstr "Henüz oyun yok"
 msgid "No groups available"
 msgstr "Grup yok"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Henüz oluşturulabilecek öge türü yok. Önce gerekli üst ögeleri oluşturun."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:360
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:354
 msgid "No matching objects"
 msgstr "Eşleşen nesne yok"
 
@@ -1763,9 +1853,13 @@ msgid "No views"
 msgstr "Görüntüleme yok"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:554
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:557
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:561
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:557
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:570
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:571
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:575
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
@@ -1873,7 +1967,9 @@ msgstr "Diğer"
 msgid "Owner"
 msgstr "Sahip"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:546
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:553
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:569
 msgid "Parent"
 msgstr "Üst"
 
@@ -1979,6 +2075,10 @@ msgstr "Profil kaydedildi"
 msgid "Prompt saved"
 msgstr "İstem kaydedildi"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:408
+msgid "Properties"
+msgstr "Özellikler"
+
 #: ../../../lib/web/src/features/accounts/types.ts:21
 msgid "Push notification"
 msgstr "Anlık bildirim"
@@ -2033,7 +2133,7 @@ msgstr "İlgiyi azalt"
 msgid "Reject all"
 msgstr "Tümünü reddet"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:65
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:69
 msgid "Relates"
 msgstr "İlişkili"
 
@@ -2103,8 +2203,8 @@ msgstr "İlgiyi kaldır"
 msgid "Remove item"
 msgstr "Ögeyi kaldır"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:304
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:298
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:303
 msgid "Remove link"
 msgstr "Bağlantıyı kaldır"
 
@@ -2157,6 +2257,18 @@ msgstr "Gerekli"
 msgid "Resend email"
 msgstr "E-postayı yeniden gönder"
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:48
+msgid "Resign"
+msgstr "Çekil"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:35
+msgid "Resign game?"
+msgstr "Oyundan çekilsin mi?"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:45
+msgid "Resigning..."
+msgstr "Çekiliyor..."
+
 #: ../../../lib/web/src/components/attachment-composer.tsx:348
 msgid "Retry"
 msgstr "Yeniden dene"
@@ -2200,6 +2312,7 @@ msgstr "Cumartesi"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
+#: ../../../lib/web/src/components/banner-section.tsx:99
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
@@ -2266,7 +2379,7 @@ msgstr "Kişileri arayıp arkadaşlık isteği gönderin."
 msgid "Search friends"
 msgstr "Arkadaşlarda ara"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:331
 msgid "Search objects..."
 msgstr "Nesnelerde ara..."
 
@@ -2491,6 +2604,11 @@ msgstr "İlk yorumu ekleyerek tartışmayı başlat."
 msgid "Start typing to search for users"
 msgstr "Kullanıcı aramak için yazmaya başla"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
+msgid "Stop watching"
+msgstr "İzlemeyi bırak"
+
 #: src/features/invitations/invite-settings-dialog.tsx:44
 msgid "Store silently"
 msgstr "Sessizce sakla"
@@ -2597,6 +2715,10 @@ msgstr "Bu uygulamanın passkey'inizi kullanmasına izin verilmiyor. Ayarlar'da,
 #: src/features/groups/group-detail.tsx:168
 msgid "This group may have been removed or is unavailable."
 msgstr "Bu grup kaldırılmış veya kullanılamaz olabilir."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:70
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "Bu işlem oyunu ve sohbetini kalıcı olarak siler. Bu işlem geri alınamaz."
 
 #: ../../../lib/web/src/lib/preference-utils.ts:57
 msgid "Thursday"
@@ -2729,9 +2851,8 @@ msgstr "Bilinmiyor"
 msgid "Unsubscribe"
 msgstr "Aboneliği iptal et"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:178
+#: ../../../lib/web/src/lib/entity-title.ts:40
 msgid "Untitled"
 msgstr "Başlıksız"
 
@@ -2750,7 +2871,7 @@ msgstr "{field} güncellendi"
 msgid "Updating group..."
 msgstr "Grup güncelleniyor..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:655
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 #: src/features/profile/index.tsx:480
 msgid "Upload"
@@ -2818,6 +2939,10 @@ msgstr "Video görüntüleyici: {0}"
 msgid "View all notifications"
 msgstr "Tüm bildirimleri görüntüle"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:442
+msgid "View and edit item details"
+msgstr "Öğe detaylarını görüntüle ve düzenle"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:170
 msgid "View controls"
 msgstr "Kontrolleri görüntüle"
@@ -2825,6 +2950,11 @@ msgstr "Kontrolleri görüntüle"
 #: ../../../lib/web/src/lib/shell-errors.ts:33
 msgid "Voice recording is not supported in this browser"
 msgstr "Ses kaydı bu tarayıcıda desteklenmiyor"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
+msgid "Watch"
+msgstr "İzle"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:269
 #: ../../../lib/web/src/components/filter-bar.tsx:35

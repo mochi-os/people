@@ -153,6 +153,10 @@ msgstr "Հաշվի տեսակ"
 msgid "Actions"
 msgstr "Գործողություններ"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:415
+msgid "Activity"
+msgstr "Ակտիվություն"
+
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx:758
 #: ../../../lib/web/src/features/access/access-dialog.tsx:332
 #: ../../../lib/web/src/features/accounts/account-add.tsx:209
@@ -208,7 +212,7 @@ msgstr "Ավելացրեք ընկերներ՝ կապ հաստատելու համ
 msgid "Add item..."
 msgstr "Ավելացնել տարր..."
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:320
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:314
 msgid "Add link"
 msgstr "Ավելացնել հղում"
 
@@ -341,6 +345,10 @@ msgstr "Արտաքին տեսք"
 msgid "Are you sure you want to delete \"{0}\"?"
 msgstr "Վստա՞հ եք, որ ուզում եք ջնջել «{0}»-ը։"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:671
+msgid "Are you sure you want to delete \"{title}\"? This action cannot be undone."
+msgstr "Վստա՞հ եք, որ ուզում եք ջնջել «{title}»-ը։ Այս գործողությունը հնարավոր չէ հետարկել։"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:631
 msgid "Are you sure you want to delete the \"{name}\" column? This cannot be undone."
 msgstr "Վստա՞հ եք, որ ուզում եք ջնջել «{name}» սյունակը։ Սա հնարավոր չէ հետարկել։"
@@ -362,6 +370,14 @@ msgstr "Վստա՞հ եք, որ ուզում եք հեռացնել <0>{0}</0>-ի
 #: src/features/friends/index.tsx:250
 msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
 msgstr "Վստա՞հ եք, որ ուզում եք հեռացնել <0>{0}</0>-ին ձեր ընկերների ցանկից։ Այս գործողությունը հնարավոր չէ հետարկել։"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:39
+msgid "Are you sure you want to resign?"
+msgstr "Վստա՞հ եք, որ ուզում եք հանձնվել։"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:38
+msgid "Are you sure you want to resign? {opponentName} will win the game."
+msgstr "Վստա՞հ եք, որ ուզում եք հանձնվել։ {opponentName}-ը կհաղթի խաղում։"
 
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Ascending"
@@ -410,12 +426,21 @@ msgstr "Հետ դեպի ընկերներ"
 msgid "Back to home"
 msgstr "Վերադառնալ տուն"
 
+#: ../../../lib/web/src/components/banner-section.tsx:80
 #: ../../../lib/web/src/components/entity-banner.tsx:17
 msgid "Banner"
 msgstr "Բաններ"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:68
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:215
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner removed"
+msgstr "Բանները հեռացվեց"
+
+#: ../../../lib/web/src/components/banner-section.tsx:69
+msgid "Banner updated"
+msgstr "Բանները թարմացվեց"
+
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:72
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:209
 msgid "Blocked by"
 msgstr "Արգելափակված է՝"
 
@@ -424,7 +449,7 @@ msgstr "Արգելափակված է՝"
 msgid "Blocked navigation to untrusted link"
 msgstr "Արգելափակվեց անցումը անվստահելի հղման"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:66
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:70
 msgid "Blocks"
 msgstr "Արգելափակումներ"
 
@@ -557,6 +582,7 @@ msgstr "Ընտրեք խաղ կողագոտուց կամ սկսեք նորը։"
 msgid "Choose language"
 msgstr "Ընտրել լեզուն"
 
+#: ../../../lib/web/src/components/banner-section.tsx:111
 #: ../../../lib/web/src/components/colour-picker.tsx:274
 #: ../../../lib/web/src/components/colour-picker.tsx:355
 #: ../../../lib/web/src/components/travelling-picker.tsx:145
@@ -575,8 +601,8 @@ msgstr "Մաքրել ամենը"
 msgid "Clear search"
 msgstr "Մաքրել որոնումը"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:523
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:528
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:517
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:522
 #: ../../../lib/web/src/components/ui/dialog.tsx:78
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:480
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:483
@@ -651,6 +677,11 @@ msgstr "Մեկնաբանության գործողություններ"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx:455
 msgid "Comments"
 msgstr "Մեկնաբանություններ"
+
+#. placeholder {0}: data.comment_count || 0
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:411
+msgid "Comments ({0})"
+msgstr "Մեկնաբանություններ ({0})"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:90
 msgid "Compact"
@@ -735,8 +766,8 @@ msgstr "Չհաջողվեց ստուգել այդ հաշվով։ Խնդրում �
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:551
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx:691
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:513
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:507
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx:672
 msgid "Create"
 msgstr "Ստեղծել"
@@ -770,7 +801,7 @@ msgstr "Ստեղծվել է {field}"
 msgid "Creating group..."
 msgstr "Խումբ է ստեղծվում..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:682
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:676
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx:260
 msgid "Creating..."
 msgstr "Ստեղծվում է…"
@@ -834,6 +865,8 @@ msgstr "Լռելյայն տեսակավորում"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:208
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:255
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:317
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:672
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:78
 #: src/features/groups/group-detail.tsx:150
 #: src/features/groups/group-detail.tsx:296
 msgid "Delete"
@@ -855,6 +888,10 @@ msgstr "Ջնջել մեկնաբանությունը"
 msgid "Delete field"
 msgstr "Ջնջել դաշտը"
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:69
+msgid "Delete game?"
+msgstr "Ջնջե՞լ խաղը։"
+
 #: src/features/groups/group-detail.tsx:294
 msgid "Delete group"
 msgstr "Ջնջել խումբը"
@@ -863,6 +900,12 @@ msgstr "Ջնջել խումբը"
 #: src/features/groups/group-detail.tsx:295
 msgid "Delete group \"{0}\"? This cannot be undone."
 msgstr "Ջնջե՞լ «{0}» խումբը։ Սա անդառնալի է։"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:486
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:491
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:670
+msgid "Delete item"
+msgstr "Ջնջել կետը"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:117
 msgid "Delete option"
@@ -893,6 +936,10 @@ msgstr "Ջնջվել է {field}"
 #: src/features/groups/group-detail.tsx:107
 msgid "Deleting group..."
 msgstr "Խումբը ջնջվում է..."
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:75
+msgid "Deleting..."
+msgstr "Ջնջվում է..."
 
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx:27
 msgid "Descending"
@@ -954,6 +1001,7 @@ msgid "Does not match the required pattern"
 msgstr "Չի համապատասխանում պահանջվող ձևանմուշին"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:495
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:523
 msgid "Done"
 msgstr "Կատարված է"
@@ -969,7 +1017,7 @@ msgstr "Ներբեռնել"
 msgid "Download failed"
 msgstr "Ներբեռնումը ձախողվեց"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:67
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:71
 msgid "Duplicates"
 msgstr "Կրկնօրինակներ"
 
@@ -1039,6 +1087,10 @@ msgstr "Էլ․ փոստի կոդ"
 msgid "Enter a name to find people you want to add"
 msgstr "Մուտքագրեք անուն՝ ավելացնել ցանկացած մարդկանց գտնելու համար"
 
+#: ../../../lib/web/src/components/banner-section.tsx:88
+msgid "Enter banner text (markdown supported)..."
+msgstr "Մուտքագրեք պաստառի տեքստը (markdown-ը աջակցվում է)..."
+
 #: src/features/friends/components/add-friend-dialog.tsx:194
 msgid "Enter name to search..."
 msgstr "Մուտքագրեք անունը՝ որոնելու համար..."
@@ -1050,6 +1102,10 @@ msgstr "Մուտքագրեք ձեր էլ. փոստից ստացած կոդը"
 #: ../../../lib/web/src/components/step-up-dialog.tsx:315
 msgid "Enter your authenticator code"
 msgstr "Մուտքագրեք ձեր նույնականացուցիչի կոդը"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:381
+msgid "Error"
+msgstr "Սխալ"
 
 #: ../../../lib/web/src/components/comment-tree-layout.tsx:101
 #: ../../../lib/web/src/components/comment-tree-layout.tsx:110
@@ -1110,7 +1166,7 @@ msgstr "Չհաջողվեց պատճենել"
 msgid "Failed to create group"
 msgstr "Չհաջողվեց ստեղծել խումբը"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:137
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:131
 #: ../../../lib/web/src/components/options-menu.tsx:98
 msgid "Failed to create link"
 msgstr "Չհաջողվեց ստեղծել հղումը"
@@ -1122,6 +1178,10 @@ msgstr "Չհաջողվեց մերժել հրավերը"
 #: src/features/invitations/index.tsx:169
 msgid "Failed to decline invitations"
 msgstr "Չհաջողվեց մերժել հրավերները"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:303
+msgid "Failed to delete"
+msgstr "Չհաջողվեց ջնջել"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:130
 msgid "Failed to delete attachment"
@@ -1135,7 +1195,7 @@ msgstr "Չհաջողվեց ջնջել մեկնաբանությունը"
 msgid "Failed to delete group"
 msgstr "Չհաջողվեց ջնջել խումբը"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:159
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:153
 msgid "Failed to delete link"
 msgstr "Չհաջողվեց ջնջել հղումը"
 
@@ -1159,6 +1219,11 @@ msgstr "Չհաջողվեց բեռնել պատմությունը"
 msgid "Failed to load image"
 msgstr "Չհաջողվեց բեռնել պատկերը"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:382
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:385
+msgid "Failed to load item"
+msgstr "Չհաջողվեց բեռնել տարրը"
+
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:213
 msgid "Failed to load prompts"
 msgstr "Չհաջողվեց բեռնել հուշումները"
@@ -1170,6 +1235,10 @@ msgstr "Չհաջողվեց բեռնել տեսանյութը"
 #: src/features/invitations/invite-settings-dialog.tsx:101
 msgid "Failed to load your invite policy"
 msgstr "Չհաջողվեց բեռնել ձեր հրավերների քաղաքականությունը"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:317
+msgid "Failed to move"
+msgstr "Չհաջողվեց տեղափոխել"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx:155
 msgid "Failed to post comment"
@@ -1191,6 +1260,7 @@ msgstr "Չհաջողվեց զրոյացնել հուշումը"
 msgid "Failed to revoke RSS access"
 msgstr "RSS մուտքի չեղարկումը ձախողվեց"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:273
 #: src/features/invitations/invite-settings-dialog.tsx:78
 msgid "Failed to save"
 msgstr "Չհաջողվեց պահպանել"
@@ -1215,6 +1285,10 @@ msgstr "Չհաջողվեց պահպանել պրոֆիլը"
 msgid "Failed to save prompt"
 msgstr "Չհաջողվեց պահպանել հուշումը"
 
+#: ../../../lib/web/src/components/banner-section.tsx:71
+msgid "Failed to update banner"
+msgstr "Չհաջողվեց թարմացնել պաստառը"
+
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx:175
 msgid "Failed to update comment"
 msgstr "Չհաջողվեց թարմացնել մեկնաբանությունը"
@@ -1222,6 +1296,10 @@ msgstr "Չհաջողվեց թարմացնել մեկնաբանությունը"
 #: src/features/groups/group-dialog.tsx:68
 msgid "Failed to update group"
 msgstr "Չհաջողվեց թարմացնել խումբը"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:288
+msgid "Failed to update watching"
+msgstr "Չհաջողվեց թարմացնել հետևումը"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:114
 msgid "Failed to upload attachment"
@@ -1235,7 +1313,7 @@ msgstr "Favicon"
 msgid "File too large"
 msgstr "Ֆայլը շատ մեծ է"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:611
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:605
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:160
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:180
 msgid "Files"
@@ -1444,6 +1522,10 @@ msgstr "Անհայտ ուղարկողներից եկած հրավերները բ
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
 msgstr "Կարծես թե ձեր փնտրած էջը <0/>գոյություն չունի կամ հեռացվել է։"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:441
+msgid "Item details"
+msgstr "Տարրի մանրամասներ"
+
 #: ../../../lib/web/src/lib/locale-format.ts:180
 msgid "Just now"
 msgstr "Հենց հիմա"
@@ -1473,7 +1555,7 @@ msgstr "Լուսավոր"
 msgid "Link"
 msgstr "Հղում"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:279
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:273
 msgid "Links"
 msgstr "Հղումներ"
 
@@ -1492,6 +1574,14 @@ msgstr "Բովանդակությունը բեռնվում է…"
 #: src/features/groups/member-dialog.tsx:207
 msgid "Loading groups..."
 msgstr "Խմբերը բեռնվում են..."
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:365
+msgid "Loading item"
+msgstr "Տարրը բեռնվում է"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:366
+msgid "Loading item details"
+msgstr "Տարրի մանրամասները բեռնվում են"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx:39
 #: ../../../lib/web/src/features/document/document-page.tsx:88
@@ -1641,7 +1731,7 @@ msgstr "Անունը պահպանվեց"
 msgid "Network error"
 msgstr "Ցանցի սխալ"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:498
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:492
 #: ../../../lib/web/src/components/ui/sort-selector.tsx:43
 msgid "New"
 msgstr "Նոր"
@@ -1660,7 +1750,7 @@ msgstr "Նոր հրավերները կհայտնվեն այստեղ"
 msgid "Next image"
 msgstr "Հաջորդ նկարը"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:577
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:571
 msgid "No {parentClassNames} to add to"
 msgstr "Ավելացնելու {parentClassNames} չկան"
 
@@ -1692,11 +1782,11 @@ msgstr "Դեռ խաղեր չկան"
 msgid "No groups available"
 msgstr "Հասանելի խմբեր չկան"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:544
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:538
 msgid "No item types can be created yet. Create the required parent items first."
 msgstr "Տարրերի տեսակներ դեռ հնարավոր չէ ստեղծել։ Նախ ստեղծեք պահանջվող ծնող տարրերը։"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:360
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:354
 msgid "No matching objects"
 msgstr "Համապատասխան օբյեկտներ չկան"
 
@@ -1763,9 +1853,13 @@ msgid "No views"
 msgstr "Դիտումներ չկան"
 
 #: ../../../lib/web/src/components/colour-picker.tsx:349
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:560
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:563
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:567
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:554
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:557
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:561
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:557
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:570
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:571
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:575
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:362
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:385
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx:388
@@ -1873,7 +1967,9 @@ msgstr "Այլ"
 msgid "Owner"
 msgstr "Սեփականատեր"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:552
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:546
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:553
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:569
 msgid "Parent"
 msgstr "Ծնող"
 
@@ -1979,6 +2075,10 @@ msgstr "Պրոֆիլը պահպանվեց"
 msgid "Prompt saved"
 msgstr "Հուշումը պահպանվեց"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:408
+msgid "Properties"
+msgstr "Հատկություններ"
+
 #: ../../../lib/web/src/features/accounts/types.ts:21
 msgid "Push notification"
 msgstr "Push ծանուցում"
@@ -2033,7 +2133,7 @@ msgstr "Նվազեցնել հետաքրքրությունը"
 msgid "Reject all"
 msgstr "Մերժել բոլորը"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:65
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:69
 msgid "Relates"
 msgstr "Կապված է"
 
@@ -2103,8 +2203,8 @@ msgstr "Հեռացնել հետաքրքրությունը"
 msgid "Remove item"
 msgstr "Հեռացնել տարրը"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:304
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:309
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:298
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:303
 msgid "Remove link"
 msgstr "Հեռացնել հղումը"
 
@@ -2157,6 +2257,18 @@ msgstr "Պարտադիր է"
 msgid "Resend email"
 msgstr "Կրկին ուղարկել նամակը"
 
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:48
+msgid "Resign"
+msgstr "Հանձնվել"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:35
+msgid "Resign game?"
+msgstr "Հանձնվե՞լ խաղում։"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:45
+msgid "Resigning..."
+msgstr "Հանձնվում..."
+
 #: ../../../lib/web/src/components/attachment-composer.tsx:348
 msgid "Retry"
 msgstr "Կրկին փորձել"
@@ -2200,6 +2312,7 @@ msgstr "Շաբաթ"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx:156
 #: ../../../lib/web/src/components/attachment-composer.tsx:430
+#: ../../../lib/web/src/components/banner-section.tsx:99
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx:231
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx:172
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx:126
@@ -2266,7 +2379,7 @@ msgstr "Որոնեք մարդկանց և ուղարկեք ընկերության
 msgid "Search friends"
 msgstr "Որոնել ընկերներին"
 
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:337
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:331
 msgid "Search objects..."
 msgstr "Որոնել օբյեկտներ..."
 
@@ -2491,6 +2604,11 @@ msgstr "Սկսեք քննարկումը՝ ավելացնելով առաջին մ
 msgid "Start typing to search for users"
 msgstr "Սկսեք մուտքագրել՝ օգտատերեր փնտրելու համար"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
+msgid "Stop watching"
+msgstr "Դադարեցնել դիտումը"
+
 #: src/features/invitations/invite-settings-dialog.tsx:44
 msgid "Store silently"
 msgstr "Պահպանել անձայն"
@@ -2597,6 +2715,10 @@ msgstr "Այս հավելվածին թույլատրված չէ օգտագործ
 #: src/features/groups/group-detail.tsx:168
 msgid "This group may have been removed or is unavailable."
 msgstr "Այս խումբը կարող է հեռացված լինել կամ անհասանելի:"
+
+#: ../../../lib/web/src/components/game/game-end-dialogs.tsx:70
+msgid "This permanently deletes the game and its chat. This cannot be undone."
+msgstr "Սա ընդմիշտ կջնջի խաղը և դրա չաթը։ Այս գործողությունը հնարավոր չէ հետարկել։"
 
 #: ../../../lib/web/src/lib/preference-utils.ts:57
 msgid "Thursday"
@@ -2729,9 +2851,8 @@ msgstr "Անհայտ"
 msgid "Unsubscribe"
 msgstr "Բաժանորդագրությունից հրաժարվել"
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:299
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:103
-#: ../../../lib/web/src/components/entity/entity-object-links.tsx:184
+#: ../../../lib/web/src/components/entity/entity-object-links.tsx:178
+#: ../../../lib/web/src/lib/entity-title.ts:40
 msgid "Untitled"
 msgstr "Անվերնագիր"
 
@@ -2750,7 +2871,7 @@ msgstr "Թարմացվել է {field}"
 msgid "Updating group..."
 msgstr "Խումբը թարմացվում է..."
 
-#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:661
+#: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx:655
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx:304
 #: src/features/profile/index.tsx:480
 msgid "Upload"
@@ -2818,6 +2939,10 @@ msgstr "Տեսանյութի դիտիչ՝ {0}"
 msgid "View all notifications"
 msgstr "Դիտել բոլոր ծանուցումները"
 
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:442
+msgid "View and edit item details"
+msgstr "Դիտել և խմբագրել տարրի մանրամասները"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:170
 msgid "View controls"
 msgstr "Դիտել կառավարակետերը"
@@ -2825,6 +2950,11 @@ msgstr "Դիտել կառավարակետերը"
 #: ../../../lib/web/src/lib/shell-errors.ts:33
 msgid "Voice recording is not supported in this browser"
 msgstr "Ձայնագրումն այս դիտարկիչում չի աջակցվում"
+
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:471
+#: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx:476
+msgid "Watch"
+msgstr "Հետևել"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx:269
 #: ../../../lib/web/src/components/filter-bar.tsx:35

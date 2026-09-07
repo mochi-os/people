@@ -92,10 +92,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
         acceptFriendMutation.mutateAsync({ friendId: userId }),
         {
           loading: t`Accepting invitation...`,
-          success: t`Already friends`,
-          successOptions: () => ({
-            description: t`You are now friends!`,
-          }),
+          success: t`Invitation accepted`,
           error: (error) => getErrorMessage(error, t`Failed to add friend`),
         }
       )
@@ -246,7 +243,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                       const sessionInvited = invitedUserIds.has(user.id) || sentUserIds.has(user.id)
                       const isPendingForThisUser = pendingUserId === user.id
 
-                      const status = sessionInvited ? 'invited' : (user.relationshipStatus ?? 'none')
+                      const status = sessionInvited ? 'invited' : (user.relationship ?? 'none')
 
                       // Determine if button should be disabled
                       const isDisabled =

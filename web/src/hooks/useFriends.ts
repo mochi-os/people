@@ -20,7 +20,7 @@ import { friendsApi,
   type InvitePolicy,
 } from '@/api/friends'
 
-export const friendKeys = {
+const friendKeys = {
   all: () => ['friends'] as const,
   search: (query: string) => ['friends', 'search', query] as const,
   localUsers: (query: string) => ['users', 'search', query] as const,
@@ -151,7 +151,7 @@ export const usePreferencesQuery = () =>
 export const useSetPreferencesMutation = () => {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: (policy: InvitePolicy) => friendsApi.setPreferences({ invite_policy: policy }),
+    mutationFn: (policy: InvitePolicy) => friendsApi.setPreferences({ policy }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: friendKeys.preferences() })
     },

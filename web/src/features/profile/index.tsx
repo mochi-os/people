@@ -427,12 +427,7 @@ return (
 
         {/* ── Appearance ────────────────────────────────────── */}
         <div className="space-y-3 border-t border-border/60 pt-5">
-          <div>
-            <p className="text-sm font-medium"><Trans>Appearance</Trans></p>
-            <p className="text-muted-foreground text-xs">
-              <Trans>Personalise how your profile and app look to others.</Trans>
-            </p>
-          </div>
+          <p className="text-sm font-medium"><Trans>Appearance</Trans></p>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
             {/* Accent colour */}
             <div className="space-y-2 sm:col-span-2">
@@ -484,9 +479,6 @@ return (
                   )}
                 </SlotUploader>
               </div>
-              <p className="text-muted-foreground text-xs">
-                <Trans>Shown in browser tabs.</Trans>
-              </p>
             </div>
           </div>
         </div>
@@ -499,9 +491,6 @@ return (
               <Label htmlFor="privacy-public" className="text-sm font-medium">
                 <Trans>Directory listing</Trans>
               </Label>
-              <p className="text-muted-foreground text-xs">
-                <Trans>Allow others to find you in the directory.</Trans>
-              </p>
             </div>
             <Switch
               id="privacy-public"

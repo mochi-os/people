@@ -79,12 +79,6 @@ def database_create():
 	# One row per person and slot, so an upload replaces rather than accumulates.
 	mochi.db.execute("create table if not exists images ( person text not null, slot text not null, content_type text not null default '', size integer not null default 0, updated integer not null default 0, primary key ( person, slot ) )")
 
-def resolve_identity(id):
-	entry = mochi.directory.get(id)
-	if entry and entry.get("id"):
-		return entry["id"]
-	return id
-
 def friend_add(identity, id, name):
 	# Preserve the original friendship-start time across re-adds of a live row;
 	# a fresh add stamps now().
@@ -112,6 +106,15 @@ def invites_recent(identity):
 	mochi.db.execute("delete from sent where created < ?", mochi.time.now() - _INVITE_WINDOW)
 	row = mochi.db.row("select count(*) as sent from sent where identity=?", identity)
 	return row["sent"] if row else 0
+
+# Pending invites received per identity. A stranger can mint a sender per
+# message, so without a ceiling the table grows at core's stream rate for as
+# long as a hostile peer cares to send.
+_INVITE_PENDING_MAXIMUM = 200
+
+def invites_pending(identity):
+	row = mochi.db.row("select count(*) as pending from invites where identity=? and direction='from'", identity)
+	return row["pending"] if row else 0
 
 def invite_set(identity, id, direction, name):
 	mochi.db.execute("insert into invites ( identity, id, direction, name, updated ) values ( ?, ?, ?, ?, ? ) on conflict ( identity, id, direction ) do update set name=excluded.name, updated=excluded.updated", identity, id, direction, name, mochi.time.now())
@@ -165,9 +168,6 @@ def action_create(a):
 		return
 	if not mochi.text.valid(name, "line"):
 		a.error.label(400, "errors.invalid_friend_name")
-		return
-	if len(name) > 255:
-		a.error.label(400, "errors.friend_name_too_long")
 		return
 
 	# Check if there's an existing invitation from them
@@ -348,7 +348,7 @@ def action_search(a):
 		else:
 			status = "none"
 
-		result["relationshipStatus"] = status
+		result["relationship"] = status
 		unique_results.append(result)
 
 	# Name, then oldest first - so an impersonator cannot sort above the original.
@@ -373,7 +373,7 @@ def action_users_search(a):
 	return {"data": {"results": results}}
 
 def event_accept(e):
-	identity = resolve_identity(e.header("to"))
+	identity = e.header("to")
 	i = mochi.db.row("select * from invites where identity=? and id=? and direction='to'", identity, e.header("from"))
 	if not i:
 		return
@@ -387,17 +387,19 @@ def event_accept(e):
 
 def event_invite(e):
 	# Incoming friend invite. The user-configurable `invite_policy` preference
-	# decides what happens for unsolicited invites (default: silent store, no
-	# notification — invites are a common unsolicited-contact vector).
-	# Mutual invites always transition to friends regardless of policy.
+	# decides what happens for unsolicited invites; the default is notify, as
+	# action_preferences_get and the clients present it. Mutual invites always
+	# transition to friends regardless of policy.
 	# mochi.text.valid raises on a non-string (it answers False only for None), and
 	# a raised error aborts the handler and mails the admin, so a peer sending
 	# {"name": 123} loses the invite silently. Test the type first.
 	name = e.content("name")
-	if type(name) != "string" or not mochi.text.valid(name, "line") or len(name) > 255:
+	# display rather than line: the name is rendered to the recipient, and the
+	# validator's own length bound is the one the identity name is set under.
+	if type(name) != "string" or not mochi.text.valid(name, "display"):
 		return
 
-	identity = resolve_identity(e.header("to"))
+	identity = e.header("to")
 	sender = e.header("from")
 
 	# Mutual invite — always connect, regardless of policy.
@@ -420,19 +422,27 @@ def event_invite(e):
 		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event_id="accept/matched:" + sender + ":" + identity)
 		return
 
-	# silent or notify: store pending invite
+	# silent or notify: store the pending invite. A sender already pending only
+	# refreshes its row and is not announced again - the notification roll-up
+	# deduplicates against the last event alone, so a resend after any other
+	# sender's invite would otherwise count and push again. A new sender past
+	# the ceiling is dropped; the mutual and accept branches above are the only
+	# paths past it.
+	pending = mochi.db.exists("select id from invites where identity=? and id=? and direction='from'", identity, sender)
+	if not pending and invites_pending(identity) >= _INVITE_PENDING_MAXIMUM:
+		return
 	invite_set(identity, sender, "from", name)
 
-	if policy == "notify":
+	if policy == "notify" and not pending:
 		notify("invite/received", "", mochi.app.label("notifications.title.friend_invitation"), mochi.app.label("notifications.body.invited_you", name=name), "/people/invitations", sender, event_id="invite/received:" + sender + ":" + identity)
 
 def event_cancel(e):
 	# Remove the invitation from the recipient's side
-	invite_remove(resolve_identity(e.header("to")), e.header("from"), "from")
+	invite_remove(e.header("to"), e.header("from"), "from")
 
 def event_remove(e):
 	# Remote friend removed us - clean up local friendship and any pending invites
-	identity = resolve_identity(e.header("to"))
+	identity = e.header("to")
 	friend_remove(identity, e.header("from"))
 	invite_remove(identity, e.header("from"))
 
@@ -701,10 +711,10 @@ def action_group_member_remove(a):
 _VALID_INVITE_POLICIES = ("silent", "notify", "reject", "accept")
 
 def action_preferences_get(a):
-	return {"data": {"invite_policy": a.user.preference.get("invite_policy") or "notify"}}
+	return {"data": {"policy": a.user.preference.get("invite_policy") or "notify"}}
 
 def action_preferences_set(a):
-	policy = a.input("invite_policy", "").strip()
+	policy = a.input("policy", "").strip()
 	if policy not in _VALID_INVITE_POLICIES:
 		a.error.label(400, "errors.invalid_invite_policy")
 		return
@@ -748,13 +758,17 @@ _IMAGE_TYPES = (
 	"image/vnd.microsoft.icon",
 )
 
-def is_person_owner(a):
-	# a.owner already answers for the routed entity; comparing a.entity["id"]
-	# against person_id would reject fingerprint-addressed requests. The class
-	# check stays because the route resolves any entity by id.
+def is_person_owner(a, person):
+	# a.owner answers for the routed entity, and core seeds the person input from
+	# the same route (restoring it over any body value), so the two always name
+	# one entity; the comparison keeps that a property of this handler rather
+	# than of core. The class check stays because the route resolves any entity
+	# by id.
 	if not a.user or not a.user.identity:
 		return False
 	if a.entity == None or a.entity["class"] != "person":
+		return False
+	if person != a.entity["id"]:
 		return False
 	return a.owner
 
@@ -908,7 +922,7 @@ def action_information(a):
 	# privacy never crosses the wire (see build_information), so the owner's own
 	# view reads it from the local entity instead. Rebuilt rather than assigned
 	# into: a decoded response dict may be frozen.
-	if out and "data" in out and is_person_owner(a):
+	if out and "data" in out and is_person_owner(a, person):
 		entity = get_person_entity(person) or {}
 		data = {key: value for key, value in out["data"].items()}
 		data["privacy"] = entity.get("privacy", "")
@@ -929,7 +943,7 @@ def set_image(a, slot):
 	if not get_person_entity(person_id):
 		a.error.label(404, "errors.person_not_found")
 		return
-	if not is_person_owner(a):
+	if not is_person_owner(a, person_id):
 		a.error.label(403, "errors.not_the_owner")
 		return
 	# Check size and type from a.file() before anything is written; it carries the
@@ -973,7 +987,7 @@ def action_style_set(a):
 	if not get_person_entity(person_id):
 		a.error.label(404, "errors.person_not_found")
 		return
-	if not is_person_owner(a):
+	if not is_person_owner(a, person_id):
 		a.error.label(403, "errors.not_the_owner")
 		return
 	accent = a.input("accent", "").strip()
@@ -988,12 +1002,15 @@ def action_profile_set(a):
 	if not get_person_entity(person_id):
 		a.error.label(404, "errors.person_not_found")
 		return
-	if not is_person_owner(a):
+	if not is_person_owner(a, person_id):
 		a.error.label(403, "errors.not_the_owner")
 		return
 	profile = a.input("profile", "")
 	if len(profile) > _PROFILE_MAX:
 		a.error.label(400, "errors.profile_too_long")
+		return
+	if profile and not mochi.text.valid(profile, "text"):
+		a.error.label(400, "errors.invalid_profile")
 		return
 	upsert_profile(person_id, profile=profile)
 	return {"data": {}}
@@ -1003,7 +1020,7 @@ def action_name_set(a):
 	if not get_person_entity(person_id):
 		a.error.label(404, "errors.person_not_found")
 		return
-	if not is_person_owner(a):
+	if not is_person_owner(a, person_id):
 		a.error.label(403, "errors.not_the_owner")
 		return
 	name = a.input("name", "").strip()
@@ -1021,7 +1038,7 @@ def action_privacy_set(a):
 	if not get_person_entity(person_id):
 		a.error.label(404, "errors.person_not_found")
 		return
-	if not is_person_owner(a):
+	if not is_person_owner(a, person_id):
 		a.error.label(403, "errors.not_the_owner")
 		return
 	privacy = a.input("privacy", "")

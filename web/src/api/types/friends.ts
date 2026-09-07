@@ -3,41 +3,29 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
-export interface PaginationMeta {
-  total?: number
-  page?: number
-  limit?: number
-}
-
+// A row of the friends table, as action_list returns it.
 export interface Friend {
   class: string
   id: string
   identity: string
   name: string
-  [key: string]: unknown
+  created: number
+  refreshed: number
 }
 
-export type FriendInvite = Friend
-
-export interface FriendsListEnvelope extends PaginationMeta {
-  friends?: unknown
-  received?: unknown
-  sent?: unknown
-  data?: unknown
-  items?: unknown
-  results?: unknown
+// A row of the invites table; it has no class or created column.
+export interface FriendInvite {
+  identity: string
+  id: string
+  direction: 'from' | 'to'
+  name: string
+  updated: number
 }
-
-// Friends endpoints have emitted different wrappers (top-level, data object, nested collections), so we normalise at the service layer.
-export type GetFriendsListRaw = Friend[] | FriendsListEnvelope
 
 export interface GetFriendsListResponse {
   friends: Friend[]
   received: FriendInvite[]
   sent: FriendInvite[]
-  total?: number
-  page?: number
-  limit?: number
 }
 
 export interface CreateFriendRequest {
@@ -58,7 +46,7 @@ export interface MutationSuccessResponse {
   message?: string
 }
 
-export type RelationshipStatus = 'friend' | 'invited' | 'pending' | 'self' | 'none'
+type RelationshipStatus = 'friend' | 'invited' | 'pending' | 'self' | 'none'
 
 export interface User {
   class: string
@@ -70,7 +58,7 @@ export interface User {
   location: string
   name: string
   updated: number
-  relationshipStatus?: RelationshipStatus
+  relationship?: RelationshipStatus
   [key: string]: unknown
 }
 
@@ -79,7 +67,7 @@ export interface SearchUsersResponse {
   [key: string]: unknown
 }
 
-export interface LocalUser {
+interface LocalUser {
   id: string
   name: string
 }

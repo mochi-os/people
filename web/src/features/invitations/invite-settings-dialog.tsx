@@ -33,27 +33,11 @@ interface Props {
 
 export function InviteSettingsDialog({ open, onOpenChange }: Props) {
   const { t } = useLingui()
-  const options: { value: InvitePolicy; label: string; description: string }[] = [
-    {
-      value: 'notify',
-      label: t`Notify me`,
-      description: t`Invites appear in invitations and you are sent a notification (default).`,
-    },
-    {
-      value: 'silent',
-      label: t`Store silently`,
-      description: t`Invites appear in invitations. No notification is sent.`,
-    },
-    {
-      value: 'reject',
-      label: t`Reject all`,
-      description: t`Invites from unknown senders are dropped. Mutual invites still connect.`,
-    },
-    {
-      value: 'accept',
-      label: t`Accept automatically`,
-      description: t`All invites are accepted without your approval.`,
-    },
+  const options: { value: InvitePolicy; label: string }[] = [
+    { value: 'notify', label: t`Notify me` },
+    { value: 'silent', label: t`Store silently` },
+    { value: 'reject', label: t`Reject all` },
+    { value: 'accept', label: t`Accept automatically` },
   ]
   // The load error matters more than most: without it a failed load left the
   // radio on its 'notify' default, which looks like the user's real setting,
@@ -63,11 +47,11 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
   const [value, setValue] = useState<InvitePolicy>('notify')
 
   useEffect(() => {
-    if (data?.invite_policy) setValue(data.invite_policy)
-  }, [data?.invite_policy])
+    if (data?.policy) setValue(data.policy)
+  }, [data?.policy])
 
   const handleSave = async () => {
-    if (data?.invite_policy && value === data.invite_policy) {
+    if (data?.policy && value === data.policy) {
       onOpenChange(false)
       return
     }
@@ -110,15 +94,12 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
               <label
                 key={opt.value}
                 htmlFor={`invite-policy-${opt.value}`}
-                className='flex items-start gap-3 rounded-md border p-3 cursor-pointer hover:bg-hover'
+                className='flex items-center gap-3 rounded-md border p-3 cursor-pointer hover:bg-hover'
               >
-                <RadioGroupItem value={opt.value} id={`invite-policy-${opt.value}`} className='mt-0.5' />
-                <div className='flex flex-col gap-0.5'>
-                  <Label htmlFor={`invite-policy-${opt.value}`} className='font-medium cursor-pointer'>
-                    {opt.label}
-                  </Label>
-                  <span className='text-muted-foreground text-xs'>{opt.description}</span>
-                </div>
+                <RadioGroupItem value={opt.value} id={`invite-policy-${opt.value}`} />
+                <Label htmlFor={`invite-policy-${opt.value}`} className='font-medium cursor-pointer'>
+                  {opt.label}
+                </Label>
               </label>
             ))}
           </RadioGroup>
@@ -133,7 +114,7 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
               setPolicy.isPending ||
               isLoading ||
               isError ||
-              (!!data?.invite_policy && value === data.invite_policy)
+              (!!data?.policy && value === data.policy)
             }
           >
             <Check className='size-4' />

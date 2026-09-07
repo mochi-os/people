@@ -10,7 +10,6 @@ import type {
   DeclineInviteRequest,
   Friend,
   FriendInvite,
-  GetFriendsListRaw,
   GetFriendsListResponse,
   MutationSuccessResponse,
   SearchUsersResponse,
@@ -22,75 +21,10 @@ const suppressMutationErrorToast = {
   mochi: { showGlobalErrorToast: false },
 } as const
 
-const isRecord = (value: unknown): value is Record<string, unknown> =>
-  Boolean(value) && typeof value === 'object'
-
-const asRecord = (value: unknown): Record<string, unknown> | undefined =>
-  isRecord(value) ? (value as Record<string, unknown>) : undefined
-
-const toNumber = (value: unknown): number | undefined =>
-  typeof value === 'number' ? value : undefined
-
-const devConsole = globalThis.console
-
-const logUnexpectedStructure = (payload: unknown) => {
-  if (import.meta.env.DEV) {
-    // eslint-disable-next-line lingui/no-unlocalized-strings -- dev-only diagnostic log, not user-facing
-    devConsole?.warn?.('[API] friends response shape unexpected', payload)
-  }
-}
-
-const normalizeFriendsList = (
-  payload: GetFriendsListRaw
-): GetFriendsListResponse => {
-  if (Array.isArray(payload)) {
-    return {
-      friends: payload as Friend[],
-      received: [],
-      sent: [],
-    }
-  }
-
-  const record = asRecord(payload)
-  if (!record) {
-    logUnexpectedStructure(payload)
-    return { friends: [], received: [], sent: [] }
-  }
-
-  const dataRecord = asRecord(record.data)
-  const source = dataRecord ?? record
-
-  const friends = Array.isArray(source.friends) ? (source.friends as Friend[]) : []
-  
-let received: FriendInvite[] = []
-  let sent: FriendInvite[] = []
-  
-  if (Array.isArray(source.invites)) {
-    const invites = source.invites as Array<FriendInvite & { direction?: string }>
-    received = invites.filter((invite) => invite.direction === 'from')
-    sent = invites.filter((invite) => invite.direction === 'to')
-  } else {
-    // Fallback to legacy format if received/sent are provided directly
-    received = Array.isArray(source.received) ? (source.received as FriendInvite[]) : []
-    sent = Array.isArray(source.sent) ? (source.sent as FriendInvite[]) : []
-  }
-
-  return {
-    friends,
-    received,
-    sent,
-    total: toNumber(record.total) ?? toNumber(dataRecord?.total),
-    page: toNumber(record.page) ?? toNumber(dataRecord?.page),
-    limit: toNumber(record.limit) ?? toNumber(dataRecord?.limit),
-  }
-}
-
-const listFriends = async (): Promise<GetFriendsListResponse> => {
-  const response = await requestHelpers.get<GetFriendsListRaw>(
-    endpoints.friends.list
-  )
-  return normalizeFriendsList(response)
-}
+// The request helper unwraps the {"data": ...} envelope; action_list answers
+// exactly this shape.
+const listFriends = (): Promise<GetFriendsListResponse> =>
+  requestHelpers.get<GetFriendsListResponse>(endpoints.friends.list)
 
 const searchUsers = async (query: string): Promise<SearchUsersResponse> => {
   const formData = new URLSearchParams()
@@ -201,15 +135,15 @@ const removeFriend = (friendId: string) =>
 export type InvitePolicy = 'silent' | 'notify' | 'reject' | 'accept'
 
 export interface PreferencesResponse {
-  invite_policy: InvitePolicy
+  policy: InvitePolicy
 }
 
 const getPreferences = async (): Promise<PreferencesResponse> => {
   return requestHelpers.get<PreferencesResponse>(endpoints.preferences.get)
 }
 
-const setPreferences = async (payload: { invite_policy: InvitePolicy }): Promise<MutationSuccessResponse> => {
-  const body = new URLSearchParams({ invite_policy: payload.invite_policy })
+const setPreferences = async (payload: { policy: InvitePolicy }): Promise<MutationSuccessResponse> => {
+  const body = new URLSearchParams({ policy: payload.policy })
   await requestHelpers.post(endpoints.preferences.set, body.toString(), {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     ...suppressMutationErrorToast,

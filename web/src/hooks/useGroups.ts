@@ -19,7 +19,7 @@ import { groupsApi,
   type UpdateGroupRequest,
 } from '@/api/groups'
 
-export const groupKeys = {
+const groupKeys = {
   all: () => ['groups'] as const,
   detail: (id: string) => ['groups', id] as const,
 }

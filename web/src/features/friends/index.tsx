@@ -19,7 +19,6 @@ import {
   ListSkeleton,
   GeneralError,
   getAppPath,
-  toast,
   toastAction,
   getErrorMessage,
   shellNavigateExternal,
@@ -37,7 +36,7 @@ import {
 import { UserPlus, Users, MessageSquare, UserX } from 'lucide-react'
 import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
 import { AddFriendDialog } from './components/add-friend-dialog'
-import { searchMatches } from '@/lib/search'
+import { searchMatches, searchRange } from '@/lib/search'
 
 type SortBy = 'name' | 'recent'
 
@@ -74,7 +73,7 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
       )
       .sort((a, b) => {
         if (sortBy === 'recent') {
-          return ((b.created as number) ?? 0) - ((a.created as number) ?? 0)
+          return b.created - a.created
         }
         return naturalCompare(a.name, b.name)
       })
@@ -104,10 +103,6 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
 
   const handleStartChat = (friendId: string, friendName: string) => {
     const base = import.meta.env.VITE_APP_CHAT_URL || APP_ROUTES.CHAT.HOME
-    if (!base) {
-      toast.error(t`Chat is not configured`)
-      return
-    }
     const url = `${base}?with=${encodeURIComponent(friendId)}&name=${encodeURIComponent(friendName)}`
     shellNavigateExternal(url)
   }
@@ -269,13 +264,16 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
 
 function HighlightText({ text, query }: { text: string; query: string }) {
   if (!query.trim()) return <>{text}</>
-  const i = text.toLowerCase().indexOf(query.toLowerCase())
-  if (i === -1) return <>{text}</>
+  // Found in the same folded space the filter matches in, so a row that
+  // matched always shows where it matched.
+  const range = searchRange(text, query)
+  if (!range) return <>{text}</>
+  const [start, end] = range
   return (
     <>
-      <span className='text-muted-foreground'>{text.slice(0, i)}</span>
-      {text.slice(i, i + query.length)}
-      <span className='text-muted-foreground'>{text.slice(i + query.length)}</span>
+      <span className='text-muted-foreground'>{text.slice(0, start)}</span>
+      {text.slice(start, end)}
+      <span className='text-muted-foreground'>{text.slice(end)}</span>
     </>
   )
 }

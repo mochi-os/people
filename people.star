@@ -17,7 +17,7 @@ def decimal(value):
             return False
     return True
 def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
-	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event_id=event_id)
+	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event=event_id)
 
 def database_upgrade(version):
 	if version == 8:

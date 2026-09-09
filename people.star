@@ -685,7 +685,9 @@ def action_group_member_add(a):
 		a.error.label(404, "errors.group_not_found")
 		return
 
-	mochi.group.add(group, member, type)
+	if not mochi.group.add(group, member, type):
+		a.error.label(400, "errors.group_cycle")
+		return
 	return {"data": {}}
 
 def action_group_member_remove(a):

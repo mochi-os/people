@@ -84,7 +84,7 @@ function PeopleLayoutInner() {
     ]
 
     return { navGroups }
-  }, [groups, friendsData, myIdentity, openCreateGroupDialog])
+  }, [groups, friendsData, myIdentity, openCreateGroupDialog, t])
 
   return (
     <>

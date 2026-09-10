@@ -8,8 +8,6 @@ import type {
   AcceptInviteRequest,
   CreateFriendRequest,
   DeclineInviteRequest,
-  Friend,
-  FriendInvite,
   GetFriendsListResponse,
   MutationSuccessResponse,
   SearchUsersResponse,
@@ -164,11 +162,7 @@ export const friendsApi = {
 }
 
 export type {
-  AcceptInviteRequest,
   CreateFriendRequest,
-  DeclineInviteRequest,
-  Friend,
-  FriendInvite,
   GetFriendsListResponse,
   MutationSuccessResponse,
   SearchUsersResponse,

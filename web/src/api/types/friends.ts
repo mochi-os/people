@@ -48,7 +48,7 @@ export interface MutationSuccessResponse {
 
 type RelationshipStatus = 'friend' | 'invited' | 'pending' | 'self' | 'none'
 
-export interface User {
+interface User {
   class: string
   created: number
   data: string

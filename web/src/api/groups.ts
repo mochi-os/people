@@ -170,8 +170,6 @@ export const groupsApi = {
 export type {
   AddGroupMemberRequest,
   CreateGroupRequest,
-  GetGroupResponse,
-  GetGroupsResponse,
   Group,
   GroupMember,
   MutationSuccessResponse,

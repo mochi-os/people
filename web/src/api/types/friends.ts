@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 // A row of the friends table, as action_list returns it.
-export interface Friend {
+interface Friend {
   class: string
   id: string
   identity: string
@@ -14,7 +14,7 @@ export interface Friend {
 }
 
 // A row of the invites table; it has no class or created column.
-export interface FriendInvite {
+interface FriendInvite {
   identity: string
   id: string
   direction: 'from' | 'to'

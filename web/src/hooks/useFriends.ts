@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import {
   useMutation,
   useQuery,
@@ -10,7 +9,9 @@ import {
   type UseMutationOptions,
   type UseQueryOptions,
 } from '@tanstack/react-query'
-import { friendsApi,
+import { useQueryWithError } from '@mochi/web'
+import {
+  friendsApi,
   type GetFriendsListResponse,
   type MutationSuccessResponse,
   type SearchUsersResponse,
@@ -27,10 +28,11 @@ const friendKeys = {
   preferences: () => ['people', 'preferences'] as const,
 }
 
-import { useQueryWithError } from '@mochi/web'
-
 export const useFriendsQuery = () => {
-  const { data, isLoading, isError, error, refetch } = useQueryWithError<GetFriendsListResponse, Error>({
+  const { data, isLoading, isError, error, refetch } = useQueryWithError<
+    GetFriendsListResponse,
+    Error
+  >({
     queryKey: friendKeys.all(),
     queryFn: () => friendsApi.list(),
   })
@@ -114,7 +116,10 @@ export const useSearchUsersQuery = (
 
 export const useSearchLocalUsersQuery = (
   query: string,
-  options?: Omit<UseQueryOptions<SearchLocalUsersResponse>, 'queryKey' | 'queryFn'>
+  options?: Omit<
+    UseQueryOptions<SearchLocalUsersResponse>,
+    'queryKey' | 'queryFn'
+  >
 ) =>
   useQuery<SearchLocalUsersResponse>({
     queryKey: friendKeys.localUsers(query),

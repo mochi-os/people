@@ -2,14 +2,21 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useMemo } from 'react'
 import { useLingui } from '@lingui/react/macro'
-import { AuthenticatedLayout, EntityAvatar, useAuthStore, getAppPath, type SidebarData, type NavItem, naturalCompare} from '@mochi/web'
+import {
+  AuthenticatedLayout,
+  EntityAvatar,
+  useAuthStore,
+  getAppPath,
+  type SidebarData,
+  type NavItem,
+  naturalCompare,
+} from '@mochi/web'
 import { CircleUserRound, Plus, User, Users, UsersRound } from 'lucide-react'
-import { useGroupsQuery } from '@/hooks/useGroups'
-import { useFriendsQuery } from '@/hooks/useFriends'
 import { SidebarProvider, useSidebarContext } from '@/context/sidebar-context'
+import { useFriendsQuery } from '@/hooks/useFriends'
+import { useGroupsQuery } from '@/hooks/useGroups'
 import { GroupDialog } from '@/features/groups/group-dialog'
 
 const profileIconCache = new Map<string, React.FC>()
@@ -22,7 +29,7 @@ function profileIcon(identityId: string): React.FC {
         <EntityAvatar
           src={`${getAppPath()}/${identityId}/-/avatar`}
           styleUrl={`${getAppPath()}/${identityId}/-/style`}
-          size="xs"
+          size='xs'
         />
       )
     }
@@ -62,7 +69,11 @@ function PeopleLayoutInner() {
       {
         title: t`People`,
         items: [
-          { title: t`Profile`, url: '/profile', icon: myIdentity ? profileIcon(myIdentity) : CircleUserRound },
+          {
+            title: t`Profile`,
+            url: '/profile',
+            icon: myIdentity ? profileIcon(myIdentity) : CircleUserRound,
+          },
           { title: t`Friends`, url: '/', icon: Users },
           {
             title: t`Invitations`,
@@ -78,7 +89,12 @@ function PeopleLayoutInner() {
         animateList: true,
         items: [
           ...groupItems,
-          { id: 'create-group', title: t`Create group`, icon: Plus, onClick: openCreateGroupDialog },
+          {
+            id: 'create-group',
+            title: t`Create group`,
+            icon: Plus,
+            onClick: openCreateGroupDialog,
+          },
         ],
       },
     ]
@@ -95,7 +111,9 @@ function PeopleLayoutInner() {
 
       <GroupDialog
         open={createGroupDialogOpen}
-        onOpenChange={(open) => { if (!open) closeCreateGroupDialog() }}
+        onOpenChange={(open) => {
+          if (!open) closeCreateGroupDialog()
+        }}
         group={null}
       />
     </>

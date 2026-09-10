@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { t } from '@lingui/core/macro'
 
 // Client-side image resize. Phone photos are routinely 5-15 MB at 4032x3024 —
@@ -62,7 +61,8 @@ export async function resizeImage(
 
     return await new Promise<Blob>((resolve, reject) => {
       canvas.toBlob(
-        (blob) => (blob ? resolve(blob) : reject(new Error(t`Failed to load image`))),
+        (blob) =>
+          blob ? resolve(blob) : reject(new Error(t`Failed to load image`)),
         mime,
         quality
       )

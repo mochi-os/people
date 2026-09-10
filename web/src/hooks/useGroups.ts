@@ -2,14 +2,14 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import {
   useMutation,
   useQuery,
   useQueryClient,
   type UseMutationOptions,
 } from '@tanstack/react-query'
-import { groupsApi,
+import {
+  groupsApi,
   type AddGroupMemberRequest,
   type CreateGroupRequest,
   type Group,
@@ -71,7 +71,9 @@ export const useUpdateGroupMutation = (
     mutationFn: (payload: UpdateGroupRequest) => groupsApi.update(payload),
     onSuccess: (data, variables, context, mutation) => {
       queryClient.invalidateQueries({ queryKey: groupKeys.all() })
-      queryClient.invalidateQueries({ queryKey: groupKeys.detail(variables.id) })
+      queryClient.invalidateQueries({
+        queryKey: groupKeys.detail(variables.id),
+      })
       onSuccess?.(data, variables, context, mutation)
     },
     ...rest,
@@ -109,9 +111,12 @@ export const useAddGroupMemberMutation = (
   const queryClient = useQueryClient()
   const { onSuccess, ...rest } = options ?? {}
   return useMutation({
-    mutationFn: (payload: AddGroupMemberRequest) => groupsApi.addMember(payload),
+    mutationFn: (payload: AddGroupMemberRequest) =>
+      groupsApi.addMember(payload),
     onSuccess: (data, variables, context, mutation) => {
-      queryClient.invalidateQueries({ queryKey: groupKeys.detail(variables.group) })
+      queryClient.invalidateQueries({
+        queryKey: groupKeys.detail(variables.group),
+      })
       onSuccess?.(data, variables, context, mutation)
     },
     ...rest,
@@ -129,9 +134,12 @@ export const useRemoveGroupMemberMutation = (
   const queryClient = useQueryClient()
   const { onSuccess, ...rest } = options ?? {}
   return useMutation({
-    mutationFn: (payload: RemoveGroupMemberRequest) => groupsApi.removeMember(payload),
+    mutationFn: (payload: RemoveGroupMemberRequest) =>
+      groupsApi.removeMember(payload),
     onSuccess: (data, variables, context, mutation) => {
-      queryClient.invalidateQueries({ queryKey: groupKeys.detail(variables.group) })
+      queryClient.invalidateQueries({
+        queryKey: groupKeys.detail(variables.group),
+      })
       onSuccess?.(data, variables, context, mutation)
     },
     ...rest,

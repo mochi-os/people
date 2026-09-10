@@ -2,15 +2,15 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useEffect } from 'react'
+import type { AxiosProgressEvent } from 'axios'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { authManager, shellSetAvatar, useAuthStore } from '@mochi/web'
-import type { AxiosProgressEvent } from 'axios'
 import { personApi } from '@/api/person'
 import type { PersonInformation } from '@/api/types/person'
 
-const informationKey = (person: string) => ['person', 'information', person] as const
+const informationKey = (person: string) =>
+  ['person', 'information', person] as const
 
 export function useMyIdentity(): string {
   const identity = useAuthStore((s) => s.identity)
@@ -84,8 +84,10 @@ export function useUploadImageMutation(
       file: File
       onProgress?: (event: AxiosProgressEvent) => void
     }) => {
-      if (slot === 'avatar') return personApi.setAvatar(person, file, onProgress)
-      if (slot === 'banner') return personApi.setBanner(person, file, onProgress)
+      if (slot === 'avatar')
+        return personApi.setAvatar(person, file, onProgress)
+      if (slot === 'banner')
+        return personApi.setBanner(person, file, onProgress)
       return personApi.setFavicon(person, file, onProgress)
     },
     onSuccess: (result) => {

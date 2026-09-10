@@ -2,29 +2,58 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { User, UsersRound, Search, Loader2, UserPlus } from 'lucide-react'
-import { toastAction, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, EntityAvatar, Input, Label, Tabs, TabsContent, TabsList, TabsTrigger, Card, CardContent, getAppPath, getErrorMessage, EmptyState, GeneralError } from '@mochi/web'
 import {
-  useAddGroupMemberMutation,
-  useGroupsQuery,
-} from '@/hooks/useGroups'
+  toastAction,
+  ResponsiveDialog,
+  ResponsiveDialogContent,
+  ResponsiveDialogDescription,
+  ResponsiveDialogFooter,
+  ResponsiveDialogHeader,
+  ResponsiveDialogTitle,
+  Button,
+  EntityAvatar,
+  Input,
+  Label,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Card,
+  CardContent,
+  getAppPath,
+  getErrorMessage,
+  EmptyState,
+  GeneralError,
+} from '@mochi/web'
+import { User, UsersRound, Search, Loader2, UserPlus } from 'lucide-react'
 import { useSearchLocalUsersQuery } from '@/hooks/useFriends'
+import { useAddGroupMemberMutation, useGroupsQuery } from '@/hooks/useGroups'
+
 interface MemberDialogProps {
   open: boolean
   onOpenChange: (open: boolean) => void
   groupId: string
 }
 
-export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps) {
+export function MemberDialog({
+  open,
+  onOpenChange,
+  groupId,
+}: MemberDialogProps) {
   const { t } = useLingui()
   const appPath = getAppPath()
   const [userSearch, setUserSearch] = useState('')
   const [debouncedSearch, setDebouncedSearch] = useState('')
-  const [selectedUser, setSelectedUser] = useState<{ id: string; name: string } | null>(null)
-  const [selectedGroup, setSelectedGroup] = useState<{ id: string; name: string } | null>(null)
+  const [selectedUser, setSelectedUser] = useState<{
+    id: string
+    name: string
+  } | null>(null)
+  const [selectedGroup, setSelectedGroup] = useState<{
+    id: string
+    name: string
+  } | null>(null)
   const [activeTab, setActiveTab] = useState<'user' | 'group'>('user')
 
   // One directory search per pause, not one per keystroke — the same 300ms the
@@ -107,13 +136,18 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
     <ResponsiveDialog open={open} onOpenChange={resetAndClose}>
       <ResponsiveDialogContent className='sm:max-w-[500px]'>
         <ResponsiveDialogHeader>
-          <ResponsiveDialogTitle><Trans>Add member</Trans></ResponsiveDialogTitle>
-          <ResponsiveDialogDescription className="sr-only">
+          <ResponsiveDialogTitle>
+            <Trans>Add member</Trans>
+          </ResponsiveDialogTitle>
+          <ResponsiveDialogDescription className='sr-only'>
             <Trans>Add member</Trans>
           </ResponsiveDialogDescription>
         </ResponsiveDialogHeader>
 
-        <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'user' | 'group')}>
+        <Tabs
+          value={activeTab}
+          onValueChange={(v) => setActiveTab(v as 'user' | 'group')}
+        >
           <TabsList className='grid w-full grid-cols-2'>
             <TabsTrigger value='user'>
               <User className='me-2 h-4 w-4' />
@@ -128,7 +162,9 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
           <TabsContent value='user' className='mt-4'>
             <div className='space-y-4'>
               <div className='grid gap-2'>
-                <Label htmlFor='user-search'><Trans>Search users</Trans></Label>
+                <Label htmlFor='user-search'>
+                  <Trans>Search users</Trans>
+                </Label>
                 <div className='relative'>
                   <Search className='text-muted-foreground absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2' />
                   <Input
@@ -163,7 +199,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
                 <EmptyState
                   icon={User}
                   title={t`No people found`}
-                  className="py-6"
+                  className='py-6'
                 />
               ) : (
                 <div className='max-h-[200px] space-y-2 overflow-y-auto'>
@@ -175,14 +211,16 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
                           ? 'border-primary'
                           : 'hover:bg-hover'
                       }`}
-                      onClick={() => setSelectedUser({ id: user.id, name: user.name })}
+                      onClick={() =>
+                        setSelectedUser({ id: user.id, name: user.name })
+                      }
                     >
                       <CardContent className='flex items-center gap-3 p-3'>
                         <EntityAvatar
                           src={`${appPath}/${user.id}/-/avatar`}
                           styleUrl={`${appPath}/${user.id}/-/style`}
                           name={user.name}
-                          size="md"
+                          size='md'
                         />
                         <span className='font-medium'>{user.name}</span>
                       </CardContent>
@@ -193,7 +231,10 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
 
               {selectedUser && (
                 <p className='text-sm'>
-                  <Trans>Selected: <span className='font-semibold'>{selectedUser.name}</span></Trans>
+                  <Trans>
+                    Selected:{' '}
+                    <span className='font-semibold'>{selectedUser.name}</span>
+                  </Trans>
                 </p>
               )}
             </div>
@@ -201,7 +242,9 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
 
           <TabsContent value='group' className='mt-4'>
             <div className='space-y-4'>
-              <Label><Trans>Select group</Trans></Label>
+              <Label>
+                <Trans>Select group</Trans>
+              </Label>
               {groupsLoading ? (
                 <p className='text-muted-foreground text-center text-sm'>
                   <Trans>Loading groups...</Trans>
@@ -218,7 +261,7 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
                   icon={UsersRound}
                   title={t`No other groups`}
                   description={t`All available groups are already added`}
-                  className="py-6"
+                  className='py-6'
                 />
               ) : (
                 <div className='max-h-[200px] space-y-2 overflow-y-auto'>
@@ -230,7 +273,9 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
                           ? 'border-primary'
                           : 'hover:bg-hover'
                       }`}
-                      onClick={() => setSelectedGroup({ id: group.id, name: group.name })}
+                      onClick={() =>
+                        setSelectedGroup({ id: group.id, name: group.name })
+                      }
                     >
                       <CardContent className='flex items-center gap-2 p-3'>
                         <UsersRound className='h-4 w-4' />
@@ -250,7 +295,10 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
 
               {selectedGroup && (
                 <p className='text-sm'>
-                  <Trans>Selected: <span className='font-semibold'>{selectedGroup.name}</span></Trans>
+                  <Trans>
+                    Selected:{' '}
+                    <span className='font-semibold'>{selectedGroup.name}</span>
+                  </Trans>
                 </p>
               )}
             </div>
@@ -261,8 +309,15 @@ export function MemberDialog({ open, onOpenChange, groupId }: MemberDialogProps)
           <Button variant='outline' onClick={resetAndClose}>
             <Trans>Cancel</Trans>
           </Button>
-          <Button onClick={handleAddMember} disabled={!canAdd || addMemberMutation.isPending}>
-            {addMemberMutation.isPending ? <Loader2 className='size-4 animate-spin' /> : <UserPlus className='size-4' />}
+          <Button
+            onClick={handleAddMember}
+            disabled={!canAdd || addMemberMutation.isPending}
+          >
+            {addMemberMutation.isPending ? (
+              <Loader2 className='size-4 animate-spin' />
+            ) : (
+              <UserPlus className='size-4' />
+            )}
             {addMemberMutation.isPending ? t`Adding...` : t`Add member`}
           </Button>
         </ResponsiveDialogFooter>

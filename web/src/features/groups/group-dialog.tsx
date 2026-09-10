@@ -2,16 +2,30 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { Plus, Check, Loader2} from 'lucide-react'
-import { toast, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, Button, Input, Label, Textarea, getErrorMessage, handlePermissionError, textUnchanged } from '@mochi/web'
+import {
+  toast,
+  ResponsiveDialog,
+  ResponsiveDialogContent,
+  ResponsiveDialogDescription,
+  ResponsiveDialogFooter,
+  ResponsiveDialogHeader,
+  ResponsiveDialogTitle,
+  Button,
+  Input,
+  Label,
+  Textarea,
+  getErrorMessage,
+  handlePermissionError,
+  textUnchanged,
+} from '@mochi/web'
+import { Plus, Check, Loader2 } from 'lucide-react'
+import type { Group } from '@/api/types/groups'
 import {
   useCreateGroupMutation,
   useUpdateGroupMutation,
 } from '@/hooks/useGroups'
-import type { Group } from '@/api/types/groups'
 
 interface GroupDialogProps {
   open: boolean
@@ -71,9 +85,13 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
     const id = toast.loading(loadingMsg)
     try {
       if (isEditing) {
-        await updateMutation.mutateAsync(payload as { id: string; name: string; description: string })
+        await updateMutation.mutateAsync(
+          payload as { id: string; name: string; description: string }
+        )
       } else {
-        await createMutation.mutateAsync(payload as { name: string; description: string })
+        await createMutation.mutateAsync(
+          payload as { name: string; description: string }
+        )
       }
       toast.dismiss(id)
       toast.success(successMsg)
@@ -96,14 +114,18 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
       <ResponsiveDialogContent className='sm:max-w-[425px]'>
         <form onSubmit={handleSubmit}>
           <ResponsiveDialogHeader>
-            <ResponsiveDialogTitle>{isEditing ? t`Edit group` : t`Create group`}</ResponsiveDialogTitle>
-            <ResponsiveDialogDescription className="sr-only">
+            <ResponsiveDialogTitle>
+              {isEditing ? t`Edit group` : t`Create group`}
+            </ResponsiveDialogTitle>
+            <ResponsiveDialogDescription className='sr-only'>
               {isEditing ? t`Edit group` : t`Create group`}
             </ResponsiveDialogDescription>
           </ResponsiveDialogHeader>
           <div className='grid gap-4 py-4'>
             <div className='grid gap-2'>
-              <Label htmlFor='name'><Trans>Name</Trans></Label>
+              <Label htmlFor='name'>
+                <Trans>Name</Trans>
+              </Label>
               <Input
                 id='name'
                 value={name}
@@ -113,7 +135,9 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
               />
             </div>
             <div className='grid gap-2'>
-              <Label htmlFor='description'><Trans>Description</Trans></Label>
+              <Label htmlFor='description'>
+                <Trans>Description</Trans>
+              </Label>
               <Textarea
                 id='description'
                 value={description}
@@ -125,16 +149,30 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
             </div>
           </div>
           <ResponsiveDialogFooter>
-            <Button type='button' variant='outline' onClick={() => onOpenChange(false)} disabled={isPending}>
+            <Button
+              type='button'
+              variant='outline'
+              onClick={() => onOpenChange(false)}
+              disabled={isPending}
+            >
               <Trans>Cancel</Trans>
             </Button>
             <Button type='submit' disabled={isPending || editUnchanged}>
               {isPending ? (
-                <><Loader2 className="size-4 animate-spin" />{t`Saving...`}</>
+                <>
+                  <Loader2 className='size-4 animate-spin' />
+                  {t`Saving...`}
+                </>
               ) : isEditing ? (
-                <><Check className="size-4" />{t`Save`}</>
+                <>
+                  <Check className='size-4' />
+                  {t`Save`}
+                </>
               ) : (
-                <><Plus className="size-4" /><Trans>Create group</Trans></>
+                <>
+                  <Plus className='size-4' />
+                  <Trans>Create group</Trans>
+                </>
               )}
             </Button>
           </ResponsiveDialogFooter>

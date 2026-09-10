@@ -22,7 +22,10 @@ export function searchMatches(haystack: string, needle: string): boolean {
 // point at a time so that each folded unit remembers the character that
 // produced it: "É" folds to one "e", a bare combining mark to nothing, and
 // "İ" to "i" - the hit maps back to whole original characters either way.
-export function searchRange(haystack: string, needle: string): [number, number] | null {
+export function searchRange(
+  haystack: string,
+  needle: string
+): [number, number] | null {
   const query = fold(needle)
   if (!query) return null
   let folded = ''

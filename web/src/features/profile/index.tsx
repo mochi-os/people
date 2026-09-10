@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useEffect, useRef, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
@@ -36,8 +35,20 @@ import {
   useUploadProgress,
   getAppPath,
 } from '@mochi/web'
-import { Check, Copy, Eye, Image as ImageIcon, Loader2, Pencil, Save, Upload as UploadIcon, X } from 'lucide-react'
-import { ProfileView } from './profile-view'
+import {
+  Check,
+  Copy,
+  Eye,
+  Image as ImageIcon,
+  Loader2,
+  Pencil,
+  Save,
+  Upload as UploadIcon,
+  X,
+} from 'lucide-react'
+import type { PersonInformation } from '@/api/types/person'
+import { formatFingerprint } from '@/lib/fingerprint'
+import { resizeImage, SLOT_RESIZE } from '@/lib/resize-image'
 import {
   useMyIdentity,
   usePersonInformationQuery,
@@ -47,9 +58,7 @@ import {
   useSetProfileMutation,
   useUploadImageMutation,
 } from '@/hooks/usePerson'
-import type { PersonInformation } from '@/api/types/person'
-import { resizeImage, SLOT_RESIZE } from '@/lib/resize-image'
-import { formatFingerprint } from '@/lib/fingerprint'
+import { ProfileView } from './profile-view'
 
 // Matches the server cap (_PROFILE_MAX = 100 * 1024 in people.star).
 const PROFILE_MAX = 100 * 1024
@@ -64,13 +73,14 @@ export function Profile() {
   usePageTitle(t`Profile`)
 
   const identity = useMyIdentity()
-  const { data, isLoading, error, refetch } = usePersonInformationQuery(identity)
+  const { data, isLoading, error, refetch } =
+    usePersonInformationQuery(identity)
 
   if (!identity) {
     return (
       <Main>
         <PageHeader title={t`Profile`} />
-        <div className="mx-auto w-full max-w-2xl p-4">
+        <div className='mx-auto w-full max-w-2xl p-4'>
           <ProfileSkeleton />
         </div>
       </Main>
@@ -81,8 +91,13 @@ export function Profile() {
     return (
       <Main>
         <PageHeader title={t`Profile`} />
-        <div className="mx-auto w-full max-w-2xl p-4">
-          <GeneralError minimal mode="inline" error={error} reset={() => refetch()} />
+        <div className='mx-auto w-full max-w-2xl p-4'>
+          <GeneralError
+            minimal
+            mode='inline'
+            error={error}
+            reset={() => refetch()}
+          />
         </div>
       </Main>
     )
@@ -91,7 +106,7 @@ export function Profile() {
   return (
     <Main>
       <PageHeader title={t`Profile`} />
-      <div className="mx-auto w-full max-w-2xl p-3 sm:p-4">
+      <div className='mx-auto w-full max-w-2xl p-3 sm:p-4'>
         {isLoading || !data ? (
           <ProfileSkeleton />
         ) : (
@@ -104,33 +119,33 @@ export function Profile() {
 
 function ProfileSkeleton() {
   return (
-    <div className="bg-card border-border overflow-hidden rounded-lg border shadow-sm">
+    <div className='bg-card border-border overflow-hidden rounded-lg border shadow-sm'>
       {/* Banner */}
-      <Skeleton className="aspect-[3/1] w-full rounded-none" />
+      <Skeleton className='aspect-[3/1] w-full rounded-none' />
       {/* Avatar row */}
-      <div className="px-5 pt-3 pb-5 space-y-5">
-        <div className="flex items-end gap-3 -mt-10">
-          <Skeleton className="size-20 rounded-full shrink-0 ring-4 ring-card" />
-          <Skeleton className="mb-1 h-8 w-28" />
+      <div className='space-y-5 px-5 pt-3 pb-5'>
+        <div className='-mt-10 flex items-end gap-3'>
+          <Skeleton className='ring-card size-20 shrink-0 rounded-full ring-4' />
+          <Skeleton className='mb-1 h-8 w-28' />
         </div>
         {/* Bio */}
-        <div className="space-y-2">
-          <Skeleton className="h-4 w-32" />
-          <Skeleton className="h-28 w-full" />
-          <Skeleton className="h-3 w-24" />
+        <div className='space-y-2'>
+          <Skeleton className='h-4 w-32' />
+          <Skeleton className='h-28 w-full' />
+          <Skeleton className='h-3 w-24' />
         </div>
         {/* Bottom row */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-24" />
-            <div className="flex gap-2">
-              <Skeleton className="size-8 rounded-full shrink-0" />
-              <Skeleton className="h-8 w-28" />
+        <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
+          <div className='space-y-2'>
+            <Skeleton className='h-4 w-24' />
+            <div className='flex gap-2'>
+              <Skeleton className='size-8 shrink-0 rounded-full' />
+              <Skeleton className='h-8 w-28' />
             </div>
           </div>
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-20" />
-            <Skeleton className="h-56 w-full" />
+          <div className='space-y-2'>
+            <Skeleton className='h-4 w-20' />
+            <Skeleton className='h-56 w-full' />
           </div>
         </div>
       </div>
@@ -138,11 +153,23 @@ function ProfileSkeleton() {
   )
 }
 
-function ProfileEditor({ person, info }: { person: string; info: PersonInformation }) {
+function ProfileEditor({
+  person,
+  info,
+}: {
+  person: string
+  info: PersonInformation
+}) {
   const { t } = useLingui()
-  const avatarUrl = info.avatar ? `${getAppPath()}/${info.fingerprint}/-/avatar?v=${info.avatar}` : null
-  const bannerUrl = info.banner ? `${getAppPath()}/${info.fingerprint}/-/banner?v=${info.banner}` : null
-  const faviconUrl = info.favicon ? `${getAppPath()}/${info.fingerprint}/-/favicon?v=${info.favicon}` : null
+  const avatarUrl = info.avatar
+    ? `${getAppPath()}/${info.fingerprint}/-/avatar?v=${info.avatar}`
+    : null
+  const bannerUrl = info.banner
+    ? `${getAppPath()}/${info.fingerprint}/-/banner?v=${info.banner}`
+    : null
+  const faviconUrl = info.favicon
+    ? `${getAppPath()}/${info.fingerprint}/-/favicon?v=${info.favicon}`
+    : null
 
   const [profile, setProfile] = useState(info.profile)
   useEffect(() => setProfile(info.profile), [info.profile])
@@ -236,35 +263,37 @@ function ProfileEditor({ person, info }: { person: string; info: PersonInformati
     }
   }
 
-return (
-    <div className="bg-card border-border overflow-hidden rounded-lg border shadow-sm">
+  return (
+    <div className='bg-card border-border overflow-hidden rounded-lg border shadow-sm'>
       {/* ── Banner ─────────────────────────────────────────── */}
-      <div className="relative bg-muted overflow-hidden">
+      <div className='bg-muted relative overflow-hidden'>
         {bannerUrl ? (
-          <EntityBanner src={bannerUrl} aspectRatio="3 / 1" />
+          <EntityBanner src={bannerUrl} aspectRatio='3 / 1' />
         ) : (
-          <div className="flex aspect-[5/2] min-h-[100px] flex-col items-center justify-center gap-2 text-muted-foreground sm:aspect-[3/1]">
-            <ImageIcon className="size-8 opacity-30" />
-            <span className="text-xs opacity-50"><Trans>No banner set</Trans></span>
+          <div className='text-muted-foreground flex aspect-[5/2] min-h-[100px] flex-col items-center justify-center gap-2 sm:aspect-[3/1]'>
+            <ImageIcon className='size-8 opacity-30' />
+            <span className='text-xs opacity-50'>
+              <Trans>No banner set</Trans>
+            </span>
           </div>
         )}
-        <div className="absolute top-3 right-3">
-          <SlotUploader person={person} slot="banner">
+        <div className='absolute top-3 right-3'>
+          <SlotUploader person={person} slot='banner'>
             {(open, pending, progress) => (
               <>
                 <Button
-                  variant="outline"
-                  size="sm"
+                  variant='outline'
+                  size='sm'
                   onClick={open}
                   disabled={pending}
-                  className="shadow-md"
+                  className='shadow-md'
                 >
-                  <UploadIcon className="size-3.5" />
+                  <UploadIcon className='size-3.5' />
                   {pending ? t`Uploading...` : t`Change banner`}
                 </Button>
                 <UploadProgress
                   progress={progress}
-                  className="bg-card mt-2 rounded-md px-2 py-1.5 shadow-md"
+                  className='bg-card mt-2 rounded-md px-2 py-1.5 shadow-md'
                 />
               </>
             )}
@@ -273,29 +302,34 @@ return (
       </div>
 
       {/* ── Identity ───────────────────────────────────────── */}
-      <div className="px-5 pb-1">
-        <div className="flex items-start justify-between gap-3">
-          <div className="relative -mt-10 shrink-0" style={{ width: 80, height: 80 }}>
-            <div className="ring-card size-full overflow-hidden rounded-full ring-4">
+      <div className='px-5 pb-1'>
+        <div className='flex items-start justify-between gap-3'>
+          <div
+            className='relative -mt-10 shrink-0'
+            style={{ width: 80, height: 80 }}
+          >
+            <div className='ring-card size-full overflow-hidden rounded-full ring-4'>
               <EntityAvatar
                 src={avatarUrl}
                 name={info.name}
-                size="2xl"
-                accent={accentValid && accentTrimmed ? accentTrimmed : undefined}
+                size='2xl'
+                accent={
+                  accentValid && accentTrimmed ? accentTrimmed : undefined
+                }
               />
             </div>
-            <SlotUploader person={person} slot="avatar">
+            <SlotUploader person={person} slot='avatar'>
               {(open, pending) => (
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <button
-                      type="button"
+                      type='button'
                       onClick={open}
                       disabled={pending}
                       aria-label={t`Upload avatar`}
-                      className="border-border bg-muted text-muted-foreground hover:bg-hover hover:text-foreground focus-visible:ring-ring absolute bottom-0 right-0 flex size-6 items-center justify-center rounded-full border shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:opacity-50"
+                      className='border-border bg-muted text-muted-foreground hover:bg-hover hover:text-foreground focus-visible:ring-ring absolute right-0 bottom-0 flex size-6 items-center justify-center rounded-full border shadow-sm transition-colors focus-visible:ring-2 focus-visible:outline-none disabled:opacity-50'
                     >
-                      <UploadIcon className="size-3" />
+                      <UploadIcon className='size-3' />
                     </button>
                   </TooltipTrigger>
                   <TooltipContent>{t`Upload avatar`}</TooltipContent>
@@ -303,20 +337,28 @@ return (
               )}
             </SlotUploader>
           </div>
-          <Button variant="outline" className="mt-4 shrink-0" onClick={() => setPreviewOpen(true)}>
-            <Eye className="size-3.5" />
+          <Button
+            variant='outline'
+            className='mt-4 shrink-0'
+            onClick={() => setPreviewOpen(true)}
+          >
+            <Eye className='size-3.5' />
             <Trans>Preview</Trans>
           </Button>
         </div>
-        <div className="mt-2">
+        <div className='mt-2'>
           {editingName ? (
-            <div className="flex items-center gap-2">
+            <div className='flex items-center gap-2'>
               <Input
                 value={nameDraft}
                 autoFocus
                 onChange={(e) => setNameDraft(e.target.value)}
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter' && nameDirty && !nameMutation.isPending) {
+                  if (
+                    e.key === 'Enter' &&
+                    nameDirty &&
+                    !nameMutation.isPending
+                  ) {
                     e.preventDefault()
                     handleSaveName()
                   } else if (e.key === 'Escape') {
@@ -326,22 +368,22 @@ return (
                 onBlur={() => {
                   if (!nameDirty) cancelNameEdit()
                 }}
-                className="h-10 max-w-xs text-xl font-semibold"
+                className='h-10 max-w-xs text-xl font-semibold'
               />
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
-                    variant="ghost"
-                    size="sm"
-                    className="size-9 shrink-0 p-0"
+                    variant='ghost'
+                    size='sm'
+                    className='size-9 shrink-0 p-0'
                     onClick={handleSaveName}
                     disabled={!nameDirty || nameMutation.isPending}
                     aria-label={t`Save name`}
                   >
                     {nameMutation.isPending ? (
-                      <Loader2 className="size-4 animate-spin" />
+                      <Loader2 className='size-4 animate-spin' />
                     ) : (
-                      <Check className="size-4" />
+                      <Check className='size-4' />
                     )}
                   </Button>
                 </TooltipTrigger>
@@ -350,31 +392,33 @@ return (
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
-                    variant="ghost"
-                    size="sm"
-                    className="size-9 shrink-0 p-0"
+                    variant='ghost'
+                    size='sm'
+                    className='size-9 shrink-0 p-0'
                     onClick={cancelNameEdit}
                     aria-label={t`Cancel`}
                   >
-                    <X className="size-4" />
+                    <X className='size-4' />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>{t`Cancel`}</TooltipContent>
               </Tooltip>
             </div>
           ) : (
-            <div className="flex items-center gap-1">
-              <h1 className="min-w-0 truncate text-2xl font-bold">{info.name}</h1>
+            <div className='flex items-center gap-1'>
+              <h1 className='min-w-0 truncate text-2xl font-bold'>
+                {info.name}
+              </h1>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button
-                    variant="ghost"
-                    size="sm"
-                    className="size-7 shrink-0 p-0"
+                    variant='ghost'
+                    size='sm'
+                    className='size-7 shrink-0 p-0'
                     onClick={startNameEdit}
                     aria-label={t`Edit name`}
                   >
-                    <Pencil className="size-3.5" />
+                    <Pencil className='size-3.5' />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>{t`Edit name`}</TooltipContent>
@@ -386,52 +430,67 @@ return (
       </div>
 
       {/* ── Main content ─────────────────────────────────────── */}
-      <div className="p-5 space-y-6">
-
+      <div className='space-y-6 p-5'>
         {/* ── Bio ───────────────────────────────────────────── */}
-        <div className="space-y-2">
-          <Label htmlFor="profile-markdown"><Trans>Profile</Trans></Label>
+        <div className='space-y-2'>
+          <Label htmlFor='profile-markdown'>
+            <Trans>Profile</Trans>
+          </Label>
           <Textarea
-            id="profile-markdown"
+            id='profile-markdown'
             rows={5}
             value={profile}
             placeholder={t`Markdown supported`}
             onChange={(e) => setProfile(e.target.value)}
-            className={tooLong ? 'border-destructive focus-visible:ring-destructive/30' : ''}
+            className={
+              tooLong
+                ? 'border-destructive focus-visible:ring-destructive/30'
+                : ''
+            }
           />
-          <div className="flex items-center gap-2">
-            <div className="bg-muted h-1 flex-1 overflow-hidden rounded-full">
+          <div className='flex items-center gap-2'>
+            <div className='bg-muted h-1 flex-1 overflow-hidden rounded-full'>
               <div
-                className={`h-full rounded-full transition-[width] duration-200 ${tooLong ? 'bg-destructive' : progress > 80 ? 'bg-warning' : 'bg-primary'
-                  }`}
+                className={`h-full rounded-full transition-[width] duration-200 ${
+                  tooLong
+                    ? 'bg-destructive'
+                    : progress > 80
+                      ? 'bg-warning'
+                      : 'bg-primary'
+                }`}
                 style={{ width: `${progress}%` }}
               />
             </div>
             <p
-              className={`shrink-0 text-xs tabular-nums ${tooLong ? 'text-destructive' : 'text-muted-foreground'
-                }`}
+              className={`shrink-0 text-xs tabular-nums ${
+                tooLong ? 'text-destructive' : 'text-muted-foreground'
+              }`}
             >
               {formatNumber(profile.length, 0)} / {formatNumber(PROFILE_MAX, 0)}
             </p>
             <Button
-              size="sm"
-              className="ms-2"
+              size='sm'
+              className='ms-2'
               disabled={!profileDirty || tooLong || profileMutation.isPending}
               onClick={handleSaveProfile}
             >
-              <Save className="size-3.5" />
+              <Save className='size-3.5' />
               {profileMutation.isPending ? t`Saving...` : t`Save`}
             </Button>
           </div>
         </div>
 
         {/* ── Appearance ────────────────────────────────────── */}
-        <div className="space-y-3 border-t border-border/60 pt-5">
-          <p className="text-sm font-medium"><Trans>Appearance</Trans></p>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+        <div className='border-border/60 space-y-3 border-t pt-5'>
+          <p className='text-sm font-medium'>
+            <Trans>Appearance</Trans>
+          </p>
+          <div className='grid grid-cols-1 gap-5 sm:grid-cols-3'>
             {/* Accent colour */}
-            <div className="space-y-2 sm:col-span-2">
-              <Label><Trans>Accent colour</Trans></Label>
+            <div className='space-y-2 sm:col-span-2'>
+              <Label>
+                <Trans>Accent colour</Trans>
+              </Label>
               <ColourPicker
                 collapsible
                 value={accentValid ? accentTrimmed : ''}
@@ -439,11 +498,13 @@ return (
                 onClear={() => setAccent('')}
                 actions={
                   <Button
-                    size="sm"
-                    disabled={!accentDirty || !accentValid || accentMutation.isPending}
+                    size='sm'
+                    disabled={
+                      !accentDirty || !accentValid || accentMutation.isPending
+                    }
                     onClick={handleSaveAccent}
                   >
-                    <Save className="size-3.5" />
+                    <Save className='size-3.5' />
                     {accentMutation.isPending ? t`Saving...` : t`Save`}
                   </Button>
                 }
@@ -451,30 +512,37 @@ return (
             </div>
 
             {/* Favicon */}
-            <div className="space-y-2">
-              <Label><Trans>Browser icon</Trans></Label>
-              <div className="flex items-center gap-3">
-                <div className="border-border flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-md border bg-muted">
+            <div className='space-y-2'>
+              <Label>
+                <Trans>Browser icon</Trans>
+              </Label>
+              <div className='flex items-center gap-3'>
+                <div className='border-border bg-muted flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-md border'>
                   {faviconUrl ? (
                     <img
                       src={faviconUrl}
                       alt={t`Favicon`}
-                      className="size-full object-contain"
+                      className='size-full object-contain'
                     />
                   ) : (
-                    <span className="text-muted-foreground text-sm font-medium">
+                    <span className='text-muted-foreground text-sm font-medium'>
                       {info.name?.[0]?.toUpperCase() ?? '?'}
                     </span>
                   )}
                 </div>
-                <SlotUploader person={person} slot="favicon">
+                <SlotUploader person={person} slot='favicon'>
                   {(open, pending, progress) => (
                     <>
-                      <Button variant="outline" size="sm" onClick={open} disabled={pending}>
-                        <UploadIcon className="size-3.5" />
+                      <Button
+                        variant='outline'
+                        size='sm'
+                        onClick={open}
+                        disabled={pending}
+                      >
+                        <UploadIcon className='size-3.5' />
                         {pending ? t`Uploading...` : t`Upload`}
                       </Button>
-                      <UploadProgress progress={progress} className="flex-1" />
+                      <UploadProgress progress={progress} className='flex-1' />
                     </>
                   )}
                 </SlotUploader>
@@ -484,16 +552,18 @@ return (
         </div>
 
         {/* ── Privacy ───────────────────────────────────────── */}
-        <div className="space-y-3 border-t border-border/60 pt-5">
-          <p className="text-sm font-medium"><Trans>Privacy</Trans></p>
-          <div className="border-border/60 flex items-center justify-between gap-4 rounded-lg border p-3">
-            <div className="min-w-0 space-y-0.5">
-              <Label htmlFor="privacy-public" className="text-sm font-medium">
+        <div className='border-border/60 space-y-3 border-t pt-5'>
+          <p className='text-sm font-medium'>
+            <Trans>Privacy</Trans>
+          </p>
+          <div className='border-border/60 flex items-center justify-between gap-4 rounded-lg border p-3'>
+            <div className='min-w-0 space-y-0.5'>
+              <Label htmlFor='privacy-public' className='text-sm font-medium'>
                 <Trans>Directory listing</Trans>
               </Label>
             </div>
             <Switch
-              id="privacy-public"
+              id='privacy-public'
               checked={info.privacy === 'public'}
               onCheckedChange={handleTogglePrivacy}
               disabled={privacyMutation.isPending}
@@ -503,14 +573,18 @@ return (
       </div>
 
       <Dialog open={previewOpen} onOpenChange={setPreviewOpen}>
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className='max-h-[90vh] max-w-3xl overflow-y-auto'>
           <DialogHeader>
-            <DialogTitle><Trans>Profile preview</Trans></DialogTitle>
+            <DialogTitle>
+              <Trans>Profile preview</Trans>
+            </DialogTitle>
           </DialogHeader>
           <ProfileView
             name={info.name}
             profile={profile}
-            accent={accentValid && accentTrimmed !== '' ? accentTrimmed : undefined}
+            accent={
+              accentValid && accentTrimmed !== '' ? accentTrimmed : undefined
+            }
             avatarUrl={avatarUrl}
             bannerUrl={bannerUrl}
           />
@@ -519,7 +593,6 @@ return (
     </div>
   )
 }
-
 
 function FingerprintRow({ fingerprint }: { fingerprint: string }) {
   const { t } = useLingui()
@@ -540,16 +613,16 @@ function FingerprintRow({ fingerprint }: { fingerprint: string }) {
 
   return (
     <button
-      type="button"
+      type='button'
       onClick={handleCopy}
       title={t`Copy your ID`}
-      className="group text-muted-foreground hover:text-foreground -ms-1 inline-flex items-center gap-1.5 rounded px-1 py-0.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className='group text-muted-foreground hover:text-foreground focus-visible:ring-ring -ms-1 inline-flex items-center gap-1.5 rounded px-1 py-0.5 transition-colors focus-visible:ring-2 focus-visible:outline-none'
     >
-      <span className="font-mono text-xs">{formatted}</span>
+      <span className='font-mono text-xs'>{formatted}</span>
       {copied ? (
-        <Check className="text-primary size-3" />
+        <Check className='text-primary size-3' />
       ) : (
-        <Copy className="size-3 opacity-0 transition-opacity group-hover:opacity-100" />
+        <Copy className='size-3 opacity-0 transition-opacity group-hover:opacity-100' />
       )}
     </button>
   )
@@ -562,7 +635,11 @@ function SlotUploader({
 }: {
   person: string
   slot: 'avatar' | 'banner' | 'favicon'
-  children: (open: () => void, pending: boolean, progress: Upload | null) => React.ReactNode
+  children: (
+    open: () => void,
+    pending: boolean,
+    progress: Upload | null
+  ) => React.ReactNode
 }) {
   const { t } = useLingui()
   const inputRef = useRef<HTMLInputElement>(null)
@@ -583,7 +660,12 @@ function SlotUploader({
     try {
       const opts = SLOT_RESIZE[slot]
       const blob = await resizeImage(file, opts)
-      const ext = opts.mime === 'image/png' ? 'png' : opts.mime === 'image/webp' ? 'webp' : 'jpg'
+      const ext =
+        opts.mime === 'image/png'
+          ? 'png'
+          : opts.mime === 'image/webp'
+            ? 'webp'
+            : 'jpg'
       resized = new File([blob], `${slot}.${ext}`, { type: blob.type })
     } catch (err) {
       setResizing(false)
@@ -593,7 +675,9 @@ function SlotUploader({
     setResizing(false)
     try {
       await toastAction(
-        upload((onProgress) => mutation.mutateAsync({ file: resized, onProgress })),
+        upload((onProgress) =>
+          mutation.mutateAsync({ file: resized, onProgress })
+        ),
         {
           loading: t`Uploading...`,
           success: t`Updated`,
@@ -609,13 +693,16 @@ function SlotUploader({
     <>
       <input
         ref={inputRef}
-        type="file"
-        accept="image/*"
-        className="hidden"
+        type='file'
+        accept='image/*'
+        className='hidden'
         onChange={handleChange}
       />
-      {children(() => inputRef.current?.click(), resizing || mutation.isPending, progress)}
+      {children(
+        () => inputRef.current?.click(),
+        resizing || mutation.isPending,
+        progress
+      )}
     </>
   )
 }
-

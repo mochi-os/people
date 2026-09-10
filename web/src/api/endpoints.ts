@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { getAppPath } from '@mochi/web'
 
 // Class-level actions are addressed absolutely: on a profile URL
@@ -11,7 +10,8 @@ import { getAppPath } from '@mochi/web'
 // routing getAppPath() is empty, so fall back to relative.
 const app = getAppPath()
 const prefix = app ? `${app}/-` : '-'
-const personPrefix = (person: string) => (app ? `${app}/${person}/-` : `${person}/-`)
+const personPrefix = (person: string) =>
+  app ? `${app}/${person}/-` : `${person}/-`
 
 const endpoints = {
   friends: {

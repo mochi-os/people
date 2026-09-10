@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useMemo, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
@@ -25,6 +24,7 @@ import {
   useListAutoAnimate,
 } from '@mochi/web'
 import { UserPlus, UserX, Send, X, Check, Settings } from 'lucide-react'
+import { searchMatches } from '@/lib/search'
 import {
   useFriendsQuery,
   useAcceptFriendInviteMutation,
@@ -33,7 +33,6 @@ import {
 } from '@/hooks/useFriends'
 import { AddFriendDialog } from '@/features/friends/components/add-friend-dialog'
 import { InviteSettingsDialog } from './invite-settings-dialog'
-import { searchMatches } from '@/lib/search'
 
 export function Invitations() {
   const { t } = useLingui()
@@ -57,29 +56,22 @@ export function Invitations() {
 
   const filteredReceived = useMemo(() => {
     const list = friendsData?.received ?? []
-    return list.filter((invite) =>
-      searchMatches(invite.name, search)
-    )
+    return list.filter((invite) => searchMatches(invite.name, search))
   }, [friendsData?.received, search])
 
   const filteredSent = useMemo(() => {
     const list = friendsData?.sent ?? []
-    return list.filter((invite) =>
-      searchMatches(invite.name, search)
-    )
+    return list.filter((invite) => searchMatches(invite.name, search))
   }, [friendsData?.sent, search])
 
   const handleAcceptInvite = async (friendId: string) => {
     try {
-      await toastAction(
-        acceptInviteMutation.mutateAsync({ friendId }),
-        {
-          loading: t`Accepting invitation...`,
-          success: t`Invitation accepted`,
-          error: (error) =>
-            getErrorMessage(error, t`Failed to accept invitation`),
-        }
-      )
+      await toastAction(acceptInviteMutation.mutateAsync({ friendId }), {
+        loading: t`Accepting invitation...`,
+        success: t`Invitation accepted`,
+        error: (error) =>
+          getErrorMessage(error, t`Failed to accept invitation`),
+      })
     } catch {
       // toastAction already showed error
     }
@@ -87,15 +79,12 @@ export function Invitations() {
 
   const handleDeclineInvite = async (friendId: string) => {
     try {
-      await toastAction(
-        declineInviteMutation.mutateAsync({ friendId }),
-        {
-          loading: t`Declining invitation...`,
-          success: t`Invitation declined`,
-          error: (error) =>
-            getErrorMessage(error, t`Failed to decline invitation`),
-        }
-      )
+      await toastAction(declineInviteMutation.mutateAsync({ friendId }), {
+        loading: t`Declining invitation...`,
+        success: t`Invitation declined`,
+        error: (error) =>
+          getErrorMessage(error, t`Failed to decline invitation`),
+      })
     } catch {
       // toastAction already showed error
     }
@@ -103,15 +92,12 @@ export function Invitations() {
 
   const handleCancelSent = async (friendId: string) => {
     try {
-      await toastAction(
-        removeMutation.mutateAsync({ friendId }),
-        {
-          loading: t`Cancelling invitation...`,
-          success: t`Invitation cancelled`,
-          error: (error) =>
-            getErrorMessage(error, t`Failed to cancel invitation`),
-        }
-      )
+      await toastAction(removeMutation.mutateAsync({ friendId }), {
+        loading: t`Cancelling invitation...`,
+        success: t`Invitation cancelled`,
+        error: (error) =>
+          getErrorMessage(error, t`Failed to cancel invitation`),
+      })
     } catch {
       // toastAction already showed error
     }
@@ -136,8 +122,7 @@ export function Invitations() {
         {
           loading: t`Accepting invitations...`,
           success: false,
-          error: (e) =>
-            getErrorMessage(e, t`Failed to accept invitations`),
+          error: (e) => getErrorMessage(e, t`Failed to accept invitations`),
         }
       )
       const failed = results.filter((r) => r.status === 'rejected').length
@@ -165,8 +150,7 @@ export function Invitations() {
         {
           loading: t`Declining invitations...`,
           success: false,
-          error: (e) =>
-            getErrorMessage(e, t`Failed to decline invitations`),
+          error: (e) => getErrorMessage(e, t`Failed to decline invitations`),
         }
       )
       const failed = results.filter((r) => r.status === 'rejected').length
@@ -194,8 +178,7 @@ export function Invitations() {
         {
           loading: t`Cancelling invitations...`,
           success: false,
-          error: (e) =>
-            getErrorMessage(e, t`Failed to cancel invitations`),
+          error: (e) => getErrorMessage(e, t`Failed to cancel invitations`),
         }
       )
       const failed = results.filter((r) => r.status === 'rejected').length
@@ -235,7 +218,12 @@ export function Invitations() {
             {searchInput}
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant='outline' size='icon' onClick={() => setSettingsOpen(true)} aria-label={t`Invite settings`}>
+                <Button
+                  variant='outline'
+                  size='icon'
+                  onClick={() => setSettingsOpen(true)}
+                  aria-label={t`Invite settings`}
+                >
                   <Settings className='h-4 w-4' />
                 </Button>
               </TooltipTrigger>
@@ -291,7 +279,8 @@ export function Invitations() {
             title={t`No pending invitations`}
             description={
               search
-                ? t`Try adjusting your search` : t`New invitations will appear here`
+                ? t`Try adjusting your search`
+                : t`New invitations will appear here`
             }
           />
         ) : (
@@ -340,7 +329,7 @@ export function Invitations() {
                           src={`${appPath}/${invite.id}/-/avatar`}
                           styleUrl={`${appPath}/${invite.id}/-/style`}
                           name={invite.name}
-                          size="md"
+                          size='md'
                         />
                         <div className='flex flex-col'>
                           <span className='truncate font-medium'>
@@ -408,7 +397,7 @@ export function Invitations() {
                           src={`${appPath}/${invite.id}/-/avatar`}
                           styleUrl={`${appPath}/${invite.id}/-/style`}
                           name={invite.name}
-                          size="md"
+                          size='md'
                         />
                         <div className='flex flex-col'>
                           <span className='truncate font-medium'>

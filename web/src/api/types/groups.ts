@@ -47,4 +47,3 @@ export interface RemoveGroupMemberRequest {
   group: string
   member: string
 }
-

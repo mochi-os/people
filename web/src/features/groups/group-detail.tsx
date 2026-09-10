@@ -2,11 +2,9 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useState } from 'react'
-import { Trans, useLingui } from '@lingui/react/macro'
 import { useNavigate, useParams } from '@tanstack/react-router'
-import { MoreHorizontal, Pencil, Trash2, User, UsersRound, X, UserPlus } from 'lucide-react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import {
   toastAction,
   Button,
@@ -39,6 +37,15 @@ import {
   naturalCompare,
 } from '@mochi/web'
 import {
+  MoreHorizontal,
+  Pencil,
+  Trash2,
+  User,
+  UsersRound,
+  X,
+  UserPlus,
+} from 'lucide-react'
+import {
   useDeleteGroupMutation,
   useGroupQuery,
   useRemoveGroupMemberMutation,
@@ -60,7 +67,6 @@ export function GroupDetail() {
 
   usePageTitle(data?.group?.name ?? t`Group`)
 
-
   const [addMemberDialog, setAddMemberDialog] = useState(false)
 
   const [removeMemberDialog, setRemoveMemberDialog] = useState<{
@@ -70,7 +76,11 @@ export function GroupDetail() {
     type: 'user' | 'group'
   }>({ open: false, member: '', name: '', type: 'user' })
 
-  const handleRemoveMember = (member: string, name: string, type: 'user' | 'group') => {
+  const handleRemoveMember = (
+    member: string,
+    name: string,
+    type: 'user' | 'group'
+  ) => {
     setRemoveMemberDialog({ open: true, member, name, type })
   }
 
@@ -126,14 +136,18 @@ export function GroupDetail() {
           group ? (
             <>
               <Button onClick={() => setAddMemberDialog(true)}>
-                <UserPlus className='h-4 w-4 me-2' />
+                <UserPlus className='me-2 h-4 w-4' />
                 <Trans>Add member</Trans>
               </Button>
               <DropdownMenu>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <DropdownMenuTrigger asChild>
-                      <Button variant='outline' size='icon' aria-label={t`Group actions`}>
+                      <Button
+                        variant='outline'
+                        size='icon'
+                        aria-label={t`Group actions`}
+                      >
                         <MoreHorizontal className='h-4 w-4' />
                       </Button>
                     </DropdownMenuTrigger>
@@ -155,7 +169,7 @@ export function GroupDetail() {
           ) : undefined
         }
       />
-      <Main className="space-y-6">
+      <Main className='space-y-6'>
         {error ? (
           <GeneralError error={error} minimal mode='inline' reset={refetch} />
         ) : null}
@@ -170,24 +184,29 @@ export function GroupDetail() {
         ) : !group ? null : (
           <>
             <Section title={t`Identity`}>
-              <div className="divide-y-0">
+              <div className='divide-y-0'>
                 <FieldRow label={t`Group ID`}>
                   <DataChip value={id} truncate='middle' />
                 </FieldRow>
                 {group.description && (
                   <FieldRow label={t`Description`}>
-                    <span className="text-sm text-foreground">{group.description}</span>
+                    <span className='text-foreground text-sm'>
+                      {group.description}
+                    </span>
                   </FieldRow>
                 )}
                 <FieldRow label={t`Members count`}>
-                  <DataChip value={members.length.toString()} copyable={false} />
+                  <DataChip
+                    value={members.length.toString()}
+                    copyable={false}
+                  />
                 </FieldRow>
               </div>
             </Section>
 
             <Section title={t`Members`}>
               {members.length === 0 ? (
-                <div className="py-8">
+                <div className='py-8'>
                   <EmptyState
                     icon={User}
                     title={t`No members`}
@@ -199,9 +218,15 @@ export function GroupDetail() {
                   <Table>
                     <TableHeader>
                       <TableRow>
-                        <TableHead><Trans>Member</Trans></TableHead>
-                        <TableHead><Trans>Type</Trans></TableHead>
-                        <TableHead className='w-[80px] text-end'><Trans>Actions</Trans></TableHead>
+                        <TableHead>
+                          <Trans>Member</Trans>
+                        </TableHead>
+                        <TableHead>
+                          <Trans>Type</Trans>
+                        </TableHead>
+                        <TableHead className='w-[80px] text-end'>
+                          <Trans>Actions</Trans>
+                        </TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -214,29 +239,43 @@ export function GroupDetail() {
                                   src={`${appPath}/${member.member}/-/avatar`}
                                   styleUrl={`${appPath}/${member.member}/-/style`}
                                   name={member.name}
-                                  size="md"
+                                  size='md'
                                 />
                               )}
                               <span className='truncate'>{member.name}</span>
                             </div>
                           </TableCell>
                           <TableCell>
-                            <div className="flex items-center gap-2">
+                            <div className='flex items-center gap-2'>
                               {member.type === 'group' ? (
-                                <DataChip value={t`Group`} icon={<UsersRound className='size-3.5' />} copyable={false} />
+                                <DataChip
+                                  value={t`Group`}
+                                  icon={<UsersRound className='size-3.5' />}
+                                  copyable={false}
+                                />
                               ) : (
-                                <DataChip value={t`User`} icon={<User className='size-3.5' />} copyable={false} />
+                                <DataChip
+                                  value={t`User`}
+                                  icon={<User className='size-3.5' />}
+                                  copyable={false}
+                                />
                               )}
                             </div>
                           </TableCell>
-                          <TableCell className="text-end">
+                          <TableCell className='text-end'>
                             <Tooltip>
                               <TooltipTrigger asChild>
                                 <Button
                                   variant='ghost'
                                   size='icon'
-                                  className="h-8 w-8 text-muted-foreground"
-                                  onClick={() => handleRemoveMember(member.member, member.name, member.type)}
+                                  className='text-muted-foreground h-8 w-8'
+                                  onClick={() =>
+                                    handleRemoveMember(
+                                      member.member,
+                                      member.name,
+                                      member.type
+                                    )
+                                  }
                                   aria-label={t`Remove ${member.name}`}
                                 >
                                   <X className='h-4 w-4' />
@@ -257,7 +296,9 @@ export function GroupDetail() {
 
         <ConfirmDialog
           open={removeMemberDialog.open}
-          onOpenChange={(open) => setRemoveMemberDialog({ ...removeMemberDialog, open })}
+          onOpenChange={(open) =>
+            setRemoveMemberDialog({ ...removeMemberDialog, open })
+          }
           title={t`Remove member`}
           desc={
             <Trans>
@@ -268,7 +309,9 @@ export function GroupDetail() {
               from this group?
             </Trans>
           }
-          confirmText={removeMemberMutation.isPending ? t`Removing...` : t`Remove member`}
+          confirmText={
+            removeMemberMutation.isPending ? t`Removing...` : t`Remove member`
+          }
           destructive
           handleConfirm={confirmRemoveMember}
           isLoading={removeMemberMutation.isPending}

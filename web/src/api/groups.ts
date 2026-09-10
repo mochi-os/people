@@ -2,9 +2,10 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { t } from '@lingui/core/macro'
+import { requestHelpers } from '@mochi/web'
 import endpoints from '@/api/endpoints'
+import type { MutationSuccessResponse } from '@/api/types/friends'
 import type {
   AddGroupMemberRequest,
   CreateGroupRequest,
@@ -15,8 +16,6 @@ import type {
   RemoveGroupMemberRequest,
   UpdateGroupRequest,
 } from '@/api/types/groups'
-import type { MutationSuccessResponse } from '@/api/types/friends'
-import { requestHelpers } from '@mochi/web'
 
 const suppressMutationErrorToast = {
   mochi: { showGlobalErrorToast: false },
@@ -29,7 +28,9 @@ const listGroups = async (): Promise<Group[]> => {
   return response?.groups ?? []
 }
 
-const getGroup = async (id: string): Promise<{ group: Group; members: GroupMember[] }> => {
+const getGroup = async (
+  id: string
+): Promise<{ group: Group; members: GroupMember[] }> => {
   const params = new URLSearchParams()
   params.append('id', id)
 
@@ -57,7 +58,9 @@ const getGroup = async (id: string): Promise<{ group: Group; members: GroupMembe
   }
 }
 
-const createGroup = async (payload: CreateGroupRequest): Promise<MutationSuccessResponse> => {
+const createGroup = async (
+  payload: CreateGroupRequest
+): Promise<MutationSuccessResponse> => {
   const params = new URLSearchParams()
   if (payload.id) {
     params.append('id', payload.id)
@@ -67,20 +70,18 @@ const createGroup = async (payload: CreateGroupRequest): Promise<MutationSuccess
     params.append('description', payload.description)
   }
 
-  await requestHelpers.post(
-    endpoints.groups.create,
-    params.toString(),
-    {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      ...suppressMutationErrorToast,
-    }
-  )
+  await requestHelpers.post(endpoints.groups.create, params.toString(), {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    ...suppressMutationErrorToast,
+  })
   return { success: true }
 }
 
-const updateGroup = async (payload: UpdateGroupRequest): Promise<MutationSuccessResponse> => {
+const updateGroup = async (
+  payload: UpdateGroupRequest
+): Promise<MutationSuccessResponse> => {
   const params = new URLSearchParams()
   params.append('id', payload.id)
   if (payload.name) {
@@ -90,16 +91,12 @@ const updateGroup = async (payload: UpdateGroupRequest): Promise<MutationSuccess
     params.append('description', payload.description)
   }
 
-  await requestHelpers.post(
-    endpoints.groups.update,
-    params.toString(),
-    {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      ...suppressMutationErrorToast,
-    }
-  )
+  await requestHelpers.post(endpoints.groups.update, params.toString(), {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    ...suppressMutationErrorToast,
+  })
   return { success: true }
 }
 
@@ -107,53 +104,45 @@ const deleteGroup = async (id: string): Promise<MutationSuccessResponse> => {
   const params = new URLSearchParams()
   params.append('id', id)
 
-  await requestHelpers.post(
-    endpoints.groups.delete,
-    params.toString(),
-    {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      ...suppressMutationErrorToast,
-    }
-  )
+  await requestHelpers.post(endpoints.groups.delete, params.toString(), {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    ...suppressMutationErrorToast,
+  })
   return { success: true }
 }
 
-const addMember = async (payload: AddGroupMemberRequest): Promise<MutationSuccessResponse> => {
+const addMember = async (
+  payload: AddGroupMemberRequest
+): Promise<MutationSuccessResponse> => {
   const params = new URLSearchParams()
   params.append('group', payload.group)
   params.append('member', payload.member)
   params.append('type', payload.type)
 
-  await requestHelpers.post(
-    endpoints.groups.memberAdd,
-    params.toString(),
-    {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      ...suppressMutationErrorToast,
-    }
-  )
+  await requestHelpers.post(endpoints.groups.memberAdd, params.toString(), {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    ...suppressMutationErrorToast,
+  })
   return { success: true }
 }
 
-const removeMember = async (payload: RemoveGroupMemberRequest): Promise<MutationSuccessResponse> => {
+const removeMember = async (
+  payload: RemoveGroupMemberRequest
+): Promise<MutationSuccessResponse> => {
   const params = new URLSearchParams()
   params.append('group', payload.group)
   params.append('member', payload.member)
 
-  await requestHelpers.post(
-    endpoints.groups.memberRemove,
-    params.toString(),
-    {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      ...suppressMutationErrorToast,
-    }
-  )
+  await requestHelpers.post(endpoints.groups.memberRemove, params.toString(), {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    ...suppressMutationErrorToast,
+  })
   return { success: true }
 }
 

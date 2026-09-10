@@ -2,10 +2,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
-import { Check } from 'lucide-react'
 import {
   Button,
   Dialog,
@@ -20,11 +18,12 @@ import {
   getErrorMessage,
   toastAction,
 } from '@mochi/web'
+import { Check } from 'lucide-react'
+import type { InvitePolicy } from '@/api/friends'
 import {
   usePreferencesQuery,
   useSetPreferencesMutation,
 } from '@/hooks/useFriends'
-import type { InvitePolicy } from '@/api/friends'
 
 interface Props {
   open: boolean
@@ -71,7 +70,9 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className='max-w-md'>
         <DialogHeader>
-          <DialogTitle><Trans>Incoming invitations</Trans></DialogTitle>
+          <DialogTitle>
+            <Trans>Incoming invitations</Trans>
+          </DialogTitle>
         </DialogHeader>
         {isLoading ? (
           <div className='space-y-3 py-2'>
@@ -94,10 +95,16 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
               <label
                 key={opt.value}
                 htmlFor={`invite-policy-${opt.value}`}
-                className='flex items-center gap-3 rounded-md border p-3 cursor-pointer hover:bg-hover'
+                className='hover:bg-hover flex cursor-pointer items-center gap-3 rounded-md border p-3'
               >
-                <RadioGroupItem value={opt.value} id={`invite-policy-${opt.value}`} />
-                <Label htmlFor={`invite-policy-${opt.value}`} className='font-medium cursor-pointer'>
+                <RadioGroupItem
+                  value={opt.value}
+                  id={`invite-policy-${opt.value}`}
+                />
+                <Label
+                  htmlFor={`invite-policy-${opt.value}`}
+                  className='cursor-pointer font-medium'
+                >
                   {opt.label}
                 </Label>
               </label>
@@ -105,7 +112,11 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
           </RadioGroup>
         )}
         <DialogFooter>
-          <Button variant='outline' onClick={() => onOpenChange(false)} disabled={setPolicy.isPending}>
+          <Button
+            variant='outline'
+            onClick={() => onOpenChange(false)}
+            disabled={setPolicy.isPending}
+          >
             <Trans>Cancel</Trans>
           </Button>
           <Button

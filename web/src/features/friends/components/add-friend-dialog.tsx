@@ -2,17 +2,50 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useEffect, useState, useMemo } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
+import {
+  cn,
+  toastAction,
+  getAppPath,
+  getErrorMessage,
+  GeneralError,
+  Button,
+  EntityAvatar,
+  EntityBanner,
+  ResponsiveDialog,
+  ResponsiveDialogContent,
+  ResponsiveDialogDescription,
+  ResponsiveDialogFooter,
+  ResponsiveDialogHeader,
+  ResponsiveDialogTitle,
+  SearchInput,
+  EmptyState,
+  ScrollArea,
+  useScreenSize,
+  markdownUrlTransform,
+} from '@mochi/web'
+import {
+  Search,
+  Loader2,
+  UserPlus,
+  UserCheck,
+  Check,
+  Send,
+  Ban,
+  ArrowLeft,
+} from 'lucide-react'
 import Markdown, { defaultUrlTransform } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { Search, Loader2, UserPlus, UserCheck, Check, Send, Ban, ArrowLeft } from 'lucide-react'
-import { cn, toastAction, getAppPath, getErrorMessage, GeneralError, Button, EntityAvatar, EntityBanner, ResponsiveDialog, ResponsiveDialogContent, ResponsiveDialogDescription, ResponsiveDialogFooter, ResponsiveDialogHeader, ResponsiveDialogTitle, SearchInput, EmptyState, ScrollArea, useScreenSize, markdownUrlTransform } from '@mochi/web'
-import { useSearchUsersQuery, useCreateFriendMutation, useAcceptFriendInviteMutation, useFriendsQuery } from '@/hooks/useFriends'
 import { personApi } from '@/api/person'
 import type { PersonInformation } from '@/api/types/person'
 import { formatFingerprint } from '@/lib/fingerprint'
+import {
+  useSearchUsersQuery,
+  useCreateFriendMutation,
+  useAcceptFriendInviteMutation,
+  useFriendsQuery,
+} from '@/hooks/useFriends'
 
 type AddFriendDialogProps = {
   open: boolean
@@ -26,7 +59,9 @@ type PreviewState = {
 }
 
 function hasProfileContent(info: PersonInformation): boolean {
-  return Boolean(info.avatar || info.banner || (info.profile && info.profile.trim() !== ''))
+  return Boolean(
+    info.avatar || info.banner || (info.profile && info.profile.trim() !== '')
+  )
 }
 
 export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
@@ -43,7 +78,6 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
     [friendsData?.sent]
   )
 
-
   // Debounce search query
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -53,17 +87,17 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
     return () => clearTimeout(timer)
   }, [searchQuery])
 
-  const { data, isLoading, isError, error, refetch } = useSearchUsersQuery(debouncedQuery, {
-    enabled: open && debouncedQuery.length > 0,
-  })
+  const { data, isLoading, isError, error, refetch } = useSearchUsersQuery(
+    debouncedQuery,
+    {
+      enabled: open && debouncedQuery.length > 0,
+    }
+  )
 
   const createFriendMutation = useCreateFriendMutation()
   const acceptFriendMutation = useAcceptFriendInviteMutation()
 
-  const users = useMemo(
-    () => data?.results ?? [],
-    [data?.results]
-  )
+  const users = useMemo(() => data?.results ?? [], [data?.results])
 
   const sendInvite = async (userId: string, userName: string) => {
     try {
@@ -104,7 +138,10 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
     }
   }
 
-  const startConnect = (user: { id: string; name: string }, intent: 'invite' | 'accept') => {
+  const startConnect = (
+    user: { id: string; name: string },
+    intent: 'invite' | 'accept'
+  ) => {
     setPendingUserId(user.id)
     personApi
       .getInformation(user.id)
@@ -160,9 +197,8 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
   })()
 
   const previewBusy = preview ? pendingUserId === preview.user.id : false
-  const previewConfirmLabel = preview?.intent === 'accept'
-    ? t`Accept`
-    : t`Send invitation`
+  const previewConfirmLabel =
+    preview?.intent === 'accept' ? t`Accept` : t`Send invitation`
 
   return (
     <ResponsiveDialog
@@ -183,7 +219,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
         </ResponsiveDialogHeader>
 
         {preview ? (
-            <FriendPreview info={preview.info} />
+          <FriendPreview info={preview.info} />
         ) : (
           <div className='space-y-4 px-4 pb-4 sm:px-0 sm:pb-0'>
             <div className='space-y-2'>
@@ -202,7 +238,9 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                 viewState === 'results' ? 'max-h-[18rem]' : 'h-[13rem]'
               )}
             >
-              <div className={cn('p-3', viewState !== 'results' && 'min-h-full')}>
+              <div
+                className={cn('p-3', viewState !== 'results' && 'min-h-full')}
+              >
                 {viewState === 'idle' && (
                   <EmptyState
                     icon={Search}
@@ -240,10 +278,13 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                 {viewState === 'results' && (
                   <div className='space-y-1'>
                     {users.map((user) => {
-                      const sessionInvited = invitedUserIds.has(user.id) || sentUserIds.has(user.id)
+                      const sessionInvited =
+                        invitedUserIds.has(user.id) || sentUserIds.has(user.id)
                       const isPendingForThisUser = pendingUserId === user.id
 
-                      const status = sessionInvited ? 'invited' : (user.relationship ?? 'none')
+                      const status = sessionInvited
+                        ? 'invited'
+                        : (user.relationship ?? 'none')
 
                       // Determine if button should be disabled
                       const isDisabled =
@@ -262,9 +303,15 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                       // Determine button action
                       const handleClick = () => {
                         if (status === 'pending') {
-                          startConnect({ id: user.id, name: user.name }, 'accept')
+                          startConnect(
+                            { id: user.id, name: user.name },
+                            'accept'
+                          )
                         } else {
-                          startConnect({ id: user.id, name: user.name }, 'invite')
+                          startConnect(
+                            { id: user.id, name: user.name },
+                            'invite'
+                          )
                         }
                       }
 
@@ -323,7 +370,8 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                           key={user.id}
                           className={cn(
                             'flex items-center justify-between gap-3 rounded-lg p-3 transition-all',
-                            status !== 'self' && 'hover:bg-hover hover:text-hover-foreground',
+                            status !== 'self' &&
+                              'hover:bg-hover hover:text-hover-foreground',
                             'group'
                           )}
                         >
@@ -332,7 +380,7 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                               src={`${getAppPath()}/${user.id}/-/avatar`}
                               styleUrl={`${getAppPath()}/${user.id}/-/style`}
                               name={user.name}
-                              size="lg"
+                              size='lg'
                             />
                             <div className='flex min-w-0 flex-1 flex-col'>
                               <span className='truncate text-sm font-medium'>
@@ -407,8 +455,12 @@ const previewUrlTransform = markdownUrlTransform(defaultUrlTransform)
 
 function FriendPreview({ info }: { info: PersonInformation }) {
   const appPath = getAppPath()
-  const avatarUrl = info.avatar ? `${appPath}/${info.id}/-/avatar?v=${info.avatar}` : null
-  const bannerUrl = info.banner ? `${appPath}/${info.id}/-/banner?v=${info.banner}` : null
+  const avatarUrl = info.avatar
+    ? `${appPath}/${info.id}/-/avatar?v=${info.avatar}`
+    : null
+  const bannerUrl = info.banner
+    ? `${appPath}/${info.id}/-/banner?v=${info.banner}`
+    : null
   const accent = info.style.accent
 
   return (
@@ -416,7 +468,12 @@ function FriendPreview({ info }: { info: PersonInformation }) {
       <div className='space-y-3 px-4 pb-4 sm:px-0 sm:pb-0'>
         {bannerUrl && <EntityBanner src={bannerUrl} className='rounded-lg' />}
         <div className='flex items-center gap-3'>
-          <EntityAvatar src={avatarUrl} name={info.name} size="2xl" accent={accent} />
+          <EntityAvatar
+            src={avatarUrl}
+            name={info.name}
+            size='2xl'
+            accent={accent}
+          />
           <div className='min-w-0'>
             <p className='truncate font-medium'>{info.name}</p>
             <p className='text-muted-foreground truncate text-xs'>
@@ -426,11 +483,15 @@ function FriendPreview({ info }: { info: PersonInformation }) {
         </div>
         {info.profile?.trim() && (
           <div className='markdown-body text-sm leading-relaxed'>
-            <Markdown remarkPlugins={[remarkGfm]} urlTransform={previewUrlTransform}>{info.profile}</Markdown>
+            <Markdown
+              remarkPlugins={[remarkGfm]}
+              urlTransform={previewUrlTransform}
+            >
+              {info.profile}
+            </Markdown>
           </div>
         )}
       </div>
     </ScrollArea>
   )
 }
-

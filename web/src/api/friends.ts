@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
+import { requestHelpers } from '@mochi/web'
 import endpoints from '@/api/endpoints'
 import type {
   AcceptInviteRequest,
@@ -13,7 +13,6 @@ import type {
   SearchUsersResponse,
   SearchLocalUsersResponse,
 } from '@/api/types/friends'
-import { requestHelpers } from '@mochi/web'
 
 const suppressMutationErrorToast = {
   mochi: { showGlobalErrorToast: false },
@@ -44,7 +43,9 @@ const searchUsers = async (query: string): Promise<SearchUsersResponse> => {
   return response
 }
 
-const searchLocalUsers = async (query: string): Promise<SearchLocalUsersResponse> => {
+const searchLocalUsers = async (
+  query: string
+): Promise<SearchLocalUsersResponse> => {
   const formData = new URLSearchParams()
   formData.append('search', query)
 
@@ -140,7 +141,9 @@ const getPreferences = async (): Promise<PreferencesResponse> => {
   return requestHelpers.get<PreferencesResponse>(endpoints.preferences.get)
 }
 
-const setPreferences = async (payload: { policy: InvitePolicy }): Promise<MutationSuccessResponse> => {
+const setPreferences = async (payload: {
+  policy: InvitePolicy
+}): Promise<MutationSuccessResponse> => {
   const body = new URLSearchParams({ policy: payload.policy })
   await requestHelpers.post(endpoints.preferences.set, body.toString(), {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -168,4 +171,3 @@ export type {
   SearchUsersResponse,
   SearchLocalUsersResponse,
 }
-

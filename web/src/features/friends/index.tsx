@@ -2,10 +2,9 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
 import { useMemo, useState } from 'react'
-import { Trans, useLingui } from '@lingui/react/macro'
 import { APP_ROUTES } from '@/config/app-routes'
+import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
   ConfirmDialog,
@@ -34,9 +33,9 @@ import {
   useListAutoAnimate,
 } from '@mochi/web'
 import { UserPlus, Users, MessageSquare, UserX } from 'lucide-react'
+import { searchMatches, searchRange } from '@/lib/search'
 import { useFriendsQuery, useRemoveFriendMutation } from '@/hooks/useFriends'
 import { AddFriendDialog } from './components/add-friend-dialog'
-import { searchMatches, searchRange } from '@/lib/search'
 
 type SortBy = 'name' | 'recent'
 
@@ -46,7 +45,9 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
   const appPath = getAppPath()
   const [search, setSearch] = useState('')
   const [sortBy, setSortBy] = useState<SortBy>('name')
-  const [addFriendDialogOpen, setAddFriendDialogOpen] = useState(autoAdd ?? false)
+  const [addFriendDialogOpen, setAddFriendDialogOpen] = useState(
+    autoAdd ?? false
+  )
 
   const [removeFriendDialog, setRemoveFriendDialog] = useState<{
     open: boolean
@@ -54,12 +55,7 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
     friendName: string
   }>({ open: false, friendId: '', friendName: '' })
 
-  const {
-    data: friendsData,
-    isLoading,
-    error,
-    refetch,
-  } = useFriendsQuery()
+  const { data: friendsData, isLoading, error, refetch } = useFriendsQuery()
   const removeFriendMutation = useRemoveFriendMutation()
   const [friendsListRef] = useListAutoAnimate<HTMLDivElement>({
     disabled: (isLoading && !friendsData) || search.trim().length > 0,
@@ -68,9 +64,7 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
   const filteredFriends = useMemo(() => {
     const list = friendsData?.friends ?? []
     return list
-      .filter((friend) =>
-        searchMatches(friend.name, search)
-      )
+      .filter((friend) => searchMatches(friend.name, search))
       .sort((a, b) => {
         if (sortBy === 'recent') {
           return b.created - a.created

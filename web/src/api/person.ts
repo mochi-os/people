@@ -2,14 +2,10 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-
-import { requestHelpers } from '@mochi/web'
 import type { AxiosProgressEvent } from 'axios'
+import { requestHelpers } from '@mochi/web'
 import endpoints from '@/api/endpoints'
-import type {
-  MutationSuccess,
-  PersonInformation,
-} from '@/api/types/person'
+import type { MutationSuccess, PersonInformation } from '@/api/types/person'
 
 const suppressMutationErrorToast = {
   mochi: { showGlobalErrorToast: false },
@@ -18,7 +14,10 @@ const suppressMutationErrorToast = {
 const getInformation = (person: string): Promise<PersonInformation> =>
   requestHelpers.get<PersonInformation>(endpoints.person.information(person))
 
-const setProfile = (person: string, profile: string): Promise<MutationSuccess> =>
+const setProfile = (
+  person: string,
+  profile: string
+): Promise<MutationSuccess> =>
   requestHelpers.post<MutationSuccess>(
     endpoints.person.profileSet(person),
     { profile },
@@ -39,7 +38,10 @@ const setName = (person: string, name: string): Promise<MutationSuccess> =>
     suppressMutationErrorToast
   )
 
-const setPrivacy = (person: string, privacy: string): Promise<MutationSuccess> =>
+const setPrivacy = (
+  person: string,
+  privacy: string
+): Promise<MutationSuccess> =>
   requestHelpers.post<MutationSuccess>(
     endpoints.person.privacySet(person),
     { privacy },

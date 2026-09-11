@@ -140,20 +140,15 @@ export function GroupDetail() {
                 <Trans>Add member</Trans>
               </Button>
               <DropdownMenu>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <DropdownMenuTrigger asChild>
-                      <Button
-                        variant='outline'
-                        size='icon'
-                        aria-label={t`Group actions`}
-                      >
-                        <MoreHorizontal className='h-4 w-4' />
-                      </Button>
-                    </DropdownMenuTrigger>
-                  </TooltipTrigger>
-                  <TooltipContent>{t`Group actions`}</TooltipContent>
-                </Tooltip>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant='outline'
+                    size='icon'
+                    aria-label={t`Group actions`}
+                  >
+                    <MoreHorizontal className='h-4 w-4' />
+                  </Button>
+                </DropdownMenuTrigger>
                 <DropdownMenuContent align='end'>
                   <DropdownMenuItem onClick={() => setEditDialogOpen(true)}>
                     <Pencil className='h-4 w-4' />

@@ -20,7 +20,7 @@ import {
   handlePermissionError,
   textUnchanged,
 } from '@mochi/web'
-import { Plus, Check, Loader2 } from 'lucide-react'
+import { Plus, Check } from 'lucide-react'
 import type { Group } from '@/api/types/groups'
 import {
   useCreateGroupMutation,
@@ -157,23 +157,13 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
             >
               <Trans>Cancel</Trans>
             </Button>
-            <Button type='submit' disabled={isPending || editUnchanged}>
-              {isPending ? (
-                <>
-                  <Loader2 className='size-4 animate-spin' />
-                  {t`Saving...`}
-                </>
-              ) : isEditing ? (
-                <>
-                  <Check className='size-4' />
-                  {t`Save`}
-                </>
-              ) : (
-                <>
-                  <Plus className='size-4' />
-                  <Trans>Create group</Trans>
-                </>
-              )}
+            <Button
+              type='submit'
+              loading={isPending}
+              icon={isEditing ? <Check className='size-4' /> : <Plus className='size-4' />}
+              disabled={editUnchanged}
+            >
+              {isEditing ? <Trans>Save</Trans> : <Trans>Create group</Trans>}
             </Button>
           </ResponsiveDialogFooter>
         </form>

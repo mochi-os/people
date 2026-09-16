@@ -304,9 +304,7 @@ export function GroupDetail() {
               from this group?
             </Trans>
           }
-          confirmText={
-            removeMemberMutation.isPending ? t`Removing...` : t`Remove member`
-          }
+          confirmText={t`Remove member`}
           destructive
           handleConfirm={confirmRemoveMember}
           isLoading={removeMemberMutation.isPending}

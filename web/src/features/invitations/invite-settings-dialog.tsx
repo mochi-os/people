@@ -121,14 +121,14 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
           </Button>
           <Button
             onClick={handleSave}
+            loading={setPolicy.isPending}
+            icon={<Check className='size-4' />}
             disabled={
-              setPolicy.isPending ||
               isLoading ||
               isError ||
               (!!data?.policy && value === data.policy)
             }
           >
-            <Check className='size-4' />
             <Trans>Save</Trans>
           </Button>
         </DialogFooter>

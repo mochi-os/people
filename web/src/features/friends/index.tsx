@@ -207,12 +207,12 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
                           variant='ghost'
                           size='sm'
                           aria-label={t`Remove ${friend.name}`}
-                          disabled={removeFriendMutation.isPending}
+                          loading={removeFriendMutation.isPending}
+                          icon={<UserX className='h-4 w-4' />}
                           onClick={() =>
                             handleRemoveFriend(friend.id, friend.name)
                           }
                         >
-                          <UserX className='h-4 w-4' />
                         </Button>
                       </TooltipTrigger>
                       <TooltipContent>{t`Remove ${friend.name}`}</TooltipContent>
@@ -244,9 +244,7 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
               from your friends list? This action cannot be undone.
             </Trans>
           }
-          confirmText={
-            removeFriendMutation.isPending ? t`Removing...` : t`Remove friend`
-          }
+          confirmText={t`Remove friend`}
           destructive
           handleConfirm={confirmRemoveFriend}
           isLoading={removeFriendMutation.isPending}

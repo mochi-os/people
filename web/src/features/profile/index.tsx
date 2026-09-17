@@ -380,8 +380,7 @@ function ProfileEditor({
                     icon={<Check className='size-4' />}
                     disabled={!nameDirty}
                     aria-label={t`Save name`}
-                  >
-                  </Button>
+                  ></Button>
                 </TooltipTrigger>
                 <TooltipContent>{t`Save name`}</TooltipContent>
               </Tooltip>

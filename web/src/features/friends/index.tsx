@@ -217,8 +217,7 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
                           onClick={() =>
                             handleRemoveFriend(friend.id, friend.name)
                           }
-                        >
-                        </Button>
+                        ></Button>
                       </TooltipTrigger>
                       <TooltipContent>{t`Remove ${friend.name}`}</TooltipContent>
                     </Tooltip>

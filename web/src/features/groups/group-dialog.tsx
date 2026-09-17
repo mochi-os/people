@@ -160,7 +160,13 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
             <Button
               type='submit'
               loading={isPending}
-              icon={isEditing ? <Check className='size-4' /> : <Plus className='size-4' />}
+              icon={
+                isEditing ? (
+                  <Check className='size-4' />
+                ) : (
+                  <Plus className='size-4' />
+                )
+              }
               disabled={editUnchanged}
             >
               {isEditing ? <Trans>Save</Trans> : <Trans>Create group</Trans>}

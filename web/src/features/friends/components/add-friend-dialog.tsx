@@ -311,15 +311,32 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                       const buttonContent = (() => {
                         switch (status) {
                           case 'self':
-                            return { label: t`That's you`, trailingIcon: <Ban className='ms-2 h-4 w-4' /> }
+                            return {
+                              label: t`That's you`,
+                              trailingIcon: <Ban className='ms-2 h-4 w-4' />,
+                            }
                           case 'friend':
-                            return { label: t`Already friends`, trailingIcon: <UserCheck className='ms-2 h-4 w-4' /> }
+                            return {
+                              label: t`Already friends`,
+                              trailingIcon: (
+                                <UserCheck className='ms-2 h-4 w-4' />
+                              ),
+                            }
                           case 'invited':
-                            return { label: t`Invitation sent`, icon: <Send className='me-2 h-4 w-4' /> }
+                            return {
+                              label: t`Invitation sent`,
+                              icon: <Send className='me-2 h-4 w-4' />,
+                            }
                           case 'pending':
-                            return { label: t`Accept invite`, trailingIcon: <Check className='ms-2 h-4 w-4' /> }
+                            return {
+                              label: t`Accept invite`,
+                              trailingIcon: <Check className='ms-2 h-4 w-4' />,
+                            }
                           default:
-                            return { label: t`Add friend`, icon: <UserPlus className='me-2 h-4 w-4' /> }
+                            return {
+                              label: t`Add friend`,
+                              icon: <UserPlus className='me-2 h-4 w-4' />,
+                            }
                         }
                       })()
 

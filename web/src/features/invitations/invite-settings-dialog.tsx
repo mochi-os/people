@@ -124,9 +124,7 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
             loading={setPolicy.isPending}
             icon={<Check className='size-4' />}
             disabled={
-              isLoading ||
-              isError ||
-              (!!data?.policy && value === data.policy)
+              isLoading || isError || (!!data?.policy && value === data.policy)
             }
           >
             <Trans>Save</Trans>

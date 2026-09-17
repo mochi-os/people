@@ -207,7 +207,12 @@ export function Friends({ autoAdd }: { autoAdd?: boolean } = {}) {
                           variant='ghost'
                           size='sm'
                           aria-label={t`Remove ${friend.name}`}
-                          loading={removeFriendMutation.isPending}
+                          disabled={removeFriendMutation.isPending}
+                          loading={
+                            removeFriendMutation.isPending &&
+                            removeFriendMutation.variables?.friendId ===
+                              friend.id
+                          }
                           icon={<UserX className='h-4 w-4' />}
                           onClick={() =>
                             handleRemoveFriend(friend.id, friend.name)

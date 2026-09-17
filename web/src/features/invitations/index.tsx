@@ -343,7 +343,12 @@ export function Invitations() {
                         <Button
                           size='sm'
                           variant='default'
-                          loading={acceptInviteMutation.isPending}
+                          disabled={acceptInviteMutation.isPending}
+                          loading={
+                            acceptInviteMutation.isPending &&
+                            acceptInviteMutation.variables?.friendId ===
+                              invite.id
+                          }
                           icon={<Check className='h-3.5 w-3.5' />}
                           onClick={() => handleAcceptInvite(invite.id)}
                         >
@@ -352,7 +357,12 @@ export function Invitations() {
                         <Button
                           variant='outline'
                           size='sm'
-                          loading={declineInviteMutation.isPending}
+                          disabled={declineInviteMutation.isPending}
+                          loading={
+                            declineInviteMutation.isPending &&
+                            declineInviteMutation.variables?.friendId ===
+                              invite.id
+                          }
                           icon={<UserX className='h-3.5 w-3.5' />}
                           onClick={() => handleDeclineInvite(invite.id)}
                         >
@@ -413,7 +423,11 @@ export function Invitations() {
                       <Button
                         variant='outline'
                         size='sm'
-                        loading={removeMutation.isPending}
+                        disabled={removeMutation.isPending}
+                        loading={
+                          removeMutation.isPending &&
+                          removeMutation.variables?.friendId === invite.id
+                        }
                         icon={<X className='h-3.5 w-3.5' />}
                         onClick={() => handleCancelSent(invite.id)}
                       >

@@ -298,18 +298,20 @@ export function Invitations() {
                       <Button
                         size='sm'
                         variant='outline'
-                        disabled={decliningAll || acceptingAll}
+                        loading={decliningAll}
+                        icon={<UserX className='h-3.5 w-3.5' />}
+                        disabled={acceptingAll}
                         onClick={handleDeclineAll}
                       >
-                        <UserX className='h-3.5 w-3.5' />
                         <Trans>Decline all</Trans>
                       </Button>
                       <Button
                         size='sm'
-                        disabled={acceptingAll || decliningAll}
+                        loading={acceptingAll}
+                        icon={<Check className='h-3.5 w-3.5' />}
+                        disabled={decliningAll}
                         onClick={handleAcceptAll}
                       >
-                        <Check className='h-3.5 w-3.5' />
                         <Trans>Accept all</Trans>
                       </Button>
                     </div>
@@ -342,18 +344,28 @@ export function Invitations() {
                           size='sm'
                           variant='default'
                           disabled={acceptInviteMutation.isPending}
+                          loading={
+                            acceptInviteMutation.isPending &&
+                            acceptInviteMutation.variables?.friendId ===
+                              invite.id
+                          }
+                          icon={<Check className='h-3.5 w-3.5' />}
                           onClick={() => handleAcceptInvite(invite.id)}
                         >
-                          <Check className='h-3.5 w-3.5' />
                           <Trans>Accept</Trans>
                         </Button>
                         <Button
                           variant='outline'
                           size='sm'
                           disabled={declineInviteMutation.isPending}
+                          loading={
+                            declineInviteMutation.isPending &&
+                            declineInviteMutation.variables?.friendId ===
+                              invite.id
+                          }
+                          icon={<UserX className='h-3.5 w-3.5' />}
                           onClick={() => handleDeclineInvite(invite.id)}
                         >
-                          <UserX className='h-3.5 w-3.5' />
                           <Trans>Decline</Trans>
                         </Button>
                       </div>
@@ -375,10 +387,10 @@ export function Invitations() {
                     <Button
                       size='sm'
                       variant='outline'
-                      disabled={cancellingAll}
+                      loading={cancellingAll}
+                      icon={<X className='h-3.5 w-3.5' />}
                       onClick={handleCancelAll}
                     >
-                      <X className='h-3.5 w-3.5' />
                       <Trans>Cancel all</Trans>
                     </Button>
                   )}
@@ -412,9 +424,13 @@ export function Invitations() {
                         variant='outline'
                         size='sm'
                         disabled={removeMutation.isPending}
+                        loading={
+                          removeMutation.isPending &&
+                          removeMutation.variables?.friendId === invite.id
+                        }
+                        icon={<X className='h-3.5 w-3.5' />}
                         onClick={() => handleCancelSent(invite.id)}
                       >
-                        <X className='h-3.5 w-3.5' />
                         <Trans>Cancel</Trans>
                       </Button>
                     </div>

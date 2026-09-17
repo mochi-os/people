@@ -27,7 +27,7 @@ import {
   EmptyState,
   GeneralError,
 } from '@mochi/web'
-import { User, UsersRound, Search, Loader2, UserPlus } from 'lucide-react'
+import { User, UsersRound, Search, UserPlus } from 'lucide-react'
 import { useSearchLocalUsersQuery } from '@/hooks/useFriends'
 import { useAddGroupMemberMutation, useGroupsQuery } from '@/hooks/useGroups'
 
@@ -311,14 +311,11 @@ export function MemberDialog({
           </Button>
           <Button
             onClick={handleAddMember}
-            disabled={!canAdd || addMemberMutation.isPending}
+            loading={addMemberMutation.isPending}
+            icon={<UserPlus className='size-4' />}
+            disabled={!canAdd}
           >
-            {addMemberMutation.isPending ? (
-              <Loader2 className='size-4 animate-spin' />
-            ) : (
-              <UserPlus className='size-4' />
-            )}
-            {addMemberMutation.isPending ? t`Adding...` : t`Add member`}
+            <Trans>Add member</Trans>
           </Button>
         </ResponsiveDialogFooter>
       </ResponsiveDialogContent>

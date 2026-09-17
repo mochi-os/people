@@ -40,7 +40,6 @@ import {
   Copy,
   Eye,
   Image as ImageIcon,
-  Loader2,
   Pencil,
   Save,
   Upload as UploadIcon,
@@ -285,11 +284,11 @@ function ProfileEditor({
                   variant='outline'
                   size='sm'
                   onClick={open}
-                  disabled={pending}
+                  loading={pending}
+                  icon={<UploadIcon className='size-3.5' />}
                   className='shadow-md'
                 >
-                  <UploadIcon className='size-3.5' />
-                  {pending ? t`Uploading...` : t`Change banner`}
+                  <Trans>Change banner</Trans>
                 </Button>
                 <UploadProgress
                   progress={progress}
@@ -377,14 +376,11 @@ function ProfileEditor({
                     size='sm'
                     className='size-9 shrink-0 p-0'
                     onClick={handleSaveName}
-                    disabled={!nameDirty || nameMutation.isPending}
+                    loading={nameMutation.isPending}
+                    icon={<Check className='size-4' />}
+                    disabled={!nameDirty}
                     aria-label={t`Save name`}
                   >
-                    {nameMutation.isPending ? (
-                      <Loader2 className='size-4 animate-spin' />
-                    ) : (
-                      <Check className='size-4' />
-                    )}
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>{t`Save name`}</TooltipContent>
@@ -471,11 +467,12 @@ function ProfileEditor({
             <Button
               size='sm'
               className='ms-2'
-              disabled={!profileDirty || tooLong || profileMutation.isPending}
+              loading={profileMutation.isPending}
+              icon={<Save className='size-3.5' />}
+              disabled={!profileDirty || tooLong}
               onClick={handleSaveProfile}
             >
-              <Save className='size-3.5' />
-              {profileMutation.isPending ? t`Saving...` : t`Save`}
+              <Trans>Save</Trans>
             </Button>
           </div>
         </div>
@@ -499,13 +496,12 @@ function ProfileEditor({
                 actions={
                   <Button
                     size='sm'
-                    disabled={
-                      !accentDirty || !accentValid || accentMutation.isPending
-                    }
+                    loading={accentMutation.isPending}
+                    icon={<Save className='size-3.5' />}
+                    disabled={!accentDirty || !accentValid}
                     onClick={handleSaveAccent}
                   >
-                    <Save className='size-3.5' />
-                    {accentMutation.isPending ? t`Saving...` : t`Save`}
+                    <Trans>Save</Trans>
                   </Button>
                 }
               />
@@ -537,10 +533,10 @@ function ProfileEditor({
                         variant='outline'
                         size='sm'
                         onClick={open}
-                        disabled={pending}
+                        loading={pending}
+                        icon={<UploadIcon className='size-3.5' />}
                       >
-                        <UploadIcon className='size-3.5' />
-                        {pending ? t`Uploading...` : t`Upload`}
+                        <Trans>Upload</Trans>
                       </Button>
                       <UploadProgress progress={progress} className='flex-1' />
                     </>

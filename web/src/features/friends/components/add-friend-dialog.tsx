@@ -286,13 +286,6 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                         ? 'invited'
                         : (user.relationship ?? 'none')
 
-                      // Determine if button should be disabled
-                      const isDisabled =
-                        isPendingForThisUser ||
-                        status === 'friend' ||
-                        status === 'invited' ||
-                        status === 'self'
-
                       // Determine button variant
                       const getButtonVariant = () => {
                         if (status === 'pending') return 'default'
@@ -315,55 +308,20 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                         }
                       }
 
-                      // Render button content based on status
-                      const renderButtonContent = () => {
-                        if (isPendingForThisUser) {
-                          return (
-                            <>
-                              {t`Adding...`}
-                              <Loader2 className='ms-2 h-4 w-4 animate-spin' />
-                            </>
-                          )
-                        }
-
+                      const buttonContent = (() => {
                         switch (status) {
                           case 'self':
-                            return (
-                              <>
-                                {t`That's you`}
-                                <Ban className='ms-2 h-4 w-4' />
-                              </>
-                            )
+                            return { label: t`That's you`, trailingIcon: <Ban className='ms-2 h-4 w-4' /> }
                           case 'friend':
-                            return (
-                              <>
-                                {t`Already friends`}
-                                <UserCheck className='ms-2 h-4 w-4' />
-                              </>
-                            )
+                            return { label: t`Already friends`, trailingIcon: <UserCheck className='ms-2 h-4 w-4' /> }
                           case 'invited':
-                            return (
-                              <>
-                                <Send className='me-2 h-4 w-4' />
-                                {t`Invitation sent`}
-                              </>
-                            )
+                            return { label: t`Invitation sent`, icon: <Send className='me-2 h-4 w-4' /> }
                           case 'pending':
-                            return (
-                              <>
-                                {t`Accept invite`}
-                                <Check className='ms-2 h-4 w-4' />
-                              </>
-                            )
+                            return { label: t`Accept invite`, trailingIcon: <Check className='ms-2 h-4 w-4' /> }
                           default:
-                            return (
-                              <>
-                                <UserPlus className='me-2 h-4 w-4' />
-                                {t`Add friend`}
-                              </>
-                            )
+                            return { label: t`Add friend`, icon: <UserPlus className='me-2 h-4 w-4' /> }
                         }
-                      }
+                      })()
 
                       return (
                         <div
@@ -391,14 +349,37 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                               </span>
                             </div>
                           </div>
-                          <Button
-                            size='sm'
-                            variant={getButtonVariant()}
-                            onClick={handleClick}
-                            disabled={isDisabled}
-                          >
-                            {renderButtonContent()}
-                          </Button>
+                          {buttonContent.icon ? (
+                            <Button
+                              size='sm'
+                              variant={getButtonVariant()}
+                              onClick={handleClick}
+                              loading={isPendingForThisUser}
+                              icon={buttonContent.icon}
+                              disabled={
+                                status === 'friend' ||
+                                status === 'invited' ||
+                                status === 'self'
+                              }
+                            >
+                              {buttonContent.label}
+                            </Button>
+                          ) : (
+                            <Button
+                              size='sm'
+                              variant={getButtonVariant()}
+                              onClick={handleClick}
+                              loading={isPendingForThisUser}
+                              trailingIcon={buttonContent.trailingIcon}
+                              disabled={
+                                status === 'friend' ||
+                                status === 'invited' ||
+                                status === 'self'
+                              }
+                            >
+                              {buttonContent.label}
+                            </Button>
+                          )}
                         </div>
                       )
                     })}
@@ -420,22 +401,18 @@ export function AddFriendDialog({ onOpenChange, open }: AddFriendDialogProps) {
                 <ArrowLeft className='h-4 w-4 rtl:rotate-180' />
                 <Trans>Back</Trans>
               </Button>
-              <Button onClick={handleConfirmFromPreview} disabled={previewBusy}>
-                {previewBusy ? (
-                  <>
-                    {t`Adding...`}
-                    <Loader2 className='ms-2 h-4 w-4 animate-spin' />
-                  </>
-                ) : (
-                  <>
-                    {preview.intent === 'accept' ? (
-                      <Check className='h-4 w-4' />
-                    ) : (
-                      <Send className='h-4 w-4' />
-                    )}
-                    {previewConfirmLabel}
-                  </>
-                )}
+              <Button
+                onClick={handleConfirmFromPreview}
+                loading={previewBusy}
+                icon={
+                  preview.intent === 'accept' ? (
+                    <Check className='h-4 w-4' />
+                  ) : (
+                    <Send className='h-4 w-4' />
+                  )
+                }
+              >
+                {previewConfirmLabel}
               </Button>
             </>
           ) : (

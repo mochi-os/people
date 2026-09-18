@@ -34,6 +34,11 @@ msgstr "(tu)"
 msgid "[not set]"
 msgstr "[no definit]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {També se suprimirà # contacte.} other {També se suprimiran # contactes.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -98,9 +103,9 @@ msgstr "12 hores"
 msgid "24 hours"
 msgstr "24 hores"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "S'ha enviat una invitació d'amistat a {userName}."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "S'ha enviat una invitació d'amistat a {name}."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +124,8 @@ msgid "Accent saved"
 msgstr "Accent desat"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "Accepta"
@@ -132,11 +138,7 @@ msgstr "Accepta-ho tot"
 msgid "Accept automatically"
 msgstr "Accepta automàticament"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "Accepta la invitació"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "S'està acceptant la invitació..."
@@ -161,6 +163,11 @@ msgstr "Tipus de compte"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "Accions"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "Accions per a {0}"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +199,10 @@ msgstr "Afegeix accés"
 msgid "Add account"
 msgstr "Afegeix un compte"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "Afegeix una adreça"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Afegeix una llegenda"
@@ -200,22 +211,21 @@ msgstr "Afegeix una llegenda"
 msgid "Add checklist item"
 msgstr "Afegeix un element a la llista"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "Afegeix un contacte"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "Afegeix un correu"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Afegeix un camp"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "Afegeix una amistat"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "Afegeix amistats per començar a connectar"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +250,21 @@ msgstr "Afegeix un membre"
 msgid "Add option"
 msgstr "Afegeix una opció"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "Afegeix un telèfon"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "Afegiu algú per començar"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Afegeix una etiqueta..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "Afegeix als contactes"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +288,38 @@ msgstr "Afegeix una vista"
 msgid "Added {0} to the group"
 msgstr "S'ha afegit {0} al grup"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "S'està afegint el contacte..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "S'està afegint el membre..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "llibreta d'adreces"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "Llibreta d'adreces"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "S'ha creat la llibreta d'adreces"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "S'ha suprimit la llibreta d'adreces"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "S'ha canviat el nom de la llibreta d'adreces"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "Adreces"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +328,11 @@ msgstr "IA"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "Tots els grups disponibles ja estan afegits"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "Tots els contactes"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +353,6 @@ msgstr "Permet que qualsevol persona cerqui {entityLabel}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Permet ordenar per"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "Ja sou amistats"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +410,6 @@ msgstr "Segur que vols tancar la sessió? Hauràs de tornar a iniciar sessió pe
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Segur que vols eliminar <0>{0}</0> d'aquest grup?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "Segur que vols eliminar <0>{0}</0> de la teva llista d'amistats? Aquesta acció no es pot desfer."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "Segur que vols rendir-te?"
@@ -406,7 +452,7 @@ msgid "Avatar for {name}"
 msgstr "Avatar de {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Back"
 msgstr "Enrere"
 
@@ -431,6 +477,10 @@ msgstr "Bàner eliminat"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Bàner actualitzat"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "Aniversari"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +544,8 @@ msgstr "Càmera no disponible"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,10 +607,6 @@ msgstr "Canviat"
 msgid "Changed {field}"
 msgstr "S'ha canviat {field}"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "Xat"
-
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
 msgstr "Casella de selecció"
@@ -576,6 +624,10 @@ msgstr "Tria una partida de la barra lateral o inicia'n una de nova."
 msgid "Choose language"
 msgstr "Tria l'idioma"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "Ciutat"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -591,7 +643,7 @@ msgid "Clear all"
 msgstr "Esborra-ho tot"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "Esborra la cerca"
 
@@ -601,7 +653,7 @@ msgstr "Esborra la cerca"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "Tanca"
 
@@ -700,6 +752,27 @@ msgstr "Connectat"
 msgid "Connecting..."
 msgstr "S'està connectant..."
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "S'ha afegit el contacte"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "S'ha creat el contacte"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "S'ha suprimit el contacte"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "S'ha desat el contacte"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "Contactes"
+
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
 msgstr "No s'ha trobat el contingut."
@@ -756,6 +829,10 @@ msgstr "No s'ha pogut iniciar la reautenticació. Torneu-ho a provar."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "No s'ha pogut verificar amb aquest compte. Torneu-ho a provar."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "País"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
@@ -767,6 +844,15 @@ msgstr "Crea"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "Crea {entityLabel}"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "Creeu un contacte o trobeu algú a Mochi."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "Crea una llibreta d'adreces"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -788,6 +874,14 @@ msgstr "Creat"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "S'ha creat {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "S'està creant la llibreta d'adreces..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "S'està creant el contacte..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -854,10 +948,36 @@ msgstr "Ordre per defecte"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "Suprimeix"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "Voleu suprimir <0>{0}</0>?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "Voleu suprimir <0>{0}</0>? Això també posa fi a la vostra amistat."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "Suprimeix la llibreta d'adreces"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -870,6 +990,11 @@ msgstr "Suprimeix la columna"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "Suprimeix el comentari"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "Suprimeix el contacte"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -919,6 +1044,15 @@ msgstr "Suprimit"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
 msgstr "S'ha suprimit {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "S'està suprimint la llibreta d'adreces..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "S'està suprimint el contacte..."
 
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
@@ -1010,6 +1144,7 @@ msgstr "Apte per a la dislèxia"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Edita"
@@ -1021,6 +1156,10 @@ msgstr "Edita {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Edita la llegenda"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "Edita el contacte"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1066,15 +1205,20 @@ msgstr "Correu electrònic"
 msgid "Email code"
 msgstr "Codi per correu"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "Introdueix un nom per trobar persones que vulguis afegir"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "Adreces electròniques"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "Voleu posar fi a la vostra amistat amb <0>{0}</0>? El contacte es manté a la vostra llibreta d'adreces."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "Introdueix el text del bàner (admet markdown)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "Introdueix el nom per cercar..."
 
@@ -1109,6 +1253,7 @@ msgstr "URL externa"
 msgid "Extra large"
 msgstr "Extra gran"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "No s'ha pogut acceptar la invitació"
@@ -1121,10 +1266,9 @@ msgstr "No s'han pogut acceptar les invitacions"
 msgid "Failed to add account"
 msgstr "No s'ha pogut afegir el compte"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "No s'ha pogut afegir l'amic"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "No s'ha pogut afegir el contacte"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1144,6 +1288,14 @@ msgstr "No s'han pogut cancel·lar les invitacions"
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "No s'ha pogut copiar"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "No s'ha pogut crear la llibreta d'adreces"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "No s'ha pogut crear el contacte"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1166,6 +1318,10 @@ msgstr "No s'han pogut rebutjar les invitacions"
 msgid "Failed to delete"
 msgstr "No s'ha pogut suprimir"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "No s'ha pogut suprimir la llibreta d'adreces"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "No s'ha pogut suprimir l'adjunt"
@@ -1173,6 +1329,11 @@ msgstr "No s'ha pogut suprimir l'adjunt"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "No s'ha pogut suprimir el comentari"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "No s'ha pogut suprimir el contacte"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1231,13 +1392,17 @@ msgstr "No s'ha pogut moure"
 msgid "Failed to post comment"
 msgstr "No s'ha pogut publicar el comentari"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "No s'ha pogut retirar l'amic"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "No s'ha pogut retirar el membre"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "No s'ha pogut canviar el nom de la llibreta d'adreces"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1256,6 +1421,10 @@ msgstr "No s'ha pogut desar"
 msgid "Failed to save accent"
 msgstr "No s'ha pogut desar l'accent"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "No s'ha pogut desar el contacte"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "No s'ha pogut desar el nom"
@@ -1271,6 +1440,11 @@ msgstr "No s'ha pogut desar el perfil"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "No s'ha pogut desar l'indicador"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "No s'ha pogut enviar la invitació"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1292,6 +1466,10 @@ msgstr "No s'ha pogut actualitzar el seguiment"
 msgid "Failed to upload attachment"
 msgstr "No s'ha pogut pujar l'adjunt"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "Cognoms"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1305,6 +1483,10 @@ msgstr "Fitxer massa gran"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "Fitxers"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Cerca a Mochi"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1322,14 +1504,16 @@ msgstr "Plana"
 msgid "Friday"
 msgstr "Divendres"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "Amic"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Amic suprimit"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "Amics"
 
@@ -1344,6 +1528,10 @@ msgstr "De"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Del tema"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "Nom"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1411,6 +1599,11 @@ msgstr "Historial"
 msgid "Home"
 msgstr "Inici"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "Particular"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "Popular"
@@ -1431,6 +1624,10 @@ msgstr "Visor d'imatges: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperial"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "Als contactes"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1460,7 +1657,7 @@ msgstr "Interessos"
 msgid "Invalid date"
 msgstr "Data no vàlida"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "Invitació acceptada"
@@ -1473,8 +1670,8 @@ msgstr "Invitació cancel·lada"
 msgid "Invitation declined"
 msgstr "Invitació rebutjada"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Invitació enviada"
 
@@ -1484,6 +1681,11 @@ msgstr "Invitació enviada"
 msgid "Invitations"
 msgstr "Invitacions"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "Convida"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "S'ha actualitzat la política d'invitacions"
@@ -1492,6 +1694,10 @@ msgstr "S'ha actualitzat la política d'invitacions"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "Configuració d'invitacions"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "Convidat"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1630,6 +1836,7 @@ msgid "Menu"
 msgstr "Menú"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Missatge"
 
@@ -1644,6 +1851,11 @@ msgstr "Permís del micròfon denegat"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "Longitud mínima"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "Mòbil"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1674,11 +1886,13 @@ msgstr "S'ha mogut {field}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Nom"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Name (A–Z)"
 msgstr "Nom (A–Z)"
 
@@ -1709,6 +1923,11 @@ msgstr "Error de xarxa"
 msgid "New"
 msgstr "Nou"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "Contacte nou"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "New game"
@@ -1722,6 +1941,10 @@ msgstr "Les invitacions noves apareixeran aquí"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "Imatge següent"
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "Sobrenom"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1743,9 +1966,9 @@ msgstr "No s'ha definit cap bàner"
 msgid "No comments yet"
 msgstr "Encara no hi ha comentaris"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "Encara no tens amics"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "Encara no hi ha contactes"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1777,7 +2000,7 @@ msgstr "Cap invitació pendent"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "No s'ha trobat ningú"
@@ -1786,7 +2009,7 @@ msgstr "No s'ha trobat ningú"
 msgid "No places found"
 msgstr "No s'ha trobat cap lloc"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "Cap resultat per a \"{search}\""
 
@@ -1858,6 +2081,10 @@ msgstr "No s'ha trobat"
 msgid "Not set"
 msgstr "No establert"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "Nota"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "No s'ha trobat res"
@@ -1880,6 +2107,10 @@ msgstr "Número"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Activat"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "A Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1929,7 +2160,16 @@ msgstr "Descripció opcional"
 msgid "Options"
 msgstr "Opcions"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "Organització"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Altres"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "Altres"
 
@@ -1974,6 +2214,10 @@ msgstr "Pendent"
 msgid "People"
 msgstr "Persones"
 
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "Telèfons"
+
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -1988,6 +2232,10 @@ msgstr "Torna-ho a provar."
 msgid "Please wait a moment and try again."
 msgstr "Espereu un moment i torneu-ho a provar."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "Codi postal"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Publicacions"
@@ -2000,10 +2248,10 @@ msgstr "Publicacions i comentaris"
 msgid "Preview"
 msgstr "Vista prèvia"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "Vista prèvia del perfil de {0} abans d'enviar la sol·licitud d'amistat."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "Consulteu el perfil de {0} abans d'enviar una invitació d'amistat."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2067,7 +2315,7 @@ msgstr "Torna a registrar les teves claus d'accés en aquest servidor"
 msgid "Received ({0})"
 msgstr "Rebuts ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "Afegit recentment"
 
@@ -2095,6 +2343,10 @@ msgstr "Redirigint a l'inici de sessió."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "Redueix l'interès"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "Regió"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2127,10 +2379,7 @@ msgstr "Rellevància {relevance}, interès {weight}"
 msgid "Remove"
 msgstr "Elimina"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2161,10 +2410,13 @@ msgstr "Voleu eliminar la regla d'accés per a «{0}»?"
 msgid "Remove access?"
 msgstr "Vols eliminar l'accés?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "Elimina l'amic"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "Elimina l'adreça"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "Elimina el correu"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2185,7 +2437,11 @@ msgstr "Elimina l'enllaç"
 msgid "Remove member"
 msgstr "Elimina el membre"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "Elimina el telèfon"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "S'està suprimint l'amic..."
 
@@ -2195,8 +2451,13 @@ msgstr "S'està suprimint el membre..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "Canvia el nom"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "Canvia el nom de la llibreta d'adreces"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2205,6 +2466,10 @@ msgstr "Canvia el nom de la columna"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "Canvia el nom d'aquesta columna del tauler"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "S'està canviant el nom de la llibreta d'adreces..."
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2280,6 +2545,8 @@ msgstr "Dissabte"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2291,6 +2558,10 @@ msgstr "Desa"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "Desa el nom"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "S'està desant el contacte..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2309,6 +2580,10 @@ msgstr "Desant..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "Cerca"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "Cerca contactes"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2329,14 +2604,6 @@ msgstr "Cerca destinació..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "Cerca origen..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "Cerca persones i envia una sol·licitud d'amistat."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "Cerca amics"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2360,7 +2627,7 @@ msgstr "Cerca, observa i ordena aquesta vista."
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Cerca..."
@@ -2438,7 +2705,7 @@ msgstr "Torna a enviar"
 msgid "Send email"
 msgstr "Envia el correu"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "Envia invitació"
 
@@ -2447,7 +2714,8 @@ msgstr "Envia invitació"
 msgid "Send message"
 msgstr "Envia missatge"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "S'està enviant la invitació..."
 
@@ -2555,9 +2823,9 @@ msgstr "Espaiós"
 msgid "Start the discussion by adding the first comment."
 msgstr "Inicia la discussió afegint el primer comentari."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "Comença a escriure per cercar usuaris"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "Comenceu a escriure per cercar persones"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2567,6 +2835,10 @@ msgstr "Deixa de seguir"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "Desa en silenci"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "Carrer"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2635,7 +2907,7 @@ msgstr "No s'ha pogut enviar. Els fitxers poden ser massa grans o la connexió h
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Era massa gran per pujar. Elimineu o reduïu fitxers i torneu-ho a provar."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "Ets tu"
 
@@ -2679,6 +2951,11 @@ msgstr "Això suprimeix permanentment la partida i el seu xat. Aquesta acció no
 msgid "Thursday"
 msgstr "Dijous"
 
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "Càrrec"
+
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
 msgstr "A"
@@ -2718,13 +2995,9 @@ msgstr "Amunt"
 msgid "Travelling"
 msgstr "Viatjant"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "Prova un altre nom"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "Prova un terme de cerca diferent"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2745,6 +3018,8 @@ msgstr "Dimarts"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "Tipus"
@@ -2788,6 +3063,12 @@ msgstr "No disponible"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Error inesperat de l'API"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "Posa fi a l'amistat"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2848,6 +3129,10 @@ msgstr "Progrés de la pujada"
 #: src/features/profile/index.tsx
 msgid "Uploading..."
 msgstr "Pujant..."
+
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -2926,6 +3211,11 @@ msgstr "Hem enviat un codi de verificació a <0>{0}</0>. Introduïu el codi a co
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "Dimecres"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "Feina"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

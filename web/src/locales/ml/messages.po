@@ -34,6 +34,11 @@ msgstr "(നിങ്ങൾ)"
 msgid "[not set]"
 msgstr "[സജ്ജമാക്കിയിട്ടില്ല]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {അതോടൊപ്പം # കോൺടാക്റ്റും ഇല്ലാതാക്കപ്പെടും.} other {അതോടൊപ്പം # കോൺടാക്റ്റുകളും ഇല്ലാതാക്കപ്പെടും.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -98,9 +103,9 @@ msgstr "12 മണിക്കൂർ"
 msgid "24 hours"
 msgstr "24 മണിക്കൂർ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "{userName} എന്നയാൾക്ക് സുഹൃദ് ക്ഷണം അയച്ചു."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "{name} എന്നയാൾക്ക് സുഹൃത്ത് ക്ഷണം അയച്ചു."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +124,8 @@ msgid "Accent saved"
 msgstr "ആക്സന്റ് സംരക്ഷിച്ചു"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "സ്വീകരിക്കുക"
@@ -132,11 +138,7 @@ msgstr "എല്ലാം സ്വീകരിക്കുക"
 msgid "Accept automatically"
 msgstr "സ്വയമേവ സ്വീകരിക്കുക"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "ക്ഷണം സ്വീകരിക്കുക"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "ക്ഷണം സ്വീകരിക്കുന്നു..."
@@ -161,6 +163,11 @@ msgstr "അക്കൗണ്ട് തരം"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "പ്രവർത്തനങ്ങൾ"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "{0} എന്നതിനുള്ള പ്രവർത്തനങ്ങൾ"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +199,10 @@ msgstr "ആക്സസ് ചേർക്കുക"
 msgid "Add account"
 msgstr "അക്കൗണ്ട് ചേർക്കുക"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "വിലാസം ചേർക്കുക"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "അടിക്കുറിപ്പ് ചേർക്കുക"
@@ -200,22 +211,21 @@ msgstr "അടിക്കുറിപ്പ് ചേർക്കുക"
 msgid "Add checklist item"
 msgstr "ചെക്ക്‌ലിസ്റ്റ് ഇനം ചേർക്കുക"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "കോൺടാക്റ്റ് ചേർക്കുക"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "ഇമെയിൽ ചേർക്കുക"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "ഫീൽഡ് ചേർക്കുക"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "സുഹൃത്തിനെ ചേർക്കുക"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "ബന്ധിപ്പിക്കാൻ തുടങ്ങാൻ സുഹൃത്തുക്കളെ ചേർക്കുക"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +250,21 @@ msgstr "അംഗത്തെ ചേർക്കുക"
 msgid "Add option"
 msgstr "ഓപ്ഷൻ ചേർക്കുക"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "ഫോൺ ചേർക്കുക"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "തുടങ്ങാൻ ഒരാളെ ചേർക്കുക"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ടാഗ് ചേർക്കുക..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "കോൺടാക്റ്റുകളിലേക്ക് ചേർക്കുക"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +288,38 @@ msgstr "കാഴ്ച ചേർക്കുക"
 msgid "Added {0} to the group"
 msgstr "{0}-നെ ഗ്രൂപ്പിലേക്ക് ചേർത്തു"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "കോൺടാക്റ്റ് ചേർക്കുന്നു..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "അംഗത്തെ ചേർക്കുന്നു..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "വിലാസപ്പുസ്തകം"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "വിലാസപ്പുസ്തകം"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "വിലാസപ്പുസ്തകം സൃഷ്ടിച്ചു"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "വിലാസപ്പുസ്തകം ഇല്ലാതാക്കി"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "വിലാസപ്പുസ്തകത്തിന്റെ പേര് മാറ്റി"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "വിലാസങ്ങൾ"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +328,11 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "ലഭ്യമായ എല്ലാ ഗ്രൂപ്പുകളും ഇതിനകം ചേർത്തിട്ടുണ്ട്"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "എല്ലാ കോൺടാക്റ്റുകളും"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +353,6 @@ msgstr "{entityLabel} ആർക്കും തിരയാൻ അനുവദ�
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "സോർട്ട് ചെയ്യാൻ അനുവദിക്കുക"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "ഇതിനകം സുഹൃത്തുക്കൾ"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +410,6 @@ msgstr "ലോഗ് ഔട്ട് ചെയ്യണമെന്ന് നി
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "<0>{0}</0> ഈ ഗ്രൂപ്പിൽ നിന്ന് നീക്കാൻ നിങ്ങൾക്ക് ഉറപ്പാണോ?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "നിങ്ങളുടെ സുഹൃദ് പട്ടികയിൽ നിന്ന് <0>{0}</0> നീക്കം ചെയ്യാൻ ഉറപ്പാണോ? ഈ പ്രവർത്തനം പഴയപടിയാക്കാൻ കഴിയില്ല."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "നിങ്ങൾ തീർച്ചയായും രാജി വയ്ക്കാൻ ആഗ്രഹിക്കുന്നുവോ?"
@@ -406,7 +452,7 @@ msgid "Avatar for {name}"
 msgstr "{name}-ന്റെ അവതാർ"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Back"
 msgstr "തിരികെ"
 
@@ -431,6 +477,10 @@ msgstr "ബാനർ നീക്കംചെയ്തു"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "ബാനർ അപ്ഡേറ്റുചെയ്തു"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "ജന്മദിനം"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +544,8 @@ msgstr "ക്യാമറ ലഭ്യമല്ല"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,10 +607,6 @@ msgstr "മാറ്റി"
 msgid "Changed {field}"
 msgstr "{field} മാറ്റി"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "ചാറ്റ്"
-
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
 msgstr "ചെക്ക്ബോക്സ്"
@@ -576,6 +624,10 @@ msgstr "സൈഡ്ബാറിൽ നിന്ന് ഒരു ഗെയിം
 msgid "Choose language"
 msgstr "ഭാഷ തിരഞ്ഞെടുക്കുക"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "നഗരം"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -591,7 +643,7 @@ msgid "Clear all"
 msgstr "എല്ലാം മായ്ക്കുക"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "തിരയൽ മായ്ക്കുക"
 
@@ -601,7 +653,7 @@ msgstr "തിരയൽ മായ്ക്കുക"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "അടയ്ക്കുക"
 
@@ -700,6 +752,27 @@ msgstr "കണക്റ്റ് ചെയ്തു"
 msgid "Connecting..."
 msgstr "ബന്ധിപ്പിക്കുന്നു..."
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "കോൺടാക്റ്റ് ചേർത്തു"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "കോൺടാക്റ്റ് സൃഷ്ടിച്ചു"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "കോൺടാക്റ്റ് ഇല്ലാതാക്കി"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "കോൺടാക്റ്റ് സേവ് ചെയ്തു"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "കോൺടാക്റ്റുകൾ"
+
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
 msgstr "ഉള്ളടക്കം കണ്ടെത്തിയില്ല."
@@ -756,6 +829,10 @@ msgstr "വീണ്ടും പരിശോധന ആരംഭിക്കാ�
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ആ അക്കൗണ്ട് ഉപയോഗിച്ച് പരിശോധിക്കാനായില്ല. വീണ്ടും ശ്രമിക്കുക."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "രാജ്യം"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
@@ -767,6 +844,15 @@ msgstr "സൃഷ്ടിക്കുക"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "{entityLabel} സൃഷ്ടിക്കുക"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "ഒരു കോൺടാക്റ്റ് സൃഷ്ടിക്കുക, അല്ലെങ്കിൽ Mochi-യിൽ ഒരാളെ കണ്ടെത്തുക."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "വിലാസപ്പുസ്തകം സൃഷ്ടിക്കുക"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -788,6 +874,14 @@ msgstr "സൃഷ്ടിച്ചു"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "{field} സൃഷ്ടിച്ചു"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "വിലാസപ്പുസ്തകം സൃഷ്ടിക്കുന്നു..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "കോൺടാക്റ്റ് സൃഷ്ടിക്കുന്നു..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -854,10 +948,36 @@ msgstr "ഡിഫോൾട്ട് സോർട്ട്"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "ഇല്ലാതാക്കുക"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "<0>{0}</0> ഇല്ലാതാക്കണോ?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "<0>{0}</0> ഇല്ലാതാക്കണോ? ഇത് നിങ്ങളുടെ സൗഹൃദവും അവസാനിപ്പിക്കും."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "വിലാസപ്പുസ്തകം ഇല്ലാതാക്കുക"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -870,6 +990,11 @@ msgstr "കോളം ഇല്ലാതാക്കുക"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "അഭിപ്രായം ഇല്ലാതാക്കുക"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "കോൺടാക്റ്റ് ഇല്ലാതാക്കുക"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -919,6 +1044,15 @@ msgstr "ഇല്ലാതാക്കി"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
 msgstr "{field} ഇല്ലാതാക്കി"
+
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "വിലാസപ്പുസ്തകം ഇല്ലാതാക്കുന്നു..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "കോൺടാക്റ്റ് ഇല്ലാതാക്കുന്നു..."
 
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
@@ -1010,6 +1144,7 @@ msgstr "ഡിസ്ലെക്സിയ-സൗഹൃദം"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "എഡിറ്റ് ചെയ്യുക"
@@ -1021,6 +1156,10 @@ msgstr "{label} എഡിറ്റ് ചെയ്യുക"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "അടിക്കുറിപ്പ് എഡിറ്റ് ചെയ്യുക"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "കോൺടാക്റ്റ് എഡിറ്റ് ചെയ്യുക"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1066,15 +1205,20 @@ msgstr "ഇമെയിൽ"
 msgid "Email code"
 msgstr "ഇമെയിൽ കോഡ്"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "ചേർക്കാൻ ആഗ്രഹിക്കുന്ന ആളുകളെ കണ്ടെത്താൻ പേര് നൽകുക"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "ഇമെയിലുകൾ"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "<0>{0}</0> എന്നയാളുമായുള്ള സൗഹൃദം അവസാനിപ്പിക്കണോ? കോൺടാക്റ്റ് നിങ്ങളുടെ വിലാസപ്പുസ്തകത്തിൽ തുടരും."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "ബാനർ ടെക്സ്റ്റ് നൽകുക (മാർക്ക്ഡൗൺ പിന്തുണയ്‌ക്കുന്നു)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "തിരയാൻ പേര് നൽകുക..."
 
@@ -1109,6 +1253,7 @@ msgstr "ബാഹ്യ URL"
 msgid "Extra large"
 msgstr "അധിക വലുത്"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "ക്ഷണം സ്വീകരിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
@@ -1121,10 +1266,9 @@ msgstr "ക്ഷണങ്ങൾ സ്വീകരിക്കാൻ കഴി�
 msgid "Failed to add account"
 msgstr "അക്കൗണ്ട് ചേർക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "സുഹൃത്തിനെ ചേർക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "കോൺടാക്റ്റ് ചേർക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1144,6 +1288,14 @@ msgstr "ക്ഷണങ്ങൾ റദ്ദാക്കാൻ കഴിഞ്�
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "പകർത്തുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "വിലാസപ്പുസ്തകം സൃഷ്ടിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "കോൺടാക്റ്റ് സൃഷ്ടിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1166,6 +1318,10 @@ msgstr "ക്ഷണങ്ങൾ നിരസിക്കാൻ കഴിഞ്�
 msgid "Failed to delete"
 msgstr "ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "വിലാസപ്പുസ്തകം ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "അറ്റാച്ച്മെന്റ് ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
@@ -1173,6 +1329,11 @@ msgstr "അറ്റാച്ച്മെന്റ് ഇല്ലാതാക�
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "അഭിപ്രായം ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "കോൺടാക്റ്റ് ഇല്ലാതാക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1231,13 +1392,17 @@ msgstr "നീക്കാനായില്ല"
 msgid "Failed to post comment"
 msgstr "അഭിപ്രായം പോസ്റ്റുചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "സുഹൃത്തിനെ നീക്കം ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "അംഗത്തെ നീക്കം ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "വിലാസപ്പുസ്തകത്തിന്റെ പേര് മാറ്റുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1256,6 +1421,10 @@ msgstr "സംരക്ഷിക്കുന്നതിൽ പരാജയപ�
 msgid "Failed to save accent"
 msgstr "ആക്സന്റ് സംരക്ഷിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "കോൺടാക്റ്റ് സേവ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "പേര് സംരക്ഷിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
@@ -1271,6 +1440,11 @@ msgstr "പ്രൊഫൈൽ സംരക്ഷിക്കുന്നതി�
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "പ്രോംപ്റ്റ് സംരക്ഷിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "ക്ഷണം അയയ്ക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1292,6 +1466,10 @@ msgstr "നിരീക്ഷണം അപ്‌ഡേറ്റ് ചെയ്�
 msgid "Failed to upload attachment"
 msgstr "അറ്റാച്ച്മെന്റ് അപ്‌ലോഡ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "കുടുംബപ്പേര്"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "ഫെവിക്കോൺ"
@@ -1305,6 +1483,10 @@ msgstr "ഫയൽ വളരെ വലുതാണ്"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "ഫയലുകൾ"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Mochi-യിൽ കണ്ടെത്തുക"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1322,14 +1504,16 @@ msgstr "പരന്നത്"
 msgid "Friday"
 msgstr "വെള്ളിയാഴ്ച"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "സുഹൃത്ത്"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "സുഹൃത്തിനെ നീക്കം ചെയ്തു"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "സുഹൃത്തുക്കൾ"
 
@@ -1344,6 +1528,10 @@ msgstr "നിന്ന്"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "തീമിൽ നിന്ന്"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "ആദ്യനാമം"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1411,6 +1599,11 @@ msgstr "ചരിത്രം"
 msgid "Home"
 msgstr "ഹോം"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "വീട്"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "ഹോട്ട്"
@@ -1431,6 +1624,10 @@ msgstr "ചിത്ര വ്യൂവർ: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "ഇംപീരിയൽ"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "കോൺടാക്റ്റുകളിലുണ്ട്"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1460,7 +1657,7 @@ msgstr "താൽപ്പര്യങ്ങൾ"
 msgid "Invalid date"
 msgstr "അസാധുവായ തീയതി"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "ക്ഷണം സ്വീകരിച്ചു"
@@ -1473,8 +1670,8 @@ msgstr "ക്ഷണം റദ്ദാക്കി"
 msgid "Invitation declined"
 msgstr "ക്ഷണം നിരസിച്ചു"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "ക്ഷണം അയച്ചു"
 
@@ -1484,6 +1681,11 @@ msgstr "ക്ഷണം അയച്ചു"
 msgid "Invitations"
 msgstr "ക്ഷണങ്ങൾ"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "ക്ഷണിക്കുക"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "ക്ഷണ നയം പുതുക്കി"
@@ -1492,6 +1694,10 @@ msgstr "ക്ഷണ നയം പുതുക്കി"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "ക്ഷണ ക്രമീകരണങ്ങൾ"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "ക്ഷണിച്ചു"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1630,6 +1836,7 @@ msgid "Menu"
 msgstr "മെനു"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "സന്ദേശം"
 
@@ -1644,6 +1851,11 @@ msgstr "മൈക്രോഫോൺ അനുമതി നിരസിച്ച�
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "കുറഞ്ഞ നീളം"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "മൊബൈൽ"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1674,11 +1886,13 @@ msgstr "{field} നീക്കി"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "പേര്"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Name (A–Z)"
 msgstr "പേര് (A–Z)"
 
@@ -1709,6 +1923,11 @@ msgstr "നെറ്റ്‌വർക്ക് പിശക്"
 msgid "New"
 msgstr "പുതിയത്"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "പുതിയ കോൺടാക്റ്റ്"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "New game"
@@ -1722,6 +1941,10 @@ msgstr "പുതിയ ക്ഷണങ്ങൾ ഇവിടെ ദൃശ്യ
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "അടുത്ത ചിത്രം"
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "വിളിപ്പേര്"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1743,9 +1966,9 @@ msgstr "ബാനർ സജ്ജമാക്കിയിട്ടില്ല"
 msgid "No comments yet"
 msgstr "അഭിപ്രായങ്ങളൊന്നും ഇതുവരെ ഇല്ല"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "സുഹൃത്തുക്കളാരും ഇതുവരെ ഇല്ല"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "ഇതുവരെ കോൺടാക്റ്റുകളില്ല"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1777,7 +2000,7 @@ msgstr "തീർപ്പുകൽപ്പിക്കാത്ത ക്ഷ�
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "ആളുകളെ കണ്ടെത്തിയില്ല"
@@ -1786,7 +2009,7 @@ msgstr "ആളുകളെ കണ്ടെത്തിയില്ല"
 msgid "No places found"
 msgstr "സ്ഥലങ്ങളൊന്നും കണ്ടെത്തിയില്ല"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "\"{search}\" എന്നതിന് ഫലങ്ങളൊന്നുമില്ല"
 
@@ -1858,6 +2081,10 @@ msgstr "കണ്ടെത്തിയില്ല"
 msgid "Not set"
 msgstr "സജ്ജമാക്കിയിട്ടില്ല"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "കുറിപ്പ്"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "ഒന്നും കണ്ടെത്തിയില്ല"
@@ -1880,6 +2107,10 @@ msgstr "സംഖ്യ"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "ഓൺ"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Mochi-യിൽ"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1929,7 +2160,16 @@ msgstr "ഓപ്ഷണൽ വിവരണം"
 msgid "Options"
 msgstr "ഓപ്ഷനുകൾ"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "സ്ഥാപനം"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "മറ്റുള്ളവ"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "മറ്റുള്ളവ"
 
@@ -1974,6 +2214,10 @@ msgstr "തീർപ്പുകൽപ്പിക്കാത്തത്"
 msgid "People"
 msgstr "People"
 
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "ഫോണുകൾ"
+
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -1988,6 +2232,10 @@ msgstr "ദയവായി വീണ്ടും ശ്രമിക്കുക.
 msgid "Please wait a moment and try again."
 msgstr "അൽപ്പനേരം കാത്തിരുന്ന് വീണ്ടും ശ്രമിക്കുക."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "പോസ്റ്റ്കോഡ്"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "പോസ്റ്റുകൾ"
@@ -2000,10 +2248,10 @@ msgstr "പോസ്റ്റുകളും അഭിപ്രായങ്ങ�
 msgid "Preview"
 msgstr "സ്കോർ പ്രിവ്യൂ"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "സുഹൃത്തുക്കാനുള്ള അഭ്യർത്ഥന അയയ്ക്കുന്നതിന് മുമ്പ് {0} എന്നയാളുടെ പ്രൊഫൈൽ പ്രിവ്യൂ ചെയ്യുക."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "സുഹൃത്ത് ക്ഷണം അയയ്ക്കുന്നതിന് മുമ്പ് {0} എന്നയാളുടെ പ്രൊഫൈൽ കാണുക."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2067,7 +2315,7 @@ msgstr "ഈ സെർവറിൽ നിങ്ങളുടെ പാസ്‌ക
 msgid "Received ({0})"
 msgstr "ലഭിച്ചത് ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "അടുത്തിടെ ചേർത്തത്"
 
@@ -2095,6 +2343,10 @@ msgstr "ലോഗിനിലേക്ക് തിരിച്ചുവിട�
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "പുതുക്കുക"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "പ്രാദേശികം"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2127,10 +2379,7 @@ msgstr "പ്രസക്തി {relevance}, താൽപ്പര്യം {we
 msgid "Remove"
 msgstr "നീക്കം ചെയ്യുക"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2161,10 +2410,13 @@ msgstr "\"{0}\" എന്നതിനുള്ള ആക്‌സസ് നി�
 msgid "Remove access?"
 msgstr "അക്കൗണ്ട് നീക്കം ചെയ്യണോ?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "സുഹൃത്തിനെ നീക്കം ചെയ്യുക"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "വിലാസം നീക്കം ചെയ്യുക"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "ഇമെയിൽ നീക്കം ചെയ്യുക"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2185,7 +2437,11 @@ msgstr "ലിങ്ക് നീക്കം ചെയ്യുക"
 msgid "Remove member"
 msgstr "അംഗത്തെ നീക്കം ചെയ്യണോ?"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "ഫോൺ നീക്കം ചെയ്യുക"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "സുഹൃത്തിനെ നീക്കം ചെയ്യുന്നു..."
 
@@ -2195,8 +2451,13 @@ msgstr "അംഗത്തെ നീക്കം ചെയ്യുന്നു.
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "കോളം പുനർനാമകരണം ചെയ്യുക"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "വിലാസപ്പുസ്തകത്തിന്റെ പേര് മാറ്റുക"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2205,6 +2466,10 @@ msgstr "പേജ് പുനർനാമകരണം ചെയ്യുക"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "design മാറ്റിസ്ഥാപിക്കണോ?"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "വിലാസപ്പുസ്തകത്തിന്റെ പേര് മാറ്റുന്നു..."
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2280,6 +2545,8 @@ msgstr "ശനിയാഴ്ച"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2291,6 +2558,10 @@ msgstr "സേവ് ചെയ്യുക"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "പേര് സംരക്ഷിക്കുക"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "കോൺടാക്റ്റ് സേവ് ചെയ്യുന്നു..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2309,6 +2580,10 @@ msgstr "സേവ് ചെയ്യുന്നു..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "തിരയുക"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "കോൺടാക്റ്റുകൾ തിരയുക"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2329,14 +2604,6 @@ msgstr "ലക്ഷ്യസ്ഥാനം തിരയുക..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "ഉത്ഭവ സ്ഥാനം തിരയുക..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "ആളുകളെ തിരയുക, സുഹൃത്തുക്കാനുള്ള അഭ്യർത്ഥന അയയ്ക്കുക."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "സുഹൃത്തുക്കളെ തിരയുക"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2360,7 +2627,7 @@ msgstr "ഈ കാഴ്ച തിരയുക, വാച്ച് ചെയ്�
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "തിരയുക..."
@@ -2438,7 +2705,7 @@ msgstr "വീണ്ടും അയയ്ക്കുക"
 msgid "Send email"
 msgstr "ഇമെയിൽ അയയ്ക്കുക"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "ക്ഷണം അയയ്ക്കുക"
 
@@ -2447,7 +2714,8 @@ msgstr "ക്ഷണം അയയ്ക്കുക"
 msgid "Send message"
 msgstr "സന്ദേശം അയയ്ക്കുക"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "ക്ഷണം അയയ്ക്കുന്നു..."
 
@@ -2555,9 +2823,9 @@ msgstr "വിശാലം"
 msgid "Start the discussion by adding the first comment."
 msgstr "ആദ്യത്തെ കമന്റ് ചേർത്ത് ചർച്ച ആരംഭിക്കുക."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "ഉപയോക്താക്കളെ തിരയാൻ ടൈപ്പ് ചെയ്യാൻ തുടങ്ങുക"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "ആളുകളെ തിരയാൻ ടൈപ്പ് ചെയ്യാൻ തുടങ്ങുക"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2567,6 +2835,10 @@ msgstr "നിരീക്ഷണം നിർത്തുക"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "നിശബ്ദമായി സ്റ്റോർ ചെയ്യുക"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "തെരുവ്"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2635,7 +2907,7 @@ msgstr "അയയ്ക്കാനായില്ല. ഫയലുകൾ വള
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "അപ്‌ലോഡ് ചെയ്യാൻ വളരെ വലുതായിരുന്നു. ഫയലുകൾ നീക്കം ചെയ്യുകയോ ചെറുതാക്കുകയോ ചെയ്ത് വീണ്ടും ശ്രമിക്കുക."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "അത് നിങ്ങളാണ്"
 
@@ -2679,6 +2951,11 @@ msgstr "ഇത് ഗെയിമും അതിന്റെ ചാറ്റു
 msgid "Thursday"
 msgstr "വ്യാഴാഴ്ച"
 
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "പദവി"
+
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
 msgstr "എവിടേക്ക്"
@@ -2718,13 +2995,9 @@ msgstr "മുകളിൽ"
 msgid "Travelling"
 msgstr "യാത്ര ചെയ്യുന്നു"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "മറ്റൊരു പേര് പരീക്ഷിക്കുക"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "മറ്റൊരു തിരയൽ പദം ശ്രമിക്കുക"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2745,6 +3018,8 @@ msgstr "ചൊവ്വാഴ്ച"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "തരം"
@@ -2788,6 +3063,12 @@ msgstr "ലഭ്യമല്ല"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "അപ്രതീക്ഷിത API പിശക്"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "സൗഹൃദം അവസാനിപ്പിക്കുക"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2848,6 +3129,10 @@ msgstr "അപ്‌ലോഡ് പുരോഗതി"
 #: src/features/profile/index.tsx
 msgid "Uploading..."
 msgstr "അപ്‌ലോഡ് ചെയ്യുന്നു..."
+
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -2926,6 +3211,11 @@ msgstr "ഞങ്ങൾ <0>{0}</0> എന്നതിലേക്ക് ഒര�
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "ബുധനാഴ്ച"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "ജോലിസ്ഥലം"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

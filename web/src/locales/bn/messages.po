@@ -34,6 +34,11 @@ msgstr "(আপনি)"
 msgid "[not set]"
 msgstr "[সেট নয়]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {এটির সঙ্গে # পরিচিতিও মুছে যাবে।} other {এটির সঙ্গে # পরিচিতিও মুছে যাবে।}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -98,9 +103,9 @@ msgstr "১২ ঘণ্টা"
 msgid "24 hours"
 msgstr "২৪ ঘণ্টা"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "{userName}-কে বন্ধুত্বের আমন্ত্রণ পাঠানো হয়েছে।"
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "{name}-কে বন্ধুত্বের আমন্ত্রণ পাঠানো হয়েছে।"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +124,8 @@ msgid "Accent saved"
 msgstr "অ্যাকসেন্ট সংরক্ষিত হয়েছে"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "গ্রহণ করুন"
@@ -132,11 +138,7 @@ msgstr "সব গ্রহণ করুন"
 msgid "Accept automatically"
 msgstr "স্বয়ংক্রিয়ভাবে গ্রহণ করুন"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "আমন্ত্রণ গ্রহণ করুন"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "আমন্ত্রণ গ্রহণ করা হচ্ছে..."
@@ -161,6 +163,11 @@ msgstr "অ্যাকাউন্টের ধরন"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "অ্যাকশন"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "{0}-এর জন্য ক্রিয়াকলাপ"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +199,10 @@ msgstr "অ্যাক্সেস যোগ করুন"
 msgid "Add account"
 msgstr "অ্যাকাউন্ট যোগ করুন"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "ঠিকানা যোগ করুন"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "ক্যাপশন যোগ করুন"
@@ -200,22 +211,21 @@ msgstr "ক্যাপশন যোগ করুন"
 msgid "Add checklist item"
 msgstr "চেকলিস্ট আইটেম যোগ করুন"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "পরিচিতি যোগ করুন"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "ইমেইল যোগ করুন"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "ফিল্ড যোগ করুন"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "বন্ধু যোগ করুন"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "সংযোগ শুরু করতে বন্ধু যোগ করুন"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +250,21 @@ msgstr "সদস্য যোগ করুন"
 msgid "Add option"
 msgstr "অপশন যোগ করুন"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "ফোন যোগ করুন"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "শুরু করতে কাউকে যোগ করুন"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ট্যাগ যোগ করুন..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "পরিচিতিতে যোগ করুন"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +288,38 @@ msgstr "ভিউ যোগ করুন"
 msgid "Added {0} to the group"
 msgstr "গ্রুপে {0} যোগ করা হয়েছে"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "পরিচিতি যোগ করা হচ্ছে..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "সদস্য যোগ করা হচ্ছে..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "ঠিকানা বই"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "ঠিকানা বই"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "ঠিকানা বই তৈরি হয়েছে"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "ঠিকানা বই মুছে ফেলা হয়েছে"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "ঠিকানা বইয়ের নাম পরিবর্তন করা হয়েছে"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "ঠিকানা"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +328,11 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "উপলব্ধ সব গ্রুপ ইতিমধ্যে যোগ করা হয়েছে"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "সব পরিচিতি"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +353,6 @@ msgstr "যে কাউকে {entityLabel} খোঁজার অনুমত�
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "অনুসারে সাজানো অনুমতি দিন"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "ইতিমধ্যে বন্ধু"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +410,6 @@ msgstr "আপনি কি নিশ্চিত লগআউট করতে �
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "আপনি কি নিশ্চিত যে আপনি <0>{0}</0>-কে এই গ্রুপ থেকে সরাতে চান?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "আপনি কি নিশ্চিত যে আপনি <0>{0}</0>-কে আপনার বন্ধু তালিকা থেকে সরাতে চান? এই ক্রিয়াটি ফেরানো যাবে না।"
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "আপনি কি সত্যিই হার মানতে চান?"
@@ -406,7 +452,7 @@ msgid "Avatar for {name}"
 msgstr "{name}-এর অবতার"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Back"
 msgstr "ফিরে যান"
 
@@ -431,6 +477,10 @@ msgstr "ব্যানার সরানো হয়েছে"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "ব্যানার আপডেট হয়েছে"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "জন্মদিন"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +544,8 @@ msgstr "ক্যামেরা অনুপলব্ধ"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,10 +607,6 @@ msgstr "পরিবর্তন করা হয়েছে"
 msgid "Changed {field}"
 msgstr "{field} পরিবর্তন করা হয়েছে"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "চ্যাট"
-
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
 msgstr "চেকবক্স"
@@ -576,6 +624,10 @@ msgstr "সাইডবার থেকে একটি গেম বেছে �
 msgid "Choose language"
 msgstr "ভাষা বেছে নিন"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "শহর"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -591,7 +643,7 @@ msgid "Clear all"
 msgstr "সব পরিষ্কার করুন"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "অনুসন্ধান পরিষ্কার করুন"
 
@@ -601,7 +653,7 @@ msgstr "অনুসন্ধান পরিষ্কার করুন"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "বন্ধ করুন"
 
@@ -700,6 +752,27 @@ msgstr "সংযুক্ত"
 msgid "Connecting..."
 msgstr "সংযোগ করা হচ্ছে..."
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "পরিচিতি যোগ করা হয়েছে"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "পরিচিতি তৈরি হয়েছে"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "পরিচিতি মুছে ফেলা হয়েছে"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "পরিচিতি সংরক্ষণ করা হয়েছে"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "পরিচিতি"
+
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
 msgstr "বিষয়বস্তু পাওয়া যায়নি।"
@@ -756,6 +829,10 @@ msgstr "পুনরায় প্রমাণীকরণ শুরু কর
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ওই অ্যাকাউন্ট দিয়ে যাচাই করা যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।"
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "দেশ"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
@@ -767,6 +844,15 @@ msgstr "তৈরি করুন"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "{entityLabel} তৈরি করুন"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "একটি পরিচিতি তৈরি করুন, অথবা Mochi-তে কাউকে খুঁজুন।"
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "ঠিকানা বই তৈরি করুন"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -788,6 +874,14 @@ msgstr "তৈরি হয়েছে"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "{field} তৈরি করা হয়েছে"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "ঠিকানা বই তৈরি করা হচ্ছে..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "পরিচিতি তৈরি করা হচ্ছে..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -854,10 +948,36 @@ msgstr "ডিফল্ট সাজানো"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "মুছুন"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "<0>{0}</0> মুছে ফেলবেন?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "<0>{0}</0> মুছে ফেলবেন? এতে আপনাদের বন্ধুত্বও শেষ হয়ে যাবে।"
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "ঠিকানা বই মুছুন"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -870,6 +990,11 @@ msgstr "কলাম মুছুন"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "মন্তব্য মুছুন"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "পরিচিতি মুছুন"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -919,6 +1044,15 @@ msgstr "মুছে ফেলা হয়েছে"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
 msgstr "{field} মুছে ফেলা হয়েছে"
+
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "ঠিকানা বই মুছে ফেলা হচ্ছে..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "পরিচিতি মুছে ফেলা হচ্ছে..."
 
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
@@ -1010,6 +1144,7 @@ msgstr "ডিসলেক্সিয়া-বান্ধব"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "সম্পাদনা"
@@ -1021,6 +1156,10 @@ msgstr "{label} সম্পাদনা করুন"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "ক্যাপশন সম্পাদনা করুন"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "পরিচিতি সম্পাদনা"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1066,15 +1205,20 @@ msgstr "ইমেইল"
 msgid "Email code"
 msgstr "ইমেইল কোড"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "যাদের যোগ করতে চান তাদের খুঁজে পেতে একটি নাম লিখুন"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "ইমেইল"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "<0>{0}</0>-এর সঙ্গে আপনার বন্ধুত্ব শেষ করবেন? পরিচিতিটি আপনার ঠিকানা বইয়ে থেকে যাবে।"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "ব্যানার টেক্সট লিখুন (মার্কডাউন সমর্থিত)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "খুঁজতে নাম লিখুন..."
 
@@ -1109,6 +1253,7 @@ msgstr "বাহ্যিক URL"
 msgid "Extra large"
 msgstr "অতিরিক্ত বড়"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "আমন্ত্রণ গ্রহণ করতে ব্যর্থ"
@@ -1121,10 +1266,9 @@ msgstr "আমন্ত্রণ গ্রহণ করা যায়নি"
 msgid "Failed to add account"
 msgstr "অ্যাকাউন্ট যোগ করতে ব্যর্থ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "বন্ধু যোগ করতে ব্যর্থ"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "পরিচিতি যোগ করা যায়নি"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1144,6 +1288,14 @@ msgstr "আমন্ত্রণ বাতিল করা যায়নি"
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "কপি করতে ব্যর্থ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "ঠিকানা বই তৈরি করা যায়নি"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "পরিচিতি তৈরি করা যায়নি"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1166,6 +1318,10 @@ msgstr "আমন্ত্রণ প্রত্যাখ্যান করা 
 msgid "Failed to delete"
 msgstr "মুছতে ব্যর্থ"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "ঠিকানা বই মুছে ফেলা যায়নি"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "সংযুক্তি মুছতে ব্যর্থ"
@@ -1173,6 +1329,11 @@ msgstr "সংযুক্তি মুছতে ব্যর্থ"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "মন্তব্য মুছতে ব্যর্থ"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "পরিচিতি মুছে ফেলা যায়নি"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1231,13 +1392,17 @@ msgstr "সরানো ব্যর্থ"
 msgid "Failed to post comment"
 msgstr "মন্তব্য পোস্ট করতে ব্যর্থ"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "বন্ধু সরাতে ব্যর্থ"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "সদস্য সরাতে ব্যর্থ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "ঠিকানা বইয়ের নাম পরিবর্তন করা যায়নি"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1256,6 +1421,10 @@ msgstr "সংরক্ষণ করতে ব্যর্থ"
 msgid "Failed to save accent"
 msgstr "অ্যাকসেন্ট সংরক্ষণ করতে ব্যর্থ"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "পরিচিতি সংরক্ষণ করা যায়নি"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "নাম সংরক্ষণ করতে ব্যর্থ"
@@ -1271,6 +1440,11 @@ msgstr "প্রোফাইল সংরক্ষণ করতে ব্যর
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "প্রম্পট সংরক্ষণ করতে ব্যর্থ"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "আমন্ত্রণ পাঠানো যায়নি"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1292,6 +1466,10 @@ msgstr "পর্যবেক্ষণ আপডেট ব্যর্থ"
 msgid "Failed to upload attachment"
 msgstr "সংযুক্তি আপলোড করতে ব্যর্থ"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "পদবি"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "ফেভিকন"
@@ -1305,6 +1483,10 @@ msgstr "ফাইল খুব বড়"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "ফাইলসমূহ"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Mochi-তে খুঁজুন"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1322,14 +1504,16 @@ msgstr "সমতল"
 msgid "Friday"
 msgstr "শুক্রবার"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "বন্ধু"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "বন্ধু সরানো হয়েছে"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "বন্ধুরা"
 
@@ -1344,6 +1528,10 @@ msgstr "থেকে"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "থিম থেকে"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "নাম"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1411,6 +1599,11 @@ msgstr "ইতিহাস"
 msgid "Home"
 msgstr "হোম"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "বাড়ি"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "জনপ্রিয়"
@@ -1431,6 +1624,10 @@ msgstr "ছবি দর্শক: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "ইম্পেরিয়াল"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "পরিচিতিতে আছে"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1460,7 +1657,7 @@ msgstr "আগ্রহসমূহ"
 msgid "Invalid date"
 msgstr "অবৈধ তারিখ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "আমন্ত্রণ গৃহীত"
@@ -1473,8 +1670,8 @@ msgstr "আমন্ত্রণ বাতিল"
 msgid "Invitation declined"
 msgstr "আমন্ত্রণ প্রত্যাখ্যাত"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "আমন্ত্রণ পাঠানো হয়েছে"
 
@@ -1484,6 +1681,11 @@ msgstr "আমন্ত্রণ পাঠানো হয়েছে"
 msgid "Invitations"
 msgstr "আমন্ত্রণসমূহ"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "আমন্ত্রণ জানান"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "আমন্ত্রণ নীতি আপডেট করা হয়েছে"
@@ -1492,6 +1694,10 @@ msgstr "আমন্ত্রণ নীতি আপডেট করা হয�
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "আমন্ত্রণ সেটিংস"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "আমন্ত্রিত"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1630,6 +1836,7 @@ msgid "Menu"
 msgstr "মেনু"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "বার্তা"
 
@@ -1644,6 +1851,11 @@ msgstr "মাইক্রোফোনের অনুমতি প্রত্�
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "ন্যূনতম দৈর্ঘ্য"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "মোবাইল"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1674,11 +1886,13 @@ msgstr "{field} সরানো হয়েছে"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "নাম"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Name (A–Z)"
 msgstr "নাম (A–Z)"
 
@@ -1709,6 +1923,11 @@ msgstr "নেটওয়ার্ক ত্রুটি"
 msgid "New"
 msgstr "নতুন"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "নতুন পরিচিতি"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "New game"
@@ -1722,6 +1941,10 @@ msgstr "নতুন আমন্ত্রণ এখানে প্রদর্
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "পরবর্তী ছবি"
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "ডাকনাম"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1743,9 +1966,9 @@ msgstr "কোনো ব্যানার সেট নেই"
 msgid "No comments yet"
 msgstr "এখনও কোনো মন্তব্য নেই"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "এখনও কোনো বন্ধু নেই"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "এখনও কোনো পরিচিতি নেই"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1777,7 +2000,7 @@ msgstr "কোনো মুলতুবি আমন্ত্রণ নেই"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "কোনো ব্যক্তি পাওয়া যায়নি"
@@ -1786,7 +2009,7 @@ msgstr "কোনো ব্যক্তি পাওয়া যায়নি
 msgid "No places found"
 msgstr "কোনো স্থান পাওয়া যায়নি"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "\"{search}\"-এর জন্য কোনো ফলাফল নেই"
 
@@ -1858,6 +2081,10 @@ msgstr "খুঁজে পাওয়া যায়নি"
 msgid "Not set"
 msgstr "সেট করা নেই"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "নোট"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "কিছুই পাওয়া যায়নি"
@@ -1880,6 +2107,10 @@ msgstr "সংখ্যা"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "চালু"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Mochi-তে"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1929,7 +2160,16 @@ msgstr "ঐচ্ছিক বিবরণ"
 msgid "Options"
 msgstr "অপশন"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "প্রতিষ্ঠান"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "অন্যান্য"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "অন্যান্য"
 
@@ -1974,6 +2214,10 @@ msgstr "মুলতুবি"
 msgid "People"
 msgstr "ব্যক্তিরা"
 
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "ফোন"
+
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -1988,6 +2232,10 @@ msgstr "অনুগ্রহ করে আবার চেষ্টা কর�
 msgid "Please wait a moment and try again."
 msgstr "অনুগ্রহ করে কিছুক্ষণ অপেক্ষা করে আবার চেষ্টা করুন।"
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "পোস্টকোড"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "পোস্টসমূহ"
@@ -2000,10 +2248,10 @@ msgstr "পোস্ট ও মন্তব্য"
 msgid "Preview"
 msgstr "প্রিভিউ"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "বন্ধুত্বের অনুরোধ পাঠানোর আগে {0}-এর প্রোফাইল প্রিভিউ করুন।"
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "বন্ধুত্বের আমন্ত্রণ পাঠানোর আগে {0}-এর প্রোফাইল দেখে নিন।"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2067,7 +2315,7 @@ msgstr "এই সার্ভারে আপনার পাসকি পু�
 msgid "Received ({0})"
 msgstr "প্রাপ্ত ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "সম্প্রতি যোগ করা হয়েছে"
 
@@ -2095,6 +2343,10 @@ msgstr "লগইনে রিডাইরেক্ট করা হচ্ছে
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "আগ্রহ কমান"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "অঞ্চল"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2127,10 +2379,7 @@ msgstr "প্রাসঙ্গিকতা {relevance}, আগ্রহ {weigh
 msgid "Remove"
 msgstr "সরান"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2161,10 +2410,13 @@ msgstr "\"{0}\" এর জন্য অ্যাক্সেস নিয়ম 
 msgid "Remove access?"
 msgstr "অ্যাক্সেস সরাবেন?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "বন্ধু সরান"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "ঠিকানা সরান"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "ইমেইল সরান"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2185,7 +2437,11 @@ msgstr "লিঙ্ক সরান"
 msgid "Remove member"
 msgstr "সদস্য সরান"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "ফোন সরান"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "বন্ধু সরানো হচ্ছে..."
 
@@ -2195,8 +2451,13 @@ msgstr "সদস্য সরানো হচ্ছে..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "পুনঃনামকরণ করুন"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "ঠিকানা বইয়ের নাম পরিবর্তন করুন"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2205,6 +2466,10 @@ msgstr "কলাম পুনঃনামকরণ করুন"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "এই বোর্ড কলাম পুনঃনামকরণ করুন"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "ঠিকানা বইয়ের নাম পরিবর্তন করা হচ্ছে..."
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2280,6 +2545,8 @@ msgstr "শনিবার"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2291,6 +2558,10 @@ msgstr "সংরক্ষণ করুন"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "নাম সংরক্ষণ করুন"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "পরিচিতি সংরক্ষণ করা হচ্ছে..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2309,6 +2580,10 @@ msgstr "সংরক্ষণ করা হচ্ছে..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "অনুসন্ধান"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "পরিচিতি অনুসন্ধান করুন"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2329,14 +2604,6 @@ msgstr "গন্তব্য অনুসন্ধান করুন..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "উৎস অনুসন্ধান করুন..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "মানুষ খুঁজুন এবং বন্ধুত্বের অনুরোধ পাঠান।"
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "বন্ধু অনুসন্ধান করুন"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2360,7 +2627,7 @@ msgstr "এই ভিউ অনুসন্ধান, দেখুন এবং 
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "অনুসন্ধান করুন..."
@@ -2438,7 +2705,7 @@ msgstr "আবার পাঠান"
 msgid "Send email"
 msgstr "ইমেইল পাঠান"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "আমন্ত্রণ পাঠান"
 
@@ -2447,7 +2714,8 @@ msgstr "আমন্ত্রণ পাঠান"
 msgid "Send message"
 msgstr "বার্তা পাঠান"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "আমন্ত্রণ পাঠানো হচ্ছে..."
 
@@ -2555,9 +2823,9 @@ msgstr "প্রশস্ত"
 msgid "Start the discussion by adding the first comment."
 msgstr "প্রথম মন্তব্য যোগ করে আলোচনা শুরু করুন।"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "ব্যবহারকারীদের খুঁজতে টাইপ শুরু করুন"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "মানুষ খুঁজতে টাইপ করা শুরু করুন"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2567,6 +2835,10 @@ msgstr "দেখা বন্ধ করুন"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "নিঃশব্দে সংরক্ষণ করুন"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "রাস্তা"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2635,7 +2907,7 @@ msgstr "পাঠানো যায়নি। ফাইলগুলি খু
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "আপলোডের জন্য খুব বড় ছিল। ফাইল সরান বা ছোট করুন এবং আবার চেষ্টা করুন।"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "এটি আপনি"
 
@@ -2679,6 +2951,11 @@ msgstr "এটি গেম এবং এর চ্যাট স্থায়�
 msgid "Thursday"
 msgstr "বৃহস্পতিবার"
 
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "পদ"
+
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
 msgstr "গন্তব্য"
@@ -2718,13 +2995,9 @@ msgstr "উপরে"
 msgid "Travelling"
 msgstr "ভ্রমণরত"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "অন্য একটি নাম চেষ্টা করুন"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "অন্য একটি অনুসন্ধান শব্দ চেষ্টা করুন"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2745,6 +3018,8 @@ msgstr "মঙ্গলবার"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "ধরন"
@@ -2788,6 +3063,12 @@ msgstr "অনুপলব্ধ"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "অপ্রত্যাশিত API ত্রুটি"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "বন্ধুত্ব শেষ করুন"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2848,6 +3129,10 @@ msgstr "আপলোডের অগ্রগতি"
 #: src/features/profile/index.tsx
 msgid "Uploading..."
 msgstr "আপলোড করা হচ্ছে..."
+
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -2926,6 +3211,11 @@ msgstr "আমরা <0>{0}</0> এ একটি যাচাইকরণ কো
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "বুধবার"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "কর্মস্থল"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

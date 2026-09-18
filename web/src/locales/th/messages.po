@@ -34,6 +34,11 @@ msgstr "(คุณ)"
 msgid "[not set]"
 msgstr "[ไม่ได้ตั้ง]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, other {ผู้ติดต่อ # รายจะถูกลบไปด้วย}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -98,9 +103,9 @@ msgstr "12 ชั่วโมง"
 msgid "24 hours"
 msgstr "24 ชั่วโมง"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "ส่งคำเชิญเป็นเพื่อนไปยัง {userName} แล้ว"
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "ส่งคำเชิญเป็นเพื่อนไปยัง {name} แล้ว"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +124,8 @@ msgid "Accent saved"
 msgstr "บันทึกสีเน้นแล้ว"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "ยอมรับ"
@@ -132,11 +138,7 @@ msgstr "ยอมรับทั้งหมด"
 msgid "Accept automatically"
 msgstr "ยอมรับอัตโนมัติ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "ยอมรับคำเชิญ"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "กำลังตอบรับคำเชิญ..."
@@ -161,6 +163,11 @@ msgstr "ประเภทบัญชี"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "การกระทำ"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "การดำเนินการสำหรับ {0}"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +199,10 @@ msgstr "เพิ่มการเข้าถึง"
 msgid "Add account"
 msgstr "เพิ่มบัญชี"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "เพิ่มที่อยู่"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "เพิ่มคำบรรยายภาพ"
@@ -200,22 +211,21 @@ msgstr "เพิ่มคำบรรยายภาพ"
 msgid "Add checklist item"
 msgstr "เพิ่มรายการเช็คลิสต์"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "เพิ่มผู้ติดต่อ"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "เพิ่มอีเมล"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "เพิ่มฟิลด์"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "เพิ่มเพื่อน"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "เพิ่มเพื่อนเพื่อเริ่มเชื่อมต่อ"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +250,21 @@ msgstr "เพิ่มสมาชิก"
 msgid "Add option"
 msgstr "เพิ่มตัวเลือก"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "เพิ่มโทรศัพท์"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "เพิ่มใครสักคนเพื่อเริ่มต้น"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "เพิ่มแท็ก..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "เพิ่มในผู้ติดต่อ"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +288,38 @@ msgstr "เพิ่มมุมมอง"
 msgid "Added {0} to the group"
 msgstr "เพิ่ม{0}ไปยังกลุ่มแล้ว"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "กำลังเพิ่มผู้ติดต่อ..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "กำลังเพิ่มสมาชิก..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "สมุดที่อยู่"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "สมุดที่อยู่"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "สร้างสมุดที่อยู่แล้ว"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "ลบสมุดที่อยู่แล้ว"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "เปลี่ยนชื่อสมุดที่อยู่แล้ว"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "ที่อยู่"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +328,11 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "เพิ่มกลุ่มที่มีอยู่ทั้งหมดแล้ว"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "ผู้ติดต่อทั้งหมด"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +353,6 @@ msgstr "อนุญาตให้ทุกคนค้นหา{entityLabel}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "อนุญาตให้เรียงตาม"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "เป็นเพื่อนกันแล้ว"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +410,6 @@ msgstr "คุณแน่ใจหรือไม่ว่าต้องกา
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบ <0>{0}</0> ออกจากกลุ่มนี้?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบ <0>{0}</0> ออกจากรายชื่อเพื่อน? การกระทำนี้ไม่สามารถยกเลิกได้"
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "แน่ใจว่าต้องการยอมแพ้?"
@@ -406,7 +452,7 @@ msgid "Avatar for {name}"
 msgstr "อวาตาร์ของ {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Back"
 msgstr "ย้อนกลับ"
 
@@ -431,6 +477,10 @@ msgstr "ลบแบนเนอร์แล้ว"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "อัปเดตแบนเนอร์แล้ว"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "วันเกิด"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +544,8 @@ msgstr "กล้องไม่พร้อมใช้งาน"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,10 +607,6 @@ msgstr "เปลี่ยนแล้ว"
 msgid "Changed {field}"
 msgstr "เปลี่ยน {field}"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "แชท"
-
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
 msgstr "ช่องทำเครื่องหมาย"
@@ -576,6 +624,10 @@ msgstr "เลือกเกมจากแถบด้านข้างหร
 msgid "Choose language"
 msgstr "เลือกภาษา"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "เมือง"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -591,7 +643,7 @@ msgid "Clear all"
 msgstr "ล้างทั้งหมด"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "ล้างการค้นหา"
 
@@ -601,7 +653,7 @@ msgstr "ล้างการค้นหา"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "ปิด"
 
@@ -700,6 +752,27 @@ msgstr "เชื่อมต่อแล้ว"
 msgid "Connecting..."
 msgstr "กำลังเชื่อมต่อ..."
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "เพิ่มผู้ติดต่อแล้ว"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "สร้างผู้ติดต่อแล้ว"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "ลบผู้ติดต่อแล้ว"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "บันทึกผู้ติดต่อแล้ว"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "ผู้ติดต่อ"
+
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
 msgstr "ไม่พบเนื้อหา"
@@ -756,6 +829,10 @@ msgstr "เริ่มการยืนยันตัวตนอีกคร
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ไม่สามารถยืนยันด้วยบัญชีนั้นได้ โปรดลองอีกครั้ง"
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "ประเทศ"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
@@ -767,6 +844,15 @@ msgstr "สร้าง"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "สร้าง{entityLabel}"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "สร้างผู้ติดต่อ หรือค้นหาใครสักคนบน Mochi"
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "สร้างสมุดที่อยู่"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -788,6 +874,14 @@ msgstr "สร้างแล้ว"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "สร้าง {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "กำลังสร้างสมุดที่อยู่..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "กำลังสร้างผู้ติดต่อ..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -854,10 +948,36 @@ msgstr "การเรียงลำดับเริ่มต้น"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "ลบ"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "ลบ <0>{0}</0> ไหม"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "ลบ <0>{0}</0> ไหม การทำเช่นนี้จะสิ้นสุดการเป็นเพื่อนด้วย"
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "ลบสมุดที่อยู่"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -870,6 +990,11 @@ msgstr "ลบคอลัมน์"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "ลบความคิดเห็น"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "ลบผู้ติดต่อ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -919,6 +1044,15 @@ msgstr "ลบแล้ว"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
 msgstr "ลบ {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "กำลังลบสมุดที่อยู่..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "กำลังลบผู้ติดต่อ..."
 
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
@@ -1010,6 +1144,7 @@ msgstr "เหมาะสำหรับผู้บกพร่องการ
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "แก้ไข"
@@ -1021,6 +1156,10 @@ msgstr "แก้ไข {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "แก้ไขคำบรรยายภาพ"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "แก้ไขผู้ติดต่อ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1066,15 +1205,20 @@ msgstr "อีเมล"
 msgid "Email code"
 msgstr "รหัสอีเมล"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "ป้อนชื่อเพื่อค้นหาคนที่คุณต้องการเพิ่ม"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "อีเมล"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "สิ้นสุดการเป็นเพื่อนกับ <0>{0}</0> ไหม ผู้ติดต่อจะยังคงอยู่ในสมุดที่อยู่ของคุณ"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "ป้อนข้อความแบนเนอร์ (รองรับ markdown)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "ป้อนชื่อเพื่อค้นหา..."
 
@@ -1109,6 +1253,7 @@ msgstr "URL ภายนอก"
 msgid "Extra large"
 msgstr "ใหญ่พิเศษ"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "ไม่สามารถยอมรับคำเชิญได้"
@@ -1121,10 +1266,9 @@ msgstr "ตอบรับคำเชิญไม่สำเร็จ"
 msgid "Failed to add account"
 msgstr "ไม่สามารถเพิ่มบัญชีได้"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "เพิ่มเพื่อนไม่สำเร็จ"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "ไม่สามารถเพิ่มผู้ติดต่อได้"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1144,6 +1288,14 @@ msgstr "ยกเลิกคำเชิญไม่สำเร็จ"
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "ไม่สามารถคัดลอกได้"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "ไม่สามารถสร้างสมุดที่อยู่ได้"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "ไม่สามารถสร้างผู้ติดต่อได้"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1166,6 +1318,10 @@ msgstr "ปฏิเสธคำเชิญไม่สำเร็จ"
 msgid "Failed to delete"
 msgstr "ไม่สามารถลบได้"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "ไม่สามารถลบสมุดที่อยู่ได้"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "ไม่สามารถลบไฟล์แนบได้"
@@ -1173,6 +1329,11 @@ msgstr "ไม่สามารถลบไฟล์แนบได้"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "ไม่สามารถลบความคิดเห็นได้"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "ไม่สามารถลบผู้ติดต่อได้"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1231,13 +1392,17 @@ msgstr "ย้ายไม่สำเร็จ"
 msgid "Failed to post comment"
 msgstr "ไม่สามารถโพสต์ความคิดเห็นได้"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "ไม่สามารถเอาเพื่อนออกได้"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "ไม่สามารถเอาสมาชิกออกได้"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "ไม่สามารถเปลี่ยนชื่อสมุดที่อยู่ได้"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1256,6 +1421,10 @@ msgstr "ไม่สามารถบันทึกได้"
 msgid "Failed to save accent"
 msgstr "ไม่สามารถบันทึกสีเน้นได้"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "ไม่สามารถบันทึกผู้ติดต่อได้"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "ไม่สามารถบันทึกชื่อได้"
@@ -1271,6 +1440,11 @@ msgstr "ไม่สามารถบันทึกโปรไฟล์ได
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "ไม่สามารถบันทึก prompt ได้"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "ไม่สามารถส่งคำเชิญได้"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1292,6 +1466,10 @@ msgstr "อัปเดตการติดตามไม่สำเร็จ
 msgid "Failed to upload attachment"
 msgstr "ไม่สามารถอัปโหลดไฟล์แนบได้"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "นามสกุล"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1305,6 +1483,10 @@ msgstr "ไฟล์ใหญ่เกินไป"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "ไฟล์"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "ค้นหาบน Mochi"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1322,14 +1504,16 @@ msgstr "แบน"
 msgid "Friday"
 msgstr "วันศุกร์"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "เพื่อน"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "ลบเพื่อนแล้ว"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "เพื่อน"
 
@@ -1344,6 +1528,10 @@ msgstr "จาก"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "จากธีม"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "ชื่อ"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1411,6 +1599,11 @@ msgstr "ประวัติ"
 msgid "Home"
 msgstr "หน้าหลัก"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "บ้าน"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "ยอดนิยม"
@@ -1431,6 +1624,10 @@ msgstr "โปรแกรมดูรูปภาพ: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperial"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "อยู่ในผู้ติดต่อแล้ว"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1460,7 +1657,7 @@ msgstr "ความสนใจ"
 msgid "Invalid date"
 msgstr "วันที่ไม่ถูกต้อง"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "ยอมรับคำเชิญแล้ว"
@@ -1473,8 +1670,8 @@ msgstr "ยกเลิกคำเชิญแล้ว"
 msgid "Invitation declined"
 msgstr "ปฏิเสธคำเชิญแล้ว"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "ส่งคำเชิญแล้ว"
 
@@ -1484,6 +1681,11 @@ msgstr "ส่งคำเชิญแล้ว"
 msgid "Invitations"
 msgstr "คำเชิญ"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "เชิญ"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "อัปเดตนโยบายการเชิญแล้ว"
@@ -1492,6 +1694,10 @@ msgstr "อัปเดตนโยบายการเชิญแล้ว"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "การตั้งค่าคำเชิญ"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "เชิญแล้ว"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1630,6 +1836,7 @@ msgid "Menu"
 msgstr "เมนู"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "ข้อความ"
 
@@ -1644,6 +1851,11 @@ msgstr "สิทธิ์ไมโครโฟนถูกปฏิเสธ"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "ความยาวขั้นต่ำ"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "มือถือ"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1674,11 +1886,13 @@ msgstr "ย้าย {field}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "ชื่อ"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Name (A–Z)"
 msgstr "ชื่อ (A–Z)"
 
@@ -1709,6 +1923,11 @@ msgstr "ข้อผิดพลาดของเครือข่าย"
 msgid "New"
 msgstr "ใหม่"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "ผู้ติดต่อใหม่"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "New game"
@@ -1722,6 +1941,10 @@ msgstr "คำเชิญใหม่จะปรากฏที่นี่"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "รูปถัดไป"
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "ชื่อเล่น"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1743,9 +1966,9 @@ msgstr "ยังไม่ได้ตั้งแบนเนอร์"
 msgid "No comments yet"
 msgstr "ยังไม่มีความคิดเห็น"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "ยังไม่มีเพื่อน"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "ยังไม่มีผู้ติดต่อ"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1777,7 +2000,7 @@ msgstr "ไม่มีคำเชิญที่รอดำเนินกา
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "ไม่พบผู้คน"
@@ -1786,7 +2009,7 @@ msgstr "ไม่พบผู้คน"
 msgid "No places found"
 msgstr "ไม่พบสถานที่"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "ไม่มีผลลัพธ์สำหรับ \"{search}\""
 
@@ -1858,6 +2081,10 @@ msgstr "ไม่พบ"
 msgid "Not set"
 msgstr "ยังไม่ได้ตั้งค่า"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "หมายเหตุ"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "ไม่พบสิ่งใด"
@@ -1880,6 +2107,10 @@ msgstr "ตัวเลข"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "เปิด"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "อยู่บน Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1929,7 +2160,16 @@ msgstr "คำอธิบาย (ไม่บังคับ)"
 msgid "Options"
 msgstr "ตัวเลือก"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "องค์กร"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "อื่น ๆ"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "อื่น ๆ"
 
@@ -1974,6 +2214,10 @@ msgstr "รอดำเนินการ"
 msgid "People"
 msgstr "ผู้คน"
 
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "โทรศัพท์"
+
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -1988,6 +2232,10 @@ msgstr "โปรดลองอีกครั้ง"
 msgid "Please wait a moment and try again."
 msgstr "โปรดรอสักครู่แล้วลองอีกครั้ง"
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "รหัสไปรษณีย์"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "โพสต์"
@@ -2000,10 +2248,10 @@ msgstr "โพสต์และความคิดเห็น"
 msgid "Preview"
 msgstr "ดูตัวอย่าง"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "ดูตัวอย่างโปรไฟล์ของ {0} ก่อนส่งคำขอเป็นเพื่อน"
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "ดูโปรไฟล์ของ {0} ก่อนส่งคำเชิญเป็นเพื่อน"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2067,7 +2315,7 @@ msgstr "ลงทะเบียนพาสคีย์ของคุณให
 msgid "Received ({0})"
 msgstr "ที่ได้รับ ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "เพิ่มเมื่อเร็ว ๆ นี้"
 
@@ -2095,6 +2343,10 @@ msgstr "กำลังเปลี่ยนเส้นทางไปยัง
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "ลดความสนใจ"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "ภูมิภาค"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2127,10 +2379,7 @@ msgstr "ความเกี่ยวข้อง {relevance}, ความส�
 msgid "Remove"
 msgstr "ลบ"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2161,10 +2410,13 @@ msgstr "นำกฎการเข้าถึงสำหรับ \"{0}\" อ
 msgid "Remove access?"
 msgstr "ลบสิทธิ์การเข้าถึง?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "ลบเพื่อน"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "ลบที่อยู่"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "ลบอีเมล"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2185,7 +2437,11 @@ msgstr "ลบลิงก์"
 msgid "Remove member"
 msgstr "ลบสมาชิก"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "ลบโทรศัพท์"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "กำลังลบเพื่อน..."
 
@@ -2195,8 +2451,13 @@ msgstr "กำลังนำสมาชิกออก..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "เปลี่ยนชื่อ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "เปลี่ยนชื่อสมุดที่อยู่"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2205,6 +2466,10 @@ msgstr "เปลี่ยนชื่อคอลัมน์"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "เปลี่ยนชื่อคอลัมน์ของบอร์ดนี้"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "กำลังเปลี่ยนชื่อสมุดที่อยู่..."
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2280,6 +2545,8 @@ msgstr "วันเสาร์"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2291,6 +2558,10 @@ msgstr "บันทึก"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "บันทึกชื่อ"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "กำลังบันทึกผู้ติดต่อ..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2309,6 +2580,10 @@ msgstr "กำลังบันทึก..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "ค้นหา"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "ค้นหาผู้ติดต่อ"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2329,14 +2604,6 @@ msgstr "ค้นหาปลายทาง..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "ค้นหาต้นทาง..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "ค้นหาผู้คนและส่งคำขอเป็นเพื่อน"
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "ค้นหาเพื่อน"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2360,7 +2627,7 @@ msgstr "ค้นหา ติดตาม และจัดเรียงม�
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "ค้นหา..."
@@ -2438,7 +2705,7 @@ msgstr "ส่งอีกครั้ง"
 msgid "Send email"
 msgstr "ส่งอีเมล"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "ส่งคำเชิญ"
 
@@ -2447,7 +2714,8 @@ msgstr "ส่งคำเชิญ"
 msgid "Send message"
 msgstr "ส่งข้อความ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "กำลังส่งคำเชิญ..."
 
@@ -2555,9 +2823,9 @@ msgstr "กว้างขวาง"
 msgid "Start the discussion by adding the first comment."
 msgstr "เริ่มการสนทนาโดยเพิ่มความคิดเห็นแรก"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "เริ่มพิมพ์เพื่อค้นหาผู้ใช้"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "เริ่มพิมพ์เพื่อค้นหาผู้คน"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2567,6 +2835,10 @@ msgstr "หยุดติดตาม"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "บันทึกแบบเงียบ"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "ถนน"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2635,7 +2907,7 @@ msgstr "ส่งไม่ได้ ไฟล์อาจใหญ่เกิ�
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "ใหญ่เกินกว่าจะอัปโหลดได้ ลบหรือย่อไฟล์แล้วลองอีกครั้ง"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "นั่นคือคุณ"
 
@@ -2679,6 +2951,11 @@ msgstr "การดำเนินการนี้จะลบเกมแล
 msgid "Thursday"
 msgstr "วันพฤหัสบดี"
 
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "ตำแหน่ง"
+
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
 msgstr "ไปยัง"
@@ -2718,13 +2995,9 @@ msgstr "บนสุด"
 msgid "Travelling"
 msgstr "กำลังเดินทาง"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "ลองใช้ชื่ออื่น"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "ลองคำค้นหาอื่น"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2745,6 +3018,8 @@ msgstr "วันอังคาร"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "ประเภท"
@@ -2788,6 +3063,12 @@ msgstr "ไม่พร้อมใช้งาน"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "ข้อผิดพลาด API ที่ไม่คาดคิด"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "เลิกเป็นเพื่อน"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2848,6 +3129,10 @@ msgstr "ความคืบหน้าการอัปโหลด"
 #: src/features/profile/index.tsx
 msgid "Uploading..."
 msgstr "กำลังอัปโหลด..."
+
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -2926,6 +3211,11 @@ msgstr "เราส่งรหัสยืนยันไปที่ <0>{0}</
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "วันพุธ"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "ที่ทำงาน"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

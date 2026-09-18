@@ -34,6 +34,11 @@ msgstr "(jūs)"
 msgid "[not set]"
 msgstr "[nav iestatīts]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, zero {Kopā ar to tiks dzēsti # kontakti.} one {Kopā ar to tiks dzēsts # kontakts.} other {Kopā ar to tiks dzēsti # kontakti.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -98,9 +103,9 @@ msgstr "12 stundas"
 msgid "24 hours"
 msgstr "24 stundas"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "Drauga uzaicinājums nosūtīts lietotājam {userName}."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "Draudzības ielūgums nosūtīts {name}."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +124,8 @@ msgid "Accent saved"
 msgstr "Akcents saglabāts"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "Pieņemt"
@@ -132,11 +138,7 @@ msgstr "Pieņemt visus"
 msgid "Accept automatically"
 msgstr "Pieņemt automātiski"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "Pieņemt uzaicinājumu"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "Pieņem uzaicinājumu..."
@@ -161,6 +163,11 @@ msgstr "Konta veids"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "Darbības"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "Darbības ar {0}"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +199,10 @@ msgstr "Pievienot piekļuvi"
 msgid "Add account"
 msgstr "Pievienot kontu"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "Pievienot adresi"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Pievienot parakstu"
@@ -200,22 +211,21 @@ msgstr "Pievienot parakstu"
 msgid "Add checklist item"
 msgstr "Pievienot kontrolsaraksta vienumu"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "Pievienot kontaktu"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "Pievienot e-pastu"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Pievienot lauku"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "Pievienot draugu"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "Pievieno draugus, lai sāktu sazināties"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +250,21 @@ msgstr "Pievienot dalībnieku"
 msgid "Add option"
 msgstr "Pievienot opciju"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "Pievienot tālruni"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "Pievienojiet kādu, lai sāktu"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Pievienot tagu..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "Pievienot kontaktiem"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +288,38 @@ msgstr "Pievienot skatu"
 msgid "Added {0} to the group"
 msgstr "{0} pievienots(a) grupai"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "Pievieno kontaktu..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Pievieno dalībnieku..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "adrešu grāmata"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "Adrešu grāmata"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "Adrešu grāmata izveidota"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "Adrešu grāmata dzēsta"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "Adrešu grāmata pārdēvēta"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "Adreses"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +328,11 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "Visas pieejamās grupas jau ir pievienotas"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "Visi kontakti"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +353,6 @@ msgstr "Atļaut ikvienam meklēt: {entityLabel}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Atļaut kārtot pēc"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "Jau draugi"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +410,6 @@ msgstr "Vai tiešām vēlies izrakstīties? Lai piekļūtu kontam, būs jāpiera
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Vai tiešām vēlies noņemt <0>{0}</0> no šīs grupas?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "Vai tiešām vēlies noņemt <0>{0}</0> no draugu saraksta? Šo darbību nevar atsaukt."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "Vai tiešām vēlies padoties?"
@@ -406,7 +452,7 @@ msgid "Avatar for {name}"
 msgstr "{name} avatars"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Back"
 msgstr "Atpakaļ"
 
@@ -431,6 +477,10 @@ msgstr "Baneris noņemts"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Baneris atjaunināts"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "Dzimšanas diena"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +544,8 @@ msgstr "Kamera nav pieejama"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,10 +607,6 @@ msgstr "Mainīts"
 msgid "Changed {field}"
 msgstr "Mainīts {field}"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "Saruna"
-
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
 msgstr "Izvēles rūtiņa"
@@ -576,6 +624,10 @@ msgstr "Izvēlies spēli no sānu joslas vai sāc jaunu."
 msgid "Choose language"
 msgstr "Izvēlies valodu"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "Pilsēta"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -591,7 +643,7 @@ msgid "Clear all"
 msgstr "Notīrīt visu"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "Notīrīt meklēšanu"
 
@@ -601,7 +653,7 @@ msgstr "Notīrīt meklēšanu"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "Aizvērt"
 
@@ -700,6 +752,27 @@ msgstr "Savienots"
 msgid "Connecting..."
 msgstr "Notiek savienošana..."
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "Kontakts pievienots"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "Kontakts izveidots"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "Kontakts dzēsts"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "Kontakts saglabāts"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "Kontakti"
+
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
 msgstr "Saturs nav atrasts."
@@ -756,6 +829,10 @@ msgstr "Neizdevās sākt atkārtotu autentifikāciju. Lūdzu, mēģiniet vēlrei
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Neizdevās verificēt ar šo kontu. Lūdzu, mēģiniet vēlreiz."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "Valsts"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
@@ -767,6 +844,15 @@ msgstr "Izveidot"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "Izveidot {entityLabel}"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "Izveidojiet kontaktu vai atrodiet kādu Mochi."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "Izveidot adrešu grāmatu"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -788,6 +874,14 @@ msgstr "Izveidots"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "Izveidots {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "Veido adrešu grāmatu..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "Veido kontaktu..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -854,10 +948,36 @@ msgstr "Noklusētā kārtošana"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "Dzēst"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "Dzēst <0>{0}</0>?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "Dzēst <0>{0}</0>? Tas arī izbeigs jūsu draudzību."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "Dzēst adrešu grāmatu"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -870,6 +990,11 @@ msgstr "Dzēst kolonnu"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "Dzēst komentāru"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "Dzēst kontaktu"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -919,6 +1044,15 @@ msgstr "Dzēsts"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
 msgstr "Dzēsts {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "Dzēš adrešu grāmatu..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "Dzēš kontaktu..."
 
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
@@ -1010,6 +1144,7 @@ msgstr "Disleksijai draudzīgs"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Rediģēt"
@@ -1021,6 +1156,10 @@ msgstr "Rediģēt {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Rediģēt parakstu"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "Rediģēt kontaktu"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1066,15 +1205,20 @@ msgstr "E-pasts"
 msgid "Email code"
 msgstr "E-pasta kods"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "Ievadiet vārdu, lai atrastu cilvēkus, kurus vēlaties pievienot"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "E-pasti"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "Izbeigt draudzību ar <0>{0}</0>? Kontakts paliks jūsu adrešu grāmatā."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "Ievadiet reklāmkaroga tekstu (atbalsta markdown)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "Ievadiet vārdu, lai meklētu..."
 
@@ -1109,6 +1253,7 @@ msgstr "Ārējs URL"
 msgid "Extra large"
 msgstr "Ļoti liels"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "Neizdevās pieņemt ielūgumu"
@@ -1121,10 +1266,9 @@ msgstr "Neizdevās pieņemt uzaicinājumus"
 msgid "Failed to add account"
 msgstr "Neizdevās pievienot kontu"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "Neizdevās pievienot draugu"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "Neizdevās pievienot kontaktu"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1144,6 +1288,14 @@ msgstr "Neizdevās atcelt uzaicinājumus"
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "Neizdevās kopēt"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "Neizdevās izveidot adrešu grāmatu"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "Neizdevās izveidot kontaktu"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1166,6 +1318,10 @@ msgstr "Neizdevās noraidīt uzaicinājumus"
 msgid "Failed to delete"
 msgstr "Neizdevās dzēst"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "Neizdevās dzēst adrešu grāmatu"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "Neizdevās dzēst pielikumu"
@@ -1173,6 +1329,11 @@ msgstr "Neizdevās dzēst pielikumu"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "Neizdevās dzēst komentāru"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "Neizdevās dzēst kontaktu"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1231,13 +1392,17 @@ msgstr "Neizdevās pārvietot"
 msgid "Failed to post comment"
 msgstr "Neizdevās publicēt komentāru"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Neizdevās noņemt draugu"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "Neizdevās noņemt dalībnieku"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "Neizdevās pārdēvēt adrešu grāmatu"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1256,6 +1421,10 @@ msgstr "Neizdevās saglabāt"
 msgid "Failed to save accent"
 msgstr "Neizdevās saglabāt akcentu"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "Neizdevās saglabāt kontaktu"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "Neizdevās saglabāt vārdu"
@@ -1271,6 +1440,11 @@ msgstr "Neizdevās saglabāt profilu"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "Neizdevās saglabāt uzvedni"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "Neizdevās nosūtīt ielūgumu"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1292,6 +1466,10 @@ msgstr "Neizdevās atjaunināt novērošanu"
 msgid "Failed to upload attachment"
 msgstr "Neizdevās augšupielādēt pielikumu"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "Uzvārds"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1305,6 +1483,10 @@ msgstr "Fails ir pārāk liels"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "Faili"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Meklēt Mochi"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1322,14 +1504,16 @@ msgstr "Plakana"
 msgid "Friday"
 msgstr "Piektdiena"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "Draugs"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Draugs noņemts"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "Draugi"
 
@@ -1344,6 +1528,10 @@ msgstr "No"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "No motīva"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "Vārds"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1411,6 +1599,11 @@ msgstr "Vēsture"
 msgid "Home"
 msgstr "Sākums"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "Mājas"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "Aktuāli"
@@ -1431,6 +1624,10 @@ msgstr "Attēlu skatītājs: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperiāls"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "Kontaktos"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1460,7 +1657,7 @@ msgstr "Intereses"
 msgid "Invalid date"
 msgstr "Nederīgs datums"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "Ielūgums pieņemts"
@@ -1473,8 +1670,8 @@ msgstr "Ielūgums atcelts"
 msgid "Invitation declined"
 msgstr "Ielūgums noraidīts"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Ielūgums nosūtīts"
 
@@ -1484,6 +1681,11 @@ msgstr "Ielūgums nosūtīts"
 msgid "Invitations"
 msgstr "Ielūgumi"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "Uzaicināt"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "Ielūgumu politika atjaunināta"
@@ -1492,6 +1694,10 @@ msgstr "Ielūgumu politika atjaunināta"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "Ielūgumu iestatījumi"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "Uzaicināts"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1630,6 +1836,7 @@ msgid "Menu"
 msgstr "Izvēlne"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Ziņojums"
 
@@ -1644,6 +1851,11 @@ msgstr "Mikrofona atļauja liegta"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "Min. garums"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "Mobilais"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1674,11 +1886,13 @@ msgstr "Pārvietots {field}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Nosaukums"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Name (A–Z)"
 msgstr "Nosaukums (A–Z)"
 
@@ -1709,6 +1923,11 @@ msgstr "Tīkla kļūda"
 msgid "New"
 msgstr "Jauns"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "Jauns kontakts"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "New game"
@@ -1722,6 +1941,10 @@ msgstr "Jauni uzaicinājumi parādīsies šeit"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "Nākamais attēls"
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "Segvārds"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1743,9 +1966,9 @@ msgstr "Baneris nav iestatīts"
 msgid "No comments yet"
 msgstr "Vēl nav komentāru"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "Vēl nav draugu"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "Vēl nav kontaktu"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1777,7 +2000,7 @@ msgstr "Nav neizskatītu uzaicinājumu"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "Cilvēki nav atrasti"
@@ -1786,7 +2009,7 @@ msgstr "Cilvēki nav atrasti"
 msgid "No places found"
 msgstr "Vietas nav atrastas"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "Nav rezultātu vaicājumam \"{search}\""
 
@@ -1858,6 +2081,10 @@ msgstr "Nav atrasts"
 msgid "Not set"
 msgstr "Nav iestatīts"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "Piezīme"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "Nekas nav atrasts"
@@ -1880,6 +2107,10 @@ msgstr "Numurs"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Ieslēgts"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Lieto Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1929,7 +2160,16 @@ msgstr "Apraksts (pēc izvēles)"
 msgid "Options"
 msgstr "Iespējas"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "Organizācija"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Cits"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "Cits"
 
@@ -1974,6 +2214,10 @@ msgstr "Gaida"
 msgid "People"
 msgstr "Cilvēki"
 
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "Tālruņi"
+
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -1988,6 +2232,10 @@ msgstr "Mēģini vēlreiz."
 msgid "Please wait a moment and try again."
 msgstr "Lūdzu, uzgaidiet brīdi un mēģiniet vēlreiz."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "Pasta indekss"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Ieraksti"
@@ -2000,10 +2248,10 @@ msgstr "Ieraksti un komentāri"
 msgid "Preview"
 msgstr "Priekšskatījums"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "Priekšskatiet {0} profilu pirms draudzības pieprasījuma nosūtīšanas."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "Apskatiet {0} profilu pirms draudzības ielūguma nosūtīšanas."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2067,7 +2315,7 @@ msgstr "Atkārtoti reģistrējiet savas piekļuves atslēgas šajā serverī"
 msgid "Received ({0})"
 msgstr "Saņemts ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "Nesen pievienots"
 
@@ -2095,6 +2343,10 @@ msgstr "Pāradresē uz pieteikšanos."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "Samazināt interesi"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "Reģions"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2127,10 +2379,7 @@ msgstr "Atbilstība {relevance}, interese {weight}"
 msgid "Remove"
 msgstr "Noņemt"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2161,10 +2410,13 @@ msgstr "Vai noņemt piekļuves noteikumu “{0}”?"
 msgid "Remove access?"
 msgstr "Noņemt piekļuvi?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "Noņemt draugu"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "Noņemt adresi"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "Noņemt e-pastu"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2185,7 +2437,11 @@ msgstr "Noņemt saiti"
 msgid "Remove member"
 msgstr "Noņemt dalībnieku"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "Noņemt tālruni"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Noņem draugu..."
 
@@ -2195,8 +2451,13 @@ msgstr "Noņem dalībnieku..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "Pārdēvēt"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "Pārdēvēt adrešu grāmatu"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2205,6 +2466,10 @@ msgstr "Pārdēvēt kolonnu"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "Pārdēvēt šo dēļa kolonnu"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "Pārdēvē adrešu grāmatu..."
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2280,6 +2545,8 @@ msgstr "Sestdiena"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2291,6 +2558,10 @@ msgstr "Saglabāt"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "Saglabāt nosaukumu"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "Saglabā kontaktu..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2309,6 +2580,10 @@ msgstr "Saglabā..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "Meklēt"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "Meklēt kontaktos"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2329,14 +2604,6 @@ msgstr "Meklēt galamērķi..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "Meklēt izcelsmi..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "Meklējiet cilvēkus un nosūtiet draudzības pieprasījumu."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "Meklēt draugus"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2360,7 +2627,7 @@ msgstr "Meklējiet, skatieties un kārtojiet šo skatu."
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Meklēt..."
@@ -2438,7 +2705,7 @@ msgstr "Sūtīt vēlreiz"
 msgid "Send email"
 msgstr "Sūtīt e-pastu"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "Sūtīt uzaicinājumu"
 
@@ -2447,7 +2714,8 @@ msgstr "Sūtīt uzaicinājumu"
 msgid "Send message"
 msgstr "Sūtīt ziņu"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Nosūta uzaicinājumu..."
 
@@ -2555,9 +2823,9 @@ msgstr "Plašs"
 msgid "Start the discussion by adding the first comment."
 msgstr "Sāciet diskusiju, pievienojot pirmo komentāru."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "Sāciet rakstīt, lai meklētu lietotājus"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "Sāciet rakstīt, lai meklētu cilvēkus"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2567,6 +2835,10 @@ msgstr "Pārtraukt skatīšanos"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "Saglabāt klusi"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "Iela"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2635,7 +2907,7 @@ msgstr "Neizdevās nosūtīt. Faili var būt pārāk lieli, vai savienojums pār
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Pārāk liels, lai augšupielādētu. Noņemiet vai samaziniet failus un mēģiniet vēlreiz."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "Tas esi tu"
 
@@ -2679,6 +2951,11 @@ msgstr "Tas neatgriezeniski dzēsīs spēli un tās tērzēšanu. Šo darbību n
 msgid "Thursday"
 msgstr "Ceturtdiena"
 
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "Amats"
+
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
 msgstr "Uz"
@@ -2718,13 +2995,9 @@ msgstr "Augšā"
 msgid "Travelling"
 msgstr "Ceļojums"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "Mēģiniet citu nosaukumu"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "Mēģiniet citu meklēšanas vārdu"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2745,6 +3018,8 @@ msgstr "Otrdiena"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "Tips"
@@ -2788,6 +3063,12 @@ msgstr "Nav pieejams"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Negaidīta API kļūda"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "Pārtraukt draudzību"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2848,6 +3129,10 @@ msgstr "Augšupielādes norise"
 #: src/features/profile/index.tsx
 msgid "Uploading..."
 msgstr "Notiek augšupielāde..."
+
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -2926,6 +3211,11 @@ msgstr "Nosūtījām verifikācijas kodu uz <0>{0}</0>. Ievadiet kodu zemāk, la
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "Trešdiena"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "Darbs"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

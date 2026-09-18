@@ -34,6 +34,11 @@ msgstr "(te)"
 msgid "[not set]"
 msgstr "[nincs beállítva]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {# névjegy is törlődik vele.} other {# névjegy is törlődik vele.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -98,9 +103,9 @@ msgstr "12 óra"
 msgid "24 hours"
 msgstr "24 óra"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "Barátmeghívás elküldve {userName} számára."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "Baráti meghívó elküldve {name} részére."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +124,8 @@ msgid "Accent saved"
 msgstr "Kiemelő szín mentve"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "Elfogadás"
@@ -132,11 +138,7 @@ msgstr "Összes elfogadása"
 msgid "Accept automatically"
 msgstr "Automatikus elfogadás"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "Meghívó elfogadása"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "Meghívás elfogadása..."
@@ -161,6 +163,11 @@ msgstr "Fióktípus"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "Műveletek"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "{0} műveletei"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +199,10 @@ msgstr "Hozzáférés hozzáadása"
 msgid "Add account"
 msgstr "Fiók hozzáadása"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "Cím hozzáadása"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Képaláírás hozzáadása"
@@ -200,22 +211,21 @@ msgstr "Képaláírás hozzáadása"
 msgid "Add checklist item"
 msgstr "Ellenőrzőlista-elem hozzáadása"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "Névjegy hozzáadása"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "E-mail hozzáadása"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Mező hozzáadása"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "Barát hozzáadása"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "Adj hozzá barátokat a kapcsolat megkezdéséhez"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +250,21 @@ msgstr "Tag hozzáadása"
 msgid "Add option"
 msgstr "Beállítás hozzáadása"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "Telefonszám hozzáadása"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "Kezdésként adjon hozzá valakit"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Címke hozzáadása..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "Hozzáadás a névjegyekhez"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +288,38 @@ msgstr "Nézet hozzáadása"
 msgid "Added {0} to the group"
 msgstr "{0} hozzáadva a csoporthoz"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "Névjegy hozzáadása..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Tag hozzáadása..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "címjegyzék"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "Címjegyzék"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "Címjegyzék létrehozva"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "Címjegyzék törölve"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "Címjegyzék átnevezve"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "Címek"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +328,11 @@ msgstr "MI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "Az összes elérhető csoport már hozzá van adva"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "Összes névjegy"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +353,6 @@ msgstr "Bárki rákereshessen erre: {entityLabel}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Rendezési lehetőség engedélyezése"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "Már barátok"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +410,6 @@ msgstr "Biztosan kijelentkezik? A fiók eléréséhez újra be kell jelentkeznie
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Biztosan eltávolítod a <0>{0}</0> személyt ebből a csoportból?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "Biztosan eltávolítod <0>{0}</0> felhasználót az ismerőseid közül? Ez a művelet nem visszavonható."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "Biztos, hogy feladod a játszmát?"
@@ -406,7 +452,7 @@ msgid "Avatar for {name}"
 msgstr "{name} profilképe"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Back"
 msgstr "Vissza"
 
@@ -431,6 +477,10 @@ msgstr "Banner eltávolítva"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Banner frissítve"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "Születésnap"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +544,8 @@ msgstr "A kamera nem érhető el"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,10 +607,6 @@ msgstr "Módosítva"
 msgid "Changed {field}"
 msgstr "{field} módosítva"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "Chat"
-
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
 msgstr "Jelölőnégyzet"
@@ -576,6 +624,10 @@ msgstr "Válasszon egy játékot az oldalsávból, vagy kezdjen újat."
 msgid "Choose language"
 msgstr "Nyelv kiválasztása"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "Város"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -591,7 +643,7 @@ msgid "Clear all"
 msgstr "Összes törlése"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "Keresés törlése"
 
@@ -601,7 +653,7 @@ msgstr "Keresés törlése"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "Bezárás"
 
@@ -700,6 +752,27 @@ msgstr "Csatlakoztatva"
 msgid "Connecting..."
 msgstr "Csatlakozás…"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "Névjegy hozzáadva"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "Névjegy létrehozva"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "Névjegy törölve"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "Névjegy mentve"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "Névjegyek"
+
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
 msgstr "A tartalom nem található."
@@ -756,6 +829,10 @@ msgstr "Az újrahitelesítést nem sikerült elindítani. Próbálja újra."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Nem sikerült ellenőrizni azzal a fiókkal. Kérjük, próbálja újra."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "Ország"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
@@ -767,6 +844,15 @@ msgstr "Létrehozás"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "{entityLabel} létrehozása"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "Hozzon létre egy névjegyet, vagy keressen valakit a Mochin."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "Címjegyzék létrehozása"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -788,6 +874,14 @@ msgstr "Létrehozva"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "{field} létrehozva"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "Címjegyzék létrehozása..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "Névjegy létrehozása..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -854,10 +948,36 @@ msgstr "Alapértelmezett rendezés"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "Törlés"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "Törli a következőt: <0>{0}</0>?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "Törli a következőt: <0>{0}</0>? Ezzel a barátság is megszűnik."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "Címjegyzék törlése"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -870,6 +990,11 @@ msgstr "Oszlop törlése"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "Megjegyzés törlése"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "Névjegy törlése"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -919,6 +1044,15 @@ msgstr "Törölve"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
 msgstr "{field} törölve"
+
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "Címjegyzék törlése..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "Névjegy törlése..."
 
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
@@ -1010,6 +1144,7 @@ msgstr "Diszlexiabarát"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Szerkesztés"
@@ -1021,6 +1156,10 @@ msgstr "{label} szerkesztése"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Képaláírás szerkesztése"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "Névjegy szerkesztése"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1066,15 +1205,20 @@ msgstr "E-mail"
 msgid "Email code"
 msgstr "E-mail kód"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "Adj meg egy nevet, hogy megtaláld a hozzáadni kívánt embereket"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "E-mail-címek"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "Megszünteti a barátságot vele: <0>{0}</0>? A névjegy a címjegyzékben marad."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "Adja meg a banner szövegét (markdown támogatott)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "Adj meg egy nevet a kereséshez..."
 
@@ -1109,6 +1253,7 @@ msgstr "Külső URL"
 msgid "Extra large"
 msgstr "Extra nagy"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "Nem sikerült elfogadni a meghívást"
@@ -1121,10 +1266,9 @@ msgstr "A meghívások elfogadása sikertelen"
 msgid "Failed to add account"
 msgstr "Nem sikerült hozzáadni a fiókot"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "A barát hozzáadása sikertelen"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "Nem sikerült hozzáadni a névjegyet"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1144,6 +1288,14 @@ msgstr "A meghívások visszavonása sikertelen"
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "Nem sikerült másolni"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "Nem sikerült létrehozni a címjegyzéket"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "Nem sikerült létrehozni a névjegyet"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1166,6 +1318,10 @@ msgstr "A meghívások elutasítása sikertelen"
 msgid "Failed to delete"
 msgstr "Nem sikerült törölni"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "Nem sikerült törölni a címjegyzéket"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "Nem sikerült törölni a mellékletet"
@@ -1173,6 +1329,11 @@ msgstr "Nem sikerült törölni a mellékletet"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "Nem sikerült törölni a hozzászólást"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "Nem sikerült törölni a névjegyet"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1231,13 +1392,17 @@ msgstr "Az áthelyezés sikertelen"
 msgid "Failed to post comment"
 msgstr "Nem sikerült közzétenni a hozzászólást"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Nem sikerült eltávolítani a barátot"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "Nem sikerült eltávolítani a tagot"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "Nem sikerült átnevezni a címjegyzéket"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1256,6 +1421,10 @@ msgstr "Nem sikerült menteni"
 msgid "Failed to save accent"
 msgstr "Nem sikerült menteni a kiemelést"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "Nem sikerült menteni a névjegyet"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "Nem sikerült menteni a nevet"
@@ -1271,6 +1440,11 @@ msgstr "Nem sikerült menteni a profilt"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "Nem sikerült menteni az utasítást"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "Nem sikerült elküldeni a meghívót"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1292,6 +1466,10 @@ msgstr "A követés frissítése sikertelen"
 msgid "Failed to upload attachment"
 msgstr "Nem sikerült feltölteni a mellékletet"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "Vezetéknév"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1305,6 +1483,10 @@ msgstr "A fájl túl nagy"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "Fájlok"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Keresés a Mochin"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1322,14 +1504,16 @@ msgstr "Lapos"
 msgid "Friday"
 msgstr "Péntek"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "Barát"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Barát eltávolítva"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "Barátok"
 
@@ -1344,6 +1528,10 @@ msgstr "Kezdete"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Témából"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "Keresztnév"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1411,6 +1599,11 @@ msgstr "Előzmények"
 msgid "Home"
 msgstr "Kezdőlap"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "Otthoni"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "Forró"
@@ -1431,6 +1624,10 @@ msgstr "Képnézegető: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperial"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "A névjegyek között"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1460,7 +1657,7 @@ msgstr "Érdeklődések"
 msgid "Invalid date"
 msgstr "Érvénytelen dátum"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "Meghívás elfogadva"
@@ -1473,8 +1670,8 @@ msgstr "Meghívás törölve"
 msgid "Invitation declined"
 msgstr "Meghívás elutasítva"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Meghívó elküldve"
 
@@ -1484,6 +1681,11 @@ msgstr "Meghívó elküldve"
 msgid "Invitations"
 msgstr "Meghívások"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "Meghívás"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "Meghívási szabályzat frissítve"
@@ -1492,6 +1694,10 @@ msgstr "Meghívási szabályzat frissítve"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "Meghívási beállítások"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "Meghívva"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1630,6 +1836,7 @@ msgid "Menu"
 msgstr "Menü"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Üzenet"
 
@@ -1644,6 +1851,11 @@ msgstr "Mikrofonengedély megtagadva"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "Minimális hossz"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "Mobil"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1674,11 +1886,13 @@ msgstr "{field} áthelyezve"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Név"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Name (A–Z)"
 msgstr "Név (A–Z)"
 
@@ -1709,6 +1923,11 @@ msgstr "Hálózati hiba"
 msgid "New"
 msgstr "Új"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "Új névjegy"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "New game"
@@ -1722,6 +1941,10 @@ msgstr "Az új meghívók itt jelennek meg"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "Következő kép"
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "Becenév"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1743,9 +1966,9 @@ msgstr "Nincs beállítva fejléc"
 msgid "No comments yet"
 msgstr "Még nincsenek hozzászólások"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "Még nincsenek barátok"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "Még nincsenek névjegyek"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1777,7 +2000,7 @@ msgstr "Nincsenek függő meghívók"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "Nem találhatók személyek"
@@ -1786,7 +2009,7 @@ msgstr "Nem találhatók személyek"
 msgid "No places found"
 msgstr "Nem találhatók helyek"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "Nincs találat erre: „{search}”"
 
@@ -1858,6 +2081,10 @@ msgstr "Nem található"
 msgid "Not set"
 msgstr "Nincs beállítva"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "Megjegyzés"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "Semmi sem található"
@@ -1880,6 +2107,10 @@ msgstr "Szám"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Be"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "A Mochin"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1929,7 +2160,16 @@ msgstr "Opcionális leírás"
 msgid "Options"
 msgstr "Opciók"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "Szervezet"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Egyéb"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "Egyéb"
 
@@ -1974,6 +2214,10 @@ msgstr "Függőben"
 msgid "People"
 msgstr "Személyek"
 
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "Telefonszámok"
+
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -1988,6 +2232,10 @@ msgstr "Próbálja újra."
 msgid "Please wait a moment and try again."
 msgstr "Kérjük, várjon egy kicsit, majd próbálja újra."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "Irányítószám"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Bejegyzések"
@@ -2000,10 +2248,10 @@ msgstr "Bejegyzések és hozzászólások"
 msgid "Preview"
 msgstr "Előnézet"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "Tekintsd meg {0} profilját, mielőtt barátkérést küldenél."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "Tekintse meg {0} profilját, mielőtt baráti meghívót küld."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2067,7 +2315,7 @@ msgstr "Regisztrálja újra a hozzáférési kulcsait ezen a kiszolgálón"
 msgid "Received ({0})"
 msgstr "Fogadott ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "Nemrég hozzáadva"
 
@@ -2095,6 +2343,10 @@ msgstr "Átirányítás a bejelentkezéshez."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "Érdeklődés csökkentése"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "Régió"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2127,10 +2379,7 @@ msgstr "Relevancia: {relevance}, érdeklődés: {weight}"
 msgid "Remove"
 msgstr "Eltávolítás"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2161,10 +2410,13 @@ msgstr "Eltávolítja a(z) „{0}” hozzáférési szabályát?"
 msgid "Remove access?"
 msgstr "Eltávolítja a hozzáférést?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "Barát eltávolítása"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "Cím eltávolítása"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "E-mail eltávolítása"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2185,7 +2437,11 @@ msgstr "Hivatkozás eltávolítása"
 msgid "Remove member"
 msgstr "Tag eltávolítása"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "Telefonszám eltávolítása"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Barát eltávolítása..."
 
@@ -2195,8 +2451,13 @@ msgstr "Tag eltávolítása..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "Átnevezés"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "Címjegyzék átnevezése"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2205,6 +2466,10 @@ msgstr "Oszlop átnevezése"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "Tábla oszlopának átnevezése"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "Címjegyzék átnevezése..."
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2280,6 +2545,8 @@ msgstr "Szombat"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2291,6 +2558,10 @@ msgstr "Mentés"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "Név mentése"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "Névjegy mentése..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2309,6 +2580,10 @@ msgstr "Mentés..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "Keresés"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "Névjegyek keresése"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2329,14 +2604,6 @@ msgstr "Cél keresése..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "Kiindulási pont keresése..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "Keress embereket, és küldj barátkérést."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "Barátok keresése"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2360,7 +2627,7 @@ msgstr "Keressen, figyeljen és rendezzen ebben a nézetben."
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Keresés..."
@@ -2438,7 +2705,7 @@ msgstr "Újraküldés"
 msgid "Send email"
 msgstr "E-mail küldése"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "Meghívó küldése"
 
@@ -2447,7 +2714,8 @@ msgstr "Meghívó küldése"
 msgid "Send message"
 msgstr "Üzenet küldése"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Meghívás küldése..."
 
@@ -2555,9 +2823,9 @@ msgstr "Tágas"
 msgid "Start the discussion by adding the first comment."
 msgstr "Indítsa el a beszélgetést az első hozzászólás hozzáadásával."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "Kezdj el gépelni a felhasználók kereséséhez"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "Kezdjen gépelni emberek kereséséhez"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2567,6 +2835,10 @@ msgstr "Figyelés leállítása"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "Tárolás csendben"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "Utca"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2635,7 +2907,7 @@ msgstr "Nem sikerült elküldeni. A fájlok túl nagyok lehetnek, vagy a kapcsol
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Túl nagy volt a feltöltéshez. Távolítson el vagy kicsinyítsen fájlokat, és próbálja újra."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "Ez te vagy"
 
@@ -2679,6 +2951,11 @@ msgstr "Ez véglegesen törli a játékot és a hozzá tartozó csevegést. Ez a
 msgid "Thursday"
 msgstr "Csütörtök"
 
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "Beosztás"
+
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
 msgstr "Ide"
@@ -2718,13 +2995,9 @@ msgstr "Eleje"
 msgid "Travelling"
 msgstr "Utazás"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "Próbálj meg másik nevet"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "Próbálj meg másik keresési kifejezést"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2745,6 +3018,8 @@ msgstr "Kedd"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "Típus"
@@ -2788,6 +3063,12 @@ msgstr "Nem elérhető"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Váratlan API-hiba"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "Barátság megszüntetése"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2848,6 +3129,10 @@ msgstr "Feltöltés folyamata"
 #: src/features/profile/index.tsx
 msgid "Uploading..."
 msgstr "Feltöltés..."
+
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -2926,6 +3211,11 @@ msgstr "Küldtünk egy ellenőrző kódot ide: <0>{0}</0>. Adja meg a kódot al�
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "Szerda"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "Munkahelyi"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

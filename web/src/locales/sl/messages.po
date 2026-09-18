@@ -34,6 +34,11 @@ msgstr "(vi)"
 msgid "[not set]"
 msgstr "[ni nastavljeno]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {Z njim se izbriše tudi # stik.} two {Z njim se izbrišeta tudi # stika.} few {Z njim se izbrišejo tudi # stiki.} other {Z njim se izbriše tudi # stikov.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -98,9 +103,9 @@ msgstr "12 ur"
 msgid "24 hours"
 msgstr "24 ur"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "Povabilo za prijateljstvo je bilo poslano uporabniku {userName}."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "Povabilo k prijateljstvu je bilo poslano osebi {name}."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +124,8 @@ msgid "Accent saved"
 msgstr "Poudarek shranjen"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "Sprejmi"
@@ -132,11 +138,7 @@ msgstr "Sprejmi vse"
 msgid "Accept automatically"
 msgstr "Sprejmi samodejno"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "Sprejmi povabilo"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "Sprejemanje povabila..."
@@ -161,6 +163,11 @@ msgstr "Vrsta računa"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "Dejanja"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "Dejanja za {0}"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +199,10 @@ msgstr "Dodaj dostop"
 msgid "Add account"
 msgstr "Dodaj račun"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "Dodaj naslov"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Dodaj napis"
@@ -200,22 +211,21 @@ msgstr "Dodaj napis"
 msgid "Add checklist item"
 msgstr "Dodaj element kontrolnega seznama"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "Dodaj stik"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "Dodaj e-pošto"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Dodaj polje"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "Dodaj prijatelja"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "Dodajte prijatelje za začetek povezovanja"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +250,21 @@ msgstr "Dodaj člana"
 msgid "Add option"
 msgstr "Dodaj možnost"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "Dodaj telefon"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "Za začetek dodajte nekoga"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Dodaj oznako ..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "Dodaj med stike"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +288,38 @@ msgstr "Dodaj pogled"
 msgid "Added {0} to the group"
 msgstr "Dodan {0} v skupino"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "Dodajanje stika..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Dodajanje člana..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "imenik"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "Imenik"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "Imenik je ustvarjen"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "Imenik je izbrisan"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "Imenik je preimenovan"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "Naslovi"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +328,11 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "Vse razpoložljive skupine so že dodane"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "Vsi stiki"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +353,6 @@ msgstr "Dovoli vsem, da poiščejo {entityLabel}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Dovoli razvrščanje po"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "Že prijatelja"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +410,6 @@ msgstr "Ali ste prepričani, da se želite odjaviti? Za dostop do računa se bos
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Ali ste prepričani, da želite odstraniti <0>{0}</0> iz te skupine?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "Ali ste prepričani, da želite odstraniti <0>{0}</0> s seznama prijateljev? Tega dejanja ni mogoče razveljaviti."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "Ali ste prepričani, da se želite predati?"
@@ -406,7 +452,7 @@ msgid "Avatar for {name}"
 msgstr "Avatar za {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Back"
 msgstr "Nazaj"
 
@@ -431,6 +477,10 @@ msgstr "Pasica odstranjena"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Pasica posodobljena"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "Rojstni dan"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +544,8 @@ msgstr "Kamera ni na voljo"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,10 +607,6 @@ msgstr "Spremenjeno"
 msgid "Changed {field}"
 msgstr "Spremenjeno {field}"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "Klepet"
-
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
 msgstr "Potrditveno polje"
@@ -576,6 +624,10 @@ msgstr "Izberite igro iz stranske vrstice ali začnite novo."
 msgid "Choose language"
 msgstr "Izberite jezik"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "Mesto"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -591,7 +643,7 @@ msgid "Clear all"
 msgstr "Počisti vse"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "Počisti iskanje"
 
@@ -601,7 +653,7 @@ msgstr "Počisti iskanje"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "Zapri"
 
@@ -700,6 +752,27 @@ msgstr "Povezano"
 msgid "Connecting..."
 msgstr "Povezovanje..."
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "Stik je dodan"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "Stik je ustvarjen"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "Stik je izbrisan"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "Stik je shranjen"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "Stiki"
+
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
 msgstr "Vsebine ni bilo mogoče najti."
@@ -756,6 +829,10 @@ msgstr "Ponovnega preverjanja ni bilo mogoče začeti. Poskusite znova."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "S tem računom ni bilo mogoče preveriti. Poskusite znova."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "Država"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
@@ -767,6 +844,15 @@ msgstr "Ustvari"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "Ustvari {entityLabel}"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "Ustvarite stik ali poiščite nekoga na Mochi."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "Ustvari imenik"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -788,6 +874,14 @@ msgstr "Ustvarjeno"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "Ustvarjeno {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "Ustvarjanje imenika..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "Ustvarjanje stika..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -854,10 +948,36 @@ msgstr "Privzeto razvrščanje"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "Izbriši"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "Želite izbrisati <0>{0}</0>?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "Želite izbrisati <0>{0}</0>? S tem se konča tudi vaše prijateljstvo."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "Izbriši imenik"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -870,6 +990,11 @@ msgstr "Izbriši stolpec"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "Izbriši komentar"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "Izbriši stik"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -919,6 +1044,15 @@ msgstr "Izbrisano"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
 msgstr "Izbrisano {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "Brisanje imenika..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "Brisanje stika..."
 
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
@@ -1010,6 +1144,7 @@ msgstr "Prilagojeno disleksiji"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Uredi"
@@ -1021,6 +1156,10 @@ msgstr "Uredi {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Uredi napis"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "Uredi stik"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1066,15 +1205,20 @@ msgstr "E-pošta"
 msgid "Email code"
 msgstr "E-poštna koda"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "Vnesite ime za iskanje oseb, ki jih želite dodati"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "E-poštni naslovi"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "Želite končati prijateljstvo z <0>{0}</0>? Stik ostane v vašem imeniku."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "Vnesite besedilo pasice (markdown podprt)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "Vnesite ime za iskanje..."
 
@@ -1109,6 +1253,7 @@ msgstr "Zunanji URL"
 msgid "Extra large"
 msgstr "Zelo veliko"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "Neuspešno sprejetje povabila"
@@ -1121,10 +1266,9 @@ msgstr "Sprejemanje povabil ni uspelo"
 msgid "Failed to add account"
 msgstr "Neuspešno dodajanje računa"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "Neuspešno dodajanje prijatelja"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "Dodajanje stika ni uspelo"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1144,6 +1288,14 @@ msgstr "Preklic povabil ni uspel"
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "Kopiranje ni uspelo"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "Ustvarjanje imenika ni uspelo"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "Ustvarjanje stika ni uspelo"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1166,6 +1318,10 @@ msgstr "Zavračanje povabil ni uspelo"
 msgid "Failed to delete"
 msgstr "Brisanje ni uspelo"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "Brisanje imenika ni uspelo"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "Neuspešno brisanje priponke"
@@ -1173,6 +1329,11 @@ msgstr "Neuspešno brisanje priponke"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "Neuspešno brisanje komentarja"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "Brisanje stika ni uspelo"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1231,13 +1392,17 @@ msgstr "Premikanje ni uspelo"
 msgid "Failed to post comment"
 msgstr "Neuspešna objava komentarja"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Neuspešna odstranitev prijatelja"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "Neuspešna odstranitev člana"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "Preimenovanje imenika ni uspelo"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1256,6 +1421,10 @@ msgstr "Shranjevanje ni uspelo"
 msgid "Failed to save accent"
 msgstr "Neuspešno shranjevanje barve poudarka"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "Shranjevanje stika ni uspelo"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "Neuspešno shranjevanje imena"
@@ -1271,6 +1440,11 @@ msgstr "Neuspešno shranjevanje profila"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "Neuspešno shranjevanje poziva"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "Pošiljanje povabila ni uspelo"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1292,6 +1466,10 @@ msgstr "Posodobitev spremljanja ni uspela"
 msgid "Failed to upload attachment"
 msgstr "Neuspešno nalaganje priponke"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "Priimek"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1305,6 +1483,10 @@ msgstr "Datoteka je prevelika"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "Datoteke"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Poišči na Mochi"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1322,14 +1504,16 @@ msgstr "Ploščato"
 msgid "Friday"
 msgstr "Petek"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "Prijatelj"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Prijatelj odstranjen"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "Prijatelji"
 
@@ -1344,6 +1528,10 @@ msgstr "Od"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Iz teme"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "Ime"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1411,6 +1599,11 @@ msgstr "Zgodovina"
 msgid "Home"
 msgstr "Domov"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "Doma"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "Vroče"
@@ -1431,6 +1624,10 @@ msgstr "Pregledovalnik slik: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperialne enote"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "Med stiki"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1460,7 +1657,7 @@ msgstr "Zanimanja"
 msgid "Invalid date"
 msgstr "Neveljaven datum"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "Povabilo sprejeto"
@@ -1473,8 +1670,8 @@ msgstr "Povabilo preklicano"
 msgid "Invitation declined"
 msgstr "Povabilo zavrnjeno"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Povabilo poslano"
 
@@ -1484,6 +1681,11 @@ msgstr "Povabilo poslano"
 msgid "Invitations"
 msgstr "Povabila"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "Povabi"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "Pravilnik o povabilih posodobljen"
@@ -1492,6 +1694,10 @@ msgstr "Pravilnik o povabilih posodobljen"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "Nastavitve povabil"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "Povabljen"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1630,6 +1836,7 @@ msgid "Menu"
 msgstr "Meni"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Sporočilo"
 
@@ -1644,6 +1851,11 @@ msgstr "Dovoljenje za mikrofon zavrnjeno"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "Najmanjša dolžina"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "Mobilni"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1674,11 +1886,13 @@ msgstr "Premaknjeno {field}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Ime"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Name (A–Z)"
 msgstr "Ime (A–Ž)"
 
@@ -1709,6 +1923,11 @@ msgstr "Napaka omrežja"
 msgid "New"
 msgstr "Novo"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "Nov stik"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "New game"
@@ -1722,6 +1941,10 @@ msgstr "Nova povabila se bodo prikazala tukaj"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "Naslednja slika"
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "Vzdevek"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1743,9 +1966,9 @@ msgstr "Pasica ni nastavljena"
 msgid "No comments yet"
 msgstr "Še ni komentarjev"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "Še ni prijateljev"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "Še ni stikov"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1777,7 +2000,7 @@ msgstr "Ni čakajočih povabil"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "Oseb ni mogoče najti"
@@ -1786,7 +2009,7 @@ msgstr "Oseb ni mogoče najti"
 msgid "No places found"
 msgstr "Krajev ni mogoče najti"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "Ni rezultatov za »{search}«"
 
@@ -1858,6 +2081,10 @@ msgstr "Ni najdeno"
 msgid "Not set"
 msgstr "Ni nastavljeno"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "Opomba"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "Nič ni najdeno"
@@ -1880,6 +2107,10 @@ msgstr "Številka"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Vklopljeno"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Na Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1929,7 +2160,16 @@ msgstr "Neobvezen opis"
 msgid "Options"
 msgstr "Možnosti"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "Organizacija"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Drugo"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "Drugo"
 
@@ -1974,6 +2214,10 @@ msgstr "V obdelavi"
 msgid "People"
 msgstr "Ljudje"
 
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "Telefoni"
+
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -1988,6 +2232,10 @@ msgstr "Poskusite znova."
 msgid "Please wait a moment and try again."
 msgstr "Počakajte trenutek in poskusite znova."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "Poštna številka"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Objave"
@@ -2000,10 +2248,10 @@ msgstr "Objave in komentarji"
 msgid "Preview"
 msgstr "Predogled"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "Oglejte si profil uporabnika {0} pred pošiljanjem zahteve za prijateljstvo."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "Pred pošiljanjem povabila k prijateljstvu si oglejte profil osebe {0}."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2067,7 +2315,7 @@ msgstr "Znova registrirajte svoje ključe za dostop na tem strežniku"
 msgid "Received ({0})"
 msgstr "Prejeto ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "Nedavno dodano"
 
@@ -2095,6 +2343,10 @@ msgstr "Preusmerjanje na prijavo."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "Zmanjšaj zanimanje"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "Regija"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2127,10 +2379,7 @@ msgstr "Ustreznost {relevance}, zanimanje {weight}"
 msgid "Remove"
 msgstr "Odstrani"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2161,10 +2410,13 @@ msgstr "Ali želite odstraniti pravilo dostopa za »{0}«?"
 msgid "Remove access?"
 msgstr "Odstrani dostop?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "Odstrani prijatelja"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "Odstrani naslov"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "Odstrani e-pošto"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2185,7 +2437,11 @@ msgstr "Odstrani povezavo"
 msgid "Remove member"
 msgstr "Odstrani člana"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "Odstrani telefon"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Odstranjevanje prijatelja..."
 
@@ -2195,8 +2451,13 @@ msgstr "Odstranjevanje člana..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "Preimenuj"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "Preimenuj imenik"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2205,6 +2466,10 @@ msgstr "Preimenuj stolpec"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "Preimenuj ta stolpec table"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "Preimenovanje imenika..."
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2280,6 +2545,8 @@ msgstr "Sobota"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2291,6 +2558,10 @@ msgstr "Shrani"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "Shrani ime"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "Shranjevanje stika..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2309,6 +2580,10 @@ msgstr "Shranjevanje..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "Iskanje"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "Iskanje stikov"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2329,14 +2604,6 @@ msgstr "Iskanje cilja..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "Iskanje izvora..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "Iskanje oseb in pošiljanje zahteve za prijateljstvo."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "Iskanje prijateljev"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2360,7 +2627,7 @@ msgstr "Iskanje, opazovanje in razvrščanje tega pogleda."
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Iskanje..."
@@ -2438,7 +2705,7 @@ msgstr "Pošlji znova"
 msgid "Send email"
 msgstr "Pošlji e-pošto"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "Pošlji povabilo"
 
@@ -2447,7 +2714,8 @@ msgstr "Pošlji povabilo"
 msgid "Send message"
 msgstr "Pošlji sporočilo"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Pošiljanje povabila..."
 
@@ -2555,9 +2823,9 @@ msgstr "Prostorno"
 msgid "Start the discussion by adding the first comment."
 msgstr "Začni razpravo z dodajanjem prvega komentarja."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "Začni tipkati za iskanje uporabnikov"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "Začnite tipkati za iskanje ljudi"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2567,6 +2835,10 @@ msgstr "Prenehaj spremljati"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "Tiho shrani"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "Ulica"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2635,7 +2907,7 @@ msgstr "Ni bilo mogoče poslati. Datoteke so morda prevelike ali pa je povezava 
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Preveliko za prenos. Odstranite ali pomanjšajte datoteke in poskusite znova."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "To si ti"
 
@@ -2679,6 +2951,11 @@ msgstr "To bo trajno izbrisalo igro in njen klepet. Tega dejanja ni mogoče razv
 msgid "Thursday"
 msgstr "Četrtek"
 
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "Delovno mesto"
+
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
 msgstr "Kam"
@@ -2718,13 +2995,9 @@ msgstr "Vrh"
 msgid "Travelling"
 msgstr "Potovanje"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "Poskusi z drugim imenom"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "Poskusi z drugačnim iskalnim izrazom"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2745,6 +3018,8 @@ msgstr "Torek"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "Vrsta"
@@ -2788,6 +3063,12 @@ msgstr "Ni na voljo"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Nepričakovana napaka API"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "Končaj prijateljstvo"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2848,6 +3129,10 @@ msgstr "Potek nalaganja"
 #: src/features/profile/index.tsx
 msgid "Uploading..."
 msgstr "Nalaganje..."
+
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -2926,6 +3211,11 @@ msgstr "Poslali smo potrditveno kodo na <0>{0}</0>. Spodaj vnesite kodo za potrd
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "Sreda"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "Služba"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

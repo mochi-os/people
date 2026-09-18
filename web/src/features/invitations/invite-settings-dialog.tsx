@@ -19,11 +19,11 @@ import {
   toastAction,
 } from '@mochi/web'
 import { Check } from 'lucide-react'
-import type { InvitePolicy } from '@/api/friends'
+import type { InvitePolicy } from '@/api/contacts'
 import {
   usePreferencesQuery,
   useSetPreferencesMutation,
-} from '@/hooks/useFriends'
+} from '@/hooks/useContacts'
 
 interface Props {
   open: boolean

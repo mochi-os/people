@@ -34,6 +34,11 @@ msgstr "(int)"
 msgid "[not set]"
 msgstr "[mhux issettjat]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {# kuntatt jitħassar miegħu.} two {# kuntatti jitħassru miegħu.} few {# kuntatti jitħassru miegħu.} many {# kuntatt jitħassru miegħu.} other {# kuntatt jitħassar miegħu.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -98,9 +103,9 @@ msgstr "12-il siegħa"
 msgid "24 hours"
 msgstr "24 siegħa"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "Intbagħtet stedina ta' ħbiberija lil {userName}."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "Intbagħtet stedina ta’ ħbiberija lil {name}."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +124,8 @@ msgid "Accent saved"
 msgstr "Aċċent issejvjat"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "Aċċetta"
@@ -132,11 +138,7 @@ msgstr "Aċċetta kollox"
 msgid "Accept automatically"
 msgstr "Aċċetta awtomatikament"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "Aċċetta l-istedina"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "Qed naċċetta l-istedina..."
@@ -161,6 +163,11 @@ msgstr "Tip ta' kont"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "Azzjonijiet"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "Azzjonijiet għal {0}"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +199,10 @@ msgstr "Żid aċċess"
 msgid "Add account"
 msgstr "Żid kont"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "Żid indirizz"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Żid didaskalija"
@@ -200,22 +211,21 @@ msgstr "Żid didaskalija"
 msgid "Add checklist item"
 msgstr "Żid item għall-checklist"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "Żid kuntatt"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "Żid email"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Żid kamp"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "Żid ħabib"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "Żid ħbieb biex tibda tikkonnettja"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +250,21 @@ msgstr "Żid membru"
 msgid "Add option"
 msgstr "Żid għażla"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "Żid telefon"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "Żid lil xi ħadd biex tibda"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Żid tag..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "Żid mal-kuntatti"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +288,38 @@ msgstr "Żid view"
 msgid "Added {0} to the group"
 msgstr "Żied {0} mal-grupp"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "Qed jiżdied il-kuntatt..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Qed inżid membru..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "ktieb tal-indirizzi"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "Ktieb tal-indirizzi"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "Inħoloq il-ktieb tal-indirizzi"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "Tħassar il-ktieb tal-indirizzi"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "Inbidel isem il-ktieb tal-indirizzi"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "Indirizzi"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +328,11 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "Il-gruppi disponibbli kollha huma diġà miżjuda"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "Il-kuntatti kollha"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +353,6 @@ msgstr "Ħalli lil kulħadd ifittex {entityLabel}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Ippermetti ssortjar bi"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "Diġà ħbieb"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +410,6 @@ msgstr "Żgur trid toħroġ? Trid terġa' tidħol biex taċċessa l-kont tiegħe
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Żgur trid tneħħi lil <0>{0}</0> minn dan il-grupp?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "Żgur trid tneħħi lil <0>{0}</0> mil-lista tal-ħbieb tiegħek? Din l-azzjoni ma tistax tiġi ndirizzata."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "Żgur trid tirriżenja?"
@@ -406,7 +452,7 @@ msgid "Avatar for {name}"
 msgstr "Avatar għal {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Back"
 msgstr "Lura"
 
@@ -431,6 +477,10 @@ msgstr "Banner imneħħi"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Banner aġġornat"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "Jum it-twelid"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +544,8 @@ msgstr "Il-kamera mhix disponibbli"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,10 +607,6 @@ msgstr "Inbidel"
 msgid "Changed {field}"
 msgstr "Inbidel {field}"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "Chat"
-
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
 msgstr "Checkbox"
@@ -576,6 +624,10 @@ msgstr "Agħżel logħba mill-barra tal-ġenb jew ibda waħda ġdida."
 msgid "Choose language"
 msgstr "Agħżel lingwa"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "Belt"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -591,7 +643,7 @@ msgid "Clear all"
 msgstr "Naddaf kollox"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "Naddaf it-tiftix"
 
@@ -601,7 +653,7 @@ msgstr "Naddaf it-tiftix"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "Agħlaq"
 
@@ -700,6 +752,27 @@ msgstr "Konness"
 msgid "Connecting..."
 msgstr "Qed jgħaqqad..."
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "Il-kuntatt ġie miżjud"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "Il-kuntatt inħoloq"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "Il-kuntatt tħassar"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "Il-kuntatt ġie ssejvjat"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "Kuntatti"
+
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
 msgstr "Il-kontenut ma nstabx."
@@ -756,6 +829,10 @@ msgstr "Ma setgħetx tinbeda l-awtentikazzjoni mill-ġdid. Jekk jogħġbok erġa
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Ma stajniex nivverifikaw b'dak il-kont. Jekk jogħġbok erġa' pprova."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "Pajjiż"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
@@ -767,6 +844,15 @@ msgstr "Oħloq"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "Oħloq {entityLabel}"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "Oħloq kuntatt, jew sib lil xi ħadd fuq Mochi."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "Oħloq ktieb tal-indirizzi"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -788,6 +874,14 @@ msgstr "Maħluq"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "Inħoloq {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "Qed jinħoloq il-ktieb tal-indirizzi..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "Qed jinħoloq il-kuntatt..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -854,10 +948,36 @@ msgstr "Ssortjar default"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "Ħassar"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "Tħassar <0>{0}</0>?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "Tħassar <0>{0}</0>? Dan itemm ukoll il-ħbiberija tiegħek."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "Ħassar il-ktieb tal-indirizzi"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -870,6 +990,11 @@ msgstr "Ħassar kolonna"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "Ħassar kumment"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "Ħassar il-kuntatt"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -919,6 +1044,15 @@ msgstr "Tħassar"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
 msgstr "Tħassar {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "Qed jitħassar il-ktieb tal-indirizzi..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "Qed jitħassar il-kuntatt..."
 
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
@@ -1010,6 +1144,7 @@ msgstr "Adattat għad-disleksja"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Editja"
@@ -1021,6 +1156,10 @@ msgstr "Editja {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Editja d-didaskalija"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "Editja l-kuntatt"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1066,15 +1205,20 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Kodiċi tal-email"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "Daħħal isem biex issib nies li trid iżżid"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "Emails"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "Ittemm il-ħbiberija tiegħek ma’ <0>{0}</0>? Il-kuntatt jibqa’ fil-ktieb tal-indirizzi tiegħek."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "Daħħal it-test tal-banner (markdown sapportit)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "Daħħal isem biex tfittex..."
 
@@ -1109,6 +1253,7 @@ msgstr "URL Estern"
 msgid "Extra large"
 msgstr "Kbir ħafna"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "Ma rnexxiex tiġi aċċettata l-istedina"
@@ -1121,10 +1266,9 @@ msgstr "Ma rnexxiex li jiġu aċċettati l-istediniet"
 msgid "Failed to add account"
 msgstr "Ma rnexxiex jiżdied il-kont"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "Ma rnexxiex jiżdied il-ħabib"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "Ma rnexxiex jiżdied il-kuntatt"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1144,6 +1288,14 @@ msgstr "Ma rnexxiex li jiġu kkanċellati l-istediniet"
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "Ma rnexxiex jiġi kkupjat"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "Ma rnexxiex jinħoloq il-ktieb tal-indirizzi"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "Ma rnexxiex jinħoloq il-kuntatt"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1166,6 +1318,10 @@ msgstr "Ma rnexxiex li jiġu miċħuda l-istediniet"
 msgid "Failed to delete"
 msgstr "Ma rnexxiex jitħassar"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "Ma rnexxiex jitħassar il-ktieb tal-indirizzi"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "Ma rnexxiex jitħassar l-attachment"
@@ -1173,6 +1329,11 @@ msgstr "Ma rnexxiex jitħassar l-attachment"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "Ma rnexxiex jitħassar il-kumment"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "Ma rnexxiex jitħassar il-kuntatt"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1231,13 +1392,17 @@ msgstr "Ma rnexxiex jiġi mċaqlaq"
 msgid "Failed to post comment"
 msgstr "Ma rnexxiex jiġi postjat il-kumment"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Ma rnexxiex jitneħħa l-ħabib"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "Ma rnexxiex jitneħħa l-membru"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "Ma rnexxiex jinbidel isem il-ktieb tal-indirizzi"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1256,6 +1421,10 @@ msgstr "Ma rnexxiex jiġi ssejvjat"
 msgid "Failed to save accent"
 msgstr "Ma rnexxiex jiġi ssejvjat l-aċċent"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "Ma rnexxiex jiġi ssejvjat il-kuntatt"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "Ma rnexxiex jiġi ssejvjat l-isem"
@@ -1271,6 +1440,11 @@ msgstr "Ma rnexxiex jiġi ssejvjat il-profil"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "Ma rnexxiex jiġi ssejvjat il-prompt"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "Ma rnexxiex tintbagħat l-istedina"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1292,6 +1466,10 @@ msgstr "Ma rnexxiex jiġi aġġornat is-segwitu"
 msgid "Failed to upload attachment"
 msgstr "Ma rnexxiex jittella' l-attachment"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "Kunjom"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1305,6 +1483,10 @@ msgstr "Fajl kbir wisq"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "Fajls"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Sib fuq Mochi"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1322,14 +1504,16 @@ msgstr "Ċatta"
 msgid "Friday"
 msgstr "Il-Ġimgħa"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "Ħabib"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Il-ħabib tneħħa"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "Ħbieb"
 
@@ -1344,6 +1528,10 @@ msgstr "Minn"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Mit-tema"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "Isem"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1411,6 +1599,11 @@ msgstr "Storja"
 msgid "Home"
 msgstr "Home"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "Dar"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "Sħun"
@@ -1431,6 +1624,10 @@ msgstr "Viewer tal-istampi: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperjali"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "Fil-kuntatti"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1460,7 +1657,7 @@ msgstr "Interessi"
 msgid "Invalid date"
 msgstr "Data invalida"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "L-istedina ġiet aċċettata"
@@ -1473,8 +1670,8 @@ msgstr "L-istedina ġiet ikkanċellata"
 msgid "Invitation declined"
 msgstr "L-istedina ġiet irrifjutata"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "L-istedina ntbagħtet"
 
@@ -1484,6 +1681,11 @@ msgstr "L-istedina ntbagħtet"
 msgid "Invitations"
 msgstr "Stediniet"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "Stieden"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "Il-politika tal-istedina ġiet aġġornata"
@@ -1492,6 +1694,10 @@ msgstr "Il-politika tal-istedina ġiet aġġornata"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "Settings tal-istedina"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "Mistieden"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1630,6 +1836,7 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Messaġġ"
 
@@ -1644,6 +1851,11 @@ msgstr "Il-permess tal-mikrofonu ġie miċħud"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "Tul minimu"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "Mowbajl"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1674,11 +1886,13 @@ msgstr "Ġie mċaqlaq {field}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Isem"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Name (A–Z)"
 msgstr "Isem (A–Z)"
 
@@ -1709,6 +1923,11 @@ msgstr "Żball tan-network"
 msgid "New"
 msgstr "Ġdid"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "Kuntatt ġdid"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "New game"
@@ -1722,6 +1941,10 @@ msgstr "Stediniet ġodda jidhru hawn"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "Stampa li jmiss"
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "Laqam"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1743,9 +1966,9 @@ msgstr "L-ebda banner imwaqqaf"
 msgid "No comments yet"
 msgstr "L-ebda kummenti s'issa"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "L-ebda ħbieb s'issa"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "Għad m’hemmx kuntatti"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1777,7 +2000,7 @@ msgstr "L-ebda stediniet pendenti"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "Ma nstabu l-ebda nies"
@@ -1786,7 +2009,7 @@ msgstr "Ma nstabu l-ebda nies"
 msgid "No places found"
 msgstr "Ma nstabu l-ebda postijiet"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "L-ebda riżultat għal \"{search}\""
 
@@ -1858,6 +2081,10 @@ msgstr "Ma nstabx"
 msgid "Not set"
 msgstr "Mhux issettjat"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "Nota"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "Ma nstab xejn"
@@ -1880,6 +2107,10 @@ msgstr "Numru"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Mixgħul"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Fuq Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1929,7 +2160,16 @@ msgstr "Deskrizzjoni fakultattiva"
 msgid "Options"
 msgstr "Għażliet"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "Organizzazzjoni"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Oħra"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "Oħra"
 
@@ -1974,6 +2214,10 @@ msgstr "Pendenti"
 msgid "People"
 msgstr "Nies"
 
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "Telefons"
+
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -1988,6 +2232,10 @@ msgstr "Erġa' pprova."
 msgid "Please wait a moment and try again."
 msgstr "Jekk jogħġbok stenna ftit u erġa' pprova."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "Kodiċi postali"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Posts"
@@ -2000,10 +2248,10 @@ msgstr "Posts u kummenti"
 msgid "Preview"
 msgstr "Anteprima"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "Ara l-profil ta' {0} qabel tibgħat talba ta' ħbiberija."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "Ara l-profil ta’ {0} qabel ma tibgħat stedina ta’ ħbiberija."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2067,7 +2315,7 @@ msgstr "Erġa' rreġistra ċ-ċwievet tal-aċċess tiegħek fuq dan is-server"
 msgid "Received ({0})"
 msgstr "Riċevut ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "Miżjud reċentement"
 
@@ -2095,6 +2343,10 @@ msgstr "Qed nirredirezzjona għal-login."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "Naqqas l-interess"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "Reġjun"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2127,10 +2379,7 @@ msgstr "Rilevanza {relevance}, interess {weight}"
 msgid "Remove"
 msgstr "Neħħi"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2161,10 +2410,13 @@ msgstr "Tneħħi r-regola ta' aċċess għal \"{0}\"?"
 msgid "Remove access?"
 msgstr "Tneħħi l-aċċess?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "Neħħi ħabib"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "Neħħi l-indirizz"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "Neħħi l-email"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2185,7 +2437,11 @@ msgstr "Neħħi l-link"
 msgid "Remove member"
 msgstr "Neħħi membru"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "Neħħi t-telefon"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Qed inneħħi l-ħabib..."
 
@@ -2195,8 +2451,13 @@ msgstr "Qed inneħħi l-membru..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "Irrinomina"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "Ibdel isem il-ktieb tal-indirizzi"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2205,6 +2466,10 @@ msgstr "Irrinomina kolonna"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "Irrinomina din il-kolonna tal-bord"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "Qed jinbidel isem il-ktieb tal-indirizzi..."
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2280,6 +2545,8 @@ msgstr "Is-Sibt"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2291,6 +2558,10 @@ msgstr "Issejvja"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "Issejvja l-isem"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "Qed jiġi ssejvjat il-kuntatt..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2309,6 +2580,10 @@ msgstr "Qed jiġi ssejvjat..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "Fittex"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "Fittex fil-kuntatti"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2329,14 +2604,6 @@ msgstr "Fittex destinazzjoni..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "Fittex oriġini..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "Fittex nies u ibgħat talba ta' ħbiberija."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "Fittex ħbieb"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2360,7 +2627,7 @@ msgstr "Fittex, ara, u ssortja din il-view."
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Fittex..."
@@ -2438,7 +2705,7 @@ msgstr "Ibgħat mill-ġdid"
 msgid "Send email"
 msgstr "Ibgħat email"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "Ibgħat stedina"
 
@@ -2447,7 +2714,8 @@ msgstr "Ibgħat stedina"
 msgid "Send message"
 msgstr "Ibgħat messaġġ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Qed nibgħat l-istedina..."
 
@@ -2555,9 +2823,9 @@ msgstr "Wiesa'"
 msgid "Start the discussion by adding the first comment."
 msgstr "Ibda d-diskussjoni billi żżid l-ewwel kumment."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "Ibda tikteb biex tfittex utenti"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "Ibda ittajpja biex tfittex nies"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2567,6 +2835,10 @@ msgstr "Ieqaf segwi"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "Aħżen siekta"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "Triq"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2635,7 +2907,7 @@ msgstr "Ma setax jintbagħat. Il-fajls jistgħu jkunu kbar wisq, jew il-konnessj
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Kien kbir wisq biex jittella'. Neħħi jew ċekken fajls u erġa' pprova."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "Dak int"
 
@@ -2679,6 +2951,11 @@ msgstr "Dan għad iħassar il-logħba u ċ-chat tagħha b'mod permanenti. Din l-
 msgid "Thursday"
 msgstr "Il-Ħamis"
 
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "Kariga"
+
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
 msgstr "Lejn"
@@ -2718,13 +2995,9 @@ msgstr "Quċċata"
 msgid "Travelling"
 msgstr "Qed jivvjaġġa"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "Ipprova isem ieħor"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "Ipprova terminu ta' tfittxija differenti"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2745,6 +3018,8 @@ msgstr "It-Tlieta"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "Tip"
@@ -2788,6 +3063,12 @@ msgstr "Mhux disponibbli"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Żball API mhux mistenni"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "Temm il-ħbiberija"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2848,6 +3129,10 @@ msgstr "Il-progress tat-tlugħ"
 #: src/features/profile/index.tsx
 msgid "Uploading..."
 msgstr "Qed itella'..."
+
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -2926,6 +3211,11 @@ msgstr "Bgħatna kodiċi ta' verifika lil <0>{0}</0>. Daħħal il-kodiċi hawn t
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "L-Erbgħa"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "Xogħol"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

@@ -34,6 +34,11 @@ msgstr "(თქვენ)"
 msgid "[not set]"
 msgstr "[არ არის მითითებული]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {მასთან ერთად წაიშლება # კონტაქტი.} other {მასთან ერთად წაიშლება # კონტაქტი.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -98,9 +103,9 @@ msgstr "12 საათი"
 msgid "24 hours"
 msgstr "24 საათი"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "მეგობრობის მოწვევა გაიგზავნა {userName}-სთვის."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "მეგობრობის მოწვევა გაიგზავნა {name}-სთვის."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +124,8 @@ msgid "Accent saved"
 msgstr "აქცენტი შენახულია"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "მიღება"
@@ -132,11 +138,7 @@ msgstr "ყველას მიღება"
 msgid "Accept automatically"
 msgstr "ავტომატური მიღება"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "მოწვევის მიღება"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "მოწვევის მიღება..."
@@ -161,6 +163,11 @@ msgstr "ანგარიშის ტიპი"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "მოქმედებები"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "მოქმედებები {0}-ისთვის"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +199,10 @@ msgstr "წვდომის დამატება"
 msgid "Add account"
 msgstr "ანგარიშის დამატება"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "მისამართის დამატება"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "წარწერის დამატება"
@@ -200,22 +211,21 @@ msgstr "წარწერის დამატება"
 msgid "Add checklist item"
 msgstr "ჩამონათვალის ერთეულის დამატება"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "კონტაქტის დამატება"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "ელფოსტის დამატება"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "ველის დამატება"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "მეგობრის დამატება"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "დაამატეთ მეგობრები დასაკავშირებლად"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +250,21 @@ msgstr "წევრის დამატება"
 msgid "Add option"
 msgstr "ვარიანტის დამატება"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "ტელეფონის დამატება"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "დასაწყებად დაამატეთ ვინმე"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ტეგის დამატება..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "კონტაქტებში დამატება"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +288,38 @@ msgstr "ხედის დამატება"
 msgid "Added {0} to the group"
 msgstr "{0} დაემატა ჯგუფს"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "მიმდინარეობს კონტაქტის დამატება..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "წევრის დამატება..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "მისამართების წიგნი"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "მისამართების წიგნი"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "მისამართების წიგნი შეიქმნა"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "მისამართების წიგნი წაიშალა"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "მისამართების წიგნს სახელი შეეცვალა"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "მისამართები"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +328,11 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "ყველა ხელმისაწვდომი ჯგუფი უკვე დამატებულია"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "ყველა კონტაქტი"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +353,6 @@ msgstr "ყველას შეეძლოს მოძებნოს {entit
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "დახარისხების დაშვება"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "უკვე მეგობრები"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +410,6 @@ msgstr "დარწმუნებული ხართ, რომ გსუ�
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "დარწმუნებული ხართ, რომ გსურთ <0>{0}</0>-ის ამოღება ამ ჯგუფიდან?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "დარწმუნებული ხართ, რომ გსურთ <0>{0}</0>-ის ამოღება მეგობრების სიიდან? მოქმედება შეუქცევადია."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "დარწმუნებული ხართ, რომ გსურთ დათმობა?"
@@ -406,7 +452,7 @@ msgid "Avatar for {name}"
 msgstr "{name}-ის ავატარი"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Back"
 msgstr "უკან"
 
@@ -431,6 +477,10 @@ msgstr "ბანერი წაიშალა"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "ბანერი განახლდა"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "დაბადების დღე"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +544,8 @@ msgstr "კამერა მიუწვდომელია"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,10 +607,6 @@ msgstr "შეიცვალა"
 msgid "Changed {field}"
 msgstr "შეიცვალა {field}"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "ჩატი"
-
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
 msgstr "ფლაგი"
@@ -576,6 +624,10 @@ msgstr "აირჩიეთ თამაში გვერდითა პა
 msgid "Choose language"
 msgstr "აირჩიეთ ენა"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "ქალაქი"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -591,7 +643,7 @@ msgid "Clear all"
 msgstr "ყველაფრის გასუფთავება"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "ძიების გასუფთავება"
 
@@ -601,7 +653,7 @@ msgstr "ძიების გასუფთავება"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "დახურვა"
 
@@ -700,6 +752,27 @@ msgstr "დაკავშირებულია"
 msgid "Connecting..."
 msgstr "დაკავშირება..."
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "კონტაქტი დაემატა"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "კონტაქტი შეიქმნა"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "კონტაქტი წაიშალა"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "კონტაქტი შეინახა"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "კონტაქტები"
+
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
 msgstr "შიგთავსი ვერ მოიძებნა."
@@ -756,6 +829,10 @@ msgstr "ხელახალი ავთენტიფიკაციის �
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ამ ანგარიშით ვერ მოხერხდა გადამოწმება. გთხოვთ, სცადოთ თავიდან."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "ქვეყანა"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
@@ -767,6 +844,15 @@ msgstr "შექმნა"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "{entityLabel}-ის შექმნა"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "შექმენით კონტაქტი ან იპოვეთ ვინმე Mochi-ზე."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "მისამართების წიგნის შექმნა"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -788,6 +874,14 @@ msgstr "შექმნილია"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "შეიქმნა {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "მიმდინარეობს მისამართების წიგნის შექმნა..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "მიმდინარეობს კონტაქტის შექმნა..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -854,10 +948,36 @@ msgstr "ნაგულისხმევი დახარისხება"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "წაშლა"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "წაიშალოს <0>{0}</0>?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "წაიშალოს <0>{0}</0>? ამით თქვენი მეგობრობაც სრულდება."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "მისამართების წიგნის წაშლა"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -870,6 +990,11 @@ msgstr "სვეტის წაშლა"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "კომენტარის წაშლა"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "კონტაქტის წაშლა"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -919,6 +1044,15 @@ msgstr "წაიშალა"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
 msgstr "წაიშალა {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "მიმდინარეობს მისამართების წიგნის წაშლა..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "მიმდინარეობს კონტაქტის წაშლა..."
 
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
@@ -1010,6 +1144,7 @@ msgstr "დისლექსიის თავსებადი"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "რედაქტირება"
@@ -1021,6 +1156,10 @@ msgstr "{label}-ის რედაქტირება"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "წარწერის რედაქტირება"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "კონტაქტის რედაქტირება"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1066,15 +1205,20 @@ msgstr "ელფოსტა"
 msgid "Email code"
 msgstr "ელფოსტის კოდი"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "შეიყვანეთ სახელი დასამატებელი ადამიანების მოსაძებნად"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "ელფოსტის მისამართები"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "დასრულდეს თქვენი მეგობრობა <0>{0}</0>-თან? კონტაქტი დარჩება თქვენს მისამართების წიგნში."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "შეიყვანეთ ბანერის ტექსტი (markdown მხარდაჭერილია)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "შეიყვანეთ სახელი ძიებისთვის..."
 
@@ -1109,6 +1253,7 @@ msgstr "გარე URL"
 msgid "Extra large"
 msgstr "ძალიან დიდი"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "მოწვევის მიღება ვერ მოხერხდა"
@@ -1121,10 +1266,9 @@ msgstr "მოწვევების მიღება ვერ მოხე
 msgid "Failed to add account"
 msgstr "ანგარიშის დამატება ვერ მოხერხდა"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "მეგობრის დამატება ვერ მოხერხდა"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "კონტაქტის დამატება ვერ მოხერხდა"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1144,6 +1288,14 @@ msgstr "მოწვევების გაუქმება ვერ მო
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "კოპირება ვერ მოხერხდა"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "მისამართების წიგნის შექმნა ვერ მოხერხდა"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "კონტაქტის შექმნა ვერ მოხერხდა"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1166,6 +1318,10 @@ msgstr "მოწვევების უარყოფა ვერ მოხ
 msgid "Failed to delete"
 msgstr "წაშლა ვერ მოხერხდა"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "მისამართების წიგნის წაშლა ვერ მოხერხდა"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "დანართის წაშლა ვერ მოხერხდა"
@@ -1173,6 +1329,11 @@ msgstr "დანართის წაშლა ვერ მოხერხდ
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "კომენტარის წაშლა ვერ მოხერხდა"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "კონტაქტის წაშლა ვერ მოხერხდა"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1231,13 +1392,17 @@ msgstr "გადატანა ვერ მოხერხდა"
 msgid "Failed to post comment"
 msgstr "კომენტარის გამოქვეყნება ვერ მოხერხდა"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "მეგობრის წაშლა ვერ მოხერხდა"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "წევრის წაშლა ვერ მოხერხდა"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "მისამართების წიგნისთვის სახელის შეცვლა ვერ მოხერხდა"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1256,6 +1421,10 @@ msgstr "შენახვა ვერ მოხერხდა"
 msgid "Failed to save accent"
 msgstr "აქცენტის შენახვა ვერ მოხერხდა"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "კონტაქტის შენახვა ვერ მოხერხდა"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "სახელის შენახვა ვერ მოხერხდა"
@@ -1271,6 +1440,11 @@ msgstr "პროფილის შენახვა ვერ მოხერ
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "მოთხოვნის შენახვა ვერ მოხერხდა"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "მოწვევის გაგზავნა ვერ მოხერხდა"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1292,6 +1466,10 @@ msgstr "თვალყურის დევნების განახლ�
 msgid "Failed to upload attachment"
 msgstr "დანართის ატვირთვა ვერ მოხერხდა"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "გვარი"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1305,6 +1483,10 @@ msgstr "ფაილი ძალიან დიდია"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "ფაილები"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "მოძებნა Mochi-ზე"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1322,14 +1504,16 @@ msgstr "ბრტყელი"
 msgid "Friday"
 msgstr "პარასკევი"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "მეგობარი"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "მეგობარი წაიშალა"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "მეგობრები"
 
@@ -1344,6 +1528,10 @@ msgstr "ვისგან"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "თემიდან"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "სახელი"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1411,6 +1599,11 @@ msgstr "ისტორია"
 msgid "Home"
 msgstr "მთავარი"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "სახლი"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "ცხელი"
@@ -1431,6 +1624,10 @@ msgstr "სურათის მნახველი: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "იმპერიული"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "კონტაქტებშია"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1460,7 +1657,7 @@ msgstr "ინტერესები"
 msgid "Invalid date"
 msgstr "არასწორი თარიღი"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "მოწვევა მიღებულია"
@@ -1473,8 +1670,8 @@ msgstr "მოწვევა გაუქმდა"
 msgid "Invitation declined"
 msgstr "მოწვევაზე უარი ეთქვა"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "მოწვევა გაიგზავნა"
 
@@ -1484,6 +1681,11 @@ msgstr "მოწვევა გაიგზავნა"
 msgid "Invitations"
 msgstr "მოწვევები"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "მოწვევა"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "მოწვევის პოლიტიკა განახლდა"
@@ -1492,6 +1694,10 @@ msgstr "მოწვევის პოლიტიკა განახლდ�
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "მოწვევის პარამეტრები"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "მოწვეულია"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1630,6 +1836,7 @@ msgid "Menu"
 msgstr "მენიუ"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "შეტყობინება"
 
@@ -1644,6 +1851,11 @@ msgstr "მიკროფონის ნებართვა უარყო�
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "მინიმალური სიგრძე"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "მობილური"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1674,11 +1886,13 @@ msgstr "გადაადგილდა {field}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "სახელი"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Name (A–Z)"
 msgstr "სახელი (A–Z)"
 
@@ -1709,6 +1923,11 @@ msgstr "ქსელის შეცდომა"
 msgid "New"
 msgstr "ახალი"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "ახალი კონტაქტი"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "New game"
@@ -1722,6 +1941,10 @@ msgstr "ახალი მოწვევები აქ გამოჩნდ
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "შემდეგი სურათი"
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "მეტსახელი"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1743,9 +1966,9 @@ msgstr "ბანერი არ არის დაყენებული"
 msgid "No comments yet"
 msgstr "კომენტარები ჯერ არ არის"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "მეგობრები ჯერ არ არის"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "კონტაქტები ჯერ არ არის"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1777,7 +2000,7 @@ msgstr "მოლოდინში მყოფი მოწვევები 
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "ხალხი ვერ მოიძებნა"
@@ -1786,7 +2009,7 @@ msgstr "ხალხი ვერ მოიძებნა"
 msgid "No places found"
 msgstr "ადგილები ვერ მოიძებნა"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "\"{search}\"-ისთვის შედეგები არ არის"
 
@@ -1858,6 +2081,10 @@ msgstr "ვერ მოიძებნა"
 msgid "Not set"
 msgstr "არ არის დაყენებული"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "შენიშვნა"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "არაფერი მოიძებნა"
@@ -1880,6 +2107,10 @@ msgstr "ნომერი"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "ჩართული"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Mochi-ზე"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1929,7 +2160,16 @@ msgstr "არასავალდებულო აღწერა"
 msgid "Options"
 msgstr "ვარიანტები"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "ორგანიზაცია"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "სხვა"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "სხვა"
 
@@ -1974,6 +2214,10 @@ msgstr "მოლოდინში"
 msgid "People"
 msgstr "ხალხი"
 
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "ტელეფონები"
+
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -1988,6 +2232,10 @@ msgstr "გთხოვთ, კიდევ სცადეთ."
 msgid "Please wait a moment and try again."
 msgstr "გთხოვთ, ცოტა ხნით მოიცადოთ და ხელახლა სცადოთ."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "საფოსტო კოდი"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "პოსტები"
@@ -2000,10 +2248,10 @@ msgstr "პოსტები და კომენტარები"
 msgid "Preview"
 msgstr "გადახედვა"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "გადახედეთ {0}-ის პროფილს მეგობრობის მოთხოვნის გაგზავნამდე."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "მეგობრობის მოწვევის გაგზავნამდე გადახედეთ {0}-ის პროფილს."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2067,7 +2315,7 @@ msgstr "ხელახლა დაარეგისტრირეთ თქ�
 msgid "Received ({0})"
 msgstr "მიღებული ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "ცოტა ხნის წინ დამატებული"
 
@@ -2095,6 +2343,10 @@ msgstr "შესვლის გვერდზე გადამისამ�
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "ინტერესის შემცირება"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "რეგიონი"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2127,10 +2379,7 @@ msgstr "რელევანტურობა {relevance}, ინტერე�
 msgid "Remove"
 msgstr "წაშლა"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2161,10 +2410,13 @@ msgstr "წავშალოთ წვდომის წესი „{0}“-�
 msgid "Remove access?"
 msgstr "წვდომის წაშლა?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "მეგობრის წაშლა"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "მისამართის წაშლა"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "ელფოსტის წაშლა"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2185,7 +2437,11 @@ msgstr "ბმულის წაშლა"
 msgid "Remove member"
 msgstr "წევრის წაშლა"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "ტელეფონის წაშლა"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "მეგობრის წაშლა..."
 
@@ -2195,8 +2451,13 @@ msgstr "წევრის წაშლა..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "სახელის შეცვლა"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "მისამართების წიგნის სახელის შეცვლა"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2205,6 +2466,10 @@ msgstr "სვეტის სახელის შეცვლა"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "ამ დაფის სვეტის სახელის შეცვლა"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "მიმდინარეობს მისამართების წიგნის სახელის შეცვლა..."
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2280,6 +2545,8 @@ msgstr "შაბათი"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2291,6 +2558,10 @@ msgstr "შენახვა"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "სახელის შენახვა"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "მიმდინარეობს კონტაქტის შენახვა..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2309,6 +2580,10 @@ msgstr "შენახვა..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "ძიება"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "კონტაქტების ძიება"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2329,14 +2604,6 @@ msgstr "დანიშნულების ძიება..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "წყაროს ძიება..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "მოძებნეთ ხალხი და გაგზავნეთ მეგობრობის მოთხოვნა."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "მეგობრების ძიება"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2360,7 +2627,7 @@ msgstr "ძიება, თვალთვალი და დახარი�
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "ძიება..."
@@ -2438,7 +2705,7 @@ msgstr "თავიდან გაგზავნა"
 msgid "Send email"
 msgstr "ელფოსტის გაგზავნა"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "მოწვევის გაგზავნა"
 
@@ -2447,7 +2714,8 @@ msgstr "მოწვევის გაგზავნა"
 msgid "Send message"
 msgstr "შეტყობინების გაგზავნა"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "მოწვევის გაგზავნა..."
 
@@ -2555,9 +2823,9 @@ msgstr "ფართო"
 msgid "Start the discussion by adding the first comment."
 msgstr "დაიწყეთ დისკუსია პირველი კომენტარის დამატებით."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "დაიწყეთ ბეჭდვა მომხმარებლების მოსაძებნად"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "დაიწყეთ აკრეფა ადამიანების მოსაძებნად"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2567,6 +2835,10 @@ msgstr "ყურების შეწყვეტა"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "ჩუმად შენახვა"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "ქუჩა"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2635,7 +2907,7 @@ msgstr "გაგზავნა ვერ მოხერხდა. ფაი�
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "ატვირთვისთვის ზედმეტად დიდი იყო. წაშალეთ ან შეამცირეთ ფაილები და ხელახლა სცადეთ."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "ეს თქვენ ხართ"
 
@@ -2679,6 +2951,11 @@ msgstr "ეს სამუდამოდ წაშლის თამაშს
 msgid "Thursday"
 msgstr "ხუთშაბათი"
 
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "თანამდებობა"
+
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
 msgstr "სად"
@@ -2718,13 +2995,9 @@ msgstr "ძალიან დიდი"
 msgid "Travelling"
 msgstr "მოგზაურობა"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "სცადეთ სხვა სახელი"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "სცადეთ სხვა საძიებო სიტყვა"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2745,6 +3018,8 @@ msgstr "სცადეთ სხვა ძიების ტერმინე
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "სამშაბათი"
@@ -2788,6 +3063,12 @@ msgstr "არაავტორიზებული წვდომა"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "API-ის მოულოდნელი შეცდომა"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "მეგობრობის დასრულება"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2848,6 +3129,10 @@ msgstr "ატვირთვის მიმდინარეობა"
 #: src/features/profile/index.tsx
 msgid "Uploading..."
 msgstr "იტვირთება..."
+
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -2926,6 +3211,11 @@ msgstr "გავაგზავნეთ დამადასტურებ�
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "ოთხშაბათი"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "სამსახური"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

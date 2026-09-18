@@ -34,6 +34,11 @@ msgstr "(நீங்கள்)"
 msgid "[not set]"
 msgstr "[அமைக்கப்படவில்லை]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {அதனுடன் # தொடர்பும் நீக்கப்படும்.} other {அதனுடன் # தொடர்புகளும் நீக்கப்படும்.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -98,9 +103,9 @@ msgstr "12 மணிநேரம்"
 msgid "24 hours"
 msgstr "24 மணிநேரம்"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "{userName} க்கு நண்பர் அழைப்பு அனுப்பப்பட்டது."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "{name} க்கு நட்பு அழைப்பு அனுப்பப்பட்டது."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +124,8 @@ msgid "Accent saved"
 msgstr "உச்சரிப்பு சேமிக்கப்பட்டது"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "ஏற்றுக்கொள்"
@@ -132,11 +138,7 @@ msgstr "அனைத்தையும் ஏற்கவும்"
 msgid "Accept automatically"
 msgstr "தானாக ஏற்றுக்கொள்"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "அழைப்பை ஏற்கவும்"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "அழைப்பை ஏற்கிறது..."
@@ -161,6 +163,11 @@ msgstr "கணக்கு வகை"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "செயல்கள்"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "{0} க்கான செயல்கள்"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +199,10 @@ msgstr "அணுகல் சேர்"
 msgid "Add account"
 msgstr "கணக்கு சேர்"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "முகவரியைச் சேர்"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "படக்குறிப்பைச் சேர்"
@@ -200,22 +211,21 @@ msgstr "படக்குறிப்பைச் சேர்"
 msgid "Add checklist item"
 msgstr "சரிபார்ப்பு பட்டியல் உருப்படி சேர்"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "தொடர்பைச் சேர்"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "மின்னஞ்சலைச் சேர்"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "புலம் சேர்"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "நண்பர் சேர்"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "இணைக்கத் தொடங்க நண்பர்களைச் சேர்க்கவும்"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +250,21 @@ msgstr "உறுப்பினர் சேர்"
 msgid "Add option"
 msgstr "விருப்பம் சேர்"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "தொலைபேசியைச் சேர்"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "தொடங்க யாரையாவது சேர்க்கவும்"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "டேக் சேர்..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "தொடர்புகளில் சேர்"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +288,38 @@ msgstr "காட்சி சேர்"
 msgid "Added {0} to the group"
 msgstr "{0} குழுவில் சேர்க்கப்பட்டது"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "தொடர்பு சேர்க்கப்படுகிறது..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "உறுப்பினரைச் சேர்க்கிறது..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "முகவரிப் புத்தகம்"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "முகவரிப் புத்தகம்"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "முகவரிப் புத்தகம் உருவாக்கப்பட்டது"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "முகவரிப் புத்தகம் நீக்கப்பட்டது"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "முகவரிப் புத்தகத்தின் பெயர் மாற்றப்பட்டது"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "முகவரிகள்"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +328,11 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "கிடைக்கக்கூடிய அனைத்து குழுக்களும் ஏற்கனவே சேர்க்கப்பட்டுள்ளன"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "எல்லா தொடர்புகளும்"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +353,6 @@ msgstr "{entityLabel} தேட அனைவரையும் அனுமத�
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "வரிசைப்படுத்துதலை அனுமதி"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "ஏற்கனவே நண்பர்கள்"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +410,6 @@ msgstr "வெளியேற விரும்புகிறீர்கள�
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "<0>{0}</0> ஐ இந்த குழுவிலிருந்து நீக்க விரும்புகிறீர்களா?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "உங்கள் நண்பர் பட்டியலிலிருந்து <0>{0}</0> ஐ அகற்ற விரும்புகிறீர்களா? இந்த செயலை மாற்ற முடியாது."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "நீங்கள் விட்டுக்கொடுக்க விரும்புகிறீர்களா?"
@@ -406,7 +452,7 @@ msgid "Avatar for {name}"
 msgstr "{name} இன் அவதாரம்"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Back"
 msgstr "பின்"
 
@@ -431,6 +477,10 @@ msgstr "பேனர் அகற்றப்பட்டது"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "பேனர் புதுப்பிக்கப்பட்டது"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "பிறந்தநாள்"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +544,8 @@ msgstr "கேமரா கிடைக்கவில்லை"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,10 +607,6 @@ msgstr "மாற்றப்பட்டது"
 msgid "Changed {field}"
 msgstr "{field} மாற்றப்பட்டது"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "அரட்டை"
-
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
 msgstr "தேர்வுப் பெட்டி"
@@ -576,6 +624,10 @@ msgstr "பக்கப்பட்டியில் இருந்து ஒ�
 msgid "Choose language"
 msgstr "மொழியைத் தேர்ந்தெடுக்கவும்"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "நகரம்"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -591,7 +643,7 @@ msgid "Clear all"
 msgstr "அனைத்தையும் அழி"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "தேடலை அழி"
 
@@ -601,7 +653,7 @@ msgstr "தேடலை அழி"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "மூடு"
 
@@ -700,6 +752,27 @@ msgstr "இணைக்கப்பட்டது"
 msgid "Connecting..."
 msgstr "இணைக்கிறது..."
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "தொடர்பு சேர்க்கப்பட்டது"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "தொடர்பு உருவாக்கப்பட்டது"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "தொடர்பு நீக்கப்பட்டது"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "தொடர்பு சேமிக்கப்பட்டது"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "தொடர்புகள்"
+
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
 msgstr "உள்ளடக்கம் கிடைக்கவில்லை."
@@ -756,6 +829,10 @@ msgstr "மறுஅங்கீகாரத்தைத் தொடங்க �
 msgid "Couldn't verify with that account. Please try again."
 msgstr "அந்தக் கணக்கைச் சரிபார்க்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "நாடு"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
@@ -767,6 +844,15 @@ msgstr "உருவாக்கு"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "{entityLabel} உருவாக்கு"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "தொடர்பை உருவாக்கவும், அல்லது Mochi இல் ஒருவரைத் தேடவும்."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "முகவரிப் புத்தகத்தை உருவாக்கு"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -788,6 +874,14 @@ msgstr "உருவாக்கப்பட்டது"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "{field} உருவாக்கப்பட்டது"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "முகவரிப் புத்தகம் உருவாக்கப்படுகிறது..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "தொடர்பு உருவாக்கப்படுகிறது..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -854,10 +948,36 @@ msgstr "இயல்புநிலை வரிசை"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "நீக்கு"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "<0>{0}</0> ஐ நீக்கவா?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "<0>{0}</0> ஐ நீக்கவா? இதனால் உங்கள் நட்பும் முடிவடையும்."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "முகவரிப் புத்தகத்தை நீக்கு"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -870,6 +990,11 @@ msgstr "நெடுவரிசையை நீக்கு"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "கருத்தை நீக்கு"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "தொடர்பை நீக்கு"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -919,6 +1044,15 @@ msgstr "நீக்கப்பட்டது"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
 msgstr "{field} நீக்கப்பட்டது"
+
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "முகவரிப் புத்தகம் நீக்கப்படுகிறது..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "தொடர்பு நீக்கப்படுகிறது..."
 
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
@@ -1010,6 +1144,7 @@ msgstr "டிஸ்லெக்சியாவுக்கு உகந்த�
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "திருத்து"
@@ -1021,6 +1156,10 @@ msgstr "{label} திருத்து"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "படக்குறிப்பைத் திருத்து"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "தொடர்பைத் திருத்து"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1066,15 +1205,20 @@ msgstr "மின்னஞ்சல்"
 msgid "Email code"
 msgstr "மின்னஞ்சல் குறியீடு"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "நீங்கள் சேர்க்க விரும்பும் நபர்களைக் கண்டறிய பெயரை உள்ளிடவும்"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "மின்னஞ்சல்கள்"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "<0>{0}</0> உடனான நட்பை முடிக்கவா? தொடர்பு உங்கள் முகவரிப் புத்தகத்தில் இருக்கும்."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "பேனர் உரையை உள்ளிடவும் (மார்க்டவுன் ஆதரிக்கப்படுகிறது)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "தேட பெயரை உள்ளிடவும்..."
 
@@ -1109,6 +1253,7 @@ msgstr "வெளிப்புற URL"
 msgid "Extra large"
 msgstr "மிகப் பெரியது"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "அழைப்பை ஏற்க முடியவில்லை"
@@ -1121,10 +1266,9 @@ msgstr "அழைப்புகளை ஏற்க முடியவில்�
 msgid "Failed to add account"
 msgstr "கணக்கைச் சேர்க்க முடியவில்லை"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "நண்பரைச் சேர்க்க முடியவில்லை"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "தொடர்பைச் சேர்க்க முடியவில்லை"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1144,6 +1288,14 @@ msgstr "அழைப்புகளை ரத்து செய்ய முட
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "நகலெடுக்க முடியவில்லை"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "முகவரிப் புத்தகத்தை உருவாக்க முடியவில்லை"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "தொடர்பை உருவாக்க முடியவில்லை"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1166,6 +1318,10 @@ msgstr "அழைப்புகளை நிராகரிக்க முட�
 msgid "Failed to delete"
 msgstr "நீக்க முடியவில்லை"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "முகவரிப் புத்தகத்தை நீக்க முடியவில்லை"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "இணைப்பை நீக்க முடியவில்லை"
@@ -1173,6 +1329,11 @@ msgstr "இணைப்பை நீக்க முடியவில்லை"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "கருத்தை நீக்க முடியவில்லை"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "தொடர்பை நீக்க முடியவில்லை"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1231,13 +1392,17 @@ msgstr "நகர்த்த முடியவில்லை"
 msgid "Failed to post comment"
 msgstr "கருத்தைப் பதிவிட முடியவில்லை"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "நண்பரை நீக்க முடியவில்லை"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "உறுப்பினரை நீக்க முடியவில்லை"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "முகவரிப் புத்தகத்தின் பெயரை மாற்ற முடியவில்லை"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1256,6 +1421,10 @@ msgstr "சேமிக்க முடியவில்லை"
 msgid "Failed to save accent"
 msgstr "உச்சரிப்பை சேமிக்க முடியவில்லை"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "தொடர்பைச் சேமிக்க முடியவில்லை"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "பெயரை சேமிக்க முடியவில்லை"
@@ -1271,6 +1440,11 @@ msgstr "சுயவிவரத்தை சேமிக்க முடிய�
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "ப்ராம்ப்டை சேமிக்க முடியவில்லை"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "அழைப்பை அனுப்ப முடியவில்லை"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1292,6 +1466,10 @@ msgstr "கண்காணிப்பைப் புதுப்பிக்�
 msgid "Failed to upload attachment"
 msgstr "இணைப்பைப் பதிவேற்ற முடியவில்லை"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "குடும்பப் பெயர்"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "ஃபேவிகான்"
@@ -1305,6 +1483,10 @@ msgstr "கோப்பு மிகப் பெரியது"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "கோப்புகள்"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Mochi இல் தேடு"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1322,14 +1504,16 @@ msgstr "தட்டையானது"
 msgid "Friday"
 msgstr "வெள்ளிக்கிழமை"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "நண்பர்"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "நண்பர் அகற்றப்பட்டார்"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "நண்பர்கள்"
 
@@ -1344,6 +1528,10 @@ msgstr "இருந்து"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "தீமிலிருந்து"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "முதல் பெயர்"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1411,6 +1599,11 @@ msgstr "வரலாறு"
 msgid "Home"
 msgstr "முகப்பு"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "வீடு"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "பிரபலமான"
@@ -1431,6 +1624,10 @@ msgstr "பட காட்சி: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "இம்பீரியல்"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "தொடர்புகளில் உள்ளது"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1460,7 +1657,7 @@ msgstr "ஆர்வங்கள்"
 msgid "Invalid date"
 msgstr "தவறான தேதி"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "அழைப்பு ஏற்கப்பட்டது"
@@ -1473,8 +1670,8 @@ msgstr "அழைப்பு ரத்து செய்யப்பட்ட�
 msgid "Invitation declined"
 msgstr "அழைப்பு மறுக்கப்பட்டது"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "அழைப்பு அனுப்பப்பட்டது"
 
@@ -1484,6 +1681,11 @@ msgstr "அழைப்பு அனுப்பப்பட்டது"
 msgid "Invitations"
 msgstr "அழைப்புகள்"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "அழை"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "அழைப்புக் கொள்கை புதுப்பிக்கப்பட்டது"
@@ -1492,6 +1694,10 @@ msgstr "அழைப்புக் கொள்கை புதுப்பி�
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "அழைப்பு அமைப்புகள்"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "அழைக்கப்பட்டது"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1630,6 +1836,7 @@ msgid "Menu"
 msgstr "மெனு"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "செய்தி"
 
@@ -1644,6 +1851,11 @@ msgstr "மைக்ரோஃபோன் அனுமதி மறுக்க�
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "குறைந்தபட்ச நீளம்"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "மொபைல்"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1674,11 +1886,13 @@ msgstr "{field} நகர்த்தப்பட்டது"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "பெயர்"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Name (A–Z)"
 msgstr "பெயர் (A–Z)"
 
@@ -1709,6 +1923,11 @@ msgstr "பிணையப் பிழை"
 msgid "New"
 msgstr "புதியது"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "புதிய தொடர்பு"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "New game"
@@ -1722,6 +1941,10 @@ msgstr "புதிய அழைப்புகள் இங்கே தோன
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "அடுத்த படம்"
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "செல்லப்பெயர்"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1743,9 +1966,9 @@ msgstr "பேனர் அமைக்கப்படவில்லை"
 msgid "No comments yet"
 msgstr "கருத்துகள் இன்னும் இல்லை"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "நண்பர்கள் இன்னும் இல்லை"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "இதுவரை தொடர்புகள் இல்லை"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1777,7 +2000,7 @@ msgstr "நிலுவையிலுள்ள அழைப்புகள் �
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "நபர்கள் எதுவும் கிடைக்கவில்லை"
@@ -1786,7 +2009,7 @@ msgstr "நபர்கள் எதுவும் கிடைக்கவி�
 msgid "No places found"
 msgstr "இடங்கள் எதுவும் கிடைக்கவில்லை"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "\"{search}\" க்கு முடிவுகள் இல்லை"
 
@@ -1858,6 +2081,10 @@ msgstr "கிடைக்கவில்லை"
 msgid "Not set"
 msgstr "அமைக்கப்படவில்லை"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "குறிப்பு"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "எதுவும் கிடைக்கவில்லை"
@@ -1880,6 +2107,10 @@ msgstr "எண்"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "இயக்கத்தில்"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Mochi இல்"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1929,7 +2160,16 @@ msgstr "விருப்ப விளக்கம்"
 msgid "Options"
 msgstr "விருப்பங்கள்"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "நிறுவனம்"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "மற்றவை"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "மற்றவை"
 
@@ -1974,6 +2214,10 @@ msgstr "நிலுவையில்"
 msgid "People"
 msgstr "மக்கள்"
 
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "தொலைபேசிகள்"
+
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -1988,6 +2232,10 @@ msgstr "தயவுசெய்து மீண்டும் முயற்�
 msgid "Please wait a moment and try again."
 msgstr "சிறிது நேரம் காத்திருந்து மீண்டும் முயற்சிக்கவும்."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "அஞ்சல் குறியீடு"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "பதிவுகள்"
@@ -2000,10 +2248,10 @@ msgstr "பதிவுகள் மற்றும் கருத்துக�
 msgid "Preview"
 msgstr "முன்னோட்டம்"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "நட்பு கோரிக்கையை அனுப்பும் முன் {0} இன் சுயவிவரத்தை முன்னோட்டம் காண்க."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "நட்பு அழைப்பை அனுப்பும் முன் {0} இன் சுயவிவரத்தைப் பாருங்கள்."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2067,7 +2315,7 @@ msgstr "இந்த சேவையகத்தில் உங்கள் க
 msgid "Received ({0})"
 msgstr "பெறப்பட்டவை ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "சமீபத்தில் சேர்க்கப்பட்டது"
 
@@ -2095,6 +2343,10 @@ msgstr "உள்நுழைவுக்கு redirect ஆகிறது."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "ஆர்வத்தைக் குறைக்கவும்"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "பகுதி"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2127,10 +2379,7 @@ msgstr "தொடர்புடைமை {relevance}, ஆர்வம் {weigh
 msgid "Remove"
 msgstr "அகற்று"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2161,10 +2410,13 @@ msgstr "\"{0}\" க்கான அணுகல் விதியை அகற�
 msgid "Remove access?"
 msgstr "அணுகலை அகற்றவா?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "நண்பரை அகற்று"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "முகவரியை அகற்று"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "மின்னஞ்சலை அகற்று"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2185,7 +2437,11 @@ msgstr "இணைப்பை அகற்று"
 msgid "Remove member"
 msgstr "உறுப்பினரை அகற்று"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "தொலைபேசியை அகற்று"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "நண்பரை அகற்றுகிறது..."
 
@@ -2195,8 +2451,13 @@ msgstr "உறுப்பினரை அகற்றுகிறது..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "பெயர் மாற்று"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "முகவரிப் புத்தகத்தின் பெயரை மாற்று"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2205,6 +2466,10 @@ msgstr "நெடுவரிசையின் பெயரை மாற்ற�
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "இந்த போர்டு நெடுவரிசையின் பெயரை மாற்று"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "முகவரிப் புத்தகத்தின் பெயர் மாற்றப்படுகிறது..."
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2280,6 +2545,8 @@ msgstr "சனிக்கிழமை"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2291,6 +2558,10 @@ msgstr "சேமி"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "பெயரைச் சேமி"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "தொடர்பு சேமிக்கப்படுகிறது..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2309,6 +2580,10 @@ msgstr "சேமிக்கிறது..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "தேடு"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "தொடர்புகளைத் தேடு"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2329,14 +2604,6 @@ msgstr "சேருமிடத்தைத் தேடு..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "துவக்கத்தைத் தேடு..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "மக்களைத் தேடி நட்பு கோரிக்கையை அனுப்பு."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "நண்பர்களைத் தேடு"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2360,7 +2627,7 @@ msgstr "இந்த காட்சியைத் தேடு, கவனி, 
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "தேடு..."
@@ -2438,7 +2705,7 @@ msgstr "மீண்டும் அனுப்பு"
 msgid "Send email"
 msgstr "மின்னஞ்சல் அனுப்பு"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "அழைப்பு அனுப்பு"
 
@@ -2447,7 +2714,8 @@ msgstr "அழைப்பு அனுப்பு"
 msgid "Send message"
 msgstr "செய்தியை அனுப்பு"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "அழைப்பை அனுப்புகிறது..."
 
@@ -2555,9 +2823,9 @@ msgstr "விரிவான"
 msgid "Start the discussion by adding the first comment."
 msgstr "முதல் கருத்தை சேர்த்து விவாதத்தை தொடங்குங்கள்."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "பயனர்களைத் தேட தட்டச்சு செய்யத் தொடங்குங்கள்"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "நபர்களைத் தேட தட்டச்சு செய்யத் தொடங்குங்கள்"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2567,6 +2835,10 @@ msgstr "பார்ப்பதை நிறுத்து"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "அமைதியாக சேமி"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "தெரு"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2635,7 +2907,7 @@ msgstr "அனுப்ப முடியவில்லை. கோப்பு
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "பதிவேற்ற முடியாத அளவு பெரியது. கோப்புகளை நீக்கவும் அல்லது சிறிதாக்கி மீண்டும் முயற்சிக்கவும்."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "அது நீங்கள்"
 
@@ -2679,6 +2951,11 @@ msgstr "இது விளையாட்டையும் அதன் அர
 msgid "Thursday"
 msgstr "வியாழக்கிழமை"
 
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "பதவி"
+
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
 msgstr "நோக்கி"
@@ -2718,13 +2995,9 @@ msgstr "மேல்"
 msgid "Travelling"
 msgstr "பயணிக்கிறது"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "வேறு பெயரை முயற்சிக்கவும்"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "வேறு தேடல் சொல்லை முயற்சிக்கவும்"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2745,6 +3018,8 @@ msgstr "செவ்வாய்க்கிழமை"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "வகை"
@@ -2788,6 +3063,12 @@ msgstr "கிடைக்கவில்லை"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "எதிர்பாராத API பிழை"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "நட்பை நீக்கு"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2848,6 +3129,10 @@ msgstr "பதிவேற்ற முன்னேற்றம்"
 #: src/features/profile/index.tsx
 msgid "Uploading..."
 msgstr "பதிவேற்றுகிறது..."
+
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -2926,6 +3211,11 @@ msgstr "நாங்கள் <0>{0}</0> க்கு சரிபார்ப�
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "புதன்கிழமை"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "பணி"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

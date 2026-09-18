@@ -4,7 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { createFileRoute } from '@tanstack/react-router'
 import { getEntityFingerprint } from '@mochi/web'
-import { Friends } from '@/features/friends'
+import { Contacts } from '@/features/contacts'
 import { PublicProfile } from '@/features/profile/public'
 
 interface SearchParams {
@@ -24,6 +24,6 @@ function IndexPage() {
   return fingerprint ? (
     <PublicProfile fingerprint={fingerprint} />
   ) : (
-    <Friends autoAdd={action === 'add'} />
+    <Contacts autoAdd={action === 'add'} />
   )
 }

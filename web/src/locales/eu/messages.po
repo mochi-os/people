@@ -34,6 +34,11 @@ msgstr "(zu)"
 msgid "[not set]"
 msgstr "[ezarri gabe]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {Harekin batera # kontaktu ezabatuko da.} other {Harekin batera # kontaktu ezabatuko dira.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -98,9 +103,9 @@ msgstr "12 ordu"
 msgid "24 hours"
 msgstr "24 ordu"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "Lagun gonbidapena bidali zaio {userName}(r)i."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "Lagun-gonbidapena bidali zaio {name} erabiltzaileari."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +124,8 @@ msgid "Accent saved"
 msgstr "Azentua gordeta"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "Onartu"
@@ -132,11 +138,7 @@ msgstr "Onartu guztiak"
 msgid "Accept automatically"
 msgstr "Onartu automatikoki"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "Onartu gonbidapena"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "Gonbidapena onartzen..."
@@ -161,6 +163,11 @@ msgstr "Kontu mota"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "Ekintzak"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "Ekintzak: {0}"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +199,10 @@ msgstr "Gehitu sarbidea"
 msgid "Add account"
 msgstr "Gehitu kontua"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "Gehitu helbidea"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Gehitu epigrafea"
@@ -200,22 +211,21 @@ msgstr "Gehitu epigrafea"
 msgid "Add checklist item"
 msgstr "Gehitu egiaztapen-zerrendako elementua"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "Gehitu kontaktua"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "Gehitu helbide elektronikoa"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Gehitu eremua"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "Gehitu laguna"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "Gehitu lagunak konektatzen hasteko"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +250,21 @@ msgstr "Gehitu kidea"
 msgid "Add option"
 msgstr "Gehitu aukera"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "Gehitu telefonoa"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "Gehitu norbait hasteko"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Gehitu etiketa..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "Gehitu kontaktuetara"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +288,38 @@ msgstr "Gehitu ikuspegia"
 msgid "Added {0} to the group"
 msgstr "{0} taldera gehitu da"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "Kontaktua gehitzen..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Kidea gehitzen..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "helbide-liburua"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "Helbide-liburua"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "Helbide-liburua sortu da"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "Helbide-liburua ezabatu da"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "Helbide-liburuaren izena aldatu da"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "Helbideak"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +328,11 @@ msgstr "AA"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "Eskuragarri dauden talde guztiak jada gehituta daude"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "Kontaktu guztiak"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +353,6 @@ msgstr "Baimendu edonork {entityLabel} bilatzea"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Baimendu honela ordenatzea"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "Jada lagunak"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +410,6 @@ msgstr "Ziur al zaude saioa amaitu nahi duzula? Berriro hasi beharko duzu saioa 
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Ziur al zaude <0>{0}</0> talde honetatik kendu nahi duzula?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "Ziur al zaude <0>{0}</0> zure lagun zerrendatik kendu nahi duzula? Ekintza hau ezin da desegin."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "Ziur al zaude amore eman nahi duzula?"
@@ -406,7 +452,7 @@ msgid "Avatar for {name}"
 msgstr "{name}(r)en avatarra"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Back"
 msgstr "Atzera"
 
@@ -431,6 +477,10 @@ msgstr "Iragarki-banda kendu da"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Iragarki-banda eguneratu da"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "Urtebetetzea"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +544,8 @@ msgstr "Kamera ez dago erabilgarri"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,10 +607,6 @@ msgstr "Aldatuta"
 msgid "Changed {field}"
 msgstr "{field} aldatu da"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "Txata"
-
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
 msgstr "Kontrol-laukia"
@@ -576,6 +624,10 @@ msgstr "Aukeratu joko bat alboko barratik edo hasi berri bat."
 msgid "Choose language"
 msgstr "Aukeratu hizkuntza"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "Hiria"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -591,7 +643,7 @@ msgid "Clear all"
 msgstr "Garbitu dena"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "Garbitu bilaketa"
 
@@ -601,7 +653,7 @@ msgstr "Garbitu bilaketa"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "Itxi"
 
@@ -700,6 +752,27 @@ msgstr "Konektatua"
 msgid "Connecting..."
 msgstr "Konektatzen..."
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "Kontaktua gehitu da"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "Kontaktua sortu da"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "Kontaktua ezabatu da"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "Kontaktua gorde da"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "Kontaktuak"
+
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
 msgstr "Ez da edukia aurkitu."
@@ -756,6 +829,10 @@ msgstr "Ezin izan da berrautentifikazioa hasi. Saiatu berriro."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Ezin izan da kontu horrekin egiaztatu. Saiatu berriro."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "Herrialdea"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
@@ -767,6 +844,15 @@ msgstr "Sortu"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "Sortu {entityLabel}"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "Sortu kontaktu bat edo bilatu norbait Mochin."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "Sortu helbide-liburua"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -788,6 +874,14 @@ msgstr "Sortua"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "{field} sortu da"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "Helbide-liburua sortzen..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "Kontaktua sortzen..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -854,10 +948,36 @@ msgstr "Lehenetsitako ordena"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "Ezabatu"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "<0>{0}</0> ezabatu?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "<0>{0}</0> ezabatu? Horrek zuen adiskidetasuna ere amaituko du."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "Ezabatu helbide-liburua"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -870,6 +990,11 @@ msgstr "Ezabatu zutabea"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "Ezabatu iruzkina"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "Ezabatu kontaktua"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -919,6 +1044,15 @@ msgstr "Ezabatuta"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
 msgstr "{field} ezabatu da"
+
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "Helbide-liburua ezabatzen..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "Kontaktua ezabatzen..."
 
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
@@ -1010,6 +1144,7 @@ msgstr "Dislexiarako egokia"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Editatu"
@@ -1021,6 +1156,10 @@ msgstr "Editatu {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Editatu epigrafea"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "Editatu kontaktua"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1066,15 +1205,20 @@ msgstr "Posta elektronikoa"
 msgid "Email code"
 msgstr "Posta elektronikoko kodea"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "Sartu izen bat gehitu nahi dituzun pertsonak aurkitzeko"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "Helbide elektronikoak"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "<0>{0}</0> erabiltzailearekiko adiskidetasuna amaitu nahi duzu? Kontaktua zure helbide-liburuan geratuko da."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "Sartu iragarki-testua (markdown onartzen da)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "Sartu izena bilatzeko..."
 
@@ -1109,6 +1253,7 @@ msgstr "Kanpoko URL-a"
 msgid "Extra large"
 msgstr "Oso handia"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "Ezin izan da gonbidapena onartu"
@@ -1121,10 +1266,9 @@ msgstr "Ezin izan dira gonbidapenak onartu"
 msgid "Failed to add account"
 msgstr "Ezin izan da kontua gehitu"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "Ezin izan da laguna gehitu"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "Ezin izan da kontaktua gehitu"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1144,6 +1288,14 @@ msgstr "Ezin izan dira gonbidapenak ezeztatu"
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "Ezin izan da kopiatu"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "Ezin izan da helbide-liburua sortu"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "Ezin izan da kontaktua sortu"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1166,6 +1318,10 @@ msgstr "Ezin izan dira gonbidapenak ukatu"
 msgid "Failed to delete"
 msgstr "Ezin izan da ezabatu"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "Ezin izan da helbide-liburua ezabatu"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "Ezin izan da eranskina ezabatu"
@@ -1173,6 +1329,11 @@ msgstr "Ezin izan da eranskina ezabatu"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "Ezin izan da iruzkina ezabatu"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "Ezin izan da kontaktua ezabatu"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1231,13 +1392,17 @@ msgstr "Ezin izan da mugitu"
 msgid "Failed to post comment"
 msgstr "Ezin izan da iruzkina argitaratu"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Ezin izan da laguna kendu"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "Ezin izan da kidea kendu"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "Ezin izan da helbide-liburuaren izena aldatu"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1256,6 +1421,10 @@ msgstr "Ezin izan da gorde"
 msgid "Failed to save accent"
 msgstr "Ezin izan da azentua gorde"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "Ezin izan da kontaktua gorde"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "Ezin izan da izena gorde"
@@ -1271,6 +1440,11 @@ msgstr "Ezin izan da profila gorde"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "Ezin izan da galdera gorde"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "Ezin izan da gonbidapena bidali"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1292,6 +1466,10 @@ msgstr "Ezin izan da jarraipena eguneratu"
 msgid "Failed to upload attachment"
 msgstr "Ezin izan da eranskina igo"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "Abizena"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon-a"
@@ -1305,6 +1483,10 @@ msgstr "Fitxategia handiegia da"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "Fitxategiak"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Bilatu Mochin"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1322,14 +1504,16 @@ msgstr "Laua"
 msgid "Friday"
 msgstr "Ostirala"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "Laguna"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Laguna kendu da"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "Lagunak"
 
@@ -1344,6 +1528,10 @@ msgstr "Nondik"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Gaiatik"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "Izena"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1411,6 +1599,11 @@ msgstr "Historia"
 msgid "Home"
 msgstr "Hasiera"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "Etxea"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "Beroa"
@@ -1431,6 +1624,10 @@ msgstr "Irudi-ikustailea: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Inperiala"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "Kontaktuetan"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1460,7 +1657,7 @@ msgstr "Interesak"
 msgid "Invalid date"
 msgstr "Data baliogabea"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "Gonbidapena onartuta"
@@ -1473,8 +1670,8 @@ msgstr "Gonbidapena utzita"
 msgid "Invitation declined"
 msgstr "Gonbidapena errefusatuta"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Gonbidapena bidalita"
 
@@ -1484,6 +1681,11 @@ msgstr "Gonbidapena bidalita"
 msgid "Invitations"
 msgstr "Gonbidapenak"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "Gonbidatu"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "Gonbidapen-politika eguneratuta"
@@ -1492,6 +1694,10 @@ msgstr "Gonbidapen-politika eguneratuta"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "Gonbidapen-ezarpenak"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "Gonbidatuta"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1630,6 +1836,7 @@ msgid "Menu"
 msgstr "Menua"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Mezua"
 
@@ -1644,6 +1851,11 @@ msgstr "Mikrofonoaren baimena ukatu da"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "Gutxieneko luzera"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "Mugikorra"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1674,11 +1886,13 @@ msgstr "{field} lekuz aldatu da"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Izena"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Name (A–Z)"
 msgstr "Izena (A–Z)"
 
@@ -1709,6 +1923,11 @@ msgstr "Sareko errorea"
 msgid "New"
 msgstr "Berria"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "Kontaktu berria"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "New game"
@@ -1722,6 +1941,10 @@ msgstr "Gonbidapen berriak hemen agertuko dira"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "Hurrengo irudia"
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "Goitizena"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1743,9 +1966,9 @@ msgstr "Bannerrik ez da ezarri"
 msgid "No comments yet"
 msgstr "Oraindik iruzkinik ez"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "Oraindik lagunik ez"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "Oraindik ez dago kontakturik"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1777,7 +2000,7 @@ msgstr "Zain dauden gonbidapenik ez"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "Ez da pertsonarik aurkitu"
@@ -1786,7 +2009,7 @@ msgstr "Ez da pertsonarik aurkitu"
 msgid "No places found"
 msgstr "Ez da lekurik aurkitu"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "Ez dago emaitzarik \"{search}\"-(r)entzat"
 
@@ -1858,6 +2081,10 @@ msgstr "Ez da aurkitu"
 msgid "Not set"
 msgstr "Ezarri gabe"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "Oharra"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "Ez da ezer aurkitu"
@@ -1880,6 +2107,10 @@ msgstr "Zenbakia"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Aktibatuta"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Mochin"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1929,7 +2160,16 @@ msgstr "Deskribapen aukerakoa"
 msgid "Options"
 msgstr "Aukerak"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "Erakundea"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Bestelakoa"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "Bestelakoa"
 
@@ -1974,6 +2214,10 @@ msgstr "Zain"
 msgid "People"
 msgstr "Jendea"
 
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "Telefonoak"
+
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -1988,6 +2232,10 @@ msgstr "Saiatu berriro."
 msgid "Please wait a moment and try again."
 msgstr "Itxaron pixka bat eta saiatu berriro."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "Postakodea"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Argitalpenak"
@@ -2000,10 +2248,10 @@ msgstr "Argitalpenak eta iruzkinak"
 msgid "Preview"
 msgstr "Aurrebista"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "Aurreikusi {0}-(r)en profila lagun-eskaera bidali aurretik."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "Ikusi {0} erabiltzailearen profila lagun-gonbidapena bidali aurretik."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2067,7 +2315,7 @@ msgstr "Erregistratu berriro zure sarbide-gakoak zerbitzari honetan"
 msgid "Received ({0})"
 msgstr "Jasoak ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "Duela gutxi gehituta"
 
@@ -2095,6 +2343,10 @@ msgstr "Saio-hasierara birbideratzen."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "Murriztu interesa"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "Eskualdea"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2127,10 +2379,7 @@ msgstr "Garrantzia {relevance}, interesa {weight}"
 msgid "Remove"
 msgstr "Kendu"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2161,10 +2410,13 @@ msgstr "«{0}» sarbide-araua kendu?"
 msgid "Remove access?"
 msgstr "Sarbidea kendu?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "Kendu laguna"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "Kendu helbidea"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "Kendu helbide elektronikoa"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2185,7 +2437,11 @@ msgstr "Kendu esteka"
 msgid "Remove member"
 msgstr "Kendu kidea"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "Kendu telefonoa"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Laguna kentzen..."
 
@@ -2195,8 +2451,13 @@ msgstr "Kidea kentzen..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "Aldatu izena"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "Aldatu helbide-liburuaren izena"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2205,6 +2466,10 @@ msgstr "Aldatu zutabearen izena"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "Aldatu taula honetako zutabearen izena"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "Helbide-liburuaren izena aldatzen..."
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2280,6 +2545,8 @@ msgstr "Larunbata"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2291,6 +2558,10 @@ msgstr "Gorde"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "Gorde izena"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "Kontaktua gordetzen..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2309,6 +2580,10 @@ msgstr "Gordetzen..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "Bilatu"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "Bilatu kontaktuak"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2329,14 +2604,6 @@ msgstr "Bilatu helburua..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "Bilatu jatorria..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "Bilatu jendea eta bidali lagun-eskaera."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "Bilatu lagunak"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2360,7 +2627,7 @@ msgstr "Bilatu, ikusi eta sailkatu ikuspegi hau."
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Bilatu..."
@@ -2438,7 +2705,7 @@ msgstr "Bidali berriz"
 msgid "Send email"
 msgstr "Bidali emaila"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "Bidali gonbidapena"
 
@@ -2447,7 +2714,8 @@ msgstr "Bidali gonbidapena"
 msgid "Send message"
 msgstr "Bidali mezua"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Gonbidapena bidaltzen..."
 
@@ -2555,9 +2823,9 @@ msgstr "Lasaia"
 msgid "Start the discussion by adding the first comment."
 msgstr "Hasi eztabaida lehen iruzkina gehituz."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "Hasi idazten erabiltzaileak bilatzeko"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "Hasi idazten jendea bilatzeko"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2567,6 +2835,10 @@ msgstr "Utzi ikusten"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "Gorde isilean"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "Kalea"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2635,7 +2907,7 @@ msgstr "Ezin izan da bidali. Fitxategiak handiegiak izan daitezke, edo konexioak
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Handiegia zen igotzeko. Kendu edo txikitu fitxategiak eta saiatu berriro."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "Hori zu zara"
 
@@ -2679,6 +2951,11 @@ msgstr "Honek jokoa eta bere txata betiko ezabatuko ditu. Ekintza hau ezin da de
 msgid "Thursday"
 msgstr "Osteguna"
 
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "Kargua"
+
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
 msgstr "Nora"
@@ -2718,13 +2995,9 @@ msgstr "Goia"
 msgid "Travelling"
 msgstr "Bidaian"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "Saiatu beste izen batekin"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "Saiatu beste bilaketa-termino batekin"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2745,6 +3018,8 @@ msgstr "Asteartea"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "Mota"
@@ -2788,6 +3063,12 @@ msgstr "Ez dago erabilgarri"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Ustekabeko API errorea"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "Utzi lagun izateari"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2848,6 +3129,10 @@ msgstr "Igoeraren aurrerapena"
 #: src/features/profile/index.tsx
 msgid "Uploading..."
 msgstr "Igotzen..."
+
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -2926,6 +3211,11 @@ msgstr "Egiaztapen-kode bat bidali dugu <0>{0}</0> helbidera. Sartu kodea behean
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "Asteazkena"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "Lana"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

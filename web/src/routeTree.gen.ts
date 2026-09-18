@@ -13,6 +13,9 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
 import { Route as AuthenticatedInvitationsRouteImport } from './routes/_authenticated/invitations'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
+import { Route as AuthenticatedBooksIdRouteImport } from './routes/_authenticated/books/$id'
+import { Route as AuthenticatedContactsIdRouteImport } from './routes/_authenticated/contacts/$id'
+import { Route as AuthenticatedContactsNewRouteImport } from './routes/_authenticated/contacts/new'
 import { Route as AuthenticatedGroupsIdRouteImport } from './routes/_authenticated/groups/$id'
 
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
@@ -35,6 +38,22 @@ const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedBooksIdRoute = AuthenticatedBooksIdRouteImport.update({
+  id: '/books/$id',
+  path: '/books/$id',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedContactsIdRoute = AuthenticatedContactsIdRouteImport.update({
+  id: '/contacts/$id',
+  path: '/contacts/$id',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedContactsNewRoute =
+  AuthenticatedContactsNewRouteImport.update({
+    id: '/contacts/new',
+    path: '/contacts/new',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedGroupsIdRoute = AuthenticatedGroupsIdRouteImport.update({
   id: '/groups/$id',
   path: '/groups/$id',
@@ -45,12 +64,18 @@ export interface FileRoutesByFullPath {
   '/': typeof AuthenticatedIndexRoute
   '/invitations': typeof AuthenticatedInvitationsRoute
   '/profile': typeof AuthenticatedProfileRoute
+  '/books/$id': typeof AuthenticatedBooksIdRoute
+  '/contacts/$id': typeof AuthenticatedContactsIdRoute
+  '/contacts/new': typeof AuthenticatedContactsNewRoute
   '/groups/$id': typeof AuthenticatedGroupsIdRoute
 }
 export interface FileRoutesByTo {
   '/invitations': typeof AuthenticatedInvitationsRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/': typeof AuthenticatedIndexRoute
+  '/books/$id': typeof AuthenticatedBooksIdRoute
+  '/contacts/$id': typeof AuthenticatedContactsIdRoute
+  '/contacts/new': typeof AuthenticatedContactsNewRoute
   '/groups/$id': typeof AuthenticatedGroupsIdRoute
 }
 export interface FileRoutesById {
@@ -59,19 +84,39 @@ export interface FileRoutesById {
   '/_authenticated/invitations': typeof AuthenticatedInvitationsRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/_authenticated/books/$id': typeof AuthenticatedBooksIdRoute
+  '/_authenticated/contacts/$id': typeof AuthenticatedContactsIdRoute
+  '/_authenticated/contacts/new': typeof AuthenticatedContactsNewRoute
   '/_authenticated/groups/$id': typeof AuthenticatedGroupsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/invitations' | '/profile' | '/groups/$id'
+  fullPaths:
+    | '/'
+    | '/invitations'
+    | '/profile'
+    | '/books/$id'
+    | '/contacts/$id'
+    | '/contacts/new'
+    | '/groups/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/invitations' | '/profile' | '/' | '/groups/$id'
+  to:
+    | '/invitations'
+    | '/profile'
+    | '/'
+    | '/books/$id'
+    | '/contacts/$id'
+    | '/contacts/new'
+    | '/groups/$id'
   id:
     | '__root__'
     | '/_authenticated'
     | '/_authenticated/invitations'
     | '/_authenticated/profile'
     | '/_authenticated/'
+    | '/_authenticated/books/$id'
+    | '/_authenticated/contacts/$id'
+    | '/_authenticated/contacts/new'
     | '/_authenticated/groups/$id'
   fileRoutesById: FileRoutesById
 }
@@ -109,6 +154,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedProfileRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/books/$id': {
+      id: '/_authenticated/books/$id'
+      path: '/books/$id'
+      fullPath: '/books/$id'
+      preLoaderRoute: typeof AuthenticatedBooksIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/contacts/$id': {
+      id: '/_authenticated/contacts/$id'
+      path: '/contacts/$id'
+      fullPath: '/contacts/$id'
+      preLoaderRoute: typeof AuthenticatedContactsIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/contacts/new': {
+      id: '/_authenticated/contacts/new'
+      path: '/contacts/new'
+      fullPath: '/contacts/new'
+      preLoaderRoute: typeof AuthenticatedContactsNewRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/groups/$id': {
       id: '/_authenticated/groups/$id'
       path: '/groups/$id'
@@ -123,6 +189,9 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedInvitationsRoute: typeof AuthenticatedInvitationsRoute
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+  AuthenticatedBooksIdRoute: typeof AuthenticatedBooksIdRoute
+  AuthenticatedContactsIdRoute: typeof AuthenticatedContactsIdRoute
+  AuthenticatedContactsNewRoute: typeof AuthenticatedContactsNewRoute
   AuthenticatedGroupsIdRoute: typeof AuthenticatedGroupsIdRoute
 }
 
@@ -130,6 +199,9 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedInvitationsRoute: AuthenticatedInvitationsRoute,
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+  AuthenticatedBooksIdRoute: AuthenticatedBooksIdRoute,
+  AuthenticatedContactsIdRoute: AuthenticatedContactsIdRoute,
+  AuthenticatedContactsNewRoute: AuthenticatedContactsNewRoute,
   AuthenticatedGroupsIdRoute: AuthenticatedGroupsIdRoute,
 }
 

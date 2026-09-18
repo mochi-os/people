@@ -34,6 +34,11 @@ msgstr "(εσείς)"
 msgid "[not set]"
 msgstr "[χωρίς ορισμό]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {# επαφή διαγράφεται μαζί του.} other {# επαφές διαγράφονται μαζί του.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -98,9 +103,9 @@ msgstr "12 ώρες"
 msgid "24 hours"
 msgstr "24 ώρες"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "Στάλθηκε πρόσκληση φιλίας προς {userName}."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "Στάλθηκε πρόσκληση φιλίας σε {name}."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +124,8 @@ msgid "Accent saved"
 msgstr "Ο τόνος αποθηκεύτηκε"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "Αποδοχή"
@@ -132,11 +138,7 @@ msgstr "Αποδοχή όλων"
 msgid "Accept automatically"
 msgstr "Αυτόματη αποδοχή"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "Αποδοχή πρόσκλησης"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "Αποδοχή πρόσκλησης..."
@@ -161,6 +163,11 @@ msgstr "Τύπος λογαριασμού"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "Ενέργειες"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "Ενέργειες για {0}"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +199,10 @@ msgstr "Προσθήκη πρόσβασης"
 msgid "Add account"
 msgstr "Προσθήκη λογαριασμού"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "Προσθήκη διεύθυνσης"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Προσθήκη λεζάντας"
@@ -200,22 +211,21 @@ msgstr "Προσθήκη λεζάντας"
 msgid "Add checklist item"
 msgstr "Προσθήκη στοιχείου λίστας ελέγχου"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "Προσθήκη επαφής"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "Προσθήκη email"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Προσθήκη πεδίου"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "Προσθήκη φίλου"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "Προσθέστε φίλους για να ξεκινήσετε να συνδέεστε"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +250,21 @@ msgstr "Προσθήκη μέλους"
 msgid "Add option"
 msgstr "Προσθήκη επιλογής"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "Προσθήκη τηλεφώνου"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "Προσθέστε κάποιον για να ξεκινήσετε"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Προσθήκη ετικέτας..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "Προσθήκη στις επαφές"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +288,38 @@ msgstr "Προσθήκη προβολής"
 msgid "Added {0} to the group"
 msgstr "Προστέθηκε {0} στην ομάδα"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "Προσθήκη επαφής..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Προσθήκη μέλους..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "βιβλίο διευθύνσεων"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "Βιβλίο διευθύνσεων"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "Το βιβλίο διευθύνσεων δημιουργήθηκε"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "Το βιβλίο διευθύνσεων διαγράφηκε"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "Το βιβλίο διευθύνσεων μετονομάστηκε"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "Διευθύνσεις"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +328,11 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "Όλες οι διαθέσιμες ομάδες έχουν ήδη προστεθεί"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "Όλες οι επαφές"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +353,6 @@ msgstr "Να επιτρέπεται σε οποιονδήποτε η αναζή�
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Να επιτρέπεται η ταξινόμηση κατά"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "Ήδη φίλοι"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +410,6 @@ msgstr "Είστε βέβαιοι ότι θέλετε να αποσυνδεθε�
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Είστε βέβαιοι ότι θέλετε να αφαιρέσετε τον <0>{0}</0> από αυτήν την ομάδα;"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "Είσαι σίγουρος ότι θέλεις να αφαιρέσεις τον/την <0>{0}</0> από τη λίστα φίλων σου; Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "Είστε σίγουροι ότι θέλετε να εγκαταλείψετε;"
@@ -406,7 +452,7 @@ msgid "Avatar for {name}"
 msgstr "Άβαταρ για {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Back"
 msgstr "Πίσω"
 
@@ -431,6 +477,10 @@ msgstr "Το banner αφαιρέθηκε"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Το banner ενημερώθηκε"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "Γενέθλια"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +544,8 @@ msgstr "Η κάμερα δεν είναι διαθέσιμη"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,10 +607,6 @@ msgstr "Άλλαξε"
 msgid "Changed {field}"
 msgstr "Άλλαξε {field}"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "Συνομιλία"
-
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
 msgstr "Πλαίσιο ελέγχου"
@@ -576,6 +624,10 @@ msgstr "Επιλέξτε ένα παιχνίδι από την πλαϊνή στ
 msgid "Choose language"
 msgstr "Επιλογή γλώσσας"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "Πόλη"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -591,7 +643,7 @@ msgid "Clear all"
 msgstr "Εκκαθάριση όλων"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "Εκκαθάριση αναζήτησης"
 
@@ -601,7 +653,7 @@ msgstr "Εκκαθάριση αναζήτησης"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "Κλείσιμο"
 
@@ -700,6 +752,27 @@ msgstr "Συνδεδεμένο"
 msgid "Connecting..."
 msgstr "Σύνδεση..."
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "Η επαφή προστέθηκε"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "Η επαφή δημιουργήθηκε"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "Η επαφή διαγράφηκε"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "Η επαφή αποθηκεύτηκε"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "Επαφές"
+
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
 msgstr "Το περιεχόμενο δεν βρέθηκε."
@@ -756,6 +829,10 @@ msgstr "Δεν ήταν δυνατή η έναρξη του εκ νέου ελέ
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Δεν ήταν δυνατή η επαλήθευση με αυτόν τον λογαριασμό. Δοκιμάστε ξανά."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "Χώρα"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
@@ -767,6 +844,15 @@ msgstr "Δημιουργία"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "Δημιουργία {entityLabel}"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "Δημιουργήστε μια επαφή ή βρείτε κάποιον στο Mochi."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "Δημιουργία βιβλίου διευθύνσεων"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -788,6 +874,14 @@ msgstr "Δημιουργήθηκε"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "Δημιουργήθηκε {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "Δημιουργία βιβλίου διευθύνσεων..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "Δημιουργία επαφής..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -854,10 +948,36 @@ msgstr "Προεπιλεγμένη ταξινόμηση"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "Διαγραφή"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "Διαγραφή <0>{0}</0>;"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "Διαγραφή <0>{0}</0>; Αυτό τερματίζει και τη φιλία σας."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "Διαγραφή βιβλίου διευθύνσεων"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -870,6 +990,11 @@ msgstr "Διαγραφή στήλης"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "Διαγραφή σχολίου"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "Διαγραφή επαφής"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -919,6 +1044,15 @@ msgstr "Διαγράφηκε"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
 msgstr "Διαγράφηκε {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "Διαγραφή βιβλίου διευθύνσεων..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "Διαγραφή επαφής..."
 
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
@@ -1010,6 +1144,7 @@ msgstr "Φιλικό προς δυσλεξία"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Επεξεργασία"
@@ -1021,6 +1156,10 @@ msgstr "Επεξεργασία {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Επεξεργασία λεζάντας"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "Επεξεργασία επαφής"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1066,15 +1205,20 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Κωδικός email"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "Εισάγετε ένα όνομα για να βρείτε άτομα που θέλετε να προσθέσετε"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "Διευθύνσεις email"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "Τερματισμός της φιλίας με <0>{0}</0>; Η επαφή παραμένει στο βιβλίο διευθύνσεών σας."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "Εισαγάγετε κείμενο μπάνερ (υποστηρίζεται markdown)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "Εισάγετε όνομα για αναζήτηση..."
 
@@ -1109,6 +1253,7 @@ msgstr "Εξωτερικό URL"
 msgid "Extra large"
 msgstr "Πολύ μεγάλο"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "Αποτυχία αποδοχής πρόσκλησης"
@@ -1121,10 +1266,9 @@ msgstr "Αποτυχία αποδοχής προσκλήσεων"
 msgid "Failed to add account"
 msgstr "Αποτυχία προσθήκης λογαριασμού"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "Αποτυχία προσθήκης φίλου"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "Αποτυχία προσθήκης επαφής"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1144,6 +1288,14 @@ msgstr "Αποτυχία ακύρωσης προσκλήσεων"
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "Αποτυχία αντιγραφής"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "Αποτυχία δημιουργίας βιβλίου διευθύνσεων"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "Αποτυχία δημιουργίας επαφής"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1166,6 +1318,10 @@ msgstr "Αποτυχία απόρριψης προσκλήσεων"
 msgid "Failed to delete"
 msgstr "Αποτυχία διαγραφής"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "Αποτυχία διαγραφής βιβλίου διευθύνσεων"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "Αποτυχία διαγραφής συνημμένου"
@@ -1173,6 +1329,11 @@ msgstr "Αποτυχία διαγραφής συνημμένου"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "Αποτυχία διαγραφής σχολίου"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "Αποτυχία διαγραφής επαφής"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1231,13 +1392,17 @@ msgstr "Αποτυχία μετακίνησης"
 msgid "Failed to post comment"
 msgstr "Αποτυχία ανάρτησης σχολίου"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Αποτυχία αφαίρεσης φίλου"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "Αποτυχία αφαίρεσης μέλους"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "Αποτυχία μετονομασίας βιβλίου διευθύνσεων"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1256,6 +1421,10 @@ msgstr "Αποτυχία αποθήκευσης"
 msgid "Failed to save accent"
 msgstr "Αποτυχία αποθήκευσης τόνου"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "Αποτυχία αποθήκευσης επαφής"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "Αποτυχία αποθήκευσης ονόματος"
@@ -1271,6 +1440,11 @@ msgstr "Αποτυχία αποθήκευσης προφίλ"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "Αποτυχία αποθήκευσης προτροπής"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "Αποτυχία αποστολής πρόσκλησης"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1292,6 +1466,10 @@ msgstr "Αποτυχία ενημέρωσης παρακολούθησης"
 msgid "Failed to upload attachment"
 msgstr "Αποτυχία μεταφόρτωσης συνημμένου"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "Επώνυμο"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1305,6 +1483,10 @@ msgstr "Το αρχείο είναι πολύ μεγάλο"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "Αρχεία"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Αναζήτηση στο Mochi"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1322,14 +1504,16 @@ msgstr "Επίπεδη"
 msgid "Friday"
 msgstr "Παρασκευή"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "Φίλος"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Ο φίλος αφαιρέθηκε"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "Φίλοι"
 
@@ -1344,6 +1528,10 @@ msgstr "Από"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Από το θέμα"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "Όνομα"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1411,6 +1599,11 @@ msgstr "Ιστορικό"
 msgid "Home"
 msgstr "Αρχική"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "Οικία"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "Δημοφιλή"
@@ -1431,6 +1624,10 @@ msgstr "Προβολή εικόνας: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Αυτοκρατορικό"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "Στις επαφές"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1460,7 +1657,7 @@ msgstr "Ενδιαφέροντα"
 msgid "Invalid date"
 msgstr "Μη έγκυρη ημερομηνία"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "Η πρόσκληση έγινε αποδεκτή"
@@ -1473,8 +1670,8 @@ msgstr "Η πρόσκληση ακυρώθηκε"
 msgid "Invitation declined"
 msgstr "Η πρόσκληση απορρίφθηκε"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Η πρόσκληση στάλθηκε"
 
@@ -1484,6 +1681,11 @@ msgstr "Η πρόσκληση στάλθηκε"
 msgid "Invitations"
 msgstr "Προσκλήσεις"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "Πρόσκληση"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "Η πολιτική προσκλήσεων ενημερώθηκε"
@@ -1492,6 +1694,10 @@ msgstr "Η πολιτική προσκλήσεων ενημερώθηκε"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "Ρυθμίσεις προσκλήσεων"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "Προσκλήθηκε"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1630,6 +1836,7 @@ msgid "Menu"
 msgstr "Μενού"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Μήνυμα"
 
@@ -1644,6 +1851,11 @@ msgstr "Η άδεια μικροφώνου απορρίφθηκε"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "Ελάχιστο μήκος"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "Κινητό"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1674,11 +1886,13 @@ msgstr "Μετακινήθηκε {field}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Όνομα"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Name (A–Z)"
 msgstr "Όνομα (A–Z)"
 
@@ -1709,6 +1923,11 @@ msgstr "Σφάλμα δικτύου"
 msgid "New"
 msgstr "Νέο"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "Νέα επαφή"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "New game"
@@ -1722,6 +1941,10 @@ msgstr "Νέες προσκλήσεις θα εμφανίζονται εδώ"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "Επόμενη εικόνα"
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "Ψευδώνυμο"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1743,9 +1966,9 @@ msgstr "Δεν έχει οριστεί banner"
 msgid "No comments yet"
 msgstr "Δεν υπάρχουν ακόμη σχόλια"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "Δεν υπάρχουν ακόμη φίλοι"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "Δεν υπάρχουν επαφές ακόμη"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1777,7 +2000,7 @@ msgstr "Καμία εκκρεμής πρόσκληση"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "Δεν βρέθηκαν άτομα"
@@ -1786,7 +2009,7 @@ msgstr "Δεν βρέθηκαν άτομα"
 msgid "No places found"
 msgstr "Δεν βρέθηκαν τοποθεσίες"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "Κανένα αποτέλεσμα για \"{search}\""
 
@@ -1858,6 +2081,10 @@ msgstr "Δεν βρέθηκε"
 msgid "Not set"
 msgstr "Δεν έχει οριστεί"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "Σημείωση"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "Δεν βρέθηκε τίποτα"
@@ -1880,6 +2107,10 @@ msgstr "Αριθμός"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Ενεργό"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Στο Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1929,7 +2160,16 @@ msgstr "Προαιρετική περιγραφή"
 msgid "Options"
 msgstr "Επιλογές"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "Οργανισμός"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Άλλο"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "Άλλο"
 
@@ -1974,6 +2214,10 @@ msgstr "Σε εκκρεμότητα"
 msgid "People"
 msgstr "Άτομα"
 
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "Τηλέφωνα"
+
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -1988,6 +2232,10 @@ msgstr "Δοκιμάστε ξανά."
 msgid "Please wait a moment and try again."
 msgstr "Περιμένετε λίγο και δοκιμάστε ξανά."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "Ταχυδρομικός κώδικας"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Αναρτήσεις"
@@ -2000,10 +2248,10 @@ msgstr "Αναρτήσεις και σχόλια"
 msgid "Preview"
 msgstr "Προεπισκόπηση"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "Προβάλετε το προφίλ του {0} πριν στείλετε αίτημα φιλίας."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "Προεπισκόπηση του προφίλ {0} πριν από την αποστολή πρόσκλησης φιλίας."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2067,7 +2315,7 @@ msgstr "Καταχωρίστε ξανά τα κλειδιά πρόσβασής �
 msgid "Received ({0})"
 msgstr "Ληφθέντα ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "Προστέθηκαν πρόσφατα"
 
@@ -2095,6 +2343,10 @@ msgstr "Ανακατεύθυνση στη σύνδεση."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "Μείωση ενδιαφέροντος"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "Περιοχή"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2127,10 +2379,7 @@ msgstr "Συνάφεια {relevance}, ενδιαφέρον {weight}"
 msgid "Remove"
 msgstr "Αφαίρεση"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2161,10 +2410,13 @@ msgstr "Κατάργηση κανόνα πρόσβασης για «{0}»;"
 msgid "Remove access?"
 msgstr "Αφαίρεση πρόσβασης;"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "Αφαίρεση φίλου"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "Αφαίρεση διεύθυνσης"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "Αφαίρεση email"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2185,7 +2437,11 @@ msgstr "Αφαίρεση συνδέσμου"
 msgid "Remove member"
 msgstr "Αφαίρεση μέλους"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "Αφαίρεση τηλεφώνου"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Αφαίρεση φίλου..."
 
@@ -2195,8 +2451,13 @@ msgstr "Αφαίρεση μέλους..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "Μετονομασία"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "Μετονομασία βιβλίου διευθύνσεων"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2205,6 +2466,10 @@ msgstr "Μετονομασία στήλης"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "Μετονομασία αυτής της στήλης πίνακα"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "Μετονομασία βιβλίου διευθύνσεων..."
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2280,6 +2545,8 @@ msgstr "Σάββατο"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2291,6 +2558,10 @@ msgstr "Αποθήκευση"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "Αποθήκευση ονόματος"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "Αποθήκευση επαφής..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2309,6 +2580,10 @@ msgstr "Αποθήκευση..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "Αναζήτηση"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "Αναζήτηση επαφών"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2329,14 +2604,6 @@ msgstr "Αναζήτηση για προορισμό..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "Αναζήτηση για αφετηρία..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "Αναζητήστε άτομα και στείλτε αίτημα φιλίας."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "Αναζήτηση φίλων"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2360,7 +2627,7 @@ msgstr "Αναζήτηση, παρακολούθηση και ταξινόμησ
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Αναζήτηση..."
@@ -2438,7 +2705,7 @@ msgstr "Αποστολή ξανά"
 msgid "Send email"
 msgstr "Αποστολή email"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "Αποστολή πρόσκλησης"
 
@@ -2447,7 +2714,8 @@ msgstr "Αποστολή πρόσκλησης"
 msgid "Send message"
 msgstr "Αποστολή μηνύματος"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Αποστολή πρόσκλησης..."
 
@@ -2555,9 +2823,9 @@ msgstr "Ευρύχωρο"
 msgid "Start the discussion by adding the first comment."
 msgstr "Ξεκινήστε τη συζήτηση προσθέτοντας το πρώτο σχόλιο."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "Ξεκινήστε να πληκτρολογείτε για αναζήτηση χρηστών"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "Ξεκινήστε να πληκτρολογείτε για να αναζητήσετε άτομα"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2567,6 +2835,10 @@ msgstr "Διακοπή παρακολούθησης"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "Σιωπηλή αποθήκευση"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "Οδός"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2635,7 +2907,7 @@ msgstr "Δεν ήταν δυνατή η αποστολή. Τα αρχεία μπ
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Ήταν πολύ μεγάλο για μεταφόρτωση. Αφαιρέστε ή μικρύνετε αρχεία και δοκιμάστε ξανά."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "Αυτός είσαι εσύ"
 
@@ -2679,6 +2951,11 @@ msgstr "Αυτό θα διαγράψει οριστικά το παιχνίδι 
 msgid "Thursday"
 msgstr "Πέμπτη"
 
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "Θέση"
+
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
 msgstr "Προς"
@@ -2718,13 +2995,9 @@ msgstr "Κορυφή"
 msgid "Travelling"
 msgstr "Σε ταξίδι"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "Δοκιμάστε άλλο όνομα"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "Δοκιμάστε διαφορετικό όρο αναζήτησης"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2745,6 +3018,8 @@ msgstr "Τρίτη"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "Τύπος"
@@ -2788,6 +3063,12 @@ msgstr "Μη διαθέσιμο"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Απροσδόκητο σφάλμα API"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "Κατάργηση φιλίας"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2848,6 +3129,10 @@ msgstr "Πρόοδος μεταφόρτωσης"
 #: src/features/profile/index.tsx
 msgid "Uploading..."
 msgstr "Μεταφόρτωση..."
+
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -2926,6 +3211,11 @@ msgstr "Στείλαμε έναν κωδικό επαλήθευσης στο <0>
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "Τετάρτη"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "Εργασία"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

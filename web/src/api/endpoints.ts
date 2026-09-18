@@ -6,7 +6,7 @@ import { getAppPath } from '@mochi/web'
 
 // Class-level actions are addressed absolutely: on a profile URL
 // (/people/<entity>) the request layer's baseURL becomes /people/<entity>/-/,
-// and a relative "-/friends" falls through to the SPA catch-all. Under domain
+// and a relative "-/contacts" falls through to the SPA catch-all. Under domain
 // routing getAppPath() is empty, so fall back to relative.
 const app = getAppPath()
 const prefix = app ? `${app}/-` : '-'
@@ -14,13 +14,25 @@ const personPrefix = (person: string) =>
   app ? `${app}/${person}/-` : `${person}/-`
 
 const endpoints = {
+  contacts: {
+    list: `${prefix}/contacts`,
+    get: `${prefix}/contacts/get`,
+    create: `${prefix}/contacts/create`,
+    update: `${prefix}/contacts/update`,
+    delete: `${prefix}/contacts/delete`,
+    search: `${prefix}/contacts/search`,
+  },
+  books: {
+    list: `${prefix}/books`,
+    create: `${prefix}/books/create`,
+    rename: `${prefix}/books/rename`,
+    delete: `${prefix}/books/delete`,
+  },
   friends: {
-    list: `${prefix}/friends`,
-    search: `${prefix}/friends/search`,
-    create: `${prefix}/friends/create`,
+    invite: `${prefix}/friends/invite`,
     accept: `${prefix}/friends/accept`,
     ignore: `${prefix}/friends/ignore`,
-    delete: `${prefix}/friends/delete`,
+    remove: `${prefix}/friends/remove`,
   },
   preferences: {
     get: `${prefix}/preferences/get`,

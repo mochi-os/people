@@ -28,7 +28,7 @@ import {
   GeneralError,
 } from '@mochi/web'
 import { User, UsersRound, Search, UserPlus } from 'lucide-react'
-import { useSearchLocalUsersQuery } from '@/hooks/useFriends'
+import { useSearchLocalUsersQuery } from '@/hooks/useContacts'
 import { useAddGroupMemberMutation, useGroupsQuery } from '@/hooks/useGroups'
 
 interface MemberDialogProps {

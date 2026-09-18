@@ -34,6 +34,11 @@ msgstr "(você)"
 msgid "[not set]"
 msgstr "[não definido]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {# contato é excluído junto com ele.} other {# contatos são excluídos junto com ele.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -98,9 +103,9 @@ msgstr "12 horas"
 msgid "24 hours"
 msgstr "24 horas"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "Um convite de amizade foi enviado para {userName}."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "Um convite de amizade foi enviado para {name}."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +124,8 @@ msgid "Accent saved"
 msgstr "Cor de destaque salva"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "Aceitar"
@@ -132,11 +138,7 @@ msgstr "Aceitar tudo"
 msgid "Accept automatically"
 msgstr "Aceitar automaticamente"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "Aceitar convite"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "Aceitando convite..."
@@ -161,6 +163,11 @@ msgstr "Tipo de conta"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "Ações"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "Ações para {0}"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +199,10 @@ msgstr "Adicionar acesso"
 msgid "Add account"
 msgstr "Adicionar conta"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "Adicionar endereço"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Adicionar legenda"
@@ -200,22 +211,21 @@ msgstr "Adicionar legenda"
 msgid "Add checklist item"
 msgstr "Adicionar item da checklist"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "Adicionar contato"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "Adicionar e-mail"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Adicionar campo"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "Adicionar amigo"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "Adicione amigos para começar a se conectar"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +250,21 @@ msgstr "Adicionar membro"
 msgid "Add option"
 msgstr "Adicionar opção"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "Adicionar telefone"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "Adicione alguém para começar"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Adicionar tag..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "Adicionar aos contatos"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +288,38 @@ msgstr "Adicionar visualização"
 msgid "Added {0} to the group"
 msgstr "{0} adicionado ao grupo"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "Adicionando contato..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Adicionando membro..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "catálogo de endereços"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "Catálogo de endereços"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "Catálogo de endereços criado"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "Catálogo de endereços excluído"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "Catálogo de endereços renomeado"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "Endereços"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +328,11 @@ msgstr "IA"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "Todos os grupos disponíveis já foram adicionados"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "Todos os contatos"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +353,6 @@ msgstr "Permitir que qualquer pessoa pesquise {entityLabel}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Permitir ordenar por"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "Já são amigos"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +410,6 @@ msgstr "Tem certeza de que deseja sair? Você precisará entrar novamente para a
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Tem certeza de que deseja remover <0>{0}</0> deste grupo?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "Tem certeza de que quer remover <0>{0}</0> da sua lista de amigos? Esta ação não pode ser desfeita."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "Tem certeza de que deseja desistir?"
@@ -406,7 +452,7 @@ msgid "Avatar for {name}"
 msgstr "Avatar de {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Back"
 msgstr "Voltar"
 
@@ -431,6 +477,10 @@ msgstr "Banner removido"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Banner atualizado"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "Data de nascimento"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +544,8 @@ msgstr "Câmera indisponível"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,10 +607,6 @@ msgstr "Alterado"
 msgid "Changed {field}"
 msgstr "Alterado {field}"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "Chat"
-
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
 msgstr "Caixa de seleção"
@@ -576,6 +624,10 @@ msgstr "Escolha um jogo na barra lateral ou inicie um novo."
 msgid "Choose language"
 msgstr "Escolher idioma"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "Cidade"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -591,7 +643,7 @@ msgid "Clear all"
 msgstr "Limpar tudo"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "Limpar pesquisa"
 
@@ -601,7 +653,7 @@ msgstr "Limpar pesquisa"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "Fechar"
 
@@ -700,6 +752,27 @@ msgstr "Conectado"
 msgid "Connecting..."
 msgstr "Conectando..."
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "Contato adicionado"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "Contato criado"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "Contato excluído"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "Contato salvo"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "Contatos"
+
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
 msgstr "Conteúdo não encontrado."
@@ -756,6 +829,10 @@ msgstr "Não foi possível iniciar a reautenticação. Tente novamente."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Não foi possível verificar com essa conta. Tente novamente."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "País"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
@@ -767,6 +844,15 @@ msgstr "Criar"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "Criar {entityLabel}"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "Crie um contato ou encontre alguém no Mochi."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "Criar catálogo de endereços"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -788,6 +874,14 @@ msgstr "Criado"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "Criado {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "Criando catálogo de endereços..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "Criando contato..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -854,10 +948,36 @@ msgstr "Ordenação padrão"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "Excluir"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "Excluir <0>{0}</0>?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "Excluir <0>{0}</0>? Isso também encerra a amizade de vocês."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "Excluir catálogo de endereços"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -870,6 +990,11 @@ msgstr "Excluir coluna"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "Excluir comentário"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "Excluir contato"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -919,6 +1044,15 @@ msgstr "Excluído"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
 msgstr "Excluído {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "Excluindo catálogo de endereços..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "Excluindo contato..."
 
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
@@ -1010,6 +1144,7 @@ msgstr "Adequado para dislexia"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Editar"
@@ -1021,6 +1156,10 @@ msgstr "Editar {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Editar legenda"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "Editar contato"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1066,15 +1205,20 @@ msgstr "E-mail"
 msgid "Email code"
 msgstr "Código por e-mail"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "Digite um nome para encontrar pessoas que você quer adicionar"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "E-mails"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "Encerrar sua amizade com <0>{0}</0>? O contato continua no seu catálogo de endereços."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "Digite o texto do banner (markdown suportado)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "Digite o nome para pesquisar..."
 
@@ -1109,6 +1253,7 @@ msgstr "URL externa"
 msgid "Extra large"
 msgstr "Extra grande"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "Falha ao aceitar convite"
@@ -1121,10 +1266,9 @@ msgstr "Falha ao aceitar convites"
 msgid "Failed to add account"
 msgstr "Falha ao adicionar conta"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "Falha ao adicionar amigo"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "Falha ao adicionar contato"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1144,6 +1288,14 @@ msgstr "Falha ao cancelar convites"
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "Falha ao copiar"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "Falha ao criar catálogo de endereços"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "Falha ao criar contato"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1166,6 +1318,10 @@ msgstr "Falha ao recusar convites"
 msgid "Failed to delete"
 msgstr "Falha ao excluir"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "Falha ao excluir catálogo de endereços"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "Falha ao excluir anexo"
@@ -1173,6 +1329,11 @@ msgstr "Falha ao excluir anexo"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "Falha ao excluir comentário"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "Falha ao excluir contato"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1231,13 +1392,17 @@ msgstr "Falha ao mover"
 msgid "Failed to post comment"
 msgstr "Falha ao publicar comentário"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Falha ao remover amigo"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "Falha ao remover membro"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "Falha ao renomear catálogo de endereços"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1256,6 +1421,10 @@ msgstr "Falha ao salvar"
 msgid "Failed to save accent"
 msgstr "Falha ao salvar destaque"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "Falha ao salvar contato"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "Falha ao salvar nome"
@@ -1271,6 +1440,11 @@ msgstr "Falha ao salvar perfil"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "Falha ao salvar prompt"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "Falha ao enviar convite"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1292,6 +1466,10 @@ msgstr "Falha ao atualizar o acompanhamento"
 msgid "Failed to upload attachment"
 msgstr "Falha ao enviar anexo"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "Sobrenome"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1305,6 +1483,10 @@ msgstr "Arquivo muito grande"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "Arquivos"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Encontrar no Mochi"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1322,14 +1504,16 @@ msgstr "Plano"
 msgid "Friday"
 msgstr "Sexta-feira"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "Amigo"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Amigo removido"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "Amigos"
 
@@ -1344,6 +1528,10 @@ msgstr "De"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Do tema"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "Nome"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1411,6 +1599,11 @@ msgstr "Histórico"
 msgid "Home"
 msgstr "Início"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "Casa"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "Em alta"
@@ -1431,6 +1624,10 @@ msgstr "Visualizador de imagens: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperial"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "Nos contatos"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1460,7 +1657,7 @@ msgstr "Interesses"
 msgid "Invalid date"
 msgstr "Data inválida"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "Convite aceito"
@@ -1473,8 +1670,8 @@ msgstr "Convite cancelado"
 msgid "Invitation declined"
 msgstr "Convite recusado"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Convite enviado"
 
@@ -1484,6 +1681,11 @@ msgstr "Convite enviado"
 msgid "Invitations"
 msgstr "Convites"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "Convidar"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "Política de convites atualizada"
@@ -1492,6 +1694,10 @@ msgstr "Política de convites atualizada"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "Configurações de convites"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "Convidado"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1630,6 +1836,7 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Mensagem"
 
@@ -1644,6 +1851,11 @@ msgstr "Permissão do microfone negada"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "Tamanho mínimo"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "Celular"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1674,11 +1886,13 @@ msgstr "Movido {field}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Nome"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Name (A–Z)"
 msgstr "Nome (A–Z)"
 
@@ -1709,6 +1923,11 @@ msgstr "Erro de rede"
 msgid "New"
 msgstr "Novo"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "Novo contato"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "New game"
@@ -1722,6 +1941,10 @@ msgstr "Novos convites aparecerão aqui"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "Próxima imagem"
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "Apelido"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1743,9 +1966,9 @@ msgstr "Nenhum banner definido"
 msgid "No comments yet"
 msgstr "Ainda não há comentários"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "Ainda não há amigos"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "Nenhum contato ainda"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1777,7 +2000,7 @@ msgstr "Nenhum convite pendente"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "Nenhuma pessoa encontrada"
@@ -1786,7 +2009,7 @@ msgstr "Nenhuma pessoa encontrada"
 msgid "No places found"
 msgstr "Nenhum lugar encontrado"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "Nenhum resultado para \"{search}\""
 
@@ -1858,6 +2081,10 @@ msgstr "Não encontrado"
 msgid "Not set"
 msgstr "Não definido"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "Anotação"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "Nada encontrado"
@@ -1880,6 +2107,10 @@ msgstr "Número"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Ativado"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "No Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1929,7 +2160,16 @@ msgstr "Descrição opcional"
 msgid "Options"
 msgstr "Opções"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "Organização"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Outro"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "Outro"
 
@@ -1974,6 +2214,10 @@ msgstr "Pendente"
 msgid "People"
 msgstr "Pessoas"
 
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "Telefones"
+
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -1988,6 +2232,10 @@ msgstr "Tente novamente."
 msgid "Please wait a moment and try again."
 msgstr "Aguarde um momento e tente novamente."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "CEP"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Postagens"
@@ -2000,10 +2248,10 @@ msgstr "Postagens e comentários"
 msgid "Preview"
 msgstr "Pré-visualizar"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "Veja o perfil de {0} antes de enviar uma solicitação de amizade."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "Veja o perfil de {0} antes de enviar um convite de amizade."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2067,7 +2315,7 @@ msgstr "Registre novamente suas chaves de acesso neste servidor"
 msgid "Received ({0})"
 msgstr "Recebidos ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "Adicionado recentemente"
 
@@ -2095,6 +2343,10 @@ msgstr "Redirecionando para o login."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "Reduzir interesse"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "Região"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2127,10 +2379,7 @@ msgstr "Relevância {relevance}, interesse {weight}"
 msgid "Remove"
 msgstr "Remover"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2161,10 +2410,13 @@ msgstr "Remover a regra de acesso de \"{0}\"?"
 msgid "Remove access?"
 msgstr "Remover acesso?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "Remover amigo"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "Remover endereço"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "Remover e-mail"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2185,7 +2437,11 @@ msgstr "Remover link"
 msgid "Remove member"
 msgstr "Remover membro"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "Remover telefone"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Removendo amigo..."
 
@@ -2195,8 +2451,13 @@ msgstr "Removendo membro..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "Renomear"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "Renomear catálogo de endereços"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2205,6 +2466,10 @@ msgstr "Renomear coluna"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "Renomear esta coluna do quadro"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "Renomeando catálogo de endereços..."
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2280,6 +2545,8 @@ msgstr "Sábado"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2291,6 +2558,10 @@ msgstr "Salvar"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "Salvar nome"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "Salvando contato..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2309,6 +2580,10 @@ msgstr "Salvando..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "Pesquisar"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "Pesquisar contatos"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2329,14 +2604,6 @@ msgstr "Pesquisar destino..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "Pesquisar origem..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "Pesquise pessoas e envie uma solicitação de amizade."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "Pesquisar amigos"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2360,7 +2627,7 @@ msgstr "Pesquise, observe e ordene esta visualização."
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Pesquisar..."
@@ -2438,7 +2705,7 @@ msgstr "Enviar novamente"
 msgid "Send email"
 msgstr "Enviar e-mail"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "Enviar convite"
 
@@ -2447,7 +2714,8 @@ msgstr "Enviar convite"
 msgid "Send message"
 msgstr "Enviar mensagem"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Enviando convite..."
 
@@ -2555,9 +2823,9 @@ msgstr "Espaçoso"
 msgid "Start the discussion by adding the first comment."
 msgstr "Inicie a discussão adicionando o primeiro comentário."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "Comece a digitar para pesquisar usuários"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "Comece a digitar para pesquisar pessoas"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2567,6 +2835,10 @@ msgstr "Parar de observar"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "Armazenar silenciosamente"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "Rua"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2635,7 +2907,7 @@ msgstr "Não foi possível enviar. Os arquivos podem ser grandes demais, ou sua 
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Era grande demais para enviar. Remova ou reduza arquivos e tente novamente."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "Esse é você"
 
@@ -2679,6 +2951,11 @@ msgstr "Isso exclui permanentemente o jogo e seu chat. Esta ação não pode ser
 msgid "Thursday"
 msgstr "Quinta-feira"
 
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "Cargo"
+
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
 msgstr "Para"
@@ -2718,13 +2995,9 @@ msgstr "Topo"
 msgid "Travelling"
 msgstr "Viajando"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "Tente outro nome"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "Tente um termo de pesquisa diferente"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2745,6 +3018,8 @@ msgstr "Terça-feira"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "Tipo"
@@ -2788,6 +3063,12 @@ msgstr "Indisponível"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Erro inesperado da API"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "Desfazer amizade"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2848,6 +3129,10 @@ msgstr "Progresso do envio"
 #: src/features/profile/index.tsx
 msgid "Uploading..."
 msgstr "Enviando..."
+
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -2926,6 +3211,11 @@ msgstr "Enviamos um código de verificação para <0>{0}</0>. Digite o código a
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "Quarta-feira"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "Trabalho"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

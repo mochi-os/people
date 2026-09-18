@@ -34,6 +34,11 @@ msgstr "(توهان)"
 msgid "[not set]"
 msgstr "[نه مقرر]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {ان سان گڏ # رابطو ختم ٿي ويندو.} other {ان سان گڏ # رابطا ختم ٿي ويندا.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -98,9 +103,9 @@ msgstr "12 ڪلاڪ"
 msgid "24 hours"
 msgstr "24 ڪلاڪ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "{userName} ڏانهن دوستيءَ جي دعوت موڪلي وئي آهي."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "{name} ڏانهن دوستيءَ جي دعوت موڪلي وئي آهي."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +124,8 @@ msgid "Accent saved"
 msgstr "لهجو محفوظ ڪيو ويو"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "قبول ڪريو"
@@ -132,11 +138,7 @@ msgstr "سڀ قبول ڪريو"
 msgid "Accept automatically"
 msgstr "خودڪار قبول ڪريو"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "دعوت قبول ڪريو"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "دعوت قبول ڪري رهيو آهي..."
@@ -161,6 +163,11 @@ msgstr "اڪائونٽ جو قسم"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "عمل"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "{0} لاءِ عمل"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +199,10 @@ msgstr "رسائي شامل ڪريو"
 msgid "Add account"
 msgstr "اڪائونٽ شامل ڪريو"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "پتو شامل ڪريو"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "ڪيپشن شامل ڪريو"
@@ -200,22 +211,21 @@ msgstr "ڪيپشن شامل ڪريو"
 msgid "Add checklist item"
 msgstr "چيڪ لسٽ شيءِ شامل ڪريو"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "رابطو شامل ڪريو"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "اي ميل شامل ڪريو"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "فيلڊ شامل ڪريو"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "دوست شامل ڪريو"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "ڳنڍجڻ شروع ڪرڻ لاءِ دوست شامل ڪريو"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +250,21 @@ msgstr "ميمبر شامل ڪريو"
 msgid "Add option"
 msgstr "اختيار شامل ڪريو"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "فون شامل ڪريو"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "شروع ڪرڻ لاءِ ڪنهن کي شامل ڪريو"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ٽيگ شامل ڪريو..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "رابطن ۾ شامل ڪريو"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +288,38 @@ msgstr "نظارو شامل ڪريو"
 msgid "Added {0} to the group"
 msgstr "{0} کي گروپ ۾ شامل ڪيو ويو"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "رابطو شامل ٿي رهيو آهي..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "ميمبر شامل ڪري رهيو آهي..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "ايڊريس بڪ"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "ايڊريس بڪ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "ايڊريس بڪ ٺاهي وئي"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "ايڊريس بڪ ختم ڪئي وئي"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "ايڊريس بڪ جو نالو تبديل ڪيو ويو"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "پتا"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +328,11 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "سڀ موجود گروپ اڳ ۾ ئي شامل آهن"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "سڀ رابطا"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +353,6 @@ msgstr "سڀ ڪنهن کي {entityLabel} ڳولڻ جي اجازت ڏيو"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "ترتيب جي اجازت ڏيو"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "اڳ ۾ ئي دوست"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +410,6 @@ msgstr "ڇا توهان پڪ سان لاگ آئوٽ ڪرڻ چاهيو ٿا؟ پ�
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "ڇا توهان پڪ سان <0>{0}</0> کي هن گروپ مان هٽائڻ چاهيو ٿا؟"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "ڇا توهان پڪ سان <0>{0}</0> کي پنهنجي دوستن جي فهرست مان هٽائڻ چاهيو ٿا؟ هي عمل واپس نه ٿو ٿي سگهي."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "ڇا توهان پڪ سان دستبردار ٿيڻ چاهيو ٿا؟"
@@ -406,7 +452,7 @@ msgid "Avatar for {name}"
 msgstr "{name} لاءِ اوتار"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Back"
 msgstr "واپس"
 
@@ -431,6 +477,10 @@ msgstr "بينر هٽايو ويو"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "بينر اپڊيٽ ٿيو"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "سالگره"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +544,8 @@ msgstr "ڪئميرا موجود ناهي"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,10 +607,6 @@ msgstr "تبديل ٿيو"
 msgid "Changed {field}"
 msgstr "{field} تبديل ٿيو"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "چيٽ"
-
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
 msgstr "چيڪ بڪس"
@@ -576,6 +624,10 @@ msgstr "سائڊبار مان راند چونڊيو يا نئين شروع ڪر�
 msgid "Choose language"
 msgstr "ٻولي چونڊيو"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "شهر"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -591,7 +643,7 @@ msgid "Clear all"
 msgstr "سڀ صاف ڪريو"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "ڳولا صاف ڪريو"
 
@@ -601,7 +653,7 @@ msgstr "ڳولا صاف ڪريو"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "بند ڪريو"
 
@@ -700,6 +752,27 @@ msgstr "ڳنڍيل"
 msgid "Connecting..."
 msgstr "ڳنڍجي رهيو آهي..."
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "رابطو شامل ڪيو ويو"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "رابطو ٺاهيو ويو"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "رابطو ختم ڪيو ويو"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "رابطو محفوظ ڪيو ويو"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "رابطا"
+
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
 msgstr "مواد نه مليو."
@@ -756,6 +829,10 @@ msgstr "ٻيهر تصديق شروع نه ٿي سگهي. مهرباني ڪري �
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ان اڪائونٽ سان تصديق نه ٿي سگهي. مهرباني ڪري ٻيهر ڪوشش ڪريو."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "ملڪ"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
@@ -767,6 +844,15 @@ msgstr "ٺاهيو"
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "{entityLabel} ٺاهيو"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "رابطو ٺاهيو، يا Mochi تي ڪنهن کي ڳوليو."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "ايڊريس بڪ ٺاهيو"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -788,6 +874,14 @@ msgstr "ٺاهيو ويو"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "{field} ٺاهيو ويو"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "ايڊريس بڪ ٺاهي پئي وڃي..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "رابطو ٺاهيو پيو وڃي..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -854,10 +948,36 @@ msgstr "ڊفالٽ ترتيب"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "ختم ڪريو"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "<0>{0}</0> ختم ڪجي؟"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "<0>{0}</0> ختم ڪجي؟ ان سان توهان جي دوستي به ختم ٿي ويندي."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "ايڊريس بڪ ختم ڪريو"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -870,6 +990,11 @@ msgstr "ڪالم ختم ڪريو"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "تبصرو ختم ڪريو"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "رابطو ختم ڪريو"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -919,6 +1044,15 @@ msgstr "ختم ڪيو ويو"
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted {field}"
 msgstr "{field} ختم ڪيو ويو"
+
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "ايڊريس بڪ ختم ٿي رهي آهي..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "رابطو ختم ٿي رهيو آهي..."
 
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
@@ -1010,6 +1144,7 @@ msgstr "ڊسليڪسيا لاءِ مناسب"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "ترميم"
@@ -1021,6 +1156,10 @@ msgstr "{label} ايڊٽ ڪريو"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "ڪيپشن ۾ ترميم ڪريو"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "رابطي ۾ ترميم ڪريو"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1066,15 +1205,20 @@ msgstr "اي ميل"
 msgid "Email code"
 msgstr "اي ميل ڪوڊ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "انهن ماڻهن کي ڳولڻ لاءِ نالو داخل ڪريو جن کي توهان شامل ڪرڻ چاهيو ٿا"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "اي ميلون"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "<0>{0}</0> سان دوستي ختم ڪجي؟ رابطو توهان جي ايڊريس بڪ ۾ رهندو."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "بينر متن داخل ڪريو (markdown سپورٽ ٿيل)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "ڳولڻ لاءِ نالو داخل ڪريو..."
 
@@ -1109,6 +1253,7 @@ msgstr "خارجي URL"
 msgid "Extra large"
 msgstr "تمام وڏو"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "دعوت قبول ڪرڻ ۾ ناڪام"
@@ -1121,10 +1266,9 @@ msgstr "دعوتون قبول ڪرڻ ۾ ناڪامي"
 msgid "Failed to add account"
 msgstr "اڪائونٽ شامل ڪرڻ ۾ ناڪام"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "دوست شامل ڪرڻ ۾ ناڪام"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "رابطو شامل ڪرڻ ۾ ناڪام"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1144,6 +1288,14 @@ msgstr "دعوتون منسوخ ڪرڻ ۾ ناڪامي"
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "نقل ڪرڻ ۾ ناڪام"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "ايڊريس بڪ ٺاهڻ ۾ ناڪام"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "رابطو ٺاهڻ ۾ ناڪام"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1166,6 +1318,10 @@ msgstr "دعوتون رد ڪرڻ ۾ ناڪامي"
 msgid "Failed to delete"
 msgstr "ختم ڪرڻ ۾ ناڪام"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "ايڊريس بڪ ختم ڪرڻ ۾ ناڪام"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "ضميمو ختم ڪرڻ ۾ ناڪام"
@@ -1173,6 +1329,11 @@ msgstr "ضميمو ختم ڪرڻ ۾ ناڪام"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "تبصرو ختم ڪرڻ ۾ ناڪام"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "رابطو ختم ڪرڻ ۾ ناڪام"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1231,13 +1392,17 @@ msgstr "منتقل ڪرڻ ۾ ناڪام"
 msgid "Failed to post comment"
 msgstr "تبصرو پوسٽ ڪرڻ ۾ ناڪام"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "دوست هٽائڻ ۾ ناڪام"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "ميمبر هٽائڻ ۾ ناڪام"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "ايڊريس بڪ جو نالو تبديل ڪرڻ ۾ ناڪام"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1256,6 +1421,10 @@ msgstr "محفوظ ڪرڻ ۾ ناڪام"
 msgid "Failed to save accent"
 msgstr "ايڪسنٽ محفوظ ڪرڻ ۾ ناڪام"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "رابطو محفوظ ڪرڻ ۾ ناڪام"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "نالو محفوظ ڪرڻ ۾ ناڪام"
@@ -1271,6 +1440,11 @@ msgstr "پروفائل محفوظ ڪرڻ ۾ ناڪام"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "پرامپٽ محفوظ ڪرڻ ۾ ناڪام"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "دعوت موڪلڻ ۾ ناڪام"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1292,6 +1466,10 @@ msgstr "نگراني اپڊيٽ ڪرڻ ۾ ناڪام"
 msgid "Failed to upload attachment"
 msgstr "ضميمو اپ لوڊ ڪرڻ ۾ ناڪام"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "ڪٽنب جو نالو"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1305,6 +1483,10 @@ msgstr "فائل تمام وڏي آهي"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "فائلون"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Mochi تي ڳوليو"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1322,14 +1504,16 @@ msgstr "هموار"
 msgid "Friday"
 msgstr "جمعو"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "دوست"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "دوست هٽايو ويو"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "دوست"
 
@@ -1344,6 +1528,10 @@ msgstr "کان"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "ٿيم کان"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "پهريون نالو"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1411,6 +1599,11 @@ msgstr "تاريخ"
 msgid "Home"
 msgstr "گهر"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "گهر"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "گرم"
@@ -1431,6 +1624,10 @@ msgstr "تصوير ڏسڻ وارو: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "امپيريل"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "رابطن ۾"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1460,7 +1657,7 @@ msgstr "دلچسپيون"
 msgid "Invalid date"
 msgstr "غلط تاريخ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "دعوت قبول ڪئي وئي"
@@ -1473,8 +1670,8 @@ msgstr "دعوت منسوخ ٿي وئي"
 msgid "Invitation declined"
 msgstr "دعوت رد ٿي وئي"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "دعوت موڪلي وئي"
 
@@ -1484,6 +1681,11 @@ msgstr "دعوت موڪلي وئي"
 msgid "Invitations"
 msgstr "دعوتون"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "دعوت ڏيو"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "دعوت پاليسي اپڊيٽ ٿي وئي"
@@ -1492,6 +1694,10 @@ msgstr "دعوت پاليسي اپڊيٽ ٿي وئي"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "دعوت سيٽنگون"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "دعوت ڏني وئي"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1630,6 +1836,7 @@ msgid "Menu"
 msgstr "مينيو"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "پيغام"
 
@@ -1644,6 +1851,11 @@ msgstr "مائيڪروفون جي اجازت رد ٿيل"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "گھٽ ۾ گھٽ ڊگھائي"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "موبائيل"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1674,11 +1886,13 @@ msgstr "{field} منتقل ٿيو"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "نالو"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Name (A–Z)"
 msgstr "نالو (A–Z)"
 
@@ -1709,6 +1923,11 @@ msgstr "نيٽ ورڪ جي خرابي"
 msgid "New"
 msgstr "نئون"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "نئون رابطو"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "New game"
@@ -1722,6 +1941,10 @@ msgstr "نيون دعوتون هتي ظاهر ٿينديون"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "اڳيون تصوير"
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "عرفيت"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1743,9 +1966,9 @@ msgstr "ڪو بينر سيٽ ٿيل نه آهي"
 msgid "No comments yet"
 msgstr "اڃا ڪو تبصرو نه آهي"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "اڃا ڪو دوست نه آهي"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "اڃا ڪو رابطو ناهي"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1777,7 +2000,7 @@ msgstr "ڪا التوا ۾ دعوت نه آهي"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "ڪو ماڻهو نه مليو"
@@ -1786,7 +2009,7 @@ msgstr "ڪو ماڻهو نه مليو"
 msgid "No places found"
 msgstr "ڪا جاءِ نه ملي"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "\"{search}\" لاءِ ڪو نتيجو ناهي"
 
@@ -1858,6 +2081,10 @@ msgstr "نه مليو"
 msgid "Not set"
 msgstr "سيٽ نه ٿيل"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "نوٽ"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "ڪجهه نه مليو"
@@ -1880,6 +2107,10 @@ msgstr "نمبر"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "آن"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Mochi تي"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1929,7 +2160,16 @@ msgstr "اختياري تفصيل"
 msgid "Options"
 msgstr "اختيار"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "ادارو"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "ٻيو"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "ٻيو"
 
@@ -1974,6 +2214,10 @@ msgstr "زير التوا"
 msgid "People"
 msgstr "ماڻهو"
 
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "فون نمبر"
+
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -1988,6 +2232,10 @@ msgstr "مهرباني ڪري ٻيهر ڪوشش ڪريو."
 msgid "Please wait a moment and try again."
 msgstr "مهرباني ڪري ٿورو انتظار ڪريو ۽ ٻيهر ڪوشش ڪريو."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "پوسٽ ڪوڊ"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "پوسٽون"
@@ -2000,10 +2248,10 @@ msgstr "پوسٽون ۽ تبصرا"
 msgid "Preview"
 msgstr "پيش نظر"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "دوستي جي درخواست موڪلڻ کان پهريان {0} جي پروفائيل جو پيش نظر ڏسو."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "دوستيءَ جي دعوت موڪلڻ کان اڳ {0} جو پروفائيل ڏسو."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -2067,7 +2315,7 @@ msgstr "هن سرور تي پنهنجون پاسي ڪيز ٻيهر رجسٽر ڪ
 msgid "Received ({0})"
 msgstr "وصول ٿيو ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "تازو شامل ٿيل"
 
@@ -2095,6 +2343,10 @@ msgstr "لاگ ان ڏانهن ريڊائريڪٽ ٿي رهيو آهي."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "دلچسپي گهٽايو"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "علائقو"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2127,10 +2379,7 @@ msgstr "لاڳاپو {relevance}، دلچسپي {weight}"
 msgid "Remove"
 msgstr "هٽايو"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2161,10 +2410,13 @@ msgstr "\"{0}\" لاءِ رسائي جو قاعدو هٽايو؟"
 msgid "Remove access?"
 msgstr "رسائي هٽائجي؟"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "دوست هٽايو"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "پتو هٽايو"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "اي ميل هٽايو"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2185,7 +2437,11 @@ msgstr "لنڪ هٽايو"
 msgid "Remove member"
 msgstr "ميمبر هٽايو"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "فون هٽايو"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "دوست هٽائي رهيو آهي..."
 
@@ -2195,8 +2451,13 @@ msgstr "ميمبر هٽائي رهيو آهي..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "نالو تبديل ڪريو"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "ايڊريس بڪ جو نالو تبديل ڪريو"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2205,6 +2466,10 @@ msgstr "ڪالم جو نالو تبديل ڪريو"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "هن بورڊ ڪالم جو نالو تبديل ڪريو"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "ايڊريس بڪ جو نالو تبديل ٿي رهيو آهي..."
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2280,6 +2545,8 @@ msgstr "ڇنڇر"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2291,6 +2558,10 @@ msgstr "محفوظ ڪريو"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "نالو محفوظ ڪريو"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "رابطو محفوظ ٿي رهيو آهي..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2309,6 +2580,10 @@ msgstr "محفوظ ٿي رهيو آهي..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "ڳوليو"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "رابطا ڳوليو"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2329,14 +2604,6 @@ msgstr "منزل ڳوليو..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "اصل ڳوليو..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "ماڻهن کي ڳوليو ۽ دوستي جي درخواست موڪليو."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "دوست ڳوليو"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2360,7 +2627,7 @@ msgstr "هن ڏيک کي ڳوليو، ڏسو، ۽ ترتيب ڏيو."
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "ڳوليو..."
@@ -2438,7 +2705,7 @@ msgstr "ٻيهر موڪليو"
 msgid "Send email"
 msgstr "اي ميل موڪليو"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "دعوت موڪليو"
 
@@ -2447,7 +2714,8 @@ msgstr "دعوت موڪليو"
 msgid "Send message"
 msgstr "پيغام موڪليو"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "دعوت موڪلي رهيو آهي..."
 
@@ -2555,9 +2823,9 @@ msgstr "ڪشادو"
 msgid "Start the discussion by adding the first comment."
 msgstr "پهريون تبصرو شامل ڪري بحث شروع ڪريو."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "صارفن کي ڳولڻ لاءِ ٽائپ ڪرڻ شروع ڪريو"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "ماڻهن کي ڳولڻ لاءِ ٽائيپ ڪرڻ شروع ڪريو"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2567,6 +2835,10 @@ msgstr "ڏسڻ بند ڪريو"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "خاموشي سان محفوظ ڪريو"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "گهٽي"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2635,7 +2907,7 @@ msgstr "موڪلي نه سگهيو. ٿي سگهي ٿو فائلون تمام و�
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "اپلوڊ لاءِ تمام وڏو هو. فائلون هٽايو يا ننڍيون ڪريو ۽ ٻيهر ڪوشش ڪريو."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "اھو توھان آھيو"
 
@@ -2679,6 +2951,11 @@ msgstr "هي عمل گيم ۽ ان جي چيٽ کي مستقل طور ختم ڪ�
 msgid "Thursday"
 msgstr "خميس"
 
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "عهدو"
+
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
 msgstr "ڏانھن"
@@ -2718,13 +2995,9 @@ msgstr "مٿي"
 msgid "Travelling"
 msgstr "سفر ڪرڻ"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "ٻيو نالو آزمايو"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "ڪا ٻي ڳولا اصطلاح آزمايو"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2745,6 +3018,8 @@ msgstr "اڱارو"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "قسم"
@@ -2788,6 +3063,12 @@ msgstr "دستياب نه آھي"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "غير متوقع API غلطي"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "دوستي ختم ڪريو"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2848,6 +3129,10 @@ msgstr "اپلوڊ جي پيش رفت"
 #: src/features/profile/index.tsx
 msgid "Uploading..."
 msgstr "اپ لوڊ ٿي رهيو آھي..."
+
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
@@ -2926,6 +3211,11 @@ msgstr "اسان تصديقي ڪوڊ <0>{0}</0> تي موڪليو. پنھنجو 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "اربع"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "ڪم"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

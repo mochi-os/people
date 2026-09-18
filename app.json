@@ -5,19 +5,19 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 {
-	"version": "2.79",
+	"version": "3.0",
 	"label": "app.name",
-	"classes": ["person"],
+	"classes": ["person", "book"],
 	"paths": ["people"],
 	"services": ["people", "friends"],
 
 	"architecture": {"engine": "starlark", "version": 4},
-	"execute": ["lib/attachments.star", "people.star"],
+	"execute": ["lib/attachments.star", "people.star", "contacts.star"],
 
 	"require": {"version": {"minimum": "0.4.228"}},
 
 	"database": {
-		"schema": 8,
+		"schema": 9,
 		"file": "people.db",
 		"create": {"function": "database_create"},
 		"upgrade": {"function": "database_upgrade"},
@@ -31,12 +31,29 @@
 		"": {"file": "web/dist/index.html"},
 		"assets": {"files": "web/dist/assets"},
 		"images": {"files": "web/dist/images"},
-		"-/friends": {"function": "action_list"},
-		"-/friends/accept": {"function": "action_accept"},
-		"-/friends/create": {"function": "action_create"},
-		"-/friends/delete": {"function": "action_delete"},
-		"-/friends/ignore": {"function": "action_ignore"},
-		"-/friends/search": {"function": "action_search"},
+		"contacts": {"file": "web/dist/index.html"},
+		"contacts/:id": {"file": "web/dist/index.html"},
+		"books/:id": {"file": "web/dist/index.html"},
+		"-/contacts": {"function": "action_contacts"},
+		"-/contacts/get": {"function": "action_contact_get"},
+		"-/contacts/create": {"function": "action_contact_create"},
+		"-/contacts/update": {"function": "action_contact_update"},
+		"-/contacts/delete": {"function": "action_contact_delete"},
+		"-/contacts/search": {"function": "action_contact_search"},
+		"-/books": {"function": "action_books"},
+		"-/books/create": {"function": "action_book_create"},
+		"-/books/rename": {"function": "action_book_rename"},
+		"-/books/delete": {"function": "action_book_delete"},
+		"-/friends/invite": {"function": "action_friend_invite"},
+		"-/friends/accept": {"function": "action_friend_accept"},
+		"-/friends/ignore": {"function": "action_friend_ignore"},
+		"-/friends/remove": {"function": "action_friend_remove"},
+		// Compatibility aliases for the shipped Android client, kept for one
+		// release: the old routes, inputs named id, and the old response shapes.
+		"-/friends": {"function": "action_friends_alias_list"},
+		"-/friends/create": {"function": "action_friends_alias_create"},
+		"-/friends/delete": {"function": "action_friends_alias_delete"},
+		"-/friends/search": {"function": "action_friends_alias_search"},
 		"groups": {"file": "web/dist/index.html"},
 		"groups/:id": {"file": "web/dist/index.html"},
 		"-/groups/list": {"function": "action_groups"},
@@ -81,9 +98,10 @@
 		"style": {"function": "event_style", "anonymous": true}
 	},
 
-	// Friend rows live in this app's database and no core API exposes them, so
+	// Contact rows live in this app's database and no core API exposes them, so
 	// these declarations are the only thing standing between another installed
-	// app and the user's social graph. users/search is deliberately ungated: it
+	// app and the user's social graph; get, list and count answer only the
+	// friends among the contacts. users/search is deliberately ungated: it
 	// searches the public directory, which mochi.directory.search already offers
 	// any app directly, so a permission here would be theatre.
 	"functions": {

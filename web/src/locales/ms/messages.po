@@ -317,6 +317,10 @@ msgstr "Buku alamat dipadamkan"
 msgid "Address book renamed"
 msgstr "Buku alamat dinamakan semula"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "URL buku alamat"
+
 #: src/features/contacts/editor.tsx
 msgid "Addresses"
 msgstr "Alamat"
@@ -453,6 +457,7 @@ msgstr "Avatar untuk {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "Kembali"
 
@@ -545,6 +550,7 @@ msgstr "Kamera tidak tersedia"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -744,9 +750,22 @@ msgstr "Konfigurasi tetapan paparan"
 msgid "Confirm"
 msgstr "Sahkan"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Sambungkan peranti"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Sambungkan peranti lain"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Disambungkan"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Menyambungkan peranti..."
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
@@ -798,12 +817,17 @@ msgid "Copied"
 msgstr "Disalin"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Disalin ke papan keratan"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Salin"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "Salin {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -838,6 +862,7 @@ msgstr "Negara"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "Cipta"
 
@@ -870,6 +895,11 @@ msgstr "Cipta item baharu"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Created"
 msgstr "Dicipta"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Dibuat {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
@@ -950,6 +980,7 @@ msgstr "Susunan lalai"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -995,6 +1026,14 @@ msgstr "Padam komen"
 #: src/features/contacts/index.tsx
 msgid "Delete contact"
 msgstr "Padam kenalan"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Padam peranti"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Padam peranti?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -1054,6 +1093,10 @@ msgstr "Memadam buku alamat..."
 msgid "Deleting contact..."
 msgstr "Memadam kenalan..."
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Memadam peranti..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "Memadam kumpulan..."
@@ -1082,6 +1125,14 @@ msgstr "Panel Butiran"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Kesan daripada pelayar web"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Peranti dipadamkan"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "Nama peranti"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -1120,6 +1171,7 @@ msgstr "Tidak sepadan dengan corak yang diperlukan"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "Selesai"
 
@@ -1283,6 +1335,10 @@ msgstr "Gagal membatalkan jemputan"
 msgid "Failed to cancel invitations"
 msgstr "Gagal membatalkan jemputan"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Gagal menyambungkan peranti"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
@@ -1334,6 +1390,10 @@ msgstr "Gagal memadam komen"
 #: src/features/contacts/index.tsx
 msgid "Failed to delete contact"
 msgstr "Gagal memadam kenalan"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Gagal memadam peranti"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1720,6 +1780,11 @@ msgstr "Pintasan papan kekunci"
 msgid "Large"
 msgstr "Besar"
 
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Penggunaan terakhir {0}"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Susun atur"
@@ -1788,6 +1853,10 @@ msgstr "Sedang log keluar…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "Urus kategori"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Urus peranti"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1918,6 +1987,11 @@ msgstr "Nama disimpan"
 msgid "Network error"
 msgstr "Ralat rangkaian"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "Tidak pernah"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
@@ -1969,6 +2043,10 @@ msgstr "Tiada komen lagi"
 #: src/features/contacts/index.tsx
 msgid "No contacts yet"
 msgstr "Belum ada kenalan"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Tiada peranti disambungkan."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -2200,6 +2278,10 @@ msgstr "Passkey"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
 msgstr "Passkey tidak tersedia dalam pelayar ini"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "Kata laluan"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -2559,6 +2641,10 @@ msgstr "Simpan"
 msgid "Save name"
 msgstr "Simpan nama"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Simpan kata laluan ini sekarang. Ia tidak boleh dipaparkan lagi."
+
 #: src/features/contacts/editor.tsx
 msgid "Saving contact..."
 msgstr "Menyimpan kenalan..."
@@ -2727,6 +2813,10 @@ msgstr "Dihantar ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "Serif"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2918,6 +3008,10 @@ msgstr "Kamera sudah digunakan"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Permintaan kamera tidak dijawab"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "Peranti ini tidak lagi dapat menyegerakkan kenalan."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -3145,6 +3239,10 @@ msgstr "Gunakan kunci laluan anda"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "Pengguna"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "Nama pengguna"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"

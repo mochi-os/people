@@ -317,6 +317,10 @@ msgstr "Carnet d'adresses supprimé"
 msgid "Address book renamed"
 msgstr "Carnet d'adresses renommé"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "URL du carnet d'adresses"
+
 #: src/features/contacts/editor.tsx
 msgid "Addresses"
 msgstr "Adresses"
@@ -453,6 +457,7 @@ msgstr "Avatar de {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "Retour"
 
@@ -545,6 +550,7 @@ msgstr "Caméra indisponible"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -744,9 +750,22 @@ msgstr "Configurer les paramètres de la vue"
 msgid "Confirm"
 msgstr "Confirmer"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Connecter un appareil"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Connecter un autre appareil"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Connecté"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Connexion de l'appareil..."
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
@@ -798,12 +817,17 @@ msgid "Copied"
 msgstr "Copié"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Copié dans le presse-papiers"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Copier"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "Copier {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -838,6 +862,7 @@ msgstr "Pays"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "Créer"
 
@@ -870,6 +895,11 @@ msgstr "Créer un nouvel élément"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Created"
 msgstr "Créé"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Créé le {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
@@ -950,6 +980,7 @@ msgstr "Tri par défaut"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -995,6 +1026,14 @@ msgstr "Supprimer le commentaire"
 #: src/features/contacts/index.tsx
 msgid "Delete contact"
 msgstr "Supprimer le contact"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Supprimer l'appareil"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Supprimer l'appareil ?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -1054,6 +1093,10 @@ msgstr "Suppression du carnet d'adresses..."
 msgid "Deleting contact..."
 msgstr "Suppression du contact..."
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Suppression de l'appareil..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "Suppression du groupe..."
@@ -1082,6 +1125,14 @@ msgstr "Panneau des détails"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Détecter depuis le navigateur web"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Appareil supprimé"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "Nom de l'appareil"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -1120,6 +1171,7 @@ msgstr "Ne correspond pas au motif requis"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "Terminé"
 
@@ -1283,6 +1335,10 @@ msgstr "Échec de l'annulation de l'invitation"
 msgid "Failed to cancel invitations"
 msgstr "Échec de l'annulation des invitations"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Échec de la connexion de l'appareil"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
@@ -1334,6 +1390,10 @@ msgstr "Échec de la suppression du commentaire"
 #: src/features/contacts/index.tsx
 msgid "Failed to delete contact"
 msgstr "Échec de la suppression du contact"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Échec de la suppression de l'appareil"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1720,6 +1780,11 @@ msgstr "Raccourcis clavier"
 msgid "Large"
 msgstr "Grand"
 
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Dernière utilisation {0}"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Disposition"
@@ -1788,6 +1853,10 @@ msgstr "Déconnexion en cours…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "Gérer les catégories"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Gérer les appareils"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1918,6 +1987,11 @@ msgstr "Nom enregistré"
 msgid "Network error"
 msgstr "Erreur réseau"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "Jamais"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
@@ -1969,6 +2043,10 @@ msgstr "Aucun commentaire pour le moment"
 #: src/features/contacts/index.tsx
 msgid "No contacts yet"
 msgstr "Aucun contact pour le moment"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Aucun appareil connecté."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -2200,6 +2278,10 @@ msgstr "Clés d'accès"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
 msgstr "Les clés d'accès ne sont pas disponibles dans ce navigateur"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "Mot de passe"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -2559,6 +2641,10 @@ msgstr "Enregistrer"
 msgid "Save name"
 msgstr "Enregistrer le nom"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Enregistrez ce mot de passe maintenant. Il ne pourra plus être affiché."
+
 #: src/features/contacts/editor.tsx
 msgid "Saving contact..."
 msgstr "Enregistrement du contact..."
@@ -2727,6 +2813,10 @@ msgstr "Envoyées ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "Serif"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2918,6 +3008,10 @@ msgstr "La caméra est déjà utilisée"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "La demande de caméra est restée sans réponse"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "L'appareil ne pourra plus synchroniser les contacts."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -3145,6 +3239,10 @@ msgstr "Utiliser votre clé d'accès"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "Utilisateur"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "Nom d'utilisateur"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"

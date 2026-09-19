@@ -317,6 +317,10 @@ msgstr "Adressebok slettet"
 msgid "Address book renamed"
 msgstr "Adresseboken fikk nytt navn"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "Adressebokens URL"
+
 #: src/features/contacts/editor.tsx
 msgid "Addresses"
 msgstr "Adresser"
@@ -453,6 +457,7 @@ msgstr "Avatar for {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "Tilbake"
 
@@ -545,6 +550,7 @@ msgstr "Kamera ikke tilgjengelig"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -744,9 +750,22 @@ msgstr "Konfigurer visningsinnstillinger"
 msgid "Confirm"
 msgstr "Bekreft"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Koble til en enhet"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Koble til en enhet til"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Tilkoblet"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Kobler til enhet..."
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
@@ -798,12 +817,17 @@ msgid "Copied"
 msgstr "Kopiert"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Kopiert til utklippstavlen"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopier"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "Kopier {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -838,6 +862,7 @@ msgstr "Land"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "Opprett"
 
@@ -870,6 +895,11 @@ msgstr "Opprett nytt element"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Created"
 msgstr "Opprettet"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Opprettet {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
@@ -950,6 +980,7 @@ msgstr "Standard sortering"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -995,6 +1026,14 @@ msgstr "Slett kommentar"
 #: src/features/contacts/index.tsx
 msgid "Delete contact"
 msgstr "Slett kontakt"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Slett enhet"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Slette enhet?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -1054,6 +1093,10 @@ msgstr "Sletter adressebok..."
 msgid "Deleting contact..."
 msgstr "Sletter kontakt..."
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Sletter enhet..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "Sletter gruppe..."
@@ -1082,6 +1125,14 @@ msgstr "Detaljpanel"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Oppdag fra nettleser"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Enhet slettet"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "Enhetsnavn"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -1120,6 +1171,7 @@ msgstr "Samsvarer ikke med det påkrevde mønsteret"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "Ferdig"
 
@@ -1283,6 +1335,10 @@ msgstr "Kunne ikke avbryte invitasjon"
 msgid "Failed to cancel invitations"
 msgstr "Kunne ikke avbryte invitasjoner"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Kunne ikke koble til enheten"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
@@ -1334,6 +1390,10 @@ msgstr "Kunne ikke slette kommentar"
 #: src/features/contacts/index.tsx
 msgid "Failed to delete contact"
 msgstr "Kunne ikke slette kontakt"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Kunne ikke slette enheten"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1720,6 +1780,11 @@ msgstr "Tastatursnarveier"
 msgid "Large"
 msgstr "Stor"
 
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Sist brukt {0}"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Layout"
@@ -1788,6 +1853,10 @@ msgstr "Logger ut …"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "Administrer kategorier"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Administrer enheter"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1918,6 +1987,11 @@ msgstr "Navn lagret"
 msgid "Network error"
 msgstr "Nettverksfeil"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "Aldri"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
@@ -1969,6 +2043,10 @@ msgstr "Ingen kommentarer ennå"
 #: src/features/contacts/index.tsx
 msgid "No contacts yet"
 msgstr "Ingen kontakter ennå"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Ingen enheter tilkoblet."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -2200,6 +2278,10 @@ msgstr "Passnøkler"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
 msgstr "Passnøkler er ikke tilgjengelige i denne nettleseren"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "Passord"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -2559,6 +2641,10 @@ msgstr "Lagre"
 msgid "Save name"
 msgstr "Lagre navn"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Lagre dette passordet nå. Det kan ikke vises igjen."
+
 #: src/features/contacts/editor.tsx
 msgid "Saving contact..."
 msgstr "Lagrer kontakt..."
@@ -2727,6 +2813,10 @@ msgstr "Sendt ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "Antikva"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2918,6 +3008,10 @@ msgstr "Kameraet er allerede i bruk"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Kameraforespørselen ble ikke besvart"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "Enheten vil ikke lenger kunne synkronisere kontakter."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -3145,6 +3239,10 @@ msgstr "Bruk passnøkkelen din"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "Bruker"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "Brukernavn"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"

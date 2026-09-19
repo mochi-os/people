@@ -317,6 +317,10 @@ msgstr "Adres defteri silindi"
 msgid "Address book renamed"
 msgstr "Adres defteri yeniden adlandırıldı"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "Adres defteri URL'si"
+
 #: src/features/contacts/editor.tsx
 msgid "Addresses"
 msgstr "Adresler"
@@ -453,6 +457,7 @@ msgstr "{name} için avatar"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "Geri"
 
@@ -545,6 +550,7 @@ msgstr "Kamera kullanılamıyor"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -744,9 +750,22 @@ msgstr "Görünüm ayarlarını yapılandır"
 msgid "Confirm"
 msgstr "Onayla"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Cihaz bağla"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Başka bir cihaz bağla"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Bağlandı"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Cihaz bağlanıyor..."
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
@@ -798,12 +817,17 @@ msgid "Copied"
 msgstr "Kopyalandı"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Panoya kopyalandı"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopyala"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "{label} kopyala"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -838,6 +862,7 @@ msgstr "Ülke"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "Oluştur"
 
@@ -870,6 +895,11 @@ msgstr "Yeni öğe oluştur"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Created"
 msgstr "Oluşturuldu"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Oluşturuldu: {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
@@ -950,6 +980,7 @@ msgstr "Varsayılan sıralama"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -995,6 +1026,14 @@ msgstr "Yorumu sil"
 #: src/features/contacts/index.tsx
 msgid "Delete contact"
 msgstr "Kişiyi sil"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Cihazı sil"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Cihaz silinsin mi?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -1054,6 +1093,10 @@ msgstr "Adres defteri siliniyor..."
 msgid "Deleting contact..."
 msgstr "Kişi siliniyor..."
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Cihaz siliniyor..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "Grup siliniyor..."
@@ -1082,6 +1125,14 @@ msgstr "Ayrıntılar paneli"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Web tarayıcıdan algıla"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Cihaz silindi"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "Cihaz adı"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -1120,6 +1171,7 @@ msgstr "Gerekli kalıpla eşleşmiyor"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "Tamamlandı"
 
@@ -1283,6 +1335,10 @@ msgstr "Davet iptal edilemedi"
 msgid "Failed to cancel invitations"
 msgstr "Davetler iptal edilemedi"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Cihaz bağlanamadı"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
@@ -1334,6 +1390,10 @@ msgstr "Yorum silinemedi"
 #: src/features/contacts/index.tsx
 msgid "Failed to delete contact"
 msgstr "Kişi silinemedi"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Cihaz silinemedi"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1720,6 +1780,11 @@ msgstr "Klavye kısayolları"
 msgid "Large"
 msgstr "Büyük"
 
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Son kullanım {0}"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Düzen"
@@ -1788,6 +1853,10 @@ msgstr "Oturum kapatılıyor…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "Kategorileri yönet"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Cihazları yönet"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1918,6 +1987,11 @@ msgstr "Ad kaydedildi"
 msgid "Network error"
 msgstr "Ağ hatası"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "Asla"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
@@ -1969,6 +2043,10 @@ msgstr "Henüz yorum yok"
 #: src/features/contacts/index.tsx
 msgid "No contacts yet"
 msgstr "Henüz kişi yok"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Bağlı cihaz yok."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -2200,6 +2278,10 @@ msgstr "Passkey'ler"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
 msgstr "Passkey'ler bu tarayıcıda kullanılamıyor"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "Parola"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -2559,6 +2641,10 @@ msgstr "Kaydet"
 msgid "Save name"
 msgstr "Adı kaydet"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Bu parolayı şimdi kaydedin. Bir daha gösterilemez."
+
 #: src/features/contacts/editor.tsx
 msgid "Saving contact..."
 msgstr "Kişi kaydediliyor..."
@@ -2727,6 +2813,10 @@ msgstr "Gönderildi ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "Tırnaklı"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2918,6 +3008,10 @@ msgstr "Kamera zaten kullanımda"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Kamera isteği yanıtlanmadı"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "Cihaz artık kişileri eşitleyemeyecek."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -3145,6 +3239,10 @@ msgstr "Geçiş anahtarınızı kullanın"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "Kullanıcı"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "Kullanıcı adı"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"

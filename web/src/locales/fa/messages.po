@@ -317,6 +317,10 @@ msgstr "دفترچه نشانی حذف شد"
 msgid "Address book renamed"
 msgstr "نام دفترچه نشانی تغییر کرد"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "نشانی URL دفترچه نشانی"
+
 #: src/features/contacts/editor.tsx
 msgid "Addresses"
 msgstr "نشانی‌ها"
@@ -453,6 +457,7 @@ msgstr "آواتار {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "بازگشت"
 
@@ -545,6 +550,7 @@ msgstr "دوربین در دسترس نیست"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -744,9 +750,22 @@ msgstr "پیکربندی تنظیمات نما"
 msgid "Confirm"
 msgstr "تأیید"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "اتصال دستگاه"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "اتصال دستگاهی دیگر"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "متصل"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "در حال اتصال دستگاه..."
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
@@ -798,12 +817,17 @@ msgid "Copied"
 msgstr "کپی شد"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "در کلیپ‌بورد کپی شد"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "کپی"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "کپی {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -838,6 +862,7 @@ msgstr "کشور"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "ساختن"
 
@@ -870,6 +895,11 @@ msgstr "ساخت مورد جدید"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Created"
 msgstr "ساخته شد"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "ساخته‌شده {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
@@ -950,6 +980,7 @@ msgstr "مرتب‌سازی پیش‌فرض"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -995,6 +1026,14 @@ msgstr "حذف نظر"
 #: src/features/contacts/index.tsx
 msgid "Delete contact"
 msgstr "حذف مخاطب"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "حذف دستگاه"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "دستگاه حذف شود؟"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -1054,6 +1093,10 @@ msgstr "در حال حذف دفترچه نشانی..."
 msgid "Deleting contact..."
 msgstr "در حال حذف مخاطب..."
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "در حال حذف دستگاه..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "در حال حذف گروه..."
@@ -1082,6 +1125,14 @@ msgstr "پنل جزئیات"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "تشخیص از مرورگر وب"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "دستگاه حذف شد"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "نام دستگاه"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -1120,6 +1171,7 @@ msgstr "با الگوی موردنیاز مطابقت ندارد"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "انجام شد"
 
@@ -1283,6 +1335,10 @@ msgstr "لغو دعوت ناموفق بود"
 msgid "Failed to cancel invitations"
 msgstr "لغو دعوت‌ها ناموفق بود"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "اتصال دستگاه ناموفق بود"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
@@ -1334,6 +1390,10 @@ msgstr "حذف دیدگاه ناموفق بود"
 #: src/features/contacts/index.tsx
 msgid "Failed to delete contact"
 msgstr "حذف مخاطب ناموفق بود"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "حذف دستگاه ناموفق بود"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1720,6 +1780,11 @@ msgstr "میانبرهای صفحه‌کلید"
 msgid "Large"
 msgstr "بزرگ"
 
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "آخرین استفاده {0}"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "چیدمان"
@@ -1788,6 +1853,10 @@ msgstr "در حال خروج…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "مدیریت دسته‌ها"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "مدیریت دستگاه‌ها"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1918,6 +1987,11 @@ msgstr "نام ذخیره شد"
 msgid "Network error"
 msgstr "خطای شبکه"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "هرگز"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
@@ -1969,6 +2043,10 @@ msgstr "هنوز نظری وجود ندارد"
 #: src/features/contacts/index.tsx
 msgid "No contacts yet"
 msgstr "هنوز مخاطبی نیست"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "هیچ دستگاهی متصل نیست."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -2200,6 +2278,10 @@ msgstr "پسکی‌ها"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
 msgstr "پسکی‌ها در این مرورگر در دسترس نیستند"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "گذرواژه"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -2559,6 +2641,10 @@ msgstr "ذخیره"
 msgid "Save name"
 msgstr "ذخیره نام"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "این گذرواژه را همین حالا ذخیره کنید. دیگر نمایش داده نخواهد شد."
+
 #: src/features/contacts/editor.tsx
 msgid "Saving contact..."
 msgstr "در حال ذخیره مخاطب..."
@@ -2727,6 +2813,10 @@ msgstr "ارسال‌شده ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "سریف"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2918,6 +3008,10 @@ msgstr "دوربین در حال حاضر در حال استفاده است"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "درخواست دوربین پاسخ داده نشد"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "این دستگاه دیگر نمی‌تواند مخاطبان را همگام‌سازی کند."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -3145,6 +3239,10 @@ msgstr "از کلید عبور خود استفاده کنید"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "کاربر"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "نام کاربری"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"

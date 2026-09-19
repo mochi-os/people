@@ -317,6 +317,10 @@ msgstr "လိပ်စာစာအုပ် ဖျက်ပြီးပါပ�
 msgid "Address book renamed"
 msgstr "လိပ်စာစာအုပ် အမည်ပြောင်းပြီးပါပြီ"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "လိပ်စာစာအုပ် URL"
+
 #: src/features/contacts/editor.tsx
 msgid "Addresses"
 msgstr "လိပ်စာများ"
@@ -453,6 +457,7 @@ msgstr "{name} အတွက် အသွင်ပုံ"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "နောက်သို့"
 
@@ -545,6 +550,7 @@ msgstr "ကင်မရာ မရနိုင်ပါ"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -744,9 +750,22 @@ msgstr "ကြည့်ရှုမှု ဆက်တင်များ ပြ�
 msgid "Confirm"
 msgstr "အတည်ပြုမည်"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "ကိရိယာ ချိတ်ဆက်မည်"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "အခြားကိရိယာ ချိတ်ဆက်မည်"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "ချိတ်ဆက်ပြီး"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "ကိရိယာ ချိတ်ဆက်နေသည်..."
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
@@ -798,12 +817,17 @@ msgid "Copied"
 msgstr "ကူးယူပြီးပါပြီ"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "ကလစ်ဘုတ်သို့ ကူးပြီး"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "ကူးမည်"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "{label} ကူးမည်"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -838,6 +862,7 @@ msgstr "နိုင်ငံ"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "ဖန်တီးမည်"
 
@@ -870,6 +895,11 @@ msgstr "အရာအသစ် ဖန်တီးမည်"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Created"
 msgstr "ဖန်တီးပြီး"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "{0} ဖန်တီးပြီး"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
@@ -950,6 +980,7 @@ msgstr "မူရင်း sort"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -995,6 +1026,14 @@ msgstr "မှတ်ချက် ဖျက်မည်"
 #: src/features/contacts/index.tsx
 msgid "Delete contact"
 msgstr "အဆက်အသွယ် ဖျက်မည်"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "ကိရိယာ ဖျက်မည်"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "ကိရိယာကို ဖျက်မလား?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -1054,6 +1093,10 @@ msgstr "လိပ်စာစာအုပ် ဖျက်နေသည်..."
 msgid "Deleting contact..."
 msgstr "အဆက်အသွယ် ဖျက်နေသည်..."
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "ကိရိယာ ဖျက်နေသည်..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "အဖွဲ့ကို ဖျက်နေသည်..."
@@ -1082,6 +1125,14 @@ msgstr "အသေးစိတ် Panel"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Web browser မှ ရှာဖွေဖော်ထုတ်မည်"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "ကိရိယာ ဖျက်ပြီးပါပြီ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "ကိရိယာအမည်"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -1120,6 +1171,7 @@ msgstr "လိုအပ်သော ပုံစံနှင့် မကို�
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "ပြီးပါပြီ"
 
@@ -1283,6 +1335,10 @@ msgstr "ဖိတ်ကြားမှု ပယ်ဖျက်၍ မရပါ"
 msgid "Failed to cancel invitations"
 msgstr "ဖိတ်ကြားချက်များ ပယ်ဖျက်၍ မရပါ"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "ကိရိယာ ချိတ်ဆက်၍ မရပါ"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
@@ -1334,6 +1390,10 @@ msgstr "မှတ်ချက် ဖျက်၍ မရပါ"
 #: src/features/contacts/index.tsx
 msgid "Failed to delete contact"
 msgstr "အဆက်အသွယ် ဖျက်၍ မရပါ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "ကိရိယာ ဖျက်၍ မရပါ"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1720,6 +1780,11 @@ msgstr "ကီးဘုတ် ဖြတ်လမ်းများ"
 msgid "Large"
 msgstr "ကြီး"
 
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "နောက်ဆုံး အသုံးပြုခဲ့သည် {0}"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "အပြင်အဆင်"
@@ -1788,6 +1853,10 @@ msgstr "ထွက်နေသည်…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "အမျိုးအစားများ စီမံရန်"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "ကိရိယာများ စီမံမည်"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1918,6 +1987,11 @@ msgstr "အမည် သိမ်းပြီးပါပြီ"
 msgid "Network error"
 msgstr "ကွန်ရက် အမှား"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "ဘယ်တော့မှ မဟုတ်"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
@@ -1969,6 +2043,10 @@ msgstr "comment များ မရှိသေးပါ"
 #: src/features/contacts/index.tsx
 msgid "No contacts yet"
 msgstr "အဆက်အသွယ် မရှိသေးပါ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "ချိတ်ဆက်ထားသော ကိရိယာ မရှိပါ။"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -2200,6 +2278,10 @@ msgstr "Passkey များ"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
 msgstr "ဤဘရောက်ဆာတွင် passkey များ မရရှိနိုင်ပါ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "စကားဝှက်"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -2559,6 +2641,10 @@ msgstr "သိမ်းမည်"
 msgid "Save name"
 msgstr "အမည်သိမ်းပါ"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "ဤစကားဝှက်ကို ယခုသိမ်းပါ။ ထပ်မံ ပြသ၍ မရပါ။"
+
 #: src/features/contacts/editor.tsx
 msgid "Saving contact..."
 msgstr "အဆက်အသွယ် သိမ်းနေသည်..."
@@ -2727,6 +2813,10 @@ msgstr "ပို့ပြီး ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "ဆာရစ်ဖ်"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2918,6 +3008,10 @@ msgstr "ကင်မရာကို အသုံးပြုနေပြီး�
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "ကင်မရာ တောင်းဆိုမှုကို မဖြေကြားခဲ့ပါ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "ကိရိယာသည် အဆက်အသွယ်များကို ထပ်မံ ချိန်ကိုက်နိုင်တော့မည် မဟုတ်ပါ။"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -3145,6 +3239,10 @@ msgstr "သင့်ပတ်စ်ကီးကို သုံးပါ"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "သုံးစွဲသူ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "သုံးစွဲသူအမည်"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"

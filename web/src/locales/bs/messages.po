@@ -317,6 +317,10 @@ msgstr "Adresar obrisan"
 msgid "Address book renamed"
 msgstr "Adresar preimenovan"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "URL adresara"
+
 #: src/features/contacts/editor.tsx
 msgid "Addresses"
 msgstr "Adrese"
@@ -453,6 +457,7 @@ msgstr "Avatar za {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "Nazad"
 
@@ -545,6 +550,7 @@ msgstr "Kamera nije dostupna"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -744,9 +750,22 @@ msgstr "Konfigurišite postavke prikaza"
 msgid "Confirm"
 msgstr "Potvrdi"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Poveži uređaj"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Poveži još jedan uređaj"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Povezano"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Povezivanje uređaja..."
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
@@ -798,12 +817,17 @@ msgid "Copied"
 msgstr "Kopirano"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Kopirano u međuspremnik"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopiraj"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "Kopiraj {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -838,6 +862,7 @@ msgstr "Država"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "Kreiraj"
 
@@ -870,6 +895,11 @@ msgstr "Kreiraj novu stavku"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Created"
 msgstr "Kreirano"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Kreirano {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
@@ -950,6 +980,7 @@ msgstr "Podrazumijevano sortiranje"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -995,6 +1026,14 @@ msgstr "Obriši komentar"
 #: src/features/contacts/index.tsx
 msgid "Delete contact"
 msgstr "Obriši kontakt"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Obriši uređaj"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Obrisati uređaj?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -1054,6 +1093,10 @@ msgstr "Brisanje adresara..."
 msgid "Deleting contact..."
 msgstr "Brisanje kontakta..."
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Brisanje uređaja..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "Brisanje grupe..."
@@ -1082,6 +1125,14 @@ msgstr "Panel s detaljima"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Detektuj iz web browsera"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Uređaj obrisan"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "Naziv uređaja"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -1120,6 +1171,7 @@ msgstr "Ne odgovara traženom obrascu"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "Gotovo"
 
@@ -1283,6 +1335,10 @@ msgstr "Otkazivanje pozivnice nije uspjelo"
 msgid "Failed to cancel invitations"
 msgstr "Otkazivanje pozivnica nije uspjelo"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Povezivanje uređaja nije uspjelo"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
@@ -1334,6 +1390,10 @@ msgstr "Brisanje komentara nije uspjelo"
 #: src/features/contacts/index.tsx
 msgid "Failed to delete contact"
 msgstr "Brisanje kontakta nije uspjelo"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Brisanje uređaja nije uspjelo"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1720,6 +1780,11 @@ msgstr "Tasterske prečice"
 msgid "Large"
 msgstr "Veliko"
 
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Posljednje korišteno {0}"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Izgled"
@@ -1788,6 +1853,10 @@ msgstr "Odjavljivanje…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "Upravljaj kategorijama"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Upravljaj uređajima"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1918,6 +1987,11 @@ msgstr "Ime sačuvano"
 msgid "Network error"
 msgstr "Greška mreže"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "Nikad"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
@@ -1969,6 +2043,10 @@ msgstr "Još nema komentara"
 #: src/features/contacts/index.tsx
 msgid "No contacts yet"
 msgstr "Još nema kontakata"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Nema povezanih uređaja."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -2200,6 +2278,10 @@ msgstr "Pristupni ključevi"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
 msgstr "Passkeys nisu dostupni u ovom pregledniku"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "Lozinka"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -2559,6 +2641,10 @@ msgstr "Sačuvaj"
 msgid "Save name"
 msgstr "Sačuvaj ime"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Sačuvajte ovu lozinku sada. Ne može se ponovo prikazati."
+
 #: src/features/contacts/editor.tsx
 msgid "Saving contact..."
 msgstr "Čuvanje kontakta..."
@@ -2727,6 +2813,10 @@ msgstr "Poslano ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "Serifno"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2918,6 +3008,10 @@ msgstr "Kamera je već u upotrebi"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Na zahtjev za kameru nije odgovoreno"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "Uređaj više neće moći sinhronizovati kontakte."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -3145,6 +3239,10 @@ msgstr "Koristite svoj pristupni ključ"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "Korisnik"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "Korisničko ime"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"

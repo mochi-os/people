@@ -317,6 +317,10 @@ msgstr "ລຶບປຶ້ມທີ່ຢູ່ແລ້ວ"
 msgid "Address book renamed"
 msgstr "ປ່ຽນຊື່ປຶ້ມທີ່ຢູ່ແລ້ວ"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "URL ປຶ້ມທີ່ຢູ່"
+
 #: src/features/contacts/editor.tsx
 msgid "Addresses"
 msgstr "ທີ່ຢູ່"
@@ -453,6 +457,7 @@ msgstr "ອະວາຕາສຳລັບ {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "ກັບຄືນ"
 
@@ -545,6 +550,7 @@ msgstr "ບໍ່ມີກ້ອງຖ່າຍຮູບ"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -744,9 +750,22 @@ msgstr "ກຳນົດຄ່າການຕັ້ງຄ່າມຸມມອງ
 msgid "Confirm"
 msgstr "ຢືນຢັນ"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "ເຊື່ອມຕໍ່ອຸປະກອນ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "ເຊື່ອມຕໍ່ອຸປະກອນອື່ນ"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "ເຊື່ອມຕໍ່ແລ້ວ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "ກຳລັງເຊື່ອມຕໍ່ອຸປະກອນ..."
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
@@ -798,12 +817,17 @@ msgid "Copied"
 msgstr "ສຳເນົາແລ້ວ"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "ສຳເນົາໄປຄລິບບອດແລ້ວ"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "ສຳເນົາ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "ສຳເນົາ {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -838,6 +862,7 @@ msgstr "ປະເທດ"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "ສ້າງ"
 
@@ -870,6 +895,11 @@ msgstr "ສ້າງລາຍການໃໝ່"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Created"
 msgstr "ສ້າງແລ້ວ"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "ສ້າງ {0} ແລ້ວ"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
@@ -950,6 +980,7 @@ msgstr "ການຈັດລຽງເລີ່ມຕົ້ນ"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -995,6 +1026,14 @@ msgstr "ລົບຄຳເຫັນ"
 #: src/features/contacts/index.tsx
 msgid "Delete contact"
 msgstr "ລຶບຜູ້ຕິດຕໍ່"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "ລຶບອຸປະກອນ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "ລຶບອຸປະກອນບໍ?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -1054,6 +1093,10 @@ msgstr "ກຳລັງລຶບປຶ້ມທີ່ຢູ່..."
 msgid "Deleting contact..."
 msgstr "ກຳລັງລຶບຜູ້ຕິດຕໍ່..."
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "ກຳລັງລຶບອຸປະກອນ..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "ກຳລັງລຶບກຸ່ມ..."
@@ -1082,6 +1125,14 @@ msgstr "ແຜງລາຍລະອຽດ"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "ກວດຫາຈາກຕົວທ່ອງເວັບ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "ລຶບອຸປະກອນແລ້ວ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "ຊື່ອຸປະກອນ"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -1120,6 +1171,7 @@ msgstr "ບໍ່ກົງກັບຮູບແບບທີ່ຕ້ອງກາ
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "ສຳເລັດແລ້ວ"
 
@@ -1283,6 +1335,10 @@ msgstr "ຍົກເລີກຄຳເຊີນລົ້ມເຫຼວ"
 msgid "Failed to cancel invitations"
 msgstr "ຍົກເລີກຄຳເຊີນບໍ່ສຳເລັດ"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "ເຊື່ອມຕໍ່ອຸປະກອນລົ້ມເຫຼວ"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
@@ -1334,6 +1390,10 @@ msgstr "ລຶບຄຳເຫັນລົ້ມເຫຼວ"
 #: src/features/contacts/index.tsx
 msgid "Failed to delete contact"
 msgstr "ລຶບຜູ້ຕິດຕໍ່ລົ້ມເຫຼວ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "ລຶບອຸປະກອນລົ້ມເຫຼວ"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1720,6 +1780,11 @@ msgstr "ປຸ່ມລັດແປ້ນພິມ"
 msgid "Large"
 msgstr "ໃຫຍ່"
 
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "ໃຊ້ຄັ້ງສຸດທ້າຍ {0}"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "ຮູບແບບ"
@@ -1788,6 +1853,10 @@ msgstr "ກຳລັງອອກຈາກລະບົບ…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "ຈັດການໝວດໝູ່"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "ຈັດການອຸປະກອນ"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1918,6 +1987,11 @@ msgstr "ບັນທຶກຊື່ແລ້ວ"
 msgid "Network error"
 msgstr "ຂໍ້ຜິດພາດເຄືອຂ່າຍ"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "ບໍ່ເຄີຍ"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
@@ -1969,6 +2043,10 @@ msgstr "ຍັງບໍ່ມີຄຳເຫັນ"
 #: src/features/contacts/index.tsx
 msgid "No contacts yet"
 msgstr "ຍັງບໍ່ມີຜູ້ຕິດຕໍ່"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "ບໍ່ມີອຸປະກອນທີ່ເຊື່ອມຕໍ່."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -2200,6 +2278,10 @@ msgstr "ກະແຈຜ່ານ"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
 msgstr "Passkeys ບໍ່ສາມາດໃຊ້ໄດ້ໃນບຣາວເຊີນີ້"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "ລະຫັດຜ່ານ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -2559,6 +2641,10 @@ msgstr "ບັນທຶກ"
 msgid "Save name"
 msgstr "ບັນທຶກຊື່"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "ບັນທຶກລະຫັດຜ່ານນີ້ດຽວນີ້. ມັນຈະບໍ່ສາມາດສະແດງໄດ້ອີກ."
+
 #: src/features/contacts/editor.tsx
 msgid "Saving contact..."
 msgstr "ກຳລັງບັນທຶກຜູ້ຕິດຕໍ່..."
@@ -2727,6 +2813,10 @@ msgstr "ສົ່ງແລ້ວ ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "ເຊຣິບ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2918,6 +3008,10 @@ msgstr "ກ້ອງກຳລັງຖືກໃຊ້ຢູ່ແລ້ວ"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "ຄຳຮ້ອງຂໍກ້ອງບໍ່ໄດ້ຮັບການຕອບ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "ອຸປະກອນຈະບໍ່ສາມາດຊິງຄ໌ລາຍຊື່ຜູ້ຕິດຕໍ່ໄດ້ອີກຕໍ່ໄປ."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -3145,6 +3239,10 @@ msgstr "ໃຊ້ passkey ຂອງທ່ານ"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "ຜູ້ໃຊ້"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "ຊື່ຜູ້ໃຊ້"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"

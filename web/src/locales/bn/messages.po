@@ -317,6 +317,10 @@ msgstr "ঠিকানা বই মুছে ফেলা হয়েছে"
 msgid "Address book renamed"
 msgstr "ঠিকানা বইয়ের নাম পরিবর্তন করা হয়েছে"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "ঠিকানা বইয়ের URL"
+
 #: src/features/contacts/editor.tsx
 msgid "Addresses"
 msgstr "ঠিকানা"
@@ -453,6 +457,7 @@ msgstr "{name}-এর অবতার"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "ফিরে যান"
 
@@ -545,6 +550,7 @@ msgstr "ক্যামেরা অনুপলব্ধ"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -744,9 +750,22 @@ msgstr "ভিউ সেটিংস কনফিগার করুন"
 msgid "Confirm"
 msgstr "নিশ্চিত করুন"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "একটি ডিভাইস সংযুক্ত করুন"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "আরেকটি ডিভাইস সংযুক্ত করুন"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "সংযুক্ত"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "ডিভাইস সংযুক্ত করা হচ্ছে..."
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
@@ -798,12 +817,17 @@ msgid "Copied"
 msgstr "কপি করা হয়েছে"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "ক্লিপবোর্ডে কপি করা হয়েছে"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "কপি করুন"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "{label} কপি করুন"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -838,6 +862,7 @@ msgstr "দেশ"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "তৈরি করুন"
 
@@ -870,6 +895,11 @@ msgstr "নতুন আইটেম তৈরি করুন"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Created"
 msgstr "তৈরি হয়েছে"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "তৈরি {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
@@ -950,6 +980,7 @@ msgstr "ডিফল্ট সাজানো"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -995,6 +1026,14 @@ msgstr "মন্তব্য মুছুন"
 #: src/features/contacts/index.tsx
 msgid "Delete contact"
 msgstr "পরিচিতি মুছুন"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "ডিভাইস মুছুন"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "ডিভাইস মুছবেন?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -1054,6 +1093,10 @@ msgstr "ঠিকানা বই মুছে ফেলা হচ্ছে..."
 msgid "Deleting contact..."
 msgstr "পরিচিতি মুছে ফেলা হচ্ছে..."
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "ডিভাইস মুছে ফেলা হচ্ছে..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "গ্রুপ মুছে ফেলা হচ্ছে..."
@@ -1082,6 +1125,14 @@ msgstr "বিবরণ প্যানেল"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "ওয়েব ব্রাউজার থেকে শনাক্ত করুন"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "ডিভাইস মুছে ফেলা হয়েছে"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "ডিভাইসের নাম"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -1120,6 +1171,7 @@ msgstr "প্রয়োজনীয় প্যাটার্নের স�
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "সম্পন্ন"
 
@@ -1283,6 +1335,10 @@ msgstr "আমন্ত্রণ বাতিল করতে ব্যর্থ
 msgid "Failed to cancel invitations"
 msgstr "আমন্ত্রণ বাতিল করা যায়নি"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "ডিভাইস সংযুক্ত করা যায়নি"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
@@ -1334,6 +1390,10 @@ msgstr "মন্তব্য মুছতে ব্যর্থ"
 #: src/features/contacts/index.tsx
 msgid "Failed to delete contact"
 msgstr "পরিচিতি মুছে ফেলা যায়নি"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "ডিভাইস মুছে ফেলা যায়নি"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1720,6 +1780,11 @@ msgstr "কীবোর্ড শর্টকাট"
 msgid "Large"
 msgstr "বড়"
 
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "সর্বশেষ ব্যবহার {0}"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "লেআউট"
@@ -1788,6 +1853,10 @@ msgstr "লগ আউট হচ্ছে…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "ক্যাটেগরি পরিচালনা করুন"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "ডিভাইস পরিচালনা করুন"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1918,6 +1987,11 @@ msgstr "নাম সংরক্ষণ করা হয়েছে"
 msgid "Network error"
 msgstr "নেটওয়ার্ক ত্রুটি"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "কখনই না"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
@@ -1969,6 +2043,10 @@ msgstr "এখনও কোনো মন্তব্য নেই"
 #: src/features/contacts/index.tsx
 msgid "No contacts yet"
 msgstr "এখনও কোনো পরিচিতি নেই"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "কোনো ডিভাইস সংযুক্ত নেই।"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -2200,6 +2278,10 @@ msgstr "পাসকি"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
 msgstr "এই ব্রাউজারে পাসকি উপলব্ধ নেই"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "পাসওয়ার্ড"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -2559,6 +2641,10 @@ msgstr "সংরক্ষণ করুন"
 msgid "Save name"
 msgstr "নাম সংরক্ষণ করুন"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "এই পাসওয়ার্ডটি এখনই সংরক্ষণ করুন। এটি আর দেখানো যাবে না।"
+
 #: src/features/contacts/editor.tsx
 msgid "Saving contact..."
 msgstr "পরিচিতি সংরক্ষণ করা হচ্ছে..."
@@ -2727,6 +2813,10 @@ msgstr "পাঠানো হয়েছে ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "সেরিফ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2918,6 +3008,10 @@ msgstr "ক্যামেরাটি ইতিমধ্যে ব্যবহ�
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "ক্যামেরা অনুরোধের উত্তর দেওয়া হয়নি"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "ডিভাইসটি আর পরিচিতি সিঙ্ক করতে পারবে না।"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -3145,6 +3239,10 @@ msgstr "আপনার পাসকি ব্যবহার করুন"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "ব্যবহারকারী"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "ব্যবহারকারীর নাম"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"

@@ -39,7 +39,25 @@ _PARAMETER_MAXIMUM = 64
 _MANAGED = ["FN", "N", "NICKNAME", "EMAIL", "TEL", "ADR", "BDAY", "ORG", "TITLE", "URL", "NOTE"]
 
 # Properties the server owns. Never accepted from a client; regenerated on read.
-_RESERVED = ["UID", "X-MOCHI-PERSON", "X-MOCHI-FRIEND"]
+_RESERVED = ["X-MOCHI-PERSON", "X-MOCHI-FRIEND"]
+
+# The DAV path stores whatever a client sends, photos included, so its ceilings
+# are wider than the editor's. A phone's contact photo is tens of kilobytes.
+_DAV_CARD_MAXIMUM = 524288
+_DAV_PROPERTIES_MAXIMUM = 500
+_DAV_PARAMETER_MAXIMUM = 1024
+_SLUG_MAXIMUM = 128
+
+# Contacts per identity. Far past any real address book; it bounds what one
+# account can make a listing or a query walk.
+_CONTACTS_MAXIMUM = 20000
+
+# The label shown for a contact, in codepoints.
+_LABEL_MAXIMUM = 500
+
+# How long a deletion stays in the change log. A client whose cursor is older
+# than what was pruned is told to start over (see action_contacts_changes).
+_TOMBSTONE_RETENTION = 7776000
 
 # === Invites ===
 
@@ -72,34 +90,65 @@ def invites_sent(identity):
 
 # === Address books ===
 
-def book_touch(book):
-	mochi.db.execute("update books set version=version+1, updated=? where id=?", mochi.time.now(), book)
+# book_touch(book, contact="", deleted=0): bump the book's version, the change
+# token DAV clients compare, and log the contact's change. One row per contact
+# is kept, the latest, so the log stays the size of the address book plus what
+# was deleted from it.
+def book_touch(book, contact="", deleted=0):
+	now = mochi.time.now()
+	mochi.db.execute("update books set version=version+1, updated=? where id=?", now, book)
+	if contact:
+		row = mochi.db.row("select identity from books where id=?", book)
+		if row:
+			mochi.db.execute("delete from changes where contact=?", contact)
+			mochi.db.execute("insert into changes ( identity, book, contact, deleted, created ) values ( ?, ?, ?, ?, ? )", row["identity"], book, contact, deleted, now)
+
+def book_by_slug(identity, slug):
+	if not slug_valid(slug):
+		return None
+	return mochi.db.row("select * from books where identity=? and slug=?", identity, slug)
+
+# slug_valid(s) -> bool: a name a DAV client may give a collection or object,
+# the same character set core accepts in a path.
+def slug_valid(s):
+	if type(s) != "string" or not s or len(s) > _SLUG_MAXIMUM:
+		return False
+	for c in s.elems():
+		if c not in "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._~@+=-":
+			return False
+	return True
 
 def book_get(identity, id):
 	if not id or not mochi.text.valid(id, "entity"):
 		return None
 	return mochi.db.row("select * from books where identity=? and id=?", identity, id)
 
-# The identity's default book: the earliest created. Created on first use
-# together with its entity, which is why the migration leaves migrated
-# contacts with an empty book and this backfills them.
+# The identity's default book, the one whose slug is the literal "default":
+# a flag by creation time ties within a second and a book made then could
+# take the default's place. Created on first use together with its entity,
+# which is why the migration leaves migrated contacts with an empty book and
+# this backfills them.
 def book_default(identity):
-	row = mochi.db.row("select id from books where identity=? order by created, id limit 1", identity)
+	row = mochi.db.row("select id from books where identity=? and slug='default'", identity)
 	if row:
 		id = row["id"]
 	else:
 		id = mochi.entity.create("book", mochi.app.label("book.default"), "private")
-		now = mochi.time.now()
-		mochi.db.execute("insert into books ( id, identity, version, created, updated ) values ( ?, ?, 0, ?, ? )", id, identity, now, now)
+		book_insert(identity, id, "default")
 	if mochi.db.exists("select id from contacts where identity=? and book=''", identity):
 		mochi.db.execute("update contacts set book=? where identity=? and book=''", id, identity)
 		book_touch(id)
 	return id
 
+def book_insert(identity, id, slug):
+	now = mochi.time.now()
+	mochi.db.execute("insert into books ( id, identity, slug, version, created, updated ) values ( ?, ?, ?, 0, ?, ? )", id, identity, slug, now, now)
+
 def book_public(identity, row, default, counts):
 	return {
 		"id": row["id"],
 		"fingerprint": mochi.entity.fingerprint(row["id"]),
+		"slug": row["slug"],
 		"name": mochi.entity.name(row["id"]) or "",
 		"count": counts.get(row["id"], 0),
 		"default": row["id"] == default,
@@ -194,15 +243,35 @@ def card_merge(card, properties):
 		if clean == None:
 			return None
 		kept.append(clean)
-	if len(kept) > _PROPERTIES_MAXIMUM:
+	if len(kept) > _DAV_PROPERTIES_MAXIMUM:
 		return None
 	return kept
 
+# card_name(card) -> string: the label for a card, from FN. The label reaches
+# every friends-service caller and every list, so it is one line, bounded,
+# and free of markup characters; the card keeps FN exactly as written.
 def card_name(card):
 	for p in card:
 		if type(p) == "dict" and p.get("name") == "FN":
-			return p.get("value", "").strip()
+			return label_clean(p.get("value", ""))
 	return ""
+
+def label_clean(text):
+	if type(text) != "string":
+		return ""
+	for c in ["\r", "\n", "\t", "<", ">"]:
+		text = text.replace(c, " ")
+	text = text.strip()
+	letters = list(text.codepoints())
+	if len(letters) > _LABEL_MAXIMUM:
+		text = "".join(letters[:_LABEL_MAXIMUM]).strip()
+	if not text or not mochi.text.valid(text, "name"):
+		return ""
+	return text
+
+def contacts_full(identity):
+	row = mochi.db.row("select count(*) as count from contacts where identity=?", identity)
+	return row != None and row["count"] >= _CONTACTS_MAXIMUM
 
 def contact_etag(card, person, friend):
 	return mochi.crypto.hash.sha256(json.encode([card, person, friend]))
@@ -217,10 +286,18 @@ def contact_get(identity, id):
 def contact_by_person(identity, person):
 	return mochi.db.row("select * from contacts where identity=? and person=?", identity, person)
 
+def contact_by_slug(identity, book, slug):
+	if not slug_valid(slug):
+		return None
+	return mochi.db.row("select * from contacts where identity=? and book=? and slug=?", identity, book, slug)
+
 def contact_public(row):
 	return {
 		"id": row["id"],
 		"book": row["book"],
+		# The name a sync client gave the contact when it created it (its id
+		# otherwise), so the client can recognise its own creates on download.
+		"slug": row["slug"],
 		"person": row["person"],
 		"friend": row["friend"] == 1,
 		"name": row["name"],
@@ -240,8 +317,9 @@ def friend_projection(row):
 	# returned: id is the person entity id, name the user's label.
 	return {"identity": row["identity"], "id": row["person"], "name": row["name"], "class": "person", "created": row["created"], "refreshed": row["refreshed"]}
 
-# contact_insert(identity, book, person, friend, name, directory, card) -> row
-def contact_insert(identity, book, person, friend, name, directory, card):
+# contact_insert(identity, book, person, friend, name, directory, card, slug="") -> row
+# The slug is the name a DAV client chose; a contact made here is named by its id.
+def contact_insert(identity, book, person, friend, name, directory, card, slug=""):
 	id = mochi.uid()
 	now = mochi.time.now()
 	encoded = card_encode(card)
@@ -249,9 +327,9 @@ def contact_insert(identity, book, person, friend, name, directory, card):
 	# refreshed stays 0: a name that arrived in an invite is the sender's own
 	# claim, so the first listing re-resolves the directory name straight away
 	# rather than trusting the claim for a day.
-	mochi.db.execute("insert into contacts ( id, book, identity, person, friend, name, directory, card, etag, created, updated, refreshed ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0 )",
-		id, book, identity, person, friend, name, directory, encoded, etag, now, now)
-	book_touch(book)
+	mochi.db.execute("insert into contacts ( id, book, identity, person, friend, name, directory, card, etag, slug, created, updated, refreshed ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0 )",
+		id, book, identity, person, friend, name, directory, encoded, etag, slug or id, now, now)
+	book_touch(book, id)
 	return contact_get(identity, id)
 
 # contact_link(identity, person, name) -> row: the contact for a Mochi person,
@@ -279,7 +357,7 @@ def contact_friend_set(identity, person, friend, name=""):
 		mochi.db.execute("update contacts set friend=?, directory=?, etag=?, updated=? where id=?", friend, name, etag, now, row["id"])
 	else:
 		mochi.db.execute("update contacts set friend=?, etag=?, updated=? where id=?", friend, etag, now, row["id"])
-	book_touch(row["book"])
+	book_touch(row["book"], row["id"])
 	return contact_get(identity, row["id"])
 
 # contact_delete(identity, row): remove a contact. A friend contact ends the
@@ -293,7 +371,18 @@ def contact_delete(identity, row):
 			mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/cancel"})
 		invite_remove(identity, person)
 	mochi.db.execute("delete from contacts where id=? and identity=?", row["id"], identity)
-	book_touch(row["book"])
+	book_touch(row["book"], row["id"], 1)
+	changes_prune(identity)
+
+# changes_prune(identity): drop deletions older than the retention, and record
+# the newest pruned row as the identity's floor. A cursor below the floor may
+# have missed a deletion, so the change log answers it with a reset.
+def changes_prune(identity):
+	old = mochi.db.row("select max(id) as id from changes where identity=? and deleted=1 and created<?", identity, mochi.time.now() - _TOMBSTONE_RETENTION)
+	if not old or not old["id"]:
+		return
+	mochi.db.execute("delete from changes where identity=? and deleted=1 and id<=?", identity, old["id"])
+	mochi.db.execute("insert into pruned ( identity, change ) values ( ?, ? ) on conflict( identity ) do update set change=max( change, excluded.change )", identity, old["id"])
 
 # contacts_refresh(identity, rows): re-resolve stale directory names. The
 # directory is the authority on a person's current name; reading it per row on
@@ -394,11 +483,24 @@ def action_contact_create(a):
 			return
 	else:
 		book = book_default(identity)
+	# A sync client names the contact itself, so that a create whose answer
+	# was lost can be sent again: the retry finds the contact it made.
+	slug = body.get("slug", "")
+	if slug:
+		if not slug_valid(slug):
+			a.error.label(400, "errors.invalid_properties")
+			return
+		existing = contact_by_slug(identity, book, slug)
+		if existing:
+			return {"data": {"contact": contact_full(existing)}}
+	if contacts_full(identity):
+		a.error.label(400, "errors.too_many_contacts")
+		return
 	directory = ""
 	if person:
 		info = mochi.directory.get(person)
 		directory = info.get("name", "") if info else ""
-	row = contact_insert(identity, book, person, 0, name, directory, card)
+	row = contact_insert(identity, book, person, 0, name, directory, card, slug)
 	return {"data": {"contact": contact_full(row)}}
 
 def action_contact_update(a):
@@ -427,7 +529,7 @@ def action_contact_update(a):
 		if card == None:
 			a.error.label(400, "errors.invalid_properties")
 			return
-	if len(card_encode(card)) > _CARD_MAXIMUM:
+	if len(card_encode(card)) > _DAV_CARD_MAXIMUM:
 		a.error.label(400, "errors.contact_too_large")
 		return
 	name = card_name(card)
@@ -437,19 +539,27 @@ def action_contact_update(a):
 	if not name:
 		name = row["name"]
 	book = body.get("book", "") or row["book"]
+	slug = row["slug"]
 	if book != row["book"]:
 		if type(book) != "string" or not book_get(identity, book):
 			a.error.label(404, "errors.book_not_found")
 			return
+		# A DAV client named the contact within its old book; another object
+		# there may already hold that name in the new one.
+		if contact_by_slug(identity, book, slug):
+			slug = row["id"]
+			if contact_by_slug(identity, book, slug):
+				a.error.label(409, "errors.contact_exists")
+				return
 	etag = contact_etag(card, row["person"], row["friend"])
 	now = mochi.time.now()
-	mochi.db.execute("update contacts set book=?, name=?, card=?, etag=?, updated=? where id=? and identity=? and etag=?",
-		book, name, card_encode(card), etag, now, row["id"], identity, row["etag"])
+	mochi.db.execute("update contacts set book=?, slug=?, name=?, card=?, etag=?, updated=? where id=? and identity=? and etag=?",
+		book, slug, name, card_encode(card), etag, now, row["id"], identity, row["etag"])
 	after = contact_get(identity, row["id"])
 	if not after or after["etag"] != etag:
 		a.error.label(412, "errors.contact_changed")
 		return
-	book_touch(book)
+	book_touch(book, row["id"])
 	if book != row["book"]:
 		book_touch(row["book"])
 	return {"data": {"contact": contact_full(after)}}
@@ -463,6 +573,10 @@ def action_contact_delete(a):
 	row = contact_get(identity, contact)
 	if not row:
 		a.error.label(404, "errors.contact_not_found")
+		return
+	expected = a.input("etag", "")
+	if expected and expected != row["etag"]:
+		a.error.label(412, "errors.contact_changed")
 		return
 	contact_delete(identity, row)
 	return {"data": {}}
@@ -540,8 +654,7 @@ def action_book_create(a):
 	# stay stable however the first request arrives.
 	default = book_default(identity)
 	id = mochi.entity.create("book", name, "private")
-	now = mochi.time.now()
-	mochi.db.execute("insert into books ( id, identity, version, created, updated ) values ( ?, ?, 0, ?, ? )", id, identity, now, now)
+	book_insert(identity, id, mochi.entity.fingerprint(id))
 	row = book_get(identity, id)
 	return {"data": {"book": book_public(identity, row, default, {})}}
 
@@ -567,13 +680,17 @@ def action_book_delete(a):
 	if row["id"] == book_default(identity):
 		a.error.label(400, "errors.book_default")
 		return
-	# Contacts go one by one so a friend contact ends its friendship and a
-	# pending invite is cancelled, exactly as deleting them singly would.
+	book_delete(identity, row)
+	return {"data": {}}
+
+# book_delete(identity, row): remove a book and its contacts. Contacts go one
+# by one so a friend contact ends its friendship and a pending invite is
+# cancelled, exactly as deleting them singly would.
+def book_delete(identity, row):
 	for contact in contacts_rows(identity, row["id"]):
 		contact_delete(identity, contact)
 	mochi.db.execute("delete from books where id=? and identity=?", row["id"], identity)
 	mochi.entity.delete(row["id"])
-	return {"data": {}}
 
 # === Actions: friendship ===
 
@@ -802,3 +919,301 @@ def function_count(context, identity):
 		return 0
 	row = mochi.db.row("select count(*) as count from contacts where identity=? and friend=1", identity)
 	return row["count"] if row else 0
+
+# === CardDAV ===
+# Core serves the carddav/*path route with its DAV engine and calls these as
+# the server for the authenticated identity (core/server/dav.go). A collection
+# is a book named by its slug, an object a contact named by its slug, and a
+# card travels as the property list stored in the card column. Cards written
+# here keep every property a client sent, photos and UID included; only the
+# server's own X-MOCHI properties are regenerated on every read.
+
+def dav_collection(row, default):
+	return {"slug": row["slug"], "name": mochi.entity.name(row["id"]) or "", "description": "", "readonly": False, "version": row["version"], "default": row["id"] == default}
+
+# dav_caller(context) -> bool: the call came from the server's DAV engine. The
+# engine passes _server in the context; an app calling through the service
+# cannot, so these functions are the engine's and nothing else's.
+def dav_caller(context):
+	return type(context) == "dict" and context.get("_server") == True
+
+def function_dav_collections(context, identity, collection=None):
+	if not dav_caller(context) or not identity:
+		return []
+	default = book_default(identity)
+	if collection != None:
+		row = book_by_slug(identity, collection)
+		return [dav_collection(row, default)] if row else []
+	return [dav_collection(row, default) for row in mochi.db.rows("select * from books where identity=? order by created, id", identity)]
+
+def function_dav_collection_create(context, identity, collection, name="", description=""):
+	if not dav_caller(context):
+		return {"error": "forbidden"}
+	if not identity or not slug_valid(collection):
+		return {"error": "invalid"}
+	if book_by_slug(identity, collection):
+		return {"error": "exists"}
+	book_default(identity)
+	label = name.strip() if type(name) == "string" else ""
+	if not label or not mochi.text.valid(label, "name"):
+		label = collection
+	id = mochi.entity.create("book", label, "private")
+	book_insert(identity, id, collection)
+	return {"slug": collection}
+
+def function_dav_collection_delete(context, identity, collection):
+	if not dav_caller(context):
+		return {"error": "forbidden"}
+	row = book_by_slug(identity, collection) if identity else None
+	if not row:
+		return {"error": "not_found"}
+	if row["id"] == book_default(identity):
+		return {"error": "forbidden"}
+	book_delete(identity, row)
+	return {}
+
+# dav_object(row) -> dict: a contact as the engine serves it. A card that
+# never had an FN, a person contact linked by an invite, is named by the
+# user's label or the directory; UID is the client's when it wrote one, the
+# contact id otherwise.
+def dav_object(row):
+	card = [p for p in card_decode(row["card"]) if type(p) == "dict" and p.get("name") not in _RESERVED]
+	names = [p.get("name") for p in card]
+	if "FN" not in names:
+		card.append({"name": "FN", "params": {}, "value": row["name"] or row["directory"] or row["id"]})
+	if "UID" not in names:
+		card.append({"name": "UID", "params": {}, "value": row["id"]})
+	if row["person"]:
+		card.append({"name": "X-MOCHI-PERSON", "params": {}, "value": row["person"]})
+		if row["friend"] == 1:
+			card.append({"name": "X-MOCHI-FRIEND", "params": {}, "value": "1"})
+	return {"name": row["slug"], "etag": row["etag"], "updated": row["updated"], "card": card}
+
+# function_dav_objects(context, identity, collection, names?, data, offset?,
+# limit?): the contacts of a book, or the ones named. Without data only names,
+# etags and times travel - an ordinary listing - and no card is read.
+def function_dav_objects(context, identity, collection, names=None, start=None, finish=None, data=True, offset=None, limit=None):
+	if not dav_caller(context):
+		return {"error": "forbidden"}
+	book = book_by_slug(identity, collection) if identity else None
+	if not book:
+		return {"error": "not_found"}
+	if not data:
+		rows = mochi.db.rows("select slug, etag, updated from contacts where identity=? and book=? order by created, id", identity, book["id"])
+		return [{"name": row["slug"], "etag": row["etag"], "updated": row["updated"]} for row in rows]
+	if names != None:
+		wanted = [n for n in names if slug_valid(n)]
+		rows = []
+		for i in range(0, len(wanted), 200):
+			chunk = wanted[i:i + 200]
+			rows.extend(mochi.db.rows("select * from contacts where identity=? and book=? and slug in (" + ", ".join(["?"] * len(chunk)) + ")", identity, book["id"], chunk))
+	elif offset != None:
+		rows = mochi.db.rows("select * from contacts where identity=? and book=? order by created, id limit ? offset ?", identity, book["id"], limit or 100, offset)
+	else:
+		rows = contacts_rows(identity, book["id"])
+	contacts_refresh(identity, rows)
+	return [dav_object(row) for row in rows]
+
+# dav_card_clean(card) -> list or None: a client's property list in stored
+# form, the server-owned properties dropped. Values are taken as the parser
+# gave them; the encoder escapes on the way out. Lists arrive from core as
+# tuples, so both are accepted.
+def dav_card_clean(card):
+	if type(card) not in ("list", "tuple") or len(card) > _DAV_PROPERTIES_MAXIMUM:
+		return None
+	out = []
+	for p in card:
+		if type(p) != "dict":
+			return None
+		name = p.get("name")
+		if not property_name_valid(name):
+			return None
+		if name in _RESERVED:
+			continue
+		value = p.get("value", "")
+		if type(value) != "string":
+			return None
+		params = p.get("params", {})
+		if params == None:
+			params = {}
+		if type(params) != "dict":
+			return None
+		clean = {}
+		for key in sorted(params.keys()):
+			if not property_name_valid(key):
+				return None
+			values = params[key]
+			if type(values) == "string":
+				values = [values]
+			if type(values) not in ("list", "tuple"):
+				return None
+			kept = []
+			for v in values:
+				if type(v) != "string" or len(v) > _DAV_PARAMETER_MAXIMUM:
+					return None
+				kept.append(v)
+			clean[key] = kept
+		entry = {"name": name, "params": clean, "value": value}
+		group = p.get("group", "")
+		if group:
+			if type(group) != "string" or not property_name_valid(group.upper()):
+				return None
+			entry["group"] = group
+		out.append(entry)
+	return out
+
+# function_dav_put(context, identity, collection, name, card, match, absent):
+# create or replace the object at name. match is the etag the stored object
+# must carry ("" for none, "*" for "must exist"); absent says it must not exist
+# yet. A person contact keeps its person and friend columns whatever the card
+# says, and the user's label follows FN.
+def function_dav_put(context, identity, collection, name, card, match="", absent=False):
+	if not dav_caller(context):
+		return {"error": "forbidden"}
+	book = book_by_slug(identity, collection) if identity else None
+	if not book:
+		return {"error": "not_found"}
+	if not slug_valid(name):
+		return {"error": "invalid"}
+	clean = dav_card_clean(card)
+	if clean == None:
+		return {"error": "invalid"}
+	if len(card_encode(clean)) > _DAV_CARD_MAXIMUM:
+		return {"error": "too_large"}
+	row = contact_by_slug(identity, book["id"], name)
+	if absent and row:
+		return {"error": "conflict"}
+	if match == "*" and not row:
+		return {"error": "conflict"}
+	if match and match != "*" and (not row or row["etag"] != match):
+		return {"error": "conflict"}
+	label = card_name(clean)
+	if not label:
+		if not row:
+			return {"error": "invalid"}
+		label = row["name"]
+	if not row:
+		if contacts_full(identity):
+			return {"error": "full"}
+		inserted = contact_insert(identity, book["id"], "", 0, label, "", clean, name)
+		return {"name": name, "etag": inserted["etag"], "updated": inserted["updated"]}
+	etag = contact_etag(clean, row["person"], row["friend"])
+	now = mochi.time.now()
+	mochi.db.execute("update contacts set name=?, card=?, etag=?, updated=? where id=? and identity=? and etag=?",
+		label, card_encode(clean), etag, now, row["id"], identity, row["etag"])
+	after = contact_get(identity, row["id"])
+	if not after or after["etag"] != etag:
+		return {"error": "conflict"}
+	book_touch(book["id"], row["id"])
+	return {"name": name, "etag": etag, "updated": now}
+
+# function_dav_delete: remove the object at name. match and absent are the
+# request's If-Match and If-None-Match, as for dav/put: a device holding a
+# stale copy must not delete what another device has just changed, and a
+# friend's card takes the friendship with it.
+def function_dav_delete(context, identity, collection, name, match="", absent=False):
+	if not dav_caller(context):
+		return {"error": "forbidden"}
+	book = book_by_slug(identity, collection) if identity else None
+	if not book:
+		return {"error": "not_found"}
+	row = contact_by_slug(identity, book["id"], name)
+	if not row:
+		return {"error": "not_found"}
+	if absent or (match and match != "*" and match != row["etag"]):
+		return {"error": "conflict"}
+	contact_delete(identity, row)
+	return {}
+
+# === Sync ===
+# What a sync client that is not a DAV client needs: the change log since a
+# cursor, and several contacts in one request.
+
+def action_contacts_changes(a):
+	identity = a.user.identity.id
+	since = a.input("since", "0") or "0"
+	if not since.isdigit() or len(since) > 18:
+		a.error.label(400, "errors.invalid_since")
+		return
+	since = int(since)
+	latest = mochi.db.row("select max(id) as id from changes")
+	version = latest["id"] if latest and latest["id"] else 0
+	# reset: changed lists every contact there is, and anything the client
+	# holds that is not in it is gone. Always so for a first sync; also when
+	# the cursor predates deletions the log has since forgotten.
+	floor = mochi.db.row("select change from pruned where identity=?", identity)
+	if since == 0 or (floor and since < floor["change"]):
+		return {"data": {"version": version, "reset": True, "changed": [row["id"] for row in contacts_rows(identity)], "deleted": []}}
+	changed = []
+	deleted = []
+	for row in mochi.db.rows("select contact, deleted from changes where identity=? and id>? order by id", identity, since):
+		if row["deleted"] == 1:
+			deleted.append(row["contact"])
+		else:
+			changed.append(row["contact"])
+	return {"data": {"version": max(version, since), "reset": False, "changed": changed, "deleted": deleted}}
+
+def action_contacts_batch(a):
+	identity = a.user.identity.id
+	body = body_json(a)
+	ids = body.get("contacts") if body else None
+	if type(ids) != "list" or len(ids) > 500:
+		a.error.label(400, "errors.missing_contact_id")
+		return
+	out = []
+	for id in ids:
+		row = contact_get(identity, id) if type(id) == "string" else None
+		if row:
+			out.append(contact_full(row))
+	return {"data": {"contacts": out}}
+
+# === Actions: device tokens ===
+# The credential a CardDAV client holds: a token with the dav scope, bound to
+# the carddav route so it can drive nothing else, never expiring because it is
+# bound, one per device and revocable alone.
+
+def token_name_input(a):
+	name = a.input("name", "").strip()
+	if not name or len(name) > 100:
+		a.error.label(400, "errors.token_name_is_too_long_max_100_characters")
+		return None
+	return name
+
+def action_token_create(a):
+	name = token_name_input(a)
+	if name == None:
+		return
+	token = mochi.token.create(name, ["dav"], 0, "carddav/*path", "")
+	if not token:
+		a.error.label(500, "errors.failed_to_create_token")
+		return
+	return {"data": {"token": token}}
+
+def action_token_list(a):
+	return {"data": {"tokens": mochi.token.list() or []}}
+
+def action_token_delete(a):
+	hash = a.input("hash", "").strip()
+	if not hash or len(hash) > 128:
+		a.error.label(400, "errors.invalid_token_hash")
+		return
+	return {"data": {"ok": mochi.token.delete(hash)}}
+
+# === Service: contacts ===
+# The whole address book for an app holding contacts/read; the friends service
+# above answers only the friends among them.
+
+def function_contacts_list(context, identity):
+	if not identity:
+		return []
+	return [contact_public(row) for row in contacts_rows(identity)]
+
+def function_contacts_get(context, identity, contact):
+	row = contact_get(identity, contact) if identity else None
+	return contact_full(row) if row else None
+
+def function_contacts_search(context, identity, search):
+	if not identity or type(search) != "string" or not search.strip():
+		return []
+	needle = search.strip().lower()
+	return [contact_public(row) for row in contacts_rows(identity) if needle in row["name"].lower() or needle in row["directory"].lower()]

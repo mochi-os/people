@@ -34,6 +34,7 @@ import {
   CircleUserRound,
   Pencil,
   Plus,
+  Smartphone,
   Trash2,
   User,
   UsersRound,
@@ -48,6 +49,7 @@ import {
   useRenameBookMutation,
 } from '@/hooks/useContacts'
 import { useGroupsQuery } from '@/hooks/useGroups'
+import { ConnectDialog } from '@/features/contacts/connect-dialog'
 import { GroupDialog } from '@/features/groups/group-dialog'
 
 const profileIconCache = new Map<string, React.FC>()
@@ -84,6 +86,7 @@ function PeopleLayoutInner() {
   } = useSidebarContext()
 
   const [createBookOpen, setCreateBookOpen] = useState(false)
+  const [connectOpen, setConnectOpen] = useState(false)
   const [renameBook, setRenameBook] = useState<Book | null>(null)
   const [deleteBook, setDeleteBook] = useState<Book | null>(null)
 
@@ -182,6 +185,12 @@ function PeopleLayoutInner() {
             icon: User,
             badge: pendingInvites > 0 ? String(pendingInvites) : undefined,
           },
+          {
+            id: 'connect-device',
+            title: t`Connect a device`,
+            icon: Smartphone,
+            onClick: () => setConnectOpen(true),
+          },
         ],
       },
       {
@@ -236,6 +245,8 @@ function PeopleLayoutInner() {
         onSubmit={createBook}
         isPending={createBookMutation.isPending}
       />
+
+      <ConnectDialog open={connectOpen} onOpenChange={setConnectOpen} />
 
       <RenameBookDialog book={renameBook} onClose={() => setRenameBook(null)} />
 

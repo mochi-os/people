@@ -317,6 +317,10 @@ msgstr "Címjegyzék törölve"
 msgid "Address book renamed"
 msgstr "Címjegyzék átnevezve"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "Címjegyzék URL-je"
+
 #: src/features/contacts/editor.tsx
 msgid "Addresses"
 msgstr "Címek"
@@ -453,6 +457,7 @@ msgstr "{name} profilképe"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "Vissza"
 
@@ -545,6 +550,7 @@ msgstr "A kamera nem érhető el"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -744,9 +750,22 @@ msgstr "Nézetbeállítások konfigurálása"
 msgid "Confirm"
 msgstr "Megerősítés"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Eszköz csatlakoztatása"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Másik eszköz csatlakoztatása"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Csatlakoztatva"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Eszköz csatlakoztatása..."
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
@@ -798,12 +817,17 @@ msgid "Copied"
 msgstr "Másolva"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "A vágólapra másolva"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Másolás"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "{label} másolása"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -838,6 +862,7 @@ msgstr "Ország"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "Létrehozás"
 
@@ -870,6 +895,11 @@ msgstr "Új elem létrehozása"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Created"
 msgstr "Létrehozva"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Létrehozva: {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
@@ -950,6 +980,7 @@ msgstr "Alapértelmezett rendezés"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -995,6 +1026,14 @@ msgstr "Megjegyzés törlése"
 #: src/features/contacts/index.tsx
 msgid "Delete contact"
 msgstr "Névjegy törlése"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Eszköz törlése"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Törli az eszközt?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -1054,6 +1093,10 @@ msgstr "Címjegyzék törlése..."
 msgid "Deleting contact..."
 msgstr "Névjegy törlése..."
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Eszköz törlése..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "Csoport törlése..."
@@ -1082,6 +1125,14 @@ msgstr "Részletek panel"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Felismerés a böngészőből"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Eszköz törölve"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "Eszköz neve"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -1120,6 +1171,7 @@ msgstr "Nem felel meg a megadott mintának"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "Kész"
 
@@ -1283,6 +1335,10 @@ msgstr "Nem sikerült törölni a meghívást"
 msgid "Failed to cancel invitations"
 msgstr "A meghívások visszavonása sikertelen"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Nem sikerült csatlakoztatni az eszközt"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
@@ -1334,6 +1390,10 @@ msgstr "Nem sikerült törölni a hozzászólást"
 #: src/features/contacts/index.tsx
 msgid "Failed to delete contact"
 msgstr "Nem sikerült törölni a névjegyet"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Nem sikerült törölni az eszközt"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1720,6 +1780,11 @@ msgstr "Billentyűparancsok"
 msgid "Large"
 msgstr "Nagy"
 
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Utoljára használva: {0}"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Elrendezés"
@@ -1788,6 +1853,10 @@ msgstr "Kijelentkezés…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "Kategóriák kezelése"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Eszközök kezelése"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1918,6 +1987,11 @@ msgstr "Név mentve"
 msgid "Network error"
 msgstr "Hálózati hiba"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "Soha"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
@@ -1969,6 +2043,10 @@ msgstr "Még nincsenek hozzászólások"
 #: src/features/contacts/index.tsx
 msgid "No contacts yet"
 msgstr "Még nincsenek névjegyek"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Nincs csatlakoztatott eszköz."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -2200,6 +2278,10 @@ msgstr "Passkey-ek"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
 msgstr "A passkey-ek nem érhetők el ebben a böngészőben"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "Jelszó"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -2559,6 +2641,10 @@ msgstr "Mentés"
 msgid "Save name"
 msgstr "Név mentése"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Mentse el ezt a jelszót most. Később nem jeleníthető meg újra."
+
 #: src/features/contacts/editor.tsx
 msgid "Saving contact..."
 msgstr "Névjegy mentése..."
@@ -2727,6 +2813,10 @@ msgstr "Küldött ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "Talpas"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2918,6 +3008,10 @@ msgstr "A kamera már használatban van"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "A kamerakérésre nem érkezett válasz"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "Az eszköz többé nem tudja szinkronizálni a névjegyeket."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -3145,6 +3239,10 @@ msgstr "Használja a hozzáférési kulcsát"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "Felhasználó"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "Felhasználónév"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"

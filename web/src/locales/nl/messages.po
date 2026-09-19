@@ -317,6 +317,10 @@ msgstr "Adresboek verwijderd"
 msgid "Address book renamed"
 msgstr "Adresboek hernoemd"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "URL van het adresboek"
+
 #: src/features/contacts/editor.tsx
 msgid "Addresses"
 msgstr "Adressen"
@@ -453,6 +457,7 @@ msgstr "Avatar voor {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "Terug"
 
@@ -545,6 +550,7 @@ msgstr "Camera niet beschikbaar"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -744,9 +750,22 @@ msgstr "Weergave-instellingen configureren"
 msgid "Confirm"
 msgstr "Bevestigen"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Apparaat koppelen"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Nog een apparaat koppelen"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Verbonden"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Apparaat koppelen..."
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
@@ -798,12 +817,17 @@ msgid "Copied"
 msgstr "Gekopieerd"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Gekopieerd naar klembord"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopiëren"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "{label} kopiëren"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -838,6 +862,7 @@ msgstr "Land"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "Aanmaken"
 
@@ -870,6 +895,11 @@ msgstr "Nieuw item aanmaken"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Created"
 msgstr "Aangemaakt"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Aangemaakt {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
@@ -950,6 +980,7 @@ msgstr "Standaardsortering"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -995,6 +1026,14 @@ msgstr "Reactie verwijderen"
 #: src/features/contacts/index.tsx
 msgid "Delete contact"
 msgstr "Contact verwijderen"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Apparaat verwijderen"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Apparaat verwijderen?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -1054,6 +1093,10 @@ msgstr "Adresboek verwijderen..."
 msgid "Deleting contact..."
 msgstr "Contact verwijderen..."
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Apparaat verwijderen..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "Groep verwijderen..."
@@ -1082,6 +1125,14 @@ msgstr "Detailspaneel"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Detecteren via webbrowser"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Apparaat verwijderd"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "Apparaatnaam"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -1120,6 +1171,7 @@ msgstr "Komt niet overeen met het vereiste patroon"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "Klaar"
 
@@ -1283,6 +1335,10 @@ msgstr "Uitnodiging annuleren mislukt"
 msgid "Failed to cancel invitations"
 msgstr "Annuleren van uitnodigingen mislukt"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Apparaat koppelen is mislukt"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
@@ -1334,6 +1390,10 @@ msgstr "Reactie verwijderen mislukt"
 #: src/features/contacts/index.tsx
 msgid "Failed to delete contact"
 msgstr "Contact verwijderen mislukt"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Apparaat verwijderen is mislukt"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1720,6 +1780,11 @@ msgstr "Sneltoetsen"
 msgid "Large"
 msgstr "Groot"
 
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Laatst gebruikt {0}"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Lay-out"
@@ -1788,6 +1853,10 @@ msgstr "Bezig met uitloggen…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "Categorieën beheren"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Apparaten beheren"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1918,6 +1987,11 @@ msgstr "Naam opgeslagen"
 msgid "Network error"
 msgstr "Netwerkfout"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "Nooit"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
@@ -1969,6 +2043,10 @@ msgstr "Nog geen reacties"
 #: src/features/contacts/index.tsx
 msgid "No contacts yet"
 msgstr "Nog geen contacten"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Geen apparaten gekoppeld."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -2200,6 +2278,10 @@ msgstr "Toegangssleutels"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
 msgstr "Passkeys zijn niet beschikbaar in deze browser"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "Wachtwoord"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -2559,6 +2641,10 @@ msgstr "Opslaan"
 msgid "Save name"
 msgstr "Naam opslaan"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Bewaar dit wachtwoord nu. Het kan niet opnieuw worden getoond."
+
 #: src/features/contacts/editor.tsx
 msgid "Saving contact..."
 msgstr "Contact opslaan..."
@@ -2727,6 +2813,10 @@ msgstr "Verzonden ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "Schreefletter"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2918,6 +3008,10 @@ msgstr "De camera is al in gebruik"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Het cameraverzoek is niet beantwoord"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "Het apparaat kan dan geen contacten meer synchroniseren."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -3145,6 +3239,10 @@ msgstr "Gebruik je passkey"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "Gebruiker"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "Gebruikersnaam"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"

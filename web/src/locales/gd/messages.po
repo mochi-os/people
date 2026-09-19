@@ -317,6 +317,10 @@ msgstr "Chaidh an leabhar-sheòlaidhean a sguabadh às"
 msgid "Address book renamed"
 msgstr "Chaidh ainm ùr a chur air an leabhar-sheòlaidhean"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "URL an leabhair-sheòlaidhean"
+
 #: src/features/contacts/editor.tsx
 msgid "Addresses"
 msgstr "Seòlaidhean"
@@ -453,6 +457,7 @@ msgstr "Avatar airson {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "Air ais"
 
@@ -545,6 +550,7 @@ msgstr "Chan eil an camara ri fhaighinn"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -744,9 +750,22 @@ msgstr "Rèitich roghainnean seallaidh"
 msgid "Confirm"
 msgstr "Dearbhaich"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Ceangail inneal"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Ceangail inneal eile"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Ceangailte"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "A' ceangal an inneil..."
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
@@ -798,12 +817,17 @@ msgid "Copied"
 msgstr "Chaidh lethbhreac a dhèanamh"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Air a chopaigeadh chun a' chliopaboird"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Dèan lethbhreac"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "Dèan lethbhreac de {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -838,6 +862,7 @@ msgstr "Dùthaich"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "Cruthaich"
 
@@ -870,6 +895,11 @@ msgstr "Cruthaich nì ùr"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Created"
 msgstr "Cruthaichte"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Cruthaichte {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
@@ -950,6 +980,7 @@ msgstr "Seòrsachadh bunaiteach"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -995,6 +1026,14 @@ msgstr "Sguab às beachd"
 #: src/features/contacts/index.tsx
 msgid "Delete contact"
 msgstr "Sguab às an neach-aithne"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Sguab às an t-inneal"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "A bheil thu airson an t-inneal a sguabadh às?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -1054,6 +1093,10 @@ msgstr "A' sguabadh às an leabhair-sheòlaidhean..."
 msgid "Deleting contact..."
 msgstr "A' sguabadh às an neach-aithne..."
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "A' sguabadh às an inneil..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "A’ sguabadh às a’ bhuidheann..."
@@ -1082,6 +1125,14 @@ msgstr "Pannal mion-fhiosrachaidh"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Lorg bhon bhrabhsair-lìn"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Chaidh an t-inneal a sguabadh às"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "Ainm an inneil"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -1120,6 +1171,7 @@ msgstr "Chan eil e a' freagairt ris a' phàtran riatanach"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "Deiseil"
 
@@ -1283,6 +1335,10 @@ msgstr "Cha b' urrainn cur dheth a' chuiridh"
 msgid "Failed to cancel invitations"
 msgstr "Cha b’ urrainn na cuiridhean a chur dheth"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Cha b' urrainn dhuinn an t-inneal a cheangal"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
@@ -1334,6 +1390,10 @@ msgstr "Cha b' urrainn am beachd a sguabadh às"
 #: src/features/contacts/index.tsx
 msgid "Failed to delete contact"
 msgstr "Cha b' urrainn an neach-aithne a sguabadh às"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Cha b' urrainn dhuinn an t-inneal a sguabadh às"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1720,6 +1780,11 @@ msgstr "Ath-ghoiridean a' mheur-chlàir"
 msgid "Large"
 msgstr "Mòr"
 
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Cleachdadh mu dheireadh {0}"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "Cruth"
@@ -1788,6 +1853,10 @@ msgstr "A' clàradh a-mach…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "Stiùirich roinnean"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Stiùir na h-innealan"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1918,6 +1987,11 @@ msgstr "Chaidh an t-ainm a shàbhaladh"
 msgid "Network error"
 msgstr "Mearachd lìonraidh"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "Chaoidh"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
@@ -1969,6 +2043,10 @@ msgstr "Chan eil beachdan ann fhathast"
 #: src/features/contacts/index.tsx
 msgid "No contacts yet"
 msgstr "Chan eil neach-aithne ann fhathast"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Chan eil inneal sam bith ceangailte."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -2200,6 +2278,10 @@ msgstr "Pasgairean"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
 msgstr "Chan eil pasgairean ri fhaighinn sa bhrabhsair seo"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "Facal-faire"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -2559,6 +2641,10 @@ msgstr "Sàbhail"
 msgid "Save name"
 msgstr "Sàbhail an t-ainm"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Sàbhail am facal-faire seo an-dràsta. Chan urrainn dhuinn a shealltainn a-rithist."
+
 #: src/features/contacts/editor.tsx
 msgid "Saving contact..."
 msgstr "A' sàbhaladh an neach-aithne..."
@@ -2727,6 +2813,10 @@ msgstr "Air a chur ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "Serif"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2918,6 +3008,10 @@ msgstr "Tha an camara ga chleachdadh mu thràth"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Cha deach an t-iarrtas camara a fhreagairt"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "Chan urrainn dhan inneal luchd-aithne a shioncronachadh tuilleadh."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -3145,6 +3239,10 @@ msgstr "Cleachd an iuchair-inntrigidh agad"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "Cleachdaiche"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "Ainm-cleachdaiche"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"

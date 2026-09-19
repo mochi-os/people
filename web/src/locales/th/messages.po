@@ -317,6 +317,10 @@ msgstr "ลบสมุดที่อยู่แล้ว"
 msgid "Address book renamed"
 msgstr "เปลี่ยนชื่อสมุดที่อยู่แล้ว"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "URL สมุดที่อยู่"
+
 #: src/features/contacts/editor.tsx
 msgid "Addresses"
 msgstr "ที่อยู่"
@@ -453,6 +457,7 @@ msgstr "อวาตาร์ของ {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "ย้อนกลับ"
 
@@ -545,6 +550,7 @@ msgstr "กล้องไม่พร้อมใช้งาน"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -744,9 +750,22 @@ msgstr "ตั้งค่ามุมมอง"
 msgid "Confirm"
 msgstr "ยืนยัน"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "เชื่อมต่ออุปกรณ์"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "เชื่อมต่ออุปกรณ์อื่น"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "เชื่อมต่อแล้ว"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "กำลังเชื่อมต่ออุปกรณ์..."
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
@@ -798,12 +817,17 @@ msgid "Copied"
 msgstr "คัดลอกแล้ว"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "คัดลอกไปยังคลิปบอร์ดแล้ว"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "คัดลอก"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "คัดลอก {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -838,6 +862,7 @@ msgstr "ประเทศ"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "สร้าง"
 
@@ -870,6 +895,11 @@ msgstr "สร้างรายการใหม่"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Created"
 msgstr "สร้างแล้ว"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "สร้าง {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
@@ -950,6 +980,7 @@ msgstr "การเรียงลำดับเริ่มต้น"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -995,6 +1026,14 @@ msgstr "ลบความคิดเห็น"
 #: src/features/contacts/index.tsx
 msgid "Delete contact"
 msgstr "ลบผู้ติดต่อ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "ลบอุปกรณ์"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "ลบอุปกรณ์หรือไม่"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -1054,6 +1093,10 @@ msgstr "กำลังลบสมุดที่อยู่..."
 msgid "Deleting contact..."
 msgstr "กำลังลบผู้ติดต่อ..."
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "กำลังลบอุปกรณ์..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "กำลังลบกลุ่ม..."
@@ -1082,6 +1125,14 @@ msgstr "แผงรายละเอียด"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "ตรวจจับจากเว็บเบราว์เซอร์"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "ลบอุปกรณ์แล้ว"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "ชื่ออุปกรณ์"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -1120,6 +1171,7 @@ msgstr "ไม่ตรงกับรูปแบบที่กำหนด"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "เสร็จสิ้น"
 
@@ -1283,6 +1335,10 @@ msgstr "ไม่สามารถยกเลิกคำเชิญได้
 msgid "Failed to cancel invitations"
 msgstr "ยกเลิกคำเชิญไม่สำเร็จ"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "ไม่สามารถเชื่อมต่ออุปกรณ์ได้"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
@@ -1334,6 +1390,10 @@ msgstr "ไม่สามารถลบความคิดเห็นได
 #: src/features/contacts/index.tsx
 msgid "Failed to delete contact"
 msgstr "ไม่สามารถลบผู้ติดต่อได้"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "ไม่สามารถลบอุปกรณ์ได้"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1720,6 +1780,11 @@ msgstr "ทางลัดแป้นพิมพ์"
 msgid "Large"
 msgstr "ใหญ่"
 
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "ใช้ครั้งล่าสุด {0}"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "เลย์เอาต์"
@@ -1788,6 +1853,10 @@ msgstr "กำลังออกจากระบบ…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "จัดการหมวดหมู่"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "จัดการอุปกรณ์"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1918,6 +1987,11 @@ msgstr "บันทึกชื่อแล้ว"
 msgid "Network error"
 msgstr "ข้อผิดพลาดของเครือข่าย"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "ไม่เลย"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
@@ -1969,6 +2043,10 @@ msgstr "ยังไม่มีความคิดเห็น"
 #: src/features/contacts/index.tsx
 msgid "No contacts yet"
 msgstr "ยังไม่มีผู้ติดต่อ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "ไม่มีอุปกรณ์ที่เชื่อมต่อ"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -2200,6 +2278,10 @@ msgstr "พาสคีย์"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
 msgstr "Passkeys ไม่พร้อมใช้งานในเบราว์เซอร์นี้"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "รหัสผ่าน"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -2559,6 +2641,10 @@ msgstr "บันทึก"
 msgid "Save name"
 msgstr "บันทึกชื่อ"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "บันทึกรหัสผ่านนี้ตอนนี้ จะไม่สามารถแสดงได้อีก"
+
 #: src/features/contacts/editor.tsx
 msgid "Saving contact..."
 msgstr "กำลังบันทึกผู้ติดต่อ..."
@@ -2727,6 +2813,10 @@ msgstr "ที่ส่ง ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "เซริฟ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2918,6 +3008,10 @@ msgstr "กล้องกำลังถูกใช้งานอยู่แ
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "คำขอกล้องไม่ได้รับการตอบกลับ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "อุปกรณ์จะไม่สามารถซิงค์รายชื่อผู้ติดต่อได้อีกต่อไป"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -3145,6 +3239,10 @@ msgstr "ใช้พาสคีย์ของคุณ"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "ผู้ใช้"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "ชื่อผู้ใช้"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"

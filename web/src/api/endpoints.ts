@@ -41,6 +41,11 @@ const endpoints = {
   users: {
     search: `${prefix}/users/search`,
   },
+  tokens: {
+    create: `${prefix}/token/create`,
+    list: `${prefix}/token/list`,
+    delete: `${prefix}/token/delete`,
+  },
   groups: {
     list: `${prefix}/groups/list`,
     get: `${prefix}/groups/get`,

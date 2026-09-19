@@ -317,6 +317,10 @@ msgstr "تم حذف دفتر العناوين"
 msgid "Address book renamed"
 msgstr "تمت إعادة تسمية دفتر العناوين"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "عنوان URL لدفتر العناوين"
+
 #: src/features/contacts/editor.tsx
 msgid "Addresses"
 msgstr "العناوين"
@@ -453,6 +457,7 @@ msgstr "صورة {name} الرمزية"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "رجوع"
 
@@ -545,6 +550,7 @@ msgstr "الكاميرا غير متاحة"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -744,9 +750,22 @@ msgstr "تكوين إعدادات العرض"
 msgid "Confirm"
 msgstr "تأكيد"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "ربط جهاز"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "ربط جهاز آخر"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "متصل"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "جارٍ ربط الجهاز..."
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
@@ -798,12 +817,17 @@ msgid "Copied"
 msgstr "تم النسخ"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "تم النسخ إلى الحافظة"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "نسخ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "نسخ {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -838,6 +862,7 @@ msgstr "البلد"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "إنشاء"
 
@@ -870,6 +895,11 @@ msgstr "إنشاء عنصر جديد"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Created"
 msgstr "تم الإنشاء"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "تم الإنشاء {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
@@ -950,6 +980,7 @@ msgstr "الترتيب الافتراضي"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -995,6 +1026,14 @@ msgstr "حذف التعليق"
 #: src/features/contacts/index.tsx
 msgid "Delete contact"
 msgstr "حذف جهة الاتصال"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "حذف الجهاز"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "حذف الجهاز؟"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -1054,6 +1093,10 @@ msgstr "جارٍ حذف دفتر العناوين..."
 msgid "Deleting contact..."
 msgstr "جارٍ حذف جهة الاتصال..."
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "جارٍ حذف الجهاز..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "جارٍ حذف المجموعة..."
@@ -1082,6 +1125,14 @@ msgstr "لوحة التفاصيل"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "اكتشاف من متصفح الويب"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "تم حذف الجهاز"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "اسم الجهاز"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -1120,6 +1171,7 @@ msgstr "لا يطابق النمط المطلوب"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "منتهٍ"
 
@@ -1283,6 +1335,10 @@ msgstr "فشل إلغاء الدعوة"
 msgid "Failed to cancel invitations"
 msgstr "فشل إلغاء الدعوات"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "فشل ربط الجهاز"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
@@ -1334,6 +1390,10 @@ msgstr "فشل حذف التعليق"
 #: src/features/contacts/index.tsx
 msgid "Failed to delete contact"
 msgstr "فشل حذف جهة الاتصال"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "فشل حذف الجهاز"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1720,6 +1780,11 @@ msgstr "اختصارات لوحة المفاتيح"
 msgid "Large"
 msgstr "كبير"
 
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "آخر استخدام {0}"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "التخطيط"
@@ -1788,6 +1853,10 @@ msgstr "جاري تسجيل الخروج…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "إدارة الفئات"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "إدارة الأجهزة"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1918,6 +1987,11 @@ msgstr "تم حفظ الاسم"
 msgid "Network error"
 msgstr "خطأ في الشبكة"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "أبداً"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
@@ -1969,6 +2043,10 @@ msgstr "لا توجد تعليقات بعد"
 #: src/features/contacts/index.tsx
 msgid "No contacts yet"
 msgstr "لا توجد جهات اتصال بعد"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "لا توجد أجهزة مرتبطة."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -2200,6 +2278,10 @@ msgstr "مفاتيح المرور"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
 msgstr "مفاتيح المرور غير متاحة في هذا المتصفح"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "كلمة المرور"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -2559,6 +2641,10 @@ msgstr "حفظ"
 msgid "Save name"
 msgstr "حفظ الاسم"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "احفظ كلمة المرور هذه الآن. لا يمكن عرضها مرة أخرى."
+
 #: src/features/contacts/editor.tsx
 msgid "Saving contact..."
 msgstr "جارٍ حفظ جهة الاتصال..."
@@ -2727,6 +2813,10 @@ msgstr "المُرسل ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "سيريف"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2918,6 +3008,10 @@ msgstr "الكاميرا قيد الاستخدام بالفعل"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "لم تتم الإجابة على طلب الكاميرا"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "لن يتمكن الجهاز من مزامنة جهات الاتصال بعد الآن."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -3145,6 +3239,10 @@ msgstr "استخدم مفتاح المرور الخاص بك"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "المستخدم"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "اسم المستخدم"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"

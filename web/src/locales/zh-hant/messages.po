@@ -317,6 +317,10 @@ msgstr "通訊錄已刪除"
 msgid "Address book renamed"
 msgstr "通訊錄已重新命名"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "通訊錄 URL"
+
 #: src/features/contacts/editor.tsx
 msgid "Addresses"
 msgstr "地址"
@@ -453,6 +457,7 @@ msgstr "{name} 的頭像"
 
 #: ../../../lib/web/src/components/place-picker.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "返回"
 
@@ -545,6 +550,7 @@ msgstr "相機不可用"
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -744,9 +750,22 @@ msgstr "設定檢視"
 msgid "Confirm"
 msgstr "確認"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "連接裝置"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "連接另一部裝置"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "已連結"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "正在連接裝置..."
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
@@ -798,12 +817,17 @@ msgid "Copied"
 msgstr "已複製"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "已複製到剪貼簿"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "複製"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "複製{label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -838,6 +862,7 @@ msgstr "國家/地區"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "建立"
 
@@ -870,6 +895,11 @@ msgstr "建立新項目"
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Created"
 msgstr "已建立"
+
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "建立於 {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
@@ -950,6 +980,7 @@ msgstr "預設排序"
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -995,6 +1026,14 @@ msgstr "刪除留言"
 #: src/features/contacts/index.tsx
 msgid "Delete contact"
 msgstr "刪除聯絡人"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "刪除裝置"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "刪除此裝置？"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -1054,6 +1093,10 @@ msgstr "正在刪除通訊錄..."
 msgid "Deleting contact..."
 msgstr "正在刪除聯絡人..."
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "正在刪除裝置..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "正在刪除群組..."
@@ -1082,6 +1125,14 @@ msgstr "詳細資料面板"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "從網頁瀏覽器偵測"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "裝置已刪除"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "裝置名稱"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -1120,6 +1171,7 @@ msgstr "與所需的模式不符"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "完成"
 
@@ -1283,6 +1335,10 @@ msgstr "取消邀請失敗"
 msgid "Failed to cancel invitations"
 msgstr "無法取消邀請"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "連接裝置失敗"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
@@ -1334,6 +1390,10 @@ msgstr "刪除留言失敗"
 #: src/features/contacts/index.tsx
 msgid "Failed to delete contact"
 msgstr "刪除聯絡人失敗"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "刪除裝置失敗"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1720,6 +1780,11 @@ msgstr "鍵盤快速鍵"
 msgid "Large"
 msgstr "大"
 
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "上次使用 {0}"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "版面"
@@ -1788,6 +1853,10 @@ msgstr "正在登出…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "管理類別"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "管理裝置"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1918,6 +1987,11 @@ msgstr "名稱已儲存"
 msgid "Network error"
 msgstr "網路錯誤"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "永不"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
@@ -1969,6 +2043,10 @@ msgstr "尚無留言"
 #: src/features/contacts/index.tsx
 msgid "No contacts yet"
 msgstr "尚無聯絡人"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "沒有已連接的裝置。"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -2200,6 +2278,10 @@ msgstr "Passkey"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkeys are not available in this browser"
 msgstr "此瀏覽器不支援 Passkey"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "密碼"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
@@ -2559,6 +2641,10 @@ msgstr "儲存"
 msgid "Save name"
 msgstr "儲存名稱"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "請立即儲存此密碼。它無法再次顯示。"
+
 #: src/features/contacts/editor.tsx
 msgid "Saving contact..."
 msgstr "正在儲存聯絡人..."
@@ -2727,6 +2813,10 @@ msgstr "已傳送 ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "襯線體"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2918,6 +3008,10 @@ msgstr "相機已在使用中"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "相機要求未獲回應"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "該裝置將無法再同步聯絡人。"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -3145,6 +3239,10 @@ msgstr "使用您的通行金鑰"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "使用者"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "使用者名稱"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"

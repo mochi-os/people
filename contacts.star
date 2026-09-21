@@ -141,8 +141,18 @@ def book_default(identity):
 	if row:
 		id = row["id"]
 	else:
+		# An identity's first two requests race here - the contacts page loads
+		# its contacts and its books together - and both find no default. The
+		# unique index on (identity, slug) decides: the insert is ignored for the
+		# loser, which drops the entity it made and reads the winner's. Before
+		# this the loser's insert failed the whole request.
 		id = mochi.entity.create("book", mochi.app.label("book.default"), "private")
-		book_insert(identity, id, "default")
+		now = mochi.time.now()
+		mochi.db.execute("insert or ignore into books ( id, identity, slug, version, created, updated ) values ( ?, ?, 'default', 0, ?, ? )", id, identity, now, now)
+		row = mochi.db.row("select id from books where identity=? and slug='default'", identity)
+		if row["id"] != id:
+			mochi.entity.delete(id)
+			id = row["id"]
 	if mochi.db.exists("select id from contacts where identity=? and book=''", identity):
 		mochi.db.execute("update contacts set book=? where identity=? and book=''", id, identity)
 		book_touch(id)

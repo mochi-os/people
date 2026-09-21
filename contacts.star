@@ -55,6 +55,14 @@ _CONTACTS_MAXIMUM = 20000
 # The label shown for a contact, in codepoints.
 _LABEL_MAXIMUM = 500
 
+# A friend's avatar, downscaled, travels on the CardDAV card as PHOTO. Fetched
+# over P2P from the friend's server when the web listing runs, at most this
+# many friends per request and each at most once a day (_FRIEND_NAME_INTERVAL),
+# never from a scheduled pass. The thumbnail is read back through this cap.
+_PHOTO_FETCHES = 3
+_PHOTO_MAXIMUM = 262144
+_PHOTO_EXTENSIONS = {"image/jpeg": "jpg", "image/png": "png", "image/webp": "webp"}
+
 # How long a deletion stays in the change log. A client whose cursor is older
 # than what was pruned is told to start over (see action_contacts_changes).
 _TOMBSTONE_RETENTION = 7776000
@@ -273,8 +281,82 @@ def contacts_full(identity):
 	row = mochi.db.row("select count(*) as count from contacts where identity=?", identity)
 	return row != None and row["count"] >= _CONTACTS_MAXIMUM
 
-def contact_etag(card, person, friend):
-	return mochi.crypto.hash.sha256(json.encode([card, person, friend]))
+# contact_etag(card, person, friend, photo="") -> string: the etag a DAV
+# client compares. The photo stamp joins only when there is one, so a contact
+# without a photo keeps the etag it always had.
+def contact_etag(card, person, friend, photo=""):
+	parts = [card, person, friend]
+	if photo:
+		parts.append(photo)
+	return mochi.crypto.hash.sha256(json.encode(parts))
+
+def photo_path(id, ext):
+	return "photos/" + id + "." + ext
+
+def photo_delete(row):
+	if row.get("photo"):
+		mochi.file.delete(photo_path(row["id"], row["photo"].split(":")[0]))
+
+# photo_fetch(row) -> string or None: fetch the friend's current avatar and
+# store its thumbnail, answering the new stamp ("<ext>:<hash>"), "" when the
+# friend has no avatar any more, or None when nothing changed or the fetch
+# failed. The source is written to file storage only long enough to downscale.
+def photo_fetch(row):
+	s = mochi.remote.stream(row["person"], "people", "avatar", {})
+	if not s:
+		return None
+	header = s.read()
+	if not header:
+		return None
+	if header.get("status") != "200":
+		return "" if row.get("photo") else None
+	ext = _PHOTO_EXTENSIONS.get(header.get("content_type", ""))
+	if not ext:
+		return None
+	declared = header.get("size", 0)
+	if type(declared) in ("int", "float") and declared > _AVATAR_MAX:
+		return None
+	source = "photos/" + row["id"] + "/source." + ext
+	read = s.read.file(source, maximum=_AVATAR_MAX)
+	if read <= 0 or read > _AVATAR_MAX:
+		mochi.file.delete(source)
+		return None
+	name = mochi.image.variant(source, "thumbnail")
+	data = mochi.cache.read(name, maximum=_PHOTO_MAXIMUM) if name else None
+	mochi.file.delete(source)
+	if not data:
+		return None
+	stamp = ext + ":" + mochi.crypto.hash.sha256(data)[:16]
+	if stamp == row.get("photo"):
+		return None
+	photo_delete(row)
+	mochi.file.write(photo_path(row["id"], ext), data)
+	return stamp
+
+# photos_refresh(identity, rows): refresh the photos of the friends among rows
+# whose last attempt is over a day old, a few per request. A change moves the
+# etag and the book version so DAV clients fetch the card again.
+def photos_refresh(identity, rows):
+	stale = mochi.time.now() - _FRIEND_NAME_INTERVAL
+	fetched = 0
+	for row in rows:
+		if fetched >= _PHOTO_FETCHES:
+			break
+		if not row["person"] or row["friend"] != 1 or row.get("photographed", 0) > stale:
+			continue
+		fetched += 1
+		now = mochi.time.now()
+		mochi.db.execute("update contacts set photographed=? where id=?", now, row["id"])
+		stamp = photo_fetch(row)
+		if stamp == None:
+			continue
+		if stamp == "":
+			photo_delete(row)
+		etag = contact_etag(card_decode(row["card"]), row["person"], row["friend"], stamp)
+		mochi.db.execute("update contacts set photo=?, etag=?, updated=? where id=?", stamp, etag, now, row["id"])
+		row["photo"] = stamp
+		row["etag"] = etag
+		book_touch(row["book"], row["id"])
 
 # === Contacts ===
 
@@ -308,8 +390,35 @@ def contact_public(row):
 
 def contact_full(row):
 	out = contact_public(row)
-	out["card"] = card_decode(row["card"])
+	out["card"] = card_photo(row, card_decode(row["card"]))
 	out["etag"] = row["etag"]
+	return out
+
+# card_photo(row, card) -> list: the card with the cached friend photo added
+# as PHOTO, unless the client stored a photo of its own. vCard 3.0 carries it
+# inline base64 with a type; 4.0 as a data URI. The stored card never holds
+# it, so the etag does not depend on the bytes, only on the photo stamp.
+def card_photo(row, card):
+	if not row.get("photo"):
+		return card
+	version = "3.0"
+	for p in card:
+		if type(p) != "dict":
+			continue
+		if p.get("name") == "PHOTO":
+			return card
+		if p.get("name") == "VERSION":
+			version = p.get("value", "3.0")
+	ext = row["photo"].split(":")[0]
+	data = mochi.file.read(photo_path(row["id"], ext), _PHOTO_MAXIMUM)
+	if not data:
+		return card
+	mime = mochi.file.type(photo_path(row["id"], ext))
+	out = list(card)
+	if version == "4.0":
+		out.append({"name": "PHOTO", "params": {}, "value": "data:" + mime + ";base64," + mochi.encode.base64(data)})
+	else:
+		out.append({"name": "PHOTO", "params": {"ENCODING": ["b"], "TYPE": [mime.split("/")[-1].upper()]}, "value": mochi.encode.base64(data)})
 	return out
 
 def friend_projection(row):
@@ -349,14 +458,19 @@ def contact_link(identity, person, name):
 def contact_friend_set(identity, person, friend, name=""):
 	row = contact_link(identity, person, name)
 	card = card_decode(row["card"])
-	etag = contact_etag(card, person, friend)
+	# The cached photo is a friend's; it goes when the friendship does, and
+	# photographed resets so a new friendship fetches it straight away.
+	photo = row.get("photo", "") if friend else ""
+	if not friend:
+		photo_delete(row)
+	etag = contact_etag(card, person, friend, photo)
 	now = mochi.time.now()
 	if name:
 		# The name is the peer's claim: it fills the directory column for now and
 		# refreshed is left alone, so the next listing checks it against the directory.
-		mochi.db.execute("update contacts set friend=?, directory=?, etag=?, updated=? where id=?", friend, name, etag, now, row["id"])
+		mochi.db.execute("update contacts set friend=?, directory=?, photo=?, photographed=0, etag=?, updated=? where id=?", friend, name, photo, etag, now, row["id"])
 	else:
-		mochi.db.execute("update contacts set friend=?, etag=?, updated=? where id=?", friend, etag, now, row["id"])
+		mochi.db.execute("update contacts set friend=?, photo=?, photographed=0, etag=?, updated=? where id=?", friend, photo, etag, now, row["id"])
 	book_touch(row["book"], row["id"])
 	return contact_get(identity, row["id"])
 
@@ -370,6 +484,7 @@ def contact_delete(identity, row):
 		elif mochi.db.exists("select id from invites where identity=? and id=? and direction='to'", identity, person):
 			mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/cancel"})
 		invite_remove(identity, person)
+	photo_delete(row)
 	mochi.db.execute("delete from contacts where id=? and identity=?", row["id"], identity)
 	book_touch(row["book"], row["id"], 1)
 	changes_prune(identity)
@@ -429,6 +544,7 @@ def action_contacts(a):
 		return
 	rows = contacts_rows(identity, book)
 	contacts_refresh(identity, rows)
+	photos_refresh(identity, rows)
 	return {"data": {
 		"contacts": [contact_public(row) for row in rows],
 		"received": invites_received(identity),
@@ -551,7 +667,7 @@ def action_contact_update(a):
 			if contact_by_slug(identity, book, slug):
 				a.error.label(409, "errors.contact_exists")
 				return
-	etag = contact_etag(card, row["person"], row["friend"])
+	etag = contact_etag(card, row["person"], row["friend"], row.get("photo", ""))
 	now = mochi.time.now()
 	mochi.db.execute("update contacts set book=?, slug=?, name=?, card=?, etag=?, updated=? where id=? and identity=? and etag=?",
 		book, slug, name, card_encode(card), etag, now, row["id"], identity, row["etag"])
@@ -987,7 +1103,7 @@ def dav_object(row):
 		card.append({"name": "X-MOCHI-PERSON", "params": {}, "value": row["person"]})
 		if row["friend"] == 1:
 			card.append({"name": "X-MOCHI-FRIEND", "params": {}, "value": "1"})
-	return {"name": row["slug"], "etag": row["etag"], "updated": row["updated"], "card": card}
+	return {"name": row["slug"], "etag": row["etag"], "updated": row["updated"], "card": card_photo(row, card)}
 
 # function_dav_objects(context, identity, collection, names?, data, offset?,
 # limit?): the contacts of a book, or the ones named. Without data only names,
@@ -1097,7 +1213,7 @@ def function_dav_put(context, identity, collection, name, card, match="", absent
 			return {"error": "full"}
 		inserted = contact_insert(identity, book["id"], "", 0, label, "", clean, name)
 		return {"name": name, "etag": inserted["etag"], "updated": inserted["updated"]}
-	etag = contact_etag(clean, row["person"], row["friend"])
+	etag = contact_etag(clean, row["person"], row["friend"], row.get("photo", ""))
 	now = mochi.time.now()
 	mochi.db.execute("update contacts set name=?, card=?, etag=?, updated=? where id=? and identity=? and etag=?",
 		label, card_encode(clean), etag, now, row["id"], identity, row["etag"])
@@ -1211,6 +1327,43 @@ def function_contacts_list(context, identity):
 def function_contacts_get(context, identity, contact):
 	row = contact_get(identity, contact) if identity else None
 	return contact_full(row) if row else None
+
+# function_contacts_birthdays(context, identity) -> list: every contact with a
+# BDAY, as {id, name, month, day, year} with year 0 when the card gives none.
+# The forms vCard allows: 19850412, 1985-04-12, --0412, --04-12, each with an
+# optional time after T.
+def function_contacts_birthdays(context, identity):
+	if not identity:
+		return []
+	out = []
+	for row in contacts_rows(identity):
+		for p in card_decode(row["card"]):
+			if type(p) != "dict" or p.get("name") != "BDAY":
+				continue
+			date = birthday_parse(p.get("value", ""))
+			if date:
+				out.append({"id": row["id"], "name": row["name"] or row["directory"], "year": date[0], "month": date[1], "day": date[2]})
+			break
+	return out
+
+def birthday_parse(value):
+	if type(value) != "string":
+		return None
+	text = value.split("T")[0].strip()
+	year = 0
+	if text.startswith("--"):
+		text = text[2:].replace("-", "")
+		if len(text) != 4 or not text.isdigit():
+			return None
+		month, day = int(text[:2]), int(text[2:])
+	else:
+		text = text.replace("-", "")
+		if len(text) != 8 or not text.isdigit():
+			return None
+		year, month, day = int(text[:4]), int(text[4:6]), int(text[6:])
+	if month < 1 or month > 12 or day < 1 or day > 31:
+		return None
+	return (year, month, day)
 
 def function_contacts_search(context, identity, search):
 	if not identity or type(search) != "string" or not search.strip():

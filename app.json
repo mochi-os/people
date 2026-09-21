@@ -17,7 +17,7 @@
 	"require": {"version": {"minimum": "0.4.228"}},
 
 	"database": {
-		"schema": 12,
+		"schema": 13,
 		"file": "people.db",
 		"create": {"function": "database_create"},
 		"upgrade": {"function": "database_upgrade"},
@@ -122,6 +122,7 @@
 		"contacts/list": {"function": "function_contacts_list", "permission": "contacts/read"},
 		"contacts/get": {"function": "function_contacts_get", "permission": "contacts/read"},
 		"contacts/search": {"function": "function_contacts_search", "permission": "contacts/read"},
+		"contacts/birthdays": {"function": "function_contacts_birthdays", "permission": "contacts/read"},
 		"dav/collections": {"function": "function_dav_collections", "permission": "contacts/read"},
 		"dav/collections/create": {"function": "function_dav_collection_create", "permission": "contacts/read"},
 		"dav/collections/delete": {"function": "function_dav_collection_delete", "permission": "contacts/read"},

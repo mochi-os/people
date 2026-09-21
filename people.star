@@ -21,6 +21,13 @@ def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event=event_id)
 
 def database_upgrade(version):
+	if version == 13:
+		# A friend's cached avatar: photo is "<extension>:<hash>" for the file
+		# at photos/<id>.<extension>, photographed the last fetch attempt.
+		if not [c for c in mochi.db.table("contacts") if c["name"] == "photo"]:
+			mochi.db.execute("alter table contacts add column photo text not null default ''")
+		if not [c for c in mochi.db.table("contacts") if c["name"] == "photographed"]:
+			mochi.db.execute("alter table contacts add column photographed integer not null default 0")
 	if version == 12:
 		# The change log forgets deletions after a retention period; pruned
 		# holds how far, so a cursor from before it resyncs from scratch.
@@ -127,7 +134,7 @@ def database_create():
 	mochi.db.execute("create table if not exists books ( id text not null primary key, identity text not null, slug text not null default '', version integer not null default 0, created integer not null default 0, updated integer not null default 0 )")
 	mochi.db.execute("create index if not exists books_identity on books( identity )")
 	mochi.db.execute("create unique index if not exists books_identity_slug on books( identity, slug )")
-	mochi.db.execute("create table if not exists contacts ( id text not null primary key, book text not null default '', identity text not null, person text not null default '', friend integer not null default 0, name text not null default '', directory text not null default '', card text not null default '[]', etag text not null default '', slug text not null default '', created integer not null default 0, updated integer not null default 0, refreshed integer not null default 0 )")
+	mochi.db.execute("create table if not exists contacts ( id text not null primary key, book text not null default '', identity text not null, person text not null default '', friend integer not null default 0, name text not null default '', directory text not null default '', card text not null default '[]', etag text not null default '', slug text not null default '', photo text not null default '', photographed integer not null default 0, created integer not null default 0, updated integer not null default 0, refreshed integer not null default 0 )")
 	mochi.db.execute("create index if not exists contacts_identity_person on contacts( identity, person )")
 	mochi.db.execute("create index if not exists contacts_book on contacts( book )")
 	mochi.db.execute("create unique index if not exists contacts_book_slug on contacts( book, slug )")

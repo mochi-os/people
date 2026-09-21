@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as AuthenticatedPersonIdRouteImport } from './routes/_authenticated/$personId'
 import { Route as AuthenticatedInvitationsRouteImport } from './routes/_authenticated/invitations'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedBooksIdRouteImport } from './routes/_authenticated/books/$id'
@@ -25,6 +26,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedPersonIdRoute = AuthenticatedPersonIdRouteImport.update({
+  id: '/$personId',
+  path: '/$personId',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedInvitationsRoute =
@@ -62,6 +68,7 @@ const AuthenticatedGroupsIdRoute = AuthenticatedGroupsIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof AuthenticatedIndexRoute
+  '/$personId': typeof AuthenticatedPersonIdRoute
   '/invitations': typeof AuthenticatedInvitationsRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/books/$id': typeof AuthenticatedBooksIdRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/groups/$id': typeof AuthenticatedGroupsIdRoute
 }
 export interface FileRoutesByTo {
+  '/$personId': typeof AuthenticatedPersonIdRoute
   '/invitations': typeof AuthenticatedInvitationsRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/': typeof AuthenticatedIndexRoute
@@ -81,6 +89,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/_authenticated/$personId': typeof AuthenticatedPersonIdRoute
   '/_authenticated/invitations': typeof AuthenticatedInvitationsRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
@@ -93,6 +102,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/$personId'
     | '/invitations'
     | '/profile'
     | '/books/$id'
@@ -101,6 +111,7 @@ export interface FileRouteTypes {
     | '/groups/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/$personId'
     | '/invitations'
     | '/profile'
     | '/'
@@ -111,6 +122,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/_authenticated'
+    | '/_authenticated/$personId'
     | '/_authenticated/invitations'
     | '/_authenticated/profile'
     | '/_authenticated/'
@@ -138,6 +150,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof AuthenticatedIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/$personId': {
+      id: '/_authenticated/$personId'
+      path: '/$personId'
+      fullPath: '/$personId'
+      preLoaderRoute: typeof AuthenticatedPersonIdRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/invitations': {
@@ -186,6 +205,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedPersonIdRoute: typeof AuthenticatedPersonIdRoute
   AuthenticatedInvitationsRoute: typeof AuthenticatedInvitationsRoute
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
@@ -196,6 +216,7 @@ interface AuthenticatedRouteRouteChildren {
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedPersonIdRoute: AuthenticatedPersonIdRoute,
   AuthenticatedInvitationsRoute: AuthenticatedInvitationsRoute,
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,

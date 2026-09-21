@@ -11,7 +11,7 @@ import {
   isInShell,
   ThemeProvider,
   createQueryClient,
-  getRouterBasepath,
+  getAppBasepath,
   I18nProvider,
   type Catalogs,
 } from '@mochi/web'
@@ -185,7 +185,9 @@ const queryClient = createQueryClient()
 const router = createRouter({
   routeTree,
   context: { queryClient },
-  basepath: getRouterBasepath(),
+  // The fingerprint stays out of the basepath: a person's page is the
+  // $personId route, as a repository's is.
+  basepath: getAppBasepath(),
   defaultPreload: false,
 })
 

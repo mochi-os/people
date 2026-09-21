@@ -158,9 +158,11 @@ def book_default(identity):
 		book_touch(id)
 	return id
 
-def book_insert(identity, id, slug):
+# ignore: let the unique index on (identity, slug) settle a race between two
+# creators of the same slug; the caller reads the slug back to learn who won.
+def book_insert(identity, id, slug, ignore=False):
 	now = mochi.time.now()
-	mochi.db.execute("insert into books ( id, identity, slug, version, created, updated ) values ( ?, ?, ?, 0, ?, ? )", id, identity, slug, now, now)
+	mochi.db.execute("insert" + (" or ignore" if ignore else "") + " into books ( id, identity, slug, version, created, updated ) values ( ?, ?, ?, 0, ?, ? )", id, identity, slug, now, now)
 
 def book_public(identity, row, default, counts):
 	return {
@@ -1084,7 +1086,14 @@ def function_dav_collection_create(context, identity, collection, name="", descr
 	if not label or not mochi.text.valid(label, "name"):
 		label = collection
 	id = mochi.entity.create("book", label, "private")
-	book_insert(identity, id, collection)
+	# Two MKCOLs for one slug at once both pass the check above. The unique
+	# index decides; the loser drops the entity it made and answers as a
+	# sequential duplicate would, rather than failing on the constraint.
+	book_insert(identity, id, collection, ignore=True)
+	row = book_by_slug(identity, collection)
+	if row["id"] != id:
+		mochi.entity.delete(id)
+		return {"error": "exists"}
 	return {"slug": collection}
 
 def function_dav_collection_delete(context, identity, collection):

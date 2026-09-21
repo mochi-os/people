@@ -209,81 +209,79 @@ export function GroupDetail() {
                   />
                 </div>
               ) : (
-                <div className='rounded-md border'>
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>
-                          <Trans>Member</Trans>
-                        </TableHead>
-                        <TableHead>
-                          <Trans>Type</Trans>
-                        </TableHead>
-                        <TableHead className='w-[80px] text-end'>
-                          <Trans>Actions</Trans>
-                        </TableHead>
+                <Table bordered={false}>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>
+                        <Trans>Member</Trans>
+                      </TableHead>
+                      <TableHead>
+                        <Trans>Type</Trans>
+                      </TableHead>
+                      <TableHead className='w-[80px] text-end'>
+                        <Trans>Actions</Trans>
+                      </TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {members.map((member) => (
+                      <TableRow key={member.member}>
+                        <TableCell className='font-medium'>
+                          <div className='flex items-center gap-2'>
+                            {member.type === 'user' && (
+                              <EntityAvatar
+                                src={`${appPath}/${member.member}/-/avatar`}
+                                styleUrl={`${appPath}/${member.member}/-/style`}
+                                name={member.name}
+                                size='md'
+                              />
+                            )}
+                            <span className='truncate'>{member.name}</span>
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <div className='flex items-center gap-2'>
+                            {member.type === 'group' ? (
+                              <DataChip
+                                value={t`Group`}
+                                icon={<UsersRound className='size-3.5' />}
+                                copyable={false}
+                              />
+                            ) : (
+                              <DataChip
+                                value={t`User`}
+                                icon={<User className='size-3.5' />}
+                                copyable={false}
+                              />
+                            )}
+                          </div>
+                        </TableCell>
+                        <TableCell className='text-end'>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Button
+                                variant='ghost'
+                                size='icon'
+                                className='text-muted-foreground h-8 w-8'
+                                onClick={() =>
+                                  handleRemoveMember(
+                                    member.member,
+                                    member.name,
+                                    member.type
+                                  )
+                                }
+                                aria-label={t`Remove ${member.name}`}
+                              >
+                                <X className='h-4 w-4' />
+                              </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>{t`Remove ${member.name}`}</TooltipContent>
+                          </Tooltip>
+                        </TableCell>
                       </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {members.map((member) => (
-                        <TableRow key={member.member}>
-                          <TableCell className='font-medium'>
-                            <div className='flex items-center gap-2'>
-                              {member.type === 'user' && (
-                                <EntityAvatar
-                                  src={`${appPath}/${member.member}/-/avatar`}
-                                  styleUrl={`${appPath}/${member.member}/-/style`}
-                                  name={member.name}
-                                  size='md'
-                                />
-                              )}
-                              <span className='truncate'>{member.name}</span>
-                            </div>
-                          </TableCell>
-                          <TableCell>
-                            <div className='flex items-center gap-2'>
-                              {member.type === 'group' ? (
-                                <DataChip
-                                  value={t`Group`}
-                                  icon={<UsersRound className='size-3.5' />}
-                                  copyable={false}
-                                />
-                              ) : (
-                                <DataChip
-                                  value={t`User`}
-                                  icon={<User className='size-3.5' />}
-                                  copyable={false}
-                                />
-                              )}
-                            </div>
-                          </TableCell>
-                          <TableCell className='text-end'>
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <Button
-                                  variant='ghost'
-                                  size='icon'
-                                  className='text-muted-foreground h-8 w-8'
-                                  onClick={() =>
-                                    handleRemoveMember(
-                                      member.member,
-                                      member.name,
-                                      member.type
-                                    )
-                                  }
-                                  aria-label={t`Remove ${member.name}`}
-                                >
-                                  <X className='h-4 w-4' />
-                                </Button>
-                              </TooltipTrigger>
-                              <TooltipContent>{t`Remove ${member.name}`}</TooltipContent>
-                            </Tooltip>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </div>
+                    ))}
+                  </TableBody>
+                </Table>
               )}
             </Section>
           </>

@@ -315,14 +315,14 @@ export function ContactEditor({ id }: { id?: string } = {}) {
                 onChange={(event) => update({ name: event.target.value })}
               />
             </Field>
-            <Field id='contact-given' label={t`Given name`}>
+            <Field id='contact-given' label={t`Forename`}>
               <Input
                 id='contact-given'
                 value={form.given}
                 onChange={(event) => update({ given: event.target.value })}
               />
             </Field>
-            <Field id='contact-family' label={t`Family name`}>
+            <Field id='contact-family' label={t`Surname`}>
               <Input
                 id='contact-family'
                 value={form.family}

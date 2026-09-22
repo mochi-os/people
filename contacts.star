@@ -546,12 +546,7 @@ def body_json(a):
 	return body if type(body) == "dict" else None
 
 def person_input(a):
-	# New actions name the person; the aliases the shipped Android client calls
-	# still send it as id.
-	person = a.input("person")
-	if person == None:
-		person = a.input("id")
-	return person
+	return a.input("person")
 
 # === Actions: contacts ===
 
@@ -910,10 +905,9 @@ def friend_ignore(a, person):
 	invite_remove(identity, person, "from")
 	return {"data": {}}
 
-# friend_remove(a, person, delete): end a friendship or cancel an outgoing
-# invitation. The contact stays unless delete is set (the old -/friends/delete
-# semantics the shipped Android client relies on).
-def friend_remove(a, person, delete):
+# friend_remove(a, person): end a friendship or cancel an outgoing
+# invitation. The contact stays.
+def friend_remove(a, person):
 	identity = a.user.identity.id
 	if not person_valid(a, person, identity):
 		return
@@ -923,12 +917,8 @@ def friend_remove(a, person, delete):
 	elif mochi.db.exists("select id from invites where identity=? and id=? and direction='to'", identity, person):
 		mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/cancel"})
 	invite_remove(identity, person)
-	if row:
-		if delete:
-			mochi.db.execute("delete from contacts where id=? and identity=?", row["id"], identity)
-			book_touch(row["book"])
-		elif row["friend"] == 1:
-			contact_friend_set(identity, person, 0)
+	if row and row["friend"] == 1:
+		contact_friend_set(identity, person, 0)
 	return {"data": {}}
 
 def action_friend_invite(a):
@@ -941,37 +931,7 @@ def action_friend_ignore(a):
 	return friend_ignore(a, person_input(a))
 
 def action_friend_remove(a):
-	return friend_remove(a, person_input(a), False)
-
-# === Compatibility aliases for the -/friends/* routes ===
-# Kept for one release so the shipped Android client keeps working until its
-# own release; the old response shapes are preserved.
-
-def action_friends_alias_list(a):
-	identity = a.user.identity.id
-	book_default(identity)
-	rows = mochi.db.rows("select * from contacts where identity=? and friend=1 order by person", identity)
-	contacts_refresh(identity, rows)
-	friends = []
-	for row in rows:
-		out = friend_projection(row)
-		# The old list carried the directory name; the label is what the user
-		# chose, so a friend renamed on the phone shows that name here too.
-		friends.append(out)
-	return {"data": {
-		"friends": friends,
-		"received": invites_received(identity),
-		"sent": invites_sent(identity),
-	}}
-
-def action_friends_alias_create(a):
-	return friend_invite(a, a.input("id", ""), a.input("name", ""))
-
-def action_friends_alias_delete(a):
-	return friend_remove(a, a.input("id", ""), True)
-
-def action_friends_alias_search(a):
-	return action_contact_search(a)
+	return friend_remove(a, person_input(a))
 
 # === P2P events: the friendship handshake ===
 

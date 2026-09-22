@@ -5,7 +5,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 {
-	"version": "3.2",
+	"version": "3.3",
 	"label": "app.name",
 	"classes": ["person", "book"],
 	"paths": ["people"],
@@ -50,12 +50,6 @@
 		"-/friends/accept": {"function": "action_friend_accept"},
 		"-/friends/ignore": {"function": "action_friend_ignore"},
 		"-/friends/remove": {"function": "action_friend_remove"},
-		// Compatibility aliases for the shipped Android client, kept for one
-		// release: the old routes, inputs named id, and the old response shapes.
-		"-/friends": {"function": "action_friends_alias_list"},
-		"-/friends/create": {"function": "action_friends_alias_create"},
-		"-/friends/delete": {"function": "action_friends_alias_delete"},
-		"-/friends/search": {"function": "action_friends_alias_search"},
 		// CardDAV, served by core's DAV engine over the dav/* functions below:
 		// public because the engine authenticates every request itself, with a
 		// token the token actions mint.

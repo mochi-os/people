@@ -34,6 +34,11 @@ msgstr "(あなた)"
 msgid "[not set]"
 msgstr "[未設定]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, other {# 件の連絡先も一緒に削除されます。}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -65,9 +70,21 @@ msgstr "{count, plural, one {#分} other {#分}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#週間} other {#週間}}"
 
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} の名前"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr ""
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr ""
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -98,9 +115,9 @@ msgstr "12時間"
 msgid "24 hours"
 msgstr "24時間"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "{userName}さんに友達の招待を送信しました。"
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "{name} さんに友達の招待を送信しました。"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +136,8 @@ msgid "Accent saved"
 msgstr "アクセントカラーを保存しました"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "承認"
@@ -132,11 +150,7 @@ msgstr "すべて承認"
 msgid "Accept automatically"
 msgstr "自動的に受け入れる"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "招待を承認"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "招待を承認しています..."
@@ -161,6 +175,11 @@ msgstr "アカウントタイプ"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "操作"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "{0} の操作"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +211,10 @@ msgstr "アクセスを追加"
 msgid "Add account"
 msgstr "アカウントを追加"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "住所を追加"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "キャプションを追加"
@@ -200,22 +223,21 @@ msgstr "キャプションを追加"
 msgid "Add checklist item"
 msgstr "項目を追加"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "連絡先を追加"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "メールアドレスを追加"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "フィールドを追加"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "友だちを追加"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "つながりを始めるために友達を追加"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +262,21 @@ msgstr "メンバーを追加"
 msgid "Add option"
 msgstr "オプションを追加"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "電話番号を追加"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "誰かを追加して始めましょう"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "タグを追加…"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "連絡先に追加"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +300,42 @@ msgstr "ビューを追加"
 msgid "Added {0} to the group"
 msgstr "{0} をグループに追加しました"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "連絡先を追加しています..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "メンバーを追加しています..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "アドレス帳"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "アドレス帳"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "アドレス帳を作成しました"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "アドレス帳を削除しました"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "アドレス帳の名前を変更しました"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "アドレス帳のURL"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "住所"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +344,15 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "利用可能なグループはすべて追加済みです"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "すべての連絡先"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr ""
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +373,6 @@ msgstr "誰でも{entityLabel}を検索できるようにする"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "並べ替えを許可"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "すでに友達"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +430,6 @@ msgstr "本当にログアウトしますか？再度アクセスするにはロ
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "このグループから <0>{0}</0> を削除してもよろしいですか?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "本当に <0>{0}</0> を友達リストから削除しますか？この操作は取り消せません。"
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "本当に投了しますか?"
@@ -406,7 +472,8 @@ msgid "Avatar for {name}"
 msgstr "{name} のアバター"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "戻る"
 
@@ -431,6 +498,10 @@ msgstr "バナーを削除しました"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "バナーを更新しました"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "誕生日"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +565,9 @@ msgstr "カメラを利用できません"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,9 +629,10 @@ msgstr "変更しました"
 msgid "Changed {field}"
 msgstr "{field}を変更しました"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "チャット"
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr ""
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -576,6 +651,10 @@ msgstr "サイドバーからゲームを選ぶか、新しいゲームを始め
 msgid "Choose language"
 msgstr "言語を選択"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "市区町村"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -592,7 +671,7 @@ msgid "Clear all"
 msgstr "すべてクリア"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "検索をクリア"
 
@@ -601,7 +680,7 @@ msgstr "検索をクリア"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "閉じる"
 
@@ -635,6 +714,7 @@ msgid "Collapse sidebar"
 msgstr "サイドバーを折りたたむ"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "色"
 
@@ -685,13 +765,47 @@ msgstr "ビューの設定"
 msgid "Confirm"
 msgstr "確認"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "デバイスを接続"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "別のデバイスを接続"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "接続済み"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "デバイスを接続しています..."
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
 msgstr "接続中..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "連絡先を追加しました"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "連絡先を作成しました"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "連絡先を削除しました"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "連絡先を保存しました"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "連絡先"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -718,12 +832,17 @@ msgid "Copied"
 msgstr "コピーしました"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "クリップボードにコピーしました"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "コピー"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "{label}をコピー"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -749,17 +868,31 @@ msgstr "再認証を開始できませんでした。もう一度お試しくだ
 msgid "Couldn't verify with that account. Please try again."
 msgstr "そのアカウントで確認できませんでした。もう一度お試しください。"
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "国"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "作成"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "{entityLabel}を作成"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "連絡先を作成するか、Mochi で誰かを探しましょう。"
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "アドレス帳を作成"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -778,9 +911,22 @@ msgstr "新しい項目を作成"
 msgid "Created"
 msgstr "作成日"
 
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "作成 {0}"
+
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "{field}を作成しました"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "アドレス帳を作成しています..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "連絡先を作成しています..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -847,10 +993,37 @@ msgstr "デフォルトの並び順"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "削除"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "<0>{0}</0> を削除しますか?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "<0>{0}</0> を削除しますか?友達関係も解除されます。"
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "アドレス帳を削除"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -863,6 +1036,19 @@ msgstr "カラムを削除"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "コメントを削除"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "連絡先を削除"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "デバイスを削除"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "デバイスを削除しますか？"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -913,6 +1099,19 @@ msgstr "削除しました"
 msgid "Deleted {field}"
 msgstr "{field}を削除しました"
 
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "アドレス帳を削除しています..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "連絡先を削除しています..."
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "デバイスを削除しています..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "グループを削除しています..."
@@ -941,6 +1140,14 @@ msgstr "詳細パネル"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "ウェブブラウザから検出"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "デバイスを削除しました"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "デバイス名"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -978,6 +1185,7 @@ msgstr "必要なパターンと一致しません"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "完了"
 
@@ -1002,6 +1210,7 @@ msgstr "ディスレクシア対応"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "編集"
@@ -1013,6 +1222,10 @@ msgstr "{label} を編集"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "キャプションを編集"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "連絡先を編集"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1058,15 +1271,20 @@ msgstr "メールアドレス"
 msgid "Email code"
 msgstr "メールコード"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "追加したい人を見つけるには名前を入力してください"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "メールアドレス"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "<0>{0}</0> との友達関係を解除しますか?連絡先はアドレス帳に残ります。"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "バナーテキストを入力（Markdown対応）…"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "名前を入力して検索..."
 
@@ -1101,6 +1319,7 @@ msgstr "外部 URL"
 msgid "Extra large"
 msgstr "特大"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "招待の承認に失敗しました"
@@ -1113,10 +1332,9 @@ msgstr "招待を承認できませんでした"
 msgid "Failed to add account"
 msgstr "アカウントの追加に失敗しました"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "友達の追加に失敗しました"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "連絡先の追加に失敗しました"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1131,11 +1349,23 @@ msgstr "招待のキャンセルに失敗しました"
 msgid "Failed to cancel invitations"
 msgstr "招待をキャンセルできませんでした"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "デバイスの接続に失敗しました"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "コピーに失敗しました"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "アドレス帳の作成に失敗しました"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "連絡先の作成に失敗しました"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1158,6 +1388,10 @@ msgstr "招待を辞退できませんでした"
 msgid "Failed to delete"
 msgstr "削除に失敗しました"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "アドレス帳の削除に失敗しました"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "添付ファイルの削除に失敗しました"
@@ -1165,6 +1399,15 @@ msgstr "添付ファイルの削除に失敗しました"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "コメントの削除に失敗しました"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "連絡先の削除に失敗しました"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "デバイスの削除に失敗しました"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1223,13 +1466,17 @@ msgstr "移動に失敗しました"
 msgid "Failed to post comment"
 msgstr "コメントの投稿に失敗しました"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "友だちの削除に失敗しました"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "メンバーの削除に失敗しました"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "アドレス帳の名前変更に失敗しました"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1248,6 +1495,10 @@ msgstr "保存に失敗しました"
 msgid "Failed to save accent"
 msgstr "アクセントカラーの保存に失敗しました"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "連絡先の保存に失敗しました"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "名前の保存に失敗しました"
@@ -1263,6 +1514,11 @@ msgstr "プロフィールの保存に失敗しました"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "プロンプトの保存に失敗しました"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "招待の送信に失敗しました"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1284,6 +1540,10 @@ msgstr "追跡の更新に失敗しました"
 msgid "Failed to upload attachment"
 msgstr "添付ファイルのアップロードに失敗しました"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "姓"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "ファビコン"
@@ -1297,6 +1557,10 @@ msgstr "ファイルが大きすぎます"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "ファイル"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Mochi で探す"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1314,14 +1578,16 @@ msgstr "フラット"
 msgid "Friday"
 msgstr "金曜日"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "友達"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "友達を削除しました"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "友だち"
 
@@ -1336,6 +1602,10 @@ msgstr "差出元"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "テーマから"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "名"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1403,6 +1673,11 @@ msgstr "履歴"
 msgid "Home"
 msgstr "ホーム"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "自宅"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "人気"
@@ -1423,6 +1698,10 @@ msgstr "画像ビューアー: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "ヤード・ポンド法"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "連絡先に登録済み"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1452,7 +1731,7 @@ msgstr "興味"
 msgid "Invalid date"
 msgstr "無効な日付"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "招待を承認しました"
@@ -1465,8 +1744,8 @@ msgstr "招待をキャンセルしました"
 msgid "Invitation declined"
 msgstr "招待を拒否しました"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "招待を送信しました"
 
@@ -1474,6 +1753,11 @@ msgstr "招待を送信しました"
 #: src/features/invitations/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitations"
+msgstr "招待"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
 msgstr "招待"
 
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -1484,6 +1768,10 @@ msgstr "招待ポリシーを更新しました"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "招待設定"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "招待済み"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1505,6 +1793,11 @@ msgstr "キーボードショートカット"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "大"
+
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "最終使用 {0}"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
@@ -1575,6 +1868,10 @@ msgstr "ログアウトしています…"
 msgid "Manage categories"
 msgstr "カテゴリを管理"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "デバイスを管理"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "手動"
@@ -1622,6 +1919,7 @@ msgid "Menu"
 msgstr "メニュー"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "メッセージ"
 
@@ -1636,6 +1934,11 @@ msgstr "マイクの権限が拒否されました"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "最小長"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "携帯"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1661,18 +1964,22 @@ msgstr "移動しました"
 msgid "Moved {field}"
 msgstr "{field}を移動しました"
 
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "名前"
-
-#: src/features/friends/index.tsx
-msgid "Name (A–Z)"
-msgstr "名前 (A–Z)"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
@@ -1696,10 +2003,20 @@ msgstr "名前を保存しました"
 msgid "Network error"
 msgstr "ネットワークエラー"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "なし"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "新規"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "新しい連絡先"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -1714,6 +2031,14 @@ msgstr "新しい招待はここに表示されます"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "次の画像"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Next month"
+msgstr ""
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "ニックネーム"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1735,9 +2060,13 @@ msgstr "バナーが設定されていません"
 msgid "No comments yet"
 msgstr "まだコメントがありません"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "まだ友だちがいません"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "まだ連絡先がありません"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "接続されているデバイスはありません。"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1769,7 +2098,7 @@ msgstr "保留中の招待はありません"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "人が見つかりません"
@@ -1778,7 +2107,7 @@ msgstr "人が見つかりません"
 msgid "No places found"
 msgstr "場所が見つかりません"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "\"{search}\" の結果はありません"
 
@@ -1850,6 +2179,10 @@ msgstr "見つかりません"
 msgid "Not set"
 msgstr "未設定"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "メモ"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "何も見つかりませんでした"
@@ -1872,6 +2205,10 @@ msgstr "数値"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "オン"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Mochi 利用中"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1921,7 +2258,16 @@ msgstr "説明（任意）"
 msgid "Options"
 msgstr "オプション"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "組織"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "その他"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "その他"
 
@@ -1953,6 +2299,10 @@ msgstr "パスキー"
 msgid "Passkeys are not available in this browser"
 msgstr "このブラウザではパスキーを利用できません"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "パスワード"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "パターン (正規表現)"
@@ -1965,6 +2315,10 @@ msgstr "保留中"
 #: src/components/layout/people-layout.tsx
 msgid "People"
 msgstr "ピープル"
+
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "電話番号"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -1980,6 +2334,10 @@ msgstr "もう一度お試しください。"
 msgid "Please wait a moment and try again."
 msgstr "しばらくしてからもう一度お試しください。"
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "郵便番号"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "投稿"
@@ -1992,15 +2350,19 @@ msgstr "投稿とコメント"
 msgid "Preview"
 msgstr "プレビュー"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "友達リクエストを送る前に{0}のプロフィールをプレビュー。"
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "友達の招待を送る前に {0} さんのプロフィールを確認してください。"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Previous image"
 msgstr "前の画像"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Previous month"
+msgstr ""
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2060,7 +2422,7 @@ msgstr "このサーバーでパスキーを再登録してください"
 msgid "Received ({0})"
 msgstr "受信 ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "最近追加"
 
@@ -2088,6 +2450,10 @@ msgstr "ログイン画面にリダイレクトしています。"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "関心を下げる"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "都道府県"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2120,10 +2486,7 @@ msgstr "関連度 {relevance}、関心度 {weight}"
 msgid "Remove"
 msgstr "削除"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2155,10 +2518,13 @@ msgstr "「{0}」のアクセスルールを削除しますか？"
 msgid "Remove access?"
 msgstr "アクセスを削除しますか?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "友達を削除"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "住所を削除"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "メールアドレスを削除"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2179,7 +2545,11 @@ msgstr "リンクを削除"
 msgid "Remove member"
 msgstr "メンバーを削除"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "電話番号を削除"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "友達を削除しています..."
 
@@ -2189,8 +2559,13 @@ msgstr "メンバーを削除しています..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "名前を変更"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "アドレス帳の名前を変更"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2199,6 +2574,15 @@ msgstr "列の名前を変更"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "このボード列の名前を変更"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "アドレス帳の名前を変更しています..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2274,6 +2658,8 @@ msgstr "土曜日"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2285,6 +2671,14 @@ msgstr "保存"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "名前を保存"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "このパスワードを今すぐ保存してください。再表示することはできません。"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "連絡先を保存しています..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2303,6 +2697,10 @@ msgstr "保存中..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "検索"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "連絡先を検索"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2323,14 +2721,6 @@ msgstr "目的地を検索…"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "出発地を検索…"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "人を検索して友達リクエストを送信。"
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "友達を検索"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2354,7 +2744,7 @@ msgstr "このビューを検索、ウォッチ、並べ替えします。"
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "検索…"
@@ -2432,7 +2822,7 @@ msgstr "再送信"
 msgid "Send email"
 msgstr "メールを送信"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "招待を送信"
 
@@ -2441,7 +2831,8 @@ msgstr "招待を送信"
 msgid "Send message"
 msgstr "メッセージを送信"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "招待を送信しています..."
 
@@ -2453,6 +2844,10 @@ msgstr "送信済み ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "セリフ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2549,9 +2944,9 @@ msgstr "ゆったり"
 msgid "Start the discussion by adding the first comment."
 msgstr "最初のコメントを追加してディスカッションを始めましょう。"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "ユーザーを検索するには入力を始めてください"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "入力して人を検索します"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2561,6 +2956,10 @@ msgstr "ウォッチを停止"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "サイレントで保存"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "番地"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2629,7 +3028,7 @@ msgstr "送信できませんでした。ファイルが大きすぎるか、接
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "サイズが大きすぎてアップロードできませんでした。ファイルを削除するか縮小して、もう一度お試しください。"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "それはあなたです"
 
@@ -2640,6 +3039,10 @@ msgstr "カメラは既に使用中です"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "カメラの要求に応答がありませんでした"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "このデバイスは連絡先を同期できなくなります。"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -2672,6 +3075,11 @@ msgstr "この操作でゲームとそのチャットが完全に削除されま
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "木曜日"
+
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "役職"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2712,13 +3120,9 @@ msgstr "トップ"
 msgid "Travelling"
 msgstr "移動中"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "別の名前を試してください"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "別の検索語を試してください"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2739,6 +3143,8 @@ msgstr "火曜日"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "タイプ"
@@ -2782,6 +3188,12 @@ msgstr "利用不可"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "予期しない API エラー"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "友達を解除"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2843,6 +3255,10 @@ msgstr "アップロードの進行状況"
 msgid "Uploading..."
 msgstr "アップロード中..."
 
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
 msgstr "パスキーを使用"
@@ -2854,6 +3270,10 @@ msgstr "パスキーを使用"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "ユーザー"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "ユーザー名"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"
@@ -2920,6 +3340,11 @@ msgstr "<0>{0}</0> に確認コードを送信しました。メールアドレ�
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "水曜日"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "勤務先"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

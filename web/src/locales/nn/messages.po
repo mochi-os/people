@@ -34,6 +34,11 @@ msgstr "(deg)"
 msgid "[not set]"
 msgstr "[ikkje sett]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {# kontakt blir sletta samstundes.} other {# kontaktar blir sletta samstundes.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -65,9 +70,21 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#v} other {#v}}"
 
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel}-namn"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr ""
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr ""
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -98,9 +115,9 @@ msgstr "12 timar"
 msgid "24 hours"
 msgstr "24 timar"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "Ein venneinvitasjon er sendt til {userName}."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "Ein venneinvitasjon er sendt til {name}."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +136,8 @@ msgid "Accent saved"
 msgstr "Aksent lagra"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "Godta"
@@ -132,11 +150,7 @@ msgstr "Godta alle"
 msgid "Accept automatically"
 msgstr "Godta automatisk"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "Godta invitasjon"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "Godtek invitasjonen..."
@@ -161,6 +175,11 @@ msgstr "Kontotype"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "Handlingar"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "Handlingar for {0}"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +211,10 @@ msgstr "Legg til tilgang"
 msgid "Add account"
 msgstr "Legg til konto"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "Legg til adresse"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Legg til bilettekst"
@@ -200,22 +223,21 @@ msgstr "Legg til bilettekst"
 msgid "Add checklist item"
 msgstr "Legg til sjekklisteelement"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "Legg til kontakt"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "Legg til e-post"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Legg til felt"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "Legg til ven"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "Legg til vener for å kople deg til andre"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +262,21 @@ msgstr "Legg til medlem"
 msgid "Add option"
 msgstr "Legg til val"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "Legg til telefon"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "Legg til nokon for å kome i gang"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Legg til etikett..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "Legg til i kontaktar"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +300,42 @@ msgstr "Legg til visning"
 msgid "Added {0} to the group"
 msgstr "La {0} til i gruppa"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "Legg til kontakt..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Legg til medlem..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "adressebok"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "Adressebok"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "Adressebok oppretta"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "Adressebok sletta"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "Adresseboka fekk nytt namn"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "URL til adresseboka"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "Adresser"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +344,15 @@ msgstr "KI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "Alle tilgjengelege grupper er allereie lagde til"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "Alle kontaktar"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr ""
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +373,6 @@ msgstr "La kven som helst søkja etter {entityLabel}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Tillat sortering etter"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "Allereie vener"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +430,6 @@ msgstr "Er du sikker på at du vil logge ut? Du må logge inn att for å få til
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Er du sikker på at du vil fjerne <0>{0}</0> frå denne gruppa?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "Er du sikker på at du vil fjerne <0>{0}</0> frå vennelista di? Denne handlinga kan ikkje angrast."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "Er du sikker på at du vil gje opp?"
@@ -406,7 +472,8 @@ msgid "Avatar for {name}"
 msgstr "Avatar for {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "Tilbake"
 
@@ -431,6 +498,10 @@ msgstr "Banner fjerna"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Banner oppdatert"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "Fødselsdag"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +565,9 @@ msgstr "Kamera ikkje tilgjengeleg"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,9 +629,10 @@ msgstr "Endra"
 msgid "Changed {field}"
 msgstr "Endra {field}"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "Prat"
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr ""
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -576,6 +651,10 @@ msgstr "Vel eit spel frå sidestolpen eller start eit nytt."
 msgid "Choose language"
 msgstr "Vel språk"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "By"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -592,7 +671,7 @@ msgid "Clear all"
 msgstr "Tøm alle"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "Tøm søk"
 
@@ -601,7 +680,7 @@ msgstr "Tøm søk"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "Lat att"
 
@@ -635,6 +714,7 @@ msgid "Collapse sidebar"
 msgstr "Klapp saman sidestolpen"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "Farge"
 
@@ -685,13 +765,47 @@ msgstr "Set opp visningsinnstillingar"
 msgid "Confirm"
 msgstr "Stadfest"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Kople til ei eining"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Kople til ei eining til"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Tilkopla"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Koplar til eining..."
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
 msgstr "Koplar til..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "Kontakt lagt til"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "Kontakt oppretta"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "Kontakt sletta"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "Kontakt lagra"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "Kontaktar"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -718,12 +832,17 @@ msgid "Copied"
 msgstr "Kopiert"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Kopiert til utklippstavla"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopier"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "Kopier {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -749,17 +868,31 @@ msgstr "Klarte ikkje å starte ny autentisering. Prøv igjen."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Klarte ikkje å stadfeste med den kontoen. Prøv igjen."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "Land"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "Opprett"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "Opprett {entityLabel}"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "Opprett ein kontakt, eller finn nokon på Mochi."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "Opprett adressebok"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -778,9 +911,22 @@ msgstr "Opprett nytt element"
 msgid "Created"
 msgstr "Oppretta"
 
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Oppretta {0}"
+
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "Oppretta {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "Opprettar adressebok..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "Opprettar kontakt..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -847,10 +993,37 @@ msgstr "Standardsortering"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "Slett"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "Slette <0>{0}</0>?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "Slette <0>{0}</0>? Dette avsluttar òg vennskapet dykkar."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "Slett adressebok"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -863,6 +1036,19 @@ msgstr "Slett kolonne"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "Slett kommentar"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "Slett kontakt"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Slett eining"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Slette eining?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -913,6 +1099,19 @@ msgstr "Sletta"
 msgid "Deleted {field}"
 msgstr "Sletta {field}"
 
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "Slettar adressebok..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "Slettar kontakt..."
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Slettar eining..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "Slettar gruppe..."
@@ -941,6 +1140,14 @@ msgstr "Detaljpanel"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Oppdag frå nettlesaren"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Eining sletta"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "Einingsnamn"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -978,6 +1185,7 @@ msgstr "Samsvarar ikkje med det påkravde mønsteret"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "Ferdig"
 
@@ -1002,6 +1210,7 @@ msgstr "Dyslektikarvenleg"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Rediger"
@@ -1013,6 +1222,10 @@ msgstr "Rediger {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Rediger bileteksten"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "Rediger kontakt"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1058,15 +1271,20 @@ msgstr "E-post"
 msgid "Email code"
 msgstr "E-postkode"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "Skriv inn eit namn for å finna folk du vil leggja til"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "E-postadresser"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "Avslutte vennskapet med <0>{0}</0>? Kontakten blir verande i adresseboka di."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "Skriv inn bannertekst (markdown er støtta)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "Skriv inn namn for å søkja..."
 
@@ -1101,6 +1319,7 @@ msgstr "Ekstern URL"
 msgid "Extra large"
 msgstr "Ekstra stor"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "Klarte ikkje godta invitasjon"
@@ -1113,10 +1332,9 @@ msgstr "Klarte ikkje å godta invitasjonane"
 msgid "Failed to add account"
 msgstr "Klarte ikkje leggja til konto"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "Klarte ikkje leggja til venn"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "Klarte ikkje leggja til kontakt"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1131,11 +1349,23 @@ msgstr "Klarte ikkje avbryta invitasjon"
 msgid "Failed to cancel invitations"
 msgstr "Klarte ikkje å avbryte invitasjonane"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Klarte ikkje kople til eininga"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "Klarte ikkje kopiera"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "Klarte ikkje oppretta adressebok"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "Klarte ikkje oppretta kontakt"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1158,6 +1388,10 @@ msgstr "Klarte ikkje å avvise invitasjonane"
 msgid "Failed to delete"
 msgstr "Klarte ikkje sletta"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "Klarte ikkje sletta adressebok"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "Klarte ikkje sletta vedlegg"
@@ -1165,6 +1399,15 @@ msgstr "Klarte ikkje sletta vedlegg"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "Klarte ikkje sletta kommentar"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "Klarte ikkje sletta kontakt"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Klarte ikkje sletta eininga"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1223,13 +1466,17 @@ msgstr "Kunne ikkje flytte"
 msgid "Failed to post comment"
 msgstr "Klarte ikkje posta kommentar"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Klarte ikkje fjerna venn"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "Klarte ikkje fjerna medlem"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "Klarte ikkje gje adresseboka nytt namn"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1248,6 +1495,10 @@ msgstr "Klarte ikkje lagra"
 msgid "Failed to save accent"
 msgstr "Klarte ikkje lagra aksent"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "Klarte ikkje lagra kontakt"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "Klarte ikkje lagra namn"
@@ -1263,6 +1514,11 @@ msgstr "Klarte ikkje lagra profil"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "Klarte ikkje lagra forespurnad"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "Klarte ikkje senda invitasjon"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1284,6 +1540,10 @@ msgstr "Kunne ikkje oppdatere overvaking"
 msgid "Failed to upload attachment"
 msgstr "Klarte ikkje lasta opp vedlegg"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "Etternamn"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1297,6 +1557,10 @@ msgstr "Fila er for stor"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "Filer"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Finn på Mochi"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1314,14 +1578,16 @@ msgstr "Flat"
 msgid "Friday"
 msgstr "Fredag"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "Ven"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Vennen vart fjerna"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "Vener"
 
@@ -1336,6 +1602,10 @@ msgstr "Frå"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Frå tema"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "Fornamn"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1403,6 +1673,11 @@ msgstr "Historikk"
 msgid "Home"
 msgstr "Heim"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "Heim"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "Het"
@@ -1423,6 +1698,10 @@ msgstr "Biletvisar: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperial"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "I kontaktar"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1452,7 +1731,7 @@ msgstr "Interesser"
 msgid "Invalid date"
 msgstr "Ugyldig dato"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "Invitasjon godteken"
@@ -1465,8 +1744,8 @@ msgstr "Invitasjon avbroten"
 msgid "Invitation declined"
 msgstr "Invitasjon avslegen"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Invitasjon sendt"
 
@@ -1476,6 +1755,11 @@ msgstr "Invitasjon sendt"
 msgid "Invitations"
 msgstr "Invitasjonar"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "Inviter"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "Invitasjonsregel oppdatert"
@@ -1484,6 +1768,10 @@ msgstr "Invitasjonsregel oppdatert"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "Invitasjonsinnstillingar"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "Invitert"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1505,6 +1793,11 @@ msgstr "Snøggtastar"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Stor"
+
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Sist nytta {0}"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
@@ -1575,6 +1868,10 @@ msgstr "Loggar ut…"
 msgid "Manage categories"
 msgstr "Handsam kategoriar"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Administrer einingar"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Manuell"
@@ -1622,6 +1919,7 @@ msgid "Menu"
 msgstr "Meny"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Melding"
 
@@ -1636,6 +1934,11 @@ msgstr "Mikrofonløyve nekta"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "Minste lengd"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "Mobil"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1661,18 +1964,22 @@ msgstr "Flytta"
 msgid "Moved {field}"
 msgstr "Flytta {field}"
 
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Namn"
-
-#: src/features/friends/index.tsx
-msgid "Name (A–Z)"
-msgstr "Namn (A–Å)"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
@@ -1696,10 +2003,20 @@ msgstr "Namn lagra"
 msgid "Network error"
 msgstr "Nettverksfeil"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "Aldri"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Ny"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "Ny kontakt"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -1714,6 +2031,14 @@ msgstr "Nye invitasjonar vil dukka opp her"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "Neste bilete"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Next month"
+msgstr ""
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "Kallenamn"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1735,9 +2060,13 @@ msgstr "Inga banner sett"
 msgid "No comments yet"
 msgstr "Ingen kommentarar enno"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "Ingen vener enno"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "Ingen kontaktar enno"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Ingen einingar tilkopla."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1769,7 +2098,7 @@ msgstr "Ingen invitasjonar som ventar"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "Ingen personar funne"
@@ -1778,7 +2107,7 @@ msgstr "Ingen personar funne"
 msgid "No places found"
 msgstr "Ingen stader funne"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "Ingen treff for «{search}»"
 
@@ -1850,6 +2179,10 @@ msgstr "Ikkje funnen"
 msgid "Not set"
 msgstr "Ikkje sett"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "Notat"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "Ingenting funne"
@@ -1872,6 +2205,10 @@ msgstr "Tal"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "På"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "På Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1921,7 +2258,16 @@ msgstr "Valfri skildring"
 msgid "Options"
 msgstr "Alternativ"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "Organisasjon"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Anna"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "Anna"
 
@@ -1953,6 +2299,10 @@ msgstr "Tilgangsnøklar"
 msgid "Passkeys are not available in this browser"
 msgstr "Nyklar er ikkje tilgjengelege i denne nettlesaren"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "Passord"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Mønster (regex)"
@@ -1965,6 +2315,10 @@ msgstr "Ventar"
 #: src/components/layout/people-layout.tsx
 msgid "People"
 msgstr "Personar"
+
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "Telefonnummer"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -1980,6 +2334,10 @@ msgstr "Prøv igjen."
 msgid "Please wait a moment and try again."
 msgstr "Vent eit augeblink og prøv igjen."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "Postnummer"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Innlegg"
@@ -1992,15 +2350,19 @@ msgstr "Innlegg og kommentarar"
 msgid "Preview"
 msgstr "Førehandsvising"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "Førehandsvis profilen til {0} før du sender venneførespurnad."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "Sjå profilen til {0} før du sender ein venneinvitasjon."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Previous image"
 msgstr "Førre bilete"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Previous month"
+msgstr ""
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2060,7 +2422,7 @@ msgstr "Registrer tilgangsnøklane dine på nytt på denne tenaren"
 msgid "Received ({0})"
 msgstr "Motteke ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "Nyleg lagt til"
 
@@ -2088,6 +2450,10 @@ msgstr "Omdirigerer til innlogging."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "Reduser interesse"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "Region"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2120,10 +2486,7 @@ msgstr "Relevans {relevance}, interesse {weight}"
 msgid "Remove"
 msgstr "Fjern"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2155,10 +2518,13 @@ msgstr "Fjerne tilgangsregel for «{0}»?"
 msgid "Remove access?"
 msgstr "Fjern tilgang?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "Fjern ven"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "Fjern adresse"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "Fjern e-post"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2179,7 +2545,11 @@ msgstr "Fjern lenkja"
 msgid "Remove member"
 msgstr "Fjern medlem"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "Fjern telefon"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Fjernar venn..."
 
@@ -2189,8 +2559,13 @@ msgstr "Fjernar medlem..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "Døyp om"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "Gje adresseboka nytt namn"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2199,6 +2574,15 @@ msgstr "Døyp om kolonne"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "Døyp om denne tavlekolonna"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "Gjev adresseboka nytt namn..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2274,6 +2658,8 @@ msgstr "Laurdag"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2285,6 +2671,14 @@ msgstr "Lagre"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "Lagre namnet"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Lagre dette passordet no. Det kan ikkje visast igjen."
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "Lagrar kontakt..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2303,6 +2697,10 @@ msgstr "Lagrar..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "Søk"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "Søk i kontaktar"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2323,14 +2721,6 @@ msgstr "Søk etter destinasjon..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "Søk etter opphav..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "Søk etter folk og send venneførespurnad."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "Søk i vener"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2354,7 +2744,7 @@ msgstr "Søk, sjå på og sorter denne visninga."
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Søk..."
@@ -2432,7 +2822,7 @@ msgstr "Send igjen"
 msgid "Send email"
 msgstr "Send e-post"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "Send invitasjon"
 
@@ -2441,7 +2831,8 @@ msgstr "Send invitasjon"
 msgid "Send message"
 msgstr "Send melding"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Sender invitasjonen..."
 
@@ -2453,6 +2844,10 @@ msgstr "Sendt ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "Serif"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2549,9 +2944,9 @@ msgstr "Romsleg"
 msgid "Start the discussion by adding the first comment."
 msgstr "Start diskusjonen ved å leggje til den første kommentaren."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "Begynn å skrive for å søkje etter brukarar"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "Byrj å skrive for å søkja etter personar"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2561,6 +2956,10 @@ msgstr "Slutt å sjå på"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "Lagre stille"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "Gate"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2629,7 +3028,7 @@ msgstr "Det kunne ikkje sendast. Filene kan vere for store, eller tilkoplinga sv
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Det var for stort til å laste opp. Fjern eller forminsk filer og prøv igjen."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "Det er deg"
 
@@ -2640,6 +3039,10 @@ msgstr "Kameraet er allereie i bruk"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Kameraførespurnaden vart ikkje svara på"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "Eininga vil ikkje lenger kunne synkronisera kontaktar."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -2672,6 +3075,11 @@ msgstr "Dette slettar spelet og praten permanent. Denne handlinga kan ikkje angr
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Torsdag"
+
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "Stilling"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2712,13 +3120,9 @@ msgstr "Topp"
 msgid "Travelling"
 msgstr "Reiser"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "Prøv eit anna namn"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "Prøv eit anna søkjeord"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2739,6 +3143,8 @@ msgstr "Tysdag"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "Type"
@@ -2782,6 +3188,12 @@ msgstr "Ikkje tilgjengeleg"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Uventa API-feil"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "Avslutt vennskap"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2843,6 +3255,10 @@ msgstr "Framdrift for opplasting"
 msgid "Uploading..."
 msgstr "Lastar opp..."
 
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
 msgstr "Bruk tilgangsnøkkelen din"
@@ -2854,6 +3270,10 @@ msgstr "Bruk tilgangsnøkkelen din"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "Brukar"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "Brukarnamn"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"
@@ -2920,6 +3340,11 @@ msgstr "Vi sende ein stadfestingskode til <0>{0}</0>. Skriv inn koden nedanfor f
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "Onsdag"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "Jobb"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

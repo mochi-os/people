@@ -34,6 +34,11 @@ msgstr "(ਤੁਸੀਂ)"
 msgid "[not set]"
 msgstr "[ਸੈੱਟ ਨਹੀਂ]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {ਇਸ ਨਾਲ # ਸੰਪਰਕ ਵੀ ਮਿਟ ਜਾਵੇਗਾ।} other {ਇਸ ਨਾਲ # ਸੰਪਰਕ ਵੀ ਮਿਟ ਜਾਣਗੇ।}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -65,9 +70,21 @@ msgstr "{count, plural, one {#ਮਿ} other {#ਮਿ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ਹ} other {#ਹ}}"
 
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} ਨਾਮ"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr ""
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr ""
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -98,9 +115,9 @@ msgstr "12 ਘੰਟੇ"
 msgid "24 hours"
 msgstr "24 ਘੰਟੇ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "{userName} ਨੂੰ ਦੋਸਤ ਬਣਨ ਦਾ ਸੱਦਾ ਭੇਜਿਆ ਗਿਆ ਹੈ।"
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "{name} ਨੂੰ ਦੋਸਤੀ ਦਾ ਸੱਦਾ ਭੇਜ ਦਿੱਤਾ ਗਿਆ ਹੈ।"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +136,8 @@ msgid "Accent saved"
 msgstr "ਉਚਾਰ ਸੰਭਾਲਿਆ ਗਿਆ"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "ਸਵੀਕਾਰ ਕਰੋ"
@@ -132,11 +150,7 @@ msgstr "ਸਭ ਸਵੀਕਾਰ ਕਰੋ"
 msgid "Accept automatically"
 msgstr "ਆਪਣੇ ਆਪ ਸਵੀਕਾਰ ਕਰੋ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "ਸੱਦਾ ਸਵੀਕਾਰ ਕਰੋ"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "ਸੱਦਾ ਸਵੀਕਾਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ..."
@@ -161,6 +175,11 @@ msgstr "ਖਾਤੇ ਦੀ ਕਿਸਮ"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "ਕਾਰਵਾਈਆਂ"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "{0} ਲਈ ਕਾਰਵਾਈਆਂ"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +211,10 @@ msgstr "ਪਹੁੰਚ ਜੋੜੋ"
 msgid "Add account"
 msgstr "ਖਾਤਾ ਜੋੜੋ"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "ਪਤਾ ਜੋੜੋ"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "ਕੈਪਸ਼ਨ ਜੋੜੋ"
@@ -200,22 +223,21 @@ msgstr "ਕੈਪਸ਼ਨ ਜੋੜੋ"
 msgid "Add checklist item"
 msgstr "ਚੈੱਕਲਿਸਟ ਆਈਟਮ ਜੋੜੋ"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "ਸੰਪਰਕ ਜੋੜੋ"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "ਈਮੇਲ ਜੋੜੋ"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "ਖੇਤਰ ਜੋੜੋ"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "ਦੋਸਤ ਜੋੜੋ"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "ਕਨੈਕਟ ਕਰਨ ਲਈ ਦੋਸਤ ਸ਼ਾਮਲ ਕਰੋ"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +262,21 @@ msgstr "ਮੈਂਬਰ ਜੋੜੋ"
 msgid "Add option"
 msgstr "ਵਿਕਲਪ ਜੋੜੋ"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "ਫ਼ੋਨ ਜੋੜੋ"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਕਿਸੇ ਨੂੰ ਜੋੜੋ"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ਟੈਗ ਜੋੜੋ..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "ਸੰਪਰਕਾਂ ਵਿੱਚ ਜੋੜੋ"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +300,42 @@ msgstr "ਦ੍ਰਿਸ਼ ਜੋੜੋ"
 msgid "Added {0} to the group"
 msgstr "ਸਮੂਹ ਵਿੱਚ {0} ਜੋੜਿਆ ਗਿਆ"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "ਸੰਪਰਕ ਜੋੜਿਆ ਜਾ ਰਿਹਾ ਹੈ..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "ਮੈਂਬਰ ਜੋੜਿਆ ਜਾ ਰਿਹਾ ਹੈ..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "ਪਤਾ ਕਿਤਾਬ"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "ਪਤਾ ਕਿਤਾਬ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "ਪਤਾ ਕਿਤਾਬ ਬਣਾਈ ਗਈ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "ਪਤਾ ਕਿਤਾਬ ਮਿਟਾਈ ਗਈ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "ਪਤਾ ਕਿਤਾਬ ਦਾ ਨਾਮ ਬਦਲਿਆ ਗਿਆ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "ਪਤਾ ਕਿਤਾਬ ਦਾ URL"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "ਪਤੇ"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +344,15 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "ਸਾਰੇ ਉਪਲਬਧ ਸਮੂਹ ਪਹਿਲਾਂ ਹੀ ਜੋੜੇ ਜਾ ਚੁੱਕੇ ਹਨ"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "ਸਾਰੇ ਸੰਪਰਕ"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr ""
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +373,6 @@ msgstr "ਕਿਸੇ ਨੂੰ ਵੀ {entityLabel} ਖੋਜਣ ਦੀ ਆਗ�
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "ਇਸ ਅਨੁਸਾਰ ਛਾਂਟਣ ਦੀ ਆਗਿਆ ਦਿਓ"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "ਪਹਿਲਾਂ ਹੀ ਦੋਸਤ"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +430,6 @@ msgstr "ਕੀ ਤੁਸੀਂ ਯਕੀਨੀ ਹੋ ਕਿ ਤੁਸੀਂ ਲ
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "ਕੀ ਤੁਸੀਂ ਯਕੀਨੀ ਹੋ ਕਿ ਤੁਸੀਂ <0>{0}</0> ਨੂੰ ਇਸ ਗਰੁੱਪ ਵਿੱਚੋਂ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "ਕੀ ਤੁਸੀਂ ਯਕੀਨੀ ਹੋ ਕਿ ਆਪਣੀ ਦੋਸਤ ਸੂਚੀ ਤੋਂ <0>{0}</0> ਨੂੰ ਹਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ? ਇਸ ਕਾਰਵਾਈ ਨੂੰ ਵਾਪਸ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ।"
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "ਕੀ ਤੁਸੀਂ ਪੱਕਾ ਹਾਰ ਮੰਨਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
@@ -406,7 +472,8 @@ msgid "Avatar for {name}"
 msgstr "{name} ਲਈ ਅਵਤਾਰ"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "ਵਾਪਸ"
 
@@ -431,6 +498,10 @@ msgstr "ਬੈਨਰ ਹਟਾ ਦਿੱਤਾ"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "ਬੈਨਰ ਅਪਡੇਟ ਕੀਤਾ"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "ਜਨਮਦਿਨ"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +565,9 @@ msgstr "ਕੈਮਰਾ ਉਪਲਬਧ ਨਹੀਂ"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,9 +629,10 @@ msgstr "ਬਦਲਿਆ ਗਿਆ"
 msgid "Changed {field}"
 msgstr "{field} ਬਦਲਿਆ ਗਿਆ"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "ਚੈਟ"
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr ""
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -576,6 +651,10 @@ msgstr "ਸਾਈਡਬਾਰ ਤੋਂ ਇੱਕ ਖੇਡ ਚੁਣੋ ਜਾ�
 msgid "Choose language"
 msgstr "ਭਾਸ਼ਾ ਚੁਣੋ"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "ਸ਼ਹਿਰ"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -592,7 +671,7 @@ msgid "Clear all"
 msgstr "ਸਭ ਸਾਫ਼ ਕਰੋ"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "ਖੋਜ ਸਾਫ਼ ਕਰੋ"
 
@@ -601,7 +680,7 @@ msgstr "ਖੋਜ ਸਾਫ਼ ਕਰੋ"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "ਬੰਦ ਕਰੋ"
 
@@ -635,6 +714,7 @@ msgid "Collapse sidebar"
 msgstr "ਸਾਈਡਬਾਰ ਸੰਕੁਚਿਤ ਕਰੋ"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "ਰੰਗ"
 
@@ -685,13 +765,47 @@ msgstr "ਦ੍ਰਿਸ਼ ਸੈਟਿੰਗਾਂ ਕੌਨਫਿਗਰ ਕਰ
 msgid "Confirm"
 msgstr "ਪੁਸ਼ਟੀ ਕਰੋ"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "ਡਿਵਾਈਸ ਕਨੈਕਟ ਕਰੋ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "ਹੋਰ ਡਿਵਾਈਸ ਕਨੈਕਟ ਕਰੋ"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "ਜੁੜਿਆ"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "ਡਿਵਾਈਸ ਕਨੈਕਟ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ..."
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
 msgstr "ਕਨੈਕਟ ਹੋ ਰਿਹਾ ਹੈ..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "ਸੰਪਰਕ ਜੋੜਿਆ ਗਿਆ"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "ਸੰਪਰਕ ਬਣਾਇਆ ਗਿਆ"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "ਸੰਪਰਕ ਮਿਟਾਇਆ ਗਿਆ"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "ਸੰਪਰਕ ਸੰਭਾਲਿਆ ਗਿਆ"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "ਸੰਪਰਕ"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -718,12 +832,17 @@ msgid "Copied"
 msgstr "ਕਾਪੀ ਕੀਤਾ ਗਿਆ"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਹੋਇਆ"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "ਕਾਪੀ ਕਰੋ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "{label} ਕਾਪੀ ਕਰੋ"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -749,17 +868,31 @@ msgstr "ਮੁੜ-ਪ੍ਰਮਾਣੀਕਰਨ ਸ਼ੁਰੂ ਨਹੀਂ �
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ਉਸ ਖਾਤੇ ਨਾਲ ਪੁਸ਼ਟੀ ਨਹੀਂ ਕੀਤੀ ਜਾ ਸਕੀ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "ਦੇਸ਼"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "ਬਣਾਓ"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "{entityLabel} ਬਣਾਓ"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "ਸੰਪਰਕ ਬਣਾਓ, ਜਾਂ Mochi ਉੱਤੇ ਕਿਸੇ ਨੂੰ ਲੱਭੋ।"
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "ਪਤਾ ਕਿਤਾਬ ਬਣਾਓ"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -778,9 +911,22 @@ msgstr "ਨਵੀਂ ਆਈਟਮ ਬਣਾਓ"
 msgid "Created"
 msgstr "ਬਣਾਇਆ ਗਿਆ"
 
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "ਬਣਾਇਆ {0}"
+
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "{field} ਬਣਾਇਆ ਗਿਆ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "ਪਤਾ ਕਿਤਾਬ ਬਣਾਈ ਜਾ ਰਹੀ ਹੈ..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "ਸੰਪਰਕ ਬਣਾਇਆ ਜਾ ਰਿਹਾ ਹੈ..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -847,10 +993,37 @@ msgstr "ਡਿਫਾਲਟ ਛਾਂਟ"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "ਮਿਟਾਓ"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "<0>{0}</0> ਨੂੰ ਮਿਟਾਉਣਾ ਹੈ?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "<0>{0}</0> ਨੂੰ ਮਿਟਾਉਣਾ ਹੈ? ਇਸ ਨਾਲ ਤੁਹਾਡੀ ਦੋਸਤੀ ਵੀ ਖ਼ਤਮ ਹੋ ਜਾਵੇਗੀ।"
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "ਪਤਾ ਕਿਤਾਬ ਮਿਟਾਓ"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -863,6 +1036,19 @@ msgstr "ਕਾਲਮ ਮਿਟਾਓ"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "ਟਿੱਪਣੀ ਮਿਟਾਓ"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "ਸੰਪਰਕ ਮਿਟਾਓ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "ਡਿਵਾਈਸ ਮਿਟਾਓ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "ਡਿਵਾਈਸ ਮਿਟਾਉਣੀ ਹੈ?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -913,6 +1099,19 @@ msgstr "ਮਿਟਾਇਆ ਗਿਆ"
 msgid "Deleted {field}"
 msgstr "{field} ਮਿਟਾਇਆ ਗਿਆ"
 
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "ਪਤਾ ਕਿਤਾਬ ਮਿਟਾਈ ਜਾ ਰਹੀ ਹੈ..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "ਸੰਪਰਕ ਮਿਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ..."
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "ਡਿਵਾਈਸ ਮਿਟਾਈ ਜਾ ਰਹੀ ਹੈ..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "ਗਰੁੱਪ ਮਿਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ..."
@@ -941,6 +1140,14 @@ msgstr "ਵੇਰਵੇ ਪੈਨਲ"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "ਵੈੱਬ ਬ੍ਰਾਊਜ਼ਰ ਤੋਂ ਪਛਾਣੋ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "ਡਿਵਾਈਸ ਮਿਟਾਈ ਗਈ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "ਡਿਵਾਈਸ ਦਾ ਨਾਮ"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -978,6 +1185,7 @@ msgstr "ਲੋੜੀਂਦੇ ਪੈਟਰਨ ਨਾਲ ਮੇਲ ਨਹੀਂ �
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "ਹੋ ਗਿਆ"
 
@@ -1002,6 +1210,7 @@ msgstr "ਡਿਸਲੈਕਸੀਆ-ਅਨੁਕੂਲ"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "ਸੰਪਾਦਿਤ ਕਰੋ"
@@ -1013,6 +1222,10 @@ msgstr "{label} ਸੰਪਾਦਿਤ ਕਰੋ"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "ਕੈਪਸ਼ਨ ਸੰਪਾਦਿਤ ਕਰੋ"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "ਸੰਪਰਕ ਸੰਪਾਦਿਤ ਕਰੋ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1058,15 +1271,20 @@ msgstr "ਈਮੇਲ"
 msgid "Email code"
 msgstr "ਈਮੇਲ ਕੋਡ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "ਜਿਨ੍ਹਾਂ ਲੋਕਾਂ ਨੂੰ ਤੁਸੀਂ ਜੋੜਨਾ ਚਾਹੁੰਦੇ ਹੋ ਉਨ੍ਹਾਂ ਨੂੰ ਲੱਭਣ ਲਈ ਨਾਮ ਦਾਖਲ ਕਰੋ"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "ਈਮੇਲਾਂ"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "<0>{0}</0> ਨਾਲ ਦੋਸਤੀ ਖ਼ਤਮ ਕਰਨੀ ਹੈ? ਸੰਪਰਕ ਤੁਹਾਡੀ ਪਤਾ ਕਿਤਾਬ ਵਿੱਚ ਰਹੇਗਾ।"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "ਬੈਨਰ ਟੈਕਸਟ ਦਰਜ ਕਰੋ (ਮਾਰਕਡਾਊਨ ਸਮਰਥਿਤ)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "ਖੋਜਣ ਲਈ ਨਾਮ ਦਾਖਲ ਕਰੋ..."
 
@@ -1101,6 +1319,7 @@ msgstr "ਬਾਹਰੀ URL"
 msgid "Extra large"
 msgstr "ਵਾਧੂ ਵੱਡਾ"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "ਸੱਦਾ ਸਵੀਕਾਰ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
@@ -1113,10 +1332,9 @@ msgstr "ਸੱਦੇ ਸਵੀਕਾਰ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 msgid "Failed to add account"
 msgstr "ਖਾਤਾ ਜੋੜਨ ਵਿੱਚ ਅਸਫਲ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "ਦੋਸਤ ਜੋੜਨ ਵਿੱਚ ਅਸਫਲ"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "ਸੰਪਰਕ ਜੋੜਨ ਵਿੱਚ ਅਸਫਲ"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1131,11 +1349,23 @@ msgstr "ਸੱਦਾ ਰੱਦ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 msgid "Failed to cancel invitations"
 msgstr "ਸੱਦੇ ਰੱਦ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "ਡਿਵਾਈਸ ਕਨੈਕਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "ਕਾਪੀ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "ਪਤਾ ਕਿਤਾਬ ਬਣਾਉਣ ਵਿੱਚ ਅਸਫਲ"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "ਸੰਪਰਕ ਬਣਾਉਣ ਵਿੱਚ ਅਸਫਲ"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1158,6 +1388,10 @@ msgstr "ਸੱਦੇ ਅਸਵੀਕਾਰ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 msgid "Failed to delete"
 msgstr "ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "ਪਤਾ ਕਿਤਾਬ ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "ਅਟੈਚਮੈਂਟ ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
@@ -1165,6 +1399,15 @@ msgstr "ਅਟੈਚਮੈਂਟ ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "ਟਿੱਪਣੀ ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "ਸੰਪਰਕ ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "ਡਿਵਾਈਸ ਮਿਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1223,13 +1466,17 @@ msgstr "ਹਿਲਾਉਣ ਵਿੱਚ ਅਸਫਲ"
 msgid "Failed to post comment"
 msgstr "ਟਿੱਪਣੀ ਪੋਸਟ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "ਦੋਸਤ ਹਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "ਮੈਂਬਰ ਹਟਾਉਣ ਵਿੱਚ ਅਸਫਲ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "ਪਤਾ ਕਿਤਾਬ ਦਾ ਨਾਮ ਬਦਲਣ ਵਿੱਚ ਅਸਫਲ"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1248,6 +1495,10 @@ msgstr "ਸੁਰੱਖਿਅਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 msgid "Failed to save accent"
 msgstr "ਐਕਸੈਂਟ ਸੁਰੱਖਿਅਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "ਸੰਪਰਕ ਸੰਭਾਲਣ ਵਿੱਚ ਅਸਫਲ"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "ਨਾਮ ਸੁਰੱਖਿਅਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
@@ -1263,6 +1514,11 @@ msgstr "ਪ੍ਰੋਫਾਈਲ ਸੁਰੱਖਿਅਤ ਕਰਨ ਵਿੱਚ
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "ਪ੍ਰੋਮਪਟ ਸੁਰੱਖਿਅਤ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "ਸੱਦਾ ਭੇਜਣ ਵਿੱਚ ਅਸਫਲ"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1284,6 +1540,10 @@ msgstr "ਨਿਗਰਾਨੀ ਅੱਪਡੇਟ ਕਰਨ ਵਿੱਚ ਅਸ�
 msgid "Failed to upload attachment"
 msgstr "ਅਟੈਚਮੈਂਟ ਅੱਪਲੋਡ ਕਰਨ ਵਿੱਚ ਅਸਫਲ"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "ਆਖ਼ਰੀ ਨਾਮ"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "ਫੇਵੀਕਨ"
@@ -1297,6 +1557,10 @@ msgstr "ਫਾਈਲ ਬਹੁਤ ਵੱਡੀ ਹੈ"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "ਫਾਈਲਾਂ"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Mochi ਉੱਤੇ ਲੱਭੋ"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1314,14 +1578,16 @@ msgstr "ਸਮਤਲ"
 msgid "Friday"
 msgstr "ਸ਼ੁੱਕਰਵਾਰ"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "ਦੋਸਤ"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "ਦੋਸਤ ਹਟਾਇਆ ਗਿਆ"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "ਦੋਸਤ"
 
@@ -1336,6 +1602,10 @@ msgstr "ਤੋਂ"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "ਥੀਮ ਤੋਂ"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "ਪਹਿਲਾ ਨਾਮ"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1403,6 +1673,11 @@ msgstr "ਇਤਿਹਾਸ"
 msgid "Home"
 msgstr "ਮੁੱਖ"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "ਘਰ"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "ਪ੍ਰਸਿੱਧ"
@@ -1423,6 +1698,10 @@ msgstr "ਚਿੱਤਰ ਦਰਸ਼ਕ: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "ਇੰਪੀਰੀਅਲ"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "ਸੰਪਰਕਾਂ ਵਿੱਚ"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1452,7 +1731,7 @@ msgstr "ਦਿਲਚਸਪੀਆਂ"
 msgid "Invalid date"
 msgstr "ਅਯੋਗ ਮਿਤੀ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "ਸੱਦਾ ਸਵੀਕਾਰ ਕੀਤਾ ਗਿਆ"
@@ -1465,8 +1744,8 @@ msgstr "ਸੱਦਾ ਰੱਦ ਕੀਤਾ ਗਿਆ"
 msgid "Invitation declined"
 msgstr "ਸੱਦਾ ਅਸਵੀਕਾਰ ਕੀਤਾ ਗਿਆ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "ਸੱਦਾ ਭੇਜਿਆ ਗਿਆ"
 
@@ -1476,6 +1755,11 @@ msgstr "ਸੱਦਾ ਭੇਜਿਆ ਗਿਆ"
 msgid "Invitations"
 msgstr "ਸੱਦੇ"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "ਸੱਦਾ ਦਿਓ"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "ਸੱਦਾ ਨੀਤੀ ਅੱਪਡੇਟ ਹੋਈ"
@@ -1484,6 +1768,10 @@ msgstr "ਸੱਦਾ ਨੀਤੀ ਅੱਪਡੇਟ ਹੋਈ"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "ਸੱਦਾ ਸੈਟਿੰਗਾਂ"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "ਸੱਦਾ ਭੇਜਿਆ"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1506,6 +1794,11 @@ msgstr "ਕੀਬੋਰਡ ਸ਼ਾਰਟਕੱਟ"
 msgid "Large"
 msgstr "ਵੱਡਾ"
 
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "ਆਖਰੀ ਵਰਤੋਂ {0}"
+
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
 msgstr "ਚੈਟ ਛੱਡ ਦਿੱਤੀ"
@@ -1516,7 +1809,7 @@ msgstr "ਸਿਰਫ਼ ਅੱਖਰ, ਅੰਕ, ਖਾਲੀ ਥਾਂਵਾਂ
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Light"
-msgstr "ਲਿਸਟਿੰਗ ਮਿਟਾਈ ਗਈ"
+msgstr "ਲਾਈਟ"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Link"
@@ -1528,7 +1821,7 @@ msgstr "ਲਿੰਕ"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "List"
-msgstr "ਲਿਸਟਿੰਗ ਪ੍ਰਕਾਸ਼ਿਤ ਕੀਤੀ ਗਈ"
+msgstr "ਸੂਚੀ"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
@@ -1552,7 +1845,7 @@ msgstr "ਆਪਣੇ ਈਮੇਲ ਪਤੇ ਨਾਲ ਲਾਗਇਨ ਕਰੋ"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Loading..."
-msgstr "ਲਾਗਇਨ ਕੀਤਾ"
+msgstr "ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ..."
 
 #: ../../../lib/web/src/components/sign-out-dialog.tsx
 #: ../../../lib/web/src/components/sign-out-dialog.tsx
@@ -1574,6 +1867,10 @@ msgstr "ਲੌਗ ਆਊਟ ਹੋ ਰਿਹਾ ਹੈ…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "ਸ਼੍ਰੇਣੀਆਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "ਡਿਵਾਈਸਾਂ ਦਾ ਪ੍ਰਬੰਧ ਕਰੋ"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1622,6 +1919,7 @@ msgid "Menu"
 msgstr "ਮੇਨੂ"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "ਸੁਨੇਹਾ"
 
@@ -1636,6 +1934,11 @@ msgstr "ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਇਜਾਜ਼ਤ ਤੋਂ ਇਨਕ
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "ਘੱਟੋ-ਘੱਟ ਲੰਬਾਈ"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "ਮੋਬਾਈਲ"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1661,18 +1964,22 @@ msgstr "ਮੂਵ ਕੀਤਾ ਗਿਆ"
 msgid "Moved {field}"
 msgstr "{field} ਮੂਵ ਕੀਤਾ ਗਿਆ"
 
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "ਨਾਮ"
-
-#: src/features/friends/index.tsx
-msgid "Name (A–Z)"
-msgstr "ਨਾਮ (A–Z)"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
@@ -1696,10 +2003,20 @@ msgstr "ਨਾਮ ਸੇਵ ਹੋ ਗਿਆ"
 msgid "Network error"
 msgstr "ਨੈੱਟਵਰਕ ਗੜਬੜ"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "ਕਦੇ ਨਹੀਂ"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "ਨਵਾਂ"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "ਨਵਾਂ ਸੰਪਰਕ"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -1714,6 +2031,14 @@ msgstr "ਨਵੇਂ ਸੱਦੇ ਇੱਥੇ ਦਿਖਾਈ ਦੇਣਗੇ"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "ਅਗਲੀ ਤਸਵੀਰ"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Next month"
+msgstr ""
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "ਉਪਨਾਮ"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1735,9 +2060,13 @@ msgstr "ਕੋਈ ਬੈਨਰ ਸੈੱਟ ਨਹੀਂ"
 msgid "No comments yet"
 msgstr "ਅਜੇ ਕੋਈ ਟਿੱਪਣੀ ਨਹੀਂ"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "ਅਜੇ ਕੋਈ ਦੋਸਤ ਨਹੀਂ"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "ਅਜੇ ਕੋਈ ਸੰਪਰਕ ਨਹੀਂ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "ਕੋਈ ਡਿਵਾਈਸ ਕਨੈਕਟ ਨਹੀਂ ਹੈ।"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1769,7 +2098,7 @@ msgstr "ਕੋਈ ਬਕਾਇਆ ਸੱਦੇ ਨਹੀਂ"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "ਕੋਈ ਲੋਕ ਨਹੀਂ ਮਿਲੇ"
@@ -1778,7 +2107,7 @@ msgstr "ਕੋਈ ਲੋਕ ਨਹੀਂ ਮਿਲੇ"
 msgid "No places found"
 msgstr "ਕੋਈ ਸਥਾਨ ਨਹੀਂ ਮਿਲੇ"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "\"{search}\" ਲਈ ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ"
 
@@ -1850,6 +2179,10 @@ msgstr "ਨਹੀਂ ਮਿਲਿਆ"
 msgid "Not set"
 msgstr "ਸੈੱਟ ਨਹੀਂ"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "ਨੋਟ"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "ਕੁਝ ਨਹੀਂ ਮਿਲਿਆ"
@@ -1872,6 +2205,10 @@ msgstr "ਨੰਬਰ"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "ਚਾਲੂ"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Mochi ਉੱਤੇ"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1921,7 +2258,16 @@ msgstr "ਵਿਕਲਪਿਕ ਵੇਰਵਾ"
 msgid "Options"
 msgstr "ਵਿਕਲਪ"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "ਸੰਸਥਾ"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "ਹੋਰ"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "ਹੋਰ"
 
@@ -1953,6 +2299,10 @@ msgstr "ਪਾਸਕੀਆਂ"
 msgid "Passkeys are not available in this browser"
 msgstr "ਇਸ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਪਾਸਕੀਆਂ ਉਪਲਬਧ ਨਹੀਂ ਹਨ"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "ਪਾਸਵਰਡ"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "ਪੈਟਰਨ (regex)"
@@ -1965,6 +2315,10 @@ msgstr "ਬਕਾਇਆ"
 #: src/components/layout/people-layout.tsx
 msgid "People"
 msgstr "ਲੋਕ"
+
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "ਫ਼ੋਨ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -1980,6 +2334,10 @@ msgstr "ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ �
 msgid "Please wait a moment and try again."
 msgstr "ਕਿਰਪਾ ਕਰਕੇ ਥੋੜ੍ਹੀ ਦੇਰ ਉਡੀਕ ਕਰੋ ਅਤੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "ਪੋਸਟਕੋਡ"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "ਪੋਸਟਾਂ"
@@ -1992,15 +2350,19 @@ msgstr "ਪੋਸਟਾਂ ਅਤੇ ਟਿੱਪਣੀਆਂ"
 msgid "Preview"
 msgstr "ਪ੍ਰੀਵਿਊ"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "ਦੋਸਤੀ ਬੇਨਤੀ ਭੇਜਣ ਤੋਂ ਪਹਿਲਾਂ {0} ਦੀ ਪ੍ਰੋਫਾਈਲ ਦੀ ਝਲਕ ਦੇਖੋ।"
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "ਦੋਸਤੀ ਦਾ ਸੱਦਾ ਭੇਜਣ ਤੋਂ ਪਹਿਲਾਂ {0} ਦਾ ਪ੍ਰੋਫਾਈਲ ਵੇਖੋ।"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Previous image"
 msgstr "ਪਿਛਲੀ ਤਸਵੀਰ"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Previous month"
+msgstr ""
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2060,7 +2422,7 @@ msgstr "ਇਸ ਸਰਵਰ 'ਤੇ ਆਪਣੀਆਂ ਪਾਸਕੀਆਂ ਮ
 msgid "Received ({0})"
 msgstr "ਪ੍ਰਾਪਤ ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "ਹਾਲ ਹੀ ਵਿੱਚ ਸ਼ਾਮਲ ਕੀਤਾ"
 
@@ -2088,6 +2450,10 @@ msgstr "ਲੌਗਇਨ 'ਤੇ ਰੀਡਾਇਰੈਕਟ ਕਰ ਰਿਹਾ 
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "ਦਿਲਚਸਪੀ ਘਟਾਓ"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "ਖੇਤਰ"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2120,10 +2486,7 @@ msgstr "ਸੰਬੰਧਿਤਤਾ {relevance}, ਦਿਲਚਸਪੀ {weight}"
 msgid "Remove"
 msgstr "ਹਟਾਓ"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2155,10 +2518,13 @@ msgstr "\"{0}\" ਲਈ ਪਹੁੰਚ ਨਿਯਮ ਹਟਾਈਏ?"
 msgid "Remove access?"
 msgstr "ਪਹੁੰਚ ਹਟਾਏ?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "ਦੋਸਤ ਹਟਾਓ"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "ਪਤਾ ਹਟਾਓ"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "ਈਮੇਲ ਹਟਾਓ"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2179,7 +2545,11 @@ msgstr "ਲਿੰਕ ਹਟਾਓ"
 msgid "Remove member"
 msgstr "ਮੈਂਬਰ ਹਟਾਓ"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "ਫ਼ੋਨ ਹਟਾਓ"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "ਦੋਸਤ ਹਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ..."
 
@@ -2189,8 +2559,13 @@ msgstr "ਮੈਂਬਰ ਹਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "ਨਾਮ ਬਦਲੋ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "ਪਤਾ ਕਿਤਾਬ ਦਾ ਨਾਮ ਬਦਲੋ"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2199,6 +2574,15 @@ msgstr "ਕਾਲਮ ਦਾ ਨਾਮ ਬਦਲੋ"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "ਇਸ ਬੋਰਡ ਕਾਲਮ ਦਾ ਨਾਮ ਬਦਲੋ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "ਪਤਾ ਕਿਤਾਬ ਦਾ ਨਾਮ ਬਦਲਿਆ ਜਾ ਰਿਹਾ ਹੈ..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2274,6 +2658,8 @@ msgstr "ਸ਼ਨੀਵਾਰ"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2285,6 +2671,14 @@ msgstr "ਸੰਭਾਲੋ"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "ਨਾਮ ਸੰਭਾਲੋ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "ਇਹ ਪਾਸਵਰਡ ਹੁਣੇ ਸੰਭਾਲੋ। ਇਹ ਦੁਬਾਰਾ ਨਹੀਂ ਦਿਖਾਇਆ ਜਾ ਸਕਦਾ।"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "ਸੰਪਰਕ ਸੰਭਾਲਿਆ ਜਾ ਰਿਹਾ ਹੈ..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2303,6 +2697,10 @@ msgstr "ਸੰਭਾਲ ਰਿਹਾ ਹੈ..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "ਖੋਜ"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "ਸੰਪਰਕ ਖੋਜੋ"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2323,14 +2721,6 @@ msgstr "ਮੰਜ਼ਿਲ ਖੋਜੋ..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "ਮੁੱਢ ਖੋਜੋ..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "ਲੋਕਾਂ ਨੂੰ ਖੋਜੋ ਅਤੇ ਦੋਸਤੀ ਬੇਨਤੀ ਭੇਜੋ।"
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "ਦੋਸਤ ਖੋਜੋ"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2354,7 +2744,7 @@ msgstr "ਇਸ ਦ੍ਰਿਸ਼ ਨੂੰ ਖੋਜੋ, ਦੇਖੋ, ਅਤ�
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "ਖੋਜੋ..."
@@ -2432,7 +2822,7 @@ msgstr "ਫਿਰ ਭੇਜੋ"
 msgid "Send email"
 msgstr "ਈਮੇਲ ਭੇਜੋ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "ਸੱਦਾ ਭੇਜੋ"
 
@@ -2441,7 +2831,8 @@ msgstr "ਸੱਦਾ ਭੇਜੋ"
 msgid "Send message"
 msgstr "ਸੁਨੇਹਾ ਭੇਜੋ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "ਸੱਦਾ ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ..."
 
@@ -2453,6 +2844,10 @@ msgstr "ਭੇਜਿਆ ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "ਸੈਰੀਫ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2549,9 +2944,9 @@ msgstr "ਵਿਸ਼ਾਲ"
 msgid "Start the discussion by adding the first comment."
 msgstr "ਪਹਿਲੀ ਟਿੱਪਣੀ ਜੋੜ ਕੇ ਚਰਚਾ ਸ਼ੁਰੂ ਕਰੋ।"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "ਉਪਭੋਗਤਾਵਾਂ ਨੂੰ ਖੋਜਣ ਲਈ ਟਾਈਪ ਕਰਨਾ ਸ਼ੁਰੂ ਕਰੋ"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "ਲੋਕਾਂ ਨੂੰ ਲੱਭਣ ਲਈ ਟਾਈਪ ਕਰਨਾ ਸ਼ੁਰੂ ਕਰੋ"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2561,6 +2956,10 @@ msgstr "ਦੇਖਣਾ ਬੰਦ ਕਰੋ"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "ਚੁੱਪ-ਚਾਪ ਸਟੋਰ ਕਰੋ"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "ਗਲੀ"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2629,7 +3028,7 @@ msgstr "ਭੇਜਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ। ਫਾਈਲਾਂ �
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "ਅੱਪਲੋਡ ਕਰਨ ਲਈ ਬਹੁਤ ਵੱਡਾ ਸੀ। ਫਾਈਲਾਂ ਹਟਾਓ ਜਾਂ ਛੋਟੀਆਂ ਕਰੋ ਅਤੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "ਉਹ ਤੁਸੀਂ ਹੋ"
 
@@ -2640,6 +3039,10 @@ msgstr "ਕੈਮਰਾ ਪਹਿਲਾਂ ਹੀ ਵਰਤੋਂ ਵਿੱਚ �
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "ਕੈਮਰਾ ਬੇਨਤੀ ਦਾ ਜਵਾਬ ਨਹੀਂ ਮਿਲਿਆ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "ਡਿਵਾਈਸ ਹੁਣ ਸੰਪਰਕ ਸਿੰਕ ਨਹੀਂ ਕਰ ਸਕੇਗੀ।"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -2672,6 +3075,11 @@ msgstr "ਇਹ ਗੇਮ ਅਤੇ ਇਸਦੀ ਚੈਟ ਨੂੰ ਸਥਾਈ
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "ਵੀਰਵਾਰ"
+
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "ਅਹੁਦਾ"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2712,13 +3120,9 @@ msgstr "ਉੱਪਰ"
 msgid "Travelling"
 msgstr "ਯਾਤਰਾ ਕਰ ਰਿਹਾ ਹੈ"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "ਕੋਈ ਹੋਰ ਨਾਮ ਅਜ਼ਮਾਓ"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "ਵੱਖਰੀ ਖੋਜ ਸ਼ਬਦ ਅਜ਼ਮਾਓ"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2739,6 +3143,8 @@ msgstr "ਮੰਗਲਵਾਰ"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "ਕਿਸਮ"
@@ -2782,6 +3188,12 @@ msgstr "ਅਣਉਪਲਬਧ"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "ਅਚਾਨਕ API ਗਲਤੀ"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "ਦੋਸਤੀ ਖ਼ਤਮ ਕਰੋ"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2843,6 +3255,10 @@ msgstr "ਅੱਪਲੋਡ ਪ੍ਰਗਤੀ"
 msgid "Uploading..."
 msgstr "ਅੱਪਲੋਡ ਹੋ ਰਿਹਾ ਹੈ..."
 
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
 msgstr "ਆਪਣੀ ਪਾਸਕੀ ਵਰਤੋ"
@@ -2854,6 +3270,10 @@ msgstr "ਆਪਣੀ ਪਾਸਕੀ ਵਰਤੋ"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "ਉਪਭੋਗਤਾ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "ਉਪਭੋਗਤਾ ਨਾਮ"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"
@@ -2920,6 +3340,11 @@ msgstr "ਅਸੀਂ <0>{0}</0> 'ਤੇ ਇੱਕ ਤਸਦੀਕ ਕੋਡ ਭ�
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "ਬੁੱਧਵਾਰ"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "ਕੰਮ"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

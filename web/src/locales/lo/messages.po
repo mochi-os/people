@@ -34,6 +34,11 @@ msgstr "(ທ່ານ)"
 msgid "[not set]"
 msgstr "[ບໍ່ໄດ້ຕັ້ງຄ່າ]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, other {ຜູ້ຕິດຕໍ່ # ລາຍຈະຖືກລຶບໄປນຳ.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -65,9 +70,21 @@ msgstr "{count, plural, one {#ນທ} other {#ນທ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ອທ} other {#ອທ}}"
 
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "ຊື່ {entityLabel}"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr ""
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr ""
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -98,9 +115,9 @@ msgstr "12 ຊົ່ວໂມງ"
 msgid "24 hours"
 msgstr "24 ຊົ່ວໂມງ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "ໄດ້ສົ່ງຄຳເຊີນເປັນໝູ່ໄປຫາ {userName} ແລ້ວ."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "ສົ່ງຄຳເຊີນເປັນໝູ່ຫາ {name} ແລ້ວ."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +136,8 @@ msgid "Accent saved"
 msgstr "ບັນທຶກສີເນັ້ນແລ້ວ"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "ຍອມຮັບ"
@@ -132,11 +150,7 @@ msgstr "ຍອມຮັບທັງໝົດ"
 msgid "Accept automatically"
 msgstr "ຍອມຮັບອັດຕະໂນມັດ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "ຍອມຮັບຄຳເຊີນ"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "ກຳລັງຮັບເອົາຄຳເຊີນ..."
@@ -161,6 +175,11 @@ msgstr "ປະເພດບັນຊີ"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "ການກະທຳ"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "ການດຳເນີນການສຳລັບ {0}"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +211,10 @@ msgstr "ເພີ່ມການເຂົ້າເຖິງ"
 msgid "Add account"
 msgstr "ເພີ່ມບັນຊີ"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "ເພີ່ມທີ່ຢູ່"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "ເພີ່ມຄຳບັນຍາຍ"
@@ -200,22 +223,21 @@ msgstr "ເພີ່ມຄຳບັນຍາຍ"
 msgid "Add checklist item"
 msgstr "ເພີ່ມລາຍການກວດສອບ"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "ເພີ່ມຜູ້ຕິດຕໍ່"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "ເພີ່ມອີເມວ"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "ເພີ່ມຊ່ອງຂໍ້ມູນ"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "ເພີ່ມເພື່ອນ"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "ເພີ່ມເພື່ອນເພື່ອເລີ່ມຕົ້ນເຊື່ອມຕໍ່"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +262,21 @@ msgstr "ເພີ່ມສະມາຊິກ"
 msgid "Add option"
 msgstr "ເພີ່ມຕົວເລືອກ"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "ເພີ່ມເບີໂທ"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "ເພີ່ມຄົນເພື່ອເລີ່ມຕົ້ນ"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ເພີ່ມແທັກ..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "ເພີ່ມໃສ່ຜູ້ຕິດຕໍ່"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +300,42 @@ msgstr "ເພີ່ມມຸມມອງ"
 msgid "Added {0} to the group"
 msgstr "ເພີ່ມ {0} ເຂົ້າກຸ່ມແລ້ວ"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "ກຳລັງເພີ່ມຜູ້ຕິດຕໍ່..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "ກຳລັງເພີ່ມສະມາຊິກ..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "ປຶ້ມທີ່ຢູ່"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "ປຶ້ມທີ່ຢູ່"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "ສ້າງປຶ້ມທີ່ຢູ່ແລ້ວ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "ລຶບປຶ້ມທີ່ຢູ່ແລ້ວ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "ປ່ຽນຊື່ປຶ້ມທີ່ຢູ່ແລ້ວ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "URL ປຶ້ມທີ່ຢູ່"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "ທີ່ຢູ່"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +344,15 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "ກຸ່ມທີ່ມີຢູ່ທັງໝົດໄດ້ຖືກເພີ່ມແລ້ວ"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "ຜູ້ຕິດຕໍ່ທັງໝົດ"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr ""
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +373,6 @@ msgstr "ອະນຸຍາດໃຫ້ທຸກຄົນຄົ້ນຫາ {enti
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "ອະນຸຍາດການຈັດລຽງຕາມ"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "ເປັນເພື່ອນກັນແລ້ວ"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +430,6 @@ msgstr "ທ່ານແນ່ໃຈບໍວ່າຕ້ອງການອອກ
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "ທ່ານແນ່ໃຈບໍວ່າຕ້ອງການລົບ <0>{0}</0> ອອກຈາກກຸ່ມນີ້?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "ທ່ານແນ່ໃຈບໍວ່າຕ້ອງການລົບ <0>{0}</0> ອອກຈາກລາຍຊື່ເພື່ອນຂອງທ່ານ? ການກະທຳນີ້ບໍ່ສາມາດຍົກເລີກໄດ້."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "ທ່ານແນ່ໃຈບໍວ່າຕ້ອງການຍອມແພ້?"
@@ -406,7 +472,8 @@ msgid "Avatar for {name}"
 msgstr "ອະວາຕາສຳລັບ {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "ກັບຄືນ"
 
@@ -431,6 +498,10 @@ msgstr "ລົບປ້າຍແລ້ວ"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "ອັບເດດປ້າຍແລ້ວ"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "ວັນເກີດ"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +565,9 @@ msgstr "ບໍ່ມີກ້ອງຖ່າຍຮູບ"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,9 +629,10 @@ msgstr "ປ່ຽນແລ້ວ"
 msgid "Changed {field}"
 msgstr "ປ່ຽນ {field} ແລ້ວ"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "ແຊັດ"
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr ""
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -576,6 +651,10 @@ msgstr "ເລືອກເກມຈາກແຖບຂ້າງ ຫຼື ເລ�
 msgid "Choose language"
 msgstr "ເລືອກພາສາ"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "ເມືອງ"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -592,7 +671,7 @@ msgid "Clear all"
 msgstr "ລ້າງທັງໝົດ"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "ລ້າງການຄົ້ນຫາ"
 
@@ -601,7 +680,7 @@ msgstr "ລ້າງການຄົ້ນຫາ"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "ປິດ"
 
@@ -635,6 +714,7 @@ msgid "Collapse sidebar"
 msgstr "ຫຍໍ້ແຖບຂ້າງ"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "ສີ"
 
@@ -685,13 +765,47 @@ msgstr "ກຳນົດຄ່າການຕັ້ງຄ່າມຸມມອງ
 msgid "Confirm"
 msgstr "ຢືນຢັນ"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "ເຊື່ອມຕໍ່ອຸປະກອນ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "ເຊື່ອມຕໍ່ອຸປະກອນອື່ນ"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "ເຊື່ອມຕໍ່ແລ້ວ"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "ກຳລັງເຊື່ອມຕໍ່ອຸປະກອນ..."
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
 msgstr "ກຳລັງເຊື່ອມຕໍ່..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "ເພີ່ມຜູ້ຕິດຕໍ່ແລ້ວ"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "ສ້າງຜູ້ຕິດຕໍ່ແລ້ວ"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "ລຶບຜູ້ຕິດຕໍ່ແລ້ວ"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "ບັນທຶກຜູ້ຕິດຕໍ່ແລ້ວ"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "ຜູ້ຕິດຕໍ່"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -718,12 +832,17 @@ msgid "Copied"
 msgstr "ສຳເນົາແລ້ວ"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "ສຳເນົາໄປຄລິບບອດແລ້ວ"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "ສຳເນົາ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "ສຳເນົາ {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -749,17 +868,31 @@ msgstr "ບໍ່ສາມາດເລີ່ມການຢືນຢັນຕົ
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ບໍ່ສາມາດຢືນຢັນດ້ວຍບັນຊີນັ້ນໄດ້. ກະລຸນາລອງໃໝ່ອີກຄັ້ງ."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "ປະເທດ"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "ສ້າງ"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "ສ້າງ {entityLabel}"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "ສ້າງຜູ້ຕິດຕໍ່ ຫຼື ຄົ້ນຫາຄົນໃນ Mochi."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "ສ້າງປຶ້ມທີ່ຢູ່"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -778,9 +911,22 @@ msgstr "ສ້າງລາຍການໃໝ່"
 msgid "Created"
 msgstr "ສ້າງແລ້ວ"
 
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "ສ້າງ {0} ແລ້ວ"
+
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "ສ້າງ {field} ແລ້ວ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "ກຳລັງສ້າງປຶ້ມທີ່ຢູ່..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "ກຳລັງສ້າງຜູ້ຕິດຕໍ່..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -847,10 +993,37 @@ msgstr "ການຈັດລຽງເລີ່ມຕົ້ນ"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "ລົບ"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "ລຶບ <0>{0}</0> ບໍ?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "ລຶບ <0>{0}</0> ບໍ? ການເປັນໝູ່ຂອງທ່ານຈະສິ້ນສຸດລົງນຳ."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "ລຶບປຶ້ມທີ່ຢູ່"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -863,6 +1036,19 @@ msgstr "ລົບຖັນ"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "ລົບຄຳເຫັນ"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "ລຶບຜູ້ຕິດຕໍ່"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "ລຶບອຸປະກອນ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "ລຶບອຸປະກອນບໍ?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -913,6 +1099,19 @@ msgstr "ລຶບແລ້ວ"
 msgid "Deleted {field}"
 msgstr "ລຶບ {field} ແລ້ວ"
 
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "ກຳລັງລຶບປຶ້ມທີ່ຢູ່..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "ກຳລັງລຶບຜູ້ຕິດຕໍ່..."
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "ກຳລັງລຶບອຸປະກອນ..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "ກຳລັງລຶບກຸ່ມ..."
@@ -941,6 +1140,14 @@ msgstr "ແຜງລາຍລະອຽດ"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "ກວດຫາຈາກຕົວທ່ອງເວັບ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "ລຶບອຸປະກອນແລ້ວ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "ຊື່ອຸປະກອນ"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -978,6 +1185,7 @@ msgstr "ບໍ່ກົງກັບຮູບແບບທີ່ຕ້ອງກາ
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "ສຳເລັດແລ້ວ"
 
@@ -1002,6 +1210,7 @@ msgstr "ເຫມາະສຳລັບໂລກອ່ານບໍ່ອອກ"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "ແກ້ໄຂ"
@@ -1013,6 +1222,10 @@ msgstr "ແກ້ໄຂ {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "ແກ້ໄຂຄຳບັນຍາຍ"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "ແກ້ໄຂຜູ້ຕິດຕໍ່"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1058,15 +1271,20 @@ msgstr "ອີເມວ"
 msgid "Email code"
 msgstr "ລະຫັດອີເມວ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "ປ້ອນຊື່ເພື່ອຄົ້ນຫາຄົນທີ່ທ່ານຕ້ອງການເພີ່ມ"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "ອີເມວ"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "ສິ້ນສຸດການເປັນໝູ່ກັບ <0>{0}</0> ບໍ? ຜູ້ຕິດຕໍ່ຍັງຢູ່ໃນປຶ້ມທີ່ຢູ່ຂອງທ່ານ."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "ປ້ອນຂໍ້ຄວາມແບນເນີ (ຮອງຮັບ markdown)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "ປ້ອນຊື່ເພື່ອຄົ້ນຫາ..."
 
@@ -1101,6 +1319,7 @@ msgstr "URL ພາຍນອກ"
 msgid "Extra large"
 msgstr "ໃຫຍ່ພິເສດ"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "ຮັບຄຳເຊີນລົ້ມເຫຼວ"
@@ -1113,10 +1332,9 @@ msgstr "ຮັບເອົາຄຳເຊີນບໍ່ສຳເລັດ"
 msgid "Failed to add account"
 msgstr "ເພີ່ມບັນຊີລົ້ມເຫຼວ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "ເພີ່ມໝູ່ລົ້ມເຫຼວ"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "ເພີ່ມຜູ້ຕິດຕໍ່ລົ້ມເຫຼວ"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1131,11 +1349,23 @@ msgstr "ຍົກເລີກຄຳເຊີນລົ້ມເຫຼວ"
 msgid "Failed to cancel invitations"
 msgstr "ຍົກເລີກຄຳເຊີນບໍ່ສຳເລັດ"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "ເຊື່ອມຕໍ່ອຸປະກອນລົ້ມເຫຼວ"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "ສຳເນົາລົ້ມເຫຼວ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "ສ້າງປຶ້ມທີ່ຢູ່ລົ້ມເຫຼວ"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "ສ້າງຜູ້ຕິດຕໍ່ລົ້ມເຫຼວ"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1158,6 +1388,10 @@ msgstr "ປະຕິເສດຄຳເຊີນບໍ່ສຳເລັດ"
 msgid "Failed to delete"
 msgstr "ລຶບລົ້ມເຫຼວ"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "ລຶບປຶ້ມທີ່ຢູ່ລົ້ມເຫຼວ"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "ລຶບໄຟລ໌ແນບລົ້ມເຫຼວ"
@@ -1165,6 +1399,15 @@ msgstr "ລຶບໄຟລ໌ແນບລົ້ມເຫຼວ"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "ລຶບຄຳເຫັນລົ້ມເຫຼວ"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "ລຶບຜູ້ຕິດຕໍ່ລົ້ມເຫຼວ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "ລຶບອຸປະກອນລົ້ມເຫຼວ"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1223,13 +1466,17 @@ msgstr "ຍ້າຍບໍ່ສຳເລັດ"
 msgid "Failed to post comment"
 msgstr "ໂພສຄຳເຫັນລົ້ມເຫຼວ"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "ຍ້າຍໝູ່ລົ້ມເຫຼວ"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "ຍ້າຍສະມາຊິກລົ້ມເຫຼວ"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "ປ່ຽນຊື່ປຶ້ມທີ່ຢູ່ລົ້ມເຫຼວ"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1248,6 +1495,10 @@ msgstr "ບັນທຶກລົ້ມເຫຼວ"
 msgid "Failed to save accent"
 msgstr "ບັນທຶກສຳນຽງລົ້ມເຫຼວ"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "ບັນທຶກຜູ້ຕິດຕໍ່ລົ້ມເຫຼວ"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "ບັນທຶກຊື່ລົ້ມເຫຼວ"
@@ -1263,6 +1514,11 @@ msgstr "ບັນທຶກໂປຣໄຟລ໌ລົ້ມເຫຼວ"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "ບັນທຶກ prompt ລົ້ມເຫຼວ"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "ສົ່ງຄຳເຊີນລົ້ມເຫຼວ"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1284,6 +1540,10 @@ msgstr "ອັບເດດການຕິດຕາມບໍ່ສຳເລັດ
 msgid "Failed to upload attachment"
 msgstr "ອັບໂຫຼດໄຟລ໌ແນບລົ້ມເຫຼວ"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "ນາມສະກຸນ"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1297,6 +1557,10 @@ msgstr "ໄຟລ໌ໃຫຍ່ເກີນໄປ"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "ໄຟລ໌"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "ຄົ້ນຫາໃນ Mochi"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1314,14 +1578,16 @@ msgstr "ຮາບພຽງ"
 msgid "Friday"
 msgstr "ວັນສຸກ"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "ໝູ່"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "ລຶບໝູ່ອອກແລ້ວ"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "ໝູ່"
 
@@ -1336,6 +1602,10 @@ msgstr "ຈາກ"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "ຈາກຮູບແບບ"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "ຊື່"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1403,6 +1673,11 @@ msgstr "ປະຫວັດ"
 msgid "Home"
 msgstr "ໜ້າຫຼັກ"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "ບ້ານ"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "ມາແຮງ"
@@ -1423,6 +1698,10 @@ msgstr "ຕົວເບິ່ງຮູບພາບ: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperial"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "ຢູ່ໃນຜູ້ຕິດຕໍ່ແລ້ວ"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1452,7 +1731,7 @@ msgstr "ຄວາມສົນໃຈ"
 msgid "Invalid date"
 msgstr "ວັນທີ່ບໍ່ຖືກຕ້ອງ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "ຮັບຄຳເຊີນແລ້ວ"
@@ -1465,8 +1744,8 @@ msgstr "ຍົກເລີກຄຳເຊີນແລ້ວ"
 msgid "Invitation declined"
 msgstr "ປະຕິເສດຄຳເຊີນແລ້ວ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "ສົ່ງຄຳເຊີນແລ້ວ"
 
@@ -1476,6 +1755,11 @@ msgstr "ສົ່ງຄຳເຊີນແລ້ວ"
 msgid "Invitations"
 msgstr "ຄຳເຊີນ"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "ເຊີນ"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "ອັບເດດນະໂຍບາຍຄຳເຊີນແລ້ວ"
@@ -1484,6 +1768,10 @@ msgstr "ອັບເດດນະໂຍບາຍຄຳເຊີນແລ້ວ"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "ການຕັ້ງຄ່າຄຳເຊີນ"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "ເຊີນແລ້ວ"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1505,6 +1793,11 @@ msgstr "ປຸ່ມລັດແປ້ນພິມ"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "ໃຫຍ່"
+
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "ໃຊ້ຄັ້ງສຸດທ້າຍ {0}"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
@@ -1575,6 +1868,10 @@ msgstr "ກຳລັງອອກຈາກລະບົບ…"
 msgid "Manage categories"
 msgstr "ຈັດການໝວດໝູ່"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "ຈັດການອຸປະກອນ"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "ດ້ວຍຕົນເອງ"
@@ -1622,6 +1919,7 @@ msgid "Menu"
 msgstr "ເມນູ"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "ຂໍ້ຄວາມ"
 
@@ -1636,6 +1934,11 @@ msgstr "ສິດໄມໂຄຣໂຟນຖືກປະຕິເສດ"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "ຄວາມຍາວຕ່ຳສຸດ"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "ມືຖື"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1661,18 +1964,22 @@ msgstr "ຍ້າຍແລ້ວ"
 msgid "Moved {field}"
 msgstr "ຍ້າຍ {field} ແລ້ວ"
 
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "ຊື່"
-
-#: src/features/friends/index.tsx
-msgid "Name (A–Z)"
-msgstr "ຊື່ (A–Z)"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
@@ -1696,10 +2003,20 @@ msgstr "ບັນທຶກຊື່ແລ້ວ"
 msgid "Network error"
 msgstr "ຂໍ້ຜິດພາດເຄືອຂ່າຍ"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "ບໍ່ເຄີຍ"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "ໃໝ່"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "ຜູ້ຕິດຕໍ່ໃໝ່"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -1714,6 +2031,14 @@ msgstr "ຄຳເຊີນໃໝ່ຈະປະກົດຢູ່ນີ້"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "ຮູບຕໍ່ໄປ"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Next month"
+msgstr ""
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "ຊື່ຫຼິ້ນ"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1735,9 +2060,13 @@ msgstr "ບໍ່ມີແບນເນີ"
 msgid "No comments yet"
 msgstr "ຍັງບໍ່ມີຄຳເຫັນ"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "ຍັງບໍ່ມີໝູ່"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "ຍັງບໍ່ມີຜູ້ຕິດຕໍ່"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "ບໍ່ມີອຸປະກອນທີ່ເຊື່ອມຕໍ່."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1769,7 +2098,7 @@ msgstr "ບໍ່ມີຄຳເຊີນທີ່ກຳລັງລໍຖ້າ
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "ບໍ່ພົບຄົນ"
@@ -1778,7 +2107,7 @@ msgstr "ບໍ່ພົບຄົນ"
 msgid "No places found"
 msgstr "ບໍ່ພົບສະຖານທີ່"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "ບໍ່ມີຜົນລັບສຳລັບ \"{search}\""
 
@@ -1850,6 +2179,10 @@ msgstr "ບໍ່ພົບ"
 msgid "Not set"
 msgstr "ບໍ່ໄດ້ຕັ້ງຄ່າ"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "ໝາຍເຫດ"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "ບໍ່ພົບຫຍັງ"
@@ -1872,6 +2205,10 @@ msgstr "ຕົວເລກ"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "ເປີດ"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "ຢູ່ໃນ Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1921,7 +2258,16 @@ msgstr "ລາຍລະອຽດເພີ່ມເຕີມ"
 msgid "Options"
 msgstr "ຕົວເລືອກ"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "ອົງກອນ"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "ອື່ນໆ"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "ອື່ນໆ"
 
@@ -1953,6 +2299,10 @@ msgstr "ກະແຈຜ່ານ"
 msgid "Passkeys are not available in this browser"
 msgstr "Passkeys ບໍ່ສາມາດໃຊ້ໄດ້ໃນບຣາວເຊີນີ້"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "ລະຫັດຜ່ານ"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "ຮູບແບບ (regex)"
@@ -1965,6 +2315,10 @@ msgstr "ກຳລັງລໍຖ້າ"
 #: src/components/layout/people-layout.tsx
 msgid "People"
 msgstr "ຄົນ"
+
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "ເບີໂທ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -1980,6 +2334,10 @@ msgstr "ກະລຸນາລອງໃໝ່."
 msgid "Please wait a moment and try again."
 msgstr "ກະລຸນາລໍຖ້າຈັກໜ້ອຍ ແລ້ວລອງໃໝ່ອີກຄັ້ງ."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "ລະຫັດໄປສະນີ"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "ໂພສ"
@@ -1992,15 +2350,19 @@ msgstr "ໂພສແລະຄຳເຫັນ"
 msgid "Preview"
 msgstr "ຕົວຢ່າງ"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "ເບິ່ງຕົວຢ່າງໂປຣໄຟລ໌ຂອງ {0} ກ່ອນສົ່ງຄຳຮ້ອງຂໍຄວາມເປັນໝູ່."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "ເບິ່ງໂປຣໄຟລ໌ຂອງ {0} ກ່ອນສົ່ງຄຳເຊີນເປັນໝູ່."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Previous image"
 msgstr "ຮູບກ່ອນໜ້າ"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Previous month"
+msgstr ""
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2060,7 +2422,7 @@ msgstr "ລົງທະບຽນກະແຈຜ່ານຂອງທ່ານຄ
 msgid "Received ({0})"
 msgstr "ໄດ້ຮັບແລ້ວ ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "ເພີ່ມເມື່ອບໍ່ດົນມານີ້"
 
@@ -2088,6 +2450,10 @@ msgstr "ກຳລັງປ່ຽນເສັ້ນທາງໄປຫາການ
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "ຫຼຸດດອກເບ້ຍ"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "ພາກພື້ນ"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2120,10 +2486,7 @@ msgstr "ຄວາມກ່ຽວຂ້ອງ {relevance}, ຄວາມສົນ�
 msgid "Remove"
 msgstr "ລຶບອອກ"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2155,10 +2518,13 @@ msgstr "ລຶບກົດການເຂົ້າເຖິງສຳລັບ \"
 msgid "Remove access?"
 msgstr "ລຶບການເຂົ້າເຖິງ?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "ລຶບໝູ່"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "ລຶບທີ່ຢູ່ອອກ"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "ລຶບອີເມວອອກ"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2179,7 +2545,11 @@ msgstr "ລຶບລິ້ງ"
 msgid "Remove member"
 msgstr "ລຶບສະມາຊິກ"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "ລຶບເບີໂທອອກ"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "ກຳລັງລຶບໝູ່ອອກ..."
 
@@ -2189,8 +2559,13 @@ msgstr "ກຳລັງລຶບສະມາຊິກອອກ..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "ປ່ຽນຊື່"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "ປ່ຽນຊື່ປຶ້ມທີ່ຢູ່"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2199,6 +2574,15 @@ msgstr "ປ່ຽນຊື່ຄໍລຳ"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "ປ່ຽນຊື່ຄໍລຳກະດານນີ້"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "ກຳລັງປ່ຽນຊື່ປຶ້ມທີ່ຢູ່..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2274,6 +2658,8 @@ msgstr "ວັນເສົາ"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2285,6 +2671,14 @@ msgstr "ບັນທຶກ"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "ບັນທຶກຊື່"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "ບັນທຶກລະຫັດຜ່ານນີ້ດຽວນີ້. ມັນຈະບໍ່ສາມາດສະແດງໄດ້ອີກ."
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "ກຳລັງບັນທຶກຜູ້ຕິດຕໍ່..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2303,6 +2697,10 @@ msgstr "ກຳລັງບັນທຶກ..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "ຄົ້ນຫາ"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "ຄົ້ນຫາຜູ້ຕິດຕໍ່"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2323,14 +2721,6 @@ msgstr "ຄົ້ນຫາປາຍທາງ..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "ຄົ້ນຫາຕົ້ນທາງ..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "ຄົ້ນຫາຄົນແລະສົ່ງຄຳຮ້ອງຂໍຄວາມເປັນໝູ່."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "ຄົ້ນຫາໝູ່"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2354,7 +2744,7 @@ msgstr "ຄົ້ນຫາ, ເບິ່ງ, ແລະຈັດລຽງມຸ�
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "ຄົ້ນຫາ..."
@@ -2432,7 +2822,7 @@ msgstr "ສົ່ງອີກຄັ້ງ"
 msgid "Send email"
 msgstr "ສົ່ງອີເມວ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "ສົ່ງຄຳເຊີນ"
 
@@ -2441,7 +2831,8 @@ msgstr "ສົ່ງຄຳເຊີນ"
 msgid "Send message"
 msgstr "ສົ່ງຂໍ້ຄວາມ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "ກຳລັງສົ່ງຄຳເຊີນ..."
 
@@ -2453,6 +2844,10 @@ msgstr "ສົ່ງແລ້ວ ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "ເຊຣິບ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2549,9 +2944,9 @@ msgstr "ກວ້າງຂວາງ"
 msgid "Start the discussion by adding the first comment."
 msgstr "ເລີ່ມການສົນທະນາໂດຍການເພີ່ມຄຳເຫັນທຳອິດ."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "ເລີ່ມພິມເພື່ອຄົ້ນຫາຜູ້ໃຊ້"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "ພິມເພື່ອຄົ້ນຫາຄົນ"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2561,6 +2956,10 @@ msgstr "ຢຸດການເບິ່ງ"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "ເກັບແບບງຽບ"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "ຖະໜົນ"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2629,7 +3028,7 @@ msgstr "ສົ່ງບໍ່ໄດ້. ໄຟລ໌ອາດໃຫຍ່ເກ�
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "ໃຫຍ່ເກີນໄປທີ່ຈະອັບໂຫຼດ. ເອົາໄຟລ໌ອອກ ຫຼືຫຍໍ້ໃຫ້ນ້ອຍລົງ ແລ້ວລອງໃໝ່."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "ນັ້ນຄືທ່ານ"
 
@@ -2640,6 +3039,10 @@ msgstr "ກ້ອງກຳລັງຖືກໃຊ້ຢູ່ແລ້ວ"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "ຄຳຮ້ອງຂໍກ້ອງບໍ່ໄດ້ຮັບການຕອບ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "ອຸປະກອນຈະບໍ່ສາມາດຊິງຄ໌ລາຍຊື່ຜູ້ຕິດຕໍ່ໄດ້ອີກຕໍ່ໄປ."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -2672,6 +3075,11 @@ msgstr "ການດຳເນີນການນີ້ຈະລົບເກມ �
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "ວັນພະຫັດ"
+
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "ຕຳແໜ່ງ"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2712,13 +3120,9 @@ msgstr "ເທິງ"
 msgid "Travelling"
 msgstr "ການເດີນທາງ"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "ລອງຊື່ອື່ນ"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "ລອງຄຳຄົ້ນຫາທີ່ແຕກຕ່າງກັນ"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2739,6 +3143,8 @@ msgstr "ວັນອັງຄານ"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "ປະເພດ"
@@ -2782,6 +3188,12 @@ msgstr "ບໍ່ມີໃຫ້ບໍລິການ"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "ຄວາມຜິດພາດ API ທີ່ບໍ່ຄາດຄິດ"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "ຍົກເລີກການເປັນໝູ່"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2843,6 +3255,10 @@ msgstr "ຄວາມຄືບໜ້າການອັບໂຫລດ"
 msgid "Uploading..."
 msgstr "ກຳລັງອັບໂຫຼດ..."
 
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
 msgstr "ໃຊ້ passkey ຂອງທ່ານ"
@@ -2854,6 +3270,10 @@ msgstr "ໃຊ້ passkey ຂອງທ່ານ"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "ຜູ້ໃຊ້"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "ຊື່ຜູ້ໃຊ້"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"
@@ -2920,6 +3340,11 @@ msgstr "ພວກເຮົາໄດ້ສົ່ງລະຫັດຢືນຢັ
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "ວັນພຸດ"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "ບ່ອນເຮັດວຽກ"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

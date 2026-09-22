@@ -45,7 +45,12 @@ export function PublicProfile({ fingerprint }: { fingerprint: string }) {
   const { t } = useLingui()
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ['person', 'public-information', fingerprint],
-    queryFn: () => requestHelpers.get<PersonInformation>('information'),
+    // Addressed absolutely: the request layer's baseURL is the app's own
+    // when the page runs inside the shell, not the person's.
+    queryFn: () =>
+      requestHelpers.get<PersonInformation>(
+        `${getAppPath()}/${fingerprint}/-/information`
+      ),
   })
 
   usePageTitle(data?.name ?? t`Profile`)

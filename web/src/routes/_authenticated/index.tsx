@@ -3,9 +3,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { createFileRoute } from '@tanstack/react-router'
-import { getEntityFingerprint } from '@mochi/web'
-import { Friends } from '@/features/friends'
-import { PublicProfile } from '@/features/profile/public'
+import { Contacts } from '@/features/contacts'
 
 interface SearchParams {
   action?: string
@@ -19,11 +17,6 @@ export const Route = createFileRoute('/_authenticated/')({
 })
 
 function IndexPage() {
-  const fingerprint = getEntityFingerprint()
   const { action } = Route.useSearch()
-  return fingerprint ? (
-    <PublicProfile fingerprint={fingerprint} />
-  ) : (
-    <Friends autoAdd={action === 'add'} />
-  )
+  return <Contacts autoAdd={action === 'add'} />
 }

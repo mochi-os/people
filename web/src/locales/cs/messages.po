@@ -34,6 +34,11 @@ msgstr "(vy)"
 msgid "[not set]"
 msgstr "[neuvedeno]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {Spolu s ním bude smazán # kontakt.} few {Spolu s ním budou smazány # kontakty.} many {Spolu s ním bude smazáno # kontaktu.} other {Spolu s ním bude smazáno # kontaktů.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -65,9 +70,21 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#týd} other {#týd}}"
 
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Název {entityLabel}"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr ""
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr ""
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -98,9 +115,9 @@ msgstr "12 hodin"
 msgid "24 hours"
 msgstr "24 hodin"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "Pozvánka k přátelství byla odeslána uživateli {userName}."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "Pozvánka k přátelství byla odeslána uživateli {name}."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +136,8 @@ msgid "Accent saved"
 msgstr "Zvýraznění uloženo"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "Přijmout"
@@ -132,11 +150,7 @@ msgstr "Přijmout vše"
 msgid "Accept automatically"
 msgstr "Přijímat automaticky"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "Přijmout pozvánku"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "Přijímání pozvánky..."
@@ -161,6 +175,11 @@ msgstr "Typ účtu"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "Akce"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "Akce pro {0}"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +211,10 @@ msgstr "Přidat přístup"
 msgid "Add account"
 msgstr "Přidat účet"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "Přidat adresu"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Přidat popisek"
@@ -200,22 +223,21 @@ msgstr "Přidat popisek"
 msgid "Add checklist item"
 msgstr "Přidat položku checklistu"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "Přidat kontakt"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "Přidat e-mail"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Přidat pole"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "Přidat přítele"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "Přidejte přátele a začněte se spojovat"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +262,21 @@ msgstr "Přidat člena"
 msgid "Add option"
 msgstr "Přidat možnost"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "Přidat telefon"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "Začněte přidáním někoho"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Přidat štítek..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "Přidat do kontaktů"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +300,42 @@ msgstr "Přidat zobrazení"
 msgid "Added {0} to the group"
 msgstr "Uživatel {0} přidán do skupiny"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "Přidávání kontaktu..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Přidávání člena..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "adresář"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "Adresář"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "Adresář byl vytvořen"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "Adresář byl smazán"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "Adresář byl přejmenován"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "URL adresáře"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "Adresy"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +344,15 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "Všechny dostupné skupiny jsou již přidány"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "Všechny kontakty"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr ""
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +373,6 @@ msgstr "Povolit komukoli vyhledávat {entityLabel}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Povolit řazení podle"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "Již přátelé"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +430,6 @@ msgstr "Opravdu se chcete odhlásit? Pro přístup ke svému účtu se budete mu
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Opravdu chcete odebrat <0>{0}</0> z této skupiny?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "Opravdu chcete odebrat <0>{0}</0> ze seznamu přátel? Tuto akci nelze vrátit zpět."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "Opravdu chcete vzdát hru?"
@@ -406,7 +472,8 @@ msgid "Avatar for {name}"
 msgstr "Avatar uživatele {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "Zpět"
 
@@ -431,6 +498,10 @@ msgstr "Banner odstraněn"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Banner aktualizován"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "Narozeniny"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +565,9 @@ msgstr "Kamera není k dispozici"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,9 +629,10 @@ msgstr "Změněno"
 msgid "Changed {field}"
 msgstr "Změněno {field}"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "Chat"
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr ""
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -576,6 +651,10 @@ msgstr "Vyberte hru z postranního panelu nebo začněte novou."
 msgid "Choose language"
 msgstr "Vyberte jazyk"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "Město"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -592,7 +671,7 @@ msgid "Clear all"
 msgstr "Vymazat vše"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "Vymazat hledání"
 
@@ -601,7 +680,7 @@ msgstr "Vymazat hledání"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "Zavřít"
 
@@ -635,6 +714,7 @@ msgid "Collapse sidebar"
 msgstr "Sbalit postranní panel"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "Barva"
 
@@ -685,13 +765,47 @@ msgstr "Nakonfigurovat nastavení zobrazení"
 msgid "Confirm"
 msgstr "Potvrdit"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Připojit zařízení"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Připojit další zařízení"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Připojeno"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Připojování zařízení..."
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
 msgstr "Připojování..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "Kontakt byl přidán"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "Kontakt byl vytvořen"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "Kontakt byl smazán"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "Kontakt byl uložen"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "Kontakty"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -718,12 +832,17 @@ msgid "Copied"
 msgstr "Zkopírováno"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Zkopírováno do schránky"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopírovat"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "Kopírovat {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -749,17 +868,31 @@ msgstr "Opětovné ověření se nepodařilo zahájit. Zkuste to prosím znovu."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "S tímto účtem se nepodařilo ověřit. Zkuste to prosím znovu."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "Země"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "Vytvořit"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "Vytvořit {entityLabel}"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "Vytvořte kontakt nebo najděte někoho na Mochi."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "Vytvořit adresář"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -778,9 +911,22 @@ msgstr "Vytvořit novou položku"
 msgid "Created"
 msgstr "Vytvořeno"
 
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Vytvořeno {0}"
+
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "Vytvořeno {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "Vytváření adresáře..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "Vytváření kontaktu..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -847,10 +993,37 @@ msgstr "Výchozí řazení"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "Smazat"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "Smazat <0>{0}</0>?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "Smazat <0>{0}</0>? Tím také ukončíte své přátelství."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "Smazat adresář"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -863,6 +1036,19 @@ msgstr "Smazat sloupec"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "Smazat komentář"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "Smazat kontakt"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Smazat zařízení"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Smazat zařízení?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -913,6 +1099,19 @@ msgstr "Smazáno"
 msgid "Deleted {field}"
 msgstr "Smazáno {field}"
 
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "Mazání adresáře..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "Mazání kontaktu..."
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Mazání zařízení..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "Mazání skupiny..."
@@ -941,6 +1140,14 @@ msgstr "Panel podrobností"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Detekovat z webového prohlížeče"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Zařízení bylo smazáno"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "Název zařízení"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -978,6 +1185,7 @@ msgstr "Neodpovídá požadovanému vzoru"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "Hotovo"
 
@@ -1002,6 +1210,7 @@ msgstr "Vhodné pro dyslexii"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Upravit"
@@ -1013,6 +1222,10 @@ msgstr "Upravit {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Upravit popisek"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "Upravit kontakt"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1058,15 +1271,20 @@ msgstr "E-mail"
 msgid "Email code"
 msgstr "E-mailový kód"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "Zadejte jméno pro vyhledání lidí, které chcete přidat"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "E-maily"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "Ukončit přátelství s <0>{0}</0>? Kontakt zůstane ve vašem adresáři."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "Zadejte text banneru (podporuje markdown)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "Zadejte jméno pro vyhledávání..."
 
@@ -1101,6 +1319,7 @@ msgstr "Externí URL"
 msgid "Extra large"
 msgstr "Velmi velké"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "Nepodařilo se přijmout pozvánku"
@@ -1113,10 +1332,9 @@ msgstr "Pozvánky se nepodařilo přijmout"
 msgid "Failed to add account"
 msgstr "Nepodařilo se přidat účet"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "Nepodařilo se přidat přítele"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "Nepodařilo se přidat kontakt"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1131,11 +1349,23 @@ msgstr "Nepodařilo se zrušit pozvánku"
 msgid "Failed to cancel invitations"
 msgstr "Pozvánky se nepodařilo zrušit"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Nepodařilo se připojit zařízení"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "Nepodařilo se zkopírovat"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "Nepodařilo se vytvořit adresář"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "Nepodařilo se vytvořit kontakt"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1158,6 +1388,10 @@ msgstr "Pozvánky se nepodařilo odmítnout"
 msgid "Failed to delete"
 msgstr "Nepodařilo se smazat"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "Nepodařilo se smazat adresář"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "Nepodařilo se smazat přílohu"
@@ -1165,6 +1399,15 @@ msgstr "Nepodařilo se smazat přílohu"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "Nepodařilo se smazat komentář"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "Nepodařilo se smazat kontakt"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Nepodařilo se smazat zařízení"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1223,13 +1466,17 @@ msgstr "Přesunutí se nezdařilo"
 msgid "Failed to post comment"
 msgstr "Nepodařilo se odeslat komentář"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Nepodařilo se odebrat přítele"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "Nepodařilo se odebrat člena"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "Nepodařilo se přejmenovat adresář"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1248,6 +1495,10 @@ msgstr "Nepodařilo se uložit"
 msgid "Failed to save accent"
 msgstr "Nepodařilo se uložit zvýraznění"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "Nepodařilo se uložit kontakt"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "Nepodařilo se uložit název"
@@ -1263,6 +1514,11 @@ msgstr "Nepodařilo se uložit profil"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "Nepodařilo se uložit prompt"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "Nepodařilo se odeslat pozvánku"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1284,6 +1540,10 @@ msgstr "Sledování se nepodařilo aktualizovat"
 msgid "Failed to upload attachment"
 msgstr "Nepodařilo se nahrát přílohu"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "Příjmení"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1297,6 +1557,10 @@ msgstr "Soubor je příliš velký"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "Soubory"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Najít na Mochi"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1314,14 +1578,16 @@ msgstr "Plochá"
 msgid "Friday"
 msgstr "Pátek"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "Přítel"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Přítel byl odebrán"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "Přátelé"
 
@@ -1336,6 +1602,10 @@ msgstr "Od"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Z motivu"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "Jméno"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1403,6 +1673,11 @@ msgstr "Historie"
 msgid "Home"
 msgstr "Domů"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "Domov"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "Žhavé"
@@ -1423,6 +1698,10 @@ msgstr "Prohlížeč obrázků: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperiální"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "V kontaktech"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1452,7 +1731,7 @@ msgstr "Zájmy"
 msgid "Invalid date"
 msgstr "Neplatné datum"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "Pozvánka přijata"
@@ -1465,8 +1744,8 @@ msgstr "Pozvánka zrušena"
 msgid "Invitation declined"
 msgstr "Pozvánka odmítnuta"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Pozvánka odeslána"
 
@@ -1476,6 +1755,11 @@ msgstr "Pozvánka odeslána"
 msgid "Invitations"
 msgstr "Pozvánky"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "Pozvat"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "Zásady pozvánek aktualizovány"
@@ -1484,6 +1768,10 @@ msgstr "Zásady pozvánek aktualizovány"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "Nastavení pozvánek"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "Pozváno"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1505,6 +1793,11 @@ msgstr "Klávesové zkratky"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Velké"
+
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Naposledy použito {0}"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
@@ -1575,6 +1868,10 @@ msgstr "Odhlašování…"
 msgid "Manage categories"
 msgstr "Spravovat kategorie"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Spravovat zařízení"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Ručně"
@@ -1622,6 +1919,7 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Zpráva"
 
@@ -1636,6 +1934,11 @@ msgstr "Oprávnění k mikrofonu odepřeno"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "Minimální délka"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "Mobil"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1661,18 +1964,22 @@ msgstr "Přesunuto"
 msgid "Moved {field}"
 msgstr "Přesunuto {field}"
 
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Název"
-
-#: src/features/friends/index.tsx
-msgid "Name (A–Z)"
-msgstr "Název (A–Z)"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
@@ -1696,10 +2003,20 @@ msgstr "Název uložen"
 msgid "Network error"
 msgstr "Chyba sítě"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "Nikdy"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Nové"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "Nový kontakt"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -1714,6 +2031,14 @@ msgstr "Nové pozvánky se zobrazí zde"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "Další obrázek"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Next month"
+msgstr ""
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "Přezdívka"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1735,9 +2060,13 @@ msgstr "Žádný banner"
 msgid "No comments yet"
 msgstr "Zatím žádné komentáře"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "Zatím žádní přátelé"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "Zatím žádné kontakty"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Žádná připojená zařízení."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1769,7 +2098,7 @@ msgstr "Žádné čekající pozvánky"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "Žádní lidé nenalezeni"
@@ -1778,7 +2107,7 @@ msgstr "Žádní lidé nenalezeni"
 msgid "No places found"
 msgstr "Žádná místa nenalezena"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "Žádné výsledky pro „{search}“"
 
@@ -1850,6 +2179,10 @@ msgstr "Nenalezeno"
 msgid "Not set"
 msgstr "Nenastaveno"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "Poznámka"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "Nic nenalezeno"
@@ -1872,6 +2205,10 @@ msgstr "Číslo"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Zapnuto"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Na Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1921,9 +2258,18 @@ msgstr "Volitelný popis"
 msgid "Options"
 msgstr "Možnosti"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "Organizace"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Other"
 msgstr "Ostatní"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Other"
+msgstr "Jiné"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/features/access/access-list.tsx
@@ -1953,6 +2299,10 @@ msgstr "Přístupové klíče"
 msgid "Passkeys are not available in this browser"
 msgstr "Passkeys nejsou v tomto prohlížeči k dispozici"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "Heslo"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Vzor (regex)"
@@ -1965,6 +2315,10 @@ msgstr "Čeká"
 #: src/components/layout/people-layout.tsx
 msgid "People"
 msgstr "Lidé"
+
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "Telefony"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -1980,6 +2334,10 @@ msgstr "Zkuste to prosím znovu."
 msgid "Please wait a moment and try again."
 msgstr "Chvíli počkejte a zkuste to znovu."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "PSČ"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Příspěvky"
@@ -1992,15 +2350,19 @@ msgstr "Příspěvky a komentáře"
 msgid "Preview"
 msgstr "Náhled"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "Zobrazte náhled profilu {0} před odesláním žádosti o přátelství."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "Před odesláním pozvánky k přátelství si prohlédněte profil uživatele {0}."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Previous image"
 msgstr "Předchozí obrázek"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Previous month"
+msgstr ""
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2060,7 +2422,7 @@ msgstr "Znovu zaregistrujte své přístupové klíče na tomto serveru"
 msgid "Received ({0})"
 msgstr "Přijaté ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "Nedávno přidáno"
 
@@ -2088,6 +2450,10 @@ msgstr "Přesměrování na přihlášení."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "Snížit zájem"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "Kraj"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2120,10 +2486,7 @@ msgstr "Relevance {relevance}, zájem {weight}"
 msgid "Remove"
 msgstr "Odebrat"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2155,10 +2518,13 @@ msgstr "Odebrat pravidlo přístupu pro „{0}“?"
 msgid "Remove access?"
 msgstr "Odebrat přístup?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "Odebrat přítele"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "Odebrat adresu"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "Odebrat e-mail"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2179,7 +2545,11 @@ msgstr "Odebrat odkaz"
 msgid "Remove member"
 msgstr "Odebrat člena"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "Odebrat telefon"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Odebírání přítele..."
 
@@ -2189,8 +2559,13 @@ msgstr "Odebírání člena..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "Přejmenovat"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "Přejmenovat adresář"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2199,6 +2574,15 @@ msgstr "Přejmenovat sloupec"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "Přejmenovat tento sloupec tabule"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "Přejmenování adresáře..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2274,6 +2658,8 @@ msgstr "Sobota"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2285,6 +2671,14 @@ msgstr "Uložit"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "Uložit název"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Uložte si toto heslo nyní. Znovu ho nelze zobrazit."
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "Ukládání kontaktu..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2303,6 +2697,10 @@ msgstr "Ukládá se..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "Hledat"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "Hledat v kontaktech"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2323,14 +2721,6 @@ msgstr "Hledat cíl..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "Hledat výchozí bod..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "Vyhledejte lidi a odešlete žádost o přátelství."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "Hledat přátele"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2354,7 +2744,7 @@ msgstr "Vyhledávat, sledovat a třídit toto zobrazení."
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Hledat..."
@@ -2432,7 +2822,7 @@ msgstr "Odeslat znovu"
 msgid "Send email"
 msgstr "Odeslat e-mail"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "Odeslat pozvánku"
 
@@ -2441,7 +2831,8 @@ msgstr "Odeslat pozvánku"
 msgid "Send message"
 msgstr "Odeslat zprávu"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Odesílání pozvánky..."
 
@@ -2453,6 +2844,10 @@ msgstr "Odeslané ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "Patkové"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2549,9 +2944,9 @@ msgstr "Prostorné"
 msgid "Start the discussion by adding the first comment."
 msgstr "Začněte diskusi přidáním prvního komentáře."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "Začněte psát pro vyhledávání uživatelů"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "Začněte psát a vyhledejte lidi"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2561,6 +2956,10 @@ msgstr "Přestat sledovat"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "Uložit potichu"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "Ulice"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2629,7 +3028,7 @@ msgstr "Nepodařilo se odeslat. Soubory mohou být příliš velké, nebo selhal
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Bylo to příliš velké k nahrání. Odeberte nebo zmenšete soubory a zkuste to znovu."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "To jste vy"
 
@@ -2640,6 +3039,10 @@ msgstr "Kamera se již používá"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Požadavek na kameru zůstal bez odpovědi"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "Zařízení už nebude moci synchronizovat kontakty."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -2672,6 +3075,11 @@ msgstr "Tímto trvale smažete hru a její chat. Tuto akci nelze vzít zpět."
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Čtvrtek"
+
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "Pracovní pozice"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2712,13 +3120,9 @@ msgstr "Nahoru"
 msgid "Travelling"
 msgstr "Cestuje se"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "Zkuste jiný název"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "Zkuste jiný vyhledávací výraz"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2739,6 +3143,8 @@ msgstr "Úterý"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "Typ"
@@ -2782,6 +3188,12 @@ msgstr "Nedostupné"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Neočekávaná chyba API"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "Ukončit přátelství"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2843,6 +3255,10 @@ msgstr "Průběh nahrávání"
 msgid "Uploading..."
 msgstr "Nahrává se..."
 
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
 msgstr "Použijte svůj přístupový klíč"
@@ -2854,6 +3270,10 @@ msgstr "Použijte svůj přístupový klíč"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "Uživatel"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "Uživatelské jméno"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"
@@ -2920,6 +3340,11 @@ msgstr "Ověřovací kód jsme odeslali na <0>{0}</0>. Zadejte kód níže pro o
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "Středa"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "Práce"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

@@ -1,5 +1,6 @@
-# Mochi friends app
-# REST-style JSON responses version with default identity for API calls
+# Mochi People app: identities, profiles, groups and directory search.
+# Contacts, address books and the friendship handshake are in contacts.star,
+# which loads after this file and uses its helpers.
 # Copyright © 2026 Mochisoft OÜ
 # SPDX-License-Identifier: AGPL-3.0-only
 # This file is part of Mochi, licensed under the GNU AGPL v3 with the
@@ -20,6 +21,65 @@ def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event=event_id)
 
 def database_upgrade(version):
+	if version == 13:
+		# A friend's cached avatar: photo is "<extension>:<hash>" for the file
+		# at photos/<id>.<extension>, photographed the last fetch attempt.
+		if not [c for c in mochi.db.table("contacts") if c["name"] == "photo"]:
+			mochi.db.execute("alter table contacts add column photo text not null default ''")
+		if not [c for c in mochi.db.table("contacts") if c["name"] == "photographed"]:
+			mochi.db.execute("alter table contacts add column photographed integer not null default 0")
+	if version == 12:
+		# The change log forgets deletions after a retention period; pruned
+		# holds how far, so a cursor from before it resyncs from scratch.
+		mochi.db.execute("create table if not exists pruned ( identity text not null primary key, change integer not null default 0 )")
+	if version == 11:
+		# The default book is the one whose slug is "default"; choosing it by
+		# creation time tied within a second. The earliest book of every
+		# identity without one takes the name.
+		for row in mochi.db.rows("select distinct identity from books"):
+			if mochi.db.exists("select id from books where identity=? and slug='default'", row["identity"]):
+				continue
+			first = mochi.db.row("select id from books where identity=? order by created, id limit 1", row["identity"])
+			if first:
+				mochi.db.execute("update books set slug='default' where id=?", first["id"])
+	if version == 10:
+		# CardDAV names collections and objects: slug is the name a client chose,
+		# or the fingerprint (books) and id (contacts) for rows made here. The
+		# change log records every contact write for incremental sync; its row
+		# id is the cursor a client keeps.
+		if not [c for c in mochi.db.table("books") if c["name"] == "slug"]:
+			mochi.db.execute("alter table books add column slug text not null default ''")
+		if not [c for c in mochi.db.table("contacts") if c["name"] == "slug"]:
+			mochi.db.execute("alter table contacts add column slug text not null default ''")
+		for row in mochi.db.rows("select id from books where slug=''"):
+			mochi.db.execute("update books set slug=? where id=?", mochi.entity.fingerprint(row["id"]), row["id"])
+		mochi.db.execute("update contacts set slug=id where slug=''")
+		mochi.db.execute("create unique index if not exists books_identity_slug on books( identity, slug )")
+		mochi.db.execute("create unique index if not exists contacts_book_slug on contacts( book, slug )")
+		mochi.db.execute("create table if not exists changes ( id integer primary key autoincrement, identity text not null, book text not null, contact text not null, deleted integer not null default 0, created integer not null default 0 )")
+		mochi.db.execute("create index if not exists changes_identity on changes( identity, id )")
+	if version == 9:
+		# Contacts replace friends. An address book is an entity of class book
+		# with a row here; a contact holds a vCard property list, may reference a
+		# Mochi person, and carries a friend flag. Each friends row becomes a
+		# friend contact with an empty book: a migration cannot create an entity,
+		# so the identity's first contacts request creates the default book and
+		# backfills them (book_default in contacts.star).
+		mochi.db.execute("create table if not exists books ( id text not null primary key, identity text not null, version integer not null default 0, created integer not null default 0, updated integer not null default 0 )")
+		mochi.db.execute("create index if not exists books_identity on books( identity )")
+		mochi.db.execute("create table if not exists contacts ( id text not null primary key, book text not null default '', identity text not null, person text not null default '', friend integer not null default 0, name text not null default '', directory text not null default '', card text not null default '[]', etag text not null default '', created integer not null default 0, updated integer not null default 0, refreshed integer not null default 0 )")
+		mochi.db.execute("create index if not exists contacts_identity_person on contacts( identity, person )")
+		mochi.db.execute("create index if not exists contacts_book on contacts( book )")
+		if mochi.db.table("friends"):
+			now = mochi.time.now()
+			for row in mochi.db.rows("select * from friends"):  # table-ok: the legacy table this step drops
+				if mochi.db.exists("select id from contacts where identity=? and person=?", row["identity"], row["id"]):
+					continue
+				card = [{"name": "FN", "params": {}, "value": row["name"]}]
+				etag = mochi.crypto.hash.sha256(json.encode([card, row["id"], 1]))
+				mochi.db.execute("insert into contacts ( id, book, identity, person, friend, name, directory, card, etag, created, updated, refreshed ) values ( ?, '', ?, ?, 1, ?, ?, ?, ?, ?, ?, ? )",
+					mochi.uid(), row["identity"], row["id"], row["name"], row["name"], json.encode(card), etag, row["created"], now, row.get("refreshed", 0))
+			mochi.db.execute("drop table friends")
 	if version == 8:
 		# When each friend's name was last reconciled with the directory. Without
 		# it action_list had no way to tell a fresh name from a stale one, so it
@@ -68,7 +128,20 @@ def database_upgrade(version):
 			mochi.db.execute("drop table if exists " + table)
 
 def database_create():
-	mochi.db.execute("create table if not exists friends ( identity text not null, id text not null, name text not null default '', class text not null default 'person', created integer not null default 0, refreshed integer not null default 0, primary key ( identity, id ) )")
+	# Address books are entities of class book; the row carries the version that
+	# serves as the book's change token. Contacts hold a vCard property list in
+	# card (see contacts.star); person and friend are server-owned columns.
+	mochi.db.execute("create table if not exists books ( id text not null primary key, identity text not null, slug text not null default '', version integer not null default 0, created integer not null default 0, updated integer not null default 0 )")
+	mochi.db.execute("create index if not exists books_identity on books( identity )")
+	mochi.db.execute("create unique index if not exists books_identity_slug on books( identity, slug )")
+	mochi.db.execute("create table if not exists contacts ( id text not null primary key, book text not null default '', identity text not null, person text not null default '', friend integer not null default 0, name text not null default '', directory text not null default '', card text not null default '[]', etag text not null default '', slug text not null default '', photo text not null default '', photographed integer not null default 0, created integer not null default 0, updated integer not null default 0, refreshed integer not null default 0 )")
+	mochi.db.execute("create index if not exists contacts_identity_person on contacts( identity, person )")
+	mochi.db.execute("create index if not exists contacts_book on contacts( book )")
+	mochi.db.execute("create unique index if not exists contacts_book_slug on contacts( book, slug )")
+	# Every contact write, latest per contact, for -/contacts/changes.
+	mochi.db.execute("create table if not exists changes ( id integer primary key autoincrement, identity text not null, book text not null, contact text not null, deleted integer not null default 0, created integer not null default 0 )")
+	mochi.db.execute("create index if not exists changes_identity on changes( identity, id )")
+	mochi.db.execute("create table if not exists pruned ( identity text not null primary key, change integer not null default 0 )")
 	mochi.db.execute("create table if not exists invites ( identity text not null, id text not null, direction text not null, name text not null default '', updated integer not null default 0, primary key ( identity, id, direction ) )")
 	mochi.db.execute("create table if not exists sent ( identity text not null, created integer not null )")
 	mochi.db.execute("create index if not exists sent_identity_created on sent( identity, created )")
@@ -78,156 +151,6 @@ def database_create():
 	# storage at "images/<person>/<slot>"; this holds the content type and size.
 	# One row per person and slot, so an upload replaces rather than accumulates.
 	mochi.db.execute("create table if not exists images ( person text not null, slot text not null, content_type text not null default '', size integer not null default 0, updated integer not null default 0, primary key ( person, slot ) )")
-
-def friend_add(identity, id, name):
-	# Preserve the original friendship-start time across re-adds of a live row;
-	# a fresh add stamps now().
-	existing = mochi.db.row("select created from friends where identity=? and id=?", identity, id)
-	created = existing["created"] if existing else mochi.time.now()
-	mochi.db.execute("insert into friends ( identity, id, name, class, created ) values ( ?, ?, ?, 'person', ? ) on conflict ( identity, id ) do update set name=excluded.name, created=excluded.created", identity, id, name, created)
-
-def friend_remove(identity, id):
-	mochi.db.execute("delete from friends where identity=? and id=?", identity, id)
-
-# How many invites one identity may send per window. A person adding everyone
-# they know in one sitting stays well under this; a script spraying strangers or
-# walking entity ids to see which are real does not.
-# How long a friend's cached directory name is trusted before action_list
-# re-resolves it. A rename shows up within this window rather than immediately;
-# the alternative was a directory read per friend on every request.
-_FRIEND_NAME_INTERVAL = 86400
-
-_INVITE_LIMIT = 30
-_INVITE_WINDOW = 3600
-
-def invites_recent(identity):
-	# Prunes as it counts, so the log stays proportional to the window rather
-	# than growing for the life of the account.
-	mochi.db.execute("delete from sent where created < ?", mochi.time.now() - _INVITE_WINDOW)
-	row = mochi.db.row("select count(*) as sent from sent where identity=?", identity)
-	return row["sent"] if row else 0
-
-# Pending invites received per identity. A stranger can mint a sender per
-# message, so without a ceiling the table grows at core's stream rate for as
-# long as a hostile peer cares to send.
-_INVITE_PENDING_MAXIMUM = 200
-
-def invites_pending(identity):
-	row = mochi.db.row("select count(*) as pending from invites where identity=? and direction='from'", identity)
-	return row["pending"] if row else 0
-
-def invite_set(identity, id, direction, name):
-	mochi.db.execute("insert into invites ( identity, id, direction, name, updated ) values ( ?, ?, ?, ?, ? ) on conflict ( identity, id, direction ) do update set name=excluded.name, updated=excluded.updated", identity, id, direction, name, mochi.time.now())
-
-def invite_remove(identity, id, direction=None):
-	# Remove the invite(s) between identity and id. direction=None removes both.
-	if direction:
-		mochi.db.execute("delete from invites where identity=? and id=? and direction=?", identity, id, direction)
-		return
-	mochi.db.execute("delete from invites where identity=? and id=?", identity, id)
-
-# Accept a friend's invitation
-def action_accept(a):
-	identity = a.user.identity.id
-	id = a.input("id")
-	if not id:
-		a.error.label(400, "errors.missing_friend_id")
-		return
-	if not mochi.text.valid(id, "entity"):
-		a.error.label(400, "errors.invalid_friend_id_format")
-		return
-
-	i = mochi.db.row("select * from invites where identity=? and id=? and direction='from'", identity, id)
-	if not i:
-		a.error.label(400, "errors.invitation_not_found")
-		return
-
-	friend_add(identity, id, i["name"])
-	mochi.message.send({"from": identity, "to": id, "service": "friends", "event": "friend/accept"})
-	invite_remove(identity, id)
-
-	return {"data": {}}
-
-# Create a new friend
-def action_create(a):
-	identity = a.user.identity.id
-	id = a.input("id")
-	if not id:
-		a.error.label(400, "errors.missing_friend_id")
-		return
-	if not mochi.text.valid(id, "entity"):
-		a.error.label(400, "errors.invalid_friend_id_format")
-		return
-	if id == identity:
-		a.error.label(400, "errors.cannot_add_yourself")
-		return
-
-	name = a.input("name")
-	if not name:
-		a.error.label(400, "errors.missing_friend_name")
-		return
-	if not mochi.text.valid(name, "line"):
-		a.error.label(400, "errors.invalid_friend_name")
-		return
-
-	# Check if there's an existing invitation from them
-	if mochi.db.exists("select id from invites where identity=? and id=? and direction='from'", identity, id):
-		# They already invited us - accept it by adding as friend
-		friend_add(identity, id, name)
-		mochi.message.send({"from": identity, "to": id, "service": "friends", "event": "friend/accept"})
-		invite_remove(identity, id)
-	else:
-		# An invite is the only friends message that can target a stranger, so it is
-		# the one primitive for spraying or probing entity ids; core's send limit is
-		# far looser.
-		if invites_recent(identity) >= _INVITE_LIMIT:
-			a.error.label(429, "errors.too_many_invites")
-			return
-		# No existing invitation - send them an invitation (don't add as friend yet)
-		mochi.message.send({"from": identity, "to": id, "service": "friends", "event": "friend/invite"}, {"name": a.user.identity.name})
-		invite_set(identity, id, "to", name)
-		mochi.db.execute("insert into sent ( identity, created ) values ( ?, ? )", identity, mochi.time.now())
-
-	return {"data": {}}
-
-# Delete a friend or cancel a sent invitation
-def action_delete(a):
-	identity = a.user.identity.id
-	id = a.input("id")
-	if not id:
-		a.error.label(400, "errors.missing_friend_id")
-		return
-	if not mochi.text.valid(id, "entity"):
-		a.error.label(400, "errors.invalid_friend_id_format")
-		return
-
-	# Check if this is an existing friendship - notify remote to remove us
-	if mochi.db.exists("select id from friends where identity=? and id=?", identity, id):
-		mochi.message.send({"from": identity, "to": id, "service": "friends", "event": "friend/remove"})
-	# Check if this is a sent invitation that needs to be cancelled on the other side
-	elif mochi.db.exists("select id from invites where identity=? and id=? and direction='to'", identity, id):
-		mochi.message.send({"from": identity, "to": id, "service": "friends", "event": "friend/cancel"})
-
-	# Clean up all local data for this relationship (both invite directions and friendship)
-	invite_remove(identity, id)
-	friend_remove(identity, id)
-
-	return {"data": {}}
-
-# Ignore a friend's invitation
-def action_ignore(a):
-	identity = a.user.identity.id
-	id = a.input("id")
-	if not id:
-		a.error.label(400, "errors.missing_friend_id")
-		return
-	if not mochi.text.valid(id, "entity"):
-		a.error.label(400, "errors.invalid_friend_id_format")
-		return
-
-	invite_remove(identity, id, "from")
-
-	return {"data": {}}
 
 # Find person entities matching a term: a full entity id, a fingerprint (hyphens
 # optional), a profile URL carrying the id, or the display name. Results are
@@ -272,93 +195,6 @@ def people_search(search):
 
 	return results
 
-# List friends
-def action_list(a):
-	identity = a.user.identity.id
-	friends = mochi.db.rows("select * from friends where identity=? order by id", identity)
-
-	# The directory is the authority on a friend's current name, but reading it
-	# per friend on every request made this route O(friends) directory reads. The
-	# row caches the resolved name and when it was resolved; only rows past the
-	# interval are re-read, so the steady state is none.
-	stale = mochi.time.now() - _FRIEND_NAME_INTERVAL
-	for friend in friends:
-		if friend.get("refreshed", 0) > stale:
-			continue
-		info = mochi.directory.get(friend["id"])
-		name = info.get("name") if info else None
-		if name:
-			friend["name"] = name
-		mochi.db.execute("update friends set name=?, refreshed=? where identity=? and id=?", friend["name"], mochi.time.now(), identity, friend["id"])
-
-	return {"data": {
-		"friends": friends,
-		"received": mochi.db.rows("select * from invites where identity=? and direction='from' order by updated desc", identity),
-		"sent": mochi.db.rows("select * from invites where identity=? and direction='to' order by updated desc", identity)
-	}}
-
-# Search for friends to add (searches P2P directory)
-# Supports searching by name, entity ID, fingerprint (with or without hyphens), or URL
-def action_search(a):
-	identity = a.user.identity.id
-	search = a.input("search", "").strip()
-	if len(search) > 200:
-		a.error.label(400, "errors.search_query_too_long")
-		return
-	# Only the upper bound was checked. An empty query reaches the directory as
-	# `name like '%%'`, and core applies no LIMIT, so one request returned every
-	# person in the directory. action_users_search below has always had this.
-	if len(search) < 1:
-		return {"data": {"results": []}}
-
-	results = people_search(search)
-
-	# Build sets of existing relationships for efficient lookup
-	friend_ids = set()
-	sent_invite_ids = set()
-	received_invite_ids = set()
-
-	# Get all friends
-	friends = mochi.db.rows("select id from friends where identity=?", identity)
-	for friend in friends:
-		friend_ids.add(friend["id"])
-
-	# Get all sent invitations (direction='to' means we invited them)
-	sent_invites = mochi.db.rows("select id from invites where identity=? and direction='to'", identity)
-	for invite in sent_invites:
-		sent_invite_ids.add(invite["id"])
-
-	# Get all received invitations (direction='from' means they invited us)
-	received_invites = mochi.db.rows("select id from invites where identity=? and direction='from'", identity)
-	for invite in received_invites:
-		received_invite_ids.add(invite["id"])
-
-	# Annotate each result with the caller's relationship to it.
-	unique_results = []
-	for result in results:
-		result_id = result["id"]
-		if result_id == identity:
-			status = "self"
-		elif result_id in friend_ids:
-			status = "friend"
-		elif result_id in sent_invite_ids:
-			status = "invited"
-		elif result_id in received_invite_ids:
-			status = "pending"
-		else:
-			status = "none"
-
-		result["relationship"] = status
-		unique_results.append(result)
-
-	# Name, then oldest first - so an impersonator cannot sort above the original.
-	# sortkey folds accents as well as case, unlike .lower().
-	def sort_key(r):
-		return (mochi.text.sortkey(r.get("name", "")), r.get("created", 0))
-	unique_results = sorted(unique_results, key=sort_key)
-
-	return {"data": {"results": unique_results}}
-
 # Search for users (for group membership)
 # Supports searching by name, entity ID, fingerprint (with or without hyphens), or URL
 def action_users_search(a):
@@ -372,90 +208,6 @@ def action_users_search(a):
 	results = [{"id": entry["id"], "name": entry["name"]} for entry in people_search(search)]
 	return {"data": {"results": results}}
 
-def event_accept(e):
-	identity = e.header("to")
-	i = mochi.db.row("select * from invites where identity=? and id=? and direction='to'", identity, e.header("from"))
-	if not i:
-		return
-
-	# Add them as a friend since they accepted our invitation
-	# Use e.header values consistently instead of i[] for safety
-	friend_add(identity, e.header("from"), i["name"])
-
-	invite_remove(identity, e.header("from"))
-	notify("accept/accepted", "", mochi.app.label("notifications.title.friend_request_accepted"), mochi.app.label("notifications.body.accepted_invitation", name=i["name"]), "/people", e.header("from"), event_id="accept/accepted:" + e.header("from") + ":" + identity)
-
-def event_invite(e):
-	# Incoming friend invite. The user-configurable `invite_policy` preference
-	# decides what happens for unsolicited invites; the default is notify, as
-	# action_preferences_get and the clients present it. Mutual invites always
-	# transition to friends regardless of policy.
-	# mochi.text.valid raises on a non-string (it answers False only for None), and
-	# a raised error aborts the handler and mails the admin, so a peer sending
-	# {"name": 123} loses the invite silently. Test the type first.
-	name = e.content("name")
-	# display rather than line: the name is rendered to the recipient, and the
-	# validator's own length bound is the one the identity name is set under.
-	if type(name) != "string" or not mochi.text.valid(name, "display"):
-		return
-
-	identity = e.header("to")
-	sender = e.header("from")
-
-	# Mutual invite — always connect, regardless of policy.
-	if mochi.db.exists("select id from invites where identity=? and id=? and direction='to'", identity, sender):
-		friend_add(identity, sender, name)
-		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
-		invite_remove(identity, sender)
-		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event_id="accept/matched:" + sender + ":" + identity)
-		return
-
-	policy = e.user.preference.get("invite_policy") or "notify"
-
-	if policy == "reject":
-		return
-
-	if policy == "accept":
-		# Auto-accept: mirror mutual-invite path without writing to invites.
-		friend_add(identity, sender, name)
-		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
-		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event_id="accept/matched:" + sender + ":" + identity)
-		return
-
-	# silent or notify: store the pending invite. A sender already pending only
-	# refreshes its row and is not announced again - the notification roll-up
-	# deduplicates against the last event alone, so a resend after any other
-	# sender's invite would otherwise count and push again. A new sender past
-	# the ceiling is dropped; the mutual and accept branches above are the only
-	# paths past it.
-	pending = mochi.db.exists("select id from invites where identity=? and id=? and direction='from'", identity, sender)
-	if not pending and invites_pending(identity) >= _INVITE_PENDING_MAXIMUM:
-		return
-	invite_set(identity, sender, "from", name)
-
-	if policy == "notify" and not pending:
-		notify("invite/received", "", mochi.app.label("notifications.title.friend_invitation"), mochi.app.label("notifications.body.invited_you", name=name), "/people/invitations", sender, event_id="invite/received:" + sender + ":" + identity)
-
-def event_cancel(e):
-	# Remove the invitation from the recipient's side
-	invite_remove(e.header("to"), e.header("from"), "from")
-
-def event_remove(e):
-	# Remote friend removed us - clean up local friendship and any pending invites
-	identity = e.header("to")
-	friend_remove(identity, e.header("from"))
-	invite_remove(identity, e.header("from"))
-
-def function_get(context, identity, id):
-	if not identity:
-		return None
-	return mochi.db.row("select * from friends where identity=? and id=?", identity, id)
-
-def function_list(context, identity):
-	if not identity:
-		return []
-	return mochi.db.rows("select * from friends where identity=? order by id", identity)
-
 # Service function for user search
 # Supports searching by name, entity ID, fingerprint (with or without hyphens), or URL
 def function_users_search(context, query):
@@ -467,13 +219,6 @@ def function_users_search(context, query):
 # Service function for groups list
 def function_groups_list(context):
 	return mochi.group.list()
-
-# Service function for friends count (used by chat app for cross-app link)
-def function_count(context, identity):
-	if not identity:
-		return 0
-	row = mochi.db.row("select count(*) as count from friends where identity=?", identity)
-	return row["count"] if row else 0
 
 # Group management actions
 

@@ -34,6 +34,11 @@ msgstr "(ati)"
 msgid "[not set]"
 msgstr "[hin qindoofne]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {Quunnamtiin # isa waliin haqama.} other {Quunnamtiiwwan # isa waliin haqamu.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -65,9 +70,21 @@ msgstr "{count, plural, one {#daq} other {#daq}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#tor} other {#tor}}"
 
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Maqaa {entityLabel}"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr ""
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr ""
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -98,9 +115,9 @@ msgstr "Sa'aatii 12"
 msgid "24 hours"
 msgstr "Sa'aatii 24"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "Afeerraan michummaa {userName} dhaaf ergameera."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "Affeerraan hiriyummaa {name}f ergameera."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +136,8 @@ msgid "Accent saved"
 msgstr "Halluun cimaan olkaa'ame"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "Fudhadhu"
@@ -132,11 +150,7 @@ msgstr "Hunda fudhadhu"
 msgid "Accept automatically"
 msgstr "Ofumaan fudhadhu"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "Afeerraa fudhadhu"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "Afeerraa fudhachaa jira..."
@@ -161,6 +175,11 @@ msgstr "Gosa akkaawuntii"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "Tarkaanfiilee"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "Gochoota {0}f"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +211,10 @@ msgstr "Seensa dabali"
 msgid "Add account"
 msgstr "Akkaawuntii dabali"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "Teessoo dabali"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Ibsa dabaluu"
@@ -200,22 +223,21 @@ msgstr "Ibsa dabaluu"
 msgid "Add checklist item"
 msgstr "Tarree shakkii dabali"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "Quunnamtii dabali"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "Imeelii dabali"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Dirree dabali"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "Michuu dabali"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "Wal qunnamuu eegaluuf michoota dabali"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +262,21 @@ msgstr "Miseensa dabali"
 msgid "Add option"
 msgstr "Filannoo dabali"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "Bilbila dabali"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "Jalqabuuf nama tokko dabali"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Tag dabali..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "Quunnamtiiwwanitti dabali"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +300,42 @@ msgstr "Mul'ata dabali"
 msgid "Added {0} to the group"
 msgstr "{0} gareetti dabaleera"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "Quunnamtii dabalaa jira..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Miseensa dabalaa jira..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "kitaaba teessoo"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "Kitaaba teessoo"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "Kitaabni teessoo uumameera"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "Kitaabni teessoo haqameera"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "Maqaan kitaaba teessoo jijjiirameera"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "URL kitaaba teessoo"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "Teessoowwan"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +344,15 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "Garee jiran hundi duraan dabalamaniiru"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "Quunnamtiiwwan hunda"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr ""
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +373,6 @@ msgstr "Namni kamiyyuu {entityLabel} akka barbaadu hayyami"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Akkaataa kana taasifachuu hayyami"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "Duraan michoota"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +430,6 @@ msgstr "Bahuu mirkanaa'oo dha? Akkaawuntii kee fayyadamuuf deebitee seenuu qabda
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "<0>{0}</0> garee kana keessaa haquu mirkanaa'oo dha?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "<0>{0}</0> tarree michootaa kee keessaa haquu mirkanaa'oo dha? Tarkaanfiin kun deebi'uu hin danda'u."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "Of harkatti kennuu mirkanaa'oo dha?"
@@ -406,7 +472,8 @@ msgid "Avatar for {name}"
 msgstr "Fakkii {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "Duuba"
 
@@ -431,6 +498,10 @@ msgstr "Banneriin haqame"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Banneriin haaromfame"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "Guyyaa dhalootaa"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +565,9 @@ msgstr "Kaameraan hin argamu"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,9 +629,10 @@ msgstr "Jijjiirameera"
 msgid "Changed {field}"
 msgstr "{field} jijjiirameera"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "Chaattii"
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr ""
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -576,6 +651,10 @@ msgstr "Cinaa keessaa tapha filadhu ykn haaraa eegali."
 msgid "Choose language"
 msgstr "Afaan filadhu"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "Magaalaa"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -592,7 +671,7 @@ msgid "Clear all"
 msgstr "Hunda cilliisi"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "Barbaadii cilliisi"
 
@@ -601,7 +680,7 @@ msgstr "Barbaadii cilliisi"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "Cufi"
 
@@ -635,6 +714,7 @@ msgid "Collapse sidebar"
 msgstr "Cinaa walitti gargari"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "Halluu"
 
@@ -685,13 +765,47 @@ msgstr "Qindaa'ina mul'ataa sirreessi"
 msgid "Confirm"
 msgstr "Mirkaneessi"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Meeshaa walqabsiisi"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Meeshaa biraa walqabsiisi"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Walitti hidhame"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Meeshaa walqabsiisaa jira..."
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
 msgstr "Walqunnamsiisaa jira..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "Quunnamtiin dabalameera"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "Quunnamtiin uumameera"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "Quunnamtiin haqameera"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "Quunnamtiin olkaa'ameera"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "Quunnamtiiwwan"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -718,12 +832,17 @@ msgid "Copied"
 msgstr "Garagalfame"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Garagalfamee gara saanduqa garagalchaa"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Garagalchi"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "{label} garagalchi"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -749,17 +868,31 @@ msgstr "Mirkaneessa irra deebiʼaa jalqabuu hin dandeenye. Maaloo irra deebiʼii
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Akkaawuntii sana waliin mirkaneessuun hin danda'amne. Maaloo irra deebi'ii yaali."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "Biyya"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "Uumi"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "{entityLabel} uumi"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "Quunnamtii uumi, yookaan Mochi irratti nama barbaadi."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "Kitaaba teessoo uumi"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -778,9 +911,22 @@ msgstr "Wanta haaraa uumi"
 msgid "Created"
 msgstr "Uumame"
 
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "{0} uumame"
+
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "{field} uumameera"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "Kitaaba teessoo uumaa jira..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "Quunnamtii uumaa jira..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -847,10 +993,37 @@ msgstr "Tartiiba idilee"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "Haqi"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "<0>{0}</0> haquu?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "<0>{0}</0> haquu? Kun hiriyummaa keessanis ni xumura."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "Kitaaba teessoo haqi"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -863,6 +1036,19 @@ msgstr "Tarjaa haqi"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "Yaada haqi"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "Quunnamtii haqi"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Meeshaa haqi"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Meeshaa haquu?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -913,6 +1099,19 @@ msgstr "Haqameera"
 msgid "Deleted {field}"
 msgstr "{field} haqameera"
 
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "Kitaaba teessoo haqaa jira..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "Quunnamtii haqaa jira..."
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Meeshaa haqaa jira..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "Garee balleessaa jira..."
@@ -941,6 +1140,14 @@ msgstr "Paanelii Bal'inaan"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Weeb biraawsarii irraa argi"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Meeshaan haqameera"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "Maqaa meeshaa"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -978,6 +1185,7 @@ msgstr "Boca barbaachisu wajjin wal hin simu"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "Xumurame"
 
@@ -1002,6 +1210,7 @@ msgstr "Dyslexiyaa Walitti Dhufu"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Sirreessi"
@@ -1013,6 +1222,10 @@ msgstr "{label} gulaali"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Ibsa gulaaluu"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "Quunnamtii sirreessi"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1058,15 +1271,20 @@ msgstr "Imeelii"
 msgid "Email code"
 msgstr "Koodii imeelii"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "Namoota dabaluu barbaaddu argachuuf maqaa galchi"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "Imeeliiwwan"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "Hiriyummaa <0>{0}</0> waliin qabdu xumuruu? Quunnamtiin kitaaba teessoo kee keessa hafa."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "Barreeffama dabballee galchi (markdown deeggarama)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "Maqaa barbaaduuf galchi..."
 
@@ -1101,6 +1319,7 @@ msgstr "URL alaa"
 msgid "Extra large"
 msgstr "Guddaa Akkaan"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "Affeerraa fudhachuu hin dandeenye"
@@ -1113,10 +1332,9 @@ msgstr "Afeerraawwan fudhachuun hin milkoofne"
 msgid "Failed to add account"
 msgstr "Akkaawuntii dabaluu hin dandeenye"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "Hiriyaa dabaluu hin dandeenye"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "Quunnamtii dabaluu hin dandeenye"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1131,11 +1349,23 @@ msgstr "Affeerraa haquu hin dandeenye"
 msgid "Failed to cancel invitations"
 msgstr "Afeerraawwan haquun hin milkoofne"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Meeshaa walqabsiisuun hin milkoofne"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "Garagalchuu hin dandeenye"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "Kitaaba teessoo uumuu hin dandeenye"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "Quunnamtii uumuu hin dandeenye"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1158,6 +1388,10 @@ msgstr "Afeerraawwan diduun hin milkoofne"
 msgid "Failed to delete"
 msgstr "Haquu hin dandeenye"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "Kitaaba teessoo haquu hin dandeenye"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "Maxxansa haquu hin dandeenye"
@@ -1165,6 +1399,15 @@ msgstr "Maxxansa haquu hin dandeenye"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "Yaada haquu hin dandeenye"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "Quunnamtii haquu hin dandeenye"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Meeshaa haquun hin milkoofne"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1223,13 +1466,17 @@ msgstr "Sochuun hin milkoofne"
 msgid "Failed to post comment"
 msgstr "Yaada maxxansuu hin dandeenye"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Hiriyaa haquu hin dandeenye"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "Miseensa haquu hin dandeenye"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "Maqaa kitaaba teessoo jijjiiruu hin dandeenye"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1248,6 +1495,10 @@ msgstr "Olkaa'uu hin dandeenye"
 msgid "Failed to save accent"
 msgstr "Sagalee olkaa'uu hin dandeenye"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "Quunnamtii olkaa'uu hin dandeenye"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "Maqaa olkaa'uu hin dandeenye"
@@ -1263,6 +1514,11 @@ msgstr "Iccitii olkaa'uu hin dandeenye"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "Boorsa olkaa'uu hin dandeenye"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "Affeerraa erguu hin dandeenye"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1284,6 +1540,10 @@ msgstr "Hordoffii haaromsuun hin milkoofne"
 msgid "Failed to upload attachment"
 msgstr "Mallattoo olkaa'uu hin dandeenye"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "Maqaa maatii"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1297,6 +1557,10 @@ msgstr "Faayiliin guddaa"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "Faayilota"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Mochi irratti barbaadi"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1314,14 +1578,16 @@ msgstr "Diriiraa"
 msgid "Friday"
 msgstr "Jimaata"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "Hiriyaa"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Michuun haqame"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "Hiriyoota"
 
@@ -1336,6 +1602,10 @@ msgstr "Irraa"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Akeeka irraa"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "Maqaa jalqabaa"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1403,6 +1673,11 @@ msgstr "Seenaa"
 msgid "Home"
 msgstr "Mana"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "Mana"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "Ho'aa"
@@ -1423,6 +1698,10 @@ msgstr "Ilaaltuu fakkii: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperial"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "Quunnamtiiwwan keessa jira"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1452,7 +1731,7 @@ msgstr "Fedhota"
 msgid "Invalid date"
 msgstr "Guyyaa sirrii hin taane"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "Affeerraan fudhatame"
@@ -1465,8 +1744,8 @@ msgstr "Affeerraan haqame"
 msgid "Invitation declined"
 msgstr "Affeerraan didame"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Affeerraan ergame"
 
@@ -1476,6 +1755,11 @@ msgstr "Affeerraan ergame"
 msgid "Invitations"
 msgstr "Affeerraawwan"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "Affeeri"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "Imaammanni affeerraa toattaachame"
@@ -1484,6 +1768,10 @@ msgstr "Imaammanni affeerraa toattaachame"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "Sirreeffama affeerraa"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "Affeerameera"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1505,6 +1793,11 @@ msgstr "Karoora keyboardii"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Guddaa"
+
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Yeroo dhumaa kan fayyadame {0}"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
@@ -1575,6 +1868,10 @@ msgstr "Ba'aa jiraa…"
 msgid "Manage categories"
 msgstr "Ramaddilee bulchi"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Meeshaalee bulchi"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Harkaan"
@@ -1622,6 +1919,7 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Ergaa"
 
@@ -1636,6 +1934,11 @@ msgstr "Hayyamni maayikirofoonii dhorkameera"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "Dheerina xiqqaa"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "Mobaayilii"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1661,18 +1964,22 @@ msgstr "Sochoofameera"
 msgid "Moved {field}"
 msgstr "{field} sochoofameera"
 
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Maqaa"
-
-#: src/features/friends/index.tsx
-msgid "Name (A–Z)"
-msgstr "Maqaa (A–Z)"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
@@ -1696,10 +2003,20 @@ msgstr "Maqaan olkaa'ame"
 msgid "Network error"
 msgstr "Dogoggora networkii"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "Gonkumaa"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Haaraa"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "Quunnamtii haaraa"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -1714,6 +2031,14 @@ msgstr "Affeerraawwan haaraan asitti mul'atu"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "Suuraa itti aanu"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Next month"
+msgstr ""
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "Maqaa moggaasaa"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1735,9 +2060,13 @@ msgstr "Bannariin qabame hin jiru"
 msgid "No comments yet"
 msgstr "Hanga ammaatti yaadni hin jiru"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "Hanga ammaatti hiriyoonni hin jiran"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "Ammatti quunnamtiin hin jiru"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Meeshaan walqabsiifame hin jiru."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1769,7 +2098,7 @@ msgstr "Affeerraan eegaa jiru hin jiru"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "Namoonni hin argamne"
@@ -1778,7 +2107,7 @@ msgstr "Namoonni hin argamne"
 msgid "No places found"
 msgstr "Bakkeewwan hin argamne"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "\"{search}\" tiif bu'aan hin jiru"
 
@@ -1850,6 +2179,10 @@ msgstr "Hin argamne"
 msgid "Not set"
 msgstr "Hin qabamne"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "Yaadannoo"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "Wanti argame hin jiru"
@@ -1872,6 +2205,10 @@ msgstr "Lakkoofsa"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Banaa"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Mochi irra jira"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1921,7 +2258,16 @@ msgstr "Ibsa filannoo"
 msgid "Options"
 msgstr "Filannoowwan"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "Dhaabbata"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Biraa"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "Biraa"
 
@@ -1953,6 +2299,10 @@ msgstr "Passkey-wwan"
 msgid "Passkeys are not available in this browser"
 msgstr "Passkey-wwan browsara kana keessatti hin argaman"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "Jecha darbii"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Bocaa (regex)"
@@ -1965,6 +2315,10 @@ msgstr "Eegaa jira"
 #: src/components/layout/people-layout.tsx
 msgid "People"
 msgstr "Namoota"
+
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "Bilbiloota"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -1980,6 +2334,10 @@ msgstr "Maaloo irra deebi'ii yaali."
 msgid "Please wait a moment and try again."
 msgstr "Maaloo yeroo xiqqoo eegiitii irra deebi'ii yaali."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "Koodii postaa"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Maxxansoota"
@@ -1992,15 +2350,19 @@ msgstr "Maxxansoota fi yaadawwan"
 msgid "Preview"
 msgstr "Dursanii ilaaluu"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "Iyyannoo hiriyummaa erguu dura piroofaayilii {0} dursanii ilaali."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "Affeerraa hiriyummaa erguu dura piroofaayilii {0} ilaali."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Previous image"
 msgstr "Suuraa duraa"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Previous month"
+msgstr ""
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2060,7 +2422,7 @@ msgstr "Furtuuwwan seensaa kee sajoo kana irratti irra deebi'ii galmeessi"
 msgid "Received ({0})"
 msgstr "Argame ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "Dhiheenya dabalame"
 
@@ -2088,6 +2450,10 @@ msgstr "Gara galmeetti deebi'aa jira."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "Dantaa hir'isi"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "Naannoo"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2120,10 +2486,7 @@ msgstr "Wal-simannaa {relevance}, fedhii {weight}"
 msgid "Remove"
 msgstr "Haqi"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2155,10 +2518,13 @@ msgstr "Seera argannoo \"{0}\" haquu?"
 msgid "Remove access?"
 msgstr "Itti seenumsa haquuf?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "Hiriyaa haqi"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "Teessoo haqi"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "Imeelii haqi"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2179,7 +2545,11 @@ msgstr "Hidhata haquu"
 msgid "Remove member"
 msgstr "Miseensa haqi"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "Bilbila haqi"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Michuu haqaa jira..."
 
@@ -2189,8 +2559,13 @@ msgstr "Miseensa haqaa jira..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "Maqaa jijjiiri"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "Maqaa kitaaba teessoo jijjiiri"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2199,6 +2574,15 @@ msgstr "Maqaa tarjaa jijjiiri"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "Maqaa tarjaa gabatee kanaa jijjiiri"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "Maqaa kitaaba teessoo jijjiiraa jira..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2274,6 +2658,8 @@ msgstr "Sanbata"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2285,6 +2671,14 @@ msgstr "Olkaa'i"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "Maqaa olkaa'i"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Jecha darbii kana amma olkaa'i. Lammata mul'achuu hin danda'u."
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "Quunnamtii olkaa'aa jira..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2303,6 +2697,10 @@ msgstr "Olkaa'aa jira..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "Barbaadi"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "Quunnamtiiwwan barbaadi"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2323,14 +2721,6 @@ msgstr "Galma barbaadi..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "Madda barbaadi..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "Namoota barbaadi fi iyyannoo hiriyummaa ergi."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "Hiriyoota barbaadi"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2354,7 +2744,7 @@ msgstr "Mul'annoo kana barbaadi, ilaali, fi tartiibessi."
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Barbaadi..."
@@ -2432,7 +2822,7 @@ msgstr "Ammas erguu"
 msgid "Send email"
 msgstr "Imeelii ergi"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "Afeerraa ergi"
 
@@ -2441,7 +2831,8 @@ msgstr "Afeerraa ergi"
 msgid "Send message"
 msgstr "Ergaa ergi"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Afeerraa ergaa jira..."
 
@@ -2453,6 +2844,10 @@ msgstr "Ergame ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "Serif"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2549,9 +2944,9 @@ msgstr "Bal'aa"
 msgid "Start the discussion by adding the first comment."
 msgstr "Yaada jalqabaa dabaluudhaan marii jalqabi."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "Fayyadamtoota barbaaduuf barreessuu jalqabi"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "Namoota barbaaduuf barreessuu jalqabi"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2561,6 +2956,10 @@ msgstr "Daawwannaa dhaabsisi"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "Calliisaan kuusi"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "Daandii"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2629,7 +3028,7 @@ msgstr "Erguun hin danda'amne. Faayilonni baay'ee guddaa ta'uu danda'u, yookiin 
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Ol kaa'uuf baay'ee guddaa ture. Faayilota balleessi yookiin xiqqeessi, ergasii irra deebi'ii yaali."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "Sun siidha"
 
@@ -2640,6 +3039,10 @@ msgstr "Kaameraan duraanuu fayyadamaa jira"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Gaaffiin kaameraa deebii hin arganne"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "Meeshaan kun kana booda qunnamtiiwwan walsimsiisuu hin danda'u."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -2672,6 +3075,11 @@ msgstr "Kun taphicha fi haasawa isaa bara baraan ni haqa. Wanti kun deebi'ee hin
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Kamisa"
+
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "Sadarkaa hojii"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2712,13 +3120,9 @@ msgstr "Ol"
 msgid "Travelling"
 msgstr "Imala"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "Maqaa biraa yaali"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "Jecha barbaaccha biraa yaali"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2739,6 +3143,8 @@ msgstr "Kibxata"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "Akaakuu"
@@ -2782,6 +3188,12 @@ msgstr "Hin argamu"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Dogoggora API hin eegamne"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "Hiriyummaa xumuri"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2843,6 +3255,10 @@ msgstr "Adeemsa fe'umsaa"
 msgid "Uploading..."
 msgstr "Olfe'aa jira..."
 
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
 msgstr "Passkey kee fayyadami"
@@ -2854,6 +3270,10 @@ msgstr "Passkey kee fayyadami"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "Fayyadamaa"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "Maqaa fayyadamaa"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"
@@ -2920,6 +3340,11 @@ msgstr "Koodii mirkaneessaa gara <0>{0}</0> ergineerra. Teessoo imeelii kee mirk
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "Roobii"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "Hojii"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

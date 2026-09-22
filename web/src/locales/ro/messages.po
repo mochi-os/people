@@ -34,6 +34,11 @@ msgstr "(tu)"
 msgid "[not set]"
 msgstr "[nesetat]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {# contact este șters odată cu ea.} few {# contacte sunt șterse odată cu ea.} other {# de contacte sunt șterse odată cu ea.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -65,9 +70,21 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#săpt} other {#săpt}}"
 
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Numele {entityLabel}"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr ""
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr ""
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -98,9 +115,9 @@ msgstr "12 ore"
 msgid "24 hours"
 msgstr "24 de ore"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "O invitație de prietenie a fost trimisă către {userName}."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "I-a fost trimisă o invitație de prietenie lui {name}."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +136,8 @@ msgid "Accent saved"
 msgstr "Accent salvat"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "Acceptă"
@@ -132,11 +150,7 @@ msgstr "Acceptă tot"
 msgid "Accept automatically"
 msgstr "Acceptă automat"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "Acceptă invitația"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "Se acceptă invitația..."
@@ -161,6 +175,11 @@ msgstr "Tip de cont"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "Acțiuni"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "Acțiuni pentru {0}"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +211,10 @@ msgstr "Adaugă acces"
 msgid "Add account"
 msgstr "Adaugă cont"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "Adaugă adresă"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Adaugă legendă"
@@ -200,22 +223,21 @@ msgstr "Adaugă legendă"
 msgid "Add checklist item"
 msgstr "Adaugă element în listă"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "Adaugă contact"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "Adaugă email"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Adaugă câmp"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "Adaugă prieten"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "Adaugă prieteni pentru a începe să te conectezi"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +262,21 @@ msgstr "Adaugă membru"
 msgid "Add option"
 msgstr "Adaugă opțiune"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "Adaugă telefon"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "Adaugă pe cineva pentru a începe"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Adaugă etichetă..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "Adaugă la contacte"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +300,42 @@ msgstr "Adaugă vizualizare"
 msgid "Added {0} to the group"
 msgstr "S-a adăugat {0} în grup"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "Se adaugă contactul..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Se adaugă membrul..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "agendă"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "Agendă"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "Agendă creată"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "Agendă ștearsă"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "Agendă redenumită"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "URL-ul agendei"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "Adrese"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +344,15 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "Toate grupurile disponibile sunt deja adăugate"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "Toate contactele"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr ""
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +373,6 @@ msgstr "Permite oricui să caute {entityLabel}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Permite sortarea după"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "Deja prieteni"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +430,6 @@ msgstr "Sigur vrei să te deconectezi? Va trebui să te autentifici din nou pent
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Sigur vrei să elimini <0>{0}</0> din acest grup?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "Sigur vrei să elimini <0>{0}</0> din lista de prieteni? Această acțiune nu poate fi anulată."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "Sigur vrei să te retragi?"
@@ -406,7 +472,8 @@ msgid "Avatar for {name}"
 msgstr "Avatar pentru {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "Înapoi"
 
@@ -431,6 +498,10 @@ msgstr "Banner eliminat"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Banner actualizat"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "Data nașterii"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +565,9 @@ msgstr "Camera nu este disponibilă"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,9 +629,10 @@ msgstr "Modificat"
 msgid "Changed {field}"
 msgstr "Modificat {field}"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "Chat"
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr ""
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -576,6 +651,10 @@ msgstr "Alege un joc din bara laterală sau începe unul nou."
 msgid "Choose language"
 msgstr "Alege limba"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "Oraș"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -592,7 +671,7 @@ msgid "Clear all"
 msgstr "Golește tot"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "Golește căutarea"
 
@@ -601,7 +680,7 @@ msgstr "Golește căutarea"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "Închide"
 
@@ -635,6 +714,7 @@ msgid "Collapse sidebar"
 msgstr "Restrânge bara laterală"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "Culoare"
 
@@ -685,13 +765,47 @@ msgstr "Configurează setările vizualizării"
 msgid "Confirm"
 msgstr "Confirmă"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Conectează un dispozitiv"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Conectează alt dispozitiv"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Conectat"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Se conectează dispozitivul..."
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
 msgstr "Se conectează..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "Contact adăugat"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "Contact creat"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "Contact șters"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "Contact salvat"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "Contacte"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -718,12 +832,17 @@ msgid "Copied"
 msgstr "Copiat"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Copiat în clipboard"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Copiază"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "Copiază {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -749,17 +868,31 @@ msgstr "Reautentificarea nu a putut fi inițiată. Încearcă din nou."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Nu s-a putut verifica cu acel cont. Încearcă din nou."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "Țară"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "Creează"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "Creează {entityLabel}"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "Creează un contact sau găsește pe cineva pe Mochi."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "Creează agendă"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -778,9 +911,22 @@ msgstr "Creează un element nou"
 msgid "Created"
 msgstr "Creat"
 
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Creat {0}"
+
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "Creat {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "Se creează agenda..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "Se creează contactul..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -847,10 +993,37 @@ msgstr "Sortare implicită"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "Șterge"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "Ștergi <0>{0}</0>?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "Ștergi <0>{0}</0>? Astfel se încheie și prietenia voastră."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "Șterge agenda"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -863,6 +1036,19 @@ msgstr "Șterge coloana"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "Șterge comentariul"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "Șterge contactul"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Șterge dispozitivul"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Ștergi dispozitivul?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -913,6 +1099,19 @@ msgstr "Șters"
 msgid "Deleted {field}"
 msgstr "Șters {field}"
 
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "Se șterge agenda..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "Se șterge contactul..."
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Se șterge dispozitivul..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "Se șterge grupul..."
@@ -941,6 +1140,14 @@ msgstr "Panou detalii"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Detectează din browser"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Dispozitiv șters"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "Numele dispozitivului"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -978,6 +1185,7 @@ msgstr "Nu corespunde modelului necesar"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "Terminat"
 
@@ -1002,6 +1210,7 @@ msgstr "Potrivit pentru dislexie"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Editează"
@@ -1013,6 +1222,10 @@ msgstr "Editează {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Editează legenda"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "Editează contactul"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1058,15 +1271,20 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Cod email"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "Introdu un nume pentru a găsi persoanele pe care vrei să le adaugi"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "Adrese de email"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "Închei prietenia cu <0>{0}</0>? Contactul rămâne în agenda ta."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "Introdu textul bannerului (markdown acceptat)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "Introdu numele pentru a căuta..."
 
@@ -1101,6 +1319,7 @@ msgstr "URL extern"
 msgid "Extra large"
 msgstr "Extra mare"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "Acceptarea invitației a eșuat"
@@ -1113,10 +1332,9 @@ msgstr "Acceptarea invitațiilor a eșuat"
 msgid "Failed to add account"
 msgstr "Adăugarea contului a eșuat"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "Adăugarea prietenului a eșuat"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "Adăugarea contactului a eșuat"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1131,11 +1349,23 @@ msgstr "Anularea invitației a eșuat"
 msgid "Failed to cancel invitations"
 msgstr "Anularea invitațiilor a eșuat"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Conectarea dispozitivului a eșuat"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "Copierea a eșuat"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "Crearea agendei a eșuat"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "Crearea contactului a eșuat"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1158,6 +1388,10 @@ msgstr "Refuzarea invitațiilor a eșuat"
 msgid "Failed to delete"
 msgstr "Ștergerea a eșuat"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "Ștergerea agendei a eșuat"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "Ștergerea atașamentului a eșuat"
@@ -1165,6 +1399,15 @@ msgstr "Ștergerea atașamentului a eșuat"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "Ștergerea comentariului a eșuat"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "Ștergerea contactului a eșuat"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Ștergerea dispozitivului a eșuat"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1223,13 +1466,17 @@ msgstr "Mutarea a eșuat"
 msgid "Failed to post comment"
 msgstr "Postarea comentariului a eșuat"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Eliminarea prietenului a eșuat"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "Eliminarea membrului a eșuat"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "Redenumirea agendei a eșuat"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1248,6 +1495,10 @@ msgstr "Salvarea a eșuat"
 msgid "Failed to save accent"
 msgstr "Salvarea accentului a eșuat"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "Salvarea contactului a eșuat"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "Salvarea numelui a eșuat"
@@ -1263,6 +1514,11 @@ msgstr "Salvarea profilului a eșuat"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "Salvarea promptului a eșuat"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "Trimiterea invitației a eșuat"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1284,6 +1540,10 @@ msgstr "Actualizarea urmăririi a eșuat"
 msgid "Failed to upload attachment"
 msgstr "Încărcarea atașamentului a eșuat"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "Nume de familie"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1297,6 +1557,10 @@ msgstr "Fișier prea mare"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "Fișiere"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Caută pe Mochi"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1314,14 +1578,16 @@ msgstr "Plat"
 msgid "Friday"
 msgstr "Vineri"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "Prieten"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Prieten eliminat"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "Prieteni"
 
@@ -1336,6 +1602,10 @@ msgstr "De la"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Din temă"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "Prenume"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1403,6 +1673,11 @@ msgstr "Istoric"
 msgid "Home"
 msgstr "Acasă"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "Acasă"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "Popular"
@@ -1423,6 +1698,10 @@ msgstr "Vizualizator de imagini: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperial"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "În contacte"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1452,7 +1731,7 @@ msgstr "Interese"
 msgid "Invalid date"
 msgstr "Dată invalidă"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "Invitație acceptată"
@@ -1465,8 +1744,8 @@ msgstr "Invitație anulată"
 msgid "Invitation declined"
 msgstr "Invitație refuzată"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Invitație trimisă"
 
@@ -1476,6 +1755,11 @@ msgstr "Invitație trimisă"
 msgid "Invitations"
 msgstr "Invitații"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "Invită"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "Politica de invitații a fost actualizată"
@@ -1484,6 +1768,10 @@ msgstr "Politica de invitații a fost actualizată"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "Setări invitații"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "Invitat"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1505,6 +1793,11 @@ msgstr "Scurtături de tastatură"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Mare"
+
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Ultima utilizare {0}"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
@@ -1575,6 +1868,10 @@ msgstr "Se deconectează…"
 msgid "Manage categories"
 msgstr "Gestionează categoriile"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Gestionează dispozitivele"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Manual"
@@ -1622,6 +1919,7 @@ msgid "Menu"
 msgstr "Meniu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Mesaj"
 
@@ -1636,6 +1934,11 @@ msgstr "Permisiunea pentru microfon refuzată"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "Lungime minimă"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "Mobil"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1661,18 +1964,22 @@ msgstr "Mutat"
 msgid "Moved {field}"
 msgstr "Mutat {field}"
 
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Nume"
-
-#: src/features/friends/index.tsx
-msgid "Name (A–Z)"
-msgstr "Nume (A–Z)"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
@@ -1696,10 +2003,20 @@ msgstr "Nume salvat"
 msgid "Network error"
 msgstr "Eroare de rețea"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "Niciodată"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Nou"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "Contact nou"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -1714,6 +2031,14 @@ msgstr "Invitațiile noi vor apărea aici"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "Imaginea următoare"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Next month"
+msgstr ""
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "Poreclă"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1735,9 +2060,13 @@ msgstr "Niciun banner setat"
 msgid "No comments yet"
 msgstr "Încă niciun comentariu"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "Încă niciun prieten"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "Încă niciun contact"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Niciun dispozitiv conectat."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1769,7 +2098,7 @@ msgstr "Nicio invitație în așteptare"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "Nu s-au găsit persoane"
@@ -1778,7 +2107,7 @@ msgstr "Nu s-au găsit persoane"
 msgid "No places found"
 msgstr "Nu s-au găsit locuri"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "Niciun rezultat pentru „{search}”"
 
@@ -1850,6 +2179,10 @@ msgstr "Nu a fost găsit"
 msgid "Not set"
 msgstr "Nesetat"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "Notă"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "Nu s-a găsit nimic"
@@ -1872,6 +2205,10 @@ msgstr "Număr"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Activat"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Pe Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1921,7 +2258,16 @@ msgstr "Descriere opțională"
 msgid "Options"
 msgstr "Opțiuni"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "Organizație"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Altele"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "Altele"
 
@@ -1953,6 +2299,10 @@ msgstr "Chei de acces"
 msgid "Passkeys are not available in this browser"
 msgstr "Cheile de acces nu sunt disponibile în acest browser"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "Parolă"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Model (regex)"
@@ -1965,6 +2315,10 @@ msgstr "În așteptare"
 #: src/components/layout/people-layout.tsx
 msgid "People"
 msgstr "Persoane"
+
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "Telefoane"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -1980,6 +2334,10 @@ msgstr "Încearcă din nou."
 msgid "Please wait a moment and try again."
 msgstr "Așteptați un moment și încercați din nou."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "Cod poștal"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Postări"
@@ -1992,15 +2350,19 @@ msgstr "Postări și comentarii"
 msgid "Preview"
 msgstr "Previzualizare"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "Previzualizează profilul lui {0} înainte de a trimite o cerere de prietenie."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "Vezi profilul lui {0} înainte de a trimite o invitație de prietenie."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Previous image"
 msgstr "Imaginea anterioară"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Previous month"
+msgstr ""
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2060,7 +2422,7 @@ msgstr "Reînregistrați-vă cheile de acces pe acest server"
 msgid "Received ({0})"
 msgstr "Primite ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "Adăugat recent"
 
@@ -2088,6 +2450,10 @@ msgstr "Se redirecționează către autentificare."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "Reduce interesul"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "Regiune"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2120,10 +2486,7 @@ msgstr "Relevanță {relevance}, interes {weight}"
 msgid "Remove"
 msgstr "Elimină"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2155,10 +2518,13 @@ msgstr "Eliminați regula de acces pentru „{0}”?"
 msgid "Remove access?"
 msgstr "Elimini accesul?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "Elimină prietenul"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "Elimină adresa"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "Elimină adresa de email"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2179,7 +2545,11 @@ msgstr "Elimină linkul"
 msgid "Remove member"
 msgstr "Elimină membrul"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "Elimină telefonul"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Se elimină prietenul..."
 
@@ -2189,8 +2559,13 @@ msgstr "Se elimină membrul..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "Redenumește"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "Redenumește agenda"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2199,6 +2574,15 @@ msgstr "Redenumește coloana"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "Redenumește această coloană a tablei"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "Se redenumește agenda..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2274,6 +2658,8 @@ msgstr "Sâmbătă"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2285,6 +2671,14 @@ msgstr "Salvează"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "Salvează numele"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Salvează această parolă acum. Nu va mai putea fi afișată."
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "Se salvează contactul..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2303,6 +2697,10 @@ msgstr "Se salvează..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "Caută"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "Caută în contacte"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2323,14 +2721,6 @@ msgstr "Caută o destinație..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "Caută o origine..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "Caută persoane și trimite o cerere de prietenie."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "Caută prieteni"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2354,7 +2744,7 @@ msgstr "Caută, urmărește și sortează această vizualizare."
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Caută..."
@@ -2432,7 +2822,7 @@ msgstr "Trimite din nou"
 msgid "Send email"
 msgstr "Trimite email"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "Trimite invitația"
 
@@ -2441,7 +2831,8 @@ msgstr "Trimite invitația"
 msgid "Send message"
 msgstr "Trimite mesajul"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Se trimite invitația..."
 
@@ -2453,6 +2844,10 @@ msgstr "Trimis ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "Cu serife"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2549,9 +2944,9 @@ msgstr "Spațios"
 msgid "Start the discussion by adding the first comment."
 msgstr "Începe discuția adăugând primul comentariu."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "Începe să tastezi pentru a căuta utilizatori"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "Începe să scrii pentru a căuta persoane"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2561,6 +2956,10 @@ msgstr "Nu mai urmări"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "Stochează silențios"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "Stradă"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2629,7 +3028,7 @@ msgstr "Nu s-a putut trimite. Fișierele pot fi prea mari sau conexiunea a eșua
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "A fost prea mare pentru încărcare. Eliminați sau micșorați fișiere și încercați din nou."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "Acela ești tu"
 
@@ -2640,6 +3039,10 @@ msgstr "Camera este deja utilizată"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Solicitarea camerei nu a primit răspuns"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "Dispozitivul nu va mai putea sincroniza contactele."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -2672,6 +3075,11 @@ msgstr "Aceasta va șterge definitiv jocul și discuția asociată. Această ac�
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Joi"
+
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "Funcție"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2712,13 +3120,9 @@ msgstr "Sus"
 msgid "Travelling"
 msgstr "În călătorie"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "Încearcă alt nume"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "Încearcă un alt termen de căutare"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2739,6 +3143,8 @@ msgstr "Marți"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "Tip"
@@ -2782,6 +3188,12 @@ msgstr "Indisponibil"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Eroare API neașteptată"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "Încheie prietenia"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2843,6 +3255,10 @@ msgstr "Progresul încărcării"
 msgid "Uploading..."
 msgstr "Se încarcă..."
 
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
 msgstr "Folosește cheia de acces"
@@ -2854,6 +3270,10 @@ msgstr "Folosește cheia de acces"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "Utilizator"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "Nume de utilizator"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"
@@ -2920,6 +3340,11 @@ msgstr "Am trimis un cod de verificare la <0>{0}</0>. Introduceți codul mai jos
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "Miercuri"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "Serviciu"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

@@ -34,6 +34,11 @@ msgstr "(sinä)"
 msgid "[not set]"
 msgstr "[ei asetettu]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {Sen mukana poistetaan # yhteystieto.} other {Sen mukana poistetaan # yhteystietoa.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -65,9 +70,21 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#vk} other {#vk}}"
 
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel}: nimi"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr ""
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr ""
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -98,9 +115,9 @@ msgstr "12 tuntia"
 msgid "24 hours"
 msgstr "24 tuntia"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "Kaveripyyntö lähetettiin käyttäjälle {userName}."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "Kaverikutsu on lähetetty käyttäjälle {name}."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +136,8 @@ msgid "Accent saved"
 msgstr "Korostus tallennettu"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "Hyväksy"
@@ -132,11 +150,7 @@ msgstr "Hyväksy kaikki"
 msgid "Accept automatically"
 msgstr "Hyväksy automaattisesti"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "Hyväksy kutsu"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "Hyväksytään kutsua..."
@@ -161,6 +175,11 @@ msgstr "Tilin tyyppi"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "Toiminnot"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "Toiminnot: {0}"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +211,10 @@ msgstr "Lisää käyttöoikeus"
 msgid "Add account"
 msgstr "Lisää tili"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "Lisää osoite"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Lisää kuvateksti"
@@ -200,22 +223,21 @@ msgstr "Lisää kuvateksti"
 msgid "Add checklist item"
 msgstr "Lisää tarkistuslistakohde"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "Lisää yhteystieto"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "Lisää sähköposti"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Lisää kenttä"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "Lisää kaveri"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "Lisää ystäviä aloittaaksesi yhteydenpidon"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +262,21 @@ msgstr "Lisää jäsen"
 msgid "Add option"
 msgstr "Lisää vaihtoehto"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "Lisää puhelin"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "Aloita lisäämällä joku"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Lisää tunniste..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "Lisää yhteystietoihin"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +300,42 @@ msgstr "Lisää näkymä"
 msgid "Added {0} to the group"
 msgstr "Lisätty {0} ryhmään"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "Lisätään yhteystietoa..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Lisätään jäsentä..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "osoitekirja"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "Osoitekirja"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "Osoitekirja luotu"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "Osoitekirja poistettu"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "Osoitekirja nimetty uudelleen"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "Osoitekirjan URL"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "Osoitteet"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +344,15 @@ msgstr "Tekoäly"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "Kaikki saatavilla olevat ryhmät on jo lisätty"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "Kaikki yhteystiedot"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr ""
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +373,6 @@ msgstr "Salli kaikkien etsiä {entityLabel}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Salli järjestäminen"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "Jo kavereita"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +430,6 @@ msgstr "Haluatko varmasti kirjautua ulos? Sinun täytyy kirjautua uudelleen sis�
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Haluatko varmasti poistaa käyttäjän <0>{0}</0> tästä ryhmästä?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "Haluatko varmasti poistaa käyttäjän <0>{0}</0> kaverilistaltasi? Tätä toimintoa ei voi peruuttaa."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "Haluatko varmasti luovuttaa?"
@@ -406,7 +472,8 @@ msgid "Avatar for {name}"
 msgstr "Käyttäjän {name} avatar"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "Takaisin"
 
@@ -431,6 +498,10 @@ msgstr "Banneri poistettu"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Banneri päivitetty"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "Syntymäpäivä"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +565,9 @@ msgstr "Kamera ei ole käytettävissä"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,9 +629,10 @@ msgstr "Muutettu"
 msgid "Changed {field}"
 msgstr "{field} muutettu"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "Chat"
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr ""
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -576,6 +651,10 @@ msgstr "Valitse peli sivupalkista tai aloita uusi."
 msgid "Choose language"
 msgstr "Valitse kieli"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "Kaupunki"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -592,7 +671,7 @@ msgid "Clear all"
 msgstr "Tyhjennä kaikki"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "Tyhjennä haku"
 
@@ -601,7 +680,7 @@ msgstr "Tyhjennä haku"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "Sulje"
 
@@ -635,6 +714,7 @@ msgid "Collapse sidebar"
 msgstr "Tiivistä sivupalkki"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "Väri"
 
@@ -685,13 +765,47 @@ msgstr "Määritä näkymän asetukset"
 msgid "Confirm"
 msgstr "Vahvista"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Yhdistä laite"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Yhdistä toinen laite"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Yhdistetty"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Yhdistetään laitetta..."
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
 msgstr "Yhdistetään..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "Yhteystieto lisätty"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "Yhteystieto luotu"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "Yhteystieto poistettu"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "Yhteystieto tallennettu"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "Yhteystiedot"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -718,12 +832,17 @@ msgid "Copied"
 msgstr "Kopioitu"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Kopioitu leikepöydälle"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopioi"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "Kopioi {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -749,17 +868,31 @@ msgstr "Uudelleentodennuksen aloittaminen ei onnistunut. Yritä uudelleen."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Vahvistaminen tällä tilillä ei onnistunut. Yritä uudelleen."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "Maa"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "Luo"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "Luo {entityLabel}"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "Luo yhteystieto tai etsi joku Mochista."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "Luo osoitekirja"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -778,9 +911,22 @@ msgstr "Luo uusi kohde"
 msgid "Created"
 msgstr "Luotu"
 
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Luotu {0}"
+
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "{field} luotu"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "Luodaan osoitekirjaa..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "Luodaan yhteystietoa..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -847,10 +993,37 @@ msgstr "Oletuslajittelu"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "Poista"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "Poistetaanko <0>{0}</0>?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "Poistetaanko <0>{0}</0>? Tämä päättää myös kaveruutenne."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "Poista osoitekirja"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -863,6 +1036,19 @@ msgstr "Poista sarake"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "Poista kommentti"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "Poista yhteystieto"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Poista laite"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Poistetaanko laite?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -913,6 +1099,19 @@ msgstr "Poistettu"
 msgid "Deleted {field}"
 msgstr "{field} poistettu"
 
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "Poistetaan osoitekirjaa..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "Poistetaan yhteystietoa..."
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Poistetaan laitetta..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "Poistetaan ryhmää..."
@@ -941,6 +1140,14 @@ msgstr "Tietopaneeli"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Tunnista selaimesta"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Laite poistettu"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "Laitteen nimi"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -978,6 +1185,7 @@ msgstr "Ei vastaa vaadittua kaavaa"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "Valmis"
 
@@ -1002,6 +1210,7 @@ msgstr "Lukihäiriöystävällinen"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Muokkaa"
@@ -1013,6 +1222,10 @@ msgstr "Muokkaa {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Muokkaa kuvatekstiä"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "Muokkaa yhteystietoa"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1058,15 +1271,20 @@ msgstr "Sähköposti"
 msgid "Email code"
 msgstr "Sähköpostikoodi"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "Anna nimi löytääksesi henkilöitä, jotka haluat lisätä"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "Sähköpostiosoitteet"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "Päätetäänkö kaveruus käyttäjän <0>{0}</0> kanssa? Yhteystieto jää osoitekirjaasi."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "Anna bannerin teksti (markdown tuettu)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "Anna nimi haku varten..."
 
@@ -1101,6 +1319,7 @@ msgstr "Ulkoinen URL-osoite"
 msgid "Extra large"
 msgstr "Erittäin suuri"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "Kutsun hyväksyminen epäonnistui"
@@ -1113,10 +1332,9 @@ msgstr "Kutsujen hyväksyminen epäonnistui"
 msgid "Failed to add account"
 msgstr "Tilin lisääminen epäonnistui"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "Kaverin lisääminen epäonnistui"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "Yhteystiedon lisäys epäonnistui"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1131,11 +1349,23 @@ msgstr "Kutsun peruuttaminen epäonnistui"
 msgid "Failed to cancel invitations"
 msgstr "Kutsujen peruuttaminen epäonnistui"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Laitteen yhdistäminen epäonnistui"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "Kopiointi epäonnistui"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "Osoitekirjan luonti epäonnistui"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "Yhteystiedon luonti epäonnistui"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1158,6 +1388,10 @@ msgstr "Kutsujen hylkääminen epäonnistui"
 msgid "Failed to delete"
 msgstr "Poistaminen epäonnistui"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "Osoitekirjan poisto epäonnistui"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "Liitteen poistaminen epäonnistui"
@@ -1165,6 +1399,15 @@ msgstr "Liitteen poistaminen epäonnistui"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "Kommentin poistaminen epäonnistui"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "Yhteystiedon poisto epäonnistui"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Laitteen poisto epäonnistui"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1223,13 +1466,17 @@ msgstr "Siirto epäonnistui"
 msgid "Failed to post comment"
 msgstr "Kommentin lähettäminen epäonnistui"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Kaverin poisto epäonnistui"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "Jäsenen poisto epäonnistui"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "Osoitekirjan uudelleennimeäminen epäonnistui"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1248,6 +1495,10 @@ msgstr "Tallennus epäonnistui"
 msgid "Failed to save accent"
 msgstr "Korostusvärin tallennus epäonnistui"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "Yhteystiedon tallennus epäonnistui"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "Nimen tallennus epäonnistui"
@@ -1263,6 +1514,11 @@ msgstr "Profiilin tallennus epäonnistui"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "Kehotteen tallennus epäonnistui"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "Kutsun lähetys epäonnistui"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1284,6 +1540,10 @@ msgstr "Seurannan päivitys epäonnistui"
 msgid "Failed to upload attachment"
 msgstr "Liitteen lähetys epäonnistui"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "Sukunimi"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1297,6 +1557,10 @@ msgstr "Tiedosto on liian suuri"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "Tiedostot"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Etsi Mochista"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1314,14 +1578,16 @@ msgstr "Litteä"
 msgid "Friday"
 msgstr "Perjantai"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "Kaveri"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Kaveri poistettu"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "Kaverit"
 
@@ -1336,6 +1602,10 @@ msgstr "Lähettäjä"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Teemasta"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "Etunimi"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1403,6 +1673,11 @@ msgstr "Historia"
 msgid "Home"
 msgstr "Etusivu"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "Koti"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "Kuuma"
@@ -1423,6 +1698,10 @@ msgstr "Kuvankatselin: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Brittiläinen"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "Yhteystiedoissa"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1452,7 +1731,7 @@ msgstr "Kiinnostuksen kohteet"
 msgid "Invalid date"
 msgstr "Virheellinen päivämäärä"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "Kutsu hyväksytty"
@@ -1465,8 +1744,8 @@ msgstr "Kutsu peruutettu"
 msgid "Invitation declined"
 msgstr "Kutsu hylätty"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Kutsu lähetetty"
 
@@ -1476,6 +1755,11 @@ msgstr "Kutsu lähetetty"
 msgid "Invitations"
 msgstr "Kutsut"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "Kutsu"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "Kutsukäytäntö päivitetty"
@@ -1484,6 +1768,10 @@ msgstr "Kutsukäytäntö päivitetty"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "Kutsuasetukset"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "Kutsuttu"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1505,6 +1793,11 @@ msgstr "Pikanäppäimet"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Suuri"
+
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Viimeksi käytetty {0}"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
@@ -1575,6 +1868,10 @@ msgstr "Kirjaudutaan ulos…"
 msgid "Manage categories"
 msgstr "Hallitse kategorioita"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Hallitse laitteita"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Manuaalinen"
@@ -1622,6 +1919,7 @@ msgid "Menu"
 msgstr "Valikko"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Viesti"
 
@@ -1636,6 +1934,11 @@ msgstr "Mikrofonin käyttölupa evätty"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "Vähimmäispituus"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "Matkapuhelin"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1661,18 +1964,22 @@ msgstr "Siirretty"
 msgid "Moved {field}"
 msgstr "{field} siirretty"
 
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Nimi"
-
-#: src/features/friends/index.tsx
-msgid "Name (A–Z)"
-msgstr "Nimi (A–Z)"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
@@ -1696,10 +2003,20 @@ msgstr "Nimi tallennettu"
 msgid "Network error"
 msgstr "Verkkovirhe"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "Ei koskaan"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Uusi"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "Uusi yhteystieto"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -1714,6 +2031,14 @@ msgstr "Uudet kutsut näkyvät täällä"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "Seuraava kuva"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Next month"
+msgstr ""
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "Lempinimi"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1735,9 +2060,13 @@ msgstr "Banneria ei ole asetettu"
 msgid "No comments yet"
 msgstr "Ei vielä kommentteja"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "Ei vielä ystäviä"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "Ei vielä yhteystietoja"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Ei yhdistettyjä laitteita."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1769,7 +2098,7 @@ msgstr "Ei odottavia kutsuja"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "Henkilöitä ei löytynyt"
@@ -1778,7 +2107,7 @@ msgstr "Henkilöitä ei löytynyt"
 msgid "No places found"
 msgstr "Paikkoja ei löytynyt"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "Ei tuloksia haulle \"{search}\""
 
@@ -1850,6 +2179,10 @@ msgstr "Ei löytynyt"
 msgid "Not set"
 msgstr "Ei asetettu"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "Muistiinpano"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "Mitään ei löytynyt"
@@ -1872,6 +2205,10 @@ msgstr "Numero"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Päällä"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Mochissa"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1921,7 +2258,16 @@ msgstr "Valinnainen kuvaus"
 msgid "Options"
 msgstr "Vaihtoehdot"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "Organisaatio"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Muu"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "Muu"
 
@@ -1953,6 +2299,10 @@ msgstr "Avainkoodit"
 msgid "Passkeys are not available in this browser"
 msgstr "Avainkoodit eivät ole käytettävissä tässä selaimessa"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "Salasana"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Kuvio (regex)"
@@ -1965,6 +2315,10 @@ msgstr "Odottaa"
 #: src/components/layout/people-layout.tsx
 msgid "People"
 msgstr "Henkilöt"
+
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "Puhelinnumerot"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -1980,6 +2334,10 @@ msgstr "Yritä uudelleen."
 msgid "Please wait a moment and try again."
 msgstr "Odota hetki ja yritä uudelleen."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "Postinumero"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Julkaisut"
@@ -1992,15 +2350,19 @@ msgstr "Julkaisut ja kommentit"
 msgid "Preview"
 msgstr "Esikatselu"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "Esikatsele käyttäjän {0} profiilia ennen kaveripyynnön lähettämistä."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "Katso käyttäjän {0} profiili ennen kaverikutsun lähettämistä."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Previous image"
 msgstr "Edellinen kuva"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Previous month"
+msgstr ""
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2060,7 +2422,7 @@ msgstr "Rekisteröi pääsyavaimesi uudelleen tällä palvelimella"
 msgid "Received ({0})"
 msgstr "Vastaanotetut ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "Äskettäin lisätty"
 
@@ -2088,6 +2450,10 @@ msgstr "Uudelleenohjataan kirjautumiseen."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "Vähennä kiinnostusta"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "Alue"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2120,10 +2486,7 @@ msgstr "Osuvuus {relevance}, kiinnostus {weight}"
 msgid "Remove"
 msgstr "Poista"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2155,10 +2518,13 @@ msgstr "Poistetaanko käyttöoikeussääntö kohteelle ”{0}”?"
 msgid "Remove access?"
 msgstr "Poistetaanko käyttöoikeus?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "Poista kaveri"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "Poista osoite"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "Poista sähköposti"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2179,7 +2545,11 @@ msgstr "Poista linkki"
 msgid "Remove member"
 msgstr "Poista jäsen"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "Poista puhelin"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Poistetaan kaveria..."
 
@@ -2189,8 +2559,13 @@ msgstr "Poistetaan jäsentä..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "Nimeä uudelleen"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "Nimeä osoitekirja uudelleen"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2199,6 +2574,15 @@ msgstr "Nimeä sarake uudelleen"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "Nimeä tämä taulun sarake uudelleen"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "Nimetään osoitekirjaa uudelleen..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2274,6 +2658,8 @@ msgstr "Lauantai"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2285,6 +2671,14 @@ msgstr "Tallenna"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "Tallenna nimi"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Tallenna tämä salasana nyt. Sitä ei voi näyttää uudelleen."
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "Tallennetaan yhteystietoa..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2303,6 +2697,10 @@ msgstr "Tallennetaan..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "Haku"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "Hae yhteystiedoista"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2323,14 +2721,6 @@ msgstr "Hae määränpäätä..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "Hae lähtöpaikkaa..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "Etsi ihmisiä ja lähetä kaveripyyntö."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "Hae kavereita"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2354,7 +2744,7 @@ msgstr "Hae, seuraa ja lajittele tätä näkymää."
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Hae..."
@@ -2432,7 +2822,7 @@ msgstr "Lähetä uudelleen"
 msgid "Send email"
 msgstr "Lähetä sähköposti"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "Lähetä kutsu"
 
@@ -2441,7 +2831,8 @@ msgstr "Lähetä kutsu"
 msgid "Send message"
 msgstr "Lähetä viesti"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Lähetetään kutsua..."
 
@@ -2453,6 +2844,10 @@ msgstr "Lähetetyt ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "Pääteviivallinen"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2549,9 +2944,9 @@ msgstr "Tilava"
 msgid "Start the discussion by adding the first comment."
 msgstr "Aloita keskustelu lisäämällä ensimmäinen kommentti."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "Aloita kirjoittaminen etsiäksesi käyttäjiä"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "Hae henkilöitä kirjoittamalla"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2561,6 +2956,10 @@ msgstr "Lopeta seuranta"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "Tallenna hiljaisesti"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "Katuosoite"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2629,7 +3028,7 @@ msgstr "Lähetys epäonnistui. Tiedostot voivat olla liian suuria tai yhteys kat
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Se oli liian suuri ladattavaksi. Poista tai pienennä tiedostoja ja yritä uudelleen."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "Se olet sinä"
 
@@ -2640,6 +3039,10 @@ msgstr "Kamera on jo käytössä"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Kamerapyyntöön ei vastattu"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "Laite ei voi enää synkronoida yhteystietoja."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -2672,6 +3075,11 @@ msgstr "Tämä poistaa pelin ja sen keskustelun pysyvästi. Tätä ei voi peruut
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Torstai"
+
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "Tehtävänimike"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2712,13 +3120,9 @@ msgstr "Ylin"
 msgid "Travelling"
 msgstr "Matkustetaan"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "Kokeile toista nimeä"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "Kokeile toista hakusanaa"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2739,6 +3143,8 @@ msgstr "Tiistai"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "Tyyppi"
@@ -2782,6 +3188,12 @@ msgstr "Ei saatavilla"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Odottamaton API-virhe"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "Poista kavereista"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2843,6 +3255,10 @@ msgstr "Latauksen edistyminen"
 msgid "Uploading..."
 msgstr "Lähetetään..."
 
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
 msgstr "Käytä avainkoodiasi"
@@ -2854,6 +3270,10 @@ msgstr "Käytä avainkoodiasi"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "Käyttäjä"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "Käyttäjätunnus"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"
@@ -2920,6 +3340,11 @@ msgstr "Lähetimme vahvistuskoodin osoitteeseen <0>{0}</0>. Syötä koodi alle v
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "Keskiviikko"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "Työ"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

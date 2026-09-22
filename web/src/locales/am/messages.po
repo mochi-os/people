@@ -34,6 +34,11 @@ msgstr "(እርስዎ)"
 msgid "[not set]"
 msgstr "[አልተዘጋጀም]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {ከእሱ ጋር # እውቂያ ይሰረዛል።} other {ከእሱ ጋር # እውቂያዎች ይሰረዛሉ።}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -65,9 +70,21 @@ msgstr "{count, plural, one {#ደ} other {#ደ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ሳ} other {#ሳ}}"
 
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "የ{entityLabel} ስም"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr ""
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr ""
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -98,9 +115,9 @@ msgstr "12 ሰዓት"
 msgid "24 hours"
 msgstr "24 ሰዓት"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "የጓደኝነት ግብዣ ለ{userName} ተልኳል።"
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "የጓደኝነት ግብዣ ወደ {name} ተልኳል።"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +136,8 @@ msgid "Accent saved"
 msgstr "ማጉያ ተቀምጧል"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "ተቀበል"
@@ -132,11 +150,7 @@ msgstr "ሁሉንም ተቀበል"
 msgid "Accept automatically"
 msgstr "በራስ-ሰር ተቀበል"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "ግብዣ ተቀበል"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "ግብዣ በመቀበል ላይ..."
@@ -161,6 +175,11 @@ msgstr "የመለያ ዓይነት"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "እርምጃዎች"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "የ{0} ድርጊቶች"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +211,10 @@ msgstr "መዳረሻ ጨምር"
 msgid "Add account"
 msgstr "መለያ ጨምር"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "አድራሻ ጨምር"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "መግለጫ ጽሑፍ አክል"
@@ -200,22 +223,21 @@ msgstr "መግለጫ ጽሑፍ አክል"
 msgid "Add checklist item"
 msgstr "የዝርዝር ንጥል ጨምር"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "እውቂያ ጨምር"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "ኢሜይል ጨምር"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "መስክ ጨምር"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "ጓደኛ ጨምር"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "ጓደኞችን ለመጨመር ጀምር"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +262,21 @@ msgstr "አባል ጨምር"
 msgid "Add option"
 msgstr "አማራጭ ጨምር"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "ስልክ ጨምር"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "ለመጀመር አንድ ሰው ይጨምሩ"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "መለያ ጨምር..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "ወደ እውቂያዎች ጨምር"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +300,42 @@ msgstr "እይታ ጨምር"
 msgid "Added {0} to the group"
 msgstr "{0} ወደ ቡድኑ ተጨምሯል"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "እውቂያ በመጨመር ላይ..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "አባል በማከል ላይ..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "የአድራሻ ደብተር"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "የአድራሻ ደብተር"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "የአድራሻ ደብተር ተፈጥሯል"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "የአድራሻ ደብተር ተሰርዟል"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "የአድራሻ ደብተር ስም ተቀይሯል"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "የአድራሻ ደብተር URL"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "አድራሻዎች"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +344,15 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "ሁሉም ያሉ ቡድኖች አስቀድመው ተጨምረዋል"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "ሁሉም እውቂያዎች"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr ""
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +373,6 @@ msgstr "ማንኛውም ሰው {entityLabel} እንዲፈልግ ፍቀድ"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "ደርድር በ ፍቀድ"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "አስቀድሞ ጓደኞች"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +430,6 @@ msgstr "መውጣት እንደምትፈልግ እርግጠኛ ነህ? መለያ�
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "<0>{0}</0>ን ከዚህ ቡድን ማስወገድ እርግጠኛ ነዎት?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "<0>{0}</0>ን ከጓደኞች ዝርዝርዎ ማስወገድ ይፈልጋሉ? ይህ ድርጊት መቀልበስ አይቻልም።"
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "በእርግጥ መልቀቅ ይፈልጋሉ?"
@@ -406,7 +472,8 @@ msgid "Avatar for {name}"
 msgstr "የ{name} አምሳያ"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "ተመለስ"
 
@@ -431,6 +498,10 @@ msgstr "ባነር ተወግዷል"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "ባነር ተዘምኗል"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "የልደት ቀን"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +565,9 @@ msgstr "ካሜራ አይገኝም"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,9 +629,10 @@ msgstr "ተቀይሯል"
 msgid "Changed {field}"
 msgstr "{field} ተቀይሯል"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "ውይይት"
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr ""
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -576,6 +651,10 @@ msgstr "ከጎን አሞሌ ጨዋታ ምረጥ ወይም አዲስ ጀምር።
 msgid "Choose language"
 msgstr "ቋንቋ ምረጥ"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "ከተማ"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -592,7 +671,7 @@ msgid "Clear all"
 msgstr "ሁሉንም አጽዳ"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "ፍለጋ አጽዳ"
 
@@ -601,7 +680,7 @@ msgstr "ፍለጋ አጽዳ"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "ዝጋ"
 
@@ -635,6 +714,7 @@ msgid "Collapse sidebar"
 msgstr "የጎን አሞሌ አጥፋ"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "ቀለም"
 
@@ -685,13 +765,47 @@ msgstr "የእይታ ቅንብሮችን አዋቅር"
 msgid "Confirm"
 msgstr "አረጋግጥ"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "መሳሪያ ያገናኙ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "ሌላ መሳሪያ ያገናኙ"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "ተገናኝቷል"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "መሳሪያ በማገናኘት ላይ..."
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
 msgstr "በመገናኘት ላይ..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "እውቂያ ተጨምሯል"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "እውቂያ ተፈጥሯል"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "እውቂያ ተሰርዟል"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "እውቂያ ተቀምጧል"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "እውቂያዎች"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -718,12 +832,17 @@ msgid "Copied"
 msgstr "ተቀድቷል"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "ወደ ቅንጥብ ሰሌዳ ተቀድቷል"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "ቅዳ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "{label} ቅዳ"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -749,17 +868,31 @@ msgstr "እንደገና ማረጋገጥን መጀመር አልተቻለም። �
 msgid "Couldn't verify with that account. Please try again."
 msgstr "በዚያ መለያ ማረጋገጥ አልተቻለም። እባክዎ እንደገና ይሞክሩ።"
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "አገር"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "ፍጠር"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "{entityLabel} ፍጠር"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "እውቂያ ይፍጠሩ፣ ወይም በMochi ላይ አንድ ሰው ያግኙ።"
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "የአድራሻ ደብተር ፍጠር"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -778,9 +911,22 @@ msgstr "አዲስ ንጥል ፍጠር"
 msgid "Created"
 msgstr "ተፈጥሯል"
 
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "የተፈጠረ {0}"
+
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "{field} ተፈጥሯል"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "የአድራሻ ደብተር በመፍጠር ላይ..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "እውቂያ በመፍጠር ላይ..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -847,10 +993,37 @@ msgstr "ነባሪ ቅደም ተከተል"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "ሰርዝ"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "<0>{0}</0> ይሰረዝ?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "<0>{0}</0> ይሰረዝ? ይህ ጓደኝነታችሁንም ያቋርጣል።"
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "የአድራሻ ደብተር ሰርዝ"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -863,6 +1036,19 @@ msgstr "ዓምድ ሰርዝ"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "አስተያየት ሰርዝ"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "እውቂያ ሰርዝ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "መሳሪያ ሰርዝ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "መሳሪያውን ይሰረዝ?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -913,6 +1099,19 @@ msgstr "ተሰርዟል"
 msgid "Deleted {field}"
 msgstr "{field} ተሰርዟል"
 
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "የአድራሻ ደብተር በመሰረዝ ላይ..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "እውቂያ በመሰረዝ ላይ..."
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "መሳሪያ በመሰረዝ ላይ..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "ቡድንን በመሰረዝ ላይ..."
@@ -941,6 +1140,14 @@ msgstr "የዝርዝሮች ፓነል"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "ከድር አሳሽ አውቅ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "መሳሪያው ተሰርዟል"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "የመሳሪያ ስም"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -978,6 +1185,7 @@ msgstr "ከሚያስፈልገው ስርዓተ ጥለት ጋር አይዛመድ�
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "ተጠናቅቋል"
 
@@ -1002,6 +1210,7 @@ msgstr "ለዲስሌክሲያ ምቹ"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "አስተካክል"
@@ -1013,6 +1222,10 @@ msgstr "{label}ን አርትዕ"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "መግለጫ ጽሑፍን አርትዕ"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "እውቂያ አስተካክል"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1058,15 +1271,20 @@ msgstr "ኢሜይል"
 msgid "Email code"
 msgstr "የኢሜይል ኮድ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "መጨመር የሚፈልጉትን ሰዎች ለማግኘት ስም ያስገቡ"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "ኢሜይሎች"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "ከ<0>{0}</0> ጋር ያለዎትን ጓደኝነት ያቋርጡ? እውቂያው በአድራሻ ደብተርዎ ውስጥ ይቀራል።"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "የባነር ጽሑፍ አስገባ (ማርክዳውን ይደገፋል)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "ለመፈለግ ስም ያስገቡ..."
 
@@ -1101,6 +1319,7 @@ msgstr "ውጫዊ URL"
 msgid "Extra large"
 msgstr "በጣም ትልቅ"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "ግብዣ መቀበል አልተሳካም"
@@ -1113,10 +1332,9 @@ msgstr "ግብዣዎችን መቀበል አልተሳካም"
 msgid "Failed to add account"
 msgstr "መለያ መጨመር አልተሳካም"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "ጓደኛ ማከል አልተሳካም"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "እውቂያ መጨመር አልተሳካም"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1131,11 +1349,23 @@ msgstr "ግብዣ መሰረዝ አልተሳካም"
 msgid "Failed to cancel invitations"
 msgstr "ግብዣዎችን መሰረዝ አልተሳካም"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "መሳሪያውን ማገናኘት አልተሳካም"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "መቅዳት አልተሳካም"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "የአድራሻ ደብተር መፍጠር አልተሳካም"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "እውቂያ መፍጠር አልተሳካም"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1158,6 +1388,10 @@ msgstr "ግብዣዎችን ውድቅ ማድረግ አልተሳካም"
 msgid "Failed to delete"
 msgstr "መሰረዝ አልተሳካም"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "የአድራሻ ደብተር መሰረዝ አልተሳካም"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "አባሪ መሰረዝ አልተሳካም"
@@ -1165,6 +1399,15 @@ msgstr "አባሪ መሰረዝ አልተሳካም"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "አስተያየት መሰረዝ አልተሳካም"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "እውቂያ መሰረዝ አልተሳካም"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "መሳሪያውን መሰረዝ አልተሳካም"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1223,13 +1466,17 @@ msgstr "ማንቀሳቀስ አልተሳካም"
 msgid "Failed to post comment"
 msgstr "አስተያየት መለጠፍ አልተሳካም"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "ጓደኛን ማስወገድ አልተሳካም"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "አባልን ማስወገድ አልተሳካም"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "የአድራሻ ደብተር ስም መቀየር አልተሳካም"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1248,6 +1495,10 @@ msgstr "ማስቀመጥ አልተሳካም"
 msgid "Failed to save accent"
 msgstr "ድምፅ ማስቀመጥ አልተሳካም"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "እውቂያ ማስቀመጥ አልተሳካም"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "ስም ማስቀመጥ አልተሳካም"
@@ -1263,6 +1514,11 @@ msgstr "መገለጫ ማስቀመጥ አልተሳካም"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "ጥያቄ ማስቀመጥ አልተሳካም"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "ግብዣ መላክ አልተሳካም"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1284,6 +1540,10 @@ msgstr "መከታተልን ማዘመን አልተሳካም"
 msgid "Failed to upload attachment"
 msgstr "አባሪ መስቀል አልተሳካም"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "የአባት ስም"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1297,6 +1557,10 @@ msgstr "ፋይሉ በጣም ትልቅ ነው"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "ፋይሎች"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "በMochi ላይ ያግኙ"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1314,14 +1578,16 @@ msgstr "ጠፍጣፋ"
 msgid "Friday"
 msgstr "ዓርብ"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "ጓደኛ"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "ጓደኛ ተወግዷል"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "ጓደኞች"
 
@@ -1336,6 +1602,10 @@ msgstr "ከ"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "ከገጽታ"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "የመጠሪያ ስም"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1403,6 +1673,11 @@ msgstr "ታሪክ"
 msgid "Home"
 msgstr "መነሻ"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "ቤት"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "ሞቅ ያለ"
@@ -1423,6 +1698,10 @@ msgstr "የምስል መመልከቻ፦ {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "ኢምፔሪያል"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "በእውቂያዎች ውስጥ"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1452,7 +1731,7 @@ msgstr "ፍላጎቶች"
 msgid "Invalid date"
 msgstr "ልክ ያልሆነ ቀን"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "ግብዣ ተቀብሏል"
@@ -1465,8 +1744,8 @@ msgstr "ግብዣ ተሰርዟል"
 msgid "Invitation declined"
 msgstr "ግብዣ ተቀባይነት አላገኘም"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "ግብዣ ተልኳል"
 
@@ -1476,6 +1755,11 @@ msgstr "ግብዣ ተልኳል"
 msgid "Invitations"
 msgstr "ግብዣዎች"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "ጋብዝ"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "የግብዣ ፖሊሲ ተዘምኗል"
@@ -1484,6 +1768,10 @@ msgstr "የግብዣ ፖሊሲ ተዘምኗል"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "የግብዣ ቅንብሮች"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "ተጋብዟል"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1505,6 +1793,11 @@ msgstr "የቁልፍ ሰሌዳ አቋራጮች"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "ትልቅ"
+
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "የመጨረሻ ጥቅም {0}"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
@@ -1575,6 +1868,10 @@ msgstr "በመውጣት ላይ…"
 msgid "Manage categories"
 msgstr "ምድቦችን ያስተዳድሩ"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "መሳሪያዎችን ያስተዳድሩ"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "በእጅ"
@@ -1622,6 +1919,7 @@ msgid "Menu"
 msgstr "ምናሌ"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "መልዕክት"
 
@@ -1636,6 +1934,11 @@ msgstr "የማይክሮፎን ፈቃድ ተከልክሏል"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "ዝቅተኛ ርዝመት"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "ሞባይል"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1661,18 +1964,22 @@ msgstr "ተንቀሳቅሷል"
 msgid "Moved {field}"
 msgstr "{field} ተንቀሳቅሷል"
 
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "ስም"
-
-#: src/features/friends/index.tsx
-msgid "Name (A–Z)"
-msgstr "ስም (ሀ–ፐ)"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
@@ -1696,10 +2003,20 @@ msgstr "ስም ተቀምጧል"
 msgid "Network error"
 msgstr "የአውታረ መረብ ስህተት"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "በፍፁም"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "አዲስ"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "አዲስ እውቂያ"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -1714,6 +2031,14 @@ msgstr "አዲስ ግብዣዎች እዚህ ይታያሉ"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "ቀጣይ ምስል"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Next month"
+msgstr ""
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "ቅፅል ስም"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1735,9 +2060,13 @@ msgstr "ምንም ባነር አልተዋቀረም"
 msgid "No comments yet"
 msgstr "እስካሁን አስተያየቶች የሉም"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "እስካሁን ጓደኞች የሉም"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "እስካሁን ምንም እውቂያ የለም"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "ምንም መሳሪያ አልተገናኘም።"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1769,7 +2098,7 @@ msgstr "ምንም በመጠባበቅ ላይ ያሉ ግብዣዎች የሉም"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "ምንም ሰዎች አልተገኙም"
@@ -1778,7 +2107,7 @@ msgstr "ምንም ሰዎች አልተገኙም"
 msgid "No places found"
 msgstr "ምንም ቦታዎች አልተገኙም"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "ለ\"{search}\" ምንም ውጤት የለም"
 
@@ -1850,6 +2179,10 @@ msgstr "አልተገኘም"
 msgid "Not set"
 msgstr "አልተዋቀረም"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "ማስታወሻ"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "ምንም አልተገኘም"
@@ -1872,6 +2205,10 @@ msgstr "ቁጥር"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "በርቷል"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "በMochi ላይ"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1921,7 +2258,16 @@ msgstr "አማራጭ መግለጫ"
 msgid "Options"
 msgstr "አማራጮች"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "ድርጅት"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "ሌላ"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "ሌላ"
 
@@ -1953,6 +2299,10 @@ msgstr "ፓስኪዎች"
 msgid "Passkeys are not available in this browser"
 msgstr "ፓስኪዎች በዚህ አሳሽ ውስጥ አይገኙም"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "የይለፍ ቃል"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "ስርዓተ-ጥለት (regex)"
@@ -1965,6 +2315,10 @@ msgstr "በመጠባበቅ ላይ"
 #: src/components/layout/people-layout.tsx
 msgid "People"
 msgstr "ሰዎች"
+
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "ስልኮች"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -1980,6 +2334,10 @@ msgstr "እባክዎ እንደገና ይሞክሩ።"
 msgid "Please wait a moment and try again."
 msgstr "እባክዎ ትንሽ ይጠብቁና እንደገና ይሞክሩ።"
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "ፖስታ ኮድ"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "ልጥፎች"
@@ -1992,15 +2350,19 @@ msgstr "ልጥፎች እና አስተያየቶች"
 msgid "Preview"
 msgstr "ቅድመ ዕይታ"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "የጓደኝነት ጥያቄ ከመላክዎ በፊት የ{0}ን መገለጫ ይመልከቱ።"
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "የጓደኝነት ግብዣ ከመላክዎ በፊት የ{0}ን መገለጫ ይመልከቱ።"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Previous image"
 msgstr "ቀዳሚ ምስል"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Previous month"
+msgstr ""
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2060,7 +2422,7 @@ msgstr "የይለፍ ቁልፎችዎን በዚህ አገልጋይ ላይ እን�
 msgid "Received ({0})"
 msgstr "የተቀበለ ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "በቅርቡ የተጨመረ"
 
@@ -2088,6 +2450,10 @@ msgstr "ወደ መግቢያ በማዘዋወር ላይ።"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "ፍላጎትን ቀንስ"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "ክልል"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2120,10 +2486,7 @@ msgstr "አግባብነት {relevance}፣ ፍላጎት {weight}"
 msgid "Remove"
 msgstr "አስወግድ"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2155,10 +2518,13 @@ msgstr "የ\"{0}\" የመዳረሻ ደንብ ይወገድ?"
 msgid "Remove access?"
 msgstr "ድረሳ ይወገድ?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "ጓደኛ አስወግድ"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "አድራሻ አስወግድ"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "ኢሜይል አስወግድ"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2179,7 +2545,11 @@ msgstr "አገናኙን አስወግድ"
 msgid "Remove member"
 msgstr "አባል አስወግድ"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "ስልክ አስወግድ"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "ጓደኛን በማስወገድ ላይ..."
 
@@ -2189,8 +2559,13 @@ msgstr "አባልን በማስወገድ ላይ..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "ስም ቀይር"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "የአድራሻ ደብተር ስም ቀይር"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2199,6 +2574,15 @@ msgstr "የአምድ ስም ቀይር"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "የዚህ ቦርድ አምድ ስም ቀይር"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "የአድራሻ ደብተር ስም በመቀየር ላይ..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2274,6 +2658,8 @@ msgstr "ቅዳሜ"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2285,6 +2671,14 @@ msgstr "ያስቀምጡ"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "ስም አስቀምጥ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "ይህን የይለፍ ቃል አሁን ያስቀምጡ። እንደገና ሊታይ አይችልም።"
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "እውቂያ በማስቀመጥ ላይ..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2303,6 +2697,10 @@ msgstr "በማስቀመጥ ላይ..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "ይፈልጉ"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "እውቂያዎችን ይፈልጉ"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2323,14 +2721,6 @@ msgstr "መድረሻ ይፈልጉ..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "መነሻ ይፈልጉ..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "ሰዎችን ይፈልጉ እና የጓደኝነት ጥያቄ ይላኩ።"
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "ጓደኞችን ይፈልጉ"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2354,7 +2744,7 @@ msgstr "ይህን እይታ ይፈልጉ፣ ይመልከቱ እና ይደርድ�
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "ይፈልጉ..."
@@ -2432,7 +2822,7 @@ msgstr "እንደገና ላክ"
 msgid "Send email"
 msgstr "ኢሜይል ላክ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "ግብዣ ላክ"
 
@@ -2441,7 +2831,8 @@ msgstr "ግብዣ ላክ"
 msgid "Send message"
 msgstr "መልዕክት ይላኩ"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "ግብዣ በመላክ ላይ..."
 
@@ -2453,6 +2844,10 @@ msgstr "የተላከ ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "ሰሪፍ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2549,9 +2944,9 @@ msgstr "ሰፊ"
 msgid "Start the discussion by adding the first comment."
 msgstr "የመጀመሪያውን አስተያየት በማከል ውይይቱን ይጀምሩ።"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "ተጠቃሚዎችን ለመፈለግ መተየብ ይጀምሩ"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "ሰዎችን ለመፈለግ መተየብ ይጀምሩ"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2561,6 +2956,10 @@ msgstr "መከታተል አቁም"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "በዝምታ ያከማቹ"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "መንገድ"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2629,7 +3028,7 @@ msgstr "መላክ አልተቻለም። ፋይሎቹ በጣም ትልቅ ሊሆ�
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "ለመስቀል በጣም ትልቅ ነበር። ፋይሎችን ያስወግዱ ወይም ያሳንሱ እና እንደገና ይሞክሩ።"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "ያ እርስዎ ነዎት"
 
@@ -2640,6 +3039,10 @@ msgstr "ካሜራው አስቀድሞ በጥቅም ላይ ነው"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "የካሜራ ጥያቄው መልስ አላገኘም"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "መሳሪያው ከእንግዲህ እውቂያዎችን ማመሳሰል አይችልም።"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -2672,6 +3075,11 @@ msgstr "ይህ ጨዋታውን እና ውይይቱን በቋሚነት ይሰር�
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "ሐሙስ"
+
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "የሥራ መደብ"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2712,13 +3120,9 @@ msgstr "ላይ"
 msgid "Travelling"
 msgstr "በጉዞ ላይ"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "ሌላ ስም ይሞክሩ"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "የተለየ የፍለጋ ቃል ይሞክሩ"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2739,6 +3143,8 @@ msgstr "ማክሰኞ"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "አይነት"
@@ -2782,6 +3188,12 @@ msgstr "የማይገኝ"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "ያልተጠበቀ የAPI ስህተት"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "ጓደኝነት አቁም"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2843,6 +3255,10 @@ msgstr "የመስቀል ሂደት"
 msgid "Uploading..."
 msgstr "በመስቀል ላይ..."
 
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
 msgstr "የይለፍ ቁልፍዎን ይጠቀሙ"
@@ -2854,6 +3270,10 @@ msgstr "የይለፍ ቁልፍዎን ይጠቀሙ"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "ተጠቃሚ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "የተጠቃሚ ስም"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"
@@ -2920,6 +3340,11 @@ msgstr "የማረጋገጫ ኮድ ወደ <0>{0}</0> ልከናል። የኢሜይ
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "ረቡዕ"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "ሥራ"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

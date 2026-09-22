@@ -5,7 +5,7 @@
 import { t } from '@lingui/core/macro'
 import { requestHelpers } from '@mochi/web'
 import endpoints from '@/api/endpoints'
-import type { MutationSuccessResponse } from '@/api/types/friends'
+import type { MutationSuccessResponse } from '@/api/types/contacts'
 import type {
   AddGroupMemberRequest,
   CreateGroupRequest,

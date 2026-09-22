@@ -26,12 +26,12 @@ import {
 import { UserPlus, UserX, Send, X, Check, Settings } from 'lucide-react'
 import { searchMatches } from '@/lib/search'
 import {
-  useFriendsQuery,
-  useAcceptFriendInviteMutation,
-  useDeclineFriendInviteMutation,
+  useContactsQuery,
+  useAcceptFriendMutation,
+  useIgnoreFriendMutation,
   useRemoveFriendMutation,
-} from '@/hooks/useFriends'
-import { AddFriendDialog } from '@/features/friends/components/add-friend-dialog'
+} from '@/hooks/useContacts'
+import { AddContactDialog } from '@/features/contacts/add-dialog'
 import { InviteSettingsDialog } from './invite-settings-dialog'
 
 export function Invitations() {
@@ -39,14 +39,14 @@ export function Invitations() {
   usePageTitle(t`Invitations`)
   const appPath = getAppPath()
   const [search, setSearch] = useState('')
-  const [addFriendDialogOpen, setAddFriendDialogOpen] = useState(false)
+  const [addContactDialogOpen, setAddContactDialogOpen] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
-  const { data: friendsData, isLoading, error, refetch } = useFriendsQuery()
-  const acceptInviteMutation = useAcceptFriendInviteMutation()
-  const declineInviteMutation = useDeclineFriendInviteMutation()
+  const { data: contactsData, isLoading, error, refetch } = useContactsQuery()
+  const acceptInviteMutation = useAcceptFriendMutation()
+  const declineInviteMutation = useIgnoreFriendMutation()
   const removeMutation = useRemoveFriendMutation()
   const suppressListAnimation =
-    (isLoading && !friendsData) || search.trim().length > 0
+    (isLoading && !contactsData) || search.trim().length > 0
   const [receivedListRef] = useListAutoAnimate<HTMLDivElement>({
     disabled: suppressListAnimation,
   })
@@ -55,18 +55,18 @@ export function Invitations() {
   })
 
   const filteredReceived = useMemo(() => {
-    const list = friendsData?.received ?? []
+    const list = contactsData?.received ?? []
     return list.filter((invite) => searchMatches(invite.name, search))
-  }, [friendsData?.received, search])
+  }, [contactsData?.received, search])
 
   const filteredSent = useMemo(() => {
-    const list = friendsData?.sent ?? []
+    const list = contactsData?.sent ?? []
     return list.filter((invite) => searchMatches(invite.name, search))
-  }, [friendsData?.sent, search])
+  }, [contactsData?.sent, search])
 
-  const handleAcceptInvite = async (friendId: string) => {
+  const handleAcceptInvite = async (person: string) => {
     try {
-      await toastAction(acceptInviteMutation.mutateAsync({ friendId }), {
+      await toastAction(acceptInviteMutation.mutateAsync({ person }), {
         loading: t`Accepting invitation...`,
         success: t`Invitation accepted`,
         error: (error) =>
@@ -77,9 +77,9 @@ export function Invitations() {
     }
   }
 
-  const handleDeclineInvite = async (friendId: string) => {
+  const handleDeclineInvite = async (person: string) => {
     try {
-      await toastAction(declineInviteMutation.mutateAsync({ friendId }), {
+      await toastAction(declineInviteMutation.mutateAsync({ person }), {
         loading: t`Declining invitation...`,
         success: t`Invitation declined`,
         error: (error) =>
@@ -90,9 +90,9 @@ export function Invitations() {
     }
   }
 
-  const handleCancelSent = async (friendId: string) => {
+  const handleCancelSent = async (person: string) => {
     try {
-      await toastAction(removeMutation.mutateAsync({ friendId }), {
+      await toastAction(removeMutation.mutateAsync({ person }), {
         loading: t`Cancelling invitation...`,
         success: t`Invitation cancelled`,
         error: (error) =>
@@ -116,7 +116,7 @@ export function Invitations() {
           // "Received (n)" heading counting what the search left, so acting on
           // anything the user cannot see would be acting on the wrong set.
           filteredReceived.map(({ id }) =>
-            acceptInviteMutation.mutateAsync({ friendId: id })
+            acceptInviteMutation.mutateAsync({ person: id })
           )
         ),
         {
@@ -144,7 +144,7 @@ export function Invitations() {
       const results = await toastAction(
         Promise.allSettled(
           filteredReceived.map(({ id }) =>
-            declineInviteMutation.mutateAsync({ friendId: id })
+            declineInviteMutation.mutateAsync({ person: id })
           )
         ),
         {
@@ -172,7 +172,7 @@ export function Invitations() {
       const results = await toastAction(
         Promise.allSettled(
           filteredSent.map(({ id }) =>
-            removeMutation.mutateAsync({ friendId: id })
+            removeMutation.mutateAsync({ person: id })
           )
         ),
         {
@@ -229,9 +229,9 @@ export function Invitations() {
               </TooltipTrigger>
               <TooltipContent>{t`Invite settings`}</TooltipContent>
             </Tooltip>
-            <Button onClick={() => setAddFriendDialogOpen(true)}>
+            <Button onClick={() => setAddContactDialogOpen(true)}>
               <UserPlus className='h-4 w-4' />
-              <Trans>Add friend</Trans>
+              <Trans>Add contact</Trans>
             </Button>
           </>
         }
@@ -246,15 +246,15 @@ export function Invitations() {
             className='mb-4'
           />
         ) : null}
-        <AddFriendDialog
-          open={addFriendDialogOpen}
-          onOpenChange={setAddFriendDialogOpen}
+        <AddContactDialog
+          open={addContactDialogOpen}
+          onOpenChange={setAddContactDialogOpen}
         />
         <InviteSettingsDialog
           open={settingsOpen}
           onOpenChange={setSettingsOpen}
         />
-        {isLoading && !friendsData ? (
+        {isLoading && !contactsData ? (
           <div className='divide-border divide-y rounded-lg border'>
             {Array.from({ length: 3 }).map((_, i) => (
               <div
@@ -273,7 +273,7 @@ export function Invitations() {
               </div>
             ))}
           </div>
-        ) : error && !friendsData ? null : !hasAny ? (
+        ) : error && !contactsData ? null : !hasAny ? (
           <EmptyState
             icon={UserPlus}
             title={t`No pending invitations`}
@@ -346,8 +346,7 @@ export function Invitations() {
                           disabled={acceptInviteMutation.isPending}
                           loading={
                             acceptInviteMutation.isPending &&
-                            acceptInviteMutation.variables?.friendId ===
-                              invite.id
+                            acceptInviteMutation.variables?.person === invite.id
                           }
                           icon={<Check className='h-3.5 w-3.5' />}
                           onClick={() => handleAcceptInvite(invite.id)}
@@ -360,7 +359,7 @@ export function Invitations() {
                           disabled={declineInviteMutation.isPending}
                           loading={
                             declineInviteMutation.isPending &&
-                            declineInviteMutation.variables?.friendId ===
+                            declineInviteMutation.variables?.person ===
                               invite.id
                           }
                           icon={<UserX className='h-3.5 w-3.5' />}
@@ -426,7 +425,7 @@ export function Invitations() {
                         disabled={removeMutation.isPending}
                         loading={
                           removeMutation.isPending &&
-                          removeMutation.variables?.friendId === invite.id
+                          removeMutation.variables?.person === invite.id
                         }
                         icon={<X className='h-3.5 w-3.5' />}
                         onClick={() => handleCancelSent(invite.id)}

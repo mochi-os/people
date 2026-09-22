@@ -34,6 +34,11 @@ msgstr "(sampeyan)"
 msgid "[not set]"
 msgstr "[ora disetel]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, other {# kontak uga mèlu dibusak.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -65,9 +70,21 @@ msgstr "{count, plural, one {#mnt} other {#mnt}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#mgg} other {#mgg}}"
 
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Jeneng {entityLabel}"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr ""
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr ""
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -98,9 +115,9 @@ msgstr "12 jam"
 msgid "24 hours"
 msgstr "24 jam"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "Undhangan kekancan wis dikirim menyang {userName}."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "Undangan kekancan wis dikirim menyang {name}."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +136,8 @@ msgid "Accent saved"
 msgstr "Aksen disimpen"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "Trima"
@@ -132,11 +150,7 @@ msgstr "Tampa kabeh"
 msgid "Accept automatically"
 msgstr "Trima otomatis"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "Trima undhangan"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "Nampa undhangan..."
@@ -161,6 +175,11 @@ msgstr "Jinis akun"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "Tindakan"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "Tumindak kanggo {0}"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +211,10 @@ msgstr "Tambah akses"
 msgid "Add account"
 msgstr "Tambah akun"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "Tambah alamat"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Tambahake katrangan"
@@ -200,22 +223,21 @@ msgstr "Tambahake katrangan"
 msgid "Add checklist item"
 msgstr "Tambah item checklist"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "Tambah kontak"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "Tambah email"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Tambah field"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "Tambah kanca"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "Tambah kanca kanggo miwiti nyambung"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +262,21 @@ msgstr "Tambah anggota"
 msgid "Add option"
 msgstr "Tambah pilihan"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "Tambah telpon"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "Tambahna wong supaya bisa miwiti"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Tambah tag..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "Tambahna menyang kontak"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +300,42 @@ msgstr "Tambah tampilan"
 msgid "Added {0} to the group"
 msgstr "Ditambahaké {0} menyang grup"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "Nambahaké kontak..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Nambahake anggota..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "buku alamat"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "Buku alamat"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "Buku alamat digawé"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "Buku alamat dibusak"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "Jeneng buku alamat diowahi"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "URL buku alamat"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "Alamat"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +344,15 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "Kabèh grup sing kasedhiya wis ditambahaké"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "Kabèh kontak"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr ""
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +373,6 @@ msgstr "Ngidini sapa waé nggolèki {entityLabel}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Idini diurutaké miturut"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "Wis dadi kanca"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +430,6 @@ msgstr "Sampéyan yakin arep metu? Sampéyan kudu mlebu manèh kanggo ngakses ak
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Sampéyan yakin arep mbusak <0>{0}</0> saka grup iki?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "Sampéyan yakin arep mbusak <0>{0}</0> saka dhaftar kanca sampéyan? Tindakan iki ora bisa dibatalaké."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "Sampéyan yakin arep nyerah?"
@@ -406,7 +472,8 @@ msgid "Avatar for {name}"
 msgstr "Avatar kanggo {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "Bali"
 
@@ -431,6 +498,10 @@ msgstr "Banner dibusak"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Banner dianyari"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "Dina lair"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +565,9 @@ msgstr "Kamera ora kasedhiya"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,9 +629,10 @@ msgstr "Diowahi"
 msgid "Changed {field}"
 msgstr "{field} diowahi"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "Chat"
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr ""
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -576,6 +651,10 @@ msgstr "Pilih game saka sidebar utawa miwiti sing anyar."
 msgid "Choose language"
 msgstr "Pilih basa"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "Kutha"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -592,7 +671,7 @@ msgid "Clear all"
 msgstr "Resiki kabèh"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "Resiki panggolékan"
 
@@ -601,7 +680,7 @@ msgstr "Resiki panggolékan"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "Tutup"
 
@@ -635,6 +714,7 @@ msgid "Collapse sidebar"
 msgstr "Tutup sidebar"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "Warna"
 
@@ -685,13 +765,47 @@ msgstr "Konfigurasi setèlan tampilan"
 msgid "Confirm"
 msgstr "Konfirmasi"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Sambungake piranti"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Sambungake piranti liyane"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Wis nyambung"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Nyambungake piranti..."
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
 msgstr "Nyambungake..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "Kontak ditambahaké"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "Kontak digawé"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "Kontak dibusak"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "Kontak disimpen"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "Kontak"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -718,12 +832,17 @@ msgid "Copied"
 msgstr "Wis disalin"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Disalin menyang clipboard"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Salin"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "Salin {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -749,17 +868,31 @@ msgstr "Ora bisa miwiti otentikasi ulang. Coba maneh."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Ora bisa verifikasi nganggo akun kasebut. Mangga coba maneh."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "Negara"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "Gawé"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "Gawé {entityLabel}"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "Gawé kontak, utawa golèki wong ing Mochi."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "Gawé buku alamat"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -778,9 +911,22 @@ msgstr "Gawé item anyar"
 msgid "Created"
 msgstr "Digawé"
 
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Digawé {0}"
+
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "{field} digawé"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "Nggawé buku alamat..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "Nggawé kontak..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -847,10 +993,37 @@ msgstr "Urutan standar"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "Busak"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "Busak <0>{0}</0>?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "Busak <0>{0}</0>? Iki uga mungkasi kekancan sampéyan."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "Busak buku alamat"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -863,6 +1036,19 @@ msgstr "Busak kolom"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "Busak komentar"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "Busak kontak"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Busak piranti"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Busak piranti?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -913,6 +1099,19 @@ msgstr "Dibusak"
 msgid "Deleted {field}"
 msgstr "{field} dibusak"
 
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "Mbusak buku alamat..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "Mbusak kontak..."
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Mbusak piranti..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "Mbusak grup..."
@@ -941,6 +1140,14 @@ msgstr "Panel Rincian"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Deteksi saka browser web"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Piranti dibusak"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "Jeneng piranti"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -978,6 +1185,7 @@ msgstr "Ora cocog karo pola sing dibutuhaké"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "Rampung"
 
@@ -1002,6 +1210,7 @@ msgstr "Cocok kanggo disleksia"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Owahi"
@@ -1013,6 +1222,10 @@ msgstr "Sunting {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Sunting katrangan"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "Owahi kontak"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1058,15 +1271,20 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Kode email"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "Lebokna jeneng kanggo nggolèk wong sing arep ditambah"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "Email"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "Mungkasi kekancan karo <0>{0}</0>? Kontaké tetep ana ing buku alamat sampéyan."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "Lebokna teks banner (markdown didukung)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "Lebokna jeneng kanggo nggolèk..."
 
@@ -1101,6 +1319,7 @@ msgstr "URL Eksternal"
 msgid "Extra large"
 msgstr "Gedhe banget"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "Gagal nampa undangan"
@@ -1113,10 +1332,9 @@ msgstr "Gagal nampa undhangan"
 msgid "Failed to add account"
 msgstr "Gagal nambah akun"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "Gagal nambah kanca"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "Gagal nambahaké kontak"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1131,11 +1349,23 @@ msgstr "Gagal mbatalké undangan"
 msgid "Failed to cancel invitations"
 msgstr "Gagal mbatalake undhangan"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Gagal nyambungake piranti"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "Gagal nyalin"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "Gagal nggawé buku alamat"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "Gagal nggawé kontak"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1158,6 +1388,10 @@ msgstr "Gagal nolak undhangan"
 msgid "Failed to delete"
 msgstr "Gagal mbusak"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "Gagal mbusak buku alamat"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "Gagal mbusak lampiran"
@@ -1165,6 +1399,15 @@ msgstr "Gagal mbusak lampiran"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "Gagal mbusak komentar"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "Gagal mbusak kontak"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Gagal mbusak piranti"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1223,13 +1466,17 @@ msgstr "Gagal mindhah"
 msgid "Failed to post comment"
 msgstr "Gagal posting komentar"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Gagal mbusak kanca"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "Gagal mbusak anggota"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "Gagal ngowahi jeneng buku alamat"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1248,6 +1495,10 @@ msgstr "Gagal nyimpen"
 msgid "Failed to save accent"
 msgstr "Gagal nyimpen aksen"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "Gagal nyimpen kontak"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "Gagal nyimpen jeneng"
@@ -1263,6 +1514,11 @@ msgstr "Gagal nyimpen profil"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "Gagal nyimpen prompt"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "Gagal ngirim undangan"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1284,6 +1540,10 @@ msgstr "Gagal nganyari pengawasan"
 msgid "Failed to upload attachment"
 msgstr "Gagal ngunggah lampiran"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "Jeneng kulawarga"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1297,6 +1557,10 @@ msgstr "File kegedhèn"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "File"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Golèki ing Mochi"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1314,14 +1578,16 @@ msgstr "Rata"
 msgid "Friday"
 msgstr "Jumat"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "Kanca"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Kanca wis diilangi"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "Kanca"
 
@@ -1336,6 +1602,10 @@ msgstr "Saka"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Saka tema"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "Jeneng ngarep"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1403,6 +1673,11 @@ msgstr "Riwayat"
 msgid "Home"
 msgstr "Ngarep"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "Omah"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "Panas"
@@ -1423,6 +1698,10 @@ msgstr "Panampil gambar: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperial"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "Ana ing kontak"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1452,7 +1731,7 @@ msgstr "Minat"
 msgid "Invalid date"
 msgstr "Tanggal ora valid"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "Undangan ditampa"
@@ -1465,8 +1744,8 @@ msgstr "Undangan dibatalké"
 msgid "Invitation declined"
 msgstr "Undangan ditolak"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Undangan dikirim"
 
@@ -1476,6 +1755,11 @@ msgstr "Undangan dikirim"
 msgid "Invitations"
 msgstr "Undangan"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "Undang"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "Kebijakan undangan dianyari"
@@ -1484,6 +1768,10 @@ msgstr "Kebijakan undangan dianyari"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "Setélan undangan"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "Wis diundang"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1505,6 +1793,11 @@ msgstr "Pintasan keyboard"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Gedhe"
+
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Pungkasan dienggo {0}"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
@@ -1575,6 +1868,10 @@ msgstr "Lagi metu…"
 msgid "Manage categories"
 msgstr "Kelola kategori"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Kelola piranti"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Manual"
@@ -1622,6 +1919,7 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Pesen"
 
@@ -1636,6 +1934,11 @@ msgstr "Idin mikropon ditolak"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "Dawa paling sithik"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "Sèluler"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1661,18 +1964,22 @@ msgstr "Dipindhah"
 msgid "Moved {field}"
 msgstr "{field} dipindhah"
 
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Jeneng"
-
-#: src/features/friends/index.tsx
-msgid "Name (A–Z)"
-msgstr "Jeneng (A–Z)"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
@@ -1696,10 +2003,20 @@ msgstr "Jeneng wis disimpen"
 msgid "Network error"
 msgstr "Kaluputan jaringan"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "Ora tau"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Anyar"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "Kontak anyar"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -1714,6 +2031,14 @@ msgstr "Undhangan anyar bakal muncul ing kéné"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "Gambar sabanjure"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Next month"
+msgstr ""
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "Jeneng paraban"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1735,9 +2060,13 @@ msgstr "Ora ana banner disetel"
 msgid "No comments yet"
 msgstr "Durung ana komentar"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "Durung ana kanca"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "Durung ana kontak"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Ora ana piranti sing kasambung."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1769,7 +2098,7 @@ msgstr "Ora ana undhangan nunggu"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "Ora ana wong ditemokaké"
@@ -1778,7 +2107,7 @@ msgstr "Ora ana wong ditemokaké"
 msgid "No places found"
 msgstr "Ora ana panggonan ditemokaké"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "Ora ana asil kanggo \"{search}\""
 
@@ -1850,6 +2179,10 @@ msgstr "Ora ditemokake"
 msgid "Not set"
 msgstr "Ora disetel"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "Cathetan"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "Ora ana ditemokaké"
@@ -1872,6 +2205,10 @@ msgstr "Nomer"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Urip"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Ing Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1921,7 +2258,16 @@ msgstr "Katrangan opsional"
 msgid "Options"
 msgstr "Opsi"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "Organisasi"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Liyané"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "Liyané"
 
@@ -1953,6 +2299,10 @@ msgstr "Passkey"
 msgid "Passkeys are not available in this browser"
 msgstr "Passkey ora kasedhiya ing browser iki"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "Tembung sandhi"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Pola (regex)"
@@ -1965,6 +2315,10 @@ msgstr "Nunggu"
 #: src/components/layout/people-layout.tsx
 msgid "People"
 msgstr "Wong"
+
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "Telpon"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -1980,6 +2334,10 @@ msgstr "Coba maneh."
 msgid "Please wait a moment and try again."
 msgstr "Mangga enteni sedhela, banjur coba maneh."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "Kode pos"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Postingan"
@@ -1992,15 +2350,19 @@ msgstr "Postingan lan komentar"
 msgid "Preview"
 msgstr "Pratampilan"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "Pratampilan profil {0} sadurungé ngirim panyuwunan kanca."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "Deloken profil {0} sadurungé ngirim undangan kekancan."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Previous image"
 msgstr "Gambar sadurungé"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Previous month"
+msgstr ""
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2060,7 +2422,7 @@ msgstr "Daftarake maneh passkey sampeyan ing server iki"
 msgid "Received ({0})"
 msgstr "Ditampa ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "Lagi wae ditambahake"
 
@@ -2088,6 +2450,10 @@ msgstr "Lagi ngarahaké menyang login."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "Kurangi minat"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "Wilayah"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2120,10 +2486,7 @@ msgstr "Relevansi {relevance}, kawigatèn {weight}"
 msgid "Remove"
 msgstr "Cabut"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2155,10 +2518,13 @@ msgstr "Busak aturan akses kanggo \"{0}\"?"
 msgid "Remove access?"
 msgstr "Cabut akses?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "Cabut kanca"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "Cabut alamat"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "Cabut email"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2179,7 +2545,11 @@ msgstr "Busak pranala"
 msgid "Remove member"
 msgstr "Cabut anggota"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "Cabut telpon"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Ngilangi kanca..."
 
@@ -2189,8 +2559,13 @@ msgstr "Ngilangi anggota..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "Owahi jeneng"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "Owahi jeneng buku alamat"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2199,6 +2574,15 @@ msgstr "Owahi jeneng kolom"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "Owahi jeneng kolom papan iki"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "Ngowahi jeneng buku alamat..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2274,6 +2658,8 @@ msgstr "Setu"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2285,6 +2671,14 @@ msgstr "Simpen"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "Simpen jeneng"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Simpen tembung sandhi iki saiki. Ora bisa ditampilake maneh."
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "Nyimpen kontak..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2303,6 +2697,10 @@ msgstr "Lagi nyimpen..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "Goleki"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "Golèki kontak"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2323,14 +2721,6 @@ msgstr "Goleki tujuan..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "Goleki asal..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "Goleki wong lan kirim panyuwunan kanca."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "Goleki kanca"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2354,7 +2744,7 @@ msgstr "Goleki, tonton, lan urutaké tampilan iki."
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Goleki..."
@@ -2432,7 +2822,7 @@ msgstr "Kirim maneh"
 msgid "Send email"
 msgstr "Kirim email"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "Kirim undhangan"
 
@@ -2441,7 +2831,8 @@ msgstr "Kirim undhangan"
 msgid "Send message"
 msgstr "Kirim pesen"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Ngirim undhangan..."
 
@@ -2453,6 +2844,10 @@ msgstr "Dikirim ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "Serif"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2549,9 +2944,9 @@ msgstr "Jembar"
 msgid "Start the discussion by adding the first comment."
 msgstr "Miwiti diskusi kanthi nambah komentar pisanan."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "Wiwiti ngetik kanggo nggolèki panganggo"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "Wiwiti ngetik kanggo nggolèki wong"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2561,6 +2956,10 @@ msgstr "Mandheg nonton"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "Simpen meneng-menengan"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "Dalan"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2629,7 +3028,7 @@ msgstr "Ora bisa dikirim. Berkas bisa uga kegedhen, utawa sambunganmu gagal. Cob
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Kegedhen kanggo diunggah. Busak utawa cilikake berkas banjur coba maneh."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "Kuwi sampéyan"
 
@@ -2640,6 +3039,10 @@ msgstr "Kamera wis digunakake"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Panjaluk kamera ora diwangsuli"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "Piranti ora bakal bisa nyelarasake kontak maneh."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -2672,6 +3075,11 @@ msgstr "Iki bakal mbusak game lan obrolane kanthi permanen. Tindakan iki ora bis
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Kemis"
+
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "Jabatan"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2712,13 +3120,9 @@ msgstr "Ndhuwur"
 msgid "Travelling"
 msgstr "Lagi lelungan"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "Coba jeneng liya"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "Coba istilah penelusuran liyané"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2739,6 +3143,8 @@ msgstr "Selasa"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "Jenis"
@@ -2782,6 +3188,12 @@ msgstr "Ora kasedhiya"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Kesalahan API ora dikarepake"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "Ilangi kanca"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2843,6 +3255,10 @@ msgstr "Kemajuan unggahan"
 msgid "Uploading..."
 msgstr "Lagi ngunggah..."
 
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
 msgstr "Gunakake passkey sampeyan"
@@ -2854,6 +3270,10 @@ msgstr "Gunakake passkey sampeyan"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "Panganggo"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "Jeneng panganggo"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"
@@ -2920,6 +3340,11 @@ msgstr "Kita ngirim kode verifikasi menyang <0>{0}</0>. Lebokake kode ing ngisor
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "Rebo"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "Kantor"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

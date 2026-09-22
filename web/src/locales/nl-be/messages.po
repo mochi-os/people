@@ -34,6 +34,11 @@ msgstr "(jij)"
 msgid "[not set]"
 msgstr "[niet ingesteld]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {# contact wordt dan ook verwijderd.} other {# contacten worden dan ook verwijderd.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -65,9 +70,21 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#w} other {#w}}"
 
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel}-naam"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr ""
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr ""
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -98,9 +115,9 @@ msgstr "12 uur"
 msgid "24 hours"
 msgstr "24 uur"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "Er is een vriendschapsuitnodiging verzonden naar {userName}."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "Er is een vriendschapsuitnodiging naar {name} verstuurd."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +136,8 @@ msgid "Accent saved"
 msgstr "Accent opgeslagen"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "Accepteren"
@@ -132,11 +150,7 @@ msgstr "Alles aanvaarden"
 msgid "Accept automatically"
 msgstr "Automatisch accepteren"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "Uitnodiging aanvaarden"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "Uitnodiging accepteren..."
@@ -161,6 +175,11 @@ msgstr "Accounttype"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "Acties"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "Acties voor {0}"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +211,10 @@ msgstr "Toegang toevoegen"
 msgid "Add account"
 msgstr "Account toevoegen"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "Adres toevoegen"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Bijschrift toevoegen"
@@ -200,22 +223,21 @@ msgstr "Bijschrift toevoegen"
 msgid "Add checklist item"
 msgstr "Checklist-item toevoegen"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "Contact toevoegen"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "E-mailadres toevoegen"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Veld toevoegen"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "Vriend toevoegen"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "Voeg vrienden toe om te beginnen met verbinden"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +262,21 @@ msgstr "Lid toevoegen"
 msgid "Add option"
 msgstr "Optie toevoegen"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "Telefoonnummer toevoegen"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "Voeg iemand toe om te beginnen"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Tag toevoegen..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "Toevoegen aan contacten"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +300,42 @@ msgstr "Weergave toevoegen"
 msgid "Added {0} to the group"
 msgstr "{0} toegevoegd aan de groep"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "Contact toevoegen..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Lid toevoegen..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "adresboek"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "Adresboek"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "Adresboek aangemaakt"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "Adresboek verwijderd"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "Adresboek hernoemd"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "URL van het adresboek"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "Adressen"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +344,15 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "Alle beschikbare groepen zijn al toegevoegd"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "Alle contacten"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr ""
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +373,6 @@ msgstr "Iedereen toelaten om te zoeken naar {entityLabel}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Sorteren toestaan op"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "Al vrienden"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +430,6 @@ msgstr "Weet u zeker dat u wilt uitloggen? U moet opnieuw inloggen om toegang te
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Ben je zeker dat je <0>{0}</0> uit deze groep wilt verwijderen?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "Ben je zeker dat je <0>{0}</0> uit je vriendenlijst wilt verwijderen? Deze actie kan niet ongedaan gemaakt worden."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "Weet je zeker dat je wilt opgeven?"
@@ -406,7 +472,8 @@ msgid "Avatar for {name}"
 msgstr "Avatar voor {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "Terug"
 
@@ -431,6 +498,10 @@ msgstr "Banner verwijderd"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Banner bijgewerkt"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "Verjaardag"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +565,9 @@ msgstr "Camera niet beschikbaar"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,9 +629,10 @@ msgstr "Gewijzigd"
 msgid "Changed {field}"
 msgstr "{field} gewijzigd"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "Chat"
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr ""
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -576,6 +651,10 @@ msgstr "Kies een spel uit de zijbalk of start een nieuw spel."
 msgid "Choose language"
 msgstr "Kies taal"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "Stad"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -592,7 +671,7 @@ msgid "Clear all"
 msgstr "Alles wissen"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "Zoekopdracht wissen"
 
@@ -601,7 +680,7 @@ msgstr "Zoekopdracht wissen"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "Sluiten"
 
@@ -635,6 +714,7 @@ msgid "Collapse sidebar"
 msgstr "Zijbalk samenvouwen"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "Kleur"
 
@@ -685,13 +765,47 @@ msgstr "Weergave-instellingen configureren"
 msgid "Confirm"
 msgstr "Bevestigen"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Apparaat koppelen"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Nog een apparaat koppelen"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Verbonden"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Apparaat koppelen..."
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
 msgstr "Verbinden..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "Contact toegevoegd"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "Contact aangemaakt"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "Contact verwijderd"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "Contact opgeslagen"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "Contacten"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -718,12 +832,17 @@ msgid "Copied"
 msgstr "Gekopieerd"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Gekopieerd naar klembord"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopiëren"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "{label} kopiëren"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -749,17 +868,31 @@ msgstr "Kon de herauthenticatie niet starten. Probeer het opnieuw."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Kan niet verifiëren met dat account. Probeer het opnieuw."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "Land"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "Aanmaken"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "{entityLabel} aanmaken"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "Maak een contact aan of zoek iemand op Mochi."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "Adresboek aanmaken"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -778,9 +911,22 @@ msgstr "Nieuw item aanmaken"
 msgid "Created"
 msgstr "Aangemaakt"
 
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Aangemaakt {0}"
+
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "{field} aangemaakt"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "Adresboek aanmaken..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "Contact aanmaken..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -847,10 +993,37 @@ msgstr "Standaardsortering"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "Verwijderen"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "<0>{0}</0> verwijderen?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "<0>{0}</0> verwijderen? Daarmee stopt ook jullie vriendschap."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "Adresboek verwijderen"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -863,6 +1036,19 @@ msgstr "Kolom verwijderen"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "Reactie verwijderen"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "Contact verwijderen"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Apparaat verwijderen"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Apparaat verwijderen?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -913,6 +1099,19 @@ msgstr "Verwijderd"
 msgid "Deleted {field}"
 msgstr "{field} verwijderd"
 
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "Adresboek verwijderen..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "Contact verwijderen..."
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Apparaat verwijderen..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "Groep verwijderen..."
@@ -941,6 +1140,14 @@ msgstr "Detailpaneel"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Detecteren via webbrowser"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Apparaat verwijderd"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "Apparaatnaam"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -978,6 +1185,7 @@ msgstr "Komt niet overeen met het vereiste patroon"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "Klaar"
 
@@ -1002,6 +1210,7 @@ msgstr "Dyslexie-vriendelijk"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Bewerken"
@@ -1013,6 +1222,10 @@ msgstr "{label} bewerken"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Bijschrift bewerken"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "Contact bewerken"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1058,15 +1271,20 @@ msgstr "E-mail"
 msgid "Email code"
 msgstr "E-mailcode"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "Geef een naam in om mensen te vinden die je wilt toevoegen"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "E-mailadressen"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "Je vriendschap met <0>{0}</0> stopzetten? Het contact blijft in je adresboek staan."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "Voer bannertekst in (markdown ondersteund)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "Geef naam in om te zoeken..."
 
@@ -1101,6 +1319,7 @@ msgstr "Externe URL"
 msgid "Extra large"
 msgstr "Extra groot"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "Uitnodiging accepteren mislukt"
@@ -1113,10 +1332,9 @@ msgstr "Uitnodigingen accepteren mislukt"
 msgid "Failed to add account"
 msgstr "Account toevoegen mislukt"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "Kon vriend niet toevoegen"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "Contact toevoegen mislukt"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1131,11 +1349,23 @@ msgstr "Uitnodiging annuleren mislukt"
 msgid "Failed to cancel invitations"
 msgstr "Uitnodigingen annuleren mislukt"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Apparaat koppelen is mislukt"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "Kopiëren mislukt"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "Adresboek aanmaken mislukt"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "Contact aanmaken mislukt"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1158,6 +1388,10 @@ msgstr "Uitnodigingen weigeren mislukt"
 msgid "Failed to delete"
 msgstr "Verwijderen mislukt"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "Adresboek verwijderen mislukt"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "Bijlage verwijderen mislukt"
@@ -1165,6 +1399,15 @@ msgstr "Bijlage verwijderen mislukt"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "Reactie verwijderen mislukt"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "Contact verwijderen mislukt"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Apparaat verwijderen is mislukt"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1223,13 +1466,17 @@ msgstr "Verplaatsen mislukt"
 msgid "Failed to post comment"
 msgstr "Reactie plaatsen mislukt"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Vriend verwijderen mislukt"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "Lid verwijderen mislukt"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "Adresboek hernoemen mislukt"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1248,6 +1495,10 @@ msgstr "Opslaan mislukt"
 msgid "Failed to save accent"
 msgstr "Accent opslaan mislukt"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "Contact opslaan mislukt"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "Naam opslaan mislukt"
@@ -1263,6 +1514,11 @@ msgstr "Profiel opslaan mislukt"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "Prompt opslaan mislukt"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "Uitnodiging versturen mislukt"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1284,6 +1540,10 @@ msgstr "Kan volgen niet bijwerken"
 msgid "Failed to upload attachment"
 msgstr "Bijlage uploaden mislukt"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "Familienaam"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1297,6 +1557,10 @@ msgstr "Bestand te groot"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "Bestanden"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Zoeken op Mochi"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1314,14 +1578,16 @@ msgstr "Plat"
 msgid "Friday"
 msgstr "Vrijdag"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "Vriend"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Vriend verwijderd"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "Vrienden"
 
@@ -1336,6 +1602,10 @@ msgstr "Van"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Van thema"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "Voornaam"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1403,6 +1673,11 @@ msgstr "Geschiedenis"
 msgid "Home"
 msgstr "Home"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "Thuis"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "Populair"
@@ -1423,6 +1698,10 @@ msgstr "Afbeeldingsviewer: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperial"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "In contacten"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1452,7 +1731,7 @@ msgstr "Interesses"
 msgid "Invalid date"
 msgstr "Ongeldige datum"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "Uitnodiging geaccepteerd"
@@ -1465,8 +1744,8 @@ msgstr "Uitnodiging geannuleerd"
 msgid "Invitation declined"
 msgstr "Uitnodiging geweigerd"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Uitnodiging verzonden"
 
@@ -1476,6 +1755,11 @@ msgstr "Uitnodiging verzonden"
 msgid "Invitations"
 msgstr "Uitnodigingen"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "Uitnodigen"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "Uitnodigingsbeleid bijgewerkt"
@@ -1484,6 +1768,10 @@ msgstr "Uitnodigingsbeleid bijgewerkt"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "Uitnodigingsinstellingen"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "Uitgenodigd"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1505,6 +1793,11 @@ msgstr "Sneltoetsen"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Groot"
+
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Laatst gebruikt {0}"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
@@ -1575,6 +1868,10 @@ msgstr "Bezig met uitloggen…"
 msgid "Manage categories"
 msgstr "Categorieën beheren"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Apparaten beheren"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Handmatig"
@@ -1622,6 +1919,7 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Bericht"
 
@@ -1636,6 +1934,11 @@ msgstr "Microfoonmachtiging geweigerd"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "Min. lengte"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "Gsm"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1661,18 +1964,22 @@ msgstr "Verplaatst"
 msgid "Moved {field}"
 msgstr "{field} verplaatst"
 
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Naam"
-
-#: src/features/friends/index.tsx
-msgid "Name (A–Z)"
-msgstr "Naam (A–Z)"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
@@ -1696,10 +2003,20 @@ msgstr "Naam opgeslagen"
 msgid "Network error"
 msgstr "Netwerkfout"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "Nooit"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Nieuw"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "Nieuw contact"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -1714,6 +2031,14 @@ msgstr "Nieuwe uitnodigingen verschijnen hier"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "Volgende afbeelding"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Next month"
+msgstr ""
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "Bijnaam"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1735,9 +2060,13 @@ msgstr "Geen banner ingesteld"
 msgid "No comments yet"
 msgstr "Nog geen reacties"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "Nog geen vrienden"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "Nog geen contacten"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Geen apparaten gekoppeld."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1769,7 +2098,7 @@ msgstr "Geen openstaande uitnodigingen"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "Geen personen gevonden"
@@ -1778,7 +2107,7 @@ msgstr "Geen personen gevonden"
 msgid "No places found"
 msgstr "Geen plaatsen gevonden"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "Geen resultaten voor \"{search}\""
 
@@ -1850,6 +2179,10 @@ msgstr "Niet gevonden"
 msgid "Not set"
 msgstr "Niet ingesteld"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "Notitie"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "Niets gevonden"
@@ -1872,6 +2205,10 @@ msgstr "Getal"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Aan"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Op Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1921,7 +2258,16 @@ msgstr "Optionele beschrijving"
 msgid "Options"
 msgstr "Opties"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "Organisatie"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Andere"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "Andere"
 
@@ -1953,6 +2299,10 @@ msgstr "Toegangssleutels"
 msgid "Passkeys are not available in this browser"
 msgstr "Passkeys zijn niet beschikbaar in deze browser"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "Wachtwoord"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Patroon (regex)"
@@ -1965,6 +2315,10 @@ msgstr "In behandeling"
 #: src/components/layout/people-layout.tsx
 msgid "People"
 msgstr "Personen"
+
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "Telefoonnummers"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -1980,6 +2334,10 @@ msgstr "Probeer het opnieuw."
 msgid "Please wait a moment and try again."
 msgstr "Wacht even en probeer het opnieuw."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "Postcode"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Berichten"
@@ -1992,15 +2350,19 @@ msgstr "Berichten en reacties"
 msgid "Preview"
 msgstr "Voorbeeld"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "Bekijk het profiel van {0} voordat je een vriendschapsverzoek verstuurt."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "Bekijk het profiel van {0} voor je een vriendschapsuitnodiging verstuurt."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Previous image"
 msgstr "Vorige afbeelding"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Previous month"
+msgstr ""
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2060,7 +2422,7 @@ msgstr "Registreer je toegangssleutels opnieuw op deze server"
 msgid "Received ({0})"
 msgstr "Ontvangen ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "Onlangs toegevoegd"
 
@@ -2088,6 +2450,10 @@ msgstr "Bezig met doorverwijzen naar login."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "Interesse verminderen"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "Regio"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2120,10 +2486,7 @@ msgstr "Relevantie {relevance}, interesse {weight}"
 msgid "Remove"
 msgstr "Verwijderen"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2155,10 +2518,13 @@ msgstr "Toegangsregel voor \"{0}\" verwijderen?"
 msgid "Remove access?"
 msgstr "Toegang verwijderen?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "Vriend verwijderen"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "Adres verwijderen"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "E-mailadres verwijderen"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2179,7 +2545,11 @@ msgstr "Link verwijderen"
 msgid "Remove member"
 msgstr "Lid verwijderen"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "Telefoonnummer verwijderen"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Vriend verwijderen..."
 
@@ -2189,8 +2559,13 @@ msgstr "Lid verwijderen..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "Hernoemen"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "Adresboek hernoemen"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2199,6 +2574,15 @@ msgstr "Kolom hernoemen"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "Deze bordkolom hernoemen"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "Adresboek hernoemen..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2274,6 +2658,8 @@ msgstr "Zaterdag"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2285,6 +2671,14 @@ msgstr "Opslaan"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "Naam opslaan"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Bewaar dit wachtwoord nu. Het kan niet opnieuw worden getoond."
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "Contact opslaan..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2303,6 +2697,10 @@ msgstr "Opslaan..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "Zoeken"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "Contacten zoeken"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2323,14 +2721,6 @@ msgstr "Zoek bestemming..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "Zoek herkomst..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "Zoek mensen en stuur een vriendschapsverzoek."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "Vrienden zoeken"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2354,7 +2744,7 @@ msgstr "Doorzoek, volg en sorteer deze weergave."
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Zoeken..."
@@ -2432,7 +2822,7 @@ msgstr "Opnieuw verzenden"
 msgid "Send email"
 msgstr "E-mail verzenden"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "Uitnodiging versturen"
 
@@ -2441,7 +2831,8 @@ msgstr "Uitnodiging versturen"
 msgid "Send message"
 msgstr "Bericht versturen"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Uitnodiging verzenden..."
 
@@ -2453,6 +2844,10 @@ msgstr "Verzonden ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "Schreefletter"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2549,9 +2944,9 @@ msgstr "Ruim"
 msgid "Start the discussion by adding the first comment."
 msgstr "Start de discussie door de eerste reactie toe te voegen."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "Begin te typen om naar gebruikers te zoeken"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "Begin te typen om mensen te zoeken"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2561,6 +2956,10 @@ msgstr "Stoppen met volgen"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "Stil opslaan"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "Straat"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2629,7 +3028,7 @@ msgstr "Het kon niet worden verzonden. De bestanden zijn mogelijk te groot, of j
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Het was te groot om te uploaden. Verwijder of verklein bestanden en probeer het opnieuw."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "Dat ben jij"
 
@@ -2640,6 +3039,10 @@ msgstr "De camera is al in gebruik"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Het cameraverzoek is niet beantwoord"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "Het apparaat kan dan geen contacten meer synchroniseren."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -2672,6 +3075,11 @@ msgstr "Hierdoor worden het spel en de bijbehorende chat permanent verwijderd. D
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Donderdag"
+
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "Functie"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2712,13 +3120,9 @@ msgstr "Boven"
 msgid "Travelling"
 msgstr "Op reis"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "Probeer een andere naam"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "Probeer een andere zoekterm"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2739,6 +3143,8 @@ msgstr "Dinsdag"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "Type"
@@ -2782,6 +3188,12 @@ msgstr "Niet beschikbaar"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Onverwachte API-fout"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "Vriendschap stopzetten"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2843,6 +3255,10 @@ msgstr "Uploadvoortgang"
 msgid "Uploading..."
 msgstr "Uploaden..."
 
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
 msgstr "Gebruik je passkey"
@@ -2854,6 +3270,10 @@ msgstr "Gebruik je passkey"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "Gebruiker"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "Gebruikersnaam"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"
@@ -2920,6 +3340,11 @@ msgstr "We hebben een verificatiecode naar <0>{0}</0> gestuurd. Voer de code hie
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "Woensdag"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "Werk"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

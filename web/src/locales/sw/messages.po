@@ -34,6 +34,11 @@ msgstr "(wewe)"
 msgid "[not set]"
 msgstr "[haijawekwa]"
 
+#. placeholder {0}: deleteBook?.count ?? 0
+#: src/components/layout/people-layout.tsx
+msgid "{0, plural, one {# contact is deleted with it.} other {# contacts are deleted with it.}}"
+msgstr "{0, plural, one {Anwani # pia itafutwa pamoja nacho.} other {Anwani # pia zitafutwa pamoja nacho.}}"
+
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 msgid "{0, plural, one {# result} other {# results}}"
@@ -65,9 +70,21 @@ msgstr "{count, plural, one {#dk} other {#dk}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#wk} other {#wk}}"
 
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{day}, {from} to {to}"
+msgstr ""
+
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Jina la {entityLabel}"
+
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "{from} to {to}"
+msgstr ""
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "{hidden, plural, one {+# more} other {+# more}}"
+msgstr ""
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -98,9 +115,9 @@ msgstr "Masaa 12"
 msgid "24 hours"
 msgstr "Masaa 24"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "A friend invitation has been sent to {userName}."
-msgstr "Mwaliko wa urafiki umetumwa kwa {userName}."
+#: src/features/contacts/add-dialog.tsx
+msgid "A friend invitation has been sent to {name}."
+msgstr "Mwaliko wa urafiki umetumwa kwa {name}."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "A recording is already in progress."
@@ -119,7 +136,8 @@ msgid "Accent saved"
 msgstr "Lafudhi imehifadhiwa"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accept"
 msgstr "Kubali"
@@ -132,11 +150,7 @@ msgstr "Kubali zote"
 msgid "Accept automatically"
 msgstr "Kubali kiotomatiki"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Accept invite"
-msgstr "Kubali mwaliko"
-
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Accepting invitation..."
 msgstr "Inakubali mwaliko..."
@@ -161,6 +175,11 @@ msgstr "Aina ya akaunti"
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
 msgstr "Vitendo"
+
+#. placeholder {0}: contact.name
+#: src/features/contacts/index.tsx
+msgid "Actions for {0}"
+msgstr "Vitendo vya {0}"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Activity"
@@ -192,6 +211,10 @@ msgstr "Ongeza ufikiaji"
 msgid "Add account"
 msgstr "Ongeza akaunti"
 
+#: src/features/contacts/editor.tsx
+msgid "Add address"
+msgstr "Ongeza anwani ya posta"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Ongeza maelezo mafupi"
@@ -200,22 +223,21 @@ msgstr "Ongeza maelezo mafupi"
 msgid "Add checklist item"
 msgstr "Ongeza kipengee cha orodha"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/invitations/index.tsx
+msgid "Add contact"
+msgstr "Ongeza anwani"
+
+#: src/features/contacts/editor.tsx
+msgid "Add email"
+msgstr "Ongeza barua pepe"
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Ongeza uga"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-#: src/features/invitations/index.tsx
-msgid "Add friend"
-msgstr "Ongeza rafiki"
-
-#: src/features/friends/index.tsx
-msgid "Add friends to start connecting"
-msgstr "Ongeza marafiki ili kuanza kuunganisha"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -240,9 +262,21 @@ msgstr "Ongeza mwanachama"
 msgid "Add option"
 msgstr "Ongeza chaguo"
 
+#: src/features/contacts/editor.tsx
+msgid "Add phone"
+msgstr "Ongeza simu"
+
+#: src/features/contacts/index.tsx
+msgid "Add someone to get started"
+msgstr "Ongeza mtu ili kuanza"
+
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Ongeza tagi..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Add to contacts"
+msgstr "Ongeza kwenye anwani"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
@@ -266,10 +300,42 @@ msgstr "Ongeza mwonekano"
 msgid "Added {0} to the group"
 msgstr "Imeongeza {0} kwenye kikundi"
 
+#: src/features/contacts/add-dialog.tsx
+msgid "Adding contact..."
+msgstr "Inaongeza anwani..."
+
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Inaongeza mwanachama..."
+
+#: src/components/layout/people-layout.tsx
+msgid "address book"
+msgstr "kitabu cha anwani"
+
+#: src/features/contacts/editor.tsx
+msgid "Address book"
+msgstr "Kitabu cha anwani"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book created"
+msgstr "Kitabu cha anwani kimeundwa"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book deleted"
+msgstr "Kitabu cha anwani kimefutwa"
+
+#: src/components/layout/people-layout.tsx
+msgid "Address book renamed"
+msgstr "Jina la kitabu cha anwani limebadilishwa"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Address book URL"
+msgstr "URL ya kitabu cha anwani"
+
+#: src/features/contacts/editor.tsx
+msgid "Addresses"
+msgstr "Anwani za posta"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
@@ -278,6 +344,15 @@ msgstr "AI"
 #: src/features/groups/member-dialog.tsx
 msgid "All available groups are already added"
 msgstr "Vikundi vyote vinavyopatikana tayari vimeongezwa"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/index.tsx
+msgid "All contacts"
+msgstr "Anwani zote"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "All day"
+msgstr ""
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -298,10 +373,6 @@ msgstr "Ruhusu mtu yeyote kutafuta {entityLabel}"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Allow sort by"
 msgstr "Ruhusu kupanga kwa"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Already friends"
-msgstr "Tayari marafiki"
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "An error occurred"
@@ -359,11 +430,6 @@ msgstr "Una uhakika unataka kuondoka? Utahitaji kuingia tena kufikia akaunti yak
 msgid "Are you sure you want to remove <0>{0}</0> from this group?"
 msgstr "Una uhakika unataka kumwondoa <0>{0}</0> kwenye kikundi hiki?"
 
-#. placeholder {0}: removeFriendDialog.friendName
-#: src/features/friends/index.tsx
-msgid "Are you sure you want to remove <0>{0}</0> from your friends list? This action cannot be undone."
-msgstr "Una uhakika unataka kumwondoa <0>{0}</0> kwenye orodha yako ya marafiki? Kitendo hiki hakiwezi kutenduliwa."
-
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Are you sure you want to resign?"
 msgstr "Una uhakika unataka kuachia?"
@@ -406,7 +472,8 @@ msgid "Avatar for {name}"
 msgstr "Avatar ya {name}"
 
 #: ../../../lib/web/src/components/place-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Back"
 msgstr "Rudi"
 
@@ -431,6 +498,10 @@ msgstr "Bango limeondolewa"
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner updated"
 msgstr "Bango limesasishwa"
+
+#: src/features/contacts/editor.tsx
+msgid "Birthday"
+msgstr "Siku ya kuzaliwa"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -494,6 +565,9 @@ msgstr "Kamera haipatikani"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/index.tsx
@@ -555,9 +629,10 @@ msgstr "Imebadilishwa"
 msgid "Changed {field}"
 msgstr "Imebadilisha {field}"
 
-#: src/features/friends/index.tsx
-msgid "Chat"
-msgstr "Gumzo"
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Changed occurrence"
+msgstr ""
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -576,6 +651,10 @@ msgstr "Chagua mchezo kutoka upau wa pembeni au anzisha mpya."
 msgid "Choose language"
 msgstr "Chagua lugha"
 
+#: src/features/contacts/editor.tsx
+msgid "City"
+msgstr "Jiji"
+
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
@@ -592,7 +671,7 @@ msgid "Clear all"
 msgstr "Futa vyote"
 
 #: ../../../lib/web/src/components/search-input.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Clear search"
 msgstr "Futa utafutaji"
 
@@ -601,7 +680,7 @@ msgstr "Futa utafutaji"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/sheet.tsx
 #: ../../../lib/web/src/components/ui/side-panel.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Close"
 msgstr "Funga"
 
@@ -635,6 +714,7 @@ msgid "Collapse sidebar"
 msgstr "Kunja upau wa pembeni"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
+#: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Colour"
 msgstr "Rangi"
 
@@ -685,13 +765,47 @@ msgstr "Sanidi mipangilio ya mwonekano"
 msgid "Confirm"
 msgstr "Thibitisha"
 
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect a device"
+msgstr "Unganisha kifaa"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect another device"
+msgstr "Unganisha kifaa kingine"
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Imeunganishwa"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connecting device..."
+msgstr "Inaunganisha kifaa..."
+
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connecting..."
 msgstr "Inaunganisha..."
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Contact added"
+msgstr "Anwani imeongezwa"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact created"
+msgstr "Anwani imeundwa"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Contact deleted"
+msgstr "Anwani imefutwa"
+
+#: src/features/contacts/editor.tsx
+msgid "Contact saved"
+msgstr "Anwani imehifadhiwa"
+
+#: src/features/contacts/index.tsx
+msgid "Contacts"
+msgstr "Anwani"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -718,12 +832,17 @@ msgid "Copied"
 msgstr "Imenakiliwa"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Imenakiliwa kwenye ubao wa kunakili"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Nakili"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Copy {label}"
+msgstr "Nakili {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -749,17 +868,31 @@ msgstr "Imeshindwa kuanza uthibitishaji upya. Tafadhali jaribu tena."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Imeshindwa kuthibitisha kwa akaunti hiyo. Tafadhali jaribu tena."
 
+#: src/features/contacts/editor.tsx
+msgid "Country"
+msgstr "Nchi"
+
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Create"
 msgstr "Unda"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
 msgstr "Unda {entityLabel}"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Create a contact, or find someone on Mochi."
+msgstr "Unda anwani, au mtafute mtu kwenye Mochi."
+
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+msgid "Create address book"
+msgstr "Unda kitabu cha anwani"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
@@ -778,9 +911,22 @@ msgstr "Unda kipengee kipya"
 msgid "Created"
 msgstr "Imeundwa"
 
+#. placeholder {0}: formatTimestamp(item.created, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Created {0}"
+msgstr "Imeundwa {0}"
+
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
 msgstr "Imeunda {field}"
+
+#: src/components/layout/people-layout.tsx
+msgid "Creating address book..."
+msgstr "Inaunda kitabu cha anwani..."
+
+#: src/features/contacts/editor.tsx
+msgid "Creating contact..."
+msgstr "Inaunda anwani..."
 
 #: src/features/groups/group-dialog.tsx
 msgid "Creating group..."
@@ -847,10 +993,37 @@ msgstr "Mpangilio chaguo-msingi"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
+#: src/components/layout/people-layout.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
 msgstr "Futa"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteBook?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>?"
+msgstr "Ufute <0>{0}</0>?"
+
+#. placeholder {0}: contact?.name ?? ''
+#. placeholder {0}: deleteDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete <0>{0}</0>? This also ends your friendship."
+msgstr "Ufute <0>{0}</0>? Hii pia inamaliza urafiki wenu."
+
+#: src/components/layout/people-layout.tsx
+msgid "Delete address book"
+msgstr "Futa kitabu cha anwani"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Delete attachment"
@@ -863,6 +1036,19 @@ msgstr "Futa safu"
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 msgid "Delete comment"
 msgstr "Futa maoni"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Delete contact"
+msgstr "Futa anwani"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device"
+msgstr "Futa kifaa"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Delete device?"
+msgstr "Futa kifaa?"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Delete field"
@@ -913,6 +1099,19 @@ msgstr "Imefutwa"
 msgid "Deleted {field}"
 msgstr "Imefuta {field}"
 
+#: src/components/layout/people-layout.tsx
+msgid "Deleting address book..."
+msgstr "Inafuta kitabu cha anwani..."
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Deleting contact..."
+msgstr "Inafuta anwani..."
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Deleting device..."
+msgstr "Inafuta kifaa..."
+
 #: src/features/groups/group-detail.tsx
 msgid "Deleting group..."
 msgstr "Inafuta kikundi..."
@@ -941,6 +1140,14 @@ msgstr "Paneli ya Undani"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Detect from web browser"
 msgstr "Tambua kutoka kwa kivinjari cha wavuti"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device deleted"
+msgstr "Kifaa kimefutwa"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Device name"
+msgstr "Jina la kifaa"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
@@ -978,6 +1185,7 @@ msgstr "Hailingani na muundo unaohitajika"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/features/contacts/connect-dialog.tsx
 msgid "Done"
 msgstr "Imekamilika"
 
@@ -1002,6 +1210,7 @@ msgstr "Rahisi kwa dyslexia"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Hariri"
@@ -1013,6 +1222,10 @@ msgstr "Hariri {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Badilisha maelezo mafupi"
+
+#: src/features/contacts/editor.tsx
+msgid "Edit contact"
+msgstr "Hariri anwani"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1058,15 +1271,20 @@ msgstr "Barua pepe"
 msgid "Email code"
 msgstr "Msimbo wa barua pepe"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Enter a name to find people you want to add"
-msgstr "Ingiza jina ili kupata watu unaotaka kuongeza"
+#: src/features/contacts/editor.tsx
+msgid "Emails"
+msgstr "Barua pepe"
+
+#. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/index.tsx
+msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
+msgstr "Umalize urafiki na <0>{0}</0>? Anwani itabaki kwenye kitabu chako cha anwani."
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
 msgstr "Ingiza maandishi ya bango (markdown inakubaliwa)..."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
 msgstr "Ingiza jina kutafuta..."
 
@@ -1101,6 +1319,7 @@ msgstr "URL ya nje"
 msgid "Extra large"
 msgstr "Kubwa zaidi"
 
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to accept invitation"
 msgstr "Imeshindwa kukubali mwaliko"
@@ -1113,10 +1332,9 @@ msgstr "Imeshindwa kukubali mialiko"
 msgid "Failed to add account"
 msgstr "Imeshindwa kuongeza akaunti"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Failed to add friend"
-msgstr "Imeshindwa kuongeza rafiki"
+#: src/features/contacts/add-dialog.tsx
+msgid "Failed to add contact"
+msgstr "Imeshindwa kuongeza anwani"
 
 #: src/features/groups/member-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -1131,11 +1349,23 @@ msgstr "Imeshindwa kughairi mwaliko"
 msgid "Failed to cancel invitations"
 msgstr "Imeshindwa kughairi mialiko"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to connect device"
+msgstr "Imeshindwa kuunganisha kifaa"
+
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 #: ../../../lib/web/src/lib/toast-utils.ts
 #: src/features/profile/index.tsx
 msgid "Failed to copy"
 msgstr "Imeshindwa kunakili"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to create address book"
+msgstr "Imeshindwa kuunda kitabu cha anwani"
+
+#: src/features/contacts/editor.tsx
+msgid "Failed to create contact"
+msgstr "Imeshindwa kuunda anwani"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
@@ -1158,6 +1388,10 @@ msgstr "Imeshindwa kukataa mialiko"
 msgid "Failed to delete"
 msgstr "Imeshindwa kufuta"
 
+#: src/components/layout/people-layout.tsx
+msgid "Failed to delete address book"
+msgstr "Imeshindwa kufuta kitabu cha anwani"
+
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to delete attachment"
 msgstr "Imeshindwa kufuta kiambatisho"
@@ -1165,6 +1399,15 @@ msgstr "Imeshindwa kufuta kiambatisho"
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Failed to delete comment"
 msgstr "Imeshindwa kufuta maoni"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to delete contact"
+msgstr "Imeshindwa kufuta anwani"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Failed to delete device"
+msgstr "Imeshindwa kufuta kifaa"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to delete group"
@@ -1223,13 +1466,17 @@ msgstr "Imeshindwa kuhamisha"
 msgid "Failed to post comment"
 msgstr "Imeshindwa kuchapisha maoni"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Imeshindwa kuondoa rafiki"
 
 #: src/features/groups/group-detail.tsx
 msgid "Failed to remove member"
 msgstr "Imeshindwa kuondoa mwanachama"
+
+#: src/components/layout/people-layout.tsx
+msgid "Failed to rename address book"
+msgstr "Imeshindwa kubadilisha jina la kitabu cha anwani"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
@@ -1248,6 +1495,10 @@ msgstr "Imeshindwa kuhifadhi"
 msgid "Failed to save accent"
 msgstr "Imeshindwa kuhifadhi rangi ya msisitizo"
 
+#: src/features/contacts/editor.tsx
+msgid "Failed to save contact"
+msgstr "Imeshindwa kuhifadhi anwani"
+
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
 msgstr "Imeshindwa kuhifadhi jina"
@@ -1263,6 +1514,11 @@ msgstr "Imeshindwa kuhifadhi wasifu"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
 msgstr "Imeshindwa kuhifadhi kichocheo"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Failed to send invitation"
+msgstr "Imeshindwa kutuma mwaliko"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to update banner"
@@ -1284,6 +1540,10 @@ msgstr "Imeshindwa kusasisha ufuatiliaji"
 msgid "Failed to upload attachment"
 msgstr "Imeshindwa kupakia kiambatisho"
 
+#: src/features/contacts/editor.tsx
+msgid "Family name"
+msgstr "Jina la ukoo"
+
 #: src/features/profile/index.tsx
 msgid "Favicon"
 msgstr "Favicon"
@@ -1297,6 +1557,10 @@ msgstr "Faili kubwa sana"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Files"
 msgstr "Faili"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Find on Mochi"
+msgstr "Tafuta kwenye Mochi"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
@@ -1314,14 +1578,16 @@ msgstr "Tambarare"
 msgid "Friday"
 msgstr "Ijumaa"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Friend"
+msgstr "Rafiki"
+
+#: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Rafiki ameondolewa"
 
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/components/layout/people-layout.tsx
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Friends"
 msgstr "Marafiki"
 
@@ -1336,6 +1602,10 @@ msgstr "Kutoka"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Kutoka mandhari"
+
+#: src/features/contacts/editor.tsx
+msgid "Given name"
+msgstr "Jina la kwanza"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1403,6 +1673,11 @@ msgstr "Historia"
 msgid "Home"
 msgstr "Nyumbani"
 
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Home"
+msgstr "Nyumbani"
+
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
 msgstr "Moto"
@@ -1423,6 +1698,10 @@ msgstr "Kitazamaji picha: {0}"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
 msgstr "Imperial"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "In contacts"
+msgstr "Yupo kwenye anwani"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1452,7 +1731,7 @@ msgstr "Mivuto"
 msgid "Invalid date"
 msgstr "Tarehe batili"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation accepted"
 msgstr "Mwaliko umekubaliwa"
@@ -1465,8 +1744,8 @@ msgstr "Mwaliko umeghairiwa"
 msgid "Invitation declined"
 msgstr "Mwaliko umekataliwa"
 
-#: src/features/friends/components/add-friend-dialog.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Mwaliko umetumwa"
 
@@ -1476,6 +1755,11 @@ msgstr "Mwaliko umetumwa"
 msgid "Invitations"
 msgstr "Mialiko"
 
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
+msgid "Invite"
+msgstr "Alika"
+
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
 msgstr "Sera ya mwaliko imesasishwa"
@@ -1484,6 +1768,10 @@ msgstr "Sera ya mwaliko imesasishwa"
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
 msgstr "Mipangilio ya mwaliko"
+
+#: src/features/contacts/add-dialog.tsx
+msgid "Invited"
+msgstr "Amealikwa"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1505,6 +1793,11 @@ msgstr "Njia za mkato za kibodi"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Large"
 msgstr "Kubwa"
+
+#. placeholder {0}: formatTimestamp(item.used, t`Never`)
+#: src/features/contacts/connect-dialog.tsx
+msgid "Last used {0}"
+msgstr "Matumizi ya mwisho {0}"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
@@ -1575,6 +1868,10 @@ msgstr "Inatoka…"
 msgid "Manage categories"
 msgstr "Dhibiti kategoria"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Manage devices"
+msgstr "Dhibiti vifaa"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Mwongozo"
@@ -1622,6 +1919,7 @@ msgid "Menu"
 msgstr "Menyu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
+#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Ujumbe"
 
@@ -1636,6 +1934,11 @@ msgstr "Ruhusa ya maikrofoni imekataliwa"
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
 msgstr "Urefu wa chini"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Mobile"
+msgstr "Simu ya mkononi"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
@@ -1661,18 +1964,22 @@ msgstr "Imehamishwa"
 msgid "Moved {field}"
 msgstr "Imehamisha {field}"
 
+#. placeholder {0}: dragging.day
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+msgid "Moving to {0}"
+msgstr ""
+
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Jina"
-
-#: src/features/friends/index.tsx
-msgid "Name (A–Z)"
-msgstr "Jina (A–Z)"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
@@ -1696,10 +2003,20 @@ msgstr "Jina limehifadhiwa"
 msgid "Network error"
 msgstr "Hitilafu ya mtandao"
 
+#: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Never"
+msgstr "Kamwe"
+
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Mpya"
+
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
+msgid "New contact"
+msgstr "Anwani mpya"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -1714,6 +2031,14 @@ msgstr "Mialiko mipya itaonekana hapa"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Next image"
 msgstr "Picha inayofuata"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Next month"
+msgstr ""
+
+#: src/features/contacts/editor.tsx
+msgid "Nickname"
+msgstr "Jina la utani"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -1735,9 +2060,13 @@ msgstr "Hakuna bango lililowekwa"
 msgid "No comments yet"
 msgstr "Hakuna maoni bado"
 
-#: src/features/friends/index.tsx
-msgid "No friends yet"
-msgstr "Hakuna marafiki bado"
+#: src/features/contacts/index.tsx
+msgid "No contacts yet"
+msgstr "Bado hakuna anwani"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "No devices connected."
+msgstr "Hakuna vifaa vilivyounganishwa."
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "No games yet"
@@ -1769,7 +2098,7 @@ msgstr "Hakuna mialiko inayosubiri"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "No people found"
 msgstr "Hakuna watu waliopatikana"
@@ -1778,7 +2107,7 @@ msgstr "Hakuna watu waliopatikana"
 msgid "No places found"
 msgstr "Hakuna mahali palipopatikana"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "No results for \"{search}\""
 msgstr "Hakuna matokeo ya \"{search}\""
 
@@ -1850,6 +2179,10 @@ msgstr "Haikupatikana"
 msgid "Not set"
 msgstr "Haijawekwa"
 
+#: src/features/contacts/editor.tsx
+msgid "Note"
+msgstr "Dokezo"
+
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
 msgstr "Hakuna kilichopatikana"
@@ -1872,6 +2205,10 @@ msgstr "Nambari"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Imewashwa"
+
+#: src/features/contacts/index.tsx
+msgid "On Mochi"
+msgstr "Yupo Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -1921,7 +2258,16 @@ msgstr "Maelezo ya hiari"
 msgid "Options"
 msgstr "Chaguo"
 
+#: src/features/contacts/editor.tsx
+msgid "Organisation"
+msgstr "Shirika"
+
 #: ../../../lib/web/src/features/access/access-dialog.tsx
+msgid "Other"
+msgstr "Nyingine"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
 msgid "Other"
 msgstr "Nyingine"
 
@@ -1953,6 +2299,10 @@ msgstr "Passkey"
 msgid "Passkeys are not available in this browser"
 msgstr "Passkey hazipatikani kwenye kivinjari hiki"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Password"
+msgstr "Nenosiri"
+
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
 msgstr "Muundo (regex)"
@@ -1965,6 +2315,10 @@ msgstr "Inasubiri"
 #: src/components/layout/people-layout.tsx
 msgid "People"
 msgstr "Watu"
+
+#: src/features/contacts/editor.tsx
+msgid "Phones"
+msgstr "Simu"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -1980,6 +2334,10 @@ msgstr "Tafadhali jaribu tena."
 msgid "Please wait a moment and try again."
 msgstr "Tafadhali subiri kidogo kisha ujaribu tena."
 
+#: src/features/contacts/editor.tsx
+msgid "Postcode"
+msgstr "Msimbo wa posta"
+
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
 msgstr "Machapisho"
@@ -1992,15 +2350,19 @@ msgstr "Machapisho na maoni"
 msgid "Preview"
 msgstr "Hakiki"
 
-#. placeholder {0}: preview.user.name
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Preview {0}'s profile before sending a friend request."
-msgstr "Hakiki wasifu wa {0} kabla ya kutuma ombi la urafiki."
+#. placeholder {0}: preview.person.name
+#: src/features/contacts/add-dialog.tsx
+msgid "Preview {0}'s profile before sending a friend invitation."
+msgstr "Angalia wasifu wa {0} kabla ya kutuma mwaliko wa urafiki."
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Previous image"
 msgstr "Picha iliyotangulia"
+
+#: ../../../lib/web/src/components/calendar/mini-month.tsx
+msgid "Previous month"
+msgstr ""
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2060,7 +2422,7 @@ msgstr "Sajili upya funguo zako za ufikiaji kwenye seva hii"
 msgid "Received ({0})"
 msgstr "Imepokelewa ({0})"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Recently added"
 msgstr "Imeongezwa hivi karibuni"
 
@@ -2088,6 +2450,10 @@ msgstr "Inaelekeza kwenye kuingia."
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Reduce interest"
 msgstr "Punguza shauku"
+
+#: src/features/contacts/editor.tsx
+msgid "Region"
+msgstr "Eneo"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Reject all"
@@ -2120,10 +2486,7 @@ msgstr "Umuhimu {relevance}, shauku {weight}"
 msgid "Remove"
 msgstr "Ondoa"
 
-#. placeholder {0}: friend.name
 #. placeholder {0}: member.name
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2155,10 +2518,13 @@ msgstr "Ondoa sheria ya ufikiaji ya \"{0}\"?"
 msgid "Remove access?"
 msgstr "Ondoa ufikiaji?"
 
-#: src/features/friends/index.tsx
-#: src/features/friends/index.tsx
-msgid "Remove friend"
-msgstr "Ondoa rafiki"
+#: src/features/contacts/editor.tsx
+msgid "Remove address"
+msgstr "Ondoa anwani ya posta"
+
+#: src/features/contacts/editor.tsx
+msgid "Remove email"
+msgstr "Ondoa barua pepe"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2179,7 +2545,11 @@ msgstr "Ondoa kiungo"
 msgid "Remove member"
 msgstr "Ondoa mwanachama"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/editor.tsx
+msgid "Remove phone"
+msgstr "Ondoa simu"
+
+#: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Inaondoa rafiki..."
 
@@ -2189,8 +2559,13 @@ msgstr "Inaondoa mwanachama..."
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
+#: src/components/layout/people-layout.tsx
 msgid "Rename"
 msgstr "Badilisha jina"
+
+#: src/components/layout/people-layout.tsx
+msgid "Rename address book"
+msgstr "Badilisha jina la kitabu cha anwani"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename column"
@@ -2199,6 +2574,15 @@ msgstr "Badilisha jina la safuwima"
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 msgid "Rename this board column"
 msgstr "Badilisha jina la safuwima hii ya bao"
+
+#: src/components/layout/people-layout.tsx
+msgid "Renaming address book..."
+msgstr "Inabadilisha jina la kitabu cha anwani..."
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Repeats"
+msgstr ""
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2274,6 +2658,8 @@ msgstr "Jumamosi"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2285,6 +2671,14 @@ msgstr "Hifadhi"
 #: src/features/profile/index.tsx
 msgid "Save name"
 msgstr "Hifadhi jina"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Save this password now. It cannot be shown again."
+msgstr "Hifadhi nenosiri hili sasa. Haliwezi kuonyeshwa tena."
+
+#: src/features/contacts/editor.tsx
+msgid "Saving contact..."
+msgstr "Inahifadhi anwani..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2303,6 +2697,10 @@ msgstr "Inahifadhi..."
 #: ../../../lib/web/src/components/search.tsx
 msgid "Search"
 msgstr "Tafuta"
+
+#: src/features/contacts/index.tsx
+msgid "Search contacts"
+msgstr "Tafuta anwani"
 
 #: ../../../lib/web/src/components/ui/command.tsx
 msgid "Search for a command to run..."
@@ -2323,14 +2721,6 @@ msgstr "Tafuta marudio..."
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Search for origin..."
 msgstr "Tafuta chanzo..."
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Search for people and send a friend request."
-msgstr "Tafuta watu na utume ombi la urafiki."
-
-#: src/features/friends/index.tsx
-msgid "Search friends"
-msgstr "Tafuta marafiki"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Search objects..."
@@ -2354,7 +2744,7 @@ msgstr "Tafuta, tazama, na panga mwonekano huu."
 #: ../../../lib/web/src/components/inline-entity-search.tsx
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Tafuta..."
@@ -2432,7 +2822,7 @@ msgstr "Tuma tena"
 msgid "Send email"
 msgstr "Tuma barua pepe"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "Send invitation"
 msgstr "Tuma mwaliko"
 
@@ -2441,7 +2831,8 @@ msgstr "Tuma mwaliko"
 msgid "Send message"
 msgstr "Tuma ujumbe"
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Inatuma mwaliko..."
 
@@ -2453,6 +2844,10 @@ msgstr "Imetumwa ({0})"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
 msgstr "Serif"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Server"
+msgstr ""
 
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2549,9 +2944,9 @@ msgstr "Pana"
 msgid "Start the discussion by adding the first comment."
 msgstr "Anza majadiliano kwa kuongeza maoni ya kwanza."
 
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Start typing to search for users"
-msgstr "Anza kuandika kutafuta watumiaji"
+#: src/features/contacts/add-dialog.tsx
+msgid "Start typing to search for people"
+msgstr "Anza kuandika ili kutafuta watu"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
@@ -2561,6 +2956,10 @@ msgstr "Acha kufuatilia"
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Store silently"
 msgstr "Hifadhi kimya"
+
+#: src/features/contacts/editor.tsx
+msgid "Street"
+msgstr "Mtaa"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
@@ -2629,7 +3028,7 @@ msgstr "Haikuweza kutumwa. Huenda faili ni kubwa mno, au muunganisho wako ulikat
 msgid "That was too large to upload. Remove or shrink files and try again."
 msgstr "Ilikuwa kubwa mno kupakia. Ondoa au punguza faili kisha ujaribu tena."
 
-#: src/features/friends/components/add-friend-dialog.tsx
+#: src/features/contacts/add-dialog.tsx
 msgid "That's you"
 msgstr "Huyo ni wewe"
 
@@ -2640,6 +3039,10 @@ msgstr "Kamera tayari inatumika"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The camera request was not answered"
 msgstr "Ombi la kamera halikujibiwa"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "The device will no longer be able to sync contacts."
+msgstr "Kifaa hakitaweza tena kusawazisha anwani."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The microphone request was not answered"
@@ -2672,6 +3075,11 @@ msgstr "Hatua hii itafuta mchezo na mazungumzo yake kabisa. Hatua hii haiwezi ku
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Thursday"
 msgstr "Alhamisi"
+
+#: src/features/contacts/editor.tsx
+msgctxt "job title"
+msgid "Title"
+msgstr "Cheo"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "To"
@@ -2712,13 +3120,9 @@ msgstr "Juu"
 msgid "Travelling"
 msgstr "Kusafiri"
 
-#: src/features/friends/index.tsx
+#: src/features/contacts/index.tsx
 msgid "Try a different name"
 msgstr "Jaribu jina lingine"
-
-#: src/features/friends/components/add-friend-dialog.tsx
-msgid "Try a different search term"
-msgstr "Jaribu neno la utafutaji tofauti"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"
@@ -2739,6 +3143,8 @@ msgstr "Jumanne"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Type"
 msgstr "Aina"
@@ -2782,6 +3188,12 @@ msgstr "Haipatikani"
 #: ../../../lib/web/src/lib/request.ts
 msgid "Unexpected API error"
 msgstr "Hitilafu ya API isiyotarajiwa"
+
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+#: src/features/contacts/index.tsx
+msgid "Unfriend"
+msgstr "Ondoa urafiki"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -2843,6 +3255,10 @@ msgstr "Maendeleo ya upakiaji"
 msgid "Uploading..."
 msgstr "Inapakia..."
 
+#: src/features/contacts/editor.tsx
+msgid "URL"
+msgstr ""
+
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
 msgstr "Tumia ufunguo wako"
@@ -2854,6 +3270,10 @@ msgstr "Tumia ufunguo wako"
 #: src/features/groups/member-dialog.tsx
 msgid "User"
 msgstr "Mtumiaji"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Username"
+msgstr "Jina la mtumiaji"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"
@@ -2920,6 +3340,11 @@ msgstr "Tumetuma msimbo wa uthibitishaji kwa <0>{0}</0>. Weka msimbo hapa chini 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Wednesday"
 msgstr "Jumatano"
+
+#: src/features/contacts/editor.tsx
+msgctxt "contact type"
+msgid "Work"
+msgstr "Kazini"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

@@ -464,6 +464,14 @@ def contact_link(identity, person, name):
 	card = [{"name": "FN", "params": {}, "value": name}] if name else []
 	return contact_insert(identity, book_default(identity), person, 0, name, name, card)
 
+# contact_person_set(row, person, name): link an existing contact to a Mochi
+# person. The user's label stays; the directory column takes the name the
+# directory gave and refreshed resets so the next listing checks it.
+def contact_person_set(row, person, name):
+	etag = contact_etag(card_decode(row["card"]), person, row["friend"], row.get("photo", ""))
+	mochi.db.execute("update contacts set person=?, directory=?, refreshed=0, etag=?, updated=? where id=?", person, name, etag, mochi.time.now(), row["id"])
+	book_touch(row["book"], row["id"])
+
 # contact_friend_set(identity, person, friend, name="") -> row: link the contact
 # and set its friend flag. A name refreshes the directory column, never the
 # user's label.
@@ -834,11 +842,13 @@ def person_valid(a, person, identity):
 		return False
 	return True
 
-# friend_invite(a, person, name): send an invitation, or accept one that is
-# already waiting from the same person. The contact row exists from the
-# moment of inviting, so the invitation shows in the list; the flag turns on
-# when the other side accepts.
-def friend_invite(a, person, name):
+# friend_invite(a, person, name, contact=""): send an invitation, or accept
+# one that is already waiting from the same person. The contact row exists
+# from the moment of inviting, so the invitation shows in the list; the flag
+# turns on when the other side accepts. A contact names an existing card to
+# link to the person first, so a card typed in by hand or synced from a
+# device becomes the friend instead of gaining a duplicate beside it.
+def friend_invite(a, person, name, contact=""):
 	identity = a.user.identity.id
 	if not person_valid(a, person, identity):
 		return
@@ -848,6 +858,20 @@ def friend_invite(a, person, name):
 	if not mochi.text.valid(name, "line"):
 		a.error.label(400, "errors.invalid_friend_name")
 		return
+	if contact:
+		row = contact_get(identity, contact)
+		if not row:
+			a.error.label(404, "errors.contact_not_found")
+			return
+		if row["person"] and row["person"] != person:
+			a.error.label(409, "errors.contact_linked")
+			return
+		other = contact_by_person(identity, person)
+		if other and other["id"] != row["id"]:
+			a.error.label(409, "errors.person_linked")
+			return
+		if not row["person"]:
+			contact_person_set(row, person, name)
 	if mochi.db.exists("select id from invites where identity=? and id=? and direction='from'", identity, person):
 		# They already invited us - accept it.
 		contact_friend_set(identity, person, 1, name)
@@ -908,7 +932,7 @@ def friend_remove(a, person, delete):
 	return {"data": {}}
 
 def action_friend_invite(a):
-	return friend_invite(a, person_input(a), a.input("name", ""))
+	return friend_invite(a, person_input(a), a.input("name", ""), a.input("contact", ""))
 
 def action_friend_accept(a):
 	return friend_accept(a, person_input(a))

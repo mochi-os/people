@@ -9,6 +9,7 @@ import {
   DatePicker,
   Button,
   ConfirmDialog,
+  Switch,
   DetailSkeleton,
   GeneralError,
   Input,
@@ -26,7 +27,8 @@ import {
   toastAction,
   usePageTitle,
 } from '@mochi/web'
-import { BookUser, Check, Plus, Trash2, X } from 'lucide-react'
+import { BookUser, Check, Plus, Trash2, UserX, X } from 'lucide-react'
+import { AddContactDialog } from './add-dialog'
 import {
   ADDRESS_TYPES,
   EMAIL_TYPES,
@@ -44,6 +46,9 @@ import {
 import {
   useBooksQuery,
   useContactQuery,
+  useContactsQuery,
+  useInviteFriendMutation,
+  useRemoveFriendMutation,
   useCreateContactMutation,
   useDeleteContactMutation,
   useUpdateContactMutation,
@@ -64,6 +69,8 @@ export function ContactEditor({ id }: { id?: string } = {}) {
   const [form, setForm] = useState<ContactForm>(emptyForm)
   const [book, setBook] = useState('')
   const [deleteOpen, setDeleteOpen] = useState(false)
+  const [linkOpen, setLinkOpen] = useState(false)
+  const [unfriendOpen, setUnfriendOpen] = useState(false)
 
   const query = useContactQuery(id ?? '', { enabled: Boolean(id) })
   const contact = query.data?.contact
@@ -75,7 +82,68 @@ export function ContactEditor({ id }: { id?: string } = {}) {
   const createMutation = useCreateContactMutation()
   const updateMutation = useUpdateContactMutation()
   const deleteMutation = useDeleteContactMutation()
+  const inviteMutation = useInviteFriendMutation()
+  const removeFriendMutation = useRemoveFriendMutation()
   const saving = createMutation.isPending || updateMutation.isPending
+
+  // The friend switch shows the handshake: a friend, an invitation the other
+  // side has not answered, or neither. A pending invitation is known only
+  // from the sent list, since the row's flag flips on accept.
+  const { data: contactsData } = useContactsQuery()
+  const invited = Boolean(
+    contact?.person &&
+      contactsData?.sent.some((invite) => invite.id === contact.person)
+  )
+  const friendState = contact?.friend ? 'friend' : invited ? 'invited' : 'none'
+  const toggling = inviteMutation.isPending || removeFriendMutation.isPending
+
+  const toggleFriend = async (on: boolean) => {
+    if (!contact) return
+    if (on) {
+      if (!contact.person) {
+        setLinkOpen(true)
+        return
+      }
+      const name = contact.directory || contact.name
+      await toastAction(
+        inviteMutation.mutateAsync({ person: contact.person, name }),
+        {
+          loading: t`Sending invitation...`,
+          success: t`Invitation sent`,
+          error: (error) => getErrorMessage(error, t`Failed to send invitation`),
+        }
+      ).catch(() => {})
+      return
+    }
+    if (contact.friend) {
+      setUnfriendOpen(true)
+      return
+    }
+    if (invited) {
+      await toastAction(
+        removeFriendMutation.mutateAsync({ person: contact.person }),
+        {
+          loading: t`Cancelling invitation...`,
+          success: t`Invitation cancelled`,
+          error: (error) =>
+            getErrorMessage(error, t`Failed to cancel invitation`),
+        }
+      ).catch(() => {})
+    }
+  }
+
+  const confirmUnfriend = async () => {
+    if (!contact) return
+    await toastAction(
+      removeFriendMutation.mutateAsync({ person: contact.person }),
+      {
+        loading: t`Removing friend...`,
+        success: t`Friend removed`,
+        error: (error) => getErrorMessage(error, t`Failed to remove friend`),
+      }
+    ).catch(() => {})
+    setUnfriendOpen(false)
+  }
 
   // The etag the form was built from. A refetch that brings a different card -
   // the reload a 412 asks for - rebuilds the form; an identical one leaves the
@@ -200,6 +268,26 @@ export function ContactEditor({ id }: { id?: string } = {}) {
           }}
         >
           <div className='space-y-4'>
+            {contact && (
+              <div className='flex items-center justify-between gap-3 rounded-lg border px-3 py-2'>
+                <div className='min-w-0'>
+                  <Label htmlFor='contact-friend'>
+                    <Trans>Mochi friend</Trans>
+                  </Label>
+                  {friendState === 'invited' && (
+                    <p className='text-muted-foreground text-xs'>
+                      <Trans>Invited</Trans>
+                    </p>
+                  )}
+                </div>
+                <Switch
+                  id='contact-friend'
+                  checked={friendState !== 'none'}
+                  disabled={toggling}
+                  onCheckedChange={(on) => void toggleFriend(on)}
+                />
+              </div>
+            )}
             <div className='space-y-2'>
               <Label htmlFor='contact-name'>
                 <Trans>Name</Trans>
@@ -382,6 +470,38 @@ export function ContactEditor({ id }: { id?: string } = {}) {
             </Button>
           </div>
         </form>
+
+        {contact && !contact.person && (
+          <AddContactDialog
+            open={linkOpen}
+            onOpenChange={setLinkOpen}
+            link={{ contact: contact.id, name: contact.name }}
+          />
+        )}
+
+        <ConfirmDialog
+          open={unfriendOpen}
+          onOpenChange={setUnfriendOpen}
+          title={t`Unfriend`}
+          desc={
+            <Trans>
+              End your friendship with{' '}
+              <span className='text-foreground font-semibold'>
+                {contact?.name ?? ''}
+              </span>
+              ? The contact stays in your address book.
+            </Trans>
+          }
+          confirmText={
+            <>
+              <UserX className='size-4' />
+              <Trans>Unfriend</Trans>
+            </>
+          }
+          destructive
+          handleConfirm={confirmUnfriend}
+          isLoading={removeFriendMutation.isPending}
+        />
 
         <ConfirmDialog
           open={deleteOpen}

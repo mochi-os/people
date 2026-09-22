@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from '@tanstack/react-router'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
+  DatePicker,
   Button,
   ConfirmDialog,
   DetailSkeleton,
@@ -277,12 +278,10 @@ export function ContactEditor({ id }: { id?: string } = {}) {
               <Label htmlFor='contact-birthday'>
                 <Trans>Birthday</Trans>
               </Label>
-              <Input
+              <DatePicker
                 id='contact-birthday'
-                type='date'
-                className='h-9'
                 value={form.birthday}
-                onChange={(event) => update({ birthday: event.target.value })}
+                onChange={(day) => update({ birthday: day })}
               />
             </div>
 

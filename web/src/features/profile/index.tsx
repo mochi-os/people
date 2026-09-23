@@ -7,10 +7,10 @@ import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
   ColourPicker,
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
+  ResponsiveDialog,
+  ResponsiveDialogContent,
+  ResponsiveDialogHeader,
+  ResponsiveDialogTitle,
   EntityAvatar,
   EntityBanner,
   GeneralError,
@@ -564,13 +564,13 @@ function ProfileEditor({
         </div>
       </div>
 
-      <Dialog open={previewOpen} onOpenChange={setPreviewOpen}>
-        <DialogContent className='max-h-[90vh] max-w-3xl overflow-y-auto'>
-          <DialogHeader>
-            <DialogTitle>
+      <ResponsiveDialog open={previewOpen} onOpenChange={setPreviewOpen}>
+        <ResponsiveDialogContent className='sm:max-h-[90vh] sm:max-w-3xl sm:overflow-y-auto'>
+          <ResponsiveDialogHeader>
+            <ResponsiveDialogTitle>
               <Trans>Profile preview</Trans>
-            </DialogTitle>
-          </DialogHeader>
+            </ResponsiveDialogTitle>
+          </ResponsiveDialogHeader>
           <ProfileView
             name={info.name}
             profile={profile}
@@ -580,8 +580,8 @@ function ProfileEditor({
             avatarUrl={avatarUrl}
             bannerUrl={bannerUrl}
           />
-        </DialogContent>
-      </Dialog>
+        </ResponsiveDialogContent>
+      </ResponsiveDialog>
     </div>
   )
 }

@@ -1306,10 +1306,15 @@ def action_token_create(a):
 	if not token:
 		a.error.label(500, "errors.failed_to_create_token")
 		return
-	return {"data": {"token": token}}
+	# The engine ignores the username; the account's address is what a
+	# client asks for and what the user expects to type.
+	return {"data": {"token": token, "username": a.user.username}}
 
 def action_token_list(a):
-	return {"data": {"tokens": mochi.token.list() or []}}
+	# Every device credential the user holds, whichever app minted it: one
+	# password serves contacts and calendars, so both apps list the same
+	# devices.
+	return {"data": {"tokens": mochi.token.list("dav") or []}}
 
 def action_token_delete(a):
 	hash = a.input("hash", "").strip()

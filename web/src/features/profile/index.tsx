@@ -18,6 +18,7 @@ import {
   Label,
   Main,
   PageHeader,
+  Progress,
   Skeleton,
   Switch,
   Textarea,
@@ -444,18 +445,14 @@ function ProfileEditor({
             }
           />
           <div className='flex items-center gap-2'>
-            <div className='bg-muted h-1 flex-1 overflow-hidden rounded-full'>
-              <div
-                className={`h-full rounded-full transition-[width] duration-200 ${
-                  tooLong
-                    ? 'bg-destructive'
-                    : progress > 80
-                      ? 'bg-warning'
-                      : 'bg-primary'
-                }`}
-                style={{ width: `${progress}%` }}
-              />
-            </div>
+            <Progress
+              aria-label={t`Profile`}
+              className='h-1 flex-1'
+              indicatorClassName={`duration-200 ${
+                tooLong ? 'bg-destructive' : progress > 80 ? 'bg-warning' : ''
+              }`}
+              value={progress}
+            />
             <p
               className={`shrink-0 text-xs tabular-nums ${
                 tooLong ? 'text-destructive' : 'text-muted-foreground'

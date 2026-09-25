@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#мин} other {#мин}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#апта} other {#апта}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, {from} – {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} атауы"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "{from} – {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, one {+# тағы} other {+# тағы}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "Мүше қосу"
 msgid "Add option"
 msgstr "Опция қосу"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "Телефон қосу"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "Бастау үшін біреуді қосыңыз"
@@ -273,6 +271,10 @@ msgstr "Бастау үшін біреуді қосыңыз"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Тег қосу..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "Телефон қосу"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "Мекенжай кітабының атауы өзгертілді"
 msgid "Address book URL"
 msgstr "Мекенжай кітабының URL мекенжайы"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "Мекенжайлар"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "Барлық контактілер"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "Күні бойы"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "Шынымен бас тартқыңыз келе ме? {opponentName} �
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Өсу реті"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Теңізде"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "Браузер белгішесі"
 msgid "Browser notifications"
 msgstr "Браузер хабарландырулары"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Күнтізбе сервері"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Камера рұқсаты қабылданбады"
@@ -595,6 +602,7 @@ msgstr "Жауаптан бас тарту"
 msgid "Cancelled"
 msgstr "Болдырылмады"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Шақыру кері қайтарылуда..."
@@ -632,7 +640,7 @@ msgstr "{field} өзгертілді"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "Өзгертілген қайталану"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "Жалаушалар"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "Тапсырмалар тізімі"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Күнді таңдаңыз"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "Көрініс параметрлерін теңшеу"
 msgid "Confirm"
 msgstr "Растау"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Құрылғыны қосу"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Басқа құрылғыны қосу"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "Құрылғыны қосу"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "Жалғастыру"
 msgid "Continue with {label}"
 msgstr "{label} арқылы жалғастыру"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} арқылы жалғастыру"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Көшірілді"
@@ -836,6 +852,10 @@ msgstr "Көшірілді"
 msgid "Copied to clipboard"
 msgstr "Алмасу буферіне көшірілді"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Көшіру"
@@ -1126,6 +1146,10 @@ msgstr "Кему реті"
 msgid "Description"
 msgstr "Сипаттама"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "Мәліметтер"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "Мәліметтер тақтасы"
@@ -1275,10 +1299,16 @@ msgstr "Электрондық пошта коды"
 msgid "Emails"
 msgstr "Электрондық пошта мекенжайлары"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "<0>{0}</0> адамымен достық аяқталсын ба? Контакт мекенжай кітабыңызда қалады."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Басталмай тұрып аяқталады"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "Контакт қосу сәтсіз аяқталды"
 msgid "Failed to add member"
 msgstr "Мүшені қосу сәтсіз аяқталды"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Шақыруды болдырмау сәтсіз аяқталды"
@@ -1466,6 +1497,7 @@ msgstr "Жылжыту сәтсіз аяқталды"
 msgid "Failed to post comment"
 msgstr "Пікір қосу сәтсіз аяқталды"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Досты жою сәтсіз аяқталды"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "Жолдамасын сақтау сәтсіз аяқталды"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "Шақыруды жіберу сәтсіз аяқталды"
@@ -1539,10 +1572,6 @@ msgstr "Бақылауды жаңарту сәтсіз аяқталды"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "Тіркемені жүктеп салу сәтсіз аяқталды"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "Тегі"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "Жалаушалар"
 msgid "Flat"
 msgstr "Жалпақ"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "Аты"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "Жұма"
@@ -1582,6 +1615,7 @@ msgstr "Жұма"
 msgid "Friend"
 msgstr "Дос"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Дос жойылды"
@@ -1602,10 +1636,6 @@ msgstr "Кімнен"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Тақырыптан"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "Аты"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "Жарамсыз күн"
 msgid "Invitation accepted"
 msgstr "Шақыру қабылданды"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Шақыру болдырылмады"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "Шақыру қабылданбады"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Шақыру жіберілді"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "Шақыру параметрлері"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "Шақырылды"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "Ұялы"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Mochi досы"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi веб"
@@ -1951,6 +1988,10 @@ msgstr "Модерация"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "Дүйсенбі"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Ай"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "Жылжытылды"
 msgid "Moved {field}"
 msgstr "{field} жылжытылды"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "{0} күніне жылжытылуда"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "Жаңа шақырулар осы жерде көрсетіледі"
 msgid "Next image"
 msgstr "Келесі сурет"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "Келесі ай"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Келесі жыл"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "Күтуде"
 msgid "People"
 msgstr "Адамдар"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "Телефондар"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "Достық шақыруын жібермес бұрын {0} профи
 msgid "Previous image"
 msgstr "Алдыңғы сурет"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "Алдыңғы ай"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Алдыңғы жыл"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "Мүшені жою"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "Телефонды жою"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Дос жойылуда..."
@@ -2582,7 +2630,7 @@ msgstr "Мекенжай кітабының аты өзгертілуде..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "Қайталанады"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "Хабар жіберу"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Шақыру жіберілуде..."
@@ -2983,6 +3032,10 @@ msgstr "Жазылу"
 msgid "Sunday"
 msgstr "Жексенбі"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "Тегі"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "1-9 көрінісіне ауысу"
@@ -3005,6 +3058,10 @@ msgstr "Тег ең көбі 50 таңба болуы керек"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Тегтер"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "Телефондар"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "Қолжетімсіз"
 msgid "Unexpected API error"
 msgstr "Күтпеген API қатесі"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "Сәрсенбі"
 msgctxt "contact type"
 msgid "Work"
 msgstr "Жұмыс"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Жыл"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

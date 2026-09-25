@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#မိ} other {#မိ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ပတ်} other {#ပတ်}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day} {from} မှ {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} အမည်"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "{from} မှ {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, other {+# ခု ထပ်မံ}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "အဖွဲ့ဝင် ထည့်မည်"
 msgid "Add option"
 msgstr "ရွေးချယ်စရာ ထည့်မည်"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "ဖုန်းနံပါတ် ထည့်မည်"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "စတင်ရန် တစ်ဦးဦးကို ထည့်ပါ"
@@ -273,6 +271,10 @@ msgstr "စတင်ရန် တစ်ဦးဦးကို ထည့်ပါ"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "tag ထည့်ရန်..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "ဖုန်းနံပါတ် ထည့်မည်"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "လိပ်စာစာအုပ် အမည်ပြောင်း�
 msgid "Address book URL"
 msgstr "လိပ်စာစာအုပ် URL"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "လိပ်စာများ"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "အဆက်အသွယ်အားလုံး"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "တစ်နေကုန်"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "လက်လျှော့မှာသေချာပါသလား? {
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "ငယ်စဉ်ကြီးလိုက်"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "ပင်လယ်ပြင်တွင်"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "Browser အိုင်ကွန်"
 msgid "Browser notifications"
 msgstr "Browser အကြောင်းကြားချက်များ"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "ပြက္ခဒိန် ဆာဗာ"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "ကင်မရာခွင့်ပြုချက်ကို ငြင်းပယ်ခဲ့သည်"
@@ -595,6 +602,7 @@ msgstr "အကြောင်းပြန်ချက် မလုပ်တေ�
 msgid "Cancelled"
 msgstr "ဖျက်သိမ်းပြီး"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "ဖိတ်ကြားချက်ကို ပယ်ဖျက်နေသည်..."
@@ -632,7 +640,7 @@ msgstr "{field} ကို ပြောင်းလဲခဲ့သည်"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "ပြောင်းလဲထားသော အကြိမ်"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "checkbox"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "Checklist"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "ရက်စွဲ ရွေးပါ"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "ကြည့်ရှုမှု ဆက်တင်များ ပြ�
 msgid "Confirm"
 msgstr "အတည်ပြုမည်"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "ကိရိယာ ချိတ်ဆက်မည်"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "အခြားကိရိယာ ချိတ်ဆက်မည်"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "ကိရိယာ ချိတ်ဆက်မည်"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "ဆက်လက်လုပ်ဆောင်မည်"
 msgid "Continue with {label}"
 msgstr "{label} ဖြင့် ဆက်လက်လုပ်ဆောင်ပါ"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} ဖြင့် ဆက်လုပ်မည်"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "ကူးယူပြီးပါပြီ"
@@ -836,6 +852,10 @@ msgstr "ကူးယူပြီးပါပြီ"
 msgid "Copied to clipboard"
 msgstr "ကလစ်ဘုတ်သို့ ကူးပြီး"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "ကူးမည်"
@@ -1126,6 +1146,10 @@ msgstr "ကြီးစဉ်ငယ်လိုက်"
 msgid "Description"
 msgstr "ဖော်ပြချက်"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "အသေးစိတ်များ"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "အသေးစိတ် Panel"
@@ -1275,10 +1299,16 @@ msgstr "အီးမေးလ် ကုဒ်"
 msgid "Emails"
 msgstr "အီးမေးလ်များ"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "<0>{0}</0> နှင့် သူငယ်ချင်းဖြစ်မှုကို အဆုံးသတ်မှာသေချာပါသလား? အဆက်အသွယ်မှာ သင့်လိပ်စာစာအုပ်ထဲတွင် ဆက်ရှိနေမည်။"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "မစတင်မီ ပြီးဆုံးသည်"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "အဆက်အသွယ် ထည့်၍ မရပါ"
 msgid "Failed to add member"
 msgstr "အဖွဲ့ဝင် ထည့်၍ မရပါ"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "ဖိတ်ကြားမှု ပယ်ဖျက်၍ မရပါ"
@@ -1466,6 +1497,7 @@ msgstr "ရွှေ့၍ မရပါ"
 msgid "Failed to post comment"
 msgstr "မှတ်ချက် တင်၍ မရပါ"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "သူငယ်ချင်း ဖယ်ရှား၍ မရပါ"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "လမ်းညွှန် သိမ်း၍ မရပါ"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "ဖိတ်ကြားချက် ပို့၍ မရပါ"
@@ -1539,10 +1572,6 @@ msgstr "စောင့်ကြည့်မှု အပ်ဒိတ်လု�
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "တွဲဖက်ဖိုင် တင်၍ မရပါ"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "မျိုးရိုးအမည်"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "အလံများ"
 msgid "Flat"
 msgstr "ပြားသော"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "ကိုယ်ပိုင်အမည်"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "သောကြာ"
@@ -1582,6 +1615,7 @@ msgstr "သောကြာ"
 msgid "Friend"
 msgstr "သူငယ်ချင်း"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "သူငယ်ချင်းကို ဖယ်ရှားပြီးပါပြီ"
@@ -1602,10 +1636,6 @@ msgstr "မှ"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "အပြင်အဆင်မှ"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "ကိုယ်ပိုင်အမည်"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "မမှန်ကန်သော ရက်စွဲ"
 msgid "Invitation accepted"
 msgstr "ဖိတ်ကြားမှု လက်ခံပြီးပါပြီ"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "ဖိတ်ကြားမှု ပယ်ဖျက်ပြီးပါပြီ"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "ဖိတ်ကြားမှု ငြင်းပယ်ပြီးပါပြီ"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "ဖိတ်ကြားမှု ပို့ပြီးပါပြီ"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "ဖိတ်ကြားမှု ဆက်တင်များ"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "ဖိတ်ကြားပြီး"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "မိုဘိုင်း"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Mochi သူငယ်ချင်း"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi ဝဘ်"
@@ -1951,6 +1988,10 @@ msgstr "စိစစ်မှု"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "တနင်္လာ"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "လ"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "ရွှေ့ခဲ့သည်"
 msgid "Moved {field}"
 msgstr "{field} ကို ရွှေ့ခဲ့သည်"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "{0} သို့ ရွှေ့နေသည်"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "ဖိတ်ကြားချက်အသစ်များသည် �
 msgid "Next image"
 msgstr "နောက်ပုံ"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "နောက်လ"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "နောက်နှစ်"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "ဆိုင်းငံ့ထား"
 msgid "People"
 msgstr "လူများ"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "ဖုန်းနံပါတ်များ"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "သူငယ်ချင်းဖိတ်ကြားချက် မ�
 msgid "Previous image"
 msgstr "ယခင်ပုံ"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "ယခင်လ"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "ယခင်နှစ်"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "အဖွဲ့ဝင် ဖယ်ရှား"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "ဖုန်းနံပါတ် ဖယ်ရှားမည်"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "သူငယ်ချင်းကို ဖယ်ရှားနေသည်..."
@@ -2582,7 +2630,7 @@ msgstr "လိပ်စာစာအုပ် အမည်ပြောင်း�
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "ထပ်ခါထပ်ခါ ဖြစ်သည်"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "မက်ဆေ့ပို့မည်"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "ဖိတ်ကြားချက် ပို့နေသည်..."
@@ -2983,6 +3032,10 @@ msgstr "Subscribe လုပ်မည်"
 msgid "Sunday"
 msgstr "တနင်္ဂနွေ"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "မျိုးရိုးအမည်"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "ကြည့်ရှုခြင်း 1-9 သို့ ပြောင်းမည်"
@@ -3005,6 +3058,10 @@ msgstr "တဂ်သည် စာလုံး ၅၀ သို့မဟုတ်
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "တက်ဂ်များ"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "ဖုန်းနံပါတ်များ"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "မရရှိနိုင်ပါ"
 msgid "Unexpected API error"
 msgstr "မမျှော်လင့်သော API အမှား"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "ဗုဒ္ဓဟူး"
 msgctxt "contact type"
 msgid "Work"
 msgstr "အလုပ်"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "နှစ်"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

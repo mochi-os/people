@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#ìṣ} other {#ìṣ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ọs} other {#ọs}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, láti {from} sí {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Orúkọ {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "láti {from} sí {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, other {+# mìíràn}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "Fi ọmọ ẹgbẹ́ kún"
 msgid "Add option"
 msgstr "Fi àṣàyàn kún"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "Fi fóònù kún"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "Fi ẹnìkan kún láti bẹ̀rẹ̀"
@@ -273,6 +271,10 @@ msgstr "Fi ẹnìkan kún láti bẹ̀rẹ̀"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Fi tag kún..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "Fi fóònù kún"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "A ti tún ìwé àdírẹ́sì sọ orúkọ"
 msgid "Address book URL"
 msgstr "URL ìwé àdírẹ́sì"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "Àwọn àdírẹ́sì"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "Gbogbo olùbánisọ̀rọ̀"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "Gbogbo ọjọ́"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "Ǹjẹ́ ó dájú pé o fẹ́ jọ̀wọ́? {opponentName} yóò ṣ�
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Gòkè"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Lórí òkun"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "Àmì browser"
 msgid "Browser notifications"
 msgstr "Àwọn ìfitónilétí browser"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Sáfà kàlẹ́ńdà"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "A kọ àṣẹ kámẹ́rà"
@@ -595,6 +602,7 @@ msgstr "Fagilé ìdáhùn"
 msgid "Cancelled"
 msgstr "Tí a fagilé"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Ń fagilé ìpè..."
@@ -632,7 +640,7 @@ msgstr "A yí {field} padà"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "Ìgbà tí a yípadà"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -642,9 +650,13 @@ msgstr "Àpótí àyẹ̀wò"
 msgid "Checklist"
 msgstr "Àkọsílẹ̀ àyẹ̀wò"
 
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Yan ọjọ́ kan"
+
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
-msgstr "Yan eré kan láti sidebar tàbí bẹ̀rẹ̀ ọ̀kan tuntun."
+msgstr "Yan eré kan láti ọ̀pá ẹ̀gbẹ́ tàbí bẹ̀rẹ̀ ọ̀kan tuntun."
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/language-picker.tsx
@@ -711,7 +723,7 @@ msgstr "Ká jọ"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
-msgstr "Hó sidebar"
+msgstr "Ká ọ̀pá ẹ̀gbẹ́"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
@@ -765,14 +777,14 @@ msgstr "Ṣètò ètò ìran"
 msgid "Confirm"
 msgstr "Fọwọ́sí"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "So ẹ̀rọ kan pọ̀"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "So ẹ̀rọ mìíràn pọ̀"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "So ẹ̀rọ kan pọ̀"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "Tẹ̀síwájú"
 msgid "Continue with {label}"
 msgstr "Tẹ̀síwájú pẹ̀lú {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Tẹ̀síwájú pẹ̀lú {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Ti dàkọ"
@@ -836,6 +852,10 @@ msgstr "Ti dàkọ"
 msgid "Copied to clipboard"
 msgstr "A ti ṣe àdàkọ sí clipboard"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Ṣe àdàkọ"
@@ -1126,6 +1146,10 @@ msgstr "Sọkalẹ̀"
 msgid "Description"
 msgstr "Àpèjúwe"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "Àwọn ẹ̀kúnrẹ́rẹ́"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "Pánẹ́ẹ̀lì Àwọn Ẹ̀kúnrẹ́rẹ́"
@@ -1177,7 +1201,7 @@ msgstr "Mú kúrò"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx
 msgid "Displays the mobile sidebar."
-msgstr "Ó ń fi sidebar fóònù hàn."
+msgstr "Ó ń fi ọ̀pá ẹ̀gbẹ́ fóònù hàn."
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Does not match the required pattern"
@@ -1275,10 +1299,16 @@ msgstr "Kóòdù ímẹ́ẹ̀lì"
 msgid "Emails"
 msgstr "Àwọn ímẹ́ẹ̀lì"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Fòpin sí ọ̀rẹ́ rẹ pẹ̀lú <0>{0}</0>? Olùbánisọ̀rọ̀ náà yóò wà nínú ìwé àdírẹ́sì rẹ."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Ó parí kí ó tó bẹ̀rẹ̀"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1309,7 +1339,7 @@ msgstr "Ṣílẹ̀kùn"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
-msgstr "Fẹ̀ sidebar"
+msgstr "Fẹ̀ ọ̀pá ẹ̀gbẹ́"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
@@ -1341,6 +1371,7 @@ msgstr "Kò lè fi olùbánisọ̀rọ̀ kún"
 msgid "Failed to add member"
 msgstr "Kò lè fi ọmọ-ẹgbẹ́ kún"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Kò lè fagilé ìpè"
@@ -1466,6 +1497,7 @@ msgstr "Ìkùnà láti gbé"
 msgid "Failed to post comment"
 msgstr "Kò lè fi ọ̀rọ̀-ìṣàlàyé ránṣẹ́"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Kò lè mú ọ̀rẹ́ kúrò"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "Kò lè fi prompt pamọ́"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "Kò lè fi ìpè ránṣẹ́"
@@ -1539,10 +1572,6 @@ msgstr "Ìkùnà láti ṣàtúnṣe ìṣọ́"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "Kò lè gbé àfikún sókè"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "Orúkọ ìdílé"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "Àwọn àsíá"
 msgid "Flat"
 msgstr "Pẹ̀tẹ́lẹ̀"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "Orúkọ àkọ́kọ́"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "Ọjọ́ Ẹ̀tì"
@@ -1582,6 +1615,7 @@ msgstr "Ọjọ́ Ẹ̀tì"
 msgid "Friend"
 msgstr "Ọ̀rẹ́"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "A ti yọ ọ̀rẹ́ kúrò"
@@ -1602,10 +1636,6 @@ msgstr "Láti"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Lát'ọ̀dọ̀ Theme"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "Orúkọ àkọ́kọ́"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "Ọjọ́ aláìdára"
 msgid "Invitation accepted"
 msgstr "A ti gba ìpè"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "A ti fagilé ìpè"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "A ti kọ ìpè"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Ìpè ti ránṣẹ́"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "Àwọn ètò ìpè"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "A ti pè"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "Alágbèéká"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Ọ̀rẹ́ Mochi"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Web Mochi"
@@ -1951,6 +1988,10 @@ msgstr "Ìṣàkóso"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "Ọjọ́ Ajé"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Oṣù"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "A gbé lọ"
 msgid "Moved {field}"
 msgstr "A gbé {field} lọ"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "Ń kó lọ sí {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "Àwọn ìpè tuntun yóò farahàn níbí"
 msgid "Next image"
 msgstr "Àwòrán tó kàn"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "Oṣù tó ń bọ̀"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Ọdún tó ń bọ̀"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "Ń dúró"
 msgid "People"
 msgstr "Àwọn ènìyàn"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "Àwọn fóònù"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "Wo profáìlì {0} kí o tó fi ìpè ọ̀rẹ́ ránṣẹ́."
 msgid "Previous image"
 msgstr "Àwòrán tó kọjá"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "Oṣù tó kọjá"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Ọdún tó kọjá"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "Yọ ọmọ ẹgbẹ́ kúrò"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "Yọ fóònù kúrò"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Ń yọ ọ̀rẹ́ kúrò..."
@@ -2582,7 +2630,7 @@ msgstr "Ń tún ìwé àdírẹ́sì sọ orúkọ..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "Ó máa ń tún wáyé"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "Fi ìránṣẹ́ ránṣẹ́"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Ń fi ìpè ránṣẹ́..."
@@ -2891,7 +2940,7 @@ msgstr "Ń fi {totalShown} hàn nínú {total}"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx
 msgid "Sidebar"
-msgstr "Sidebar"
+msgstr "Ọ̀pá ẹ̀gbẹ́"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 msgid "Sign in with an account that has access <0/> to this resource."
@@ -2983,6 +3032,10 @@ msgstr "Forúkọsílẹ̀"
 msgid "Sunday"
 msgstr "Ọjọ́ Àìkú"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "Orúkọ ìdílé"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "Yí padà sí ìwòye 1-9"
@@ -3005,6 +3058,10 @@ msgstr "Àmì gbọ́dọ̀ jẹ́ àwọn lẹ́tà 50 tàbí kéré sí"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Àwọn tag"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "Àwọn fóònù"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "Kò sí"
 msgid "Unexpected API error"
 msgstr "Àṣìṣe API tí a kò retí"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "Ọjọ́rú"
 msgctxt "contact type"
 msgid "Work"
 msgstr "Iṣẹ́"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Ọdún"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

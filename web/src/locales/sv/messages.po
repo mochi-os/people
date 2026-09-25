@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#v} other {#v}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, {from} till {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel}-namn"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "{from} till {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, one {+# till} other {+# till}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "Lägg till medlem"
 msgid "Add option"
 msgstr "Lägg till alternativ"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "Lägg till telefon"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "Lägg till någon för att komma igång"
@@ -273,6 +271,10 @@ msgstr "Lägg till någon för att komma igång"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Lägg till tagg..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "Lägg till telefon"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "Adressbok omdöpt"
 msgid "Address book URL"
 msgstr "Adressbokens URL"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "Adresser"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "Alla kontakter"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "Heldag"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "Är du säker på att du vill ge upp? {opponentName} kommer att vinna pa
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Stigande"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Till sjöss"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "Webbläsarikon"
 msgid "Browser notifications"
 msgstr "Webbläsaraviseringar"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Kalenderserver"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Kamerabehörighet nekad"
@@ -595,6 +602,7 @@ msgstr "Avbryt svar"
 msgid "Cancelled"
 msgstr "Avbruten"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Avbryter inbjudan..."
@@ -632,7 +640,7 @@ msgstr "Ändrade {field}"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "Ändrad förekomst"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "Kryssruta"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "Checklista"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Välj ett datum"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "Konfigurera vyinställningar"
 msgid "Confirm"
 msgstr "Bekräfta"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Anslut en enhet"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Anslut ytterligare en enhet"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "Anslut en enhet"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "Fortsätt"
 msgid "Continue with {label}"
 msgstr "Fortsätt med {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Fortsätt med {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Kopierat"
@@ -836,6 +852,10 @@ msgstr "Kopierat"
 msgid "Copied to clipboard"
 msgstr "Kopierat till urklipp"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopiera"
@@ -1126,6 +1146,10 @@ msgstr "Fallande"
 msgid "Description"
 msgstr "Beskrivning"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "Detaljer"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "Detaljpanel"
@@ -1275,10 +1299,16 @@ msgstr "E-postkod"
 msgid "Emails"
 msgstr "E-postadresser"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Avsluta vänskapen med <0>{0}</0>? Kontakten finns kvar i din adressbok."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Slutar innan den börjar"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "Kunde inte lägga till kontakt"
 msgid "Failed to add member"
 msgstr "Kunde inte lägga till medlem"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Kunde inte avbryta inbjudan"
@@ -1466,6 +1497,7 @@ msgstr "Kunde inte flytta"
 msgid "Failed to post comment"
 msgstr "Kunde inte publicera kommentar"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Kunde inte ta bort vän"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "Kunde inte spara uppmaning"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "Kunde inte skicka inbjudan"
@@ -1539,10 +1572,6 @@ msgstr "Kunde inte uppdatera bevakning"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "Kunde inte ladda upp bilaga"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "Efternamn"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "Flaggor"
 msgid "Flat"
 msgstr "Platt"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "Förnamn"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "Fredag"
@@ -1582,6 +1615,7 @@ msgstr "Fredag"
 msgid "Friend"
 msgstr "Vän"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Vän borttagen"
@@ -1602,10 +1636,6 @@ msgstr "Från"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Från tema"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "Förnamn"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "Ogiltigt datum"
 msgid "Invitation accepted"
 msgstr "Inbjudan accepterad"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Inbjudan avbruten"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "Inbjudan avböjd"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Inbjudan skickad"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "Inbjudningsinställningar"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "Inbjuden"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "Mobil"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Mochi-vän"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi webb"
@@ -1951,6 +1988,10 @@ msgstr "Moderering"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "Måndag"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Månad"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "Flyttade"
 msgid "Moved {field}"
 msgstr "Flyttade {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "Flyttar till {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "Nya inbjudningar visas här"
 msgid "Next image"
 msgstr "Nästa bild"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "Nästa månad"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Nästa år"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "Väntar"
 msgid "People"
 msgstr "Personer"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "Telefonnummer"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "Förhandsgranska {0}s profil innan du skickar en vänskapsinbjudan."
 msgid "Previous image"
 msgstr "Föregående bild"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "Föregående månad"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Föregående år"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "Ta bort medlem"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "Ta bort telefon"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Tar bort vän..."
@@ -2582,7 +2630,7 @@ msgstr "Byter namn på adressbok..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "Upprepas"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "Skicka meddelande"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Skickar inbjudan..."
@@ -2983,6 +3032,10 @@ msgstr "Prenumerera"
 msgid "Sunday"
 msgstr "Söndag"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "Efternamn"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "Växla till vy 1-9"
@@ -3005,6 +3058,10 @@ msgstr "Taggen får vara högst 50 tecken"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Taggar"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "Telefonnummer"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "Otillgänglig"
 msgid "Unexpected API error"
 msgstr "Oväntat API-fel"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "Onsdag"
 msgctxt "contact type"
 msgid "Work"
 msgstr "Arbete"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "År"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

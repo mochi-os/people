@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#මි} other {#මි}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#සති} other {#සති}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, {from} සිට {to} දක්වා"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} නම"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "{from} සිට {to} දක්වා"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, one {තවත් +#ක්} other {තවත් +#ක්}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "සාමාජිකයෙකු එක් කරන්න"
 msgid "Add option"
 msgstr "විකල්පයක් එක් කරන්න"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "දුරකථනයක් එක් කරන්න"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "ආරම්භ කිරීමට කෙනෙකු එක් කරන්න"
@@ -273,6 +271,10 @@ msgstr "ආරම්භ කිරීමට කෙනෙකු එක් කර�
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ටැගයක් එක් කරන්න..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "දුරකථනයක් එක් කරන්න"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "ලිපින පොත නැවත නම් කරන ලදී"
 msgid "Address book URL"
 msgstr "ලිපින පොතේ URL"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "ලිපින"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "සියලු සම්බන්ධතා"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "මුළු දිනය"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "ඔබට ඉල්ලා අස්වීමට අවශ්‍ය බ�
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "ආරෝහණ"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "මුහුදේ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "බ්‍රවුසර අයිකනය"
 msgid "Browser notifications"
 msgstr "බ්‍රවුසර දැනුම්දීම්"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "දින දර්ශන සේවාදායකය"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "කැමරා අවසරය ප්‍රතික්ෂේප විය"
@@ -595,6 +602,7 @@ msgstr "පිළිතුර අවලංගු කරන්න"
 msgid "Cancelled"
 msgstr "අවලංගු කරන ලදී"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "ආරාධනාව අවලංගු කරමින්..."
@@ -632,7 +640,7 @@ msgstr "{field} වෙනස් කරන ලදී"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "වෙනස් කළ පුනරාවර්තනය"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "පරීක්ෂා පෙට්ටිය"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "පරීක්ෂා ලැයිස්තුව"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "දිනයක් තෝරන්න"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "දැක්ම් සැකසීම් වින්‍යාස කර
 msgid "Confirm"
 msgstr "තහවුරු කරන්න"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "උපාංගයක් සම්බන්ධ කරන්න"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "තවත් උපාංගයක් සම්බන්ධ කරන්න"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "උපාංගයක් සම්බන්ධ කරන්න"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "ඉදිරියට"
 msgid "Continue with {label}"
 msgstr "{label} සමඟ ඉදිරියට යන්න"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} සමඟ ඉදිරියට"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "පිටපත් කළා"
@@ -836,6 +852,10 @@ msgstr "පිටපත් කළා"
 msgid "Copied to clipboard"
 msgstr "Clipboard එකට පිටපත් කරන ලදී"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "පිටපත් කරන්න"
@@ -1126,6 +1146,10 @@ msgstr "අවරෝහණ"
 msgid "Description"
 msgstr "විස්තරය"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "විස්තර"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "විස්තර Panel"
@@ -1275,10 +1299,16 @@ msgstr "ඊමේල් කේතය"
 msgid "Emails"
 msgstr "ඊමේල්"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "<0>{0}</0> සමඟ ඇති මිත්‍රත්වය අවසන් කරන්නද? සම්බන්ධතාවය ඔබේ ලිපින පොතේ රැඳේ."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "ආරම්භ වීමට පෙර අවසන් වේ"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "සම්බන්ධතාවය එක් කිරීමට අසම
 msgid "Failed to add member"
 msgstr "සාමාජිකයා එක් කිරීමට අසමත් විය"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "ආරාධනය අවලංගු කිරීමට අසමත් විය"
@@ -1466,6 +1497,7 @@ msgstr "ගෙනයාම අසාර්ථකයි"
 msgid "Failed to post comment"
 msgstr "අදහස පළ කිරීමට අසමත් විය"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "මිතුරා ඉවත් කිරීමට අසමත් විය"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "prompt එක සුරැකීමට අසමත් විය"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "ආරාධනය යැවීමට අසමත් විය"
@@ -1539,10 +1572,6 @@ msgstr "නිරීක්ෂණය යාවත්කාලීන කිරී�
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "ඇමුණුම උඩුගත කිරීමට අසමත් විය"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "වාසගම"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "කොඩි"
 msgid "Flat"
 msgstr "පැතලි"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "මුල් නම"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "සිකුරාදා"
@@ -1582,6 +1615,7 @@ msgstr "සිකුරාදා"
 msgid "Friend"
 msgstr "මිතුරා"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "මිතුරා ඉවත් කරන ලදී"
@@ -1602,10 +1636,6 @@ msgstr "සිට"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "තේමාවෙන්"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "මුල් නම"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "අවලංගු දිනය"
 msgid "Invitation accepted"
 msgstr "ආරාධනය පිළිගන්නා ලදී"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "ආරාධනය අවලංගු කරන ලදී"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "ආරාධනය ප්‍රතික්ෂේප කරන ලදී"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "ආරාධනය යවා ඇත"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "ආරාධන සැකසුම්"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "ආරාධනා කර ඇත"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "ජංගම"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Mochi මිතුරා"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi වෙබ්"
@@ -1951,6 +1988,10 @@ msgstr "පාලනය"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "සඳුදා"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "මාසය"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "ගෙන යන ලදී"
 msgid "Moved {field}"
 msgstr "{field} ගෙන යන ලදී"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "{0} වෙත ගෙන යමින්"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "නව ආරාධනා මෙහි දිස්වනු ඇත"
 msgid "Next image"
 msgstr "ඊළඟ පින්තූරය"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "ඊළඟ මාසය"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "ඊළඟ වර්ෂය"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "අපේක්ෂිත"
 msgid "People"
 msgstr "පුද්ගලයන්"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "දුරකථන"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "මිතුරු ආරාධනයක් යැවීමට පෙර
 msgid "Previous image"
 msgstr "පෙර පින්තූරය"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "පෙර මාසය"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "පෙර වර්ෂය"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "සාමාජිකයා ඉවත් කරන්න"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "දුරකථනය ඉවත් කරන්න"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "මිතුරා ඉවත් කරමින්..."
@@ -2582,7 +2630,7 @@ msgstr "ලිපින පොත නැවත නම් කරමින්..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "පුනරාවර්තනය වේ"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "පණිවිඩය යවන්න"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "ආරාධනාව යවමින්..."
@@ -2983,6 +3032,10 @@ msgstr "දායක වන්න"
 msgid "Sunday"
 msgstr "ඉරිදා"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "වාසගම"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "දර්ශනය 1-9 වෙත මාරු වන්න"
@@ -3005,6 +3058,10 @@ msgstr "ටැගය අක්ෂර 50ක් හෝ ඊට අඩු විය 
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "ටැග"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "දුරකථන"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "ලබා ගත නොහැක"
 msgid "Unexpected API error"
 msgstr "අනපේක්ෂිත API දෝෂය"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "බදාදා"
 msgctxt "contact type"
 msgid "Work"
 msgstr "කාර්යාලය"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "වර්ෂය"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#javë} other {#javë}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, nga {from} deri në {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Emri i {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "nga {from} deri në {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, one {+# më shumë} other {+# më shumë}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "Shto anëtar"
 msgid "Add option"
 msgstr "Shto opsion"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "Shto telefon"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "Shtoni dikë për të filluar"
@@ -273,6 +271,10 @@ msgstr "Shtoni dikë për të filluar"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Shto etiketë..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "Shto telefon"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "Libri i adresave u riemërtua"
 msgid "Address book URL"
 msgstr "URL-ja e librit të adresave"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "Adresat"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "Të gjitha kontaktet"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "Gjithë ditën"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "Je i sigurt që do të dorëzohesh? {opponentName} do të fitojë lojën
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Në rritje"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Në det"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "Ikona e shfletuesit"
 msgid "Browser notifications"
 msgstr "Njoftime të shfletuesit"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Server kalendari"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Leja e kamerës u refuzua"
@@ -595,6 +602,7 @@ msgstr "Anulo përgjigjen"
 msgid "Cancelled"
 msgstr "I anuluar"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Po anulohet ftesa..."
@@ -632,7 +640,7 @@ msgstr "U ndryshua {field}"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "Përsëritje e ndryshuar"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "Kuti zgjedhjeje"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "Listë kontrolli"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Zgjidh një datë"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "Konfiguro cilësimet e pamjes"
 msgid "Confirm"
 msgstr "Konfirmo"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Lidh një pajisje"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Lidh një pajisje tjetër"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "Lidh një pajisje"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "Vazhdo"
 msgid "Continue with {label}"
 msgstr "Vazhdo me {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Vazhdo me {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "U kopjua"
@@ -836,6 +852,10 @@ msgstr "U kopjua"
 msgid "Copied to clipboard"
 msgstr "U kopjua në kujtesën e fragmenteve"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopjo"
@@ -1126,6 +1146,10 @@ msgstr "Në zbritje"
 msgid "Description"
 msgstr "Përshkrimi"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "Detajet"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "Paneli i detajeve"
@@ -1275,10 +1299,16 @@ msgstr "Kodi me email"
 msgid "Emails"
 msgstr "Emailet"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Të përfundohet miqësia me <0>{0}</0>? Kontakti mbetet në librin tuaj të adresave."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Mbaron para se të fillojë"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "Shtimi i kontaktit dështoi"
 msgid "Failed to add member"
 msgstr "Shtimi i anëtarit dështoi"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Anulimi i ftesës dështoi"
@@ -1466,6 +1497,7 @@ msgstr "Zhvendosja dështoi"
 msgid "Failed to post comment"
 msgstr "Postimi i komentit dështoi"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Heqja e mikut dështoi"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "Ruajtja e udhëzimit dështoi"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "Dërgimi i ftesës dështoi"
@@ -1539,10 +1572,6 @@ msgstr "Përditësimi i ndjekjes dështoi"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "Ngarkimi i bashkëngjitjes dështoi"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "Mbiemri"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "Flamujt"
 msgid "Flat"
 msgstr "I sheshtë"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "Emri"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "E premte"
@@ -1582,6 +1615,7 @@ msgstr "E premte"
 msgid "Friend"
 msgstr "Mik"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Miku u hoq"
@@ -1602,10 +1636,6 @@ msgstr "Nga"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Nga tema"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "Emri"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "Datë e pavlefshme"
 msgid "Invitation accepted"
 msgstr "Ftesa u pranua"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Ftesa u anulua"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "Ftesa u refuzua"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Ftesa u dërgua"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "Cilësimet e ftesave"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "I ftuar"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "Celular"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Mik në Mochi"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi web"
@@ -1951,6 +1988,10 @@ msgstr "Moderimi"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "E hënë"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Muaji"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "U zhvendos"
 msgid "Moved {field}"
 msgstr "U zhvendos {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "Duke e zhvendosur te {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "Ftesat e reja do të shfaqen këtu"
 msgid "Next image"
 msgstr "Imazhi tjetër"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "Muaji tjetër"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Viti tjetër"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "Në pritje"
 msgid "People"
 msgstr "Persona"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "Telefonat"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "Shikoni profilin e {0} para se të dërgoni një ftesë për miqësi."
 msgid "Previous image"
 msgstr "Imazhi i mëparshëm"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "Muaji i mëparshëm"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Viti i mëparshëm"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "Hiq anëtarin"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "Hiq telefonin"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Po hiqet miku..."
@@ -2582,7 +2630,7 @@ msgstr "Duke riemërtuar librin e adresave..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "Përsëritet"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "Dërgo mesazhin"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Po dërgohet ftesa..."
@@ -2983,6 +3032,10 @@ msgstr "Abonohu"
 msgid "Sunday"
 msgstr "E diel"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "Mbiemri"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "Kalo te pamja 1-9"
@@ -3005,6 +3058,10 @@ msgstr "Etiketa duhet të jetë 50 karaktere ose më pak"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Etiketat"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "Telefonat"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "I padisponueshëm"
 msgid "Unexpected API error"
 msgstr "Gabim i papritur i API-t"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "E mërkurë"
 msgctxt "contact type"
 msgid "Work"
 msgstr "Punë"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Viti"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

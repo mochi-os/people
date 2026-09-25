@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#ġim} other {#ġim}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, minn {from} sa {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Isem ta' {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "minn {from} sa {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, one {+# ieħor} two {+# oħra} few {+# oħra} many {+# oħra} other {+# oħra}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "Żid membru"
 msgid "Add option"
 msgstr "Żid għażla"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "Żid telefon"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "Żid lil xi ħadd biex tibda"
@@ -273,6 +271,10 @@ msgstr "Żid lil xi ħadd biex tibda"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Żid tag..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "Żid telefon"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "Inbidel isem il-ktieb tal-indirizzi"
 msgid "Address book URL"
 msgstr "URL tal-ktieb tal-indirizzi"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "Indirizzi"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "Il-kuntatti kollha"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "Il-ġurnata kollha"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "Żgur trid tirriżenja? {opponentName} tirbaħ il-logħba."
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Axxendenti"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Fuq il-baħar"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "Ikona tal-browser"
 msgid "Browser notifications"
 msgstr "Notifiki tal-browser"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Server tal-kalendarju"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Il-permess tal-kamera ġie miċħud"
@@ -595,6 +602,7 @@ msgstr "Ikkanċella r-risposta"
 msgid "Cancelled"
 msgstr "Ikkanċellat"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Qed nikkanċella l-istedina..."
@@ -632,7 +640,7 @@ msgstr "Inbidel {field}"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "Okkorrenza mibdula"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "Checkbox"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "Checklist"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Agħżel data"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "Ikkonfigura s-settings tal-view"
 msgid "Confirm"
 msgstr "Ikkonferma"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Qabbad apparat"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Qabbad apparat ieħor"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "Qabbad apparat"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "Kompli"
 msgid "Continue with {label}"
 msgstr "Kompli b'{label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Kompli b'{providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Ikkupjat"
@@ -836,6 +852,10 @@ msgstr "Ikkupjat"
 msgid "Copied to clipboard"
 msgstr "Ikkupjat fil-clipboard"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Ikkupja"
@@ -1126,6 +1146,10 @@ msgstr "Dixxendenti"
 msgid "Description"
 msgstr "Deskrizzjoni"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "Dettalji"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "Pannell tad-Dettalji"
@@ -1275,10 +1299,16 @@ msgstr "Kodiċi tal-email"
 msgid "Emails"
 msgstr "Emails"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Ittemm il-ħbiberija tiegħek ma’ <0>{0}</0>? Il-kuntatt jibqa’ fil-ktieb tal-indirizzi tiegħek."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Jispiċċa qabel ma jibda"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "Ma rnexxiex jiżdied il-kuntatt"
 msgid "Failed to add member"
 msgstr "Ma rnexxiex jiżdied il-membru"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Ma rnexxiex tiġi kkanċellata l-istedina"
@@ -1466,6 +1497,7 @@ msgstr "Ma rnexxiex jiġi mċaqlaq"
 msgid "Failed to post comment"
 msgstr "Ma rnexxiex jiġi postjat il-kumment"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Ma rnexxiex jitneħħa l-ħabib"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "Ma rnexxiex jiġi ssejvjat il-prompt"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "Ma rnexxiex tintbagħat l-istedina"
@@ -1539,10 +1572,6 @@ msgstr "Ma rnexxiex jiġi aġġornat is-segwitu"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "Ma rnexxiex jittella' l-attachment"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "Kunjom"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "Bandieri"
 msgid "Flat"
 msgstr "Ċatta"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "Isem"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "Il-Ġimgħa"
@@ -1582,6 +1615,7 @@ msgstr "Il-Ġimgħa"
 msgid "Friend"
 msgstr "Ħabib"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Il-ħabib tneħħa"
@@ -1602,10 +1636,6 @@ msgstr "Minn"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Mit-tema"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "Isem"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "Data invalida"
 msgid "Invitation accepted"
 msgstr "L-istedina ġiet aċċettata"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "L-istedina ġiet ikkanċellata"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "L-istedina ġiet irrifjutata"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "L-istedina ntbagħtet"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "Settings tal-istedina"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "Mistieden"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "Mowbajl"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Ħabib ta' Mochi"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi web"
@@ -1951,6 +1988,10 @@ msgstr "Moderazzjoni"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "It-Tnejn"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Xahar"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "Ġie mċaqlaq"
 msgid "Moved {field}"
 msgstr "Ġie mċaqlaq {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "Qed jiġi mċaqlaq għal {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "Stediniet ġodda jidhru hawn"
 msgid "Next image"
 msgstr "Stampa li jmiss"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "Ix-xahar li ġej"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Is-sena li ġejja"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "Pendenti"
 msgid "People"
 msgstr "Nies"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "Telefons"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "Ara l-profil ta’ {0} qabel ma tibgħat stedina ta’ ħbiberija."
 msgid "Previous image"
 msgstr "Stampa preċedenti"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "Ix-xahar preċedenti"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Is-sena preċedenti"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "Neħħi membru"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "Neħħi t-telefon"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Qed inneħħi l-ħabib..."
@@ -2582,7 +2630,7 @@ msgstr "Qed jinbidel isem il-ktieb tal-indirizzi..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "Jirrepeti"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "Ibgħat messaġġ"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Qed nibgħat l-istedina..."
@@ -2983,6 +3032,10 @@ msgstr "Abbona"
 msgid "Sunday"
 msgstr "Il-Ħadd"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "Kunjom"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "Aqleb għal vista 1-9"
@@ -3005,6 +3058,10 @@ msgstr "It-tikketta trid tkun sa 50 karattru"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Tags"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "Telefons"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "Mhux disponibbli"
 msgid "Unexpected API error"
 msgstr "Żball API mhux mistenni"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "L-Erbgħa"
 msgctxt "contact type"
 msgid "Work"
 msgstr "Xogħol"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Sena"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

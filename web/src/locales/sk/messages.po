@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#týž} other {#týž}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, od {from} do {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Názov {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "od {from} do {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, one {+# ďalší} few {+# ďalšie} many {+# ďalších} other {+# ďalších}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "Pridať člena"
 msgid "Add option"
 msgstr "Pridať možnosť"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "Pridať telefón"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "Začnite pridaním niekoho"
@@ -273,6 +271,10 @@ msgstr "Začnite pridaním niekoho"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Pridať štítok..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "Pridať telefón"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "Adresár bol premenovaný"
 msgid "Address book URL"
 msgstr "URL adresára"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "Adresy"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "Všetky kontakty"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "Celý deň"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "Naozaj sa chcete vzdať? Hru vyhrá {opponentName}."
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Vzostupne"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Na mori"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "Ikona prehliadača"
 msgid "Browser notifications"
 msgstr "Notifikácie prehliadača"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Kalendárový server"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Povolenie kamery bolo zamietnuté"
@@ -595,6 +602,7 @@ msgstr "Zrušiť odpoveď"
 msgid "Cancelled"
 msgstr "Zrušené"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Ruší sa pozvánka..."
@@ -632,7 +640,7 @@ msgstr "Zmenené {field}"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "Zmenený výskyt"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "Zaškrtávacie pole"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "Zoznam úloh"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Vyberte dátum"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "Konfigurovať nastavenia zobrazenia"
 msgid "Confirm"
 msgstr "Potvrdiť"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Pripojiť zariadenie"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Pripojiť ďalšie zariadenie"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "Pripojiť zariadenie"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "Pokračovať"
 msgid "Continue with {label}"
 msgstr "Pokračovať s {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Pokračovať s {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Skopírované"
@@ -836,6 +852,10 @@ msgstr "Skopírované"
 msgid "Copied to clipboard"
 msgstr "Skopírované do schránky"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopírovať"
@@ -1126,6 +1146,10 @@ msgstr "Zostupne"
 msgid "Description"
 msgstr "Popis"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "Podrobnosti"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "Panel podrobností"
@@ -1275,10 +1299,16 @@ msgstr "E-mailový kód"
 msgid "Emails"
 msgstr "E-maily"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Ukončiť priateľstvo s <0>{0}</0>? Kontakt zostane vo vašom adresári."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Končí skôr, ako začne"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "Nepodarilo sa pridať kontakt"
 msgid "Failed to add member"
 msgstr "Nepodarilo sa pridať člena"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Nepodarilo sa zrušiť pozvánku"
@@ -1466,6 +1497,7 @@ msgstr "Presunutie sa nepodarilo"
 msgid "Failed to post comment"
 msgstr "Nepodarilo sa odoslať komentár"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Nepodarilo sa odstrániť priateľa"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "Nepodarilo sa uložiť výzvu"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "Nepodarilo sa odoslať pozvánku"
@@ -1539,10 +1572,6 @@ msgstr "Sledovanie sa nepodarilo aktualizovať"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "Nepodarilo sa nahrať prílohu"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "Priezvisko"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "Príznaky"
 msgid "Flat"
 msgstr "Plochý"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "Meno"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "Piatok"
@@ -1582,6 +1615,7 @@ msgstr "Piatok"
 msgid "Friend"
 msgstr "Priateľ"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Priateľ bol odstránený"
@@ -1602,10 +1636,6 @@ msgstr "Od"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Z motívu"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "Meno"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "Neplatný dátum"
 msgid "Invitation accepted"
 msgstr "Pozvánka prijatá"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Pozvánka zrušená"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "Pozvánka odmietnutá"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Pozvánka odoslaná"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "Nastavenia pozvánok"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "Pozvaný"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "Mobil"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Priateľ v Mochi"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi web"
@@ -1951,6 +1988,10 @@ msgstr "Moderovanie"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "Pondelok"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Mesiac"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "Presunuté"
 msgid "Moved {field}"
 msgstr "Presunuté {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "Presúva sa na {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "Nové pozvánky sa zobrazia tu"
 msgid "Next image"
 msgstr "Ďalší obrázok"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "Nasledujúci mesiac"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Nasledujúci rok"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "Čaká sa"
 msgid "People"
 msgstr "Ľudia"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "Telefóny"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "Pred odoslaním pozvánky na priateľstvo si pozrite profil používate�
 msgid "Previous image"
 msgstr "Predchádzajúci obrázok"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "Predchádzajúci mesiac"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Predchádzajúci rok"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "Odstrániť člena"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "Odstrániť telefón"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Odstraňuje sa priateľ..."
@@ -2582,7 +2630,7 @@ msgstr "Premenúva sa adresár..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "Opakuje sa"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "Odoslať správu"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Odosiela sa pozvánka..."
@@ -2983,6 +3032,10 @@ msgstr "Prihlásiť na odber"
 msgid "Sunday"
 msgstr "Nedeľa"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "Priezvisko"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "Prepnúť na zobrazenie 1 – 9"
@@ -3005,6 +3058,10 @@ msgstr "Štítok môže mať najviac 50 znakov"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Tagy"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "Telefóny"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "Nedostupné"
 msgid "Unexpected API error"
 msgstr "Neočakávaná chyba API"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "Streda"
 msgctxt "contact type"
 msgid "Work"
 msgstr "Práca"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Rok"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

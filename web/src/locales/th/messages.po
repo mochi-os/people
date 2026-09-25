@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#น} other {#น}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#สัป} other {#สัป}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day} {from} ถึง {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "ชื่อ {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "{from} ถึง {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, other {+# รายการ}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "เพิ่มสมาชิก"
 msgid "Add option"
 msgstr "เพิ่มตัวเลือก"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "เพิ่มโทรศัพท์"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "เพิ่มใครสักคนเพื่อเริ่มต้น"
@@ -273,6 +271,10 @@ msgstr "เพิ่มใครสักคนเพื่อเริ่มต
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "เพิ่มแท็ก..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "เพิ่มโทรศัพท์"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "เปลี่ยนชื่อสมุดที่อยู่แล
 msgid "Address book URL"
 msgstr "URL สมุดที่อยู่"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "ที่อยู่"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "ผู้ติดต่อทั้งหมด"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "ตลอดวัน"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "คุณแน่ใจหรือไม่ว่าต้องกา
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "จากน้อยไปมาก"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "ในทะเล"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "ไอคอนเบราว์เซอร์"
 msgid "Browser notifications"
 msgstr "การแจ้งเตือนของเบราว์เซอร์"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "เซิร์ฟเวอร์ปฏิทิน"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "สิทธิ์กล้องถูกปฏิเสธ"
@@ -595,6 +602,7 @@ msgstr "ยกเลิกการตอบกลับ"
 msgid "Cancelled"
 msgstr "ยกเลิกแล้ว"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "กำลังยกเลิกคำเชิญ..."
@@ -632,7 +640,7 @@ msgstr "เปลี่ยน {field}"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "ครั้งที่ถูกเปลี่ยนแปลง"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "ช่องทำเครื่องหมาย"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "เช็คลิสต์"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "เลือกวันที่"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "ตั้งค่ามุมมอง"
 msgid "Confirm"
 msgstr "ยืนยัน"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "เชื่อมต่ออุปกรณ์"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "เชื่อมต่ออุปกรณ์อื่น"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "เชื่อมต่ออุปกรณ์"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "ดำเนินการต่อ"
 msgid "Continue with {label}"
 msgstr "ดำเนินการต่อด้วย {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "ดำเนินการต่อด้วย {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "คัดลอกแล้ว"
@@ -836,6 +852,10 @@ msgstr "คัดลอกแล้ว"
 msgid "Copied to clipboard"
 msgstr "คัดลอกไปยังคลิปบอร์ดแล้ว"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "คัดลอก"
@@ -1126,6 +1146,10 @@ msgstr "จากมากไปน้อย"
 msgid "Description"
 msgstr "คำอธิบาย"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "รายละเอียด"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "แผงรายละเอียด"
@@ -1275,10 +1299,16 @@ msgstr "รหัสอีเมล"
 msgid "Emails"
 msgstr "อีเมล"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "สิ้นสุดการเป็นเพื่อนกับ <0>{0}</0> ไหม ผู้ติดต่อจะยังคงอยู่ในสมุดที่อยู่ของคุณ"
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "สิ้นสุดก่อนเริ่มต้น"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "ไม่สามารถเพิ่มผู้ติดต่อไ
 msgid "Failed to add member"
 msgstr "ไม่สามารถเพิ่มสมาชิกได้"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "ไม่สามารถยกเลิกคำเชิญได้"
@@ -1466,6 +1497,7 @@ msgstr "ย้ายไม่สำเร็จ"
 msgid "Failed to post comment"
 msgstr "ไม่สามารถโพสต์ความคิดเห็นได้"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "ไม่สามารถเอาเพื่อนออกได้"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "ไม่สามารถบันทึก prompt ได้"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "ไม่สามารถส่งคำเชิญได้"
@@ -1539,10 +1572,6 @@ msgstr "อัปเดตการติดตามไม่สำเร็จ
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "ไม่สามารถอัปโหลดไฟล์แนบได้"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "นามสกุล"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "Flags"
 msgid "Flat"
 msgstr "แบน"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "ชื่อ"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "วันศุกร์"
@@ -1582,6 +1615,7 @@ msgstr "วันศุกร์"
 msgid "Friend"
 msgstr "เพื่อน"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "ลบเพื่อนแล้ว"
@@ -1602,10 +1636,6 @@ msgstr "จาก"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "จากธีม"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "ชื่อ"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "วันที่ไม่ถูกต้อง"
 msgid "Invitation accepted"
 msgstr "ยอมรับคำเชิญแล้ว"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "ยกเลิกคำเชิญแล้ว"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "ปฏิเสธคำเชิญแล้ว"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "ส่งคำเชิญแล้ว"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "การตั้งค่าคำเชิญ"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "เชิญแล้ว"
 
@@ -1874,7 +1907,7 @@ msgstr "จัดการอุปกรณ์"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
-msgstr "คู่มือ"
+msgstr "ด้วยตนเอง"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "มือถือ"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "เพื่อน Mochi"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi เว็บ"
@@ -1951,6 +1988,10 @@ msgstr "การกลั่นกรอง"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "วันจันทร์"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "เดือน"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "ย้ายแล้ว"
 msgid "Moved {field}"
 msgstr "ย้าย {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "กำลังย้ายไปยัง {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "คำเชิญใหม่จะปรากฏที่นี่"
 msgid "Next image"
 msgstr "รูปถัดไป"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "เดือนถัดไป"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "ปีถัดไป"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "รอดำเนินการ"
 msgid "People"
 msgstr "ผู้คน"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "โทรศัพท์"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "ดูโปรไฟล์ของ {0} ก่อนส่งคำเ�
 msgid "Previous image"
 msgstr "รูปก่อนหน้า"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "เดือนก่อนหน้า"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "ปีก่อนหน้า"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "ลบสมาชิก"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "ลบโทรศัพท์"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "กำลังลบเพื่อน..."
@@ -2582,7 +2630,7 @@ msgstr "กำลังเปลี่ยนชื่อสมุดที่อ
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "ทำซ้ำ"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "ส่งข้อความ"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "กำลังส่งคำเชิญ..."
@@ -2983,6 +3032,10 @@ msgstr "ติดตาม"
 msgid "Sunday"
 msgstr "วันอาทิตย์"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "นามสกุล"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "เปลี่ยนเป็นมุมมอง 1-9"
@@ -3005,6 +3058,10 @@ msgstr "แท็กต้องมีไม่เกิน 50 อักขร�
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "แท็ก"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "โทรศัพท์"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "ไม่พร้อมใช้งาน"
 msgid "Unexpected API error"
 msgstr "ข้อผิดพลาด API ที่ไม่คาดคิด"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "วันพุธ"
 msgctxt "contact type"
 msgid "Work"
 msgstr "ที่ทำงาน"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "ปี"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

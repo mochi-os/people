@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#מינ} other {#מינ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#וואָך} other {#וואָך}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, {from} ביז {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} נאָמען"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "{from} ביז {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, one {+# מער} other {+# מער}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "צולייגן מיטגליד"
 msgid "Add option"
 msgstr "צולייגן אָפּציע"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "צולייגן טעלעפֿאָן"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "לייגט צו עמעצן צו אָנהייבן"
@@ -273,6 +271,10 @@ msgstr "לייגט צו עמעצן צו אָנהייבן"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "צולייגן טאַג..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "צולייגן טעלעפֿאָן"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "אַדרעס־בוך איבערגעטויפֿט"
 msgid "Address book URL"
 msgstr "URL פֿון אַדרעס־בוך"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "אַדרעסן"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "אַלע קאָנטאַקטן"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "אַ גאַנצן טאָג"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "זענט איר זיכער איר ווילט רעזיגנירן? {oppone
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "אַרויפֿגייענדיק"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "אויפֿן ים"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "בראָוזער ייקאָן"
 msgid "Browser notifications"
 msgstr "בראָוזער נאָטיפֿיקאַציעס"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "קאַלענדאַר־סערווער"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "קאַמערע־דערלויבעניש אָפּגעוואָרפֿן"
@@ -595,6 +602,7 @@ msgstr "אָפּזאָגן ענטפֿער"
 msgid "Cancelled"
 msgstr "אָפּגעזאָגט"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "אַנולירן פֿאַרבעטונג..."
@@ -632,7 +640,7 @@ msgstr "געענדערט {field}"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "געביטענע פֿאָרקומעניש"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "טשעקבאָקס"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "טשעקליסטע"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "קלײַבט אַ דאַטע"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "קאָנפֿיגורירן זעהן אײַנשטעלונגען"
 msgid "Confirm"
 msgstr "באַשטעטיקן"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "פֿאַרבינדן אַ מיטל"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "פֿאַרבינדן נאָך אַ מיטל"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "פֿאַרבינדן אַ מיטל"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "ממשיך"
 msgid "Continue with {label}"
 msgstr "המשך מיט {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "ווײַטער מיט {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "קאָפּירט"
@@ -836,6 +852,10 @@ msgstr "קאָפּירט"
 msgid "Copied to clipboard"
 msgstr "קאָפּירט צו קליפּברעט"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "קאָפּירן"
@@ -1126,6 +1146,10 @@ msgstr "אַראָפּגייענדיק"
 msgid "Description"
 msgstr "באַשרײַבונג"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "פּרטים"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "פּרטים פּאַנעל"
@@ -1275,10 +1299,16 @@ msgstr "בליצפּאָסט־קאָד"
 msgid "Emails"
 msgstr "בליצפּאָסטן"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "ענדיקן אײַער פֿרײַנדשאַפֿט מיט <0>{0}</0>? דער קאָנטאַקט בלײַבט אין אײַער אַדרעס־בוך."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "ענדיקט זיך איידער עס הייבט זיך אָן"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "ניט געלונגען צוצולייגן קאָנטאַקט"
 msgid "Failed to add member"
 msgstr "ניט געלונגען צוצוגעבן מיטגליד"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "ניט געלונגען צו אַנולירן אײַנלאַדונג"
@@ -1466,6 +1497,7 @@ msgstr "דורכפֿאַל צו באַוועגן"
 msgid "Failed to post comment"
 msgstr "ניט געלונגען צו פּאָסטן קאָמענטאַר"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "ניט געלונגען צו אַראָפּנעמען חבר"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "ניט געלונגען אויפֿצוהיטן פּראָמפּט"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "ניט געלונגען צו שיקן אײַנלאַדונג"
@@ -1539,10 +1572,6 @@ msgstr "דורכפֿאַל צו דערהײַנטיקן אָבסערוואַצי�
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "ניט געלונגען אַרויפֿצולאָדן בײַלאַגע"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "פֿאַמיליע־נאָמען"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "פֿאָנען"
 msgid "Flat"
 msgstr "פלאַך"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "פֿאָרנאָמען"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "פֿרײַטיק"
@@ -1582,6 +1615,7 @@ msgstr "פֿרײַטיק"
 msgid "Friend"
 msgstr "פֿרײַנד"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "פֿרײַנד אַוועקגענומען"
@@ -1602,10 +1636,6 @@ msgstr "פֿון"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "פֿון טעמע"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "פֿאָרנאָמען"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "ניט גילטיקע דאַטע"
 msgid "Invitation accepted"
 msgstr "אײַנלאַדונג אָנגענומען"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "אײַנלאַדונג אַנולירט"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "אײַנלאַדונג אָפּגעזאָגט"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "אײַנלאַדונג געשיקט"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "אײַנלאַדונג־הגדרות"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "אײַנגעלאַדן"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "מאָבילקע"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Mochi פֿרײַנד"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi װעב"
@@ -1951,6 +1988,10 @@ msgstr "מאָדעראַציע"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "מאָנטיק"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "חודש"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "אַריבערגעפֿירט"
 msgid "Moved {field}"
 msgstr "אַריבערגעפֿירט {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "פֿאַררוקן צו {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "נײַע אײַנלאַדונגען וועלן זיך באַווײַזן
 msgid "Next image"
 msgstr "ווײַטערדיק בילד"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "קומענדיקער חודש"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "קומענדיקער יאָר"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "וואַרטנדיק"
 msgid "People"
 msgstr "מענטשן"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "טעלעפֿאָנען"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "זעט פֿאָרויס דעם פּראָפֿיל פֿון {0} אייד�
 msgid "Previous image"
 msgstr "פֿריִערדיק בילד"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "פֿריִערדיקער חודש"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "פֿריִערדיקער יאָר"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "אַראָפּנעמען מיטגליד"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "אַראָפּנעמען טעלעפֿאָן"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "אַוועקנעמען פֿרײַנד..."
@@ -2582,7 +2630,7 @@ msgstr "איבערטויפֿן אַדרעס־בוך..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "חזרט זיך"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "שיק אַ מעלדונג"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "שיקן פֿאַרבעטונג..."
@@ -2983,6 +3032,10 @@ msgstr "אַבאָנירן"
 msgid "Sunday"
 msgstr "זונטיק"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "פֿאַמיליע־נאָמען"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "ביט איבער צו ראַם 1-9"
@@ -3005,6 +3058,10 @@ msgstr "דער טאַג מוז זײַן 50 שריפֿטצײכנס אָדער װ�
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "טאַגן"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "טעלעפֿאָנען"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "נישט פֿאַראַן"
 msgid "Unexpected API error"
 msgstr "אומדערװאַרטע API־טעות"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "מיטוואָך"
 msgctxt "contact type"
 msgid "Work"
 msgstr "אַרבעט"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "יאָר"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

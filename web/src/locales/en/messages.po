@@ -70,6 +70,7 @@ msgstr "{count, plural, one {#m} other {#m}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#w} other {#w}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
 msgstr "{day}, {from} to {to}"
@@ -78,6 +79,7 @@ msgstr "{day}, {from} to {to}"
 msgid "{entityLabel} name"
 msgstr "{entityLabel} name"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} to {to}"
@@ -262,10 +264,6 @@ msgstr "Add member"
 msgid "Add option"
 msgstr "Add option"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "Add phone"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "Add someone to get started"
@@ -273,6 +271,10 @@ msgstr "Add someone to get started"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Add tag..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "Add telephone"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "Address book renamed"
 msgid "Address book URL"
 msgstr "Address book URL"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "Addresses"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -350,6 +348,7 @@ msgstr "All available groups are already added"
 msgid "All contacts"
 msgstr "All contacts"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
 msgstr "All day"
@@ -441,6 +440,10 @@ msgstr "Are you sure you want to resign? {opponentName} will win the game."
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Ascending"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "At sea"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "Browser icon"
 msgid "Browser notifications"
 msgstr "Browser notifications"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Calendar server"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Camera permission denied"
@@ -595,6 +602,7 @@ msgstr "Cancel reply"
 msgid "Cancelled"
 msgstr "Cancelled"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Cancelling invitation..."
@@ -641,6 +649,10 @@ msgstr "Checkbox"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "Checklist"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Choose a date"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "Configure view settings"
 msgid "Confirm"
 msgstr "Confirm"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Connect a device"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Connect another device"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "Connect device"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "Continue"
 msgid "Continue with {label}"
 msgstr "Continue with {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Continue with {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Copied"
@@ -836,6 +852,10 @@ msgstr "Copied"
 msgid "Copied to clipboard"
 msgstr "Copied to clipboard"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Copy"
@@ -1126,6 +1146,10 @@ msgstr "Descending"
 msgid "Description"
 msgstr "Description"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "Details"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "Details Panel"
@@ -1275,10 +1299,16 @@ msgstr "Email code"
 msgid "Emails"
 msgstr "Emails"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "End your friendship with <0>{0}</0>? The contact stays in your address book."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Ends before it starts"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "Failed to add contact"
 msgid "Failed to add member"
 msgstr "Failed to add member"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Failed to cancel invitation"
@@ -1466,6 +1497,7 @@ msgstr "Failed to move"
 msgid "Failed to post comment"
 msgstr "Failed to post comment"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Failed to remove friend"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "Failed to save prompt"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "Failed to send invitation"
@@ -1539,10 +1572,6 @@ msgstr "Failed to update watching"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "Failed to upload attachment"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "Family name"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "Flags"
 msgid "Flat"
 msgstr "Flat"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "Forename"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "Friday"
@@ -1582,6 +1615,7 @@ msgstr "Friday"
 msgid "Friend"
 msgstr "Friend"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Friend removed"
@@ -1602,10 +1636,6 @@ msgstr "From"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "From theme"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "Given name"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "Invalid date"
 msgid "Invitation accepted"
 msgstr "Invitation accepted"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Invitation cancelled"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "Invitation declined"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Invitation sent"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "Invite settings"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "Invited"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "Mobile"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Mochi friend"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi web"
@@ -1951,6 +1988,10 @@ msgstr "Moderation"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "Monday"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Month"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,8 +2005,10 @@ msgstr "Moved"
 msgid "Moved {field}"
 msgstr "Moved {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
 msgstr "Moving to {0}"
 
@@ -2032,9 +2075,13 @@ msgstr "New invitations will appear here"
 msgid "Next image"
 msgstr "Next image"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
 msgstr "Next month"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Next year"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "Pending"
 msgid "People"
 msgstr "People"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "Phones"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "Preview {0}'s profile before sending a friend invitation."
 msgid "Previous image"
 msgstr "Previous image"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
 msgstr "Previous month"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Previous year"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "Remove member"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
-msgstr "Remove phone"
+msgid "Remove telephone"
+msgstr "Remove telephone"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Removing friend..."
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "Send message"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Sending invitation..."
@@ -2983,6 +3032,10 @@ msgstr "Subscribe"
 msgid "Sunday"
 msgstr "Sunday"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "Surname"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "Switch to view 1-9"
@@ -3005,6 +3058,10 @@ msgstr "Tag must be 50 characters or less"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Tags"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "Telephones"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "Unavailable"
 msgid "Unexpected API error"
 msgstr "Unexpected API error"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "Wednesday"
 msgctxt "contact type"
 msgid "Work"
 msgstr "Work"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Year"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

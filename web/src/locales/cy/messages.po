@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#mun} other {#mun}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#wyth} other {#wyth}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, {from} i {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Enw {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "{from} i {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, zero {+# arall} one {+# arall} two {+# arall} few {+# arall} many {+# arall} other {+# arall}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "Ychwanegu aelod"
 msgid "Add option"
 msgstr "Ychwanegu opsiwn"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "Ychwanegu ffôn"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "Ychwanegwch rywun i ddechrau"
@@ -273,6 +271,10 @@ msgstr "Ychwanegwch rywun i ddechrau"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Ychwanegu tag..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "Ychwanegu ffôn"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "Llyfr cyfeiriadau wedi'i ailenwi"
 msgid "Address book URL"
 msgstr "URL y llyfr cyfeiriadau"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "Cyfeiriadau"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "Pob cyswllt"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "Trwy'r dydd"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "Ydych chi'n siŵr eich bod am ymddiswyddo? Bydd {opponentName} yn ennill
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Esgynnol"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Ar y môr"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "Eicon porwr"
 msgid "Browser notifications"
 msgstr "Hysbysiadau porwr"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Gweinydd calendr"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Gwrthodwyd caniatâd y camera"
@@ -595,6 +602,7 @@ msgstr "Canslo ateb"
 msgid "Cancelled"
 msgstr "Wedi'i ganslo"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Yn canslo gwahoddiad..."
@@ -632,7 +640,7 @@ msgstr "Newidiwyd {field}"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "Achlysur wedi'i newid"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "Blwch ticio"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "Rhestr wirio"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Dewiswch ddyddiad"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "Ffurfweddu gosodiadau golwg"
 msgid "Confirm"
 msgstr "Cadarnhau"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Cysylltu dyfais"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Cysylltu dyfais arall"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "Cysylltu dyfais"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "Parhau"
 msgid "Continue with {label}"
 msgstr "Parhau gyda {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Parhau gyda {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Copïwyd"
@@ -836,6 +852,10 @@ msgstr "Copïwyd"
 msgid "Copied to clipboard"
 msgstr "Wedi'i gopïo i'r clipfwrdd"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Copïo"
@@ -1126,6 +1146,10 @@ msgstr "Disgynnol"
 msgid "Description"
 msgstr "Disgrifiad"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "Manylion"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "Panel manylion"
@@ -1275,10 +1299,16 @@ msgstr "Cod e-bost"
 msgid "Emails"
 msgstr "Cyfeiriadau e-bost"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Dod â'ch cyfeillgarwch â <0>{0}</0> i ben? Bydd y cyswllt yn aros yn eich llyfr cyfeiriadau."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Yn gorffen cyn iddo ddechrau"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "Methwyd ychwanegu'r cyswllt"
 msgid "Failed to add member"
 msgstr "Methwyd ychwanegu aelod"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Methwyd canslo'r gwahoddiad"
@@ -1466,6 +1497,7 @@ msgstr "Methwyd symud"
 msgid "Failed to post comment"
 msgstr "Methwyd postio sylw"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Methwyd dileu'r ffrind"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "Methwyd cadw'r anogiad"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "Methwyd anfon y gwahoddiad"
@@ -1539,10 +1572,6 @@ msgstr "Methwyd diweddaru gwylio"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "Methwyd llwytho'r atodiad"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "Cyfenw"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "Baneri"
 msgid "Flat"
 msgstr "Gwastad"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "Enw cyntaf"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "Dydd Gwener"
@@ -1582,6 +1615,7 @@ msgstr "Dydd Gwener"
 msgid "Friend"
 msgstr "Ffrind"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Cyfaill wedi'i dynnu"
@@ -1602,10 +1636,6 @@ msgstr "O"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "O'r thema"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "Enw cyntaf"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "Dyddiad annilys"
 msgid "Invitation accepted"
 msgstr "Gwahoddiad wedi'i dderbyn"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Gwahoddiad wedi'i ganslo"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "Gwahoddiad wedi'i wrthod"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Gwahoddiad wedi'i anfon"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "Gosodiadau gwahodd"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "Wedi'i wahodd"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "Symudol"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Ffrind Mochi"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Gwe Mochi"
@@ -1951,6 +1988,10 @@ msgstr "Cymedroli"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "Dydd Llun"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Mis"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "Symudwyd"
 msgid "Moved {field}"
 msgstr "Symudwyd {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "Yn symud i {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "Bydd gwahoddiadau newydd yn ymddangos yma"
 msgid "Next image"
 msgstr "Delwedd nesaf"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "Mis nesaf"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Blwyddyn nesaf"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "Ar y gweill"
 msgid "People"
 msgstr "Pobl"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "Ffonau"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "Gweld proffil {0} cyn anfon gwahoddiad cyfeillgarwch."
 msgid "Previous image"
 msgstr "Delwedd flaenorol"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "Mis blaenorol"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Blwyddyn flaenorol"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "Tynnu aelod"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "Tynnu ffôn"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Yn tynnu cyfaill..."
@@ -2582,7 +2630,7 @@ msgstr "Yn ailenwi llyfr cyfeiriadau..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "Yn ailadrodd"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "Anfon neges"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Yn anfon gwahoddiad..."
@@ -2983,6 +3032,10 @@ msgstr "Tanysgrifio"
 msgid "Sunday"
 msgstr "Dydd Sul"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "Cyfenw"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "Newid i olwg 1-9"
@@ -3005,6 +3058,10 @@ msgstr "Rhaid i'r tag fod yn 50 nod neu lai"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Tagiau"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "Ffonau"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "Ddim ar gael"
 msgid "Unexpected API error"
 msgstr "Gwall API annisgwyl"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "Dydd Mercher"
 msgctxt "contact type"
 msgid "Work"
 msgstr "Gwaith"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Blwyddyn"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

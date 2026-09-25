@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#mion} other {#mion}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#sea} other {#sea}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, {from} gu {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Ainm {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "{from} gu {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, one {+# eile} two {+# eile} few {+# eile} other {+# eile}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "Cuir ball ris"
 msgid "Add option"
 msgstr "Cuir roghainn ris"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "Cuir fòn ris"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "Cuir cuideigin ris gus tòiseachadh"
@@ -273,6 +271,10 @@ msgstr "Cuir cuideigin ris gus tòiseachadh"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Cuir taga ris..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "Cuir fòn ris"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "Chaidh ainm ùr a chur air an leabhar-sheòlaidhean"
 msgid "Address book URL"
 msgstr "URL an leabhair-sheòlaidhean"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "Seòlaidhean"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "A h-uile neach-aithne"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "Fad an latha"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "A bheil thu cinnteach gu bheil thu airson dreuchd a leigeil dhìot? Buan
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "A' dìreadh"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Aig muir"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "Ìomhaigheag brabhsair"
 msgid "Browser notifications"
 msgstr "Brathan brabhsair"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Frithealaiche mhìosachan"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Chaidh cead a' chamara a dhiùltadh"
@@ -595,6 +602,7 @@ msgstr "Sguir den fhreagairt"
 msgid "Cancelled"
 msgstr "Sguirte"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "A’ cur dheth a’ chuireadh..."
@@ -632,7 +640,7 @@ msgstr "Chaidh {field} atharrachadh"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "Turas atharraichte"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "Bogsa-cromaige"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "Liosta-dearbhaidh"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Tagh ceann-là"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "Rèitich roghainnean seallaidh"
 msgid "Confirm"
 msgstr "Dearbhaich"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Ceangail inneal"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Ceangail inneal eile"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "Ceangail inneal"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "Lean air adhart"
 msgid "Continue with {label}"
 msgstr "Lean air adhart le {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Lean air adhart le {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Chaidh lethbhreac a dhèanamh"
@@ -836,6 +852,10 @@ msgstr "Chaidh lethbhreac a dhèanamh"
 msgid "Copied to clipboard"
 msgstr "Air a chopaigeadh chun a' chliopaboird"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Dèan lethbhreac"
@@ -1126,6 +1146,10 @@ msgstr "A' teàrnadh"
 msgid "Description"
 msgstr "Tuairisgeul"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "Mion-fhiosrachadh"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "Pannal mion-fhiosrachaidh"
@@ -1275,10 +1299,16 @@ msgstr "Còd puist-d"
 msgid "Emails"
 msgstr "Seòlaidhean puist-d"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "A bheil thu airson crìoch a chur air a' chàirdeas agad le <0>{0}</0>? Fanaidh an neach-aithne san leabhar-sheòlaidhean agad."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Thig e gu crìch mus tòisich e"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "Cha b' urrainn an neach-aithne a chur ris"
 msgid "Failed to add member"
 msgstr "Cha b' urrainn ball a chur ris"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Cha b' urrainn cur dheth a' chuiridh"
@@ -1466,6 +1497,7 @@ msgstr "Dh'fhàillig an gluasad"
 msgid "Failed to post comment"
 msgstr "Cha b' urrainn beachd a phostadh"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Cha b' urrainn caraid a thoirt air falbh"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "Cha b' urrainn am brodadh a shàbhaladh"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "Cha b' urrainn an cuireadh a chur"
@@ -1539,10 +1572,6 @@ msgstr "Dh'fhàillig ùrachadh a' chumail-sùil"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "Cha b' urrainn an ceangaltas a luchdadh suas"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "Sloinneadh"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "Brataichean"
 msgid "Flat"
 msgstr "Còmhnard"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "Ainm"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "DihAoine"
@@ -1582,6 +1615,7 @@ msgstr "DihAoine"
 msgid "Friend"
 msgstr "Caraid"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Chaidh an caraid a thoirt air falbh"
@@ -1602,10 +1636,6 @@ msgstr "O"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "On ùrlar"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "Ainm"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "Ceann-latha mì-dhligheach"
 msgid "Invitation accepted"
 msgstr "Chaidh gabhail ris a' chuireadh"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Chaidh an cuireadh a chur dheth"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "Chaidh an cuireadh a dhiùltadh"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Chaidh an cuireadh a chur"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "Roghainnean nan cuiridhean"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "Chaidh cuireadh a thoirt"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "Fòn-làimhe"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Caraid Mochi"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Lìon Mochi"
@@ -1951,6 +1988,10 @@ msgstr "Modarataireachd"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "DiLuain"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Mìos"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "Air a ghluasad"
 msgid "Moved {field}"
 msgstr "Chaidh {field} a ghluasad"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "Ga ghluasad gu {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "Nochdaidh cuireadh ùr an seo"
 msgid "Next image"
 msgstr "An ath dhealbh"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "An ath-mhìos"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "An ath-bhliadhna"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "Ri làimhseachadh"
 msgid "People"
 msgstr "Daoine"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "Àireamhan fòn"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "Seall a' phròifil aig {0} mus cuir thu cuireadh càirdeis."
 msgid "Previous image"
 msgstr "An dealbh roimhe"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "Am mìos roimhe"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "A' bhliadhna roimhe"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "Thoir am ball air falbh"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "Thoir am fòn air falbh"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "A’ toirt air falbh caraid..."
@@ -2582,7 +2630,7 @@ msgstr "A' cur ainm ùr air an leabhar-sheòlaidhean..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "Ag ath-aithris"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "Cuir teachdaireachd"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "A’ cur a’ chuireadh..."
@@ -2983,6 +3032,10 @@ msgstr "Fo-sgrìobh"
 msgid "Sunday"
 msgstr "Didòmhnaich"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "Sloinneadh"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "Atharraich gu sealladh 1-9"
@@ -3005,6 +3058,10 @@ msgstr "Feumaidh an taga a bhith 50 caractar no nas lugha"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Tagaichean"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "Àireamhan fòn"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "Cha eil ri làimh"
 msgid "Unexpected API error"
 msgstr "Mearachd API ris nach robh dùil"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "Diciadain"
 msgctxt "contact type"
 msgid "Work"
 msgstr "Obair"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Bliadhna"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

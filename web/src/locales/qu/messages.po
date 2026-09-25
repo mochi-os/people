@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#min} other {#min}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#sem} other {#sem}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, {from} {to} kama"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} suti"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "{from} {to} kama"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, one {+# astawan} other {+# astawan}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "Yanapaq yapay"
 msgid "Add option"
 msgstr "Akllana yapay"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "Telefonota yapay"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "Qallarinaykipaq pitapas yapay"
@@ -273,6 +271,10 @@ msgstr "Qallarinaykipaq pitapas yapay"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Tag yapay..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "Telefonota yapay"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "Direccion maytupa sutin hukchasqa"
 msgid "Address book URL"
 msgstr "Direccion maytu URL"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "Direccionkuna"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "Llapa contactokuna"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "Tukuy p'unchaw"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "Saqiyta munanki? {opponentName} pukllayta atipanqa."
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Wicharispa"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Mama quchapi"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "Browser icono"
 msgid "Browser notifications"
 msgstr "Browser willaykuna"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Calendario servidor"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Cámara permisoqa mana chaskisqachu"
@@ -595,6 +602,7 @@ msgstr "Kutichiy mana ruway"
 msgid "Cancelled"
 msgstr "Mana ruwasqa"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Waqyayta kanselachkan..."
@@ -632,7 +640,7 @@ msgstr "{field} hukchasqa"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "Hukchasqa ruwana"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "Checkbox"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "Lista"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Huk p'unchawta akllay"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "Vista kamariykuna allichay"
 msgid "Confirm"
 msgstr "Takyachiy"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Huk mañanata tinkichiy"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Huk mañanatawan tinkichiy"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "Huk mañanata tinkichiy"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "Qatiy"
 msgid "Continue with {label}"
 msgstr "{label} wan catiy"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} wan qatiy"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Kopiasqa"
@@ -836,6 +852,10 @@ msgstr "Kopiasqa"
 msgid "Copied to clipboard"
 msgstr "Clipboard-man copiasqa"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Copiay"
@@ -1126,6 +1146,10 @@ msgstr "Uraykuspa"
 msgid "Description"
 msgstr "Willariy"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "Willariykuna"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "Willariykuna Panel"
@@ -1275,10 +1299,16 @@ msgstr "Email código"
 msgid "Emails"
 msgstr "Emailkuna"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "<0>{0}</0>-wan masinakuyniykita tukuchiyta munanki? Contactoqa direccion maytuykipi qhipanqa."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Manaraq qallarichkaptin tukun"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "Mana contactota yapayta atinchu"
 msgid "Failed to add member"
 msgstr "Mana miembrota yapayta atinchu"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Mana waqyayta wikch'uyta atinchu"
@@ -1466,6 +1497,7 @@ msgstr "Mana kuyuchiyta atinchu"
 msgid "Failed to post comment"
 msgstr "Mana comentariota willakuyta atinchu"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Mana masita pichayta atinchu"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "Mana promptta waqaychayta atinchu"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "Mana waqyayta apachiyta atinchu"
@@ -1539,10 +1572,6 @@ msgstr "Qhawayta mana musuqchayta atinchu"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "Mana adjuntota wichachiyta atinchu"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "Ayllu sutin"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "Flagkuna"
 msgid "Flat"
 msgstr "Pampa"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "Sutin"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "Viernes"
@@ -1582,6 +1615,7 @@ msgstr "Viernes"
 msgid "Friend"
 msgstr "Masi"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Masi qichusqa"
@@ -1602,10 +1636,6 @@ msgstr "Manta"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Temamanta"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "Sutin"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "Mana allin pacha"
 msgid "Invitation accepted"
 msgstr "Waqyay chaskisqa"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Waqyay wikch'usqa"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "Waqyay mana munasqa"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Waqyay apachisqa"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "Waqyay configuracion"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "Waqyasqa"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "Celular"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Mochi masi"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi web"
@@ -1951,6 +1988,10 @@ msgstr "Qhawakipay"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "Lunes"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Killa"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "Astasqa"
 msgid "Moved {field}"
 msgstr "{field} astasqa"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "{0}-man astachkan"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "Musuq invitacionkuna kaypi rikhurinqa"
 msgid "Next image"
 msgstr "Qatiqnin imagen"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "Qatiq killa"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Qatiq wata"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "Suyashan"
 msgid "People"
 msgstr "Runakuna"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "Telefonokuna"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "Masi waqyayta manaraq apachispa {0}pa perfilninta qhaway."
 msgid "Previous image"
 msgstr "Ñawpaqnin imagen"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "Ñawpaq killa"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Ñawpaq wata"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "Miembrota qichuy"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "Telefonota qichuy"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Masita qichuchkan..."
@@ -2582,7 +2630,7 @@ msgstr "Direccion maytuman huk sutin churachkan..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "Kutipakun"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "Willakuyta apachiy"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Waqyayta apachichkan..."
@@ -2983,6 +3032,10 @@ msgstr "Suscribiy"
 msgid "Sunday"
 msgstr "Intichaw"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "Ayllu sutin"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "1-9 vistaman tikray"
@@ -3005,6 +3058,10 @@ msgstr "Etiquetaqa 50 sananchakuna icha pisi kanan"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Unanchakuna"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "Telefonokuna"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "Mana atikuq"
 msgid "Unexpected API error"
 msgstr "Mana suyasqa API pantay"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "Quyllurchaw"
 msgctxt "contact type"
 msgid "Work"
 msgstr "Llamkana"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Wata"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

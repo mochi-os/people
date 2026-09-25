@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#د} other {#د}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#أ} other {#أ}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}، {from} إلى {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "اسم {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "{from} إلى {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, zero {+# أخرى} one {+# أخرى} two {+# أخرى} few {+# أخرى} many {+# أخرى} other {+# أخرى}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "إضافة عضو"
 msgid "Add option"
 msgstr "إضافة خيار"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "إضافة هاتف"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "أضف شخصًا للبدء"
@@ -273,6 +271,10 @@ msgstr "أضف شخصًا للبدء"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "إضافة وسم..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "إضافة هاتف"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "تمت إعادة تسمية دفتر العناوين"
 msgid "Address book URL"
 msgstr "عنوان URL لدفتر العناوين"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "العناوين"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "الذكاء الاصطناعي"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "كل جهات الاتصال"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "طوال اليوم"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "هل أنت متأكد أنك تريد الاستسلام؟ سيفوز {
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "تصاعدي"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "في البحر"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "أيقونة المتصفح"
 msgid "Browser notifications"
 msgstr "إشعارات المتصفح"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "خادم تقويم"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "تم رفض إذن الكاميرا"
@@ -595,6 +602,7 @@ msgstr "إلغاء الرد"
 msgid "Cancelled"
 msgstr "ملغى"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "جارٍ إلغاء الدعوة..."
@@ -632,7 +640,7 @@ msgstr "تم تغيير {field}"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "تكرار معدَّل"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "مربع اختيار"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "قائمة المهام"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "اختر تاريخًا"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "تكوين إعدادات العرض"
 msgid "Confirm"
 msgstr "تأكيد"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "ربط جهاز"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "ربط جهاز آخر"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "ربط جهاز"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "متابعة"
 msgid "Continue with {label}"
 msgstr "المتابعة باستخدام {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "المتابعة باستخدام {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "تم النسخ"
@@ -836,6 +852,10 @@ msgstr "تم النسخ"
 msgid "Copied to clipboard"
 msgstr "تم النسخ إلى الحافظة"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "نسخ"
@@ -1126,6 +1146,10 @@ msgstr "تنازلي"
 msgid "Description"
 msgstr "الوصف"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "التفاصيل"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "لوحة التفاصيل"
@@ -1275,10 +1299,16 @@ msgstr "رمز البريد الإلكتروني"
 msgid "Emails"
 msgstr "عناوين البريد الإلكتروني"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "إنهاء صداقتك مع <0>{0}</0>؟ ستبقى جهة الاتصال في دفتر عناوينك."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "ينتهي قبل أن يبدأ"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "فشل إضافة جهة الاتصال"
 msgid "Failed to add member"
 msgstr "فشل إضافة العضو"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "فشل إلغاء الدعوة"
@@ -1466,6 +1497,7 @@ msgstr "فشل النقل"
 msgid "Failed to post comment"
 msgstr "فشل نشر التعليق"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "فشل إزالة الصديق"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "فشل حفظ المطالبة"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "فشل إرسال الدعوة"
@@ -1539,10 +1572,6 @@ msgstr "فشل تحديث المتابعة"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "فشل رفع المرفق"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "اسم العائلة"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "الأعلام"
 msgid "Flat"
 msgstr "مسطح"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "الاسم الأول"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "الجمعة"
@@ -1582,6 +1615,7 @@ msgstr "الجمعة"
 msgid "Friend"
 msgstr "صديق"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "تمت إزالة الصديق"
@@ -1602,10 +1636,6 @@ msgstr "من"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "من السمة"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "الاسم الأول"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "تاريخ غير صالح"
 msgid "Invitation accepted"
 msgstr "تم قبول الدعوة"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "تم إلغاء الدعوة"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "تم رفض الدعوة"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "تم إرسال الدعوة"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "إعدادات الدعوة"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "تمت الدعوة"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "الجوال"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "صديق Mochi"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi على الويب"
@@ -1951,6 +1988,10 @@ msgstr "الإشراف"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "الاثنين"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "شهر"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "تم النقل"
 msgid "Moved {field}"
 msgstr "تم نقل {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "جارٍ النقل إلى {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "ستظهر الدعوات الجديدة هنا"
 msgid "Next image"
 msgstr "الصورة التالية"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "الشهر التالي"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "السنة التالية"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "قيد الانتظار"
 msgid "People"
 msgstr "الأشخاص"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "الهواتف"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "اطّلع على ملف {0} الشخصي قبل إرسال دعوة ص�
 msgid "Previous image"
 msgstr "الصورة السابقة"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "الشهر السابق"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "السنة السابقة"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "إزالة العضو"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "إزالة الهاتف"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "جارٍ إزالة الصديق..."
@@ -2582,7 +2630,7 @@ msgstr "جارٍ إعادة تسمية دفتر العناوين..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "يتكرر"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "إرسال رسالة"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "جارٍ إرسال الدعوة..."
@@ -2983,6 +3032,10 @@ msgstr "اشتراك"
 msgid "Sunday"
 msgstr "الأحد"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "اسم العائلة"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "التبديل إلى العرض 1-9"
@@ -3005,6 +3058,10 @@ msgstr "يجب ألا يزيد الوسم عن 50 حرفًا"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "الوسوم"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "الهواتف"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "غير متاح"
 msgid "Unexpected API error"
 msgstr "خطأ غير متوقع في واجهة البرمجة"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "الأربعاء"
 msgctxt "contact type"
 msgid "Work"
 msgstr "العمل"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "السنة"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

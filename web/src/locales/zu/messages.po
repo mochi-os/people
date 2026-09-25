@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#mzu} other {#mzu}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#vk} other {#vk}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, kusukela ku-{from} kuya ku-{to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Igama le-{entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "kusukela ku-{from} kuya ku-{to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, one {+# okunye} other {+# okunye}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "Engeza ilungu"
 msgid "Add option"
 msgstr "Engeza inketho"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "Engeza ucingo"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "Engeza umuntu ukuze uqale"
@@ -273,6 +271,10 @@ msgstr "Engeza umuntu ukuze uqale"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Engeza ithegi..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "Engeza ucingo"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "Incwadi yamakheli iqanjwe kabusha"
 msgid "Address book URL"
 msgstr "I-URL yencwadi yamakheli"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "Amakheli"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "I-AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "Bonke oxhumana nabo"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "Usuku lonke"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "Uqinisekile ukuthi ufuna ukushiya? {opponentName} uzowina umdlalo."
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Ukukhuphuka"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Olwandle"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "Isithonjana sebhrawuza"
 msgid "Browser notifications"
 msgstr "Izaziso zebhrawuza"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Iseva yekhalenda"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Imvume yekhamera inqatshiwe"
@@ -595,6 +602,7 @@ msgstr "Khansela impendulo"
 msgid "Cancelled"
 msgstr "Kukhanselwe"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Ikhansela isimemo..."
@@ -632,7 +640,7 @@ msgstr "Kushintshiwe {field}"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "Isenzeko esishintshiwe"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "Ibhokisi lokumaka"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "Uhlu lokuhlola"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Khetha usuku"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "Cushwa izilungiselelo zombukiso"
 msgid "Confirm"
 msgstr "Qinisekisa"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Xhuma idivayisi"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Xhuma enye idivayisi"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "Xhuma idivayisi"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "Qhubeka"
 msgid "Continue with {label}"
 msgstr "Qhubeka nge-{label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Qhubeka nge-{providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Kukopishiwe"
@@ -836,6 +852,10 @@ msgstr "Kukopishiwe"
 msgid "Copied to clipboard"
 msgstr "Kukopishelwe kwi-clipboard"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopisha"
@@ -1126,6 +1146,10 @@ msgstr "Ukwehla"
 msgid "Description"
 msgstr "Incazelo"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "Imininingwane"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "Iphaneli Yemininingwane"
@@ -1275,10 +1299,16 @@ msgstr "Ikhodi ye-imeyili"
 msgid "Emails"
 msgstr "Ama-imeyili"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Qeda ubungane bakho no-<0>{0}</0>? Oxhumana naye uhlala encwadini yakho yamakheli."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Iphela ingakaqali"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "Kuhlulekile ukungeza oxhumana naye"
 msgid "Failed to add member"
 msgstr "Kuhlulekile ukungeza ilungu"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Kuhlulekile ukukhansela isimemo"
@@ -1466,6 +1497,7 @@ msgstr "Yehlulekile ukuhambisa"
 msgid "Failed to post comment"
 msgstr "Kuhlulekile ukuthumela ukuphawula"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Kuhlulekile ukususa umngane"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "Kuhlulekile ukulondoloza umyalo"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "Kuhlulekile ukuthumela isimemo"
@@ -1539,10 +1572,6 @@ msgstr "Yehlulekile ukubuyekeza ukubuka"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "Kuhlulekile ukulayisha okunanyathiselwe"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "Isibongo"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "Amafulegi"
 msgid "Flat"
 msgstr "Isicaba"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "Igama"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "ULwesihlanu"
@@ -1582,6 +1615,7 @@ msgstr "ULwesihlanu"
 msgid "Friend"
 msgstr "Umngani"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Umngani ususiwe"
@@ -1602,10 +1636,6 @@ msgstr "Kusukela"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Kusukela endikimbeni"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "Igama"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "Idethi engalungile"
 msgid "Invitation accepted"
 msgstr "Isimemo samukelwe"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Isimemo sikhanseliwe"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "Isimemo senqatshelwe"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Isimemo sithunyelwe"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "Izilungiselelo zesimemo"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "Umenyiwe"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "Iselula"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Umngane we-Mochi"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Iwebhu ye-Mochi"
@@ -1951,6 +1988,10 @@ msgstr "Ukulawula"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "UMsombuluko"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Inyanga"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "Kuhanjiswe"
 msgid "Moved {field}"
 msgstr "Kuhanjiswe {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "Kuhanjiswa ku-{0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "Izimemo ezintsha zizovela lapha"
 msgid "Next image"
 msgstr "Isithombe esilandelayo"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "Inyanga ezayo"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Unyaka ozayo"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "Kulindile"
 msgid "People"
 msgstr "Abantu"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "Izingcingo"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "Buka iphrofayela ka-{0} ngaphambi kokuthumela isimemo sobungane."
 msgid "Previous image"
 msgstr "Isithombe esedlule"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "Inyanga edlule"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Unyaka odlule"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "Khipha ilungu"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "Khipha ucingo"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Isusa umngani..."
@@ -2582,7 +2630,7 @@ msgstr "Kuqanjwa kabusha incwadi yamakheli..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "Iyaphindwa"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "Thumela umyalezo"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Ithumela isimemo..."
@@ -2983,6 +3032,10 @@ msgstr "Bhalisa"
 msgid "Sunday"
 msgstr "ISonto"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "Isibongo"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "Shintshela kombono 1-9"
@@ -3005,6 +3058,10 @@ msgstr "Ithegi kumele ibe ngezinhlamvu ezingama-50 noma ngaphansi"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Amathegi"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "Izingcingo"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "Akutholakali"
 msgid "Unexpected API error"
 msgstr "Iphutha le-API elingalindelekile"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "ULwesithathu"
 msgctxt "contact type"
 msgid "Work"
 msgstr "Emsebenzini"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Unyaka"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#ని} other {#ని}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#వా} other {#వా}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, {from} నుండి {to} వరకు"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "{entityLabel} పేరు"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "{from} నుండి {to} వరకు"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, one {+# మరిన్ని} other {+# మరిన్ని}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "సభ్యుడిని జోడించండి"
 msgid "Add option"
 msgstr "ఎంపికను జోడించండి"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "ఫోన్ జోడించండి"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "ప్రారంభించడానికి ఎవరినైనా జోడించండి"
@@ -273,6 +271,10 @@ msgstr "ప్రారంభించడానికి ఎవరినైన�
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ట్యాగ్‌ను జోడించండి..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "ఫోన్ జోడించండి"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "చిరునామా పుస్తకం పేరు మార్
 msgid "Address book URL"
 msgstr "చిరునామా పుస్తకం URL"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "చిరునామాలు"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "అన్ని పరిచయాలు"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "రోజంతా"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "మీరు నిజంగా రాజీనామా చేయాల
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "ఆరోహణ"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "సముద్రంలో"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "బ్రౌజర్ చిహ్నం"
 msgid "Browser notifications"
 msgstr "బ్రౌజర్ నోటిఫికేషన్‌లు"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "క్యాలెండర్ సర్వర్"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "కెమెరా అనుమతి నిరాకరించబడింది"
@@ -595,6 +602,7 @@ msgstr "ప్రత్యుత్తరాన్ని రద్దు చే�
 msgid "Cancelled"
 msgstr "రద్దు చేయబడింది"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "ఆహ్వానాన్ని రద్దు చేస్తోంది..."
@@ -632,7 +640,7 @@ msgstr "{field} మార్చబడింది"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "మార్చిన పునరావృత్తి"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "చెక్‌బాక్స్"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "చెక్‌లిస్ట్"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "తేదీని ఎంచుకోండి"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "వీక్షణ సెట్టింగ్‌లను కాన్�
 msgid "Confirm"
 msgstr "నిర్ధారించండి"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "పరికరాన్ని కనెక్ట్ చేయండి"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "మరో పరికరాన్ని కనెక్ట్ చేయండి"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "పరికరాన్ని కనెక్ట్ చేయండి"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "కొనసాగించండి"
 msgid "Continue with {label}"
 msgstr "{label}తో కొనసాగించండి"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "{providerLabel} తో కొనసాగించండి"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "కాపీ అయింది"
@@ -836,6 +852,10 @@ msgstr "కాపీ అయింది"
 msgid "Copied to clipboard"
 msgstr "క్లిప్‌బోర్డ్‌కి కాపీ చేయబడింది"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "కాపీ చేయండి"
@@ -1126,6 +1146,10 @@ msgstr "అవరోహణ"
 msgid "Description"
 msgstr "వివరణ"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "వివరాలు"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "వివరాల ప్యానెల్"
@@ -1275,10 +1299,16 @@ msgstr "ఇమెయిల్ కోడ్"
 msgid "Emails"
 msgstr "ఇమెయిల్‌లు"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "<0>{0}</0>తో మీ స్నేహాన్ని ముగించాలా? పరిచయం మీ చిరునామా పుస్తకంలో ఉంటుంది."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "ప్రారంభానికి ముందే ముగుస్తుంది"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "పరిచయాన్ని జోడించడంలో విఫ�
 msgid "Failed to add member"
 msgstr "సభ్యుని జోడించడంలో విఫలమైంది"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "ఆహ్వానాన్ని రద్దు చేయడంలో విఫలమైంది"
@@ -1466,6 +1497,7 @@ msgstr "తరలించడంలో విఫలమైంది"
 msgid "Failed to post comment"
 msgstr "వ్యాఖ్యను పోస్ట్ చేయడంలో విఫలమైంది"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "స్నేహితుని తీసివేయడంలో విఫలమైంది"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "ప్రాంప్ట్‌ను సేవ్ చేయడంలో విఫలమైంది"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "ఆహ్వానం పంపడంలో విఫలమైంది"
@@ -1539,10 +1572,6 @@ msgstr "పర్యవేక్షణ నవీకరించడంలో వ�
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "జోడింపును అప్‌లోడ్ చేయడంలో విఫలమైంది"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "ఇంటిపేరు"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "ఫ్లాగ్‌లు"
 msgid "Flat"
 msgstr "చదునైనది"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "మొదటి పేరు"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "శుక్రవారం"
@@ -1582,6 +1615,7 @@ msgstr "శుక్రవారం"
 msgid "Friend"
 msgstr "స్నేహితుడు"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "స్నేహితుడు తీసివేయబడ్డాడు"
@@ -1602,10 +1636,6 @@ msgstr "నుండి"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "థీమ్ నుండి"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "మొదటి పేరు"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "చెల్లని తేదీ"
 msgid "Invitation accepted"
 msgstr "ఆహ్వానం అంగీకరించబడింది"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "ఆహ్వానం రద్దు చేయబడింది"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "ఆహ్వానం తిరస్కరించబడింది"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "ఆహ్వానం పంపబడింది"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "ఆహ్వాన సెట్టింగ్‌లు"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "ఆహ్వానించబడింది"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "మొబైల్"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Mochi స్నేహితుడు"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi వెబ్"
@@ -1951,6 +1988,10 @@ msgstr "మోడరేషన్"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "సోమవారం"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "నెల"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "తరలించబడింది"
 msgid "Moved {field}"
 msgstr "{field} తరలించబడింది"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "{0}కి తరలిస్తోంది"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "కొత్త ఆహ్వానాలు ఇక్కడ కనిప
 msgid "Next image"
 msgstr "తదుపరి చిత్రం"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "తదుపరి నెల"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "తదుపరి సంవత్సరం"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "పెండింగ్"
 msgid "People"
 msgstr "పీపుల్"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "ఫోన్‌లు"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "స్నేహ ఆహ్వానం పంపే ముందు {0} �
 msgid "Previous image"
 msgstr "మునుపటి చిత్రం"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "మునుపటి నెల"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "మునుపటి సంవత్సరం"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "సభ్యుడిని తొలగించండి"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "ఫోన్‌ను తీసివేయండి"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "స్నేహితుడిని తీసివేస్తోంది..."
@@ -2582,7 +2630,7 @@ msgstr "చిరునామా పుస్తకం పేరు మారు
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "పునరావృతమవుతుంది"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "సందేశాన్ని పంపండి"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "ఆహ్వానాన్ని పంపుతోంది..."
@@ -2983,6 +3032,10 @@ msgstr "చందా చేరండి"
 msgid "Sunday"
 msgstr "ఆదివారం"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "ఇంటిపేరు"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "వీక్షణ 1-9 కి మారండి"
@@ -3005,6 +3058,10 @@ msgstr "ట్యాగ్ 50 అక్షరాలు లేదా తక్క
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "ట్యాగ్‌లు"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "ఫోన్‌లు"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "అందుబాటులో లేదు"
 msgid "Unexpected API error"
 msgstr "ఊహించని API లోపం"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "బుధవారం"
 msgctxt "contact type"
 msgid "Work"
 msgstr "కార్యాలయం"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "సంవత్సరం"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

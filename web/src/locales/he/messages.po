@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#דק} other {#דק}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#שב} other {#שב}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, {from} עד {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "שם {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "{from} עד {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, one {+# נוסף} two {+# נוספים} many {+# נוספים} other {+# נוספים}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "הוסף חבר"
 msgid "Add option"
 msgstr "הוסף אפשרות"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "הוספת טלפון"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "הוסיפו מישהו כדי להתחיל"
@@ -273,6 +271,10 @@ msgstr "הוסיפו מישהו כדי להתחיל"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "הוסף תגית..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "הוספת טלפון"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "שם פנקס הכתובות שונה"
 msgid "Address book URL"
 msgstr "כתובת URL של פנקס הכתובות"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "כתובות"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "כל אנשי הקשר"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "כל היום"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "האם אתה בטוח שברצונך לפרוש? {opponentName} ינצ�
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "סדר עולה"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "בים"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "אייקון דפדפן"
 msgid "Browser notifications"
 msgstr "התראות דפדפן"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "שרת יומנים"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "הרשאת המצלמה נדחתה"
@@ -595,6 +602,7 @@ msgstr "בטל תשובה"
 msgid "Cancelled"
 msgstr "בוטל"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "מבטל את ההזמנה..."
@@ -632,7 +640,7 @@ msgstr "{field} שונה"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "מופע ששונה"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "תיבת סימון"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "רשימת משימות"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "בחירת תאריך"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "הגדר את הגדרות התצוגה"
 msgid "Confirm"
 msgstr "אישור"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "חיבור מכשיר"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "חיבור מכשיר נוסף"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "חיבור מכשיר"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "המשך"
 msgid "Continue with {label}"
 msgstr "המשך עם {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "המשך עם {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "הועתק"
@@ -836,6 +852,10 @@ msgstr "הועתק"
 msgid "Copied to clipboard"
 msgstr "הועתק ללוח"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "העתק"
@@ -1126,6 +1146,10 @@ msgstr "סדר יורד"
 msgid "Description"
 msgstr "תיאור"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "פרטים"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "פאנל פרטים"
@@ -1275,10 +1299,16 @@ msgstr "קוד אימייל"
 msgid "Emails"
 msgstr "כתובות אימייל"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "לסיים את החברות עם <0>{0}</0>? איש הקשר יישאר בפנקס הכתובות שלכם."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "מסתיים לפני שהתחיל"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "הוספת איש הקשר נכשלה"
 msgid "Failed to add member"
 msgstr "הוספת חבר נכשלה"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "ביטול ההזמנה נכשל"
@@ -1466,6 +1497,7 @@ msgstr "ההעברה נכשלה"
 msgid "Failed to post comment"
 msgstr "פרסום התגובה נכשל"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "הסרת החבר נכשלה"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "שמירת ה-prompt נכשלה"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "שליחת ההזמנה נכשלה"
@@ -1539,10 +1572,6 @@ msgstr "עדכון המעקב נכשל"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "העלאת הקובץ המצורף נכשלה"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "שם משפחה"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "דגלים"
 msgid "Flat"
 msgstr "שטוח"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "שם פרטי"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "שישי"
@@ -1582,6 +1615,7 @@ msgstr "שישי"
 msgid "Friend"
 msgstr "חבר"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "החבר הוסר"
@@ -1602,10 +1636,6 @@ msgstr "מאת"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "מערכת נושא"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "שם פרטי"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "תאריך לא תקין"
 msgid "Invitation accepted"
 msgstr "ההזמנה התקבלה"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "ההזמנה בוטלה"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "ההזמנה נדחתה"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "ההזמנה נשלחה"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "הגדרות הזמנה"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "הוזמן"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "נייד"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "חבר ב-Mochi"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi ברשת"
@@ -1951,6 +1988,10 @@ msgstr "פיקוח"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "יום שני"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "חודש"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "הועבר"
 msgid "Moved {field}"
 msgstr "{field} הועבר"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "מעביר אל {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "הזמנות חדשות יופיעו כאן"
 msgid "Next image"
 msgstr "התמונה הבאה"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "החודש הבא"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "השנה הבאה"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "ממתין"
 msgid "People"
 msgstr "אנשים"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "טלפונים"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "תצוגה מקדימה של הפרופיל של {0} לפני שליחת
 msgid "Previous image"
 msgstr "התמונה הקודמת"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "החודש הקודם"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "השנה הקודמת"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "הסר חבר"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "הסרת טלפון"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "מסיר חבר..."
@@ -2582,7 +2630,7 @@ msgstr "משנה שם פנקס כתובות..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "חוזר"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "שלח הודעה"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "שולח הזמנה..."
@@ -2983,6 +3032,10 @@ msgstr "הירשם"
 msgid "Sunday"
 msgstr "יום ראשון"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "שם משפחה"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "עבור לתצוגה 1-9"
@@ -3005,6 +3058,10 @@ msgstr "התג חייב להיות עד 50 תווים"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "תגיות"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "טלפונים"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "לא זמין"
 msgid "Unexpected API error"
 msgstr "שגיאת API בלתי צפויה"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "יום רביעי"
 msgctxt "contact type"
 msgid "Work"
 msgstr "עבודה"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "שנה"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

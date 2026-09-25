@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#xul} other {#xul}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#hef} other {#hef}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, ji {from} heta {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Navê {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "ji {from} heta {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, one {+# din} other {+# din}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "Endam zêde bike"
 msgid "Add option"
 msgstr "Vebijêrk zêde bike"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "Telefon zêde bike"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "Ji bo destpêkirinê kesekî zêde bike"
@@ -273,6 +271,10 @@ msgstr "Ji bo destpêkirinê kesekî zêde bike"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Etîket zêde bike..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "Telefon zêde bike"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "Navê pirtûka navnîşanan hate guhertin"
 msgid "Address book URL"
 msgstr "URLa pirtûka navnîşanan"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "Navnîşan"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "Hemû têkilî"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "Tevahiya rojê"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "Tu bawer î ku dixwazî teslîm bibî? {opponentName} dê di lîstikê d
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Hilkişandî"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Li deryayê"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "Îkona geroka"
 msgid "Browser notifications"
 msgstr "Agahdariyên geroka"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Servera salnameyê"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Destûra kamerayê hat redkirin"
@@ -595,6 +602,7 @@ msgstr "Bersivê betal bike"
 msgid "Cancelled"
 msgstr "Hat betalkirin"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Vexwendin tê betalkirin..."
@@ -632,7 +640,7 @@ msgstr "{field} hate guhertin"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "Cara guhertî"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "Qutiya kontrol"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "Lîsteya kontrolê"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Dîrokekê hilbijêre"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "Mîhengên dîtinê biguherîne"
 msgid "Confirm"
 msgstr "Piştrast bike"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Cîhazekê girê bide"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Cîhazeke din girê bide"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "Cîhazekê girê bide"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "Berdewam bike"
 msgid "Continue with {label}"
 msgstr "Bi {label} berdewam be"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Bi {providerLabel} bidomîne"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Hat kopîkirin"
@@ -836,6 +852,10 @@ msgstr "Hat kopîkirin"
 msgid "Copied to clipboard"
 msgstr "Hat kopîkirin li clipboard"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopî bike"
@@ -1126,6 +1146,10 @@ msgstr "Daketî"
 msgid "Description"
 msgstr "Şirove"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "Hûragahî"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "Panela hûragahiyan"
@@ -1275,10 +1299,16 @@ msgstr "Koda e-nameyê"
 msgid "Emails"
 msgstr "E-name"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Hevaltiya xwe bi <0>{0}</0> re biqedînî? Têkilî di pirtûka navnîşanan a te de dimîne."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Berî ku dest pê bike diqede"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "Zêdekirina têkiliyê neserkeftî bû"
 msgid "Failed to add member"
 msgstr "Zêdekirina endamê neserkeftî bû"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Betalkirina vexwendinê neserkeftî bû"
@@ -1466,6 +1497,7 @@ msgstr "Veguhastin bi ser neket"
 msgid "Failed to post comment"
 msgstr "Şandina şîroveyê neserkeftî bû"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Rakirina hevalî neserkeftî bû"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "Tomarkirina prompt neserkeftî bû"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "Şandina vexwendinê neserkeftî bû"
@@ -1539,10 +1572,6 @@ msgstr "Nûvekirina şopandinê bi ser neket"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "Barkirina pêvekê neserkeftî bû"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "Paşnav"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "Ala"
 msgid "Flat"
 msgstr "Tasî"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "Nav"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "Înî"
@@ -1582,6 +1615,7 @@ msgstr "Înî"
 msgid "Friend"
 msgstr "Heval"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Heval hat rakirin"
@@ -1602,10 +1636,6 @@ msgstr "Ji"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Ji temayê"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "Nav"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "Tarîxa nederbasdar"
 msgid "Invitation accepted"
 msgstr "Vexwendin hat qebûlkirin"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Vexwendin hat betalkirin"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "Vexwendin hat redkirin"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Vexwendin hat şandin"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "Mîhengên vexwendinê"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "Hate vexwendin"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "Mobîl"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Hevalê Mochi"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi web"
@@ -1951,6 +1988,10 @@ msgstr "Moderasyon"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "Duşem"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Meh"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "Hate guhastin"
 msgid "Moved {field}"
 msgstr "{field} hate guhastin"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "Tê veguhastin bo {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "Vexwendinên nû dê li vir xuya bibin"
 msgid "Next image"
 msgstr "Wêneya pêştir"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "Meha bê"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Sala bê"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "Li bendê"
 msgid "People"
 msgstr "Kes"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "Telefon"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "Berî şandina vexwendina hevaltiyê profîla {0} bibîne."
 msgid "Previous image"
 msgstr "Wêneya pêştir"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "Meha borî"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Sala borî"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "Endamê rake"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "Telefonê rake"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Heval tê rakirin..."
@@ -2582,7 +2630,7 @@ msgstr "Navê pirtûka navnîşanan tê guhertin..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "Dubare dibe"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "Peyamê bişîne"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Vexwendin tê şandin..."
@@ -2983,6 +3032,10 @@ msgstr "Abone bibe"
 msgid "Sunday"
 msgstr "Yekşem"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "Paşnav"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "Veguherîne dîtina 1-9"
@@ -3005,6 +3058,10 @@ msgstr "Etîket divê 50 tîp an kêmtir be"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Tag"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "Telefon"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "Ne berdest"
 msgid "Unexpected API error"
 msgstr "Çewtiya API ya nediyar"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "Çarşem"
 msgctxt "contact type"
 msgid "Work"
 msgstr "Kar"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Sal"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#λ} other {#λ}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#εβδ} other {#εβδ}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, {from} έως {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Όνομα {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "{from} έως {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, one {+# ακόμη} other {+# ακόμη}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "Προσθήκη μέλους"
 msgid "Add option"
 msgstr "Προσθήκη επιλογής"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "Προσθήκη τηλεφώνου"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "Προσθέστε κάποιον για να ξεκινήσετε"
@@ -273,6 +271,10 @@ msgstr "Προσθέστε κάποιον για να ξεκινήσετε"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Προσθήκη ετικέτας..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "Προσθήκη τηλεφώνου"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "Το βιβλίο διευθύνσεων μετονομάστηκε"
 msgid "Address book URL"
 msgstr "URL βιβλίου διευθύνσεων"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "Διευθύνσεις"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "Όλες οι επαφές"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "Ολοήμερο"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "Είστε σίγουροι ότι θέλετε να παραιτηθε�
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "Αύξουσα"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "Στη θάλασσα"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "Εικονίδιο προγράμματος περιήγησης"
 msgid "Browser notifications"
 msgstr "Ειδοποιήσεις προγράμματος περιήγησης"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Διακομιστής ημερολογίου"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Η άδεια κάμερας απορρίφθηκε"
@@ -595,6 +602,7 @@ msgstr "Ακύρωση απάντησης"
 msgid "Cancelled"
 msgstr "Ακυρώθηκε"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Ακύρωση πρόσκλησης..."
@@ -632,7 +640,7 @@ msgstr "Άλλαξε {field}"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "Τροποποιημένη επανάληψη"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "Πλαίσιο ελέγχου"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "Λίστα ελέγχου"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Επιλέξτε ημερομηνία"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "Διαμόρφωση ρυθμίσεων προβολής"
 msgid "Confirm"
 msgstr "Επιβεβαίωση"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Σύνδεση συσκευής"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Σύνδεση άλλης συσκευής"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "Σύνδεση συσκευής"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "Συνέχεια"
 msgid "Continue with {label}"
 msgstr "Συνέχεια με {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Συνέχεια με {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Αντιγράφηκε"
@@ -836,6 +852,10 @@ msgstr "Αντιγράφηκε"
 msgid "Copied to clipboard"
 msgstr "Αντιγράφηκε στο πρόχειρο"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Αντιγραφή"
@@ -1126,6 +1146,10 @@ msgstr "Φθίνουσα"
 msgid "Description"
 msgstr "Περιγραφή"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "Λεπτομέρειες"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "Πίνακας λεπτομερειών"
@@ -1275,10 +1299,16 @@ msgstr "Κωδικός email"
 msgid "Emails"
 msgstr "Διευθύνσεις email"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Τερματισμός της φιλίας με <0>{0}</0>; Η επαφή παραμένει στο βιβλίο διευθύνσεών σας."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Λήγει πριν αρχίσει"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "Αποτυχία προσθήκης επαφής"
 msgid "Failed to add member"
 msgstr "Αποτυχία προσθήκης μέλους"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Αποτυχία ακύρωσης πρόσκλησης"
@@ -1466,6 +1497,7 @@ msgstr "Αποτυχία μετακίνησης"
 msgid "Failed to post comment"
 msgstr "Αποτυχία ανάρτησης σχολίου"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Αποτυχία αφαίρεσης φίλου"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "Αποτυχία αποθήκευσης προτροπής"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "Αποτυχία αποστολής πρόσκλησης"
@@ -1539,10 +1572,6 @@ msgstr "Αποτυχία ενημέρωσης παρακολούθησης"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "Αποτυχία μεταφόρτωσης συνημμένου"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "Επώνυμο"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "Σημαίες"
 msgid "Flat"
 msgstr "Επίπεδη"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "Όνομα"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "Παρασκευή"
@@ -1582,6 +1615,7 @@ msgstr "Παρασκευή"
 msgid "Friend"
 msgstr "Φίλος"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Ο φίλος αφαιρέθηκε"
@@ -1602,10 +1636,6 @@ msgstr "Από"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "Από το θέμα"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "Όνομα"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "Μη έγκυρη ημερομηνία"
 msgid "Invitation accepted"
 msgstr "Η πρόσκληση έγινε αποδεκτή"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Η πρόσκληση ακυρώθηκε"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "Η πρόσκληση απορρίφθηκε"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Η πρόσκληση στάλθηκε"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "Ρυθμίσεις προσκλήσεων"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "Προσκλήθηκε"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "Κινητό"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Φίλος στο Mochi"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi web"
@@ -1951,6 +1988,10 @@ msgstr "Συντονισμός"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "Δευτέρα"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Μήνας"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "Μετακινήθηκε"
 msgid "Moved {field}"
 msgstr "Μετακινήθηκε {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "Μετακίνηση στις {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "Νέες προσκλήσεις θα εμφανίζονται εδώ"
 msgid "Next image"
 msgstr "Επόμενη εικόνα"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "Επόμενος μήνας"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Επόμενο έτος"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "Σε εκκρεμότητα"
 msgid "People"
 msgstr "Άτομα"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "Τηλέφωνα"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "Προεπισκόπηση του προφίλ {0} πριν από τη�
 msgid "Previous image"
 msgstr "Προηγούμενη εικόνα"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "Προηγούμενος μήνας"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Προηγούμενο έτος"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "Αφαίρεση μέλους"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "Αφαίρεση τηλεφώνου"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Αφαίρεση φίλου..."
@@ -2582,7 +2630,7 @@ msgstr "Μετονομασία βιβλίου διευθύνσεων..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "Επαναλαμβάνεται"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "Αποστολή μηνύματος"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Αποστολή πρόσκλησης..."
@@ -2983,6 +3032,10 @@ msgstr "Εγγραφή"
 msgid "Sunday"
 msgstr "Κυριακή"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "Επώνυμο"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "Εναλλαγή σε προβολή 1-9"
@@ -3005,6 +3058,10 @@ msgstr "Η ετικέτα πρέπει να έχει έως 50 χαρακτήρ�
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Ετικέτες"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "Τηλέφωνα"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "Μη διαθέσιμο"
 msgid "Unexpected API error"
 msgstr "Απροσδόκητο σφάλμα API"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "Τετάρτη"
 msgctxt "contact type"
 msgid "Work"
 msgstr "Εργασία"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Έτος"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

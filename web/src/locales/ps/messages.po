@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#دق} other {#دق}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#اون} other {#اون}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}، {from} تر {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "د {entityLabel} نوم"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "{from} تر {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, one {+# نور} other {+# نور}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "غړی اضافه کړئ"
 msgid "Add option"
 msgstr "اختیار اضافه کړئ"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "ټیلیفون اضافه کړئ"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "د پیل کولو لپاره څوک اضافه کړئ"
@@ -273,6 +271,10 @@ msgstr "د پیل کولو لپاره څوک اضافه کړئ"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ټاګ اضافه کړئ..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "ټیلیفون اضافه کړئ"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "د پتو کتابچې نوم بدل شو"
 msgid "Address book URL"
 msgstr "د پتو کتابچې URL"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "پتې"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "ټولې اړیکې"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "ټوله ورځ"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "ایا تاسو ډاډه یاست چې غواړئ استعفا ورکړ�
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "د کم څخه ډېر"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "په سمندر کې"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "د براوزر آیکون"
 msgid "Browser notifications"
 msgstr "د براوزر خبرتیاوې"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "د کليز سرور"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "د کیمرې اجازه رد شوه"
@@ -595,6 +602,7 @@ msgstr "ځواب لغوه کړه"
 msgid "Cancelled"
 msgstr "لغوه شو"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "بلنه لغوه کیږي..."
@@ -632,7 +640,7 @@ msgstr "{field} بدل شو"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "بدله شوې پیښه"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "چک بکس"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "چک لیست"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "نېټه وټاکئ"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "د لید ترتیبات تنظیم کړئ"
 msgid "Confirm"
 msgstr "تایید کړئ"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "وسیله وصل کړئ"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "بله وسیله وصل کړئ"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "وسیله وصل کړئ"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "دوام ورکړئ"
 msgid "Continue with {label}"
 msgstr "د {label} سره دوام ورکړئ"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "د {providerLabel} سره دوام ورکړئ"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "کاپي شو"
@@ -836,6 +852,10 @@ msgstr "کاپي شو"
 msgid "Copied to clipboard"
 msgstr "په کلیپ بورډ کاپي شو"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "کاپي کړئ"
@@ -1126,6 +1146,10 @@ msgstr "د ډېر څخه کم"
 msgid "Description"
 msgstr "تفصیل"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "تفصیلات"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "د تفصیلاتو پینل"
@@ -1275,10 +1299,16 @@ msgstr "د بریښنالیک کوډ"
 msgid "Emails"
 msgstr "بریښنالیکونه"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "له <0>{0}</0> سره خپله ملګرتیا پای ته ورسوئ؟ اړیکه ستاسو د پتو په کتابچه کې پاتې کیږي."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "له پیل مخکې پای ته رسېږي"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "د اړیکې اضافه کول پاتې راغلل"
 msgid "Failed to add member"
 msgstr "د غړي اضافه کولو پاتې راغلل"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "د بلنې لغوه کولو پاتې راغلل"
@@ -1466,6 +1497,7 @@ msgstr "لیږدول ناکام شول"
 msgid "Failed to post comment"
 msgstr "د تبصرې پوسټ کولو پاتې راغلل"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "د ملګري لیرې کولو پاتې راغلل"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "د prompt د خوندي کولو پاتې راغلل"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "د بلنې لېږل پاتې راغلل"
@@ -1539,10 +1572,6 @@ msgstr "د څارنې تازه کول ناکام شول"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "د ضمیمې اپلوډ پاتې راغلل"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "کورنی نوم"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "بیرغونه"
 msgid "Flat"
 msgstr "هوار"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "نوم"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "جمعه"
@@ -1582,6 +1615,7 @@ msgstr "جمعه"
 msgid "Friend"
 msgstr "ملګری"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "ملګری لرې شو"
@@ -1602,10 +1636,6 @@ msgstr "له"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "د ښکارندوی څخه"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "نوم"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "ناسمه نېټه"
 msgid "Invitation accepted"
 msgstr "بلنه ومنل شوه"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "بلنه لغوه شوه"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "بلنه رد شوه"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "بلنه ولیږل شوه"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "د بلنې تنظیمات"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "بلنه ورکړل شوه"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "موبایل"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "د Mochi ملګری"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi وېب"
@@ -1951,6 +1988,10 @@ msgstr "څارنه"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "دوشنبه"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "میاشت"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "لېږدول شو"
 msgid "Moved {field}"
 msgstr "{field} لېږدول شو"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "{0} ته لېږدول"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "نوې بلنې به دلته ښکاره شي"
 msgid "Next image"
 msgstr "بله انځور"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "راتلونکې میاشت"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "راتلونکی کال"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "په تمه"
 msgid "People"
 msgstr "خلک"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "ټیلیفونونه"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "د ملګرتیا بلنه لېږلو دمخه د {0} پروفایل و�
 msgid "Previous image"
 msgstr "تېر انځور"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "تېره میاشت"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "تېر کال"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "غړی لرې کړئ"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "ټیلیفون لرې کړئ"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "ملګری لرې کیږي..."
@@ -2582,7 +2630,7 @@ msgstr "د پتو د کتابچې نوم بدلیږي..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "تکراریږي"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "پیغام ولېږئ"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "بلنه لیږل کیږي..."
@@ -2983,6 +3032,10 @@ msgstr "ګډون وکړئ"
 msgid "Sunday"
 msgstr "یکشنبه"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "کورنی نوم"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "د 1-9 لیدلو ته بدل کړئ"
@@ -3005,6 +3058,10 @@ msgstr "ټګ باید ۵۰ توري یا لږ وي"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "ټاګونه"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "ټیلیفونونه"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "نه شته"
 msgid "Unexpected API error"
 msgstr "د API ناڅاپي تېروتنه"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "چهارشنبه"
 msgctxt "contact type"
 msgid "Work"
 msgstr "کار"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "کال"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

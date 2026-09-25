@@ -70,21 +70,23 @@ msgstr "{count, plural, one {#хв} other {#хв}}"
 msgid "{count, plural, one {#w} other {#w}}"
 msgstr "{count, plural, one {#тиж} other {#тиж}}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{day}, {from} to {to}"
-msgstr ""
+msgstr "{day}, з {from} до {to}"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "{entityLabel} name"
 msgstr "Назва {entityLabel}"
 
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
-msgstr ""
+msgstr "з {from} до {to}"
 
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr ""
+msgstr "{hidden, plural, one {ще +#} few {ще +#} many {ще +#} other {ще +#}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -262,10 +264,6 @@ msgstr "Додати учасника"
 msgid "Add option"
 msgstr "Додати варіант"
 
-#: src/features/contacts/editor.tsx
-msgid "Add phone"
-msgstr "Додати телефон"
-
 #: src/features/contacts/index.tsx
 msgid "Add someone to get started"
 msgstr "Додайте когось, щоб почати"
@@ -273,6 +271,10 @@ msgstr "Додайте когось, щоб почати"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Додати тег..."
+
+#: src/features/contacts/editor.tsx
+msgid "Add telephone"
+msgstr "Додати телефон"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Add to contacts"
@@ -333,10 +335,6 @@ msgstr "Адресну книгу перейменовано"
 msgid "Address book URL"
 msgstr "URL адресної книги"
 
-#: src/features/contacts/editor.tsx
-msgid "Addresses"
-msgstr "Адреси"
-
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "AI"
 msgstr "AI"
@@ -351,8 +349,9 @@ msgid "All contacts"
 msgstr "Усі контакти"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "All day"
-msgstr ""
+msgstr "Увесь день"
 
 #: src/features/invitations/index.tsx
 msgid "All invitations accepted"
@@ -441,6 +440,10 @@ msgstr "Ви впевнені, що хочете здатися? {opponentName} 
 #: ../../../lib/web/src/components/ui/sort-direction-button.tsx
 msgid "Ascending"
 msgstr "За зростанням"
+
+#: ../../../lib/web/src/components/timezone-select.tsx
+msgid "At sea"
+msgstr "У морі"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Attach comment files"
@@ -543,6 +546,10 @@ msgstr "Піктограма браузера"
 msgid "Browser notifications"
 msgstr "Сповіщення браузера"
 
+#: ../../../lib/web/src/features/accounts/types.ts
+msgid "Calendar server"
+msgstr "Сервер календарів"
+
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
 msgstr "Дозвіл на камеру відхилено"
@@ -595,6 +602,7 @@ msgstr "Скасувати відповідь"
 msgid "Cancelled"
 msgstr "Скасовано"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Скасування запрошення..."
@@ -632,7 +640,7 @@ msgstr "Змінено {field}"
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Changed occurrence"
-msgstr ""
+msgstr "Змінене повторення"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
@@ -641,6 +649,10 @@ msgstr "Прапорець"
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
 msgstr "Контрольний список"
+
+#: ../../../lib/web/src/components/ui/date-picker.tsx
+msgid "Choose a date"
+msgstr "Виберіть дату"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 msgid "Choose a game from the sidebar or start a new one."
@@ -765,14 +777,14 @@ msgstr "Налаштувати параметри подання"
 msgid "Confirm"
 msgstr "Підтвердити"
 
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect a device"
-msgstr "Підключити пристрій"
-
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connect another device"
 msgstr "Підключити ще один пристрій"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connect device"
+msgstr "Підключити пристрій"
 
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
@@ -827,6 +839,10 @@ msgstr "Продовжити"
 msgid "Continue with {label}"
 msgstr "Продовжити з {label}"
 
+#: ../../../lib/web/src/features/accounts/account-add.tsx
+msgid "Continue with {providerLabel}"
+msgstr "Продовжити з {providerLabel}"
+
 #: ../../../lib/web/src/lib/toast-utils.ts
 msgid "Copied"
 msgstr "Скопійовано"
@@ -836,6 +852,10 @@ msgstr "Скопійовано"
 msgid "Copied to clipboard"
 msgstr "Скопійовано в буфер обміну"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Копіювати"
@@ -1126,6 +1146,10 @@ msgstr "За спаданням"
 msgid "Description"
 msgstr "Опис"
 
+#: src/features/contacts/editor.tsx
+msgid "Details"
+msgstr "Деталі"
+
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
 msgstr "Панель деталей"
@@ -1275,10 +1299,16 @@ msgstr "Код електронної пошти"
 msgid "Emails"
 msgstr "Електронні адреси"
 
+#. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Припинити дружбу з <0>{0}</0>? Контакт залишиться у вашій адресній книзі."
+
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Ends before it starts"
+msgstr "Закінчується раніше, ніж починається"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Enter banner text (markdown supported)..."
@@ -1341,6 +1371,7 @@ msgstr "Не вдалося додати контакт"
 msgid "Failed to add member"
 msgstr "Не вдалося додати учасника"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Не вдалося скасувати запрошення"
@@ -1466,6 +1497,7 @@ msgstr "Не вдалося перемістити"
 msgid "Failed to post comment"
 msgstr "Не вдалося опублікувати коментар"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to remove friend"
 msgstr "Не вдалося видалити друга"
@@ -1516,6 +1548,7 @@ msgid "Failed to save prompt"
 msgstr "Не вдалося зберегти запит"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Failed to send invitation"
 msgstr "Не вдалося надіслати запрошення"
@@ -1539,10 +1572,6 @@ msgstr "Не вдалося оновити стеження"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 msgid "Failed to upload attachment"
 msgstr "Не вдалося завантажити вкладення"
-
-#: src/features/contacts/editor.tsx
-msgid "Family name"
-msgstr "Прізвище"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
@@ -1574,6 +1603,10 @@ msgstr "Прапорці"
 msgid "Flat"
 msgstr "Плаский"
 
+#: src/features/contacts/editor.tsx
+msgid "Forename"
+msgstr "Ім'я"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
 msgstr "П'ятниця"
@@ -1582,6 +1615,7 @@ msgstr "П'ятниця"
 msgid "Friend"
 msgstr "Друг"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Friend removed"
 msgstr "Друга видалено"
@@ -1602,10 +1636,6 @@ msgstr "Від"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "From theme"
 msgstr "З теми"
-
-#: src/features/contacts/editor.tsx
-msgid "Given name"
-msgstr "Ім'я"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1736,6 +1766,7 @@ msgstr "Недійсна дата"
 msgid "Invitation accepted"
 msgstr "Запрошення прийнято"
 
+#: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Запрошення скасовано"
@@ -1745,6 +1776,7 @@ msgid "Invitation declined"
 msgstr "Запрошення відхилено"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Invitation sent"
 msgstr "Запрошення надіслано"
@@ -1770,6 +1802,7 @@ msgid "Invite settings"
 msgstr "Налаштування запрошень"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 msgid "Invited"
 msgstr "Запрошено"
 
@@ -1940,6 +1973,10 @@ msgctxt "contact type"
 msgid "Mobile"
 msgstr "Мобільний"
 
+#: src/features/contacts/editor.tsx
+msgid "Mochi friend"
+msgstr "Друг у Mochi"
+
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
 msgstr "Mochi веб"
@@ -1951,6 +1988,10 @@ msgstr "Модерація"
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Monday"
 msgstr "Понеділок"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Month"
+msgstr "Місяць"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
@@ -1964,10 +2005,12 @@ msgstr "Переміщено"
 msgid "Moved {field}"
 msgstr "Переміщено {field}"
 
-#. placeholder {0}: dragging.day
+#. placeholder {0}: dayName(current.day)
+#. placeholder {0}: dayName(dragging.day)
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Moving to {0}"
-msgstr ""
+msgstr "Переміщення на {0}"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -2032,9 +2075,13 @@ msgstr "Нові запрошення з'являться тут"
 msgid "Next image"
 msgstr "Наступне зображення"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Next month"
-msgstr ""
+msgstr "Наступний місяць"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Next year"
+msgstr "Наступний рік"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
@@ -2316,10 +2363,6 @@ msgstr "В очікуванні"
 msgid "People"
 msgstr "Люди"
 
-#: src/features/contacts/editor.tsx
-msgid "Phones"
-msgstr "Телефони"
-
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2360,9 +2403,13 @@ msgstr "Перегляньте профіль {0}, перш ніж надсил�
 msgid "Previous image"
 msgstr "Попереднє зображення"
 
-#: ../../../lib/web/src/components/calendar/mini-month.tsx
+#: ../../../lib/web/src/components/calendar/date-header.tsx
 msgid "Previous month"
-msgstr ""
+msgstr "Попередній місяць"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Previous year"
+msgstr "Попередній рік"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2546,9 +2593,10 @@ msgid "Remove member"
 msgstr "Видалити учасника"
 
 #: src/features/contacts/editor.tsx
-msgid "Remove phone"
+msgid "Remove telephone"
 msgstr "Видалити телефон"
 
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Removing friend..."
 msgstr "Видалення друга..."
@@ -2582,7 +2630,7 @@ msgstr "Перейменування адресної книги..."
 #: ../../../lib/web/src/components/calendar/month-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 msgid "Repeats"
-msgstr ""
+msgstr "Повторюється"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
@@ -2832,6 +2880,7 @@ msgid "Send message"
 msgstr "Надіслати повідомлення"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Sending invitation..."
 msgstr "Надсилання запрошення..."
@@ -2983,6 +3032,10 @@ msgstr "Підписатися"
 msgid "Sunday"
 msgstr "Неділя"
 
+#: src/features/contacts/editor.tsx
+msgid "Surname"
+msgstr "Прізвище"
+
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "Перейти до вигляду 1-9"
@@ -3005,6 +3058,10 @@ msgstr "Тег має бути не довшим за 50 символів"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Теги"
+
+#: src/features/contacts/editor.tsx
+msgid "Telephones"
+msgstr "Телефони"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3189,6 +3246,8 @@ msgstr "Недоступно"
 msgid "Unexpected API error"
 msgstr "Неочікувана помилка API"
 
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
@@ -3345,6 +3404,10 @@ msgstr "Середа"
 msgctxt "contact type"
 msgid "Work"
 msgstr "Робочий"
+
+#: ../../../lib/web/src/components/calendar/date-header.tsx
+msgid "Year"
+msgstr "Рік"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "You do not have access to this section."

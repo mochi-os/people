@@ -301,7 +301,7 @@ export function Contacts({
                           onClick={() => startChat(contact)}
                         >
                           <MessageSquare className='h-4 w-4' />
-                          <Trans>Message</Trans>
+                          <Trans context='verb'>Message</Trans>
                         </Button>
                       ) : null}
                       <Button

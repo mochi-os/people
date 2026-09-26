@@ -239,7 +239,7 @@ export function Contacts({
                 </SelectTrigger>
                 <SelectContent align='end'>
                   <SelectItem value='name'>
-                    <Trans>Name</Trans>
+                    <Trans context='person'>Name</Trans>
                   </SelectItem>
                   <SelectItem value='recent'>
                     <Trans>Recently added</Trans>

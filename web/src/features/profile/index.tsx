@@ -380,10 +380,12 @@ function ProfileEditor({
                     loading={nameMutation.isPending}
                     icon={<Check className='size-4' />}
                     disabled={!nameDirty}
-                    aria-label={t`Save name`}
+                    aria-label={t({ message: 'Save name', context: 'person' })}
                   ></Button>
                 </TooltipTrigger>
-                <TooltipContent>{t`Save name`}</TooltipContent>
+                <TooltipContent>
+                  {t({ message: 'Save name', context: 'person' })}
+                </TooltipContent>
               </Tooltip>
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -412,12 +414,14 @@ function ProfileEditor({
                     size='sm'
                     className='size-7 shrink-0 p-0'
                     onClick={startNameEdit}
-                    aria-label={t`Edit name`}
+                    aria-label={t({ message: 'Edit name', context: 'person' })}
                   >
                     <Pencil className='size-3.5' />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent>{t`Edit name`}</TooltipContent>
+                <TooltipContent>
+                  {t({ message: 'Edit name', context: 'person' })}
+                </TooltipContent>
               </Tooltip>
             </div>
           )}

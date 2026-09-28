@@ -246,7 +246,7 @@ export function AddContactDialog({
         {preview ? (
           <PersonPreview info={preview.info} />
         ) : (
-          <div className='space-y-4 px-4 pb-4 sm:px-0 sm:pb-0'>
+          <div className='space-y-4'>
             <Button
               variant='outline'
               className='w-full justify-start'
@@ -568,7 +568,7 @@ function PersonPreview({ info }: { info: PersonInformation }) {
 
   return (
     <ScrollArea className='max-h-[60vh] sm:max-h-[28rem]'>
-      <div className='space-y-3 px-4 pb-4 sm:px-0 sm:pb-0'>
+      <div className='space-y-3'>
         {bannerUrl && <EntityBanner src={bannerUrl} className='rounded-lg' />}
         <div className='flex items-center gap-3'>
           <EntityAvatar

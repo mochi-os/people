@@ -26,6 +26,11 @@ msgstr "(編集済み)"
 msgid "(expand)"
 msgstr "(展開)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "（タイトルなし）"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(あなた)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel} の名前"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from}～{to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, other {他 +# 件}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "項目を追加"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "連絡先を追加"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "デバイスを追加"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -578,13 +584,18 @@ msgstr "カメラを利用できません"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -603,6 +614,11 @@ msgstr "返信をキャンセル"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "キャンセル済み"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "キャンセル済み"
 
@@ -782,18 +798,14 @@ msgstr "ビューの設定"
 msgid "Confirm"
 msgstr "確認"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "別のデバイスを接続"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "デバイスを接続"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "接続済み"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "接続中のデバイス"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "コピーしました"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "クリップボードにコピーしました"
 
@@ -864,10 +875,6 @@ msgstr "クリップボードにコピーしました"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "コピー"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label}をコピー"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1081,7 +1088,7 @@ msgstr "フィールドを削除"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Delete game?"
-msgstr "ゲームを削除しますか?"
+msgstr "ゲームを削除しますか？"
 
 #: src/features/groups/group-detail.tsx
 msgid "Delete group"
@@ -1271,6 +1278,7 @@ msgstr "グループを編集"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "名前を編集"
 
@@ -1906,10 +1914,6 @@ msgstr "ログアウトしています…"
 msgid "Manage categories"
 msgstr "カテゴリを管理"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "デバイスを管理"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "手動"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "メニュー"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "メッセージ"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "メッセージを送信"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,9 +2031,13 @@ msgstr "{0} に移動しています"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "名前"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "名前"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "なし"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "新規"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "新着"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,11 +2264,15 @@ msgstr "通知: {0}"
 msgid "Notify me"
 msgstr "通知する"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "数値"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "番号"
 
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
@@ -2531,6 +2551,11 @@ msgstr "関連度 {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "関連度 {relevance}、関心度 {weight}"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "リマインダー"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
@@ -2723,6 +2748,7 @@ msgstr "保存"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "名前を保存"
 
@@ -3018,7 +3044,7 @@ msgstr "番地"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "件名"
+msgstr "対象"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "姓"
 msgid "Switch to view 1-9"
 msgstr "ビュー 1〜9 に切り替え"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "システム"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "システム"
 
@@ -3068,6 +3098,11 @@ msgstr "タグ"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "電話番号"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "未確定"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx

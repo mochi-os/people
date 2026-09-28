@@ -1314,7 +1314,9 @@ def action_token_list(a):
 	# Every device credential the user holds, whichever app minted it: one
 	# password serves contacts and calendars, so both apps list the same
 	# devices.
-	return {"data": {"tokens": mochi.token.list("dav") or []}}
+	# The username rides along so the connect dialog can show it before any
+	# device is created.
+	return {"data": {"tokens": mochi.token.list("dav") or [], "username": a.user.username}}
 
 def action_token_delete(a):
 	hash = a.input("hash", "").strip()

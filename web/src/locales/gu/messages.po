@@ -26,6 +26,11 @@ msgstr "(સંપાદિત)"
 msgid "(expand)"
 msgstr "(વિસ્તાર કરો)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(શીર્ષક નથી)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(તમે)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel} નામ"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} થી {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# વધુ} other {+# વધુ}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "ચેકલિસ્ટ આઇટમ ઉમેરો"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "સંપર્ક ઉમેરો"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "ઉપકરણ ઉમેરો"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -464,7 +470,7 @@ msgstr "પ્રમાણિત વપરાશકર્તાઓ"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Authenticator code"
-msgstr "Authenticator કોડ"
+msgstr "ઑથેન્ટિકેટર કોડ"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Available keyboard shortcuts"
@@ -578,13 +584,18 @@ msgstr "કૅમેરો ઉપલબ્ધ નથી"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "રદ કરો"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "રદ કરો"
 
@@ -605,6 +616,11 @@ msgstr "જવાબ રદ કરો"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Cancelled"
 msgstr "રદ કર્યું"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Cancelled"
+msgstr "રદ"
 
 #: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
@@ -782,18 +798,14 @@ msgstr "દૃશ્ય સેટિંગ્સ કૉન્ફિગર કર
 msgid "Confirm"
 msgstr "પુષ્ટિ કરો"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "બીજું ઉપકરણ કનેક્ટ કરો"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "ઉપકરણ કનેક્ટ કરો"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "જોડાયેલ"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "જોડાયેલાં ઉપકરણો"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "કૉપિ થયું"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "ક્લિપબોર્ડ પર કૉપિ કર્યું"
 
@@ -864,10 +875,6 @@ msgstr "ક્લિપબોર્ડ પર કૉપિ કર્યું"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "કૉપિ કરો"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} કૉપિ કરો"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1271,6 +1278,7 @@ msgstr "જૂથ સંપાદિત કરો"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "નામ એડિટ કરો"
 
@@ -1610,7 +1618,7 @@ msgstr "સપાટ"
 
 #: src/features/contacts/editor.tsx
 msgid "Forename"
-msgstr "નામ"
+msgstr "પ્રથમ નામ"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
@@ -1906,10 +1914,6 @@ msgstr "લૉગ આઉટ થઈ રહ્યું છે…"
 msgid "Manage categories"
 msgstr "શ્રેણીઓ મેનેજ કરો"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "ઉપકરણો મેનેજ કરો"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "મેન્યુઅલ"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "મેનૂ"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "સંદેશ"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "સંદેશ મોકલો"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,9 +2031,13 @@ msgstr "{0} પર ખસેડી રહ્યું છે"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "નામ"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "નામ"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "ક્યારેય નહીં"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "નવું"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "નવીનતમ"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,11 +2264,15 @@ msgstr "સૂચનાઓ: {0}"
 msgid "Notify me"
 msgstr "મને સૂચિત કરો"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "સંખ્યા"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "ક્રમાંક"
 
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
@@ -2531,6 +2551,11 @@ msgstr "સુસંગતતા {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "સુસંગતતા {relevance}, રુચિ {weight}"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "રિમાઇન્ડર"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
@@ -2723,6 +2748,7 @@ msgstr "સાચવો"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "નામ સાચવો"
 
@@ -2811,7 +2837,7 @@ msgstr "શોધી રહ્યું છે..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "પસંદ કરો"
+msgstr "પસંદગી"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -3018,7 +3044,7 @@ msgstr "શેરી"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "વિષય"
+msgstr "વપરાશકર્તા અથવા ગ્રુપ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "અટક"
 msgid "Switch to view 1-9"
 msgstr "દૃશ્ય 1-9 પર સ્વિચ કરો"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "સિસ્ટમ"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "સિસ્ટમ"
 
@@ -3068,6 +3098,11 @@ msgstr "ટૅગ્સ"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "ફોન નંબર"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "કામચલાઉ"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "ઘણી બધી વિનંતીઓ"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "ટોચ"
+msgstr "શ્રેષ્ઠ"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"

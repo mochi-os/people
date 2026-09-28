@@ -26,6 +26,11 @@ msgstr "(editat)"
 msgid "(expand)"
 msgstr "(extinde)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Fără titlu)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(tu)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "Numele {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "de la {from} la {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# în plus} few {+# în plus} other {+# în plus}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "Adaugă element în listă"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "Adaugă contact"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Adaugă un dispozitiv"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -578,13 +584,18 @@ msgstr "Camera nu este disponibilă"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "Anulează"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Anulează"
 
@@ -603,6 +614,11 @@ msgstr "Anulează răspunsul"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Anulat"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Anulat"
 
@@ -782,18 +798,14 @@ msgstr "Configurează setările vizualizării"
 msgid "Confirm"
 msgstr "Confirmă"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Conectează alt dispozitiv"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Conectează un dispozitiv"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Conectat"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Dispozitive conectate"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "Copiat"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Copiat în clipboard"
 
@@ -864,10 +875,6 @@ msgstr "Copiat în clipboard"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Copiază"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Copiază {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1271,6 +1278,7 @@ msgstr "Editează grupul"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "Editează numele"
 
@@ -1711,7 +1719,7 @@ msgstr "Acasă"
 #: src/features/contacts/editor.tsx
 msgctxt "contact type"
 msgid "Home"
-msgstr "Acasă"
+msgstr "Domiciliu"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
@@ -1906,10 +1914,6 @@ msgstr "Se deconectează…"
 msgid "Manage categories"
 msgstr "Gestionează categoriile"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Gestionează dispozitivele"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Manual"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "Meniu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Mesaj"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Trimite mesaj"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,9 +2031,13 @@ msgstr "Se mută în {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "Nume"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "Nume"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "Niciodată"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Nou"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Cele mai noi"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,9 +2264,13 @@ msgstr "Notificări: {0}"
 msgid "Notify me"
 msgstr "Notifică-mă"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Număr"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Număr"
 
@@ -2531,6 +2551,11 @@ msgstr "Relevanță {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Relevanță {relevance}, interes {weight}"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Memento"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
@@ -2723,6 +2748,7 @@ msgstr "Salvează"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "Salvează numele"
 
@@ -2811,7 +2837,7 @@ msgstr "Se caută..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Selectează"
+msgstr "Selecție"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -3018,7 +3044,7 @@ msgstr "Stradă"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Subiect"
+msgstr "Utilizator sau grup"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "Nume de familie"
 msgid "Switch to view 1-9"
 msgstr "Comută la vizualizarea 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Sistem"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Sistem"
 
@@ -3068,6 +3098,11 @@ msgstr "Etichete"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Telefoane"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Provizoriu"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "Prea multe solicitări"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Sus"
+msgstr "Cele mai bune"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"

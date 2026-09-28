@@ -26,6 +26,11 @@ msgstr "(խմբագրված)"
 msgid "(expand)"
 msgstr "(ընդարձակել)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Առանց վերնագրի)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(դուք)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel}-ի անունը"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from}-ից մինչև {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# ավելին} other {+# ավելին}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "Ավելացնել ստուգաթերթիկի կետ"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "Ավելացնել կոնտակտ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Ավելացնել սարք"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -388,7 +394,7 @@ msgstr "Անսպասելի սխալ առաջացավ"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Android push"
+msgstr "Android պուշ-ծանուցումներ"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
@@ -578,13 +584,18 @@ msgstr "Տեսախցիկը հասանելի չէ"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "Չեղարկել"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Չեղարկել"
 
@@ -603,6 +614,11 @@ msgstr "Չեղարկել պատասխանը"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Չեղարկված"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Չեղարկված"
 
@@ -782,18 +798,14 @@ msgstr "Կարգավորել տեսքի կարգավորումները"
 msgid "Confirm"
 msgstr "Հաստատել"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Միացնել ևս մեկ սարք"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Միացնել սարք"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Միացված"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Միացված սարքեր"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "Պատճենվեց"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Պատճենվեց սեղմատախտակին"
 
@@ -864,10 +875,6 @@ msgstr "Պատճենվեց սեղմատախտակին"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Պատճենել"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Պատճենել {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1271,6 +1278,7 @@ msgstr "Խմբագրել խումբը"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "Խմբագրել անունը"
 
@@ -1580,7 +1588,7 @@ msgstr "Չհաջողվեց վերբեռնել կցորդը"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
-msgstr "Favicon"
+msgstr "Ֆավիկոն"
 
 #: src/features/profile/index.tsx
 msgid "File too large"
@@ -1706,7 +1714,7 @@ msgstr "Պատմություն"
 #: ../../../lib/web/src/components/layout/top-bar.tsx
 #: ../../../lib/web/src/components/layout/top-bar.tsx
 msgid "Home"
-msgstr "Տուն"
+msgstr "Գլխավոր"
 
 #: src/features/contacts/editor.tsx
 msgctxt "contact type"
@@ -1736,7 +1744,7 @@ msgstr "Իմպերիալ"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "In contacts"
-msgstr "Կոնտակտներում է"
+msgstr "Կոնտակտներում"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1809,7 +1817,7 @@ msgstr "Հրավերների կարգավորումներ"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
 msgid "Invited"
-msgstr "Հրավիրված է"
+msgstr "Հրավիրված"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1906,10 +1914,6 @@ msgstr "Դուրս գալիս…"
 msgid "Manage categories"
 msgstr "Կառավարել կատեգորիաները"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Կառավարել սարքերը"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Ձեռքով"
@@ -1954,12 +1958,16 @@ msgstr "Անդամների քանակ"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "Menu"
-msgstr "Ընտրացանկ"
+msgstr "Մենյու"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Հաղորդագրություն"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Ուղարկել հաղորդագրություն"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,9 +2031,13 @@ msgstr "Տեղափոխվում է {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "Անուն"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "Անուն"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "Երբեք"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Նոր"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Նորերը"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,11 +2264,15 @@ msgstr "Ծանուցումներ՝ {0}"
 msgid "Notify me"
 msgstr "Ծանուցել ինձ"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "Թիվ"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "Համար"
 
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
@@ -2455,7 +2475,7 @@ msgstr "Հատկություններ"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
-msgstr "Push ծանուցում"
+msgstr "Պուշ-ծանուցում"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Raised"
@@ -2530,6 +2550,11 @@ msgstr "Համապատասխանություն՝ {relevance}"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Համապատասխանություն՝ {relevance}, հետաքրքրություն՝ {weight}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Հիշեցում"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -2699,7 +2724,7 @@ msgstr "RSS հոսք"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "RSS URL copied to clipboard"
-msgstr "RSS URL-ը պատճենվեց clipboard-ին"
+msgstr "RSS URL-ը պատճենվեց սեղմատախտակին"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Saturday"
@@ -2723,8 +2748,9 @@ msgstr "Պահպանել"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
-msgstr "Պահել անունը"
+msgstr "Պահպանել անունը"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
@@ -2811,7 +2837,7 @@ msgstr "Որոնում..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Ընտրել"
+msgstr "Ընտրություն"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -3018,7 +3044,7 @@ msgstr "Փողոց"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Թեմա"
+msgstr "Օգտատեր կամ խումբ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "Ազգանուն"
 msgid "Switch to view 1-9"
 msgstr "Անցնել 1-9 տեսքի"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Համակարգ"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Համակարգ"
 
@@ -3068,6 +3098,11 @@ msgstr "Թեգեր"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Հեռախոսներ"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Նախնական"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "Չափազանց շատ հարցումներ"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Վերև"
+msgstr "Լավագույն"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"

@@ -26,6 +26,11 @@ msgstr "(ویرایش‌شده)"
 msgid "(expand)"
 msgstr "(باز کردن)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(بدون عنوان)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(شما)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "نام {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} تا {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# مورد دیگر} other {+# مورد دیگر}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -236,6 +238,10 @@ msgstr "افزودن مورد چک‌لیست"
 msgid "Add contact"
 msgstr "افزودن مخاطب"
 
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "افزودن دستگاه"
+
 #: src/features/contacts/editor.tsx
 msgid "Add email"
 msgstr "افزودن ایمیل"
@@ -350,7 +356,7 @@ msgstr "همهٔ گروه‌های موجود قبلاً افزوده شده‌�
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/index.tsx
 msgid "All contacts"
-msgstr "همه مخاطبین"
+msgstr "همهٔ مخاطبین"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -460,7 +466,7 @@ msgstr "پیوست فایل‌های پاسخ"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Authenticated users"
-msgstr "کاربران احرازهویت‌شده"
+msgstr "کاربران احراز هویت‌شده"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Authenticator code"
@@ -531,7 +537,7 @@ msgstr "بلوک‌ها"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Board"
-msgstr "تخته"
+msgstr "تابلو"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -578,13 +584,18 @@ msgstr "دوربین در دسترس نیست"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "لغو"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "لغو"
 
@@ -605,6 +616,11 @@ msgstr "لغو پاسخ"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Cancelled"
 msgstr "لغو شد"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Cancelled"
+msgstr "لغوشده"
 
 #: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
@@ -782,18 +798,14 @@ msgstr "پیکربندی تنظیمات نما"
 msgid "Confirm"
 msgstr "تأیید"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "اتصال دستگاهی دیگر"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "اتصال دستگاه"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "متصل"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "دستگاه‌های متصل"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "کپی شد"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "در کلیپ‌بورد کپی شد"
 
@@ -864,10 +875,6 @@ msgstr "در کلیپ‌بورد کپی شد"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "کپی"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "کپی {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1271,6 +1278,7 @@ msgstr "ویرایش گروه"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "ویرایش نام"
 
@@ -1517,7 +1525,7 @@ msgstr "تغییر نام دفترچه نشانی ناموفق بود"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
-msgstr "بازنشانی prompt ناموفق بود"
+msgstr "بازنشانی پرامپت ناموفق بود"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to revoke RSS access"
@@ -1550,7 +1558,7 @@ msgstr "ذخیره پروفایل ناموفق بود"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
-msgstr "ذخیره prompt ناموفق بود"
+msgstr "ذخیره پرامپت ناموفق بود"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -1580,7 +1588,7 @@ msgstr "بارگذاری پیوست ناموفق بود"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
-msgstr "Favicon"
+msgstr "فاوآیکون"
 
 #: src/features/profile/index.tsx
 msgid "File too large"
@@ -1809,7 +1817,7 @@ msgstr "تنظیمات دعوت"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
 msgid "Invited"
-msgstr "دعوت شد"
+msgstr "دعوت‌شده"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1906,10 +1914,6 @@ msgstr "در حال خروج…"
 msgid "Manage categories"
 msgstr "مدیریت دسته‌ها"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "مدیریت دستگاه‌ها"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "دستی"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "منو"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "پیام"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "ارسال پیام"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,9 +2031,13 @@ msgstr "در حال جابه‌جایی به {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "نام"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "نام"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "هرگز"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "جدید"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "جدیدترین"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,9 +2264,13 @@ msgstr "اعلان‌ها: {0}"
 msgid "Notify me"
 msgstr "به من اطلاع بده"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "شماره"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "شماره"
 
@@ -2447,7 +2467,7 @@ msgstr "پروفایل ذخیره شد"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Prompt saved"
-msgstr "Prompt ذخیره شد"
+msgstr "پرامپت ذخیره شد"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
@@ -2530,6 +2550,11 @@ msgstr "ارتباط {relevance}"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "ارتباط {relevance}، علاقه {weight}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "یادآور"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -2723,6 +2748,7 @@ msgstr "ذخیره"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "ذخیره نام"
 
@@ -3018,7 +3044,7 @@ msgstr "خیابان"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "موضوع"
+msgstr "کاربر یا گروه"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "نام خانوادگی"
 msgid "Switch to view 1-9"
 msgstr "تغییر به نمای ۱ تا ۹"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "سیستم"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "سیستم"
 
@@ -3068,6 +3098,11 @@ msgstr "برچسب‌ها"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "تلفن‌ها"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "قطعی نشده"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "درخواست‌های بیش از حد"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "بالا"
+msgstr "برترین"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"

@@ -26,6 +26,11 @@ msgstr "(modifié)"
 msgid "(expand)"
 msgstr "(développer)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Sans titre)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(vous)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "Nom du {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "de {from} à {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# autre} other {+# autres}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "Ajouter un élément"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "Ajouter un contact"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Ajouter un appareil"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -508,7 +514,7 @@ msgstr "Bannière mise à jour"
 
 #: src/features/contacts/editor.tsx
 msgid "Birthday"
-msgstr "Date de naissance"
+msgstr "Anniversaire"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -578,13 +584,18 @@ msgstr "Caméra indisponible"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "Annuler"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -603,6 +614,11 @@ msgstr "Annuler la réponse"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Annulé"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Annulé"
 
@@ -652,7 +668,7 @@ msgstr "Case à cocher"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
-msgstr "Checklist"
+msgstr "Liste de contrôle"
 
 #: ../../../lib/web/src/components/ui/date-picker.tsx
 msgid "Choose a date"
@@ -782,18 +798,14 @@ msgstr "Configurer les paramètres de la vue"
 msgid "Confirm"
 msgstr "Confirmer"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Connecter un autre appareil"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Connecter un appareil"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Connecté"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Appareils connectés"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "Copié"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Copié dans le presse-papiers"
 
@@ -864,10 +875,6 @@ msgstr "Copié dans le presse-papiers"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Copier"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Copier {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1271,6 +1278,7 @@ msgstr "Modifier le groupe"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "Modifier le nom"
 
@@ -1809,7 +1817,7 @@ msgstr "Paramètres d'invitation"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
 msgid "Invited"
-msgstr "Invitation envoyée"
+msgstr "Invité"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1906,10 +1914,6 @@ msgstr "Déconnexion en cours…"
 msgid "Manage categories"
 msgstr "Gérer les catégories"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Gérer les appareils"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Manuel"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Message"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Envoyer un message"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,9 +2031,13 @@ msgstr "Déplacement vers {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "Nom"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "Nom"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "Jamais"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Nouveau"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Récent"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2233,7 +2249,7 @@ msgstr "Non défini"
 
 #: src/features/contacts/editor.tsx
 msgid "Note"
-msgstr "Remarque"
+msgstr "Note"
 
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 msgid "Nothing found"
@@ -2248,11 +2264,15 @@ msgstr "Notifications : {0}"
 msgid "Notify me"
 msgstr "Me notifier"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "Nombre"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "Numéro"
 
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
@@ -2531,6 +2551,11 @@ msgstr "Pertinence {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Pertinence {relevance}, intérêt {weight}"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Rappel"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
@@ -2723,6 +2748,7 @@ msgstr "Enregistrer"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "Enregistrer le nom"
 
@@ -3018,7 +3044,7 @@ msgstr "Rue"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Sujet"
+msgstr "Utilisateur ou groupe"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "Nom de famille"
 msgid "Switch to view 1-9"
 msgstr "Basculer vers la vue 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Système"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Système"
 
@@ -3068,6 +3098,11 @@ msgstr "Étiquettes"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Téléphones"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Provisoire"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx

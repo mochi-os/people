@@ -26,6 +26,11 @@ msgstr "(askichata)"
 msgid "(expand)"
 msgstr "(jathiqaña)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Jan sutini)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(juma)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel} suti"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} {to} kama"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# juk'ampi} other {+# juk'ampi}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "Checklist itim yapxataña"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "Contacto yapxataña"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Mä dispositivo yapxataña"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -388,7 +394,7 @@ msgstr "Jan suyt'ata juch'a utjawayi"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Android push"
+msgstr "Android push yatiyawi"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
@@ -578,13 +584,18 @@ msgstr "Cámara jan utjkiti"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "Jaytaña"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Jaytaña"
 
@@ -603,6 +614,11 @@ msgstr "Jaysawi jaytaña"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Jaytata"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Jaytata"
 
@@ -782,18 +798,14 @@ msgstr "Uñacht'awi wakichawinak askichaña"
 msgid "Confirm"
 msgstr "Iyawsaña"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Yaqha dispositivo chikanchaña"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Mä dispositivo chikanchaña"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Chinjata"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Chinjata dispositivonaka"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "Copiatawa"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Clipboard-ru copiata"
 
@@ -864,10 +875,6 @@ msgstr "Clipboard-ru copiata"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Copiaña"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} copiaña"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1271,6 +1278,7 @@ msgstr "Grupo askichaña"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "Suti askichaña"
 
@@ -1851,7 +1859,7 @@ msgstr "Qhana"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Link"
-msgstr "Chimpu"
+msgstr "Enlace"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
@@ -1906,10 +1914,6 @@ msgstr "Mistuskiwa…"
 msgid "Manage categories"
 msgstr "Kastanaka apnaqaña"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Dispositivonaka apnaqaña"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Manual"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "Menú"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Mensaje"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Mensaje apayaña"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2000,7 +2008,7 @@ msgstr "Phaxsi"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
-msgstr "Yaqha chimpunaka"
+msgstr "Juk'ampi ajlliñanaka"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Moved"
@@ -2023,9 +2031,13 @@ msgstr "{0} uksaru unuqtayaskiwa"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "Suti"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "Suti"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "Janipuni"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Machaqa"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Machaqanaka"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,9 +2264,13 @@ msgstr "Yatiyawinaka: {0}"
 msgid "Notify me"
 msgstr "Yatiyita"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Jakhu"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Jakhu"
 
@@ -2531,6 +2551,11 @@ msgstr "Wakisiri {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Wakisiri {relevance}, munaña {weight}"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Amtayiri"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
@@ -2723,6 +2748,7 @@ msgstr "Imaña"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "Suti imaña"
 
@@ -2811,7 +2837,7 @@ msgstr "Thaqhaski..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Ajllima"
+msgstr "Selección"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2926,7 +2952,7 @@ msgstr "Origen ukat destino uñstayaña"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Settings"
-msgstr "Configuración"
+msgstr "Wakichawinaka"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"
@@ -3018,7 +3044,7 @@ msgstr "Thakhi"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Tema"
+msgstr "Apnaqiri jan ukax grupo"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "Apellido"
 msgid "Switch to view 1-9"
 msgstr "1-9 uñjaña ukar muyt'aña"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Sistema"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Sistema"
 
@@ -3068,6 +3098,11 @@ msgstr "Chimpunaka"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Teléfononaka"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Jan chiqanchata"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "Walja mayiwinaka"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Patxa"
+msgstr "Wali suma"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3346,7 +3381,7 @@ msgstr "Mayjt'irinaka: {variables}"
 
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 msgid "Verification code"
-msgstr "Verificación código apayata"
+msgstr "Uñakipawi código"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-verify.tsx

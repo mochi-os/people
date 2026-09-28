@@ -239,7 +239,7 @@ export function Contacts({
                 </SelectTrigger>
                 <SelectContent align='end'>
                   <SelectItem value='name'>
-                    <Trans>Name</Trans>
+                    <Trans context='person'>Name</Trans>
                   </SelectItem>
                   <SelectItem value='recent'>
                     <Trans>Recently added</Trans>
@@ -301,7 +301,7 @@ export function Contacts({
                           onClick={() => startChat(contact)}
                         >
                           <MessageSquare className='h-4 w-4' />
-                          <Trans>Message</Trans>
+                          <Trans context='verb'>Message</Trans>
                         </Button>
                       ) : null}
                       <Button

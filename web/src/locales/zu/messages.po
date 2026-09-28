@@ -26,6 +26,11 @@ msgstr "(kuhleliwe)"
 msgid "(expand)"
 msgstr "(nweba)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Asikho isihloko)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(wena)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "Igama le-{entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "kusukela ku-{from} kuya ku-{to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# okunye} other {+# okunye}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "Engeza into ohlwini lokuhlola"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "Engeza oxhumana naye"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Engeza idivayisi"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -578,13 +584,18 @@ msgstr "Ikhamera ayitholakali"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "Khansela"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Khansela"
 
@@ -603,6 +614,11 @@ msgstr "Khansela impendulo"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Kukhanselwe"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Kukhanselwe"
 
@@ -782,18 +798,14 @@ msgstr "Cushwa izilungiselelo zombukiso"
 msgid "Confirm"
 msgstr "Qinisekisa"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Xhuma enye idivayisi"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Xhuma idivayisi"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Kuxhunyiwe"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Amadivayisi axhunyiwe"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "Kukopishiwe"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Kukopishelwe kwi-clipboard"
 
@@ -864,10 +875,6 @@ msgstr "Kukopishelwe kwi-clipboard"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopisha"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Kopisha {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1271,6 +1278,7 @@ msgstr "Hlela iqembu"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "Hlela igama"
 
@@ -1580,7 +1588,7 @@ msgstr "Kuhlulekile ukulayisha okunanyathiselwe"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
-msgstr "Favicon"
+msgstr "Isithonjana sebhrawuza"
 
 #: src/features/profile/index.tsx
 msgid "File too large"
@@ -1618,7 +1626,7 @@ msgstr "ULwesihlanu"
 
 #: src/features/contacts/index.tsx
 msgid "Friend"
-msgstr "Umngani"
+msgstr "Umngane"
 
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -1906,10 +1914,6 @@ msgstr "Iyaphuma…"
 msgid "Manage categories"
 msgstr "Phatha izigaba"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Phatha amadivayisi"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Mathupha"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "Imenyu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Umyalezo"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Thumela umyalezo"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,9 +2031,13 @@ msgstr "Kuhanjiswa ku-{0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "Igama"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "Igama"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "Akekho"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Okusha"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Okusha kakhulu"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,9 +2264,13 @@ msgstr "Izaziso: {0}"
 msgid "Notify me"
 msgstr "Ngazise"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Inombolo"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Inombolo"
 
@@ -2531,6 +2551,11 @@ msgstr "Ukufaneleka {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Ukufaneleka {relevance}, intshisekelo {weight}"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Isikhumbuzi"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
@@ -2723,6 +2748,7 @@ msgstr "Londoloza"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "Londoloza igama"
 
@@ -2811,7 +2837,7 @@ msgstr "Kuyaseshwa..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Khetha"
+msgstr "Ukukhetha"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -3018,7 +3044,7 @@ msgstr "Isitaladi"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Isihloko"
+msgstr "Umsebenzisi noma iqembu"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "Isibongo"
 msgid "Switch to view 1-9"
 msgstr "Shintshela kombono 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Isistimu"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Isistimu"
 
@@ -3068,6 +3098,11 @@ msgstr "Amathegi"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Izingcingo"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Okwesikhashana"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "Izicelo eziningi kakhulu"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Phezulu"
+msgstr "Okuhamba phambili"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"

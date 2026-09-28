@@ -26,6 +26,11 @@ msgstr "(ਸੰਪਾਦਿਤ)"
 msgid "(expand)"
 msgstr "(ਫੈਲਾਓ)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(ਕੋਈ ਸਿਰਲੇਖ ਨਹੀਂ)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(ਤੁਸੀਂ)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel} ਨਾਮ"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} ਤੋਂ {to} ਤੱਕ"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# ਹੋਰ} other {+# ਹੋਰ}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "ਚੈੱਕਲਿਸਟ ਆਈਟਮ ਜੋੜੋ"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "ਸੰਪਰਕ ਜੋੜੋ"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "ਡਿਵਾਈਸ ਜੋੜੋ"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -578,13 +584,18 @@ msgstr "ਕੈਮਰਾ ਉਪਲਬਧ ਨਹੀਂ"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "ਰੱਦ ਕਰੋ"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "ਰੱਦ ਕਰੋ"
 
@@ -605,6 +616,11 @@ msgstr "ਜਵਾਬ ਰੱਦ ਕਰੋ"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Cancelled"
 msgstr "ਰੱਦ ਕੀਤਾ ਗਿਆ"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Cancelled"
+msgstr "ਰੱਦ"
 
 #: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
@@ -782,18 +798,14 @@ msgstr "ਦ੍ਰਿਸ਼ ਸੈਟਿੰਗਾਂ ਕੌਨਫਿਗਰ ਕਰ
 msgid "Confirm"
 msgstr "ਪੁਸ਼ਟੀ ਕਰੋ"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "ਹੋਰ ਡਿਵਾਈਸ ਕਨੈਕਟ ਕਰੋ"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "ਡਿਵਾਈਸ ਕਨੈਕਟ ਕਰੋ"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "ਜੁੜਿਆ"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "ਜੁੜੇ ਹੋਏ ਡਿਵਾਈਸ"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "ਕਾਪੀ ਕੀਤਾ ਗਿਆ"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਹੋਇਆ"
 
@@ -864,10 +875,6 @@ msgstr "ਕਲਿੱਪਬੋਰਡ ਵਿੱਚ ਕਾਪੀ ਹੋਇਆ"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "ਕਾਪੀ ਕਰੋ"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} ਕਾਪੀ ਕਰੋ"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1222,7 +1229,7 @@ msgstr "ਹੋ ਗਿਆ"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Download"
-msgstr "ਡਾਊਨਲੋਡ"
+msgstr "ਡਾਊਨਲੋਡ ਕਰੋ"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -1271,6 +1278,7 @@ msgstr "ਗਰੁੱਪ ਸੰਪਾਦਿਤ ਕਰੋ"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "ਨਾਮ ਸੰਪਾਦਿਤ ਕਰੋ"
 
@@ -1706,7 +1714,7 @@ msgstr "ਇਤਿਹਾਸ"
 #: ../../../lib/web/src/components/layout/top-bar.tsx
 #: ../../../lib/web/src/components/layout/top-bar.tsx
 msgid "Home"
-msgstr "ਮੁੱਖ"
+msgstr "ਹੋਮ"
 
 #: src/features/contacts/editor.tsx
 msgctxt "contact type"
@@ -1906,10 +1914,6 @@ msgstr "ਲੌਗ ਆਊਟ ਹੋ ਰਿਹਾ ਹੈ…"
 msgid "Manage categories"
 msgstr "ਸ਼੍ਰੇਣੀਆਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "ਡਿਵਾਈਸਾਂ ਦਾ ਪ੍ਰਬੰਧ ਕਰੋ"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "ਮੈਨੁਅਲ"
@@ -1954,12 +1958,16 @@ msgstr "ਮੈਂਬਰ ਗਿਣਤੀ"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "Menu"
-msgstr "ਮੇਨੂ"
+msgstr "ਮੀਨੂ"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "ਸੁਨੇਹਾ"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "ਸੁਨੇਹਾ ਭੇਜੋ"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,9 +2031,13 @@ msgstr "{0} ਉੱਤੇ ਲਿਜਾਇਆ ਜਾ ਰਿਹਾ ਹੈ"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "ਨਾਮ"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "ਨਾਮ"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "ਕਦੇ ਨਹੀਂ"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "ਨਵਾਂ"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "ਸਭ ਤੋਂ ਨਵੇਂ"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,9 +2264,13 @@ msgstr "ਸੂਚਨਾਵਾਂ: {0}"
 msgid "Notify me"
 msgstr "ਮੈਨੂੰ ਨੋਟੀਫਾਈ ਕਰੋ"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "ਨੰਬਰ"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "ਨੰਬਰ"
 
@@ -2531,6 +2551,11 @@ msgstr "ਸੰਬੰਧਿਤਤਾ {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "ਸੰਬੰਧਿਤਤਾ {relevance}, ਦਿਲਚਸਪੀ {weight}"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "ਰਿਮਾਈਂਡਰ"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
@@ -2723,6 +2748,7 @@ msgstr "ਸੰਭਾਲੋ"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "ਨਾਮ ਸੰਭਾਲੋ"
 
@@ -2811,7 +2837,7 @@ msgstr "ਖੋਜ ਰਿਹਾ ਹੈ..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "ਚੁਣੋ"
+msgstr "ਚੋਣ"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -3018,7 +3044,7 @@ msgstr "ਗਲੀ"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "ਵਿਸ਼ਾ"
+msgstr "ਉਪਭੋਗਤਾ ਜਾਂ ਗਰੁੱਪ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "ਆਖ਼ਰੀ ਨਾਮ"
 msgid "Switch to view 1-9"
 msgstr "ਦ੍ਰਿਸ਼ 1-9 'ਤੇ ਜਾਓ"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "ਸਿਸਟਮ"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "ਸਿਸਟਮ"
 
@@ -3068,6 +3098,11 @@ msgstr "ਟੈਗ"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "ਫ਼ੋਨ"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "ਆਰਜ਼ੀ"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3169,7 +3204,7 @@ msgstr "ਦ੍ਰਿਸ਼ ਵਿਕਲਪ ਟੌਗਲ ਕਰੋ"
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Toggle watched filter"
-msgstr "watched ਫਿਲਟਰ ਟੌਗਲ ਕਰੋ"
+msgstr "ਨਿਗਰਾਨੀ ਅਧੀਨ ਫਿਲਟਰ ਟੌਗਲ ਕਰੋ"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "Too many requests"
@@ -3177,7 +3212,7 @@ msgstr "ਬਹੁਤ ਜ਼ਿਆਦਾ ਬੇਨਤੀਆਂ"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "ਉੱਪਰ"
+msgstr "ਸਭ ਤੋਂ ਵਧੀਆ"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"

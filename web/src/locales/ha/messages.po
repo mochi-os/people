@@ -26,6 +26,11 @@ msgstr "(an gyara)"
 msgid "(expand)"
 msgstr "(faɗaɗa)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Babu take)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(kai)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "Sunan {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} zuwa {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# ƙari} other {+# ƙari}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "Ƙara abun checklist"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "Ƙara lambar sadarwa"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Ƙara na'ura"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -388,7 +394,7 @@ msgstr "An samu kuskuren da ba a zata ba"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Android push"
+msgstr "Tura ta Android"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
@@ -472,7 +478,7 @@ msgstr "Gajerun hanyoyi na keyboard da ake samu"
 
 #: ../../../lib/web/src/components/entity-avatar.tsx
 msgid "Avatar"
-msgstr "Avatar"
+msgstr "Hoton bayanin martaba"
 
 #: ../../../lib/web/src/components/entity-avatar.tsx
 msgid "Avatar for {name}"
@@ -496,7 +502,7 @@ msgstr "Komawa gida"
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/entity-banner.tsx
 msgid "Banner"
-msgstr "Banner"
+msgstr "Tuta"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner removed"
@@ -578,13 +584,18 @@ msgstr "Babu kyamara"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "Soke"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Soke"
 
@@ -603,6 +614,11 @@ msgstr "Soke amsa"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "An soke"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "An soke"
 
@@ -648,11 +664,11 @@ msgstr "Maimaicin da aka canza"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
-msgstr "Checkbox"
+msgstr "Akwatin zaɓi"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
-msgstr "Checklist"
+msgstr "Jerin dubawa"
 
 #: ../../../lib/web/src/components/ui/date-picker.tsx
 msgid "Choose a date"
@@ -782,18 +798,14 @@ msgstr "Saita saitunan view"
 msgid "Confirm"
 msgstr "Tabbatar"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Haɗa wata na'ura"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Haɗa na'ura"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "An haɗa"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Na'urorin da aka haɗa"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "An kwafi"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "An kwafi zuwa clipboard"
 
@@ -864,10 +875,6 @@ msgstr "An kwafi zuwa clipboard"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kwafi"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Kwafi {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -997,7 +1004,7 @@ msgstr "Ana ƙin gayyatu..."
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Default"
-msgstr "Default"
+msgstr "Tsoho"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
@@ -1271,6 +1278,7 @@ msgstr "Gyara ƙungiya"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "Gyara suna"
 
@@ -1580,7 +1588,7 @@ msgstr "An gaza upload attachment"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
-msgstr "Favicon"
+msgstr "Alamar gidan yanar gizo"
 
 #: src/features/profile/index.tsx
 msgid "File too large"
@@ -1653,7 +1661,7 @@ msgstr "Komawa baya"
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Group"
-msgstr "Group"
+msgstr "Ƙungiya"
 
 #: src/features/groups/group-detail.tsx
 msgid "Group actions"
@@ -1673,7 +1681,7 @@ msgstr "An share group"
 
 #: src/features/groups/group-detail.tsx
 msgid "Group ID"
-msgstr "Group ID"
+msgstr "ID na ƙungiya"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Group name"
@@ -1695,7 +1703,7 @@ msgstr "Rukuni: {0}"
 
 #: src/components/layout/people-layout.tsx
 msgid "Groups"
-msgstr "Groups"
+msgstr "Ƙungiyoyi"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
 msgid "History"
@@ -1732,11 +1740,11 @@ msgstr "Mai duba hoto: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
-msgstr "Imperial"
+msgstr "Tsarin Birtaniya"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "In contacts"
-msgstr "Yana cikin lambobin sadarwa"
+msgstr "Cikin lambobin sadarwa"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1760,7 +1768,7 @@ msgstr "Sha'awa {weight}"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Interests"
-msgstr "Interests"
+msgstr "Abubuwan sha'awa"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Invalid date"
@@ -1839,7 +1847,7 @@ msgstr "An yi amfani a {0}"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
-msgstr "Layout"
+msgstr "Tsari"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Letters, numbers, spaces, hyphens, and slashes only"
@@ -1851,15 +1859,15 @@ msgstr "Haske"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Link"
-msgstr "Hanya"
+msgstr "Hanyar haɗi"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
-msgstr "Links"
+msgstr "Hanyoyin haɗi"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "List"
-msgstr "List"
+msgstr "Jeri"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
@@ -1906,10 +1914,6 @@ msgstr "Ana fita…"
 msgid "Manage categories"
 msgstr "Sarrafa rukunoni"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Sarrafa na'urori"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Hannu"
@@ -1954,16 +1958,20 @@ msgstr "Adadin Membobi"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "Menu"
-msgstr "Menu"
+msgstr "Jeri"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Saƙo"
 
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Aika saƙo"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
-msgstr "Metric"
+msgstr "Tsarin metrik"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Microphone permission denied"
@@ -1984,7 +1992,7 @@ msgstr "Abokin Mochi"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
-msgstr "Mochi web"
+msgstr "Yanar gizon Mochi"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
@@ -2023,9 +2031,13 @@ msgstr "Ana matsawa zuwa {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "Suna"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "Suna"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "Babu lokaci"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Sabon"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Mafi sabo"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,9 +2264,13 @@ msgstr "Sanarwa: {0}"
 msgid "Notify me"
 msgstr "Sanar da ni"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Lamba"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Lamba"
 
@@ -2435,7 +2455,7 @@ msgstr "Ana sarrafawa…"
 #: src/features/profile/index.tsx
 #: src/features/profile/public.tsx
 msgid "Profile"
-msgstr "Profile"
+msgstr "Bayanin martaba"
 
 #: src/features/profile/index.tsx
 msgid "Profile preview"
@@ -2530,6 +2550,11 @@ msgstr "Dacewa {relevance}"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Dacewa {relevance}, sha'awa {weight}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Tunatarwa"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -2723,8 +2748,9 @@ msgstr "Adana"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
-msgstr "Ajiye suna"
+msgstr "Adana suna"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
@@ -2907,7 +2933,7 @@ msgstr ""
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
 msgid "Server error"
-msgstr "Kuskuren saba"
+msgstr "Kuskuren sabar"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -2946,7 +2972,7 @@ msgstr "Ana nuna {totalShown} daga {total}"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx
 msgid "Sidebar"
-msgstr "Sidebar"
+msgstr "Sandar gefe"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 msgid "Sign in with an account that has access <0/> to this resource."
@@ -3018,7 +3044,7 @@ msgstr "Titi"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Batu"
+msgstr "Mai amfani ko ƙungiya"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,11 +3072,15 @@ msgstr "Sunan iyali"
 msgid "Switch to view 1-9"
 msgstr "Sauya zuwa ra'ayi 1-9"
 
-#: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "System"
-msgstr "System"
+msgstr "Tsari"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+msgctxt "actor"
+msgid "System"
+msgstr "Tsarin"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tag already exists"
@@ -3068,6 +3098,11 @@ msgstr "Alamomi"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Wayoyi"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Na wucin gadi"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "Buƙatu sun yi yawa"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Sama"
+msgstr "Mafi kyau"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3377,7 +3412,7 @@ msgstr "Kalla kuma gyara cikakkun bayanan abu"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "View controls"
-msgstr "View controls"
+msgstr "Sarrafa kallo"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Voice recording is not supported in this browser"

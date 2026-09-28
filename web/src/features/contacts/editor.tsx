@@ -40,7 +40,6 @@ import {
   X,
   type LucideIcon,
 } from 'lucide-react'
-import { AddContactDialog } from './add-dialog'
 import {
   ADDRESS_TYPES,
   EMAIL_TYPES,
@@ -65,6 +64,7 @@ import {
   useDeleteContactMutation,
   useUpdateContactMutation,
 } from '@/hooks/useContacts'
+import { AddContactDialog } from './add-dialog'
 
 function statusOf(error: unknown): number | undefined {
   return typeof error === 'object' && error !== null && 'status' in error
@@ -104,7 +104,7 @@ export function ContactEditor({ id }: { id?: string } = {}) {
   const { data: contactsData } = useContactsQuery()
   const invited = Boolean(
     contact?.person &&
-      contactsData?.sent.some((invite) => invite.id === contact.person)
+    contactsData?.sent.some((invite) => invite.id === contact.person)
   )
   const friendState = contact?.friend ? 'friend' : invited ? 'invited' : 'none'
   const toggling = inviteMutation.isPending || removeFriendMutation.isPending
@@ -122,7 +122,8 @@ export function ContactEditor({ id }: { id?: string } = {}) {
         {
           loading: t`Sending invitation...`,
           success: t`Invitation sent`,
-          error: (error) => getErrorMessage(error, t`Failed to send invitation`),
+          error: (error) =>
+            getErrorMessage(error, t`Failed to send invitation`),
         }
       ).catch(() => {})
       return
@@ -308,7 +309,10 @@ export function ContactEditor({ id }: { id?: string } = {}) {
           }}
         >
           <section className='space-y-2 pb-4'>
-            <Field id='contact-name' label={t`Name`}>
+            <Field
+              id='contact-name'
+              label={t({ message: 'Name', context: 'person' })}
+            >
               <Input
                 id='contact-name'
                 value={form.name}
@@ -561,16 +565,11 @@ export function ContactEditor({ id }: { id?: string } = {}) {
 // sits in, so every value starts on the same line.
 const COLUMNS = 'grid gap-1 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-4'
 // A typed row keeps its type beside the value on a narrow screen too.
-const TYPED = 'flex items-center gap-2 sm:grid sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-4'
+const TYPED =
+  'flex items-center gap-2 sm:grid sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-4'
 
 /** A section's heading line, with the section's action at its end. */
-function Heading({
-  title,
-  action,
-}: {
-  title: string
-  action?: ReactNode
-}) {
+function Heading({ title, action }: { title: string; action?: ReactNode }) {
   return (
     <div className='flex min-h-8 items-center justify-between gap-3'>
       <h2 className='text-sm font-semibold'>{title}</h2>
@@ -686,8 +685,16 @@ function Kind({
 }) {
   return (
     <div className='flex items-center gap-2'>
-      <Icon className='text-muted-foreground size-4 shrink-0' aria-hidden='true' />
-      <TypeSelect label={label} types={types} value={value} onChange={onChange} />
+      <Icon
+        className='text-muted-foreground size-4 shrink-0'
+        aria-hidden='true'
+      />
+      <TypeSelect
+        label={label}
+        types={types}
+        value={value}
+        onChange={onChange}
+      />
     </div>
   )
 }
@@ -735,7 +742,9 @@ function TypedRows({
               className='flex-1'
               aria-label={label}
               value={row.value}
-              onChange={(event) => replace(index, { value: event.target.value })}
+              onChange={(event) =>
+                replace(index, { value: event.target.value })
+              }
             />
             <RemoveButton
               label={removeLabel}

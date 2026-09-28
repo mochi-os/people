@@ -26,6 +26,11 @@ msgstr "(oñembojeguáva)"
 msgid "(expand)"
 msgstr "(emyenyhẽ)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Téra'ỹ)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(nde)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel} réra"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} guive {to} peve"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# hetave} other {+# hetave}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -111,7 +113,7 @@ msgstr "{totalDescendants, plural, one {# ñembohovái} other {+# ñembohovái a
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
-msgstr "{unreadCount, plural, one {Embojuruja menu (# marandu ojeleeʼỹva)} other {Embojuruja menu (# marandu ojeleeʼỹva)}}"
+msgstr "{unreadCount, plural, one {Embojuruja menu (# momarandu ojeleeʼỹva)} other {Embojuruja menu (# momarandu ojeleeʼỹva)}}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "12 hours"
@@ -176,7 +178,7 @@ msgstr "Jeike rupa"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Account type"
-msgstr "Tetãygua peteĩchagua"
+msgstr "Mba'ete peteĩchagua"
 
 #: src/features/groups/group-detail.tsx
 msgid "Actions"
@@ -203,7 +205,7 @@ msgstr "Embojuaju peteĩ comentario..."
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add a new account"
-msgstr "Embojuaju tetãygua pyahu"
+msgstr "Embojuaju mba'ete pyahu"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add a new field to this class"
@@ -215,7 +217,7 @@ msgstr "Embojuaju jeike"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add account"
-msgstr "Embojuaju tetãygua"
+msgstr "Embojuaju mba'ete"
 
 #: src/features/contacts/editor.tsx
 msgid "Add address"
@@ -235,6 +237,10 @@ msgstr "Embojuaju checklist mba'e"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "Embojuaju contacto"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Embojuaju peteĩ mba'e"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -286,7 +292,7 @@ msgstr "Embojuaju contactokuérape"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Add to existing notifications"
-msgstr "Embojuaju ñe'ẽmondo oĩvape"
+msgstr "Embojuaju momarandu oĩvape"
 
 #: src/features/groups/group-detail.tsx
 msgid "Add users or groups to get started"
@@ -325,7 +331,7 @@ msgstr "Ogarenda kuatia"
 
 #: src/components/layout/people-layout.tsx
 msgid "Address book created"
-msgstr "Ogarenda kuatia ojejapóma"
+msgstr "Ogarenda kuatia oñemoheñóima"
 
 #: src/components/layout/people-layout.tsx
 msgid "Address book deleted"
@@ -388,7 +394,7 @@ msgstr "Oĩ peteĩ jejavy ñeha'ãrõ'ỹva"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Android push"
+msgstr "Android momarandu"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
@@ -426,7 +432,7 @@ msgstr "Añetehápe ehundise ko comentario? Ehundíta avei opa mbohovái."
 
 #: ../../../lib/web/src/components/sign-out-dialog.tsx
 msgid "Are you sure you want to log out? You will need to log in again to access your account."
-msgstr "Añetehápe esẽse? Eñepyrũjeýta hag̃ua eike ne tetãyguápe."
+msgstr "Añetehápe esẽse? Eñepyrũjeýta hag̃ua eike nde mba'etépe."
 
 #. placeholder {0}: removeMemberDialog.name
 #: src/features/groups/group-detail.tsx
@@ -548,7 +554,7 @@ msgstr "Browser tekehára"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Browser notifications"
-msgstr "Browser ñe'ẽmondokuéra"
+msgstr "Browser momarandukuéra"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Calendar server"
@@ -578,13 +584,18 @@ msgstr "Cámara ndaipóri"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "Heja"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Heja"
 
@@ -606,6 +617,11 @@ msgstr "Heja mbohovái"
 msgid "Cancelled"
 msgstr "Oñehéja"
 
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Cancelled"
+msgstr "Oñehéja"
+
 #: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
@@ -622,7 +638,7 @@ msgstr "Ñemyesakã"
 
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Category for these notifications"
-msgstr "Categoría ko'ã ñe'ẽmondo-pegua"
+msgstr "Categoría ko'ã momarandu-pegua"
 
 #: src/features/profile/index.tsx
 msgid "Change banner"
@@ -631,7 +647,7 @@ msgstr "Embojegua banner"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Change notification category"
-msgstr "Embojere ñe'ẽmondo categoría"
+msgstr "Embojere momarandu categoría"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Changed"
@@ -648,11 +664,11 @@ msgstr "Evento oñemoambuéva"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
-msgstr "Checkbox"
+msgstr "Casilla"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
-msgstr "Checklist"
+msgstr "Lista jehechajey"
 
 #: ../../../lib/web/src/components/ui/date-picker.tsx
 msgid "Choose a date"
@@ -724,11 +740,11 @@ msgstr "Mboty jeheka"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 msgid "Collapse"
-msgstr "Mbojaʼo"
+msgstr "Momichĩ"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
-msgstr "Mbohypy'ũ sidebar"
+msgstr "Emomichĩ sidebar"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
@@ -767,7 +783,7 @@ msgstr "Comentariokuéra ({0})"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Compact"
-msgstr "Compact"
+msgstr "Mbyky"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -782,18 +798,14 @@ msgstr "Embohekombo'e view hekombo'e"
 msgid "Confirm"
 msgstr "Emoneĩ"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Embojoaju ambue mba'e"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Embojoaju peteĩ mba'e"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Oñembojuaju"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Mba'e oñembojoajúva"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -809,7 +821,7 @@ msgstr "Contacto ojembojuajúma"
 
 #: src/features/contacts/editor.tsx
 msgid "Contact created"
-msgstr "Contacto ojejapóma"
+msgstr "Contacto oñemoheñóima"
 
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "Oñemonguatia"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Oñekopiáma clipboard-pe"
 
@@ -865,21 +876,17 @@ msgstr "Oñekopiáma clipboard-pe"
 msgid "Copy"
 msgstr "Kopia"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Kopia {label}"
-
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
 msgstr "Embohasarei nde ID"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Could not load this document. Please try again later."
-msgstr "Ndaikatúi oñemyenyhẽ ko documento. Eha'ã jeýta upéi."
+msgstr "Ndaikatúi oñemyanyhẽ ko documento. Eha'ã jeýta upéi."
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Couldn't load notifications"
-msgstr "Ndaikatúi omyanyhẽ marandu"
+msgstr "Ndaikatúi omyanyhẽ momarandu"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Couldn't send the code. Please try again."
@@ -904,46 +911,46 @@ msgstr "Tetã"
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Create"
-msgstr "Embojeguáva"
+msgstr "Emoheñói"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Create {entityLabel}"
-msgstr "Ejapo {entityLabel}"
+msgstr "Emoheñói {entityLabel}"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Create a contact, or find someone on Mochi."
-msgstr "Ejapo peteĩ contacto, térã ejuhu peteĩ tapicha Mochi-pe."
+msgstr "Emoheñói peteĩ contacto, térã ejuhu peteĩ tapicha Mochi-pe."
 
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 msgid "Create address book"
-msgstr "Ejapo ogarenda kuatia"
+msgstr "Emoheñói ogarenda kuatia"
 
 #: src/components/layout/people-layout.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Create group"
-msgstr "Embojeguáva grupo"
+msgstr "Emoheñói grupo"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Create new item"
-msgstr "Embojeguáva mba'e pyahu"
+msgstr "Emoheñói mba'e pyahu"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Created"
-msgstr "Oñembojeguáma"
+msgstr "Oñemoheñói"
 
 #. placeholder {0}: formatTimestamp(item.created, t`Never`)
 #: src/features/contacts/connect-dialog.tsx
 msgid "Created {0}"
-msgstr "Oñembojeguáma {0}"
+msgstr "Oñemoheñói {0}"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Created {field}"
-msgstr "{field} ojejapo"
+msgstr "{field} oñemoheñói"
 
 #: src/components/layout/people-layout.tsx
 msgid "Creating address book..."
@@ -997,11 +1004,11 @@ msgstr "Oñemboykehína umi ñeñvite..."
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Default"
-msgstr "Default"
+msgstr "Ypygua"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
-msgstr "Default AI tetãygua"
+msgstr "Default AI mba'ete"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Default sort"
@@ -1114,7 +1121,7 @@ msgstr "Hundi view"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Delete your account on the old server"
-msgstr "Emomba'apo nde cuenta ypykue servidor-pe"
+msgstr "Emomba'apo nde mba'ete ypykue servidor-pe"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Deleted"
@@ -1202,7 +1209,7 @@ msgstr "Ndojuajúi"
 #: ../../../lib/web/src/components/restore-banner.tsx
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Dismiss"
-msgstr "Mbohovái"
+msgstr "Emokañy"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx
 msgid "Displays the mobile sidebar."
@@ -1271,6 +1278,7 @@ msgstr "Embojuruja grupo"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "Embojuruja téra"
 
@@ -1348,7 +1356,7 @@ msgstr "Embotuicha sidebar"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
-msgstr "URL okápe"
+msgstr "URL okapegua"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Extra large"
@@ -1365,7 +1373,7 @@ msgstr "Ndaikatúi oñemoneĩ umi ñeñvite"
 
 #: ../../../lib/web/src/hooks/use-accounts.ts
 msgid "Failed to add account"
-msgstr "Ndaikatúi oñembojuaju cuenta"
+msgstr "Ndaikatúi oñembojuaju mba'ete"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Failed to add contact"
@@ -1397,20 +1405,20 @@ msgstr "Ndaikatúi oñemonguatia"
 
 #: src/components/layout/people-layout.tsx
 msgid "Failed to create address book"
-msgstr "Ndaikatúi ojejapo ogarenda kuatia"
+msgstr "Ndaikatúi oñemoheñói ogarenda kuatia"
 
 #: src/features/contacts/editor.tsx
 msgid "Failed to create contact"
-msgstr "Ndaikatúi ojejapo contacto"
+msgstr "Ndaikatúi oñemoheñói contacto"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Failed to create group"
-msgstr "Ndaikatúi oñembojuaju grupo"
+msgstr "Ndaikatúi oñemoheñói grupo"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to create link"
-msgstr "Ndaikatúi oñembojuaju link"
+msgstr "Ndaikatúi oñemoheñói link"
 
 #: src/features/invitations/index.tsx
 msgid "Failed to decline invitation"
@@ -1459,7 +1467,7 @@ msgstr "Ndaikatúi oguenohẽ RSS token"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
-msgstr "Ndaikatúi oñembogue"
+msgstr "Ndaikatúi oñemyanyhẽ"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Failed to load banner"
@@ -1467,7 +1475,7 @@ msgstr "Ndaikatúi omyanyhẽ banner"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
 msgid "Failed to load history"
-msgstr "Ndaikatúi oñembogue tembiasakue"
+msgstr "Ndaikatúi oñemyanyhẽ tembiasakue"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: src/features/profile/index.tsx
@@ -1480,11 +1488,11 @@ msgstr "Ndaikatúi omyanyhẽ ta'anga"
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Failed to load item"
-msgstr "Ndaikatúi oñembogue artículo"
+msgstr "Ndaikatúi oñemyanyhẽ artículo"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to load prompts"
-msgstr "Ndaikatúi oñembogue promptkuéra"
+msgstr "Ndaikatúi oñemyanyhẽ promptkuéra"
 
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Failed to load video"
@@ -1492,7 +1500,7 @@ msgstr "Ndaikatúi omyanyhẽ video"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Failed to load your invite policy"
-msgstr "Ndaikatúi oñembogue nde ñe'ẽrenói política"
+msgstr "Ndaikatúi oñemyanyhẽ nde ñe'ẽrenói política"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Failed to move"
@@ -1598,7 +1606,7 @@ msgstr "Ejuhu Mochi-pe"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Finish moving your account"
-msgstr "Oñepyrũ nde cuenta mbojuaju"
+msgstr "Oñepyrũ nde mba'ete mbojuaju"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Flags"
@@ -1665,7 +1673,7 @@ msgstr "Embyaty rupive"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Group created"
-msgstr "Oñembojuaju atypy"
+msgstr "Oñemoheñói atypy"
 
 #: src/features/groups/group-detail.tsx
 msgid "Group deleted"
@@ -1839,7 +1847,7 @@ msgstr "Pahague jepuru {0}"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
-msgstr "Layout"
+msgstr "Ñemohenda"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Letters, numbers, spaces, hyphens, and slashes only"
@@ -1851,11 +1859,11 @@ msgstr "Hesakã"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Link"
-msgstr "Ñeꞌẽ"
+msgstr "Juajuha"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
-msgstr "Linkkuéra"
+msgstr "Joajukuéra"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "List"
@@ -1863,27 +1871,27 @@ msgstr "Tysýi"
 
 #: ../../../lib/web/src/components/ui/load-more.tsx
 msgid "Load more"
-msgstr "Embojuaju hetave"
+msgstr "Emyanyhẽ hetave"
 
 #: ../../../lib/web/src/components/ui/loading-content.tsx
 msgid "Loading content…"
-msgstr "Contenido henyhẽhína…"
+msgstr "Contenido oñemyanyhẽhína…"
 
 #: src/features/groups/member-dialog.tsx
 msgid "Loading groups..."
-msgstr "Ojembogue gruposkuera..."
+msgstr "Oñemyanyhẽhína gruposkuera..."
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Loading item"
-msgstr "Ojembogue artículo"
+msgstr "Oñemyanyhẽhína artículo"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Loading item details"
-msgstr "Ojembogue artículo detalles"
+msgstr "Oñemyanyhẽhína artículo detalles"
 
 #: ../../../lib/web/src/features/document/document-page.tsx
 msgid "Loading..."
-msgstr "Ojembogue..."
+msgstr "Oñemyanyhẽhína..."
 
 #: ../../../lib/web/src/components/sign-out-dialog.tsx
 #: ../../../lib/web/src/components/sign-out-dialog.tsx
@@ -1905,10 +1913,6 @@ msgstr "Osẽhína…"
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "Manage categories"
 msgstr "Eñangareko categoríakuéra rehe"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Eñangareko mba'ekuérare"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Mensaje"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Emondo marandu"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -1984,7 +1992,7 @@ msgstr "Mochi angirũ"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
-msgstr "Mochi web"
+msgstr "Mochi ñanduti"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
@@ -2023,9 +2031,13 @@ msgstr "Oñemongu'ehína {0}-pe"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "Téra"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "Téra"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "Araka'eve"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Pyahu"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Ipyahuvéva"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2184,15 +2200,15 @@ msgstr "Ndojejuhúi tiempo zona."
 
 #: ../../../lib/web/src/components/notification-category-button.tsx
 msgid "No topic record yet — try again after the next notification."
-msgstr "Ndaipóri tópico marandu gueteri — eha'ã jey notificación pyahu rire."
+msgstr "Ndaipóri tópico marandu gueteri — eha'ã jey momarandu pyahu rire."
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "No unread notifications"
-msgstr "Ndaipóri marandu omoñe'ẽ'ỹva"
+msgstr "Ndaipóri momarandu omoñe'ẽ'ỹva"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "No users found"
-msgstr "Ndojejuhúi usuarios"
+msgstr "Ndojejuhúi puruhára"
 
 #: ../../../lib/web/src/components/entity/entity-design-preview.tsx
 msgid "No views"
@@ -2242,15 +2258,19 @@ msgstr "Ndojejuhúi mba'eve"
 #. placeholder {0}: unread.length
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Notifications: {0}"
-msgstr "Marandu: {0}"
+msgstr "Momarandu: {0}"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Notify me"
 msgstr "Cheñenotifika"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Papapy"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Papapy"
 
@@ -2455,7 +2475,7 @@ msgstr "Mba'éichagua"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
-msgstr "Push marandu"
+msgstr "Push momarandu"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Raised"
@@ -2463,7 +2483,7 @@ msgstr "Yvate"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Re-link your accounts on this server"
-msgstr "Embojoja jey nde cuenta ko servidor-pe"
+msgstr "Embojoja jey nde mba'ete ko servidor-pe"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Re-register your passkeys on this server"
@@ -2530,6 +2550,11 @@ msgstr "Relevancia {relevance}"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Relevancia {relevance}, temimbota {weight}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Mandu'ara"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -2683,7 +2708,7 @@ msgstr "¿Emboyke RSS jeike?"
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Rows"
-msgstr "Rows"
+msgstr "Tysýikuéra"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Rows group by"
@@ -2723,6 +2748,7 @@ msgstr "Ñongatu"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "Eñongatu téra"
 
@@ -2787,7 +2813,7 @@ msgstr "Eheka tiempo zona..."
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Search users"
-msgstr "Eheka usuarios"
+msgstr "Eheka puruhárakuéra"
 
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Search, watch, and sort this view."
@@ -2811,7 +2837,7 @@ msgstr "Ohekahína..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Eporavo"
+msgstr "Jeporavo"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2823,7 +2849,7 @@ msgstr "Eporavo peteĩ ñembosarái"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Select a user, group, or other rule to grant access."
-msgstr "Eporavo peteĩ usuario, grupo, térã ambue regla eme'ẽ haguã acceso."
+msgstr "Eporavo peteĩ puruhára, grupo, térã ambue regla eme'ẽ haguã acceso."
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 msgid "Select access rule"
@@ -2831,7 +2857,7 @@ msgstr "Eporavo acceso regla"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Select account type"
-msgstr "Eporavo cuenta peteĩchagua"
+msgstr "Eporavo mba'ete peteĩchagua"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -2950,7 +2976,7 @@ msgstr "Yke"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 msgid "Sign in with an account that has access <0/> to this resource."
-msgstr "Eike peteĩ mba'ete oguerekóva jeike <0/> ko mba'etépe."
+msgstr "Eike peteĩ mba'ete oguerekóva jeike <0/> ko mba'épe."
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
@@ -3018,7 +3044,7 @@ msgstr "Tape"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Mba'erã"
+msgstr "Mboapurevahára térã atypy"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "Terajoapy"
 msgid "Switch to view 1-9"
 msgstr "Eike vista 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Sistema"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Sistema"
 
@@ -3063,11 +3093,16 @@ msgstr "Etiqueta oguereko va'erã 50 tai térã sa'ive"
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
-msgstr "Tagskuéra"
+msgstr "Etiquetakuéra"
 
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Pumbyrykuéra"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Noñemoneĩri gueteri"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "Hetaiterei mba'ejerure"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Yvate"
+msgstr "Iporãvéva"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3223,7 +3258,7 @@ msgstr "Ehai marandu…"
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
-msgstr "Ehai eheka mboapurevahára"
+msgstr "Ehai eheka puruhára"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: src/features/groups/member-dialog.tsx
@@ -3334,7 +3369,7 @@ msgstr "Eipuru nde passkey"
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "User"
-msgstr "Mboapurevahára"
+msgstr "Puruhára"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Username"
@@ -3369,7 +3404,7 @@ msgstr "Video jehecha: {0}"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "View all notifications"
-msgstr "Ehecha opa marandu"
+msgstr "Ehecha opa momarandu"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "View and edit item details"
@@ -3421,7 +3456,7 @@ msgstr "Ndereguerekói jeike ko vorépe."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Your account was moved here from {source}. Until you delete it there, messages and notifications may reach both servers, some of your content keeps being served from the old server, and followers may take a few minutes to find you here."
-msgstr "Nde cuenta oiko ko'ápe {source} guive. Peve reipe'a upépe, marandu ha mba'emimi ikatu ogueru servidor mokõive-pe, nde mba'e mba'eapo ambuéva ohasave ypykue servidor guive, ha erekopy'araka'e minutopi peve reko'ata ko'ápe."
+msgstr "Nde mba'ete oiko ko'ápe {source} guive. Peve reipe'a upépe, marandu ha momarandu ikatu ogueru servidor mokõive-pe, nde mba'e mba'eapo ambuéva ohasave ypykue servidor guive, ha erekopy'araka'e minutopi peve reko'ata ko'ápe."
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Your attachments will be lost."

@@ -26,6 +26,11 @@ msgstr "(rediģēts)"
 msgid "(expand)"
 msgstr "(izvērst)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Bez nosaukuma)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(jūs)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel} nosaukums"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "no {from} līdz {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, zero {+# vēl} one {+# vēl} other {+# vēl}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "Pievienot kontrolsaraksta vienumu"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "Pievienot kontaktu"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Pievienot jaunu ierīci"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -388,7 +394,7 @@ msgstr "Radās negaidīta kļūda"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Android push"
+msgstr "Android push paziņojumi"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
@@ -531,7 +537,7 @@ msgstr "Bloki"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Board"
-msgstr "Galds"
+msgstr "Dēlis"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -578,13 +584,18 @@ msgstr "Kamera nav pieejama"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "Atcelt"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Atcelt"
 
@@ -603,6 +614,11 @@ msgstr "Atcelt atbildi"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Atcelts"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Atcelts"
 
@@ -782,18 +798,14 @@ msgstr "Konfigurē skata iestatījumus"
 msgid "Confirm"
 msgstr "Apstiprināt"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Pievienot vēl vienu ierīci"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Pievienot ierīci"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Savienots"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Pievienotās ierīces"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "Nokopēts"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Nokopēts starpliktuvē"
 
@@ -864,10 +875,6 @@ msgstr "Nokopēts starpliktuvē"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopēt"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Kopēt {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1271,8 +1278,9 @@ msgstr "Rediģēt grupu"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
-msgstr "Rediģēt nosaukumu"
+msgstr "Rediģēt vārdu"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Edit option"
@@ -1580,7 +1588,7 @@ msgstr "Neizdevās augšupielādēt pielikumu"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
-msgstr "Favicon"
+msgstr "Vietnes ikona"
 
 #: src/features/profile/index.tsx
 msgid "File too large"
@@ -1906,10 +1914,6 @@ msgstr "Izrakstās…"
 msgid "Manage categories"
 msgstr "Pārvaldīt kategorijas"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Pārvaldīt ierīces"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Manuāls"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "Izvēlne"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Ziņojums"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Sūtīt ziņu"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,11 +2031,15 @@ msgstr "Pārvieto uz {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/index.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Nosaukums"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgctxt "person"
+msgid "Name"
+msgstr "Vārds"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
@@ -2044,7 +2056,7 @@ msgstr "Nosaukums nedrīkst pārsniegt 1000 rakstzīmes"
 
 #: src/features/profile/index.tsx
 msgid "Name saved"
-msgstr "Nosaukums saglabāts"
+msgstr "Vārds saglabāts"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "Nekad"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Jauns"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Jaunākie"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,9 +2264,13 @@ msgstr "Paziņojumi: {0}"
 msgid "Notify me"
 msgstr "Paziņot man"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Numurs"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Numurs"
 
@@ -2531,6 +2551,11 @@ msgstr "Atbilstība {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Atbilstība {relevance}, interese {weight}"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Atgādinājums"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
@@ -2723,8 +2748,9 @@ msgstr "Saglabāt"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
-msgstr "Saglabāt nosaukumu"
+msgstr "Saglabāt vārdu"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
@@ -2811,7 +2837,7 @@ msgstr "Meklē..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Atlasīt"
+msgstr "Izvēle"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -3018,7 +3044,7 @@ msgstr "Iela"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Tēma"
+msgstr "Lietotājs vai grupa"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "Uzvārds"
 msgid "Switch to view 1-9"
 msgstr "Pārslēgt uz skatu 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Sistēma"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Sistēma"
 
@@ -3068,6 +3098,11 @@ msgstr "Tagi"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Tālruņi"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Provizorisks"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "Pārāk daudz pieprasījumu"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Augšā"
+msgstr "Labākie"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3185,7 +3220,7 @@ msgstr "Ceļojums"
 
 #: src/features/contacts/index.tsx
 msgid "Try a different name"
-msgstr "Mēģiniet citu nosaukumu"
+msgstr "Mēģiniet citu vārdu"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"

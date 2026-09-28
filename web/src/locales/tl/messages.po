@@ -26,6 +26,11 @@ msgstr "(in-edit)"
 msgid "(expand)"
 msgstr "(palawakin)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Walang pamagat)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(ikaw)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "Pangalan ng {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} hanggang {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# pa} other {+# pa}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "Magdagdag ng checklist item"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "Magdagdag ng contact"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Magdagdag ng device"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -578,13 +584,18 @@ msgstr "Hindi available ang camera"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "Kanselahin"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Kanselahin"
 
@@ -603,6 +614,11 @@ msgstr "Kanselahin ang sagot"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Kinansela"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Kinansela"
 
@@ -767,7 +783,7 @@ msgstr "Mga komento ({0})"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Compact"
-msgstr "Compact"
+msgstr "Siksik"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Configure option settings"
@@ -782,18 +798,14 @@ msgstr "I-configure ang mga setting ng view"
 msgid "Confirm"
 msgstr "Kumpirmahin"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Ikonekta ang isa pang device"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Ikonekta ang device"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Konektado"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Mga nakakonektang device"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "Nakopya"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Nakopya sa clipboard"
 
@@ -864,10 +875,6 @@ msgstr "Nakopya sa clipboard"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopyahin"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Kopyahin ang {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1157,7 +1164,7 @@ msgstr "Mga detalye"
 
 #: ../../../lib/web/src/components/layout/right-panel.tsx
 msgid "Details Panel"
-msgstr "Details Panel"
+msgstr "Panel ng mga detalye"
 
 #: ../../../lib/web/src/components/language-picker.tsx
 #: ../../../lib/web/src/components/timezone-select.tsx
@@ -1271,6 +1278,7 @@ msgstr "I-edit ang grupo"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "I-edit ang pangalan"
 
@@ -1653,7 +1661,7 @@ msgstr "Bumalik"
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "Group"
-msgstr "Group"
+msgstr "Grupo"
 
 #: src/features/groups/group-detail.tsx
 msgid "Group actions"
@@ -1673,7 +1681,7 @@ msgstr "Nadelete ang group"
 
 #: src/features/groups/group-detail.tsx
 msgid "Group ID"
-msgstr "Group ID"
+msgstr "ID ng grupo"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Group name"
@@ -1715,7 +1723,7 @@ msgstr "Bahay"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Hot"
-msgstr "Hot"
+msgstr "Sikat"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "ID"
@@ -1728,11 +1736,11 @@ msgstr "Identity"
 #. placeholder {0}: currentMedia.name
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Image viewer: {0}"
-msgstr "Image viewer: {0}"
+msgstr "Tagatingin ng larawan: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
-msgstr "Imperial"
+msgstr "Imperyal"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "In contacts"
@@ -1748,7 +1756,7 @@ msgstr "Mga papasok na invitation"
 
 #: ../../../lib/web/src/components/faceless-avatar.tsx
 msgid "Initials avatar"
-msgstr "Initials avatar"
+msgstr "Avatar na inisyal"
 
 #: ../../../lib/web/src/components/faceless-avatar.tsx
 msgid "Initials avatar for {name}"
@@ -1804,12 +1812,12 @@ msgstr "Na-update ang invite policy"
 #: src/features/invitations/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Invite settings"
-msgstr "Invite settings"
+msgstr "Mga setting ng imbitasyon"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
 msgid "Invited"
-msgstr "Na-imbitahan"
+msgstr "Inimbitahan"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1847,7 +1855,7 @@ msgstr "Mga titik, numero, espasyo, gitling, at slash lamang"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Light"
-msgstr "Light"
+msgstr "Maliwanag"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Link"
@@ -1906,10 +1914,6 @@ msgstr "Nagla-log out…"
 msgid "Manage categories"
 msgstr "I-manage ang mga category"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Pamahalaan ang mga device"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Manwal"
@@ -1957,13 +1961,17 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Mensahe"
 
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Magmensahe"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
-msgstr "Metric"
+msgstr "Metriko"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Microphone permission denied"
@@ -2023,9 +2031,13 @@ msgstr "Inililipat sa {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "Pangalan"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "Pangalan"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "Hindi kailanman"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Bago"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Pinakabago"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,9 +2264,13 @@ msgstr "Mga notification: {0}"
 msgid "Notify me"
 msgstr "Mag-notify sa akin"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Numero"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Numero"
 
@@ -2531,6 +2551,11 @@ msgstr "Kaugnayan {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Kaugnayan {relevance}, interes {weight}"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Paalala"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
@@ -2723,6 +2748,7 @@ msgstr "I-save"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "I-save ang pangalan"
 
@@ -2811,7 +2837,7 @@ msgstr "Naghahanap..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Pumili"
+msgstr "Pagpipilian"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -3018,7 +3044,7 @@ msgstr "Kalye"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Paksa"
+msgstr "User o grupo"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,11 +3072,15 @@ msgstr "Apelyido"
 msgid "Switch to view 1-9"
 msgstr "Lumipat sa view 1-9"
 
-#: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "System"
 msgstr "System"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+msgctxt "actor"
+msgid "System"
+msgstr "Sistema"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tag already exists"
@@ -3068,6 +3098,11 @@ msgstr "Mga tag"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Mga telepono"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Pansamantala"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "Masyadong maraming request"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Itaas"
+msgstr "Pinakamahusay"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3262,7 +3297,7 @@ msgstr "Tanggalin sa mga kaibigan"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
-msgstr "United States"
+msgstr "Estados Unidos"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -3364,7 +3399,7 @@ msgstr "Thumbnail ng video"
 #. placeholder {0}: currentMedia.name
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Video viewer: {0}"
-msgstr "Video viewer: {0}"
+msgstr "Tagapanood ng video: {0}"
 
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 #: ../../../lib/web/src/components/layout/notification-menu.tsx

@@ -26,6 +26,11 @@ msgstr "(רעדאַגירט)"
 msgid "(expand)"
 msgstr "(פאַרברייטערן)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(אָן קעפּל)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(דו)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel} נאָמען"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} ביז {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# מער} other {+# מער}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "צולייגן טשעקליסטע פּונקט"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "צולייגן קאָנטאַקט"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "צולייגן אַ מיטל"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -393,7 +399,7 @@ msgstr "Android פּוש"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone"
-msgstr "עמעצער"
+msgstr "ווער עס איז"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Anyone who is logged in"
@@ -464,7 +470,7 @@ msgstr "אױטענטיפֿיצירטע באַניצער"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Authenticator code"
-msgstr "Authenticator קאָד"
+msgstr "אויטענטיפֿיקאַטאָר־קאָד"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Available keyboard shortcuts"
@@ -527,7 +533,7 @@ msgstr "געבלאָקירט נאַוויגאַציע צו אומגעטרויט�
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocks"
-msgstr "Blocks"
+msgstr "בלאָקירט"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Board"
@@ -578,13 +584,18 @@ msgstr "די קאַמערע איז נישט פֿאַראַן"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "אָפּזאָגן"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "אָפּזאָגן"
 
@@ -603,6 +614,11 @@ msgstr "אָפּזאָגן ענטפֿער"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "אָפּגעזאָגט"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "אָפּגעזאָגט"
 
@@ -782,18 +798,14 @@ msgstr "קאָנפֿיגורירן זעהן אײַנשטעלונגען"
 msgid "Confirm"
 msgstr "באַשטעטיקן"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "פֿאַרבינדן נאָך אַ מיטל"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "פֿאַרבינדן אַ מיטל"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "פֿאַרבונדן"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "פֿאַרבונדענע אַפּאַראַטן"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "קאָפּירט"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "קאָפּירט צו קליפּברעט"
 
@@ -864,10 +875,6 @@ msgstr "קאָפּירט צו קליפּברעט"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "קאָפּירן"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "קאָפּירן {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -964,7 +971,7 @@ msgstr "איצטיקער אָרט"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 msgid "Custom"
-msgstr "מנהג"
+msgstr "אָנגעפּאַסט"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Dark"
@@ -1271,6 +1278,7 @@ msgstr "רעדאַקטירן גרופּע"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "רעדאַקטירן נאָמען"
 
@@ -1580,7 +1588,7 @@ msgstr "ניט געלונגען אַרויפֿצולאָדן בײַלאַגע"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
-msgstr "Favicon"
+msgstr "בראָוזער ייקאָן"
 
 #: src/features/profile/index.tsx
 msgid "File too large"
@@ -1736,7 +1744,7 @@ msgstr "אימפּעריאַל"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "In contacts"
-msgstr "אין קאָנטאַקטן"
+msgstr "אין די קאָנטאַקטן"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1906,10 +1914,6 @@ msgstr "אַרויסקומען…"
 msgid "Manage categories"
 msgstr "פֿאַרוואַלטן קאַטעגאָריעס"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "פֿאַרוואַלטן מיטלען"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "מאַנואַל"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "מעניו"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "בריוו"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "שיקן אַ בריוו"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,9 +2031,13 @@ msgstr "פֿאַררוקן צו {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "נאָמען"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "נאָמען"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "קיינמאָל"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "נײַ"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "נײַסטע"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2220,7 +2236,7 @@ msgstr "קיינס"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Normal"
-msgstr "נארמאל"
+msgstr "נאָרמאַל"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2248,9 +2264,13 @@ msgstr "מעלדונגען: {0}"
 msgid "Notify me"
 msgstr "מעלד מיר"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "נומער"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "נומער"
 
@@ -2341,7 +2361,7 @@ msgstr "פּאַסקיי"
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkey verification failed. Please try again."
-msgstr "די passkey פֿאַריפֿיצירונג איז דורכגעפֿאַלן. ביטע פּרוביר ווידער."
+msgstr "די פּאַסקיי־פֿאַריפֿיצירונג איז דורכגעפֿאַלן. ביטע פּרוביר ווידער."
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Passkeys"
@@ -2530,6 +2550,11 @@ msgstr "רעלעוואַנץ {relevance}"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "רעלעוואַנץ {relevance}, אינטערעס {weight}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "דערמאָנונג"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -2723,8 +2748,9 @@ msgstr "היט אויף"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
-msgstr "היט נאָמען"
+msgstr "אָפּהיטן נאָמען"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
@@ -2811,7 +2837,7 @@ msgstr "זוכן..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "קלײַב"
+msgstr "אויסוואַל"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -3018,7 +3044,7 @@ msgstr "גאַס"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "טעמע"
+msgstr "באַניצער אָדער גרופּע"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "פֿאַמיליע־נאָמען"
 msgid "Switch to view 1-9"
 msgstr "ביט איבער צו ראַם 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "סיסטעם"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "סיסטעם"
 
@@ -3068,6 +3098,11 @@ msgstr "טאַגן"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "טעלעפֿאָנען"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "פּראָוויזאָריש"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "צו פֿיל בקשות"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "אויבן"
+msgstr "בעסטע"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3326,7 +3361,7 @@ msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
-msgstr "ניצט אײַער passkey"
+msgstr "ניצט אײַער פּאַסקיי"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx

@@ -430,7 +430,7 @@ export function Invitations() {
                         icon={<X className='h-3.5 w-3.5' />}
                         onClick={() => handleCancelSent(invite.id)}
                       >
-                        <Trans>Cancel</Trans>
+                        <Trans context='withdraw'>Cancel</Trans>
                       </Button>
                     </div>
                   ))}

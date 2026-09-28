@@ -26,6 +26,11 @@ msgstr "(editjat)"
 msgid "(expand)"
 msgstr "(espandi)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(L-ebda titlu)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(int)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "Isem ta' {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "minn {from} sa {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# ieħor} two {+# oħra} few {+# oħra} many {+# oħra} other {+# oħra}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "Żid item għall-checklist"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "Żid kuntatt"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Żid apparat"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -508,7 +514,7 @@ msgstr "Banner aġġornat"
 
 #: src/features/contacts/editor.tsx
 msgid "Birthday"
-msgstr "Jum it-twelid"
+msgstr "Għeluq is-sena"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -527,7 +533,7 @@ msgstr "Navigazzjoni mblokkata lejn link mhux fdat"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Blocks"
-msgstr "Blocks"
+msgstr "Jimblokka"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Board"
@@ -578,13 +584,18 @@ msgstr "Il-kamera mhix disponibbli"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "Ikkanċella"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Ikkanċella"
 
@@ -603,6 +614,11 @@ msgstr "Ikkanċella r-risposta"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Ikkanċellat"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Ikkanċellat"
 
@@ -648,11 +664,11 @@ msgstr "Okkorrenza mibdula"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
-msgstr "Checkbox"
+msgstr "Kaxxa tal-għażla"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
-msgstr "Checklist"
+msgstr "Lista ta' kontroll"
 
 #: ../../../lib/web/src/components/ui/date-picker.tsx
 msgid "Choose a date"
@@ -782,18 +798,14 @@ msgstr "Ikkonfigura s-settings tal-view"
 msgid "Confirm"
 msgstr "Ikkonferma"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Qabbad apparat ieħor"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Qabbad apparat"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Konness"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Apparati mqabbda"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "Ikkupjat"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Ikkupjat fil-clipboard"
 
@@ -864,10 +875,6 @@ msgstr "Ikkupjat fil-clipboard"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Ikkupja"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Ikkupja {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -997,7 +1004,7 @@ msgstr "Qed niċħad l-istediniet..."
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Default"
-msgstr "Default"
+msgstr "Prestabbilit"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
@@ -1271,6 +1278,7 @@ msgstr "Editja l-grupp"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "Editja l-isem"
 
@@ -1302,7 +1310,7 @@ msgstr "Kodiċi tal-email"
 
 #: src/features/contacts/editor.tsx
 msgid "Emails"
-msgstr "Emails"
+msgstr "Indirizzi tal-imejl"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
@@ -1706,7 +1714,7 @@ msgstr "Storja"
 #: ../../../lib/web/src/components/layout/top-bar.tsx
 #: ../../../lib/web/src/components/layout/top-bar.tsx
 msgid "Home"
-msgstr "Home"
+msgstr "Paġna ewlenija"
 
 #: src/features/contacts/editor.tsx
 msgctxt "contact type"
@@ -1839,7 +1847,7 @@ msgstr "Użat l-aħħar {0}"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
-msgstr "Layout"
+msgstr "Tqassim"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Letters, numbers, spaces, hyphens, and slashes only"
@@ -1855,7 +1863,7 @@ msgstr "Ħolqa"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
-msgstr "Links"
+msgstr "Ħoloq"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "List"
@@ -1906,10 +1914,6 @@ msgstr "Qed joħroġ…"
 msgid "Manage categories"
 msgstr "Immaniġġja l-kategoriji"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Immaniġġja l-apparati"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Manwali"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Messaġġ"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Ibgħat messaġġ"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -1984,7 +1992,7 @@ msgstr "Ħabib ta' Mochi"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
-msgstr "Mochi web"
+msgstr "Web ta' Mochi"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
@@ -2023,9 +2031,13 @@ msgstr "Qed jiġi mċaqlaq għal {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "Isem"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "Isem"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "Qatt"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Ġdid"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "L-aktar ġodda"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,9 +2264,13 @@ msgstr "Notifiki: {0}"
 msgid "Notify me"
 msgstr "Innotifikani"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Numru"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Numru"
 
@@ -2336,7 +2356,7 @@ msgstr "Ġenitur"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Passkey"
-msgstr "Passkey"
+msgstr "Ċavetta tal-aċċess"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 #: ../../../lib/web/src/lib/shell-errors.ts
@@ -2513,7 +2533,7 @@ msgstr "Irrifjuta kollha"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Relates"
-msgstr "Relates"
+msgstr "Relatat"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Relative (5m, 3h, 2d)"
@@ -2530,6 +2550,11 @@ msgstr "Rilevanza {relevance}"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Rilevanza {relevance}, interess {weight}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Tfakkira"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -2723,6 +2748,7 @@ msgstr "Issejvja"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "Issejvja l-isem"
 
@@ -2811,7 +2837,7 @@ msgstr "Qed ifittex..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Agħżel"
+msgstr "Għażla"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2926,7 +2952,7 @@ msgstr "Issettja oriġini u destinazzjoni"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Settings"
-msgstr "Settings"
+msgstr "Issettjar"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"
@@ -2946,7 +2972,7 @@ msgstr "Qed juri {totalShown} minn {total}"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx
 msgid "Sidebar"
-msgstr "Sidebar"
+msgstr "Barra tal-ġenb"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 msgid "Sign in with an account that has access <0/> to this resource."
@@ -3046,9 +3072,13 @@ msgstr "Kunjom"
 msgid "Switch to view 1-9"
 msgstr "Aqleb għal vista 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Sistema"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Sistema"
 
@@ -3063,11 +3093,16 @@ msgstr "It-tikketta trid tkun sa 50 karattru"
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
-msgstr "Tags"
+msgstr "Tikketti"
 
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Telefons"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Provviżorju"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3125,7 +3160,7 @@ msgstr "Is-server irritorna paġna web minflok data."
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "Din l-app mhijiex permessa tuża l-passkey tiegħek. Ippermettiha fis-Settings, taħt Permessi."
+msgstr "Din l-app mhijiex permessa tuża l-passkey tiegħek. Ippermettiha fl-Issettjar, taħt Permessi."
 
 #: src/features/groups/group-detail.tsx
 msgid "This group may have been removed or is unavailable."
@@ -3177,7 +3212,7 @@ msgstr "Wisq talbiet"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Quċċata"
+msgstr "L-aqwa"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"

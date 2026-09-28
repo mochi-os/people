@@ -187,7 +187,7 @@ function PeopleLayoutInner() {
           },
           {
             id: 'connect-device',
-            title: t`Connect device`,
+            title: t`Connected devices`,
             icon: Smartphone,
             onClick: () => setConnectOpen(true),
           },

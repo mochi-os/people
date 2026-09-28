@@ -26,6 +26,11 @@ msgstr "(измењено)"
 msgid "(expand)"
 msgstr "(прошири)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Без наслова)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(ви)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "Назив {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "од {from} до {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# више} few {+# више} other {+# више}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "Додај ставку чек-листе"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "Додај контакт"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Додај уређај"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -388,7 +394,7 @@ msgstr "Дошло је до неочекиване грешке"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Push за Android"
+msgstr "Пуш за Android"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
@@ -464,7 +470,7 @@ msgstr "Аутентификовани корисници"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Authenticator code"
-msgstr "Authenticator код"
+msgstr "Код аутентификатора"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Available keyboard shortcuts"
@@ -578,13 +584,18 @@ msgstr "Камера није доступна"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "Откажи"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Откажи"
 
@@ -603,6 +614,11 @@ msgstr "Откажи одговор"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Отказано"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Отказано"
 
@@ -782,18 +798,14 @@ msgstr "Конфигуриши подешавања приказа"
 msgid "Confirm"
 msgstr "Потврди"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Повежи још један уређај"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Повежи уређај"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Повезано"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Повезани уређаји"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "Копирано"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Копирано у привремену меморију"
 
@@ -864,10 +875,6 @@ msgstr "Копирано у привремену меморију"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Копирај"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Копирај {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1271,6 +1278,7 @@ msgstr "Уреди групу"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "Уреди име"
 
@@ -1580,7 +1588,7 @@ msgstr "Отпремање прилога није успело"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
-msgstr "Favicon"
+msgstr "Фавикон"
 
 #: src/features/profile/index.tsx
 msgid "File too large"
@@ -1677,7 +1685,7 @@ msgstr "ID групе"
 
 #: src/features/groups/group-dialog.tsx
 msgid "Group name"
-msgstr "Име групе"
+msgstr "Назив групе"
 
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
@@ -1906,10 +1914,6 @@ msgstr "Одјављивање…"
 msgid "Manage categories"
 msgstr "Управљај категоријама"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Управљај уређајима"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Ручно"
@@ -1925,7 +1929,7 @@ msgstr "Markdown подржан"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
-msgstr "Najveća dužina"
+msgstr "Највећа дужина"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "MCP server"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "Мени"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Порука"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Пошаљи поруку"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -1971,7 +1979,7 @@ msgstr "Дозвола за микрофон је одбијена"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Minimum length"
-msgstr "Najmanja dužina"
+msgstr "Најмања дужина"
 
 #: src/features/contacts/editor.tsx
 msgctxt "contact type"
@@ -2023,24 +2031,28 @@ msgstr "Премештање на {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "Назив"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "Име"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
-msgstr "Име не може да садржи знакове < или >"
+msgstr "Назив не може да садржи знакове < или >"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
-msgstr "Име је обавезно"
+msgstr "Назив је обавезан"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name must be 1000 characters or less"
-msgstr "Име мора имати 1000 знакова или мање"
+msgstr "Назив мора имати 1000 знакова или мање"
 
 #: src/features/profile/index.tsx
 msgid "Name saved"
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "Никад"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Ново"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Најновије"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,9 +2264,13 @@ msgstr "Обавештења: {0}"
 msgid "Notify me"
 msgstr "Обавести ме"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Број"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Број"
 
@@ -2357,7 +2377,7 @@ msgstr "Лозинка"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Pattern (regex)"
-msgstr "Šablon (regex)"
+msgstr "Шаблон (regex)"
 
 #: src/features/invitations/index.tsx
 msgid "Pending"
@@ -2366,7 +2386,7 @@ msgstr "На чекању"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: src/components/layout/people-layout.tsx
 msgid "People"
-msgstr "Људи"
+msgstr "Особе"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2447,7 +2467,7 @@ msgstr "Профил сачуван"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Prompt saved"
-msgstr "Prompt сачуван"
+msgstr "Упит сачуван"
 
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Properties"
@@ -2455,7 +2475,7 @@ msgstr "Својства"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Push notification"
-msgstr "Push обавештење"
+msgstr "Пуш обавештење"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Raised"
@@ -2530,6 +2550,11 @@ msgstr "Релевантност {relevance}"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Релевантност {relevance}, интересовање {weight}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Подсетник"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -2723,6 +2748,7 @@ msgstr "Сачувај"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "Сачувај име"
 
@@ -2811,7 +2837,7 @@ msgstr "Претраживање..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Изабери"
+msgstr "Избор"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2926,7 +2952,7 @@ msgstr "Постави полазиште и одредиште"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Settings"
-msgstr "Поставке"
+msgstr "Подешавања"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Show classes"
@@ -3018,7 +3044,7 @@ msgstr "Улица"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Тема"
+msgstr "Корисник или група"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "Презиме"
 msgid "Switch to view 1-9"
 msgstr "Пребаци на приказ 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Систем"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Систем"
 
@@ -3068,6 +3098,11 @@ msgstr "Ознаке"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Телефони"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Непотврђено"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3113,7 +3148,7 @@ msgstr "На захтев за микрофон није одговорено"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "The passkey request was not answered"
-msgstr "На захтев за passkey није одговорено"
+msgstr "На захтев за приступни кључ није одговорено"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "The requested content could not be found."
@@ -3125,7 +3160,7 @@ msgstr "Сервер је вратио веб страницу уместо по
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "This app is not allowed to use your passkey. Allow it in Settings, under Permissions."
-msgstr "Овој апликацији није дозвољено да користи ваш passkey. Дозволите јој то у Подешавањима, под Дозволе."
+msgstr "Овој апликацији није дозвољено да користи ваш приступни кључ. Дозволите јој то у Подешавањима, под Дозволе."
 
 #: src/features/groups/group-detail.tsx
 msgid "This group may have been removed or is unavailable."
@@ -3177,7 +3212,7 @@ msgstr "Превише захтева"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Врх"
+msgstr "Најбоље"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"

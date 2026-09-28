@@ -26,6 +26,11 @@ msgstr "(tahrirlangan)"
 msgid "(expand)"
 msgstr "(yoyish)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Sarlavhasiz)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(siz)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel} nomi"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} – {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# ta} other {+# ta}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "Roʻyxat elementi qoʻshish"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "Kontakt qoʻshish"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Qurilma qoʻshish"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -388,7 +394,7 @@ msgstr "Kutilmagan xatolik yuz berdi"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Android push"
+msgstr "Android push bildirishnomalari"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
@@ -460,7 +466,7 @@ msgstr "Javob fayllarini biriktirish"
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Authenticated users"
-msgstr "Autentifikatsiyadan o'tgan foydalanuvchilar"
+msgstr "Autentifikatsiyadan oʻtgan foydalanuvchilar"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Authenticator code"
@@ -578,13 +584,18 @@ msgstr "Kamera mavjud emas"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "Bekor qilish"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Bekor qilish"
 
@@ -603,6 +614,11 @@ msgstr "Javobni bekor qilish"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Bekor qilindi"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Bekor qilindi"
 
@@ -782,18 +798,14 @@ msgstr "Koʻrinish sozlamalarini sozlash"
 msgid "Confirm"
 msgstr "Tasdiqlash"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Yana bir qurilma ulash"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Qurilma ulash"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Ulangan"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Ulangan qurilmalar"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "Nusxalandi"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Buferga nusxalandi"
 
@@ -864,10 +875,6 @@ msgstr "Buferga nusxalandi"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Nusxalash"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} nusxalash"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1271,8 +1278,9 @@ msgstr "Guruhni tahrirlash"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
-msgstr "Nomni tahrirlash"
+msgstr "Ismni tahrirlash"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Edit option"
@@ -1580,7 +1588,7 @@ msgstr "Ilovani yuklab boʻlmadi"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
-msgstr "Favicon"
+msgstr "Sayt belgisi"
 
 #: src/features/profile/index.tsx
 msgid "File too large"
@@ -1809,7 +1817,7 @@ msgstr "Taklif sozlamalari"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
 msgid "Invited"
-msgstr "Taklif qilindi"
+msgstr "Taklif qilingan"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1906,10 +1914,6 @@ msgstr "Chiqilmoqda…"
 msgid "Manage categories"
 msgstr "Toifalarni boshqarish"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Qurilmalarni boshqarish"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Qoʻlda"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "Menyu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Xabar"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Xabar yuborish"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,11 +2031,15 @@ msgstr "{0} sanasiga koʻchirilmoqda"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/index.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Nomi"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgctxt "person"
+msgid "Name"
+msgstr "Ism"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "Hech qachon"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Yangi"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Eng yangi"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,9 +2264,13 @@ msgstr "Bildirishnomalar: {0}"
 msgid "Notify me"
 msgstr "Menga xabar berish"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Raqam"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Raqam"
 
@@ -2531,6 +2551,11 @@ msgstr "Moslik {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Moslik {relevance}, qiziqish {weight}"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Eslatma"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
@@ -2723,6 +2748,7 @@ msgstr "Saqlash"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "Ismni saqlash"
 
@@ -2811,7 +2837,7 @@ msgstr "Qidirilmoqda..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Tanlash"
+msgstr "Tanlov"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -3018,7 +3044,7 @@ msgstr "Koʻcha"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Mavzu"
+msgstr "Foydalanuvchi yoki guruh"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "Familiya"
 msgid "Switch to view 1-9"
 msgstr "1-9 koʻrinishiga oʻtish"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Tizim"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Tizim"
 
@@ -3068,6 +3098,11 @@ msgstr "Teglar"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Telefonlar"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Taxminiy"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "Juda koʻp soʻrovlar"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Yuqori"
+msgstr "Eng yaxshi"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"

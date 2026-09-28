@@ -26,6 +26,11 @@ msgstr "(已编辑)"
 msgid "(expand)"
 msgstr "(展开)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "（无标题）"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(你)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel}名称"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} 至 {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, other {+# 个}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "添加清单项"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "添加联系人"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "添加设备"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -531,7 +537,7 @@ msgstr "阻止"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Board"
-msgstr "棋盘"
+msgstr "看板"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -578,13 +584,18 @@ msgstr "相机不可用"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "取消"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "取消"
 
@@ -603,6 +614,11 @@ msgstr "取消回复"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "已取消"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "已取消"
 
@@ -782,18 +798,14 @@ msgstr "配置视图设置"
 msgid "Confirm"
 msgstr "确认"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "连接另一台设备"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "连接设备"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "已连接"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "已连接的设备"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "已复制"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "已复制到剪贴板"
 
@@ -864,10 +875,6 @@ msgstr "已复制到剪贴板"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "复制"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "复制{label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1081,7 +1088,7 @@ msgstr "删除字段"
 
 #: ../../../lib/web/src/components/game/game-end-dialogs.tsx
 msgid "Delete game?"
-msgstr "删除对局?"
+msgstr "删除对局？"
 
 #: src/features/groups/group-detail.tsx
 msgid "Delete group"
@@ -1271,8 +1278,9 @@ msgstr "编辑群组"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
-msgstr "编辑名称"
+msgstr "编辑姓名"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Edit option"
@@ -1906,10 +1914,6 @@ msgstr "正在退出登录…"
 msgid "Manage categories"
 msgstr "管理分类"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "管理设备"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "手动"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "菜单"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "消息"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "发消息"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,11 +2031,15 @@ msgstr "正在移动到 {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/index.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "名称"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgctxt "person"
+msgid "Name"
+msgstr "姓名"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "从不"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "新建"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "最新"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,11 +2264,15 @@ msgstr "通知：{0}"
 msgid "Notify me"
 msgstr "通知我"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "数字"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "编号"
 
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
@@ -2366,7 +2386,7 @@ msgstr "待处理"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: src/components/layout/people-layout.tsx
 msgid "People"
-msgstr "人员"
+msgstr "联系人"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2530,6 +2550,11 @@ msgstr "相关性 {relevance}"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "相关性 {relevance}，兴趣 {weight}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "提醒"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -2723,8 +2748,9 @@ msgstr "保存"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
-msgstr "保存名称"
+msgstr "保存姓名"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
@@ -3018,7 +3044,7 @@ msgstr "街道"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "主题"
+msgstr "对象"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "姓氏"
 msgid "Switch to view 1-9"
 msgstr "切换到视图 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "系统"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "系统"
 
@@ -3068,6 +3098,11 @@ msgstr "标签"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "电话"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "暂定"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "请求次数过多"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "顶部"
+msgstr "最佳"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"

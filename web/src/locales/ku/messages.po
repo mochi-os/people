@@ -26,6 +26,11 @@ msgstr "(hatî sererast kirin)"
 msgid "(expand)"
 msgstr "(berfireh bike)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Bê sernav)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(tu)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "Navê {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "ji {from} heta {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# din} other {+# din}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "Hêmana lîsteya kontrolê zêde bike"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "Têkilî zêde bike"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Cîhazekê zêde bike"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -496,7 +502,7 @@ msgstr "Vegere ser malê"
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/entity-banner.tsx
 msgid "Banner"
-msgstr "Banner"
+msgstr "Pankart"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner removed"
@@ -531,7 +537,7 @@ msgstr "Blok"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Board"
-msgstr "Tabloya"
+msgstr "Tablo"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -578,13 +584,18 @@ msgstr "Kamera tune ye"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "Betal bike"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Betal bike"
 
@@ -603,6 +614,11 @@ msgstr "Bersivê betal bike"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Hat betalkirin"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Hat betalkirin"
 
@@ -724,7 +740,7 @@ msgstr "Lêgerînê bigire"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 msgid "Collapse"
-msgstr "Berhevbike"
+msgstr "Berhev bike"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Collapse sidebar"
@@ -782,18 +798,14 @@ msgstr "Mîhengên dîtinê biguherîne"
 msgid "Confirm"
 msgstr "Piştrast bike"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Cîhazeke din girê bide"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Cîhazekê girê bide"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Girêdayî"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Cîhazên girêdayî"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "Hat kopîkirin"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Hat kopîkirin li clipboard"
 
@@ -864,10 +875,6 @@ msgstr "Hat kopîkirin li clipboard"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopî bike"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} kopî bike"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1180,7 +1187,7 @@ msgstr "Navê cîhazê"
 
 #: ../../../lib/web/src/components/person-picker.tsx
 msgid "Directory"
-msgstr "Peldank"
+msgstr "Rêber"
 
 #: src/features/profile/index.tsx
 msgid "Directory listing"
@@ -1271,6 +1278,7 @@ msgstr "Komê sererast bike"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "Navê sererast bike"
 
@@ -1732,7 +1740,7 @@ msgstr "Nêrîna wêneyan: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
-msgstr "Imperial"
+msgstr "Împeryal"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "In contacts"
@@ -1809,7 +1817,7 @@ msgstr "Mîhengên vexwendinê"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
 msgid "Invited"
-msgstr "Hate vexwendin"
+msgstr "Vexwendî"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1855,7 +1863,7 @@ msgstr "Girêdan"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Links"
-msgstr "Lînka"
+msgstr "Girêdan"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "List"
@@ -1906,10 +1914,6 @@ msgstr "Tê derketin…"
 msgid "Manage categories"
 msgstr "Kategorîyan bi rêve bibe"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Cîhazan birêve bibe"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Destî"
@@ -1954,12 +1958,16 @@ msgstr "Hejmara endaman"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "Menu"
-msgstr "Menu"
+msgstr "Menû"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Peyam"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Peyamê bişîne"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -1984,7 +1992,7 @@ msgstr "Hevalê Mochi"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
-msgstr "Mochi web"
+msgstr "Mochi di gerokê de"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
@@ -2023,9 +2031,13 @@ msgstr "Tê veguhastin bo {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "Nav"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "Nav"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "Tu car"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Nû"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Herî nû"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,9 +2264,13 @@ msgstr "Agahdarî: {0}"
 msgid "Notify me"
 msgstr "Min agahdar bike"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Hejmar"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Hejmar"
 
@@ -2366,7 +2386,7 @@ msgstr "Li bendê"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: src/components/layout/people-layout.tsx
 msgid "People"
-msgstr "Kes"
+msgstr "Mirov"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2530,6 +2550,11 @@ msgstr "Peywendî {relevance}"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Peywendî {relevance}, eleqe {weight}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Bîranîn"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -2723,8 +2748,9 @@ msgstr "Tomar bike"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
-msgstr "Nav tomar bike"
+msgstr "Navê tomar bike"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
@@ -2811,7 +2837,7 @@ msgstr "Tê gerîn..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Hilbijêre"
+msgstr "Hilbijartin"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -3018,7 +3044,7 @@ msgstr "Kolan"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Mijar"
+msgstr "Bikarhêner an kom"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "Paşnav"
 msgid "Switch to view 1-9"
 msgstr "Veguherîne dîtina 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Pergal"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Pergal"
 
@@ -3063,11 +3093,16 @@ msgstr "Etîket divê 50 tîp an kêmtir be"
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
-msgstr "Tag"
+msgstr "Nîşan"
 
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Telefon"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Demkî"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "Daxwazên pir zêde"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Jor"
+msgstr "Çêtirîn"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"

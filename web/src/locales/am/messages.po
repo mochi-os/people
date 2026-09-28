@@ -26,6 +26,11 @@ msgstr "(ተሻሽሏል)"
 msgid "(expand)"
 msgstr "(አስፋ)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(ርዕስ የለም)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(እርስዎ)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "የ{entityLabel} ስም"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "ከ{from} እስከ {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# ተጨማሪ} other {+# ተጨማሪ}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "የዝርዝር ንጥል ጨምር"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "እውቂያ ጨምር"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "መሳሪያ ያክሉ"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -401,7 +407,7 @@ msgstr "የገባ ማንኛውም ሰው"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Anything subscribed to this feed will stop receiving it. You can copy a new URL afterwards."
-msgstr "በዚህ ምግብ የተመዘገበ ማንኛውም ነገር መቀበሉን ያቆማል። ከዚያ በኋላ አዲስ URL መቅዳት ይችላሉ።"
+msgstr "በዚህ ፊድ የተመዘገበ ማንኛውም ነገር መቀበሉን ያቆማል። ከዚያ በኋላ አዲስ URL መቅዳት ይችላሉ።"
 
 #: src/features/profile/index.tsx
 msgid "Appearance"
@@ -552,7 +558,7 @@ msgstr "የአሳሽ ማሳወቂያዎች"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Calendar server"
-msgstr "የቀን መቁጠሪያ ሰርቨር"
+msgstr "የቀን መቁጠሪያ አገልጋይ"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Camera permission denied"
@@ -578,15 +584,20 @@ msgstr "ካሜራ አይገኝም"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
 msgid "Cancel"
 msgstr "ይቅር"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
+msgid "Cancel"
+msgstr "ይሰርዙ"
 
 #: src/features/invitations/index.tsx
 msgid "Cancel all"
@@ -603,6 +614,11 @@ msgstr "ምላሽ ሰርዝ"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "ተሰርዟል"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "ተሰርዟል"
 
@@ -782,18 +798,14 @@ msgstr "የእይታ ቅንብሮችን አዋቅር"
 msgid "Confirm"
 msgstr "አረጋግጥ"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "ሌላ መሳሪያ ያገናኙ"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "መሳሪያ ያገናኙ"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "ተገናኝቷል"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "የተገናኙ መሳሪያዎች"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "ተቀድቷል"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "ወደ ቅንጥብ ሰሌዳ ተቀድቷል"
 
@@ -864,10 +875,6 @@ msgstr "ወደ ቅንጥብ ሰሌዳ ተቀድቷል"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "ቅዳ"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} ቅዳ"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1202,7 +1209,7 @@ msgstr "ተቋርጧል"
 #: ../../../lib/web/src/components/restore-banner.tsx
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Dismiss"
-msgstr "አጥፋ"
+msgstr "ዝጋ"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx
 msgid "Displays the mobile sidebar."
@@ -1271,6 +1278,7 @@ msgstr "ቡድን አርትዕ"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "ስም አስተካክል"
 
@@ -1580,7 +1588,7 @@ msgstr "አባሪ መስቀል አልተሳካም"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
-msgstr "Favicon"
+msgstr "የአሳሽ አዶ"
 
 #: src/features/profile/index.tsx
 msgid "File too large"
@@ -1906,10 +1914,6 @@ msgstr "በመውጣት ላይ…"
 msgid "Manage categories"
 msgstr "ምድቦችን ያስተዳድሩ"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "መሳሪያዎችን ያስተዳድሩ"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "በእጅ"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "ምናሌ"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "መልዕክት"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "መልዕክት ይላኩ"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,9 +2031,13 @@ msgstr "ወደ {0} በማንቀሳቀስ ላይ"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "ስም"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "ስም"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "በፍፁም"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "አዲስ"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "አዳዲስ"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2090,7 +2106,7 @@ msgstr "ቀጣይ ዓመት"
 
 #: src/features/contacts/editor.tsx
 msgid "Nickname"
-msgstr "ቅፅል ስም"
+msgstr "ቅጽል ስም"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 msgid "No {parentClassNames} to add to"
@@ -2248,9 +2264,13 @@ msgstr "ማሳወቂያዎች፦ {0}"
 msgid "Notify me"
 msgstr "አሳውቀኝ"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "ቁጥር"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "ቁጥር"
 
@@ -2336,12 +2356,12 @@ msgstr "ወላጅ"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Passkey"
-msgstr "የይለፍ ቁልፍ"
+msgstr "ፓስኪ"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Passkey verification failed. Please try again."
-msgstr "የይለፍ ቁልፍ ማረጋገጫ አልተሳካም። እባክዎ እንደገና ይሞክሩ።"
+msgstr "ፓስኪ ማረጋገጫ አልተሳካም። እባክዎ እንደገና ይሞክሩ።"
 
 #: ../../../lib/web/src/components/restore-banner.tsx
 msgid "Passkeys"
@@ -2530,6 +2550,11 @@ msgstr "አግባብነት {relevance}"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "አግባብነት {relevance}፣ ፍላጎት {weight}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "አስታዋሽ"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -2723,6 +2748,7 @@ msgstr "ያስቀምጡ"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "ስም አስቀምጥ"
 
@@ -2811,7 +2837,7 @@ msgstr "በመፈለግ ላይ..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "ይምረጡ"
+msgstr "ምርጫ"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -3018,7 +3044,7 @@ msgstr "መንገድ"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "ርዕሰ ጉዳይ"
+msgstr "ተጠቃሚ ወይም ቡድን"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,11 +3072,15 @@ msgstr "የአባት ስም"
 msgid "Switch to view 1-9"
 msgstr "ወደ ዕይታ 1-9 ቀይር"
 
-#: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "System"
 msgstr "ስርዓት"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+msgctxt "actor"
+msgid "System"
+msgstr "ስርዓቱ"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tag already exists"
@@ -3068,6 +3098,11 @@ msgstr "መለያዎች"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "ስልኮች"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "ያልተረጋገጠ"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "በጣም ብዙ ጥያቄዎች"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "ላይ"
+msgstr "ምርጥ"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3326,7 +3361,7 @@ msgstr ""
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Use your passkey"
-msgstr "የይለፍ ቁልፍዎን ይጠቀሙ"
+msgstr "ፓስኪዎን ይጠቀሙ"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx

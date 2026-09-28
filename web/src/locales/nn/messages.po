@@ -26,6 +26,11 @@ msgstr "(redigert)"
 msgid "(expand)"
 msgstr "(utvid)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Ingen tittel)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(deg)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel}-namn"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} til {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# til} other {+# til}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "Legg til sjekklisteelement"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "Legg til kontakt"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Legg til ei eining"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -531,7 +537,7 @@ msgstr "Blokker"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Board"
-msgstr "Brett"
+msgstr "Tavle"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -578,15 +584,20 @@ msgstr "Kamera ikkje tilgjengeleg"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
 msgid "Cancel"
 msgstr "Avbryt"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
+msgid "Cancel"
+msgstr "Kanseller"
 
 #: src/features/invitations/index.tsx
 msgid "Cancel all"
@@ -605,6 +616,11 @@ msgstr "Avbryt svar"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Cancelled"
 msgstr "Avbroten"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Cancelled"
+msgstr "Avlyst"
 
 #: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
@@ -782,18 +798,14 @@ msgstr "Set opp visningsinnstillingar"
 msgid "Confirm"
 msgstr "Stadfest"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Kople til ei eining til"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Kople til ei eining"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Tilkopla"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Tilkopla einingar"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "Kopiert"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Kopiert til utklippstavla"
 
@@ -864,10 +875,6 @@ msgstr "Kopiert til utklippstavla"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopier"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Kopier {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1271,6 +1278,7 @@ msgstr "Rediger gruppe"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "Rediger namn"
 
@@ -1580,7 +1588,7 @@ msgstr "Klarte ikkje lasta opp vedlegg"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
-msgstr "Favicon"
+msgstr "Favikon"
 
 #: src/features/profile/index.tsx
 msgid "File too large"
@@ -1732,7 +1740,7 @@ msgstr "Biletvisar: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
-msgstr "Imperial"
+msgstr "Imperialsk"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "In contacts"
@@ -1839,7 +1847,7 @@ msgstr "Sist nytta {0}"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
-msgstr "Layout"
+msgstr "Oppsett"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Letters, numbers, spaces, hyphens, and slashes only"
@@ -1906,10 +1914,6 @@ msgstr "Loggar ut…"
 msgid "Manage categories"
 msgstr "Handsam kategoriar"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Administrer einingar"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Manuell"
@@ -1933,7 +1937,7 @@ msgstr "MCP-tenar"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Medium"
-msgstr "Medium"
+msgstr "Middels"
 
 #: src/features/groups/group-detail.tsx
 msgid "Member"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "Meny"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Melding"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Send melding"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,9 +2031,13 @@ msgstr "Flyttar til {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "Namn"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "Namn"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "Aldri"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Ny"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Nyaste"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,11 +2264,15 @@ msgstr "Varsel: {0}"
 msgid "Notify me"
 msgstr "Varsla meg"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "Tal"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "Nummer"
 
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
@@ -2336,7 +2356,7 @@ msgstr "Forelder"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Passkey"
-msgstr "Nykel"
+msgstr "Tilgangsnøkkel"
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 #: ../../../lib/web/src/lib/shell-errors.ts
@@ -2420,7 +2440,7 @@ msgstr "Førre år"
 #: ../../../lib/web/src/features/document/document-page.tsx
 #: src/features/profile/index.tsx
 msgid "Privacy"
-msgstr "Privacy"
+msgstr "Personvern"
 
 #: ../../../lib/web/src/components/ui/upload-progress.tsx
 msgid "Processing…"
@@ -2530,6 +2550,11 @@ msgstr "Relevans {relevance}"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Relevans {relevance}, interesse {weight}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Påminning"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -2723,8 +2748,9 @@ msgstr "Lagre"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
-msgstr "Lagre namnet"
+msgstr "Lagre namn"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
@@ -2811,7 +2837,7 @@ msgstr "Søkjer..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Vel"
+msgstr "Val"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2898,7 +2924,7 @@ msgstr "Sendt ({0})"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Serif"
-msgstr "Serif"
+msgstr "Antikva"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Server"
@@ -3018,7 +3044,7 @@ msgstr "Gate"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Emne"
+msgstr "Brukar eller gruppe"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "Etternamn"
 msgid "Switch to view 1-9"
 msgstr "Byt til vising 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "System"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "System"
 
@@ -3068,6 +3098,11 @@ msgstr "Etikettar"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Telefonnummer"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Førebels"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx

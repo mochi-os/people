@@ -26,6 +26,11 @@ msgstr "(edytowane)"
 msgid "(expand)"
 msgstr "(rozwiń)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Bez tytułu)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(ty)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "Nazwa {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "od {from} do {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# więcej} few {+# więcej} many {+# więcej} other {+# więcej}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "Dodaj element listy"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "Dodaj kontakt"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Dodaj urządzenie"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -578,13 +584,18 @@ msgstr "Kamera niedostępna"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -605,6 +616,11 @@ msgstr "Anuluj odpowiedź"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Cancelled"
 msgstr "Anulowane"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Cancelled"
+msgstr "Odwołane"
 
 #: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
@@ -782,18 +798,14 @@ msgstr "Skonfiguruj ustawienia widoku"
 msgid "Confirm"
 msgstr "Potwierdź"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Połącz kolejne urządzenie"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Połącz urządzenie"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Połączono"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Połączone urządzenia"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "Skopiowano"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Skopiowano do schowka"
 
@@ -864,10 +875,6 @@ msgstr "Skopiowano do schowka"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Kopiuj"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Kopiuj {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1271,8 +1278,9 @@ msgstr "Edytuj grupę"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
-msgstr "Edytuj nazwę"
+msgstr "Edytuj imię i nazwisko"
 
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 msgid "Edit option"
@@ -1321,7 +1329,7 @@ msgstr "Wprowadź tekst banera (markdown obsługiwany)..."
 
 #: src/features/contacts/add-dialog.tsx
 msgid "Enter name to search..."
-msgstr "Wpisz nazwę, aby wyszukać..."
+msgstr "Wpisz imię, aby wyszukać..."
 
 #: ../../../lib/web/src/components/step-up-dialog.tsx
 msgid "Enter the code from your email"
@@ -1538,7 +1546,7 @@ msgstr "Nie udało się zapisać kontaktu"
 
 #: src/features/profile/index.tsx
 msgid "Failed to save name"
-msgstr "Nie udało się zapisać nazwy"
+msgstr "Nie udało się zapisać imienia i nazwiska"
 
 #: src/features/profile/index.tsx
 msgid "Failed to save privacy setting"
@@ -1906,10 +1914,6 @@ msgstr "Wylogowywanie…"
 msgid "Manage categories"
 msgstr "Zarządzaj kategoriami"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Zarządzaj urządzeniami"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Ręczny"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "Menu"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Wiadomość"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Wyślij wiadomość"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -1984,7 +1992,7 @@ msgstr "Znajomy w Mochi"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Mochi web"
-msgstr "Mochi web"
+msgstr "Mochi w przeglądarce"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Moderation"
@@ -2023,11 +2031,15 @@ msgstr "Przenoszenie na {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/index.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name"
 msgstr "Nazwa"
+
+#: src/features/contacts/editor.tsx
+#: src/features/contacts/index.tsx
+msgctxt "person"
+msgid "Name"
+msgstr "Imię i nazwisko"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
 msgid "Name cannot contain < or > characters"
@@ -2044,7 +2056,7 @@ msgstr "Nazwa może mieć maksymalnie 1000 znaków"
 
 #: src/features/profile/index.tsx
 msgid "Name saved"
-msgstr "Nazwa zapisana"
+msgstr "Imię i nazwisko zapisane"
 
 #: ../../../lib/web/src/features/errors/general-error.tsx
 #: ../../../lib/web/src/lib/api-response-interceptors.ts
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "Nigdy"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Nowy"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Najnowsze"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,11 +2264,15 @@ msgstr "Powiadomienia: {0}"
 msgid "Notify me"
 msgstr "Powiadom mnie"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "Liczba"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "Numer"
 
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
@@ -2531,6 +2551,11 @@ msgstr "Trafność {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Trafność {relevance}, zainteresowanie {weight}"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Przypomnienie"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
@@ -2723,8 +2748,9 @@ msgstr "Zapisz"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
-msgstr "Zapisz nazwę"
+msgstr "Zapisz imię i nazwisko"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
@@ -2811,7 +2837,7 @@ msgstr "Wyszukiwanie..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Wybierz"
+msgstr "Lista wyboru"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -3018,7 +3044,7 @@ msgstr "Ulica"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Temat"
+msgstr "Użytkownik lub grupa"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "Nazwisko"
 msgid "Switch to view 1-9"
 msgstr "Przełącz na widok 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "System"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "System"
 
@@ -3068,6 +3098,11 @@ msgstr "Tagi"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Telefony"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Wstępne"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "Zbyt wiele żądań"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Góra"
+msgstr "Najlepsze"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3185,7 +3220,7 @@ msgstr "Podróż"
 
 #: src/features/contacts/index.tsx
 msgid "Try a different name"
-msgstr "Spróbuj innej nazwy"
+msgstr "Spróbuj innego imienia"
 
 #: src/features/invitations/index.tsx
 msgid "Try adjusting your search"

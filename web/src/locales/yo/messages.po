@@ -26,6 +26,11 @@ msgstr "(a tunṣe)"
 msgid "(expand)"
 msgstr "(fẹ̀ jáde)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Kò sí àkọlé)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(ìwọ)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "Orúkọ {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "láti {from} sí {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, other {+# mìíràn}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -234,7 +236,11 @@ msgstr "Fi ohun ìmọ́ ìṣàyẹ̀wò kún"
 #: src/features/contacts/index.tsx
 #: src/features/invitations/index.tsx
 msgid "Add contact"
-msgstr "Fi olùbánisọ̀rọ̀ kún"
+msgstr "Fi olùbásọ̀rọ̀ kún"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Fi ẹ̀rọ kan kún"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -350,7 +356,7 @@ msgstr "A ti fi gbogbo àwùjọ tó wà kún tẹ́lẹ̀"
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/index.tsx
 msgid "All contacts"
-msgstr "Gbogbo olùbánisọ̀rọ̀"
+msgstr "Gbogbo olùbásọ̀rọ̀"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
@@ -388,7 +394,7 @@ msgstr "Àṣìṣe àìròtẹ́lẹ̀ kan wáyé"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Android push"
+msgstr "Ìfitónilétí push Android"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
@@ -496,7 +502,7 @@ msgstr "Pada si ile"
 #: ../../../lib/web/src/components/banner-section.tsx
 #: ../../../lib/web/src/components/entity-banner.tsx
 msgid "Banner"
-msgstr "Banner"
+msgstr "Àsíá"
 
 #: ../../../lib/web/src/components/banner-section.tsx
 msgid "Banner removed"
@@ -578,13 +584,18 @@ msgstr "Kamẹra kò sí"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "Fagilé"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Fagilé"
 
@@ -603,6 +614,11 @@ msgstr "Fagilé ìdáhùn"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Tí a fagilé"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Tí a fagilé"
 
@@ -782,18 +798,14 @@ msgstr "Ṣètò ètò ìran"
 msgid "Confirm"
 msgstr "Fọwọ́sí"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "So ẹ̀rọ mìíràn pọ̀"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "So ẹ̀rọ kan pọ̀"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Tí a so pọ̀"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Àwọn ẹ̀rọ tí a so pọ̀"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -822,7 +834,7 @@ msgstr "A ti fi olùbánisọ̀rọ̀ pamọ́"
 
 #: src/features/contacts/index.tsx
 msgid "Contacts"
-msgstr "Àwọn olùbánisọ̀rọ̀"
+msgstr "Àwọn olùbásọ̀rọ̀"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "Ti dàkọ"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "A ti ṣe àdàkọ sí clipboard"
 
@@ -864,10 +875,6 @@ msgstr "A ti ṣe àdàkọ sí clipboard"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Ṣe àdàkọ"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "Ṣe àdàkọ {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -964,7 +971,7 @@ msgstr "Ipò lọ́wọ́lọ́wọ́"
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 #: ../../../lib/web/src/components/colour-picker.tsx
 msgid "Custom"
-msgstr "Àṣà"
+msgstr "Àdáni"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Dark"
@@ -997,15 +1004,15 @@ msgstr "Ń kọ àwọn ìpè..."
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Default"
-msgstr "Àìpé"
+msgstr "Àìyípadà"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
-msgstr "Àkáǹtì AI àìpé"
+msgstr "Àkáǹtì AI àìyípadà"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Default sort"
-msgstr "Ìtò àìpé"
+msgstr "Ìtò àìyípadà"
 
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
 #: ../../../lib/web/src/components/entity/entity-board-column.tsx
@@ -1065,7 +1072,7 @@ msgstr "Pa àlàyé rẹ́"
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 msgid "Delete contact"
-msgstr "Pa olùbánisọ̀rọ̀ rẹ́"
+msgstr "Pa olùbásọ̀rọ̀ rẹ́"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Delete device"
@@ -1227,7 +1234,7 @@ msgstr "Gbà sílẹ̀"
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Download failed"
-msgstr "Ìgbasílẹ̀ kùnà"
+msgstr "Ìgbàsílẹ̀ kùnà"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Duplicates"
@@ -1254,7 +1261,7 @@ msgstr "Ṣàtúnṣe àlàyé"
 
 #: src/features/contacts/editor.tsx
 msgid "Edit contact"
-msgstr "Ṣàtúnṣe olùbánisọ̀rọ̀"
+msgstr "Ṣàtúnṣe olùbásọ̀rọ̀"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1271,6 +1278,7 @@ msgstr "Ṣàtúnṣe ẹgbẹ́"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "Ṣàtúnṣe orúkọ"
 
@@ -1340,7 +1348,7 @@ msgstr "Àṣìṣe"
 #: ../../../lib/web/src/components/tree-row.tsx
 #: ../../../lib/web/src/components/tree-row.tsx
 msgid "Expand"
-msgstr "Ṣílẹ̀kùn"
+msgstr "Gbòòrò"
 
 #: ../../../lib/web/src/components/layout/app-sidebar.tsx
 msgid "Expand sidebar"
@@ -1732,11 +1740,11 @@ msgstr "Ẹ̀rọ ìwo àwòrán: {0}"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Imperial"
-msgstr "Imperial"
+msgstr "Òṣùwọ̀n Gẹ̀ẹ́sì"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "In contacts"
-msgstr "Nínú àwọn olùbánisọ̀rọ̀"
+msgstr "Nínú àwọn olùbásọ̀rọ̀"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1906,10 +1914,6 @@ msgstr "Ń jáde…"
 msgid "Manage categories"
 msgstr "Ṣàkóso àwọn ẹ̀ka"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Ṣàkóso àwọn ẹ̀rọ"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Pẹ̀lú ọwọ́"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "Ìtòlẹ́sẹẹsẹ"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Ìránṣẹ́"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Fi ìránṣẹ́ ránṣẹ́"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2000,7 +2008,7 @@ msgstr "Oṣù"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
-msgstr "Awọn aṣayan diẹ sii"
+msgstr "Àwọn àṣàyàn síwájú sí i"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Moved"
@@ -2023,9 +2031,13 @@ msgstr "Ń kó lọ sí {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "Orúkọ"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "Orúkọ"
 
@@ -2057,14 +2069,18 @@ msgid "Never"
 msgstr "Láéláé"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Tuntun"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Tuntun jùlọ"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
 msgid "New contact"
-msgstr "Olùbánisọ̀rọ̀ tuntun"
+msgstr "Olùbásọ̀rọ̀ tuntun"
 
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
 #: ../../../lib/web/src/components/game/game-empty-state.tsx
@@ -2248,9 +2264,13 @@ msgstr "Àwọn ìfitónilétí: {0}"
 msgid "Notify me"
 msgstr "Fìtọ́nisí mi"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Nọ́mbà"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Nọ́mbà"
 
@@ -2435,7 +2455,7 @@ msgstr "Ń ṣiṣẹ́ lé e…"
 #: src/features/profile/index.tsx
 #: src/features/profile/public.tsx
 msgid "Profile"
-msgstr "Profile"
+msgstr "Profáìlì"
 
 #: src/features/profile/index.tsx
 msgid "Profile preview"
@@ -2530,6 +2550,11 @@ msgstr "Ìbáramu {relevance}"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Ìbáramu {relevance}, ìfẹ́ {weight}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Ìránnilétí"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -2666,7 +2691,7 @@ msgstr "Fi eré sílẹ̀?"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Retry"
-msgstr "Gbìyànjú lẹ́ẹ̀kan si"
+msgstr "Gbìyànjú lẹ́ẹ̀kan sí i"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Revoke"
@@ -2723,6 +2748,7 @@ msgstr "Fi pamọ́"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "Fi orúkọ pamọ́"
 
@@ -2811,7 +2837,7 @@ msgstr "Ń wá..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Yan"
+msgstr "Àṣàyàn"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -3018,7 +3044,7 @@ msgstr "Òpópónà"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Àkòrí"
+msgstr "Olùmúlò tàbí ẹgbẹ́"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,11 +3072,15 @@ msgstr "Orúkọ ìdílé"
 msgid "Switch to view 1-9"
 msgstr "Yí padà sí ìwòye 1-9"
 
-#: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/lib/preference-utils.ts
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "System"
-msgstr "System"
+msgstr "Sístẹ́mù"
+
+#: ../../../lib/web/src/components/audit-timeline.tsx
+msgctxt "actor"
+msgid "System"
+msgstr "Sístẹ́mù"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tag already exists"
@@ -3063,11 +3093,16 @@ msgstr "Àmì gbọ́dọ̀ jẹ́ àwọn lẹ́tà 50 tàbí kéré sí"
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
-msgstr "Àwọn tag"
+msgstr "Àwọn àmì"
 
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Àwọn fóònù"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Fún ìgbà díẹ̀"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "Àwọn ìbéèrè ti pọ̀ jù"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Òkè"
+msgstr "Tó dára jùlọ"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3262,7 +3297,7 @@ msgstr "Fòpin sí ọ̀rẹ́"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
-msgstr "United States"
+msgstr "Orílẹ̀-èdè Amẹ́ríkà"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -3334,7 +3369,7 @@ msgstr "Lo passkey rẹ"
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/member-dialog.tsx
 msgid "User"
-msgstr "User"
+msgstr "Olùmúlò"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Username"

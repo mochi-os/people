@@ -26,6 +26,11 @@ msgstr "(دەستکاریکراو)"
 msgid "(expand)"
 msgstr "(فراوانکردن)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(بێ ناونیشان)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(تۆ)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "ناوی {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "لە {from} بۆ {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# زیاتر} other {+# زیاتر}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "زیادکردنی بڕگەی لیستی پشکنین"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "زیادکردنی پەیوەندی"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "زیادکردنی ئامێر"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -578,13 +584,18 @@ msgstr "کامێرا بەردەست نییە"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "هەڵوەشاندنەوە"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "هەڵوەشاندنەوە"
 
@@ -605,6 +616,11 @@ msgstr "هەڵوەشاندنەوەی وەڵام"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Cancelled"
 msgstr "هەڵوەشێنرایەوە"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Cancelled"
+msgstr "هەڵوەشێنراوە"
 
 #: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
@@ -782,18 +798,14 @@ msgstr "ڕێکخستنی ڕوانگە ڕێک بخە"
 msgid "Confirm"
 msgstr "پشتڕاستکردنەوە"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "ئامێرێکی تر بەستنەوە"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "ئامێرێک بەستنەوە"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "پەیوەستکراو"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "ئامێرە پەیوەستکراوەکان"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "کۆپی کرا"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "کۆپی کرا بۆ کلیپبۆرد"
 
@@ -864,10 +875,6 @@ msgstr "کۆپی کرا بۆ کلیپبۆرد"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "کۆپیکردن"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "کۆپیکردنی {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1271,6 +1278,7 @@ msgstr "دەستکاری گرووپ"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "دەستکاری ناو"
 
@@ -1455,7 +1463,7 @@ msgstr "سڕینەوەی بەستەر سەرکەوتوو نەبوو"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to get RSS token"
-msgstr "وەرگرتنی Token ـی RSS سەرکەوتوو نەبوو"
+msgstr "وەرگرتنی تۆکنی RSS سەرکەوتوو نەبوو"
 
 #: ../../../lib/web/src/hooks/use-load-more.ts
 msgid "Failed to load"
@@ -1517,7 +1525,7 @@ msgstr "گۆڕینی ناوی دەفتەری ناونیشان سەرکەوتوو
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to reset prompt"
-msgstr "ڕێکخستنەوەی Prompt سەرکەوتوو نەبوو"
+msgstr "ڕێکخستنەوەی پرۆمپت سەرکەوتوو نەبوو"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Failed to revoke RSS access"
@@ -1530,7 +1538,7 @@ msgstr "پاشەکەوتکردن سەرکەوتوو نەبوو"
 
 #: src/features/profile/index.tsx
 msgid "Failed to save accent"
-msgstr "پاشەکەوتکردنی ڕەنگی Accent سەرکەوتوو نەبوو"
+msgstr "پاشەکەوتکردنی ڕەنگی جیاکار سەرکەوتوو نەبوو"
 
 #: src/features/contacts/editor.tsx
 msgid "Failed to save contact"
@@ -1550,7 +1558,7 @@ msgstr "پاشەکەوتکردنی پڕۆفایل سەرکەوتوو نەبوو"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Failed to save prompt"
-msgstr "پاشەکەوتکردنی Prompt سەرکەوتوو نەبوو"
+msgstr "پاشەکەوتکردنی پرۆمپت سەرکەوتوو نەبوو"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -1580,7 +1588,7 @@ msgstr "بارکردنی هاوپێچ سەرکەوتوو نەبوو"
 
 #: src/features/profile/index.tsx
 msgid "Favicon"
-msgstr "Favicon"
+msgstr "ئایکۆنی ماڵپەڕ"
 
 #: src/features/profile/index.tsx
 msgid "File too large"
@@ -1809,7 +1817,7 @@ msgstr "ڕێکخستنەکانی بانگهێشت"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
 msgid "Invited"
-msgstr "بانگهێشتکرا"
+msgstr "بانگهێشتکراو"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1821,7 +1829,7 @@ msgstr "وردەکارییەکانی بڕگە"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
-msgstr "ئێستا"
+msgstr "هەر ئێستا"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -1906,10 +1914,6 @@ msgstr "دەردەچێت…"
 msgid "Manage categories"
 msgstr "بەڕێوەبردنی هاوپۆلەکان"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "بەڕێوەبردنی ئامێرەکان"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "دەستی"
@@ -1954,16 +1958,20 @@ msgstr "ژمارەی ئەندامەکان"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "Menu"
-msgstr "Menu"
+msgstr "مێنیو"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "پەیام"
 
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "پەیام بنێرە"
+
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
-msgstr "Metric"
+msgstr "مەتری"
 
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Microphone permission denied"
@@ -2000,7 +2008,7 @@ msgstr "مانگ"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "More options"
-msgstr "هەڵبژاردنی زیاتر"
+msgstr "بژاردەی زیاتر"
 
 #: ../../../lib/web/src/components/entity/entity-activity-list.tsx
 msgid "Moved"
@@ -2023,9 +2031,13 @@ msgstr "گواستنەوە بۆ {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "ناو"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "ناو"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "هەرگیز"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "نوێ"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "نوێترین"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,9 +2264,13 @@ msgstr "ئاگادارکردنەوەکان: {0}"
 msgid "Notify me"
 msgstr "ئاگادارم بکەرەوە"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "ژمارە"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "ژمارە"
 
@@ -2366,7 +2386,7 @@ msgstr "چاوەڕوان"
 #: ../../../lib/web/src/components/person-picker.tsx
 #: src/components/layout/people-layout.tsx
 msgid "People"
-msgstr "کەسەکان"
+msgstr "خەڵک"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2530,6 +2550,11 @@ msgstr "پەیوەندیدارێتی {relevance}"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "پەیوەندیدارێتی {relevance}، ئارەزوو {weight}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "بیرخەرەوە"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -2723,8 +2748,9 @@ msgstr "پاشەکەوتکردن"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
-msgstr "ناو پاشەکەوت بکە"
+msgstr "پاشەکەوتکردنی ناو"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
@@ -3018,7 +3044,7 @@ msgstr "شەقام"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "بابەت"
+msgstr "بەکارهێنەر یان گرووپ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "ناوی خێزان"
 msgid "Switch to view 1-9"
 msgstr "بگۆڕە بۆ پیشاندانی ١-٩"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "سیستەم"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "سیستەم"
 
@@ -3068,6 +3098,11 @@ msgstr "تاگەکان"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "تەلەفۆنەکان"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "کاتی"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "داواکاری زۆر زیاد"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "سەرەوە"
+msgstr "باشترین"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"

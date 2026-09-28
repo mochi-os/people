@@ -26,6 +26,11 @@ msgstr "(संपादित)"
 msgid "(expand)"
 msgstr "(विस्तार करें)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(कोई शीर्षक नहीं)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(आप)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel} नाम"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} से {to} तक"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# और} other {+# और}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "चेकलिस्ट आइटम जोड़ें"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "संपर्क जोड़ें"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "डिवाइस जोड़ें"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -578,13 +584,18 @@ msgstr "कैमरा उपलब्ध नहीं"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "रद्द करें"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "रद्द करें"
 
@@ -605,6 +616,11 @@ msgstr "उत्तर रद्द करें"
 #: ../../../lib/web/src/lib/shell-errors.ts
 msgid "Cancelled"
 msgstr "रद्द किया गया"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Cancelled"
+msgstr "रद्द"
 
 #: src/features/contacts/editor.tsx
 #: src/features/invitations/index.tsx
@@ -782,18 +798,14 @@ msgstr "व्यू सेटिंग्स कॉन्फ़िगर कर
 msgid "Confirm"
 msgstr "पुष्टि करें"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "दूसरा डिवाइस कनेक्ट करें"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "डिवाइस कनेक्ट करें"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "कनेक्ट किया गया"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "कनेक्ट किए गए डिवाइस"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "कॉपी किया गया"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "क्लिपबोर्ड पर कॉपी किया गया"
 
@@ -864,10 +875,6 @@ msgstr "क्लिपबोर्ड पर कॉपी किया गय�
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "कॉपी करें"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} कॉपी करें"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1222,7 +1229,7 @@ msgstr "पूर्ण"
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
 msgid "Download"
-msgstr "डाउनलोड"
+msgstr "डाउनलोड करें"
 
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -1271,6 +1278,7 @@ msgstr "समूह संपादित करें"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "नाम संपादित करें"
 
@@ -1736,7 +1744,7 @@ msgstr "इम्पीरियल"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "In contacts"
-msgstr "संपर्कों में है"
+msgstr "संपर्कों में"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1821,7 +1829,7 @@ msgstr "आइटम विवरण"
 
 #: ../../../lib/web/src/lib/locale-format.ts
 msgid "Just now"
-msgstr "अभी"
+msgstr "अभी-अभी"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Keyboard shortcuts"
@@ -1906,10 +1914,6 @@ msgstr "लॉग आउट हो रहे हैं…"
 msgid "Manage categories"
 msgstr "श्रेणियाँ प्रबंधित करें"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "डिवाइस प्रबंधित करें"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "मैन्युअल"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "मेन्यू"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "संदेश"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "संदेश भेजें"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,9 +2031,13 @@ msgstr "{0} पर ले जाया जा रहा है"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "नाम"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "नाम"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "कभी नहीं"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "नया"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "नवीनतम"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,11 +2264,15 @@ msgstr "सूचनाएँ: {0}"
 msgid "Notify me"
 msgstr "मुझे सूचित करें"
 
-#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
-#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Number"
 msgstr "संख्या"
+
+#: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
+#: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
+msgctxt "item number"
+msgid "Number"
+msgstr "क्रमांक"
 
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
@@ -2531,6 +2551,11 @@ msgstr "प्रासंगिकता {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "प्रासंगिकता {relevance}, रुचि {weight}"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "रिमाइंडर"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
@@ -2723,6 +2748,7 @@ msgstr "सेव करें"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "नाम सहेजें"
 
@@ -2811,7 +2837,7 @@ msgstr "खोजा जा रहा है..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "चुनें"
+msgstr "चयन"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -3018,7 +3044,7 @@ msgstr "सड़क"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "विषय"
+msgstr "यूज़र या ग्रुप"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "उपनाम"
 msgid "Switch to view 1-9"
 msgstr "व्यू 1-9 पर स्विच करें"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "सिस्टम"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "सिस्टम"
 
@@ -3068,6 +3098,11 @@ msgstr "टैग"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "फ़ोन"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "अस्थायी"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3338,7 +3373,7 @@ msgstr "यूज़र"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Username"
-msgstr "यूज़रनेम"
+msgstr "उपयोगकर्ता नाम"
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Variables: {variables}"

@@ -26,6 +26,11 @@ msgstr "(hukchasqa)"
 msgid "(expand)"
 msgstr "(kichay)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(Mana sutinchayniyuq)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(qam)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "{entityLabel} suti"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} {to} kama"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, one {+# astawan} other {+# astawan}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -168,7 +170,7 @@ msgstr "Waqyaykunata chaskichkan..."
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
 msgid "Access denied"
-msgstr "Yaykuy mana saqisqa"
+msgstr "Yaykuy mana saqisqachu"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Access level"
@@ -235,6 +237,10 @@ msgstr "Lista item yapay"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "Contactota yapay"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "Huk mañanata yapay"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -388,7 +394,7 @@ msgstr "Mana suyasqa pantay rikurirqan"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Android push"
-msgstr "Android push"
+msgstr "Android push willakuy"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 #: ../../../lib/web/src/features/access/types.ts
@@ -508,7 +514,7 @@ msgstr "Banner musuqchasqa"
 
 #: src/features/contacts/editor.tsx
 msgid "Birthday"
-msgstr "Paqarisqa punchaw"
+msgstr "Paqarisqa p'unchaw"
 
 #: ../../../lib/web/src/components/member-list.tsx
 #: ../../../lib/web/src/components/member-list.tsx
@@ -578,13 +584,18 @@ msgstr "Cámara mana kanchu"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "Mana ruway"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "Mana ruway"
 
@@ -603,6 +614,11 @@ msgstr "Kutichiy mana ruway"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "Mana ruwasqa"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "Mana ruwasqa"
 
@@ -648,7 +664,7 @@ msgstr "Hukchasqa ruwana"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checkbox"
-msgstr "Checkbox"
+msgstr "Casilla"
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Checklist"
@@ -782,18 +798,14 @@ msgstr "Vista kamariykuna allichay"
 msgid "Confirm"
 msgstr "Takyachiy"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "Huk mañanatawan tinkichiy"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "Huk mañanata tinkichiy"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "Tinkichisqa"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "Tinkisqa apaykachanakuna"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "Kopiasqa"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "Clipboard-man copiasqa"
 
@@ -864,10 +875,6 @@ msgstr "Clipboard-man copiasqa"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "Copiay"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "{label} copiay"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -997,7 +1004,7 @@ msgstr "Waqyaykunata wischuchkan..."
 
 #: ../../../lib/web/src/components/ai-prompts-editor.tsx
 msgid "Default"
-msgstr "Default"
+msgstr "Predeterminado"
 
 #: ../../../lib/web/src/features/accounts/account-add.tsx
 msgid "Default AI account"
@@ -1271,6 +1278,7 @@ msgstr "Huñuta hukchay"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "Sutita hukchay"
 
@@ -1610,7 +1618,7 @@ msgstr "Pampa"
 
 #: src/features/contacts/editor.tsx
 msgid "Forename"
-msgstr "Sutin"
+msgstr "Suti"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Friday"
@@ -1723,7 +1731,7 @@ msgstr "ID"
 
 #: src/features/groups/group-detail.tsx
 msgid "Identity"
-msgstr "Identity"
+msgstr "Kikinchakuy"
 
 #. placeholder {0}: currentMedia.name
 #: ../../../lib/web/src/components/ui/image-lightbox.tsx
@@ -1795,7 +1803,7 @@ msgstr "Waqyaykuna"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
 msgid "Invite"
-msgstr "Waqyay"
+msgstr "Mink'ay"
 
 #: src/features/invitations/invite-settings-dialog.tsx
 msgid "Invite policy updated"
@@ -1809,7 +1817,7 @@ msgstr "Waqyay configuracion"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
 msgid "Invited"
-msgstr "Waqyasqa"
+msgstr "Mink'asqa"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "It seems like the page you're looking for <0/>does not exist or might have been removed."
@@ -1839,7 +1847,7 @@ msgstr "Tukuy llamkachisqa {0}"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Layout"
-msgstr "Layout"
+msgstr "Churana"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Letters, numbers, spaces, hyphens, and slashes only"
@@ -1906,10 +1914,6 @@ msgstr "Lluqsichkan…"
 msgid "Manage categories"
 msgstr "Categoríakunata kamachiy"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "Mañanakunata kamachiy"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "Maki ruway"
@@ -1954,12 +1958,16 @@ msgstr "Miembrokuna Yupay"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "Menu"
-msgstr "Menu"
+msgstr "Menú"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "Willakuy"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "Willakuyta apachiy"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,9 +2031,13 @@ msgstr "{0}-man astachkan"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "Sutin"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "Sutin"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "Mana hayk'aqpas"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "Musuq"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "Aswan musuq"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,9 +2264,13 @@ msgstr "Willakuykuna: {0}"
 msgid "Notify me"
 msgstr "Willaway"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "Yupay"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "Yupay"
 
@@ -2384,7 +2404,7 @@ msgstr "Ama hina kaspa, huk ratulla suyaykuy, hinaspa watiqmanta ruwaykuy."
 
 #: src/features/contacts/editor.tsx
 msgid "Postcode"
-msgstr "Codigo postal"
+msgstr "Código postal"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Posts"
@@ -2530,6 +2550,11 @@ msgstr "Relevancia {relevance}"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "Relevancia {relevance}, interés {weight}"
+
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "Yuyarichiq"
 
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
@@ -2723,8 +2748,9 @@ msgstr "Waqaychay"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
-msgstr "Suti waqaychay"
+msgstr "Sutita waqaychay"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
@@ -2811,7 +2837,7 @@ msgstr "Maskashan..."
 
 #: ../../../lib/web/src/hooks/use-field-type-labels.ts
 msgid "Select"
-msgstr "Akllay"
+msgstr "Akllana"
 
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 msgid "Select a field"
@@ -2946,7 +2972,7 @@ msgstr "{total}manta {totalShown} rikuchichkan"
 
 #: ../../../lib/web/src/components/ui/sidebar.tsx
 msgid "Sidebar"
-msgstr "Sidebar"
+msgstr "Waqta barra"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 msgid "Sign in with an account that has access <0/> to this resource."
@@ -3018,7 +3044,7 @@ msgstr "Ñan"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "Tema"
+msgstr "Apaykachaq utaq huñu"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3040,15 +3066,19 @@ msgstr "Intichaw"
 
 #: src/features/contacts/editor.tsx
 msgid "Surname"
-msgstr "Ayllu sutin"
+msgstr "Ayllu suti"
 
 #: ../../../lib/web/src/components/entity/keyboard-shortcuts-help.tsx
 msgid "Switch to view 1-9"
 msgstr "1-9 vistaman tikray"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "Sistema"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "Sistema"
 
@@ -3068,6 +3098,11 @@ msgstr "Unanchakuna"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "Telefonokuna"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "Manaraq takyachisqa"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "Ancha achka mañakuykuna"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "Hawan"
+msgstr "Aswan allin"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"
@@ -3262,7 +3297,7 @@ msgstr "Masinakuyta tukuchiy"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
-msgstr "United States"
+msgstr "Hukllachasqa Suyukuna"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -3301,7 +3336,7 @@ msgstr "Huñuta musuqyachichkan..."
 #: ../../../lib/web/src/components/entity/entity-object-attachments.tsx
 #: src/features/profile/index.tsx
 msgid "Upload"
-msgstr "Upload"
+msgstr "Wichachiy"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx

@@ -26,6 +26,11 @@ msgstr "(تم التعديل)"
 msgid "(expand)"
 msgstr "(توسيع)"
 
+#: ../../../lib/web/src/components/calendar/event-title.tsx
+#: ../../../lib/web/src/components/calendar/tooltip.ts
+msgid "(No title)"
+msgstr "(بلا عنوان)"
+
 #: ../../../lib/web/src/components/member-list.tsx
 msgid "(you)"
 msgstr "(أنت)"
@@ -84,13 +89,10 @@ msgid "{entityLabel} name"
 msgstr "اسم {entityLabel}"
 
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
 msgid "{from} to {to}"
 msgstr "{from} إلى {to}"
-
-#: ../../../lib/web/src/components/calendar/month-grid.tsx
-msgid "{hidden, plural, one {+# more} other {+# more}}"
-msgstr "{hidden, plural, zero {+# أخرى} one {+# أخرى} two {+# أخرى} few {+# أخرى} many {+# أخرى} other {+# أخرى}}"
 
 #: ../../../lib/web/src/components/game/game-draw-offer-banner.tsx
 msgid "{opponentName} offered a draw"
@@ -235,6 +237,10 @@ msgstr "إضافة عنصر إلى قائمة المهام"
 #: src/features/invitations/index.tsx
 msgid "Add contact"
 msgstr "إضافة جهة اتصال"
+
+#: src/features/contacts/connect-dialog.tsx
+msgid "Add device"
+msgstr "إضافة جهاز"
 
 #: src/features/contacts/editor.tsx
 msgid "Add email"
@@ -578,13 +584,18 @@ msgstr "الكاميرا غير متاحة"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
-#: src/features/invitations/index.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: src/features/invitations/index.tsx
+msgctxt "withdraw"
 msgid "Cancel"
 msgstr "إلغاء"
 
@@ -603,6 +614,11 @@ msgstr "إلغاء الرد"
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
 #: ../../../lib/web/src/lib/shell-errors.ts
+msgid "Cancelled"
+msgstr "ملغى"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
 msgid "Cancelled"
 msgstr "ملغى"
 
@@ -782,18 +798,14 @@ msgstr "تكوين إعدادات العرض"
 msgid "Confirm"
 msgstr "تأكيد"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect another device"
-msgstr "ربط جهاز آخر"
-
-#: src/components/layout/people-layout.tsx
-#: src/features/contacts/connect-dialog.tsx
-msgid "Connect device"
-msgstr "ربط جهاز"
-
 #: ../../../lib/web/src/lib/chat-ui.ts
 msgid "Connected"
 msgstr "متصل"
+
+#: src/components/layout/people-layout.tsx
+#: src/features/contacts/connect-dialog.tsx
+msgid "Connected devices"
+msgstr "الأجهزة المتصلة"
 
 #: src/features/contacts/connect-dialog.tsx
 msgid "Connecting device..."
@@ -853,7 +865,6 @@ msgid "Copied"
 msgstr "تم النسخ"
 
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/connect-dialog.tsx
 msgid "Copied to clipboard"
 msgstr "تم النسخ إلى الحافظة"
 
@@ -864,10 +875,6 @@ msgstr "تم النسخ إلى الحافظة"
 #: ../../../lib/web/src/components/ui/copy-button.tsx
 msgid "Copy"
 msgstr "نسخ"
-
-#: src/features/contacts/connect-dialog.tsx
-msgid "Copy {label}"
-msgstr "نسخ {label}"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -1271,6 +1278,7 @@ msgstr "تعديل المجموعة"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Edit name"
 msgstr "تعديل الاسم"
 
@@ -1348,7 +1356,7 @@ msgstr "توسيع الشريط الجانبي"
 
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "External URL"
-msgstr "URL خارجي"
+msgstr "رابط خارجي"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Extra large"
@@ -1736,7 +1744,7 @@ msgstr "إمبراطوري"
 
 #: src/features/contacts/add-dialog.tsx
 msgid "In contacts"
-msgstr "في جهات الاتصال"
+msgstr "ضمن جهات الاتصال"
 
 #: ../../../lib/web/src/features/access/types.ts
 msgid "Including anonymous users"
@@ -1906,10 +1914,6 @@ msgstr "جاري تسجيل الخروج…"
 msgid "Manage categories"
 msgstr "إدارة الفئات"
 
-#: src/features/contacts/connect-dialog.tsx
-msgid "Manage devices"
-msgstr "إدارة الأجهزة"
-
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 msgid "Manual"
 msgstr "يدوي"
@@ -1957,9 +1961,13 @@ msgid "Menu"
 msgstr "القائمة"
 
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
-#: src/features/contacts/index.tsx
 msgid "Message"
 msgstr "رسالة"
+
+#: src/features/contacts/index.tsx
+msgctxt "verb"
+msgid "Message"
+msgstr "مراسلة"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "Metric"
@@ -2023,9 +2031,13 @@ msgstr "جارٍ النقل إلى {0}"
 #: ../../../lib/web/src/components/entity/entity-option-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
 #: src/components/layout/people-layout.tsx
+#: src/features/groups/group-dialog.tsx
+msgid "Name"
+msgstr "الاسم"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
-#: src/features/groups/group-dialog.tsx
+msgctxt "person"
 msgid "Name"
 msgstr "الاسم"
 
@@ -2057,9 +2069,13 @@ msgid "Never"
 msgstr "أبداً"
 
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
-#: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "New"
 msgstr "جديد"
+
+#: ../../../lib/web/src/components/ui/sort-selector.tsx
+msgctxt "sort order"
+msgid "New"
+msgstr "الأحدث"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/editor.tsx
@@ -2248,9 +2264,13 @@ msgstr "الإشعارات: {0}"
 msgid "Notify me"
 msgstr "أشعرني"
 
+#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgid "Number"
+msgstr "الرقم"
+
 #: ../../../lib/web/src/components/entity/entity-view-options-bar.tsx
 #: ../../../lib/web/src/components/entity/entity-view-sheet.tsx
-#: ../../../lib/web/src/hooks/use-field-type-labels.ts
+msgctxt "item number"
 msgid "Number"
 msgstr "الرقم"
 
@@ -2531,6 +2551,11 @@ msgstr "الصلة {relevance}"
 msgid "Relevance {relevance}, interest {weight}"
 msgstr "الصلة {relevance}، الاهتمام {weight}"
 
+#: ../../../lib/web/src/components/calendar/month-grid.tsx
+#: ../../../lib/web/src/components/calendar/time-grid.tsx
+msgid "Reminder"
+msgstr "التذكير"
+
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/attachment-composer.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
@@ -2723,6 +2748,7 @@ msgstr "حفظ"
 
 #: src/features/profile/index.tsx
 #: src/features/profile/index.tsx
+msgctxt "person"
 msgid "Save name"
 msgstr "حفظ الاسم"
 
@@ -3018,7 +3044,7 @@ msgstr "الشارع"
 
 #: ../../../lib/web/src/features/access/access-list.tsx
 msgid "Subject"
-msgstr "الموضوع"
+msgstr "صاحب الصلاحية"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Submit comment"
@@ -3046,9 +3072,13 @@ msgstr "اسم العائلة"
 msgid "Switch to view 1-9"
 msgstr "التبديل إلى العرض 1-9"
 
+#: ../../../lib/web/src/lib/preference-utils.ts
+#: ../../../lib/web/src/lib/preference-utils.ts
+msgid "System"
+msgstr "النظام"
+
 #: ../../../lib/web/src/components/audit-timeline.tsx
-#: ../../../lib/web/src/lib/preference-utils.ts
-#: ../../../lib/web/src/lib/preference-utils.ts
+msgctxt "actor"
 msgid "System"
 msgstr "النظام"
 
@@ -3068,6 +3098,11 @@ msgstr "الوسوم"
 #: src/features/contacts/editor.tsx
 msgid "Telephones"
 msgstr "الهواتف"
+
+#: ../../../lib/web/src/components/calendar/status.ts
+msgctxt "event status"
+msgid "Tentative"
+msgstr "مبدئي"
 
 #: ../../../lib/web/src/components/server-documents-footer.tsx
 #: ../../../lib/web/src/features/document/document-page.tsx
@@ -3177,7 +3212,7 @@ msgstr "طلبات كثيرة جدًا"
 
 #: ../../../lib/web/src/components/ui/sort-selector.tsx
 msgid "Top"
-msgstr "الأعلى"
+msgstr "الأعلى تقييمًا"
 
 #: ../../../lib/web/src/components/travelling-picker.tsx
 msgid "Travelling"

@@ -36,16 +36,13 @@ type ConnectDialogProps = {
 
 type View = 'name' | 'credentials' | 'manage'
 
-// The CardDAV engine authenticates on the token alone and ignores the
-// username, and the auth store carries no email to offer instead.
-const USERNAME = 'mochi'
-
 export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
   const { t } = useLingui()
   const { formatTimestamp } = useFormat()
   const [view, setView] = useState<View>('name')
   const [name, setName] = useState('')
   const [token, setToken] = useState<string | null>(null)
+  const [username, setUsername] = useState('')
   const [deleting, setDeleting] = useState<string | null>(null)
 
   const { data, isLoading } = useTokensQuery(open && view === 'manage')
@@ -82,6 +79,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
         error: (error) => getErrorMessage(error, t`Failed to connect device`),
       })
       setToken(result.token)
+      setUsername(result.username)
       setName('')
       setView('credentials')
     } catch {
@@ -103,7 +101,12 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
     }
   }
 
-  const tokens = data?.tokens ?? []
+  // token/list answers the user's device credentials from both apps, since
+  // one password serves contacts and calendars; the dav scope is what makes
+  // a token a device.
+  const tokens = (data?.tokens ?? []).filter((item) =>
+    item.scopes.includes('dav')
+  )
 
   return (
     <>
@@ -115,7 +118,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
         <ResponsiveDialogContent className='sm:max-w-[520px]'>
           <ResponsiveDialogHeader>
             <ResponsiveDialogTitle>
-              <Trans>Connect a device</Trans>
+              <Trans>Connect device</Trans>
             </ResponsiveDialogTitle>
           </ResponsiveDialogHeader>
 
@@ -144,7 +147,11 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
                 value={address}
                 copy={copy}
               />
-              <CredentialRow label={t`Username`} value={USERNAME} copy={copy} />
+              <CredentialRow
+                label={t`Username`}
+                value={username}
+                copy={copy}
+              />
               <CredentialRow label={t`Password`} value={token} copy={copy} />
               <p className='text-sm'>
                 <Trans>Save this password now. It cannot be shown again.</Trans>

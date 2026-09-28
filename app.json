@@ -5,7 +5,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 {
-	"version": "3.1",
+	"version": "3.4",
 	"label": "app.name",
 	"classes": ["person", "book"],
 	"paths": ["people"],
@@ -14,7 +14,7 @@
 	"architecture": {"engine": "starlark", "version": 4},
 	"execute": ["lib/attachments.star", "people.star", "contacts.star"],
 
-	"require": {"version": {"minimum": "0.4.228"}},
+	"require": {"version": {"minimum": "2.0"}},
 
 	"database": {
 		"schema": 13,
@@ -50,12 +50,6 @@
 		"-/friends/accept": {"function": "action_friend_accept"},
 		"-/friends/ignore": {"function": "action_friend_ignore"},
 		"-/friends/remove": {"function": "action_friend_remove"},
-		// Compatibility aliases for the shipped Android client, kept for one
-		// release: the old routes, inputs named id, and the old response shapes.
-		"-/friends": {"function": "action_friends_alias_list"},
-		"-/friends/create": {"function": "action_friends_alias_create"},
-		"-/friends/delete": {"function": "action_friends_alias_delete"},
-		"-/friends/search": {"function": "action_friends_alias_search"},
 		// CardDAV, served by core's DAV engine over the dav/* functions below:
 		// public because the engine authenticates every request itself, with a
 		// token the token actions mint.
@@ -82,7 +76,7 @@
 		":person/assets": {"files": "web/dist/assets", "public": true},
 		":person/images": {"files": "web/dist/images", "public": true},
 		":person/-/information": {"function": "action_information", "public": true},
-		":person/-/avatar": {"function": "action_avatar", "public": true},
+		":person/-/avatar": {"function": "action_avatar", "public": true, "asset": true},
 		":person/-/avatar/set": {"function": "action_avatar_set"},
 		":person/-/banner": {"function": "action_banner", "public": true},
 		":person/-/banner/set": {"function": "action_banner_set"},

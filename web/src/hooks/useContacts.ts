@@ -212,14 +212,14 @@ export const useInviteFriendMutation = (
   options?: UseMutationOptions<
     MutationSuccessResponse,
     unknown,
-    { person: string; name: string },
+    { person: string; name: string; contact?: string },
     unknown
   >
 ) => {
   const invalidate = useInvalidateContacts()
   const { onSuccess, ...rest } = options ?? {}
   return useMutation({
-    mutationFn: (payload: { person: string; name: string }) =>
+    mutationFn: (payload: { person: string; name: string; contact?: string }) =>
       contactsApi.invite(payload),
     onSuccess: (data, variables, context, mutation) => {
       invalidate()

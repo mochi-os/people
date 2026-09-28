@@ -54,6 +54,11 @@ import {
 type AddContactDialogProps = {
   open: boolean
   onOpenChange: (open: boolean) => void
+  /**
+   * An existing card to link: the search opens on its name, an invite links
+   * the card to the person picked, and the dialog closes once it is sent.
+   */
+  link?: { contact: string; name: string }
 }
 
 type PreviewState = {
@@ -71,11 +76,12 @@ function hasProfileContent(info: PersonInformation): boolean {
 export function AddContactDialog({
   onOpenChange,
   open,
+  link,
 }: AddContactDialogProps) {
   const { t } = useLingui()
   const navigate = useNavigate()
-  const [search, setSearch] = useState('')
-  const [debounced, setDebounced] = useState('')
+  const [search, setSearch] = useState(link?.name ?? '')
+  const [debounced, setDebounced] = useState(link?.name ?? '')
   const [invited, setInvited] = useState<Set<string>>(new Set())
   const [added, setAdded] = useState<Set<string>>(new Set())
   const [pending, setPending] = useState<string | null>(null)
@@ -126,16 +132,20 @@ export function AddContactDialog({
 
   const sendInvite = async (person: string, name: string) => {
     try {
-      await toastAction(inviteMutation.mutateAsync({ person, name }), {
+      await toastAction(
+        inviteMutation.mutateAsync({ person, name, contact: link?.contact }),
+        {
         loading: t`Sending invitation...`,
         success: t`Invitation sent`,
         successOptions: () => ({
           description: t`A friend invitation has been sent to ${name}.`,
         }),
         error: (error) => getErrorMessage(error, t`Failed to send invitation`),
-      })
+        }
+      )
       setInvited((current) => new Set(current).add(person))
       setPreview(null)
+      if (link) onOpenChange(false)
     } catch {
       // toastAction already showed error
     } finally {
@@ -192,16 +202,17 @@ export function AddContactDialog({
     else void sendInvite(preview.person.id, preview.person.name)
   }
 
+  // Closing clears the search, back to the card's name when linking one.
   useEffect(() => {
     if (!open) {
-      setSearch('')
-      setDebounced('')
+      setSearch(link?.name ?? '')
+      setDebounced(link?.name ?? '')
       setInvited(new Set())
       setAdded(new Set())
       setPending(null)
       setPreview(null)
     }
-  }, [open])
+  }, [open, link?.name])
 
   const hasQuery = debounced.trim().length > 0
   const viewState: 'idle' | 'loading' | 'error' | 'empty' | 'results' = (() => {
@@ -310,6 +321,7 @@ export function AddContactDialog({
                         person={person}
                         busy={pending === person.id}
                         added={added.has(person.id)}
+                        linking={Boolean(link)}
                         invited={
                           invited.has(person.id) || sentPersons.has(person.id)
                         }
@@ -390,12 +402,15 @@ function PersonRow({
   added,
   invited,
   onAdd,
+  linking,
   onInvite,
   onAccept,
 }: {
   person: DirectoryPerson
   busy: boolean
   added: boolean
+  /** The dialog is linking an existing card, so adding a new one is not offered. */
+  linking?: boolean
   invited: boolean
   onAdd: () => void
   onInvite: () => void
@@ -404,7 +419,7 @@ function PersonRow({
   const { t } = useLingui()
   const appPath = getAppPath()
   const relationship = person.relationship ?? 'none'
-  const inContacts = added || Boolean(person.contact)
+  const inContacts = !linking && (added || Boolean(person.contact))
   const isInvited = invited || relationship === 'invited'
 
   const noop = () => {}

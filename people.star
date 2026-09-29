@@ -277,6 +277,12 @@ def uid(id):
 			return False
 	return True
 
+# length(s) -> int: how many characters s holds. len counts UTF-8 bytes, so a
+# limit a person types against, and every client counts in characters, is
+# measured here.
+def length(s):
+	return len(list(s.codepoints()))
+
 # mochi.text.valid(..., "text") admits just under 1 MB, so without this a group
 # description could be four thousand times the length of the name beside it.
 _GROUP_DESCRIPTION_MAXIMUM = 4096
@@ -303,7 +309,7 @@ def action_group_create(a):
 	if not mochi.text.valid(name, "line"):
 		a.error.label(400, "errors.invalid_group_name")
 		return
-	if len(name) > 255:
+	if length(name) > 255:
 		a.error.label(400, "errors.group_name_too_long")
 		return
 
@@ -311,7 +317,7 @@ def action_group_create(a):
 	if description and not mochi.text.valid(description, "text"):
 		a.error.label(400, "errors.invalid_description")
 		return
-	if len(description) > _GROUP_DESCRIPTION_MAXIMUM:
+	if length(description) > _GROUP_DESCRIPTION_MAXIMUM:
 		a.error.label(400, "errors.group_description_too_long")
 		return
 
@@ -352,14 +358,14 @@ def action_group_update(a):
 		if not mochi.text.valid(name, "line"):
 			a.error.label(400, "errors.invalid_group_name")
 			return
-		if len(name) > 255:
+		if length(name) > 255:
 			a.error.label(400, "errors.group_name_too_long")
 			return
 
 	if description and not mochi.text.valid(description, "text"):
 		a.error.label(400, "errors.invalid_description")
 		return
-	if len(description) > _GROUP_DESCRIPTION_MAXIMUM:
+	if length(description) > _GROUP_DESCRIPTION_MAXIMUM:
 		a.error.label(400, "errors.group_description_too_long")
 		return
 
@@ -757,7 +763,7 @@ def action_profile_set(a):
 		a.error.label(403, "errors.not_the_owner")
 		return
 	profile = a.input("profile", "")
-	if len(profile) > _PROFILE_MAX:
+	if length(profile) > _PROFILE_MAX:
 		a.error.label(400, "errors.profile_too_long")
 		return
 	if profile and not mochi.text.valid(profile, "text"):

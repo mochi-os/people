@@ -1319,7 +1319,7 @@ def token_name_input(a):
 	if not name:
 		a.error.label(400, "errors.name_is_required")
 		return None
-	if len(name) > 100:
+	if length(name) > 100:
 		a.error.label(400, "errors.token_name_is_too_long_max_100_characters")
 		return None
 	return name

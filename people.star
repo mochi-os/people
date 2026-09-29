@@ -21,6 +21,9 @@ def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event=event_id)
 
 def database_upgrade(version):
+	if version == 14:
+		# Every contact write replaces the contact's change row, found by contact.
+		mochi.db.execute("create index if not exists changes_contact on changes( contact )")
 	if version == 13:
 		# A friend's cached avatar: photo is "<extension>:<hash>" for the file
 		# at photos/<id>.<extension>, photographed the last fetch attempt.
@@ -141,6 +144,7 @@ def database_create():
 	# Every contact write, latest per contact, for -/contacts/changes.
 	mochi.db.execute("create table if not exists changes ( id integer primary key autoincrement, identity text not null, book text not null, contact text not null, deleted integer not null default 0, created integer not null default 0 )")
 	mochi.db.execute("create index if not exists changes_identity on changes( identity, id )")
+	mochi.db.execute("create index if not exists changes_contact on changes( contact )")
 	mochi.db.execute("create table if not exists pruned ( identity text not null primary key, change integer not null default 0 )")
 	mochi.db.execute("create table if not exists invites ( identity text not null, id text not null, direction text not null, name text not null default '', updated integer not null default 0, primary key ( identity, id, direction ) )")
 	mochi.db.execute("create table if not exists sent ( identity text not null, created integer not null )")

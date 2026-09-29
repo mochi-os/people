@@ -1261,7 +1261,7 @@ def function_dav_delete(context, identity, collection, name, match="", absent=Fa
 def action_contacts_changes(a):
 	identity = a.user.identity.id
 	since = a.input("since", "0") or "0"
-	if not since.isdigit() or len(since) > 18:
+	if not decimal(since) or len(since) > 18:
 		a.error.label(400, "errors.invalid_since")
 		return
 	since = int(since)
@@ -1373,12 +1373,12 @@ def birthday_parse(value):
 	year = 0
 	if text.startswith("--"):
 		text = text[2:].replace("-", "")
-		if len(text) != 4 or not text.isdigit():
+		if len(text) != 4 or not decimal(text):
 			return None
 		month, day = int(text[:2]), int(text[2:])
 	else:
 		text = text.replace("-", "")
-		if len(text) != 8 or not text.isdigit():
+		if len(text) != 8 or not decimal(text):
 			return None
 		year, month, day = int(text[:4]), int(text[4:6]), int(text[6:])
 	if month < 1 or month > 12 or day < 1 or day > 31:

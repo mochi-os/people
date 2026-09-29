@@ -503,16 +503,23 @@ def contact_friend_set(identity, person, friend, name=""):
 	book_touch(row["book"], row["id"])
 	return contact_get(identity, row["id"])
 
+# contact_release(identity, row): end what a contact holds with its person
+# before it goes. A friendship is removed and a pending outgoing invite
+# cancelled, on both sides.
+def contact_release(identity, row):
+	person = row["person"]
+	if not person:
+		return
+	if row["friend"] == 1:
+		mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/remove"})
+	elif mochi.db.exists("select id from invites where identity=? and id=? and direction='to'", identity, person):
+		mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/cancel"})
+	invite_remove(identity, person)
+
 # contact_delete(identity, row): remove a contact. A friend contact ends the
 # friendship; a pending outgoing invite is cancelled.
 def contact_delete(identity, row):
-	person = row["person"]
-	if person:
-		if row["friend"] == 1:
-			mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/remove"})
-		elif mochi.db.exists("select id from invites where identity=? and id=? and direction='to'", identity, person):
-			mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/cancel"})
-		invite_remove(identity, person)
+	contact_release(identity, row)
 	photo_delete(row)
 	mochi.db.execute("delete from contacts where id=? and identity=?", row["id"], identity)
 	book_touch(row["book"], row["id"], 1)
@@ -823,12 +830,18 @@ def action_book_delete(a):
 	book_delete(identity, row)
 	return {"data": {}}
 
-# book_delete(identity, row): remove a book and its contacts. Contacts go one
-# by one so a friend contact ends its friendship and a pending invite is
-# cancelled, exactly as deleting them singly would.
+# book_delete(identity, row): remove a book and its contacts. A friend contact
+# ends its friendship, a pending invite is cancelled and a photo is removed, as
+# deleting them singly would; the rows and their deletions in the change log
+# go in bulk, with the log pruned once.
 def book_delete(identity, row):
-	for contact in contacts_rows(identity, row["id"]):
-		contact_delete(identity, contact)
+	for contact in mochi.db.rows("select * from contacts where identity=? and book=? and ( person!='' or photo!='' )", identity, row["id"]):
+		contact_release(identity, contact)
+		photo_delete(contact)
+	mochi.db.execute("delete from changes where contact in ( select id from contacts where identity=? and book=? )", identity, row["id"])
+	mochi.db.execute("insert into changes ( identity, book, contact, deleted, created ) select identity, book, id, 1, ? from contacts where identity=? and book=?", mochi.time.now(), identity, row["id"])
+	mochi.db.execute("delete from contacts where identity=? and book=?", identity, row["id"])
+	changes_prune(identity)
 	mochi.db.execute("delete from books where id=? and identity=?", row["id"], identity)
 	mochi.entity.delete(row["id"])
 	devices_sync()

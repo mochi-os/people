@@ -183,6 +183,14 @@ export function newAddress(type: PropertyType): AddressValue {
   }
 }
 
+// A birthday in vCard's basic form, 19850412 as Thunderbird writes it, reads as
+// the YYYY-MM-DD the date field takes. Any other form, such as one without its
+// year, is kept as written.
+function birthday(value: string): string {
+  const basic = /^(\d{4})(\d{2})(\d{2})$/.exec(value)
+  return basic ? `${basic[1]}-${basic[2]}-${basic[3]}` : value
+}
+
 // formFromCard(card) -> the editor's view of the managed properties.
 export function formFromCard(card: Property[]): ContactForm {
   const form = emptyForm()
@@ -228,7 +236,7 @@ export function formFromCard(card: Property[]): ContactForm {
     }
   })
 
-  form.birthday = first(card, 'BDAY')?.value ?? ''
+  form.birthday = birthday(first(card, 'BDAY')?.value ?? '')
 
   const organisation = first(card, 'ORG')
   if (organisation) {

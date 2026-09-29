@@ -40,6 +40,16 @@ describe('formFromCard', () => {
     expect(form.family).toBe('Doe; Jane')
   })
 
+  it('reads a birthday in the basic form as the day the date field takes', () => {
+    const form = formFromCard([property('BDAY', '19850412')])
+    expect(form.birthday).toBe('1985-04-12')
+  })
+
+  it('keeps a birthday without its year as written', () => {
+    const form = formFromCard([property('BDAY', '--0412')])
+    expect(form.birthday).toBe('--0412')
+  })
+
   it('reads the TYPE parameter and maps CELL onto mobile', () => {
     const form = formFromCard([
       property('TEL', '+372 5555 5555', { TYPE: ['CELL'] }),

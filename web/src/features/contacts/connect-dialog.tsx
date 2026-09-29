@@ -5,15 +5,8 @@
 import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
   Button,
+  ConfirmDialog,
   DataChip,
   FieldRow,
   Input,
@@ -139,7 +132,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
           </ResponsiveDialogHeader>
 
           {view === 'name' && (
-            <div className='space-y-2 px-4 pb-4 sm:px-0 sm:pb-0'>
+            <div className='space-y-2'>
               <Label htmlFor='device-name'>
                 <Trans>Device name</Trans>
               </Label>
@@ -157,7 +150,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
           )}
 
           {view === 'credentials' && token && (
-            <div className='space-y-4 px-4 pb-4 sm:px-0 sm:pb-0'>
+            <div className='space-y-4'>
               <div>
                 {details}
                 <Detail label={t`Password`} value={token} />
@@ -169,7 +162,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
           )}
 
           {view === 'list' && (
-            <div className='space-y-4 px-4 pb-4 sm:px-0 sm:pb-0'>
+            <div className='space-y-4'>
               <div>{details}</div>
               {isLoading ? (
                 <div className='space-y-2'>
@@ -264,34 +257,17 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
         </ResponsiveDialogContent>
       </ResponsiveDialog>
 
-      <AlertDialog
+      <ConfirmDialog
         open={deleting !== null}
         onOpenChange={(isOpen) => {
           if (!isOpen) setDeleting(null)
         }}
-      >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>
-              <Trans>Delete device?</Trans>
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              <Trans>The device will no longer be able to sync contacts.</Trans>
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>
-              <Trans>Cancel</Trans>
-            </AlertDialogCancel>
-            <AlertDialogAction
-              onClick={() => void remove()}
-              loading={deleteMutation.isPending}
-            >
-              <Trans>Delete</Trans>
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+        title={t`Delete device?`}
+        desc={t`The device will no longer be able to sync contacts.`}
+        confirmText={t`Delete`}
+        isLoading={deleteMutation.isPending}
+        handleConfirm={() => void remove()}
+      />
     </>
   )
 }

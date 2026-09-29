@@ -6,11 +6,11 @@ import { useEffect, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
+  ResponsiveDialog,
+  ResponsiveDialogContent,
+  ResponsiveDialogFooter,
+  ResponsiveDialogHeader,
+  ResponsiveDialogTitle,
   Label,
   RadioGroup,
   RadioGroupItem,
@@ -67,13 +67,13 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
   }
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className='max-w-md'>
-        <DialogHeader>
-          <DialogTitle>
+    <ResponsiveDialog open={open} onOpenChange={onOpenChange}>
+      <ResponsiveDialogContent className='sm:max-w-md'>
+        <ResponsiveDialogHeader>
+          <ResponsiveDialogTitle>
             <Trans>Incoming invitations</Trans>
-          </DialogTitle>
-        </DialogHeader>
+          </ResponsiveDialogTitle>
+        </ResponsiveDialogHeader>
         {isLoading ? (
           <div className='space-y-3 py-2'>
             <Skeleton className='h-12 w-full' />
@@ -111,7 +111,7 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
             ))}
           </RadioGroup>
         )}
-        <DialogFooter>
+        <ResponsiveDialogFooter>
           <Button
             variant='outline'
             onClick={() => onOpenChange(false)}
@@ -129,8 +129,8 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
           >
             <Trans>Save</Trans>
           </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+        </ResponsiveDialogFooter>
+      </ResponsiveDialogContent>
+    </ResponsiveDialog>
   )
 }

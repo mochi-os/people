@@ -53,7 +53,14 @@ export interface ContactForm {
   suffix: string
   // The ORG components past the first, kept for the round trip.
   organisationUnits: string[]
+  // Every instance past the first of a property the form has one field for,
+  // kept for the round trip: a card may hold two URLs or NOTEs, and a save
+  // replaces all of them.
+  extras: Property[]
 }
+
+// The properties the form shows one instance of.
+const SINGLE = ['FN', 'N', 'NICKNAME', 'BDAY', 'ORG', 'TITLE', 'URL', 'NOTE']
 
 // Split a structured vCard value on its unescaped semicolons. Besides "\;",
 // the escapes this editor used to write ("\,", "\n", "\\") are undone; any
@@ -154,6 +161,7 @@ export function emptyForm(): ContactForm {
     prefix: '',
     suffix: '',
     organisationUnits: [],
+    extras: [],
   }
 }
 
@@ -233,6 +241,8 @@ export function formFromCard(card: Property[]): ContactForm {
   form.url = first(card, 'URL')?.value ?? ''
   form.note = first(card, 'NOTE')?.value ?? ''
 
+  form.extras = SINGLE.flatMap((name) => all(card, name).slice(1))
+
   return form
 }
 
@@ -288,6 +298,8 @@ export function propertiesFromForm(form: ContactForm): Property[] {
   add('TITLE', form.title.trim())
   add('URL', form.url.trim())
   add('NOTE', form.note.trim())
+
+  properties.push(...form.extras)
 
   return properties
 }

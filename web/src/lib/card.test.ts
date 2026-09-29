@@ -103,6 +103,32 @@ describe('propertiesFromForm', () => {
     expect(written?.value).toBe('Back\\slash;;;;')
   })
 
+  it('keeps every instance past the first of a single-field property', () => {
+    const card = [
+      property('FN', 'Jane Doe'),
+      property('FN', 'ジェーン', { LANGUAGE: ['ja'] }),
+      property('URL', 'https://jane.example'),
+      property('URL', 'https://blog.example', { TYPE: ['work'] }),
+      property('NOTE', 'First'),
+      property('NOTE', 'Second'),
+    ]
+    const written = propertiesFromForm(formFromCard(card))
+    for (const kept of card) expect(written).toContainEqual(kept)
+  })
+
+  it('edits the first URL and leaves the second as it was', () => {
+    const form = formFromCard([
+      property('FN', 'Jane Doe'),
+      property('URL', 'https://jane.example'),
+      property('URL', 'https://blog.example'),
+    ])
+    form.url = 'https://new.example'
+    const urls = propertiesFromForm(form)
+      .filter((p) => p.name === 'URL')
+      .map((p) => p.value)
+    expect(urls).toEqual(['https://new.example', 'https://blog.example'])
+  })
+
   it('keeps a backslash that escapes nothing through a save and a read', () => {
     const form = formFromCard([])
     form.family = 'Back\\slash'

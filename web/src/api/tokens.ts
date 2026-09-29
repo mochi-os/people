@@ -31,7 +31,10 @@ const createToken = (name: string): Promise<CreateTokenResponse> =>
   )
 
 const listTokens = (): Promise<GetTokensResponse> =>
-  requestHelpers.post<GetTokensResponse>(endpoints.tokens.list, '', form)
+  requestHelpers.post<GetTokensResponse>(endpoints.tokens.list, '', {
+    ...form,
+    ...suppressMutationErrorToast,
+  })
 
 const deleteToken = (hash: string): Promise<{ ok: boolean }> =>
   requestHelpers.post<{ ok: boolean }>(

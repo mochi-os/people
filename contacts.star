@@ -98,6 +98,13 @@ def invites_sent(identity):
 
 # === Address books ===
 
+# devices_sync(): tell the user's phones their contacts changed, so the Mochi
+# app syncs now rather than at its next scheduled sync. Core merges a burst into
+# one push; a core that predates the call leaves it to the schedule.
+def devices_sync():
+	if hasattr(mochi.account, "sync"):
+		mochi.account.sync("contacts")
+
 # book_touch(book, contact="", deleted=0): bump the book's version, the change
 # token DAV clients compare, and log the contact's change. One row per contact
 # is kept, the latest, so the log stays the size of the address book plus what
@@ -110,6 +117,7 @@ def book_touch(book, contact="", deleted=0):
 		if row:
 			mochi.db.execute("delete from changes where contact=?", contact)
 			mochi.db.execute("insert into changes ( identity, book, contact, deleted, created ) values ( ?, ?, ?, ?, ? )", row["identity"], book, contact, deleted, now)
+	devices_sync()
 
 def book_by_slug(identity, slug):
 	if not slug_valid(slug):
@@ -163,6 +171,7 @@ def book_default(identity):
 def book_insert(identity, id, slug, ignore=False):
 	now = mochi.time.now()
 	mochi.db.execute("insert" + (" or ignore" if ignore else "") + " into books ( id, identity, slug, version, created, updated ) values ( ?, ?, ?, 0, ?, ? )", id, identity, slug, now, now)
+	devices_sync()
 
 def book_public(identity, row, default, counts):
 	return {
@@ -822,6 +831,7 @@ def book_delete(identity, row):
 		contact_delete(identity, contact)
 	mochi.db.execute("delete from books where id=? and identity=?", row["id"], identity)
 	mochi.entity.delete(row["id"])
+	devices_sync()
 
 # === Actions: friendship ===
 

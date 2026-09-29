@@ -53,16 +53,28 @@ export interface ContactForm {
   suffix: string
   // The ORG components past the first, kept for the round trip.
   organisationUnits: string[]
+  // Every instance past the first of a property the form has one field for,
+  // kept for the round trip: a card may hold two URLs or NOTEs, and a save
+  // replaces all of them.
+  extras: Property[]
 }
 
-// Split a structured vCard value on its unescaped semicolons.
+// The properties the form shows one instance of.
+const SINGLE = ['FN', 'N', 'NICKNAME', 'BDAY', 'ORG', 'TITLE', 'URL', 'NOTE']
+
+// Split a structured vCard value on its unescaped semicolons. Besides "\;",
+// the escapes this editor used to write ("\,", "\n", "\\") are undone; any
+// other backslash is the text's own and stays.
 function split(value: string): string[] {
   const parts: string[] = []
   let current = ''
   let escaped = false
   for (const character of value) {
     if (escaped) {
-      current += character === 'n' || character === 'N' ? '\n' : character
+      if (character === 'n' || character === 'N') current += '\n'
+      else if (character === ';' || character === ',' || character === '\\')
+        current += character
+      else current += '\\' + character
       escaped = false
       continue
     }
@@ -77,16 +89,18 @@ function split(value: string): string[] {
     }
     current += character
   }
+  if (escaped) current += '\\'
   parts.push(current)
   return parts
 }
 
+// A stored value is what the server's vCard parser gives: commas, newlines and
+// backslashes are plain, and only a semicolon inside a component is escaped.
+// The server escapes the rest when it writes the card for a client, so doing
+// it here too would reach phones as a literal "\," or "\n". Reading still
+// decodes those escapes, for cards this editor wrote before.
 function escape(value: string): string {
-  return value
-    .replace(/\\/g, '\\\\')
-    .replace(/;/g, '\\;')
-    .replace(/,/g, '\\,')
-    .replace(/\n/g, '\\n')
+  return value.replace(/;/g, '\\;')
 }
 
 // Join structured components, keeping every one of them so N always carries
@@ -147,6 +161,7 @@ export function emptyForm(): ContactForm {
     prefix: '',
     suffix: '',
     organisationUnits: [],
+    extras: [],
   }
 }
 
@@ -166,6 +181,14 @@ export function newAddress(type: PropertyType): AddressValue {
     pobox: '',
     extended: '',
   }
+}
+
+// A birthday in vCard's basic form, 19850412 as Thunderbird writes it, reads as
+// the YYYY-MM-DD the date field takes. Any other form, such as one without its
+// year, is kept as written.
+function birthday(value: string): string {
+  const basic = /^(\d{4})(\d{2})(\d{2})$/.exec(value)
+  return basic ? `${basic[1]}-${basic[2]}-${basic[3]}` : value
 }
 
 // formFromCard(card) -> the editor's view of the managed properties.
@@ -213,7 +236,7 @@ export function formFromCard(card: Property[]): ContactForm {
     }
   })
 
-  form.birthday = first(card, 'BDAY')?.value ?? ''
+  form.birthday = birthday(first(card, 'BDAY')?.value ?? '')
 
   const organisation = first(card, 'ORG')
   if (organisation) {
@@ -225,6 +248,8 @@ export function formFromCard(card: Property[]): ContactForm {
   form.title = first(card, 'TITLE')?.value ?? ''
   form.url = first(card, 'URL')?.value ?? ''
   form.note = first(card, 'NOTE')?.value ?? ''
+
+  form.extras = SINGLE.flatMap((name) => all(card, name).slice(1))
 
   return form
 }
@@ -281,6 +306,8 @@ export function propertiesFromForm(form: ContactForm): Property[] {
   add('TITLE', form.title.trim())
   add('URL', form.url.trim())
   add('NOTE', form.note.trim())
+
+  properties.push(...form.extras)
 
   return properties
 }

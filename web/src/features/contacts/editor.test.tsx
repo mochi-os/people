@@ -116,6 +116,32 @@ describe('ContactEditor', () => {
     )
   })
 
+  it('opens a contact whose birthday is in the basic form', () => {
+    queries.contact = loaded({
+      contact: {
+        ...contact,
+        card: [...contact.card, { name: 'BDAY', params: {}, value: '19850412' }],
+      },
+    })
+    show('c1')
+    expect(screen.getByRole('textbox', { name: 'Birthday' })).toHaveValue(
+      '1985-04-12'
+    )
+  })
+
+  it('opens a contact whose birthday has no year and shows it as written', () => {
+    queries.contact = loaded({
+      contact: {
+        ...contact,
+        card: [...contact.card, { name: 'BDAY', params: {}, value: '--04-12' }],
+      },
+    })
+    show('c1')
+    expect(screen.getByRole('textbox', { name: 'Birthday' })).toHaveValue(
+      '--04-12'
+    )
+  })
+
   it('puts a new contact in the default book', async () => {
     show()
     await waitFor(() =>

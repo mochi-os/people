@@ -68,6 +68,55 @@ describe('propertiesFromForm', () => {
     expect(written?.value).toBe('Doe\\; Jane;;;;')
   })
 
+  // The stored form is the server parser's: the server escapes commas,
+  // newlines and backslashes itself when it writes the card for a client.
+  it('stores a comma in a component unescaped', () => {
+    const form = formFromCard([])
+    form.addresses = [
+      {
+        street: 'Flat 3, 12 Long Street',
+        city: '',
+        region: '',
+        postcode: '',
+        country: '',
+        type: 'home',
+        params: {},
+        pobox: '',
+        extended: '',
+      },
+    ]
+    const written = propertiesFromForm(form).find((p) => p.name === 'ADR')
+    expect(written?.value).toBe(';;Flat 3, 12 Long Street;;;;')
+  })
+
+  it('stores a newline in a component unescaped', () => {
+    const form = formFromCard([])
+    form.organisation = 'Acme\nResearch'
+    const written = propertiesFromForm(form).find((p) => p.name === 'ORG')
+    expect(written?.value).toBe('Acme\nResearch')
+  })
+
+  it('stores a backslash in a component unescaped', () => {
+    const form = formFromCard([])
+    form.family = 'Back\\slash'
+    const written = propertiesFromForm(form).find((p) => p.name === 'N')
+    expect(written?.value).toBe('Back\\slash;;;;')
+  })
+
+  it('keeps a backslash that escapes nothing through a save and a read', () => {
+    const form = formFromCard([])
+    form.family = 'Back\\slash'
+    const again = formFromCard(propertiesFromForm(form))
+    expect(again.family).toBe('Back\\slash')
+  })
+
+  it('still reads the escapes it used to write', () => {
+    const form = formFromCard([
+      property('ADR', ';;Flat 3\\, 12 Long Street\\nBack;;;;'),
+    ])
+    expect(form.addresses[0].street).toBe('Flat 3, 12 Long Street\nBack')
+  })
+
   it('writes the type as a TYPE parameter and keeps the others', () => {
     const form = formFromCard([
       property('EMAIL', 'jane@example.com', {

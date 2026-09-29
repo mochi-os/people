@@ -55,14 +55,19 @@ export interface ContactForm {
   organisationUnits: string[]
 }
 
-// Split a structured vCard value on its unescaped semicolons.
+// Split a structured vCard value on its unescaped semicolons. Besides "\;",
+// the escapes this editor used to write ("\,", "\n", "\\") are undone; any
+// other backslash is the text's own and stays.
 function split(value: string): string[] {
   const parts: string[] = []
   let current = ''
   let escaped = false
   for (const character of value) {
     if (escaped) {
-      current += character === 'n' || character === 'N' ? '\n' : character
+      if (character === 'n' || character === 'N') current += '\n'
+      else if (character === ';' || character === ',' || character === '\\')
+        current += character
+      else current += '\\' + character
       escaped = false
       continue
     }
@@ -77,16 +82,18 @@ function split(value: string): string[] {
     }
     current += character
   }
+  if (escaped) current += '\\'
   parts.push(current)
   return parts
 }
 
+// A stored value is what the server's vCard parser gives: commas, newlines and
+// backslashes are plain, and only a semicolon inside a component is escaped.
+// The server escapes the rest when it writes the card for a client, so doing
+// it here too would reach phones as a literal "\," or "\n". Reading still
+// decodes those escapes, for cards this editor wrote before.
 function escape(value: string): string {
-  return value
-    .replace(/\\/g, '\\\\')
-    .replace(/;/g, '\\;')
-    .replace(/,/g, '\\,')
-    .replace(/\n/g, '\\n')
+  return value.replace(/;/g, '\\;')
 }
 
 // Join structured components, keeping every one of them so N always carries

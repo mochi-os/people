@@ -36,8 +36,14 @@ const toMutationSuccess = async <T>(
   return { success: true }
 }
 
-const body = (fields: Record<string, string>) =>
-  new URLSearchParams(fields).toString()
+// A field left undefined is not sent: URLSearchParams would write it as the
+// text "undefined", which the server reads as a value.
+const body = (fields: Record<string, string | undefined>) =>
+  new URLSearchParams(
+    Object.entries(fields).filter(
+      (field): field is [string, string] => field[1] !== undefined
+    )
+  ).toString()
 
 // The request helper unwraps the {"data": ...} envelope; action_contacts
 // answers exactly this shape.

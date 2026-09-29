@@ -1300,7 +1300,7 @@ def action_contacts_batch(a):
 	body = body_json(a)
 	ids = body.get("contacts") if body else None
 	if type(ids) != "list" or len(ids) > 500:
-		a.error.label(400, "errors.missing_contact_id")
+		a.error.label(400, "errors.invalid_request")
 		return
 	out = []
 	for id in ids:

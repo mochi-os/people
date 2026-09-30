@@ -10,10 +10,14 @@ export interface Group {
   created: number
 }
 
+// A member the server cannot name - a person it cannot look up, a nested group
+// since deleted - arrives with an empty name; a person carries its fingerprint
+// either way.
 export interface GroupMember {
   member: string
   name: string
   type: 'user' | 'group'
+  fingerprint: string
 }
 
 export interface GetGroupsResponse {

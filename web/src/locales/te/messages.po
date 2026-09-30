@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "వెనుకకు"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "స్నేహితులకు తిరిగి"
+msgid "Back to contacts"
+msgstr "పరిచయాలకు తిరిగి"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "తొలగించబడింది"
 msgid "Deleted {field}"
 msgstr "{field} తొలగించబడింది"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "తొలగించిన గ్రూప్"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "చిరునామా పుస్తకాన్ని తొలగిస్తోంది..."
@@ -1661,14 +1665,6 @@ msgstr "గ్రూప్ సృష్టించబడింది"
 msgid "Group deleted"
 msgstr "గ్రూప్ తొలగించబడింది"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "గ్రూప్ ID"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "గ్రూప్ పేరు"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "మాన్యువల్"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "అన్నింటినీ చదివినట్లు గుర్తించండి"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Markdown సపోర్ట్ చేయబడుతుంది"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "వ్యూ కంట్రోల్స్‌ను ఓపెన్ చ
 msgid "Option name"
 msgstr "ఆప్షన్ పేరు"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "ఐచ్ఛిక వివరణ"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "ఈ సర్వర్‌లో మీ ఖాతాలను మళ్�
 msgid "Re-register your passkeys on this server"
 msgstr "ఈ సర్వర్‌లో మీ పాస్‌కీలను మళ్లీ నమోదు చేయండి"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "స్వీకరించినవి ({0})"
@@ -2555,7 +2543,7 @@ msgstr "రిమైండర్"
 msgid "Remove"
 msgstr "తొలగించండి"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "సందేశాన్ని పంపండి"
 msgid "Sending invitation..."
 msgstr "ఆహ్వానాన్ని పంపుతోంది..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "పంపినవి ({0})"
@@ -3234,9 +3222,13 @@ msgstr "మంగళవారం"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "రకం"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "రకం"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "ఒక సందేశాన్ని టైప్ చేయండి…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "యూజర్లను శోధించడానికి టైప్ చేయండి"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "శోధించడానికి టైప్ చేయండి..."
 
@@ -3300,6 +3290,10 @@ msgstr "యునైటెడ్ స్టేట్స్"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "తెలియదు"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "తెలియని వ్యక్తి"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

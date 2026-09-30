@@ -7,7 +7,8 @@ export interface PersonInformation {
   id: string
   fingerprint: string
   name: string
-  privacy: string
+  // Sent only to the person's owner.
+  privacy?: string
   profile: string
   style: { accent?: string }
   avatar: string

@@ -127,6 +127,31 @@ describe('ConnectDialog', () => {
     expect(screen.queryByLabelText('Device name')).toBeNull()
   })
 
+  it('lists the devices by name', async () => {
+    list.mockReset().mockResolvedValue({
+      tokens: [
+        { ...tokens[0], hash: 'z', name: 'zebra tablet' },
+        { ...tokens[0], hash: 'a', name: 'Alpha phone' },
+        { ...tokens[0], hash: 'm', name: 'Laptop' },
+      ],
+      username: 'someone@example.test',
+    })
+    show()
+    const first = await screen.findByText('Alpha phone')
+    const others = [
+      screen.getByText('Laptop'),
+      screen.getByText('zebra tablet'),
+    ]
+    expect(
+      first.compareDocumentPosition(others[0]) &
+        Node.DOCUMENT_POSITION_FOLLOWING
+    ).toBeTruthy()
+    expect(
+      others[0].compareDocumentPosition(others[1]) &
+        Node.DOCUMENT_POSITION_FOLLOWING
+    ).toBeTruthy()
+  })
+
   it('closes on Cancel', () => {
     const { onOpenChange } = show()
     fireEvent.click(screen.getByRole('button', { name: 'Cancel' }))

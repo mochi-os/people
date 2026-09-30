@@ -244,18 +244,20 @@ def action_group_get(a):
 
 	members = mochi.group.members(id)
 
-	# Enrich members with names
+	# Enrich members with names. A person this server cannot name, or a group
+	# that no longer exists, gets an empty name for the client to label; a
+	# person also carries the fingerprint, which tells the owner who it is.
 	enriched_members = []
 	for member in members:
-		name = member["member"]
+		name = ""
+		fingerprint = ""
 		member_id = member["member"]
 		if member["type"] == "user":
 			# mochi.entity.name, not mochi.user.get - the latter is administrator-only
 			# and raises.
 			if mochi.text.valid(member_id, "entity"):
-				resolved = mochi.entity.name(member_id)
-				if resolved:
-					name = resolved
+				name = mochi.entity.name(member_id) or ""
+				fingerprint = mochi.entity.fingerprint(member_id)
 		elif member["type"] == "group":
 			g = mochi.group.get(member_id)
 			if g:
@@ -264,6 +266,7 @@ def action_group_get(a):
 			"member": member_id,
 			"type": member["type"],
 			"name": name,
+			"fingerprint": fingerprint,
 		})
 
 	return {"data": {"group": group, "members": enriched_members}}

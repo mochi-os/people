@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "Yza"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "Dostlara yza"
+msgid "Back to contacts"
+msgstr "Kontaktlara yza"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "Pozuldy"
 msgid "Deleted {field}"
 msgstr "{field} pozuldy"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "Pozulan topar"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "Salgy kitaby pozulýar..."
@@ -1661,14 +1665,6 @@ msgstr "Topar döredildi"
 msgid "Group deleted"
 msgstr "Topar pozuldy"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "Topar ID"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "Toparyň ady"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "El bilen"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "Hemmesini okaldy diýip belgile"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Markdown goldanýar"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "Görnüş dolandyryşlaryny aç"
 msgid "Option name"
 msgstr "Wariantyň ady"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "Hökman däl düşündiriş"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "Bu serwerde hasaplaryňyzy täzeden baglanyşdyryň"
 msgid "Re-register your passkeys on this server"
 msgstr "Bu serwerde giriş açarlaryňyzy gaýtadan hasaba alyň"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "Alyndy ({0})"
@@ -2555,7 +2543,7 @@ msgstr "Ýatladyş"
 msgid "Remove"
 msgstr "Aýyr"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "Habar iber"
 msgid "Sending invitation..."
 msgstr "Çakylyk iberilýär..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "Iberildi ({0})"
@@ -3234,9 +3222,13 @@ msgstr "Sişenbe"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Görnüş"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "Görnüş"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "Habar ýaz…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "Ulanyjylary gözlemek üçin ýaz"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "Gözlemek üçin ýaz..."
 
@@ -3300,6 +3290,10 @@ msgstr "Birleşen Ştatlar"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "Näbelli"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "Näbelli adam"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

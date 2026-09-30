@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "Geri"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "Arkadaşlara dön"
+msgid "Back to contacts"
+msgstr "Kişilere dön"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "Silindi"
 msgid "Deleted {field}"
 msgstr "{field} silindi"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "Silinmiş grup"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "Adres defteri siliniyor..."
@@ -1661,14 +1665,6 @@ msgstr "Grup oluşturuldu"
 msgid "Group deleted"
 msgstr "Grup silindi"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "Grup kimliği"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "Grup adı"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "Elle"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "Tümünü okundu olarak işaretle"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Markdown destekli"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "Görünüm kontrollerini aç"
 msgid "Option name"
 msgstr "Seçenek adı"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "İsteğe bağlı açıklama"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "Hesaplarınızı bu sunucuda yeniden bağlayın"
 msgid "Re-register your passkeys on this server"
 msgstr "Bu sunucuda parola anahtarlarınızı yeniden kaydedin"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "Alındı ({0})"
@@ -2555,7 +2543,7 @@ msgstr "Hatırlatıcı"
 msgid "Remove"
 msgstr "Kaldır"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "Mesaj gönder"
 msgid "Sending invitation..."
 msgstr "Davet gönderiliyor..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "Gönderildi ({0})"
@@ -3234,9 +3222,13 @@ msgstr "Salı"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Tür"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "Tür"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "Bir mesaj yaz…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "Kullanıcı aramak için yaz"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "Aramak için yaz..."
 
@@ -3300,6 +3290,10 @@ msgstr "Amerika Birleşik Devletleri"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "Bilinmiyor"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "Bilinmeyen kişi"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

@@ -3,16 +3,10 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { useEffect } from 'react'
-import { useQuery } from '@tanstack/react-query'
 import { useLingui } from '@lingui/react/macro'
-import {
-  GeneralError,
-  Skeleton,
-  requestHelpers,
-  usePageTitle,
-  getAppPath,
-} from '@mochi/web'
-import type { PersonInformation } from '@/api/types/person'
+import { GeneralError, Skeleton, usePageTitle } from '@mochi/web'
+import endpoints from '@/api/endpoints'
+import { usePersonInformationQuery } from '@/hooks/usePerson'
 import { ProfileView } from './profile-view'
 
 function PublicProfileSkeleton() {
@@ -43,23 +37,16 @@ function setFavicon(href: string) {
 
 export function PublicProfile({ fingerprint }: { fingerprint: string }) {
   const { t } = useLingui()
-  const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ['person', 'public-information', fingerprint],
-    // Addressed absolutely: the request layer's baseURL is the app's own
-    // when the page runs inside the shell, not the person's.
-    queryFn: () =>
-      requestHelpers.get<PersonInformation>(
-        `${getAppPath()}/${fingerprint}/-/information`
-      ),
-  })
+  const { data, isLoading, error, refetch } =
+    usePersonInformationQuery(fingerprint)
 
   usePageTitle(data?.name ?? t`Profile`)
 
   useEffect(() => {
     if (data?.favicon)
-      setFavicon(`${getAppPath()}/${fingerprint}/-/favicon?v=${data.favicon}`)
+      setFavicon(endpoints.person.asset(fingerprint, 'favicon', data.favicon))
     else if (data?.avatar)
-      setFavicon(`${getAppPath()}/${fingerprint}/-/favicon?v=${data.avatar}`)
+      setFavicon(endpoints.person.asset(fingerprint, 'favicon', data.avatar))
   }, [fingerprint, data?.favicon, data?.avatar])
 
   if (isLoading) {
@@ -80,10 +67,10 @@ export function PublicProfile({ fingerprint }: { fingerprint: string }) {
   }
 
   const avatarUrl = data.avatar
-    ? `${getAppPath()}/${fingerprint}/-/avatar?v=${data.avatar}`
+    ? endpoints.person.asset(fingerprint, 'avatar', data.avatar)
     : null
   const bannerUrl = data.banner
-    ? `${getAppPath()}/${fingerprint}/-/banner?v=${data.banner}`
+    ? endpoints.person.asset(fingerprint, 'banner', data.banner)
     : null
 
   return (

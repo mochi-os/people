@@ -5,6 +5,7 @@
 import { t } from '@lingui/core/macro'
 import { requestHelpers } from '@mochi/web'
 import endpoints from '@/api/endpoints'
+import { body, form, quiet } from '@/api/request'
 import type { MutationSuccessResponse } from '@/api/types/contacts'
 import type {
   AddGroupMemberRequest,
@@ -17,10 +18,6 @@ import type {
   UpdateGroupRequest,
 } from '@/api/types/groups'
 
-const suppressMutationErrorToast = {
-  mochi: { showGlobalErrorToast: false },
-} as const
-
 const listGroups = async (): Promise<Group[]> => {
   const response = await requestHelpers.get<GetGroupsResponse>(
     endpoints.groups.list
@@ -31,21 +28,10 @@ const listGroups = async (): Promise<Group[]> => {
 const getGroup = async (
   id: string
 ): Promise<{ group: Group; members: GroupMember[] }> => {
-  const params = new URLSearchParams()
-  params.append('id', id)
-
   const response = await requestHelpers.post<GetGroupResponse>(
     endpoints.groups.get,
-    params.toString(),
-    {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      mochi: {
-        // This is query-owned UI; failures are rendered inline via GeneralError.
-        showGlobalErrorToast: false,
-      },
-    }
+    body({ id }),
+    { ...form, ...quiet }
   )
 
   if (!response?.group) {
@@ -58,93 +44,46 @@ const getGroup = async (
   }
 }
 
-const createGroup = async (
-  payload: CreateGroupRequest
+const post = async (
+  url: string,
+  fields: Record<string, string | undefined>
 ): Promise<MutationSuccessResponse> => {
-  const params = new URLSearchParams()
-  if (payload.id) {
-    params.append('id', payload.id)
-  }
-  params.append('name', payload.name)
-  if (payload.description) {
-    params.append('description', payload.description)
-  }
-
-  await requestHelpers.post(endpoints.groups.create, params.toString(), {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    ...suppressMutationErrorToast,
-  })
+  await requestHelpers.post(url, body(fields), { ...form, ...quiet })
   return { success: true }
 }
 
-const updateGroup = async (
-  payload: UpdateGroupRequest
-): Promise<MutationSuccessResponse> => {
-  const params = new URLSearchParams()
-  params.append('id', payload.id)
-  if (payload.name) {
-    params.append('name', payload.name)
-  }
-  if (payload.description !== undefined) {
-    params.append('description', payload.description)
-  }
-
-  await requestHelpers.post(endpoints.groups.update, params.toString(), {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    ...suppressMutationErrorToast,
+// An empty id or description is not sent: the server makes the id and
+// leaves the description blank.
+const createGroup = (payload: CreateGroupRequest) =>
+  post(endpoints.groups.create, {
+    id: payload.id || undefined,
+    name: payload.name,
+    description: payload.description || undefined,
   })
-  return { success: true }
-}
 
-const deleteGroup = async (id: string): Promise<MutationSuccessResponse> => {
-  const params = new URLSearchParams()
-  params.append('id', id)
-
-  await requestHelpers.post(endpoints.groups.delete, params.toString(), {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    ...suppressMutationErrorToast,
+// An empty name is not sent, since a group needs one; an empty description is,
+// since clearing it is a real edit.
+const updateGroup = (payload: UpdateGroupRequest) =>
+  post(endpoints.groups.update, {
+    id: payload.id,
+    name: payload.name || undefined,
+    description: payload.description,
   })
-  return { success: true }
-}
 
-const addMember = async (
-  payload: AddGroupMemberRequest
-): Promise<MutationSuccessResponse> => {
-  const params = new URLSearchParams()
-  params.append('group', payload.group)
-  params.append('member', payload.member)
-  params.append('type', payload.type)
+const deleteGroup = (id: string) => post(endpoints.groups.delete, { id })
 
-  await requestHelpers.post(endpoints.groups.memberAdd, params.toString(), {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    ...suppressMutationErrorToast,
+const addMember = (payload: AddGroupMemberRequest) =>
+  post(endpoints.groups.memberAdd, {
+    group: payload.group,
+    member: payload.member,
+    type: payload.type,
   })
-  return { success: true }
-}
 
-const removeMember = async (
-  payload: RemoveGroupMemberRequest
-): Promise<MutationSuccessResponse> => {
-  const params = new URLSearchParams()
-  params.append('group', payload.group)
-  params.append('member', payload.member)
-
-  await requestHelpers.post(endpoints.groups.memberRemove, params.toString(), {
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    ...suppressMutationErrorToast,
+const removeMember = (payload: RemoveGroupMemberRequest) =>
+  post(endpoints.groups.memberRemove, {
+    group: payload.group,
+    member: payload.member,
   })
-  return { success: true }
-}
 
 export const groupsApi = {
   list: listGroups,

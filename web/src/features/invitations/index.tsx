@@ -12,7 +12,6 @@ import {
   Input,
   Main,
   usePageTitle,
-  getAppPath,
   getErrorMessage,
   PageHeader,
   Skeleton,
@@ -21,9 +20,11 @@ import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
+  useFormat,
   useListAutoAnimate,
 } from '@mochi/web'
 import { UserPlus, UserX, Send, X, Check, Settings } from 'lucide-react'
+import endpoints from '@/api/endpoints'
 import { formatFingerprint } from '@/lib/fingerprint'
 import { searchMatches } from '@/lib/search'
 import {
@@ -37,8 +38,8 @@ import { InviteSettingsDialog } from './invite-settings-dialog'
 
 export function Invitations() {
   const { t } = useLingui()
+  const { formatNumber } = useFormat()
   usePageTitle(t`Invitations`)
-  const appPath = getAppPath()
   const [search, setSearch] = useState('')
   const [addContactDialogOpen, setAddContactDialogOpen] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
@@ -261,7 +262,7 @@ export function Invitations() {
                 <div className='flex items-center justify-between'>
                   <h2 className='text-muted-foreground flex items-center gap-2 text-sm font-medium'>
                     <UserPlus className='h-4 w-4' />
-                    {t`Received (${filteredReceived.length})`}
+                    {t`Received (${formatNumber(filteredReceived.length)})`}
                   </h2>
                   {filteredReceived.length > 1 && (
                     <div className='flex items-center gap-2'>
@@ -298,8 +299,8 @@ export function Invitations() {
                     >
                       <div className='flex items-center gap-3'>
                         <EntityAvatar
-                          src={`${appPath}/${invite.id}/-/avatar`}
-                          styleUrl={`${appPath}/${invite.id}/-/style`}
+                          src={endpoints.person.asset(invite.id, 'avatar')}
+                          styleUrl={endpoints.person.asset(invite.id, 'style')}
                           name={invite.name}
                           size='md'
                         />
@@ -359,7 +360,7 @@ export function Invitations() {
                 <div className='flex items-center justify-between'>
                   <h2 className='text-muted-foreground flex items-center gap-2 text-sm font-medium'>
                     <Send className='h-4 w-4' />
-                    {t`Sent (${filteredSent.length})`}
+                    {t`Sent (${formatNumber(filteredSent.length)})`}
                   </h2>
                   {filteredSent.length > 1 && (
                     <Button
@@ -384,8 +385,8 @@ export function Invitations() {
                     >
                       <div className='flex items-center gap-3'>
                         <EntityAvatar
-                          src={`${appPath}/${invite.id}/-/avatar`}
-                          styleUrl={`${appPath}/${invite.id}/-/style`}
+                          src={endpoints.person.asset(invite.id, 'avatar')}
+                          styleUrl={endpoints.person.asset(invite.id, 'style')}
                           name={invite.name}
                           size='md'
                         />

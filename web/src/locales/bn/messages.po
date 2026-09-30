@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "ফিরে যান"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "বন্ধুতে ফিরে যান"
+msgid "Back to contacts"
+msgstr "পরিচিতিতে ফিরে যান"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "মুছে ফেলা হয়েছে"
 msgid "Deleted {field}"
 msgstr "{field} মুছে ফেলা হয়েছে"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "মুছে ফেলা গ্রুপ"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "ঠিকানা বই মুছে ফেলা হচ্ছে..."
@@ -1661,14 +1665,6 @@ msgstr "গ্রুপ তৈরি করা হয়েছে"
 msgid "Group deleted"
 msgstr "গ্রুপ মুছে ফেলা হয়েছে"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "গ্রুপ আইডি"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "গ্রুপের নাম"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "ম্যানুয়াল"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "সবগুলি পঠিত হিসেবে চিহ্নিত করুন"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Markdown সমর্থিত"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "ভিউ কন্ট্রোল খুলুন"
 msgid "Option name"
 msgstr "অপশনের নাম"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "ঐচ্ছিক বিবরণ"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "এই সার্ভারে আপনার অ্যাকাউন
 msgid "Re-register your passkeys on this server"
 msgstr "এই সার্ভারে আপনার পাসকি পুনরায় নিবন্ধন করুন"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "প্রাপ্ত ({0})"
@@ -2555,7 +2543,7 @@ msgstr "অনুস্মারক"
 msgid "Remove"
 msgstr "সরান"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "বার্তা পাঠান"
 msgid "Sending invitation..."
 msgstr "আমন্ত্রণ পাঠানো হচ্ছে..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "পাঠানো হয়েছে ({0})"
@@ -3234,9 +3222,13 @@ msgstr "মঙ্গলবার"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "ধরন"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "ধরন"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "একটি বার্তা টাইপ করুন…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "ব্যবহারকারী অনুসন্ধান করতে টাইপ করুন"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "অনুসন্ধান করতে টাইপ করুন..."
 
@@ -3300,6 +3290,10 @@ msgstr "যুক্তরাষ্ট্র"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "অজানা"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "অজানা ব্যক্তি"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

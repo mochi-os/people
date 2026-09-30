@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "Πίσω"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "Πίσω στους φίλους"
+msgid "Back to contacts"
+msgstr "Πίσω στις επαφές"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "Διαγράφηκε"
 msgid "Deleted {field}"
 msgstr "Διαγράφηκε {field}"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "Διαγραμμένη ομάδα"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "Διαγραφή βιβλίου διευθύνσεων..."
@@ -1661,14 +1665,6 @@ msgstr "Η ομάδα δημιουργήθηκε"
 msgid "Group deleted"
 msgstr "Η ομάδα διαγράφηκε"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "ID ομάδας"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "Όνομα ομάδας"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "Χειροκίνητο"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "Σήμανση όλων ως αναγνωσμένα"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Υποστηρίζεται Markdown"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "Άνοιγμα ελέγχων προβολής"
 msgid "Option name"
 msgstr "Όνομα επιλογής"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "Προαιρετική περιγραφή"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "Επανασυνδέστε τους λογαριασμούς σας σε
 msgid "Re-register your passkeys on this server"
 msgstr "Καταχωρίστε ξανά τα κλειδιά πρόσβασής σας σε αυτόν τον διακομιστή"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "Ληφθέντα ({0})"
@@ -2555,7 +2543,7 @@ msgstr "Υπενθύμιση"
 msgid "Remove"
 msgstr "Αφαίρεση"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "Αποστολή μηνύματος"
 msgid "Sending invitation..."
 msgstr "Αποστολή πρόσκλησης..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "Σταλμένα ({0})"
@@ -3234,9 +3222,13 @@ msgstr "Τρίτη"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Τύπος"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "Τύπος"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "Πληκτρολογήστε ένα μήνυμα…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "Πληκτρολογήστε για αναζήτηση χρηστών"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "Πληκτρολογήστε για αναζήτηση..."
 
@@ -3300,6 +3290,10 @@ msgstr "Ηνωμένες Πολιτείες"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "Άγνωστο"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "Άγνωστο άτομο"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

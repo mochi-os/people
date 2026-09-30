@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "Bumalik"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "Bumalik sa mga kaibigan"
+msgid "Back to contacts"
+msgstr "Bumalik sa mga contact"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "Tinanggal"
 msgid "Deleted {field}"
 msgstr "Tinanggal ang {field}"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "Binurang grupo"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "Dine-delete ang address book..."
@@ -1661,14 +1665,6 @@ msgstr "Nagawa ang group"
 msgid "Group deleted"
 msgstr "Nadelete ang group"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "ID ng grupo"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "Pangalan ng group"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "Manwal"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "Markahan lahat bilang nabasa"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Sinusuportahan ang Markdown"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "Buksan ang mga view control"
 msgid "Option name"
 msgstr "Pangalan ng opsyon"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "Opsyonal na paglalarawan"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "I-relink ang iyong mga account sa server na ito"
 msgid "Re-register your passkeys on this server"
 msgstr "Muling irehistro ang iyong mga passkey sa server na ito"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "Natanggap ({0})"
@@ -2555,7 +2543,7 @@ msgstr "Paalala"
 msgid "Remove"
 msgstr "Alisin"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "Ipadala ang mensahe"
 msgid "Sending invitation..."
 msgstr "Ipinapadala ang imbitasyon..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "Naipadala ({0})"
@@ -3234,9 +3222,13 @@ msgstr "Martes"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Uri"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "Uri"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "Mag-type ng mensahe…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "Mag-type para maghanap ng user"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "Mag-type para maghanap..."
 
@@ -3300,6 +3290,10 @@ msgstr "Estados Unidos"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "Hindi alam"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "Hindi kilalang tao"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

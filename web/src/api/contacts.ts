@@ -4,6 +4,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { requestHelpers } from '@mochi/web'
 import endpoints from '@/api/endpoints'
+import { body, form, quiet } from '@/api/request'
 import type {
   CreateBookResponse,
   CreateContactRequest,
@@ -16,34 +17,12 @@ import type {
   UpdateContactRequest,
 } from '@/api/types/contacts'
 
-const suppressMutationErrorToast = {
-  mochi: { showGlobalErrorToast: false },
-} as const
-
-const form = {
-  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-} as const
-
-// This is query-owned UI; failures are rendered inline via GeneralError.
-const suppressQueryErrorToast = {
-  mochi: { showGlobalErrorToast: false },
-} as const
-
 const toMutationSuccess = async <T>(
   promise: Promise<T>
 ): Promise<MutationSuccessResponse> => {
   await promise
   return { success: true }
 }
-
-// A field left undefined is not sent: URLSearchParams would write it as the
-// text "undefined", which the server reads as a value.
-const body = (fields: Record<string, string | undefined>) =>
-  new URLSearchParams(
-    Object.entries(fields).filter(
-      (field): field is [string, string] => field[1] !== undefined
-    )
-  ).toString()
 
 // The request helper unwraps the {"data": ...} envelope; action_contacts
 // answers exactly this shape.
@@ -54,28 +33,28 @@ const getContact = (contact: string): Promise<GetContactResponse> =>
   requestHelpers.post<GetContactResponse>(
     endpoints.contacts.get,
     body({ contact }),
-    { ...form, ...suppressMutationErrorToast }
+    { ...form, ...quiet }
   )
 
 const createContact = (
   payload: CreateContactRequest
 ): Promise<GetContactResponse> =>
   requestHelpers.post<GetContactResponse>(endpoints.contacts.create, payload, {
-    ...suppressMutationErrorToast,
+    ...quiet,
   })
 
 const updateContact = (
   payload: UpdateContactRequest
 ): Promise<GetContactResponse> =>
   requestHelpers.post<GetContactResponse>(endpoints.contacts.update, payload, {
-    ...suppressMutationErrorToast,
+    ...quiet,
   })
 
 const deleteContact = (contact: string) =>
   toMutationSuccess(
     requestHelpers.post(endpoints.contacts.delete, body({ contact }), {
       ...form,
-      ...suppressMutationErrorToast,
+      ...quiet,
     })
   )
 
@@ -83,14 +62,14 @@ const searchDirectory = (search: string): Promise<SearchDirectoryResponse> =>
   requestHelpers.post<SearchDirectoryResponse>(
     endpoints.contacts.search,
     body({ search }),
-    { ...form, ...suppressQueryErrorToast }
+    { ...form, ...quiet }
   )
 
 const searchLocalUsers = (search: string): Promise<SearchLocalUsersResponse> =>
   requestHelpers.post<SearchLocalUsersResponse>(
     endpoints.users.search,
     body({ search }),
-    { ...form, ...suppressQueryErrorToast }
+    { ...form, ...quiet }
   )
 
 const listBooks = (): Promise<GetBooksResponse> =>
@@ -102,7 +81,7 @@ const createBook = (name: string): Promise<CreateBookResponse> =>
     body({ name }),
     {
       ...form,
-      ...suppressMutationErrorToast,
+      ...quiet,
     }
   )
 
@@ -110,7 +89,7 @@ const renameBook = (payload: { book: string; name: string }) =>
   toMutationSuccess(
     requestHelpers.post(endpoints.books.rename, body(payload), {
       ...form,
-      ...suppressMutationErrorToast,
+      ...quiet,
     })
   )
 
@@ -118,7 +97,7 @@ const deleteBook = (book: string) =>
   toMutationSuccess(
     requestHelpers.post(endpoints.books.delete, body({ book }), {
       ...form,
-      ...suppressMutationErrorToast,
+      ...quiet,
     })
   )
 
@@ -131,7 +110,7 @@ const inviteFriend = (payload: {
   toMutationSuccess(
     requestHelpers.post(endpoints.friends.invite, body(payload), {
       ...form,
-      ...suppressMutationErrorToast,
+      ...quiet,
     })
   )
 
@@ -139,7 +118,7 @@ const acceptFriend = (person: string) =>
   toMutationSuccess(
     requestHelpers.post(endpoints.friends.accept, body({ person }), {
       ...form,
-      ...suppressMutationErrorToast,
+      ...quiet,
     })
   )
 
@@ -147,7 +126,7 @@ const ignoreFriend = (person: string) =>
   toMutationSuccess(
     requestHelpers.post(endpoints.friends.ignore, body({ person }), {
       ...form,
-      ...suppressMutationErrorToast,
+      ...quiet,
     })
   )
 
@@ -156,7 +135,7 @@ const removeFriend = (person: string) =>
   toMutationSuccess(
     requestHelpers.post(endpoints.friends.remove, body({ person }), {
       ...form,
-      ...suppressMutationErrorToast,
+      ...quiet,
     })
   )
 
@@ -174,7 +153,7 @@ const setPreferences = (payload: { policy: InvitePolicy }) =>
     requestHelpers.post(
       endpoints.preferences.set,
       body({ policy: payload.policy }),
-      { ...form, ...suppressMutationErrorToast }
+      { ...form, ...quiet }
     )
   )
 

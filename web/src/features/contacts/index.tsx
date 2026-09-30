@@ -27,7 +27,6 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-  getAppPath,
   getErrorMessage,
   naturalCompare,
   shellNavigateExternal,
@@ -45,6 +44,7 @@ import {
   UserPlus,
   UserX,
 } from 'lucide-react'
+import endpoints from '@/api/endpoints'
 import type { Contact } from '@/api/types/contacts'
 import { searchMatches, searchRange } from '@/lib/search'
 import {
@@ -71,7 +71,6 @@ export function Contacts({
 }: { book?: string; autoAdd?: boolean } = {}) {
   const { t } = useLingui()
   const navigate = useNavigate()
-  const appPath = getAppPath()
   const [search, setSearch] = useState('')
   const [sortBy, setSortBy] = useState<SortBy>('name')
   const [addDialogOpen, setAddDialogOpen] = useState(autoAdd ?? false)
@@ -264,8 +263,11 @@ export function Contacts({
                   >
                     {contact.person ? (
                       <EntityAvatar
-                        src={`${appPath}/${contact.person}/-/avatar`}
-                        styleUrl={`${appPath}/${contact.person}/-/style`}
+                        src={endpoints.person.asset(contact.person, 'avatar')}
+                        styleUrl={endpoints.person.asset(
+                          contact.person,
+                          'style'
+                        )}
                         name={contact.name}
                         size='lg'
                       />
@@ -324,7 +326,7 @@ export function Contacts({
                         <DropdownMenuContent align='end'>
                           {contact.person && !contact.friend && !invited ? (
                             <DropdownMenuItem onSelect={() => invite(contact)}>
-                              <Send className='me-2 size-4' />
+                              <Send className='size-4' />
                               <Trans>Invite</Trans>
                             </DropdownMenuItem>
                           ) : null}
@@ -334,7 +336,7 @@ export function Contacts({
                                 setUnfriendDialog({ open: true, contact })
                               }
                             >
-                              <UserX className='me-2 size-4' />
+                              <UserX className='size-4' />
                               <Trans>Unfriend</Trans>
                             </DropdownMenuItem>
                           ) : null}
@@ -344,7 +346,7 @@ export function Contacts({
                               setDeleteDialog({ open: true, contact })
                             }
                           >
-                            <Trash2 className='me-2 size-4' />
+                            <Trash2 className='size-4' />
                             <Trans>Delete</Trans>
                           </DropdownMenuItem>
                         </DropdownMenuContent>

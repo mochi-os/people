@@ -19,6 +19,8 @@ const state = vi.hoisted(() => ({
 vi.mock('@mochi/web', async (original) => ({
   ...(await original<typeof import('@mochi/web')>()),
   toast: state.toast,
+  // A formatter that shows it was used, whatever the test's locale.
+  useFormat: () => ({ formatNumber: (value: number) => `#${value}` }),
 }))
 vi.mock('@/hooks/useContacts', () => ({
   useContactsQuery: () => ({
@@ -91,6 +93,12 @@ describe('Invitations', () => {
     show()
     expect(screen.getByText('abc-def-ghi')).toBeInTheDocument()
     expect(screen.queryByText(/Listed as/)).toBeNull()
+  })
+
+  it('counts the received invitations through the number formatter', () => {
+    state.received = [invite({}), invite({ id: 'p2', name: 'Grace' })]
+    show()
+    expect(screen.getByText('Received (#2)')).toBeInTheDocument()
   })
 
   it('gives the search box a name', () => {

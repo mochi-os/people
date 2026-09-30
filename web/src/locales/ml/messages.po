@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "തിരികെ"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "സുഹൃത്തുക്കളിലേക്ക് തിരികെ"
+msgid "Back to contacts"
+msgstr "കോൺടാക്റ്റുകളിലേക്ക് തിരികെ"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "ഇല്ലാതാക്കി"
 msgid "Deleted {field}"
 msgstr "{field} ഇല്ലാതാക്കി"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "ഇല്ലാതാക്കിയ ഗ്രൂപ്പ്"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "വിലാസപ്പുസ്തകം ഇല്ലാതാക്കുന്നു..."
@@ -1661,14 +1665,6 @@ msgstr "ഗ്രൂപ്പ് സൃഷ്ടിച്ചു"
 msgid "Group deleted"
 msgstr "ഗ്രൂപ്പ് ഇല്ലാതാക്കി"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "ഗ്രൂപ്പ് ID"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "ഗ്രൂപ്പ് നാമം"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "മാനുവൽ"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "എല്ലാം വായിച്ചതായി അടയാളപ്പെടുത്തുക"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Markdown സപ്പോർട്ടുണ്ട്"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "വ്യൂ നിയന്ത്രണങ്ങൾ തുറക്ക�
 msgid "Option name"
 msgstr "ഓപ്ഷൻ പേര്"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "ഓപ്ഷണൽ വിവരണം"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "ഈ സെർവറിൽ നിങ്ങളുടെ അക്കൗണ
 msgid "Re-register your passkeys on this server"
 msgstr "ഈ സെർവറിൽ നിങ്ങളുടെ പാസ്‌കീകൾ വീണ്ടും രജിസ്റ്റർ ചെയ്യുക"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "ലഭിച്ചത് ({0})"
@@ -2555,7 +2543,7 @@ msgstr "ഓർമ്മപ്പെടുത്തൽ"
 msgid "Remove"
 msgstr "നീക്കം ചെയ്യുക"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "സന്ദേശം അയയ്ക്കുക"
 msgid "Sending invitation..."
 msgstr "ക്ഷണം അയയ്ക്കുന്നു..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "അയച്ചത് ({0})"
@@ -3234,9 +3222,13 @@ msgstr "ചൊവ്വാഴ്ച"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "തരം"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "തരം"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "ഒരു സന്ദേശം ടൈപ്പ് ചെയ്യുക…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "ഉപയോക്താക്കളെ തിരയാൻ ടൈപ്പ് ചെയ്യുക"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "തിരയാൻ ടൈപ്പ് ചെയ്യുക..."
 
@@ -3300,6 +3290,10 @@ msgstr "യുണൈറ്റഡ് സ്റ്റേറ്റ്സ്"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "അജ്ഞാതം"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "അജ്ഞാത വ്യക്തി"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

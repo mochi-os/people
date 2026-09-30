@@ -22,6 +22,7 @@ import {
   getErrorMessage,
   toastAction,
   useFormat,
+  naturalCompare,
 } from '@mochi/web'
 import { ArrowLeft, Check, Plus, Trash2 } from 'lucide-react'
 import {
@@ -119,9 +120,9 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
   // token/list answers the user's device credentials from both apps, since
   // one password serves contacts and calendars; the dav scope is what makes
   // a token a device.
-  const tokens = (data?.tokens ?? []).filter((item) =>
-    item.scopes.includes('dav')
-  )
+  const tokens = (data?.tokens ?? [])
+    .filter((item) => item.scopes.includes('dav'))
+    .sort((a, b) => naturalCompare(a.name, b.name))
 
   return (
     <>

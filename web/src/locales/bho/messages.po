@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "वापस"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "दोस्त पर वापस"
+msgid "Back to contacts"
+msgstr "संपर्क पर वापस"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "मेटावल गइल"
 msgid "Deleted {field}"
 msgstr "{field} मेटावल गइल"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "मेटावल समूह"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "पता किताब मेटावल जा रहल बा..."
@@ -1661,14 +1665,6 @@ msgstr "समूह बन गइल"
 msgid "Group deleted"
 msgstr "समूह मेटा गइल"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "समूह ID"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "समूह के नाम"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "मैनुअल"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "सब के पढ़ल चिह्नित करीं"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Markdown समर्थित"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "दृश्य नियंत्रण खोलीं"
 msgid "Option name"
 msgstr "विकल्प नाम"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "वैकल्पिक विवरण"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "एह सर्वर पर आपन खाता फिर से �
 msgid "Re-register your passkeys on this server"
 msgstr "एह सर्वर पर आपन पासकी फिर से रजिस्टर करीं"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "मिलल ({0})"
@@ -2555,7 +2543,7 @@ msgstr "रिमाइंडर"
 msgid "Remove"
 msgstr "हटाईं"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "संदेश भेजीं"
 msgid "Sending invitation..."
 msgstr "नेवता भेजल जा रहल बा..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "भेजल गइल ({0})"
@@ -3234,9 +3222,13 @@ msgstr "मंगल"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "प्रकार"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "प्रकार"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "एगो संदेश टाइप करीं…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "उपयोगकर्ता खोजे खातिर टाइप करीं"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "खोजे खातिर टाइप करीं..."
 
@@ -3300,6 +3290,10 @@ msgstr "संयुक्त राज्य अमेरिका"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "अनजान"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "अनजान व्यक्ति"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

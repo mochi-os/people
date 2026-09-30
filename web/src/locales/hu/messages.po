@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "Vissza"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "Vissza a barátokhoz"
+msgid "Back to contacts"
+msgstr "Vissza a névjegyekhez"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "Törölve"
 msgid "Deleted {field}"
 msgstr "{field} törölve"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "Törölt csoport"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "Címjegyzék törlése..."
@@ -1661,14 +1665,6 @@ msgstr "Csoport létrehozva"
 msgid "Group deleted"
 msgstr "Csoport törölve"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "Csoport azonosító"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "Csoport neve"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "Kézi"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "Összes megjelölése olvasottként"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Markdown támogatott"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "Nézetvezérlők megnyitása"
 msgid "Option name"
 msgstr "Opció neve"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "Opcionális leírás"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "Kapcsolja újra össze fiókjait ezen a szerveren"
 msgid "Re-register your passkeys on this server"
 msgstr "Regisztrálja újra a hozzáférési kulcsait ezen a kiszolgálón"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "Fogadott ({0})"
@@ -2555,7 +2543,7 @@ msgstr "Emlékeztető"
 msgid "Remove"
 msgstr "Eltávolítás"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "Üzenet küldése"
 msgid "Sending invitation..."
 msgstr "Meghívás küldése..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "Küldött ({0})"
@@ -3234,9 +3222,13 @@ msgstr "Kedd"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Típus"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "Típus"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "Írjon egy üzenetet…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "Gépeljen a felhasználók kereséséhez"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "Gépeljen a kereséshez..."
 
@@ -3300,6 +3290,10 @@ msgstr "Egyesült Államok"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "Ismeretlen"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "Ismeretlen személy"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

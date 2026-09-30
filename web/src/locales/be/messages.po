@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "Назад"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "Назад да сяброў"
+msgid "Back to contacts"
+msgstr "Назад да кантактаў"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "Выдалена"
 msgid "Deleted {field}"
 msgstr "Выдалена {field}"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "Выдаленая група"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "Выдаленне адраснай кнігі..."
@@ -1661,14 +1665,6 @@ msgstr "Група створана"
 msgid "Group deleted"
 msgstr "Група выдалена"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "ID групы"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "Назва групы"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "Уручную"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "Адзначыць усё як прачытанае"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Падтрымліваецца Markdown"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "Адкрыць элементы кіравання выглядам"
 msgid "Option name"
 msgstr "Назва параметру"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "Неабавязковае апісанне"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "Паўторна прывяжыце свае акаўнты на гэт�
 msgid "Re-register your passkeys on this server"
 msgstr "Зарэгіструйце ключы доступу на гэтым серверы зноў"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "Атрымана ({0})"
@@ -2555,7 +2543,7 @@ msgstr "Напамін"
 msgid "Remove"
 msgstr "Выдаліць"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "Адправіць паведамленне"
 msgid "Sending invitation..."
 msgstr "Адпраўка запрашэння..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "Адпраўлена ({0})"
@@ -3234,9 +3222,13 @@ msgstr "Аўторак"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Тып"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "Тып"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "Увядзіце паведамленне…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "Увядзіце для пошуку карыстальнікаў"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "Увядзіце для пошуку..."
 
@@ -3300,6 +3290,10 @@ msgstr "Злучаныя Штаты"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "Невядома"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "Невядомая асоба"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

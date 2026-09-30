@@ -34,7 +34,6 @@ import {
   useFormat,
   usePageTitle,
   useUploadProgress,
-  getAppPath,
 } from '@mochi/web'
 import {
   Check,
@@ -42,10 +41,10 @@ import {
   Eye,
   Image as ImageIcon,
   Pencil,
-  Save,
   Upload as UploadIcon,
   X,
 } from 'lucide-react'
+import endpoints from '@/api/endpoints'
 import type { PersonInformation } from '@/api/types/person'
 import { formatFingerprint } from '@/lib/fingerprint'
 import { resizeImage, SLOT_RESIZE } from '@/lib/resize-image'
@@ -162,13 +161,13 @@ function ProfileEditor({
 }) {
   const { t } = useLingui()
   const avatarUrl = info.avatar
-    ? `${getAppPath()}/${info.fingerprint}/-/avatar?v=${info.avatar}`
+    ? endpoints.person.asset(info.fingerprint, 'avatar', info.avatar)
     : null
   const bannerUrl = info.banner
-    ? `${getAppPath()}/${info.fingerprint}/-/banner?v=${info.banner}`
+    ? endpoints.person.asset(info.fingerprint, 'banner', info.banner)
     : null
   const faviconUrl = info.favicon
-    ? `${getAppPath()}/${info.fingerprint}/-/favicon?v=${info.favicon}`
+    ? endpoints.person.asset(info.fingerprint, 'favicon', info.favicon)
     : null
 
   const [profile, setProfile] = useState(info.profile)
@@ -440,7 +439,6 @@ function ProfileEditor({
             id='profile-markdown'
             rows={5}
             value={profile}
-            placeholder={t`Markdown supported`}
             onChange={(e) => setProfile(e.target.value)}
             className={
               tooLong
@@ -468,7 +466,7 @@ function ProfileEditor({
               size='sm'
               className='ms-2'
               loading={profileMutation.isPending}
-              icon={<Save className='size-3.5' />}
+              icon={<Check className='size-3.5' />}
               disabled={!profileDirty || tooLong}
               onClick={handleSaveProfile}
             >
@@ -497,7 +495,7 @@ function ProfileEditor({
                   <Button
                     size='sm'
                     loading={accentMutation.isPending}
-                    icon={<Save className='size-3.5' />}
+                    icon={<Check className='size-3.5' />}
                     disabled={!accentDirty || !accentValid}
                     onClick={handleSaveAccent}
                   >

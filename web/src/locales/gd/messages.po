@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "Air ais"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "Air ais gu caraidean"
+msgid "Back to contacts"
+msgstr "Air ais gu luchd-aithne"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "Air a sguabadh às"
 msgid "Deleted {field}"
 msgstr "Chaidh {field} a sguabadh às"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "Buidheann air a sguabadh às"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "A' sguabadh às an leabhair-sheòlaidhean..."
@@ -1661,14 +1665,6 @@ msgstr "Chaidh am buidheann a chruthachadh"
 msgid "Group deleted"
 msgstr "Chaidh am buidheann a sguabadh às"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "ID a' bhuidhne"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "Ainm a' bhuidhne"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "Le làimh"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "Comharraich gach nì mar leughte"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Tha taic ri Markdown"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "Fosgail uidheaman an t-seallaidh"
 msgid "Option name"
 msgstr "Ainm na roghainn"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "Tuairisgeul roghainneil"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "Ath-cheangail do chunntasan air an fhrithealaiche seo"
 msgid "Re-register your passkeys on this server"
 msgstr "Ath-chlàraich na h-iuchraichean inntrigidh agad air an fhrithealaiche seo"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "Air fhaighinn ({0})"
@@ -2555,7 +2543,7 @@ msgstr "Cuimhneachan"
 msgid "Remove"
 msgstr "Thoir air falbh"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "Cuir teachdaireachd"
 msgid "Sending invitation..."
 msgstr "A’ cur a’ chuireadh..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "Air a chur ({0})"
@@ -3234,9 +3222,13 @@ msgstr "Dimàirt"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Seòrsa"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "Seòrsa"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "Sgrìobh teachdaireachd…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "Sgrìobh airson cleachdaichean a lorg"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "Sgrìobh airson lorg..."
 
@@ -3300,6 +3290,10 @@ msgstr "Stàitean Aonaichte"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "Neo-aithnichte"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "Neach neo-aithnichte"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

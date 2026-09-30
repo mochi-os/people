@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "رجوع"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "العودة إلى الأصدقاء"
+msgid "Back to contacts"
+msgstr "العودة إلى جهات الاتصال"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "تم الحذف"
 msgid "Deleted {field}"
 msgstr "تم حذف {field}"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "مجموعة محذوفة"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "جارٍ حذف دفتر العناوين..."
@@ -1661,14 +1665,6 @@ msgstr "تم إنشاء المجموعة"
 msgid "Group deleted"
 msgstr "تم حذف المجموعة"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "معرّف المجموعة"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "اسم المجموعة"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "يدوي"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "وضع علامة مقروء على الكل"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Markdown مدعوم"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "فتح أدوات التحكم في العرض"
 msgid "Option name"
 msgstr "اسم الخيار"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "وصف اختياري"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "أعد ربط حساباتك بهذا الخادم"
 msgid "Re-register your passkeys on this server"
 msgstr "أعد تسجيل مفاتيح المرور على هذا الخادم"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "المُستلم ({0})"
@@ -2555,7 +2543,7 @@ msgstr "التذكير"
 msgid "Remove"
 msgstr "إزالة"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "إرسال رسالة"
 msgid "Sending invitation..."
 msgstr "جارٍ إرسال الدعوة..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "المُرسل ({0})"
@@ -3234,9 +3222,13 @@ msgstr "الثلاثاء"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "النوع"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "النوع"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "اكتب رسالة…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "اكتب للبحث عن مستخدمين"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "اكتب للبحث..."
 
@@ -3300,6 +3290,10 @@ msgstr "الولايات المتحدة"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "غير معروف"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "شخص غير معروف"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

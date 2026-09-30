@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "Tapykuépe"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "Tapykuépe angirũnguérape"
+msgid "Back to contacts"
+msgstr "Tapykuépe contacto-kuérape"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "Oñemboguete"
 msgid "Deleted {field}"
 msgstr "{field} oñemboguete"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "Atypy oñembogue va'ekue"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "Oñehundihína ogarenda kuatia..."
@@ -1661,14 +1665,6 @@ msgstr "Oñemoheñói atypy"
 msgid "Group deleted"
 msgstr "Oñembogue atypy"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "Atypy ID"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "Atypy téra"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "Manual"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "Ehecha pyre opavave"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Markdown ojepuru"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "Eipe'a vista mba'embokuaaha"
 msgid "Option name"
 msgstr "Opción téra"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "Ñemyesakã opcional"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "Embojoja jey nde mba'ete ko servidor-pe"
 msgid "Re-register your passkeys on this server"
 msgstr "Emoinge jey nde passkeys ko servidor-pe"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "Oñemog̃uahẽma ({0})"
@@ -2555,7 +2543,7 @@ msgstr "Mandu'ara"
 msgid "Remove"
 msgstr "Embogue"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "Emondo marandu"
 msgid "Sending invitation..."
 msgstr "Oñemondóhína ñeñvite..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "Mondopyre ({0})"
@@ -3234,9 +3222,13 @@ msgstr "Araapy"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Mba'éichagua"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "Mba'éichagua"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "Ehai marandu…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "Ehai eheka puruhára"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "Ehai eheka..."
 
@@ -3300,6 +3290,10 @@ msgstr "Estados Unidos"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "Ojekuaa'ỹva"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "Tapicha ojekuaa'ỹva"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

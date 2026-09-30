@@ -72,10 +72,6 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
       return
     }
 
-    const payload = isEditing
-      ? { id: group.id, name: name.trim(), description: description.trim() }
-      : { name: name.trim(), description: description.trim() }
-
     const loadingMsg = isEditing ? t`Updating group...` : t`Creating group...`
     const successMsg = isEditing ? t`Group updated` : t`Group created`
     const fallbackError = isEditing
@@ -84,14 +80,11 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
 
     const id = toast.loading(loadingMsg)
     try {
-      if (isEditing) {
-        await updateMutation.mutateAsync(
-          payload as { id: string; name: string; description: string }
-        )
+      const fields = { name: name.trim(), description: description.trim() }
+      if (group) {
+        await updateMutation.mutateAsync({ id: group.id, ...fields })
       } else {
-        await createMutation.mutateAsync(
-          payload as { name: string; description: string }
-        )
+        await createMutation.mutateAsync(fields)
       }
       toast.dismiss(id)
       toast.success(successMsg)
@@ -130,7 +123,6 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
                 id='name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder={t`Group name`}
                 disabled={isPending}
               />
             </div>
@@ -142,7 +134,6 @@ export function GroupDialog({ open, onOpenChange, group }: GroupDialogProps) {
                 id='description'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder={t`Optional description`}
                 disabled={isPending}
                 rows={3}
               />

@@ -5,11 +5,8 @@
 import type { AxiosProgressEvent } from 'axios'
 import { requestHelpers } from '@mochi/web'
 import endpoints from '@/api/endpoints'
+import { quiet } from '@/api/request'
 import type { MutationSuccess, PersonInformation } from '@/api/types/person'
-
-const suppressMutationErrorToast = {
-  mochi: { showGlobalErrorToast: false },
-} as const
 
 const getInformation = (person: string): Promise<PersonInformation> =>
   requestHelpers.get<PersonInformation>(endpoints.person.information(person))
@@ -21,21 +18,21 @@ const setProfile = (
   requestHelpers.post<MutationSuccess>(
     endpoints.person.profileSet(person),
     { profile },
-    suppressMutationErrorToast
+    quiet
   )
 
 const setAccent = (person: string, accent: string): Promise<MutationSuccess> =>
   requestHelpers.post<MutationSuccess>(
     endpoints.person.styleSet(person),
     { accent },
-    suppressMutationErrorToast
+    quiet
   )
 
 const setName = (person: string, name: string): Promise<MutationSuccess> =>
   requestHelpers.post<MutationSuccess>(
     endpoints.person.nameSet(person),
     { name },
-    suppressMutationErrorToast
+    quiet
   )
 
 const setPrivacy = (
@@ -45,7 +42,7 @@ const setPrivacy = (
   requestHelpers.post<MutationSuccess>(
     endpoints.person.privacySet(person),
     { privacy },
-    suppressMutationErrorToast
+    quiet
   )
 
 const uploadImage = (
@@ -56,7 +53,7 @@ const uploadImage = (
   const form = new FormData()
   form.append('file', file)
   return requestHelpers.post<MutationSuccess>(url, form, {
-    ...suppressMutationErrorToast,
+    ...quiet,
     onUploadProgress: onProgress,
   })
 }

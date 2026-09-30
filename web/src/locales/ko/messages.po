@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "뒤로"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "친구 목록으로 돌아가기"
+msgid "Back to contacts"
+msgstr "연락처로 돌아가기"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "삭제됨"
 msgid "Deleted {field}"
 msgstr "{field} 삭제됨"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "삭제된 그룹"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "주소록 삭제 중..."
@@ -1661,14 +1665,6 @@ msgstr "그룹이 생성되었어요"
 msgid "Group deleted"
 msgstr "그룹이 삭제되었어요"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "그룹 ID"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "그룹 이름"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "수동"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "모두 읽음으로 표시"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "마크다운 지원됨"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "보기 컨트롤 열기"
 msgid "Option name"
 msgstr "옵션 이름"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "선택적 설명"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "이 서버에서 계정 다시 연결"
 msgid "Re-register your passkeys on this server"
 msgstr "이 서버에서 패스키를 다시 등록하세요"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "받음 ({0})"
@@ -2555,7 +2543,7 @@ msgstr "알림"
 msgid "Remove"
 msgstr "제거"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "메시지 보내기"
 msgid "Sending invitation..."
 msgstr "초대 보내는 중..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "보냄 ({0})"
@@ -3234,9 +3222,13 @@ msgstr "화요일"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "유형"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "유형"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "메시지 입력…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "입력하여 사용자 검색"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "입력하여 검색..."
 
@@ -3300,6 +3290,10 @@ msgstr "미국"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "알 수 없음"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "알 수 없는 사람"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

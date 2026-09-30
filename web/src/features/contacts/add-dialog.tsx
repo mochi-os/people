@@ -20,7 +20,6 @@ import {
   ScrollArea,
   SearchInput,
   cn,
-  getAppPath,
   getErrorMessage,
   markdownUrlTransform,
   toastAction,
@@ -39,6 +38,7 @@ import {
 } from 'lucide-react'
 import Markdown, { defaultUrlTransform } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import endpoints from '@/api/endpoints'
 import { personApi } from '@/api/person'
 import type { DirectoryPerson } from '@/api/types/contacts'
 import type { PersonInformation } from '@/api/types/person'
@@ -437,7 +437,6 @@ function PersonRow({
   onAccept: () => void
 }) {
   const { t } = useLingui()
-  const appPath = getAppPath()
   const relationship = person.relationship ?? 'none'
   const inContacts = added || Boolean(person.contact)
   const isInvited = invited || relationship === 'invited'
@@ -450,7 +449,7 @@ function PersonRow({
         {
           key: 'self',
           label: t`That's you`,
-          trailingIcon: <Ban className='ms-2 h-4 w-4' />,
+          trailingIcon: <Ban className='size-4' />,
           variant: 'outline',
           disabled: true,
           onClick: noop,
@@ -462,7 +461,7 @@ function PersonRow({
         {
           key: 'friend',
           label: t`Friends`,
-          trailingIcon: <UserCheck className='ms-2 h-4 w-4' />,
+          trailingIcon: <UserCheck className='size-4' />,
           variant: 'outline',
           disabled: true,
           onClick: noop,
@@ -474,7 +473,7 @@ function PersonRow({
         {
           key: 'accept',
           label: t`Accept`,
-          icon: <Check className='me-2 h-4 w-4' />,
+          icon: <Check className='size-4' />,
           variant: 'default',
           disabled: false,
           onClick: onAccept,
@@ -485,7 +484,7 @@ function PersonRow({
       ? {
           key: 'invited',
           label: t`Invited`,
-          icon: <Send className='me-2 h-4 w-4' />,
+          icon: <Send className='size-4' />,
           variant: 'outline',
           disabled: true,
           onClick: noop,
@@ -493,7 +492,7 @@ function PersonRow({
       : {
           key: 'invite',
           label: t`Invite`,
-          icon: <Send className='me-2 h-4 w-4' />,
+          icon: <Send className='size-4' />,
           variant: 'outline',
           disabled: false,
           onClick: onInvite,
@@ -506,7 +505,7 @@ function PersonRow({
         {
           key: 'contact',
           label: t`In contacts`,
-          icon: <BookUser className='me-2 h-4 w-4' />,
+          icon: <BookUser className='size-4' />,
           variant: 'outline',
           disabled: true,
           onClick: noop,
@@ -518,7 +517,7 @@ function PersonRow({
       {
         key: 'add',
         label: t`Add to contacts`,
-        icon: <UserPlus className='me-2 h-4 w-4' />,
+        icon: <UserPlus className='size-4' />,
         variant: 'default',
         disabled: false,
         onClick: onAdd,
@@ -531,8 +530,8 @@ function PersonRow({
     <div className='hover:bg-hover hover:text-hover-foreground group flex items-center justify-between gap-3 rounded-lg p-3 transition-all'>
       <div className='flex min-w-0 flex-1 items-center gap-3'>
         <EntityAvatar
-          src={`${appPath}/${person.id}/-/avatar`}
-          styleUrl={`${appPath}/${person.id}/-/style`}
+          src={endpoints.person.asset(person.id, 'avatar')}
+          styleUrl={endpoints.person.asset(person.id, 'style')}
           name={person.name}
           size='lg'
         />
@@ -581,12 +580,11 @@ function PersonRow({
 const previewUrlTransform = markdownUrlTransform(defaultUrlTransform)
 
 function PersonPreview({ info }: { info: PersonInformation }) {
-  const appPath = getAppPath()
   const avatarUrl = info.avatar
-    ? `${appPath}/${info.id}/-/avatar?v=${info.avatar}`
+    ? endpoints.person.asset(info.id, 'avatar', info.avatar)
     : null
   const bannerUrl = info.banner
-    ? `${appPath}/${info.id}/-/banner?v=${info.banner}`
+    ? endpoints.person.asset(info.id, 'banner', info.banner)
     : null
 
   return (

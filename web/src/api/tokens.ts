@@ -4,22 +4,8 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { requestHelpers } from '@mochi/web'
 import endpoints from '@/api/endpoints'
-import type {
-  CreateTokenResponse,
-  GetTokensResponse,
-  Token,
-} from '@/api/types/tokens'
-
-const suppressMutationErrorToast = {
-  mochi: { showGlobalErrorToast: false },
-} as const
-
-const form = {
-  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-} as const
-
-const body = (fields: Record<string, string>) =>
-  new URLSearchParams(fields).toString()
+import { body, form, quiet } from '@/api/request'
+import type { CreateTokenResponse, GetTokensResponse } from '@/api/types/tokens'
 
 // Each device gets its own named token, so this is create and never ensure:
 // a second device with the same name is still a second credential.
@@ -27,20 +13,20 @@ const createToken = (name: string): Promise<CreateTokenResponse> =>
   requestHelpers.post<CreateTokenResponse>(
     endpoints.tokens.create,
     body({ name }),
-    { ...form, ...suppressMutationErrorToast }
+    { ...form, ...quiet }
   )
 
 const listTokens = (): Promise<GetTokensResponse> =>
   requestHelpers.post<GetTokensResponse>(endpoints.tokens.list, '', {
     ...form,
-    ...suppressMutationErrorToast,
+    ...quiet,
   })
 
 const deleteToken = (hash: string): Promise<{ ok: boolean }> =>
   requestHelpers.post<{ ok: boolean }>(
     endpoints.tokens.delete,
     body({ hash }),
-    { ...form, ...suppressMutationErrorToast }
+    { ...form, ...quiet }
   )
 
 export const tokensApi = {
@@ -49,4 +35,4 @@ export const tokensApi = {
   delete: deleteToken,
 }
 
-export type { CreateTokenResponse, GetTokensResponse, Token }
+export type { GetTokensResponse }

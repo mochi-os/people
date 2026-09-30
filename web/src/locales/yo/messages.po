@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "Padà"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "Padà sí àwọn ọ̀rẹ́"
+msgid "Back to contacts"
+msgstr "Padà sí àwọn olùbásọ̀rọ̀"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "A parẹ́"
 msgid "Deleted {field}"
 msgstr "A parẹ́ {field}"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "Àwùjọ tí a ti pa rẹ́"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "Ń pa ìwé àdírẹ́sì rẹ́..."
@@ -1661,14 +1665,6 @@ msgstr "A ti dá àwùjọ"
 msgid "Group deleted"
 msgstr "A ti pa àwùjọ rẹ́"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "ID Àwùjọ"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "Orúkọ àwùjọ"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "Pẹ̀lú ọwọ́"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "Sàmì sí gbogbo gẹ́gẹ́ bí kíkà"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Markdown wà ní àtìlẹ́yìn"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "Ṣí àwọn ìṣàkóso ìwò"
 msgid "Option name"
 msgstr "Orúkọ àṣàyàn"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "Àpèjúwe tí kò pọn dandan"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "Tun so akonti rẹ pọ lori olupin yii"
 msgid "Re-register your passkeys on this server"
 msgstr "Tún àwọn bọ́tìnì ìwọlé rẹ forúkọsílẹ̀ lórí olùpèsè yìí"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "Tí a gbà ({0})"
@@ -2555,7 +2543,7 @@ msgstr "Ìránnilétí"
 msgid "Remove"
 msgstr "Yọ kúrò"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "Fi ìránṣẹ́ ránṣẹ́"
 msgid "Sending invitation..."
 msgstr "Ń fi ìpè ránṣẹ́..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "Tí a fi ránṣẹ́ ({0})"
@@ -3234,9 +3222,13 @@ msgstr "Ọjọ́ Ìṣẹ́gun"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Irú"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "Irú"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "Tẹ ìránṣẹ́…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "Tẹ láti wá àwọn user"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "Tẹ láti wá..."
 
@@ -3300,6 +3290,10 @@ msgstr "Orílẹ̀-èdè Amẹ́ríkà"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "Aláìmọ̀"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "Ẹni tí a kò mọ̀"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

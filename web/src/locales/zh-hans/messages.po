@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "返回"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "返回好友列表"
+msgid "Back to contacts"
+msgstr "返回联系人"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "已删除"
 msgid "Deleted {field}"
 msgstr "已删除{field}"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "已删除的群组"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "正在删除通讯录..."
@@ -1661,14 +1665,6 @@ msgstr "已创建群组"
 msgid "Group deleted"
 msgstr "已删除群组"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "群组 ID"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "群组名称"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "手动"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "全部标为已读"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "支持 Markdown"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "打开视图控件"
 msgid "Option name"
 msgstr "选项名称"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "可选描述"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "在此服务器上重新关联账户"
 msgid "Re-register your passkeys on this server"
 msgstr "在此服务器上重新注册您的通行密钥"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "已收到 ({0})"
@@ -2555,7 +2543,7 @@ msgstr "提醒"
 msgid "Remove"
 msgstr "移除"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "发送消息"
 msgid "Sending invitation..."
 msgstr "正在发送邀请..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "已发送 ({0})"
@@ -3234,9 +3222,13 @@ msgstr "星期二"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "类型"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "类型"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "输入消息…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "输入以搜索用户"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "输入以搜索..."
 
@@ -3300,6 +3290,10 @@ msgstr "美国"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "未知"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "未知用户"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

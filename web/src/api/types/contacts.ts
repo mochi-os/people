@@ -28,13 +28,13 @@ export interface Contact {
 
 // A single contact with its card, as contacts/get and the write actions
 // return it.
-export interface ContactFull extends Contact {
+interface ContactFull extends Contact {
   card: Property[]
   etag: string
 }
 
 // A row of the invites table; it has no class or created column.
-export interface Invite {
+interface Invite {
   identity: string
   id: string
   direction: 'from' | 'to'
@@ -97,8 +97,7 @@ export interface MutationSuccessResponse {
   message?: string
 }
 
-export type RelationshipStatus =
-  'friend' | 'invited' | 'pending' | 'self' | 'none'
+type RelationshipStatus = 'friend' | 'invited' | 'pending' | 'self' | 'none'
 
 // A directory hit from contacts/search, annotated with the caller's
 // relationship to it and the id of an existing contact, if any.
@@ -114,12 +113,10 @@ export interface DirectoryPerson {
   updated: number
   relationship?: RelationshipStatus
   contact?: string
-  [key: string]: unknown
 }
 
 export interface SearchDirectoryResponse {
   results: DirectoryPerson[]
-  [key: string]: unknown
 }
 
 interface LocalUser {

@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "Kutichiy"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "Wawqikuna-man kutichiy"
+msgid "Back to contacts"
+msgstr "Contactokuna-man kutichiy"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "Pichasqa"
 msgid "Deleted {field}"
 msgstr "{field} pichasqa"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "Pichasqa huñu"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "Direccion maytuta wischuchkan..."
@@ -1661,14 +1665,6 @@ msgstr "Huñu paqarichisqa"
 msgid "Group deleted"
 msgstr "Huñu pichasqa"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "Huñu ID"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "Huñu suti"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "Maki ruway"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "Llapanta ñawinchasqaman churay"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Markdown haypaqsi"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "Vista controlkunata kichay"
 msgid "Option name"
 msgstr "Opcion suti"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "Munasqakaq willariy"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "Kay serverpi cuenta-ykikunata watiqmanta huñuy"
 msgid "Re-register your passkeys on this server"
 msgstr "Kay servidorpi passkeyniykita musukmanta qillqachiy"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "Chaskisqa ({0})"
@@ -2555,7 +2543,7 @@ msgstr "Yuyarichiq"
 msgid "Remove"
 msgstr "Qichuy"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "Willakuyta apachiy"
 msgid "Sending invitation..."
 msgstr "Waqyayta apachichkan..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "Apachisqa ({0})"
@@ -3234,9 +3222,13 @@ msgstr "Antichaw"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Layan"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "Layan"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "Willakuyta qillqay…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "Apaykachaqkunata maskanapaq qillqay"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "Maskanapaq qillqay..."
 
@@ -3300,6 +3290,10 @@ msgstr "Hukllachasqa Suyukuna"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "Mana riqsisqa"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "Mana riqsisqa runa"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

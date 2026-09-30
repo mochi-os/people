@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "Назад"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "Назад на пријатели"
+msgid "Back to contacts"
+msgstr "Назад на контакти"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "Избришано"
 msgid "Deleted {field}"
 msgstr "Избришано {field}"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "Избришана група"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "Се брише адресарот..."
@@ -1661,14 +1665,6 @@ msgstr "Групата е креирана"
 msgid "Group deleted"
 msgstr "Групата е избришана"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "ID на група"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "Име на група"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "Рачно"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "Означи сè како прочитано"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Поддржан е markdown"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "Отвори контроли на приказот"
 msgid "Option name"
 msgstr "Име на опцијата"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "Опционален опис"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "Повторно поврзете ги профилите на овој 
 msgid "Re-register your passkeys on this server"
 msgstr "Повторно регистрирајте ги вашите клучеви за пристап на овој сервер"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "Примено ({0})"
@@ -2555,7 +2543,7 @@ msgstr "Потсетник"
 msgid "Remove"
 msgstr "Отстрани"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "Испрати порака"
 msgid "Sending invitation..."
 msgstr "Се испраќа поканата..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "Испратено ({0})"
@@ -3234,9 +3222,13 @@ msgstr "Вторник"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Тип"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "Тип"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "Внесете порака…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "Внесете за да пребарувате корисници"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "Внесете за пребарување..."
 
@@ -3300,6 +3290,10 @@ msgstr "Соединети Држави"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "Непознато"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "Непознато лице"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

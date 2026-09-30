@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
   toastAction,
@@ -20,14 +20,15 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-  Card,
-  CardContent,
-  getAppPath,
+  cn,
   getErrorMessage,
   EmptyState,
   GeneralError,
+  naturalCompare,
 } from '@mochi/web'
 import { User, UsersRound, Search, UserPlus } from 'lucide-react'
+import endpoints from '@/api/endpoints'
+import type { GroupMember } from '@/api/types/groups'
 import { useSearchLocalUsersQuery } from '@/hooks/useContacts'
 import { useAddGroupMemberMutation, useGroupsQuery } from '@/hooks/useGroups'
 
@@ -35,15 +36,43 @@ interface MemberDialogProps {
   open: boolean
   onOpenChange: (open: boolean) => void
   groupId: string
+  // The group's current members, so the Group tab offers only the others.
+  members: GroupMember[]
+}
+
+// One pickable row: a real button, so it can be reached and chosen from the
+// keyboard, and pressed while it is the one chosen.
+function Choice({
+  selected,
+  onSelect,
+  children,
+}: {
+  selected: boolean
+  onSelect: () => void
+  children: React.ReactNode
+}) {
+  return (
+    <button
+      type='button'
+      aria-pressed={selected}
+      onClick={onSelect}
+      className={cn(
+        'bg-card flex w-full items-center gap-3 rounded-lg border p-3 text-start transition-colors',
+        selected ? 'border-primary' : 'hover:bg-hover'
+      )}
+    >
+      {children}
+    </button>
+  )
 }
 
 export function MemberDialog({
   open,
   onOpenChange,
   groupId,
+  members,
 }: MemberDialogProps) {
   const { t } = useLingui()
-  const appPath = getAppPath()
   const [userSearch, setUserSearch] = useState('')
   const [debouncedSearch, setDebouncedSearch] = useState('')
   const [selectedUser, setSelectedUser] = useState<{
@@ -79,7 +108,23 @@ export function MemberDialog({
     enabled: open && debouncedSearch.length >= 1,
   })
 
-  const availableGroups = (groups ?? []).filter((g) => g.id !== groupId)
+  // Neither the group itself nor a group already in it can be added.
+  const availableGroups = useMemo(() => {
+    const taken = new Set(members.map((member) => member.member))
+    return (groups ?? [])
+      .filter((group) => group.id !== groupId && !taken.has(group.id))
+      .sort((a, b) => naturalCompare(a.name, b.name))
+  }, [groups, groupId, members])
+  const users = useMemo(
+    () =>
+      [...(searchResults?.results ?? [])].sort((a, b) =>
+        naturalCompare(a.name, b.name)
+      ),
+    [searchResults?.results]
+  )
+  // Until the pause ends there is no search for what is typed, so nothing
+  // may be reported as found or not found.
+  const waiting = userSearch.trim() !== debouncedSearch.trim()
 
   const handleAddMember = async () => {
     if (activeTab === 'user' && selectedUser) {
@@ -150,11 +195,11 @@ export function MemberDialog({
         >
           <TabsList className='grid w-full grid-cols-2'>
             <TabsTrigger value='user'>
-              <User className='me-2 h-4 w-4' />
+              <User className='size-4' />
               <Trans>User</Trans>
             </TabsTrigger>
             <TabsTrigger value='group'>
-              <UsersRound className='me-2 h-4 w-4' />
+              <UsersRound className='size-4' />
               <Trans>Group</Trans>
             </TabsTrigger>
           </TabsList>
@@ -174,17 +219,13 @@ export function MemberDialog({
                       setUserSearch(e.target.value)
                       setSelectedUser(null)
                     }}
-                    placeholder={t`Type to search...`}
                     className='ps-10'
                   />
                 </div>
               </div>
 
-              {userSearch.length < 1 ? (
-                <p className='text-muted-foreground text-center text-sm'>
-                  <Trans>Type to search users</Trans>
-                </p>
-              ) : searchLoading ? (
+              {userSearch.trim().length < 1 ? null : searchLoading ||
+                waiting ? (
                 <p className='text-muted-foreground text-center text-sm'>
                   <Trans>Searching...</Trans>
                 </p>
@@ -195,7 +236,7 @@ export function MemberDialog({
                   mode='inline'
                   reset={refetchSearch}
                 />
-              ) : !searchResults?.results?.length ? (
+              ) : users.length === 0 ? (
                 <EmptyState
                   icon={User}
                   title={t`No people found`}
@@ -203,28 +244,22 @@ export function MemberDialog({
                 />
               ) : (
                 <div className='max-h-[200px] space-y-2 overflow-y-auto'>
-                  {searchResults.results.map((user) => (
-                    <Card
+                  {users.map((user) => (
+                    <Choice
                       key={user.id}
-                      className={`cursor-pointer transition-colors ${
-                        selectedUser?.id === user.id
-                          ? 'border-primary'
-                          : 'hover:bg-hover'
-                      }`}
-                      onClick={() =>
+                      selected={selectedUser?.id === user.id}
+                      onSelect={() =>
                         setSelectedUser({ id: user.id, name: user.name })
                       }
                     >
-                      <CardContent className='flex items-center gap-3 p-3'>
-                        <EntityAvatar
-                          src={`${appPath}/${user.id}/-/avatar`}
-                          styleUrl={`${appPath}/${user.id}/-/style`}
-                          name={user.name}
-                          size='md'
-                        />
-                        <span className='font-medium'>{user.name}</span>
-                      </CardContent>
-                    </Card>
+                      <EntityAvatar
+                        src={endpoints.person.asset(user.id, 'avatar')}
+                        styleUrl={endpoints.person.asset(user.id, 'style')}
+                        name={user.name}
+                        size='md'
+                      />
+                      <span className='font-medium'>{user.name}</span>
+                    </Choice>
                   ))}
                 </div>
               )}
@@ -266,29 +301,23 @@ export function MemberDialog({
               ) : (
                 <div className='max-h-[200px] space-y-2 overflow-y-auto'>
                   {availableGroups.map((group) => (
-                    <Card
+                    <Choice
                       key={group.id}
-                      className={`cursor-pointer transition-colors ${
-                        selectedGroup?.id === group.id
-                          ? 'border-primary'
-                          : 'hover:bg-hover'
-                      }`}
-                      onClick={() =>
+                      selected={selectedGroup?.id === group.id}
+                      onSelect={() =>
                         setSelectedGroup({ id: group.id, name: group.name })
                       }
                     >
-                      <CardContent className='flex items-center gap-2 p-3'>
-                        <UsersRound className='h-4 w-4' />
-                        <div>
-                          <span className='font-medium'>{group.name}</span>
-                          {group.description && (
-                            <p className='text-muted-foreground text-xs'>
-                              {group.description}
-                            </p>
-                          )}
-                        </div>
-                      </CardContent>
-                    </Card>
+                      <UsersRound className='size-4' />
+                      <div>
+                        <span className='font-medium'>{group.name}</span>
+                        {group.description && (
+                          <p className='text-muted-foreground text-xs'>
+                            {group.description}
+                          </p>
+                        )}
+                      </div>
+                    </Choice>
                   ))}
                 </div>
               )}

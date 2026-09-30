@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "Enrere"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "Torna a les amistats"
+msgid "Back to contacts"
+msgstr "Torna als contactes"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "Suprimit"
 msgid "Deleted {field}"
 msgstr "S'ha suprimit {field}"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "Grup suprimit"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "S'està suprimint la llibreta d'adreces..."
@@ -1661,14 +1665,6 @@ msgstr "Grup creat"
 msgid "Group deleted"
 msgstr "Grup suprimit"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "ID del grup"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "Nom del grup"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "Manual"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "Marca-ho tot com a llegit"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Admet markdown"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "Obre els controls de la vista"
 msgid "Option name"
 msgstr "Nom de l'opció"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "Descripció opcional"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "Torneu a vincular els comptes en aquest servidor"
 msgid "Re-register your passkeys on this server"
 msgstr "Torna a registrar les teves claus d'accés en aquest servidor"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "Rebuts ({0})"
@@ -2555,7 +2543,7 @@ msgstr "Recordatori"
 msgid "Remove"
 msgstr "Elimina"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "Envia missatge"
 msgid "Sending invitation..."
 msgstr "S'està enviant la invitació..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "Enviat ({0})"
@@ -3234,9 +3222,13 @@ msgstr "Dimarts"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Tipus"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "Tipus"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "Escriu un missatge…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "Escriu per cercar usuaris"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "Escriu per cercar..."
 
@@ -3300,6 +3290,10 @@ msgstr "Estats Units"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "Desconegut"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "Persona desconeguda"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

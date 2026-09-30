@@ -597,12 +597,11 @@ const COLUMNS = 'grid gap-1 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-4'
 const TYPED =
   'flex items-center gap-2 sm:grid sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-4'
 
-/** A section's heading line, with the section's action at its end. */
-function Heading({ title, action }: { title: string; action?: ReactNode }) {
+/** A section's heading line. */
+function Heading({ title }: { title: string }) {
   return (
     <div className='flex min-h-8 items-center justify-between gap-3'>
       <h2 className='text-sm font-semibold'>{title}</h2>
-      {action}
     </div>
   )
 }
@@ -760,7 +759,7 @@ function TypedRows({
         <div key={index} className={TYPED}>
           <Kind
             icon={icon}
-            label={t`Type`}
+            label={t({ message: 'Type', context: 'kind' })}
             types={types}
             value={row.type}
             onChange={(type) => replace(index, { type })}
@@ -824,7 +823,7 @@ function AddressRows({
           <div className={TYPED}>
             <Kind
               icon={icon}
-              label={t`Type`}
+              label={t({ message: 'Type', context: 'kind' })}
               types={ADDRESS_TYPES}
               value={row.type}
               onChange={(type) => replace(index, { type })}

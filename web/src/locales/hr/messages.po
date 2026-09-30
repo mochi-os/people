@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "Natrag"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "Natrag na prijatelje"
+msgid "Back to contacts"
+msgstr "Natrag na kontakte"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "Izbrisano"
 msgid "Deleted {field}"
 msgstr "Izbrisano {field}"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "Izbrisana grupa"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "Brisanje adresara..."
@@ -1661,14 +1665,6 @@ msgstr "Grupa stvorena"
 msgid "Group deleted"
 msgstr "Grupa izbrisana"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "ID grupe"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "Naziv grupe"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "Ručno"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "Označi sve kao pročitano"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Markdown podržan"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "Otvori kontrole pogleda"
 msgid "Option name"
 msgstr "Naziv opcije"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "Neobavezni opis"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "Ponovno povežite svoje račune na ovom poslužitelju"
 msgid "Re-register your passkeys on this server"
 msgstr "Ponovno registrirajte svoje pristupne ključeve na ovom poslužitelju"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "Primljeno ({0})"
@@ -2555,7 +2543,7 @@ msgstr "Podsjetnik"
 msgid "Remove"
 msgstr "Ukloni"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "Pošalji poruku"
 msgid "Sending invitation..."
 msgstr "Slanje pozivnice..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "Poslano ({0})"
@@ -3234,9 +3222,13 @@ msgstr "Utorak"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Tip"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "Tip"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "Upišite poruku…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "Tipkajte za pretragu korisnika"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "Tipkajte za pretragu..."
 
@@ -3300,6 +3290,10 @@ msgstr "Sjedinjene Američke Države"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "Nepoznato"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "Nepoznata osoba"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

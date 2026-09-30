@@ -184,6 +184,17 @@ describe('AddContactDialog', () => {
     ).toBeInTheDocument()
   })
 
+  it("gives its buttons' icons no margin of their own", async () => {
+    calls.results = [
+      person,
+      { ...person, id: 'p2', name: 'Grace Hopper', relationship: 'pending' },
+    ]
+    show({})
+    await search()
+    for (const icon of document.querySelectorAll('button svg'))
+      expect(icon.getAttribute('class')).not.toMatch(/\bm[se]-2\b/)
+  })
+
   it('starts a new contact in the book being viewed', () => {
     show({ book: 'b2' })
     fireEvent.click(screen.getByRole('button', { name: /New contact/ }))

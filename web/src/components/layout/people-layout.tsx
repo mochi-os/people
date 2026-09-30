@@ -20,10 +20,10 @@ import {
   ResponsiveDialogTitle,
   Button,
   useAuthStore,
-  getAppPath,
   getErrorMessage,
   naturalCompare,
   toastAction,
+  useFormat,
   type CreateEntityValues,
   type NavItem,
   type NavMenuItem,
@@ -40,6 +40,7 @@ import {
   User,
   UsersRound,
 } from 'lucide-react'
+import endpoints from '@/api/endpoints'
 import type { Book } from '@/api/types/contacts'
 import { SidebarProvider, useSidebarContext } from '@/context/sidebar-context'
 import {
@@ -50,36 +51,42 @@ import {
   useRenameBookMutation,
 } from '@/hooks/useContacts'
 import { useGroupsQuery } from '@/hooks/useGroups'
+import { usePersonInformationQuery } from '@/hooks/usePerson'
 import { ConnectDialog } from '@/features/contacts/connect-dialog'
 import { GroupDialog } from '@/features/groups/group-dialog'
 
 const profileIconCache = new Map<string, React.FC>()
 
-function profileIcon(identityId: string): React.FC {
-  let Icon = profileIconCache.get(identityId)
+// The avatar's stamp versions its URL, so an upload shows at once rather than
+// once the browser's cached copy expires.
+function profileIcon(identityId: string, version = ''): React.FC {
+  const key = `${identityId}:${version}`
+  let Icon = profileIconCache.get(key)
   if (!Icon) {
     Icon = function ProfileIcon() {
       return (
         <EntityAvatar
-          src={`${getAppPath()}/${identityId}/-/avatar`}
-          styleUrl={`${getAppPath()}/${identityId}/-/style`}
+          src={endpoints.person.asset(identityId, 'avatar', version)}
+          styleUrl={endpoints.person.asset(identityId, 'style')}
           size='xs'
         />
       )
     }
     // eslint-disable-next-line lingui/no-unlocalized-strings -- React displayName, dev tooling only
     Icon.displayName = `ProfileIcon(${identityId})`
-    profileIconCache.set(identityId, Icon)
+    profileIconCache.set(key, Icon)
   }
   return Icon
 }
 
 function PeopleLayoutInner() {
   const { t } = useLingui()
+  const { formatNumber } = useFormat()
   const { data: groups, isLoading: groupsLoading } = useGroupsQuery()
   const { data: contactsData } = useContactsQuery()
   const { data: booksData } = useBooksQuery()
   const myIdentity = useAuthStore((s) => s.identity)
+  const { data: myInformation } = usePersonInformationQuery(myIdentity)
   const matchRoute = useMatchRoute()
   const navigate = useNavigate()
   const {
@@ -176,7 +183,9 @@ function PeopleLayoutInner() {
           {
             title: t`Profile`,
             url: '/profile',
-            icon: myIdentity ? profileIcon(myIdentity) : CircleUserRound,
+            icon: myIdentity
+              ? profileIcon(myIdentity, myInformation?.avatar)
+              : CircleUserRound,
           },
           { title: t`All contacts`, url: '/', icon: BookUser, aggregate: true },
           ...bookItems,
@@ -190,7 +199,8 @@ function PeopleLayoutInner() {
             title: t`Invitations`,
             url: '/invitations',
             icon: User,
-            badge: pendingInvites > 0 ? String(pendingInvites) : undefined,
+            badge:
+              pendingInvites > 0 ? formatNumber(pendingInvites) : undefined,
           },
           {
             id: 'connect-device',
@@ -222,7 +232,9 @@ function PeopleLayoutInner() {
     booksData?.books,
     contactsData,
     myIdentity,
+    myInformation?.avatar,
     openCreateGroupDialog,
+    formatNumber,
     t,
   ])
 

@@ -23,7 +23,6 @@ import {
   TableHeader,
   TableRow,
   usePageTitle,
-  getAppPath,
   getErrorMessage,
   PageHeader,
   Section,
@@ -35,16 +34,21 @@ import {
   TooltipTrigger,
   TooltipContent,
   naturalCompare,
+  useFormat,
 } from '@mochi/web'
 import {
   MoreHorizontal,
   Pencil,
   Trash2,
   User,
+  UserMinus,
   UsersRound,
   X,
   UserPlus,
 } from 'lucide-react'
+import endpoints from '@/api/endpoints'
+import type { GroupMember } from '@/api/types/groups'
+import { formatFingerprint } from '@/lib/fingerprint'
 import {
   useDeleteGroupMutation,
   useGroupQuery,
@@ -57,11 +61,11 @@ export function GroupDetail() {
   const { t } = useLingui()
   const { id } = useParams({ from: '/_authenticated/groups/$id' })
   const navigate = useNavigate()
-  const appPath = getAppPath()
+  const { formatNumber } = useFormat()
   const { data, isLoading, error, refetch } = useGroupQuery(id)
   const removeMemberMutation = useRemoveGroupMemberMutation()
   const deleteMutation = useDeleteGroupMutation()
-  const goBackToFriends = () => navigate({ to: '/' })
+  const goBackToContacts = () => navigate({ to: '/' })
   const [editDialogOpen, setEditDialogOpen] = useState(false)
   const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false)
 
@@ -73,16 +77,17 @@ export function GroupDetail() {
     open: boolean
     member: string
     name: string
-    type: 'user' | 'group'
-  }>({ open: false, member: '', name: '', type: 'user' })
+  }>({ open: false, member: '', name: '' })
 
-  const handleRemoveMember = (
-    member: string,
-    name: string,
-    type: 'user' | 'group'
-  ) => {
-    setRemoveMemberDialog({ open: true, member, name, type })
+  const handleRemoveMember = (member: string, name: string) => {
+    setRemoveMemberDialog({ open: true, member, name })
   }
+
+  // A member the server could not name: a person it cannot look up, or a
+  // nested group since deleted.
+  const nameOf = (member: GroupMember) =>
+    member.name ||
+    (member.type === 'group' ? t`Deleted group` : t`Unknown person`)
 
   const confirmRemoveMember = async () => {
     try {
@@ -97,7 +102,7 @@ export function GroupDetail() {
           error: (error) => getErrorMessage(error, t`Failed to remove member`),
         }
       )
-      setRemoveMemberDialog({ open: false, member: '', name: '', type: 'user' })
+      setRemoveMemberDialog({ open: false, member: '', name: '' })
     } catch {
       // toastAction already showed error
     }
@@ -108,7 +113,7 @@ export function GroupDetail() {
   // naturalCompare is case- and accent-insensitive, so "Ana" and "Ána" sit
   // together instead of at opposite ends of the list.
   const members = [...(data?.members ?? [])].sort((a, b) =>
-    naturalCompare(a.name ?? '', b.name ?? '')
+    naturalCompare(nameOf(a), nameOf(b))
   )
 
   const handleConfirmDelete = async () => {
@@ -131,12 +136,12 @@ export function GroupDetail() {
         title={group?.name ?? t`Group`}
         icon={<UsersRound className='size-4 md:size-5' />}
         description={group?.description}
-        back={{ label: t`Back to friends`, onFallback: goBackToFriends }}
+        back={{ label: t`Back to contacts`, onFallback: goBackToContacts }}
         actions={
           group ? (
             <>
               <Button onClick={() => setAddMemberDialog(true)}>
-                <UserPlus className='me-2 h-4 w-4' />
+                <UserPlus className='size-4' />
                 <Trans>Add member</Trans>
               </Button>
               <DropdownMenu>
@@ -180,9 +185,6 @@ export function GroupDetail() {
           <>
             <Section title={t`Identity`}>
               <div className='divide-y-0'>
-                <FieldRow label={t`Group ID`}>
-                  <DataChip value={id} truncate='middle' />
-                </FieldRow>
                 {group.description && (
                   <FieldRow label={t`Description`}>
                     <span className='text-foreground text-sm'>
@@ -192,7 +194,7 @@ export function GroupDetail() {
                 )}
                 <FieldRow label={t`Members count`}>
                   <DataChip
-                    value={members.length.toString()}
+                    value={formatNumber(members.length)}
                     copyable={false}
                   />
                 </FieldRow>
@@ -216,7 +218,7 @@ export function GroupDetail() {
                         <Trans>Member</Trans>
                       </TableHead>
                       <TableHead>
-                        <Trans>Type</Trans>
+                        <Trans context='kind'>Type</Trans>
                       </TableHead>
                       <TableHead className='w-[80px] text-end'>
                         <Trans>Actions</Trans>
@@ -230,13 +232,26 @@ export function GroupDetail() {
                           <div className='flex items-center gap-2'>
                             {member.type === 'user' && (
                               <EntityAvatar
-                                src={`${appPath}/${member.member}/-/avatar`}
-                                styleUrl={`${appPath}/${member.member}/-/style`}
-                                name={member.name}
+                                src={endpoints.person.asset(
+                                  member.member,
+                                  'avatar'
+                                )}
+                                styleUrl={endpoints.person.asset(
+                                  member.member,
+                                  'style'
+                                )}
+                                name={nameOf(member)}
                                 size='md'
                               />
                             )}
-                            <span className='truncate'>{member.name}</span>
+                            <div className='flex min-w-0 flex-col'>
+                              <span className='truncate'>{nameOf(member)}</span>
+                              {!member.name && member.fingerprint && (
+                                <span className='text-muted-foreground truncate text-xs font-normal'>
+                                  {formatFingerprint(member.fingerprint)}
+                                </span>
+                              )}
+                            </div>
                           </div>
                         </TableCell>
                         <TableCell>
@@ -266,16 +281,15 @@ export function GroupDetail() {
                                 onClick={() =>
                                   handleRemoveMember(
                                     member.member,
-                                    member.name,
-                                    member.type
+                                    nameOf(member)
                                   )
                                 }
-                                aria-label={t`Remove ${member.name}`}
+                                aria-label={t`Remove ${nameOf(member)}`}
                               >
                                 <X className='h-4 w-4' />
                               </Button>
                             </TooltipTrigger>
-                            <TooltipContent>{t`Remove ${member.name}`}</TooltipContent>
+                            <TooltipContent>{t`Remove ${nameOf(member)}`}</TooltipContent>
                           </Tooltip>
                         </TableCell>
                       </TableRow>
@@ -302,7 +316,12 @@ export function GroupDetail() {
               from this group?
             </Trans>
           }
-          confirmText={t`Remove member`}
+          confirmText={
+            <>
+              <UserMinus className='size-4' />
+              <Trans>Remove member</Trans>
+            </>
+          }
           destructive
           handleConfirm={confirmRemoveMember}
           isLoading={removeMemberMutation.isPending}
@@ -312,6 +331,7 @@ export function GroupDetail() {
           open={addMemberDialog}
           onOpenChange={setAddMemberDialog}
           groupId={id}
+          members={members}
         />
 
         {group && (
@@ -327,7 +347,12 @@ export function GroupDetail() {
           onOpenChange={setConfirmDeleteOpen}
           title={t`Delete group`}
           desc={t`Delete group "${group?.name}"? This cannot be undone.`}
-          confirmText={t`Delete`}
+          confirmText={
+            <>
+              <Trash2 className='size-4' />
+              <Trans>Delete</Trans>
+            </>
+          }
           destructive
           isLoading={deleteMutation.isPending}
           handleConfirm={handleConfirmDelete}

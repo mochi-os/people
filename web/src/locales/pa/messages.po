@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "ਵਾਪਸ"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "ਦੋਸਤਾਂ ਵਿੱਚ ਵਾਪਸ"
+msgid "Back to contacts"
+msgstr "ਸੰਪਰਕਾਂ ਵਿੱਚ ਵਾਪਸ"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "ਮਿਟਾਇਆ ਗਿਆ"
 msgid "Deleted {field}"
 msgstr "{field} ਮਿਟਾਇਆ ਗਿਆ"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "ਮਿਟਾਇਆ ਗਿਆ ਗਰੁੱਪ"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "ਪਤਾ ਕਿਤਾਬ ਮਿਟਾਈ ਜਾ ਰਹੀ ਹੈ..."
@@ -1661,14 +1665,6 @@ msgstr "ਗਰੁੱਪ ਬਣਾਇਆ ਗਿਆ"
 msgid "Group deleted"
 msgstr "ਗਰੁੱਪ ਮਿਟਾਇਆ ਗਿਆ"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "ਗਰੁੱਪ ID"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "ਗਰੁੱਪ ਦਾ ਨਾਮ"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "ਮੈਨੁਅਲ"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "ਸਾਰੇ ਪੜ੍ਹੇ ਵਜੋਂ ਮਾਰਕ ਕਰੋ"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Markdown ਸਪੋਰਟਡ"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "ਵਿਊ ਕੰਟਰੋਲ ਖੋਲ੍ਹੋ"
 msgid "Option name"
 msgstr "ਵਿਕਲਪ ਦਾ ਨਾਮ"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "ਵਿਕਲਪਿਕ ਵੇਰਵਾ"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "ਇਸ ਸਰਵਰ 'ਤੇ ਆਪਣੇ ਖਾਤੇ ਮੁੜ-ਲਿ�
 msgid "Re-register your passkeys on this server"
 msgstr "ਇਸ ਸਰਵਰ 'ਤੇ ਆਪਣੀਆਂ ਪਾਸਕੀਆਂ ਮੁੜ-ਰਜਿਸਟਰ ਕਰੋ"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "ਪ੍ਰਾਪਤ ({0})"
@@ -2555,7 +2543,7 @@ msgstr "ਰਿਮਾਈਂਡਰ"
 msgid "Remove"
 msgstr "ਹਟਾਓ"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "ਸੁਨੇਹਾ ਭੇਜੋ"
 msgid "Sending invitation..."
 msgstr "ਸੱਦਾ ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "ਭੇਜਿਆ ({0})"
@@ -3234,9 +3222,13 @@ msgstr "ਮੰਗਲਵਾਰ"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "ਕਿਸਮ"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "ਕਿਸਮ"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "ਸੁਨੇਹਾ ਟਾਈਪ ਕਰੋ…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "ਉਪਭੋਗਤਾ ਖੋਜਣ ਲਈ ਟਾਈਪ ਕਰੋ"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "ਖੋਜਣ ਲਈ ਟਾਈਪ ਕਰੋ..."
 
@@ -3300,6 +3290,10 @@ msgstr "ਸੰਯੁਕਤ ਰਾਜ"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "ਅਣਜਾਣ"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "ਅਣਜਾਣ ਵਿਅਕਤੀ"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

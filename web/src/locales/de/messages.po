@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "Zurück"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "Zurück zu den Freunden"
+msgid "Back to contacts"
+msgstr "Zurück zu den Kontakten"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "Gelöscht"
 msgid "Deleted {field}"
 msgstr "{field} gelöscht"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "Gelöschte Gruppe"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "Adressbuch wird gelöscht..."
@@ -1661,14 +1665,6 @@ msgstr "Gruppe erstellt"
 msgid "Group deleted"
 msgstr "Gruppe gelöscht"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "Gruppen-ID"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "Gruppenname"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "Manuell"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "Alle als gelesen markieren"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Markdown unterstützt"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "Ansichtssteuerung öffnen"
 msgid "Option name"
 msgstr "Optionsname"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "Optionale Beschreibung"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "Konten auf diesem Server erneut verknüpfen"
 msgid "Re-register your passkeys on this server"
 msgstr "Registrieren Sie Ihre Passkeys auf diesem Server erneut"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "Empfangen ({0})"
@@ -2555,7 +2543,7 @@ msgstr "Erinnerung"
 msgid "Remove"
 msgstr "Entfernen"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "Nachricht senden"
 msgid "Sending invitation..."
 msgstr "Einladung wird gesendet..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "Gesendet ({0})"
@@ -3234,9 +3222,13 @@ msgstr "Dienstag"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Typ"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "Typ"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "Nachricht eingeben…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "Tippen, um Benutzer zu suchen"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "Tippen, um zu suchen..."
 
@@ -3300,6 +3290,10 @@ msgstr "Vereinigte Staaten"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "Unbekannt"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "Unbekannte Person"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

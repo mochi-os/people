@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "ກັບຄືນ"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "ກັບຄືນຫາເພື່ອນ"
+msgid "Back to contacts"
+msgstr "ກັບຄືນຫາຜູ້ຕິດຕໍ່"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "ລຶບແລ້ວ"
 msgid "Deleted {field}"
 msgstr "ລຶບ {field} ແລ້ວ"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "ກຸ່ມທີ່ຖືກລຶບ"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "ກຳລັງລຶບປຶ້ມທີ່ຢູ່..."
@@ -1661,14 +1665,6 @@ msgstr "ສ້າງກຸ່ມແລ້ວ"
 msgid "Group deleted"
 msgstr "ລຶບກຸ່ມແລ້ວ"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "ID ກຸ່ມ"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "ຊື່ກຸ່ມ"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "ດ້ວຍຕົນເອງ"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "ໝາຍທັງໝົດເປັນອ່ານແລ້ວ"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "ຮອງຮັບ markdown"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "ເປີດການຄວບຄຸມມຸມມອງ"
 msgid "Option name"
 msgstr "ຊື່ຕົວເລືອກ"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "ລາຍລະອຽດເພີ່ມເຕີມ"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "ເຊື່ອມໂຍງບັນຊີຂອງທ່ານຄືນ
 msgid "Re-register your passkeys on this server"
 msgstr "ລົງທະບຽນກະແຈຜ່ານຂອງທ່ານຄືນໃໝ່ໃນເຄື່ອງແມ່ຂ່າຍນີ້"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "ໄດ້ຮັບແລ້ວ ({0})"
@@ -2555,7 +2543,7 @@ msgstr "ການແຈ້ງເຕືອນ"
 msgid "Remove"
 msgstr "ລຶບອອກ"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "ສົ່ງຂໍ້ຄວາມ"
 msgid "Sending invitation..."
 msgstr "ກຳລັງສົ່ງຄຳເຊີນ..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "ສົ່ງແລ້ວ ({0})"
@@ -3234,9 +3222,13 @@ msgstr "ວັນອັງຄານ"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "ປະເພດ"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "ປະເພດ"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "ພິມຂໍ້ຄວາມ…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "ພິມເພື່ອຄົ້ນຫາຜູ້ໃຊ້"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "ພິມເພື່ອຄົ້ນຫາ..."
 
@@ -3300,6 +3290,10 @@ msgstr "ສະຫະລັດອາເມລິກາ"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "ບໍ່ຮູ້ຈັກ"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "ບຸກຄົນທີ່ບໍ່ຮູ້ຈັກ"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

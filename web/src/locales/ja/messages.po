@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "戻る"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "友だち一覧に戻る"
+msgid "Back to contacts"
+msgstr "連絡先に戻る"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "削除しました"
 msgid "Deleted {field}"
 msgstr "{field}を削除しました"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "削除されたグループ"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "アドレス帳を削除しています..."
@@ -1661,14 +1665,6 @@ msgstr "グループを作成しました"
 msgid "Group deleted"
 msgstr "グループを削除しました"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "グループ ID"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "グループ名"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "手動"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "すべて既読にする"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Markdown対応"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "ビューのコントロールを開く"
 msgid "Option name"
 msgstr "オプション名"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "説明（任意）"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "このサーバーでアカウントを再リンクする"
 msgid "Re-register your passkeys on this server"
 msgstr "このサーバーでパスキーを再登録してください"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "受信 ({0})"
@@ -2555,7 +2543,7 @@ msgstr "リマインダー"
 msgid "Remove"
 msgstr "削除"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "メッセージを送信"
 msgid "Sending invitation..."
 msgstr "招待を送信しています..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "送信済み ({0})"
@@ -3234,9 +3222,13 @@ msgstr "火曜日"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "タイプ"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "タイプ"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "メッセージを入力…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "入力してユーザーを検索"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "入力して検索…"
 
@@ -3300,6 +3290,10 @@ msgstr "アメリカ合衆国"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "不明"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "不明なユーザー"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

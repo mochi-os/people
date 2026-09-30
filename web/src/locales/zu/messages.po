@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "Emuva"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "Buyela kubangane"
+msgid "Back to contacts"
+msgstr "Buyela koxhumana nabo"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "Kususiwe"
 msgid "Deleted {field}"
 msgstr "Kususiwe {field}"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "Iqembu elisusiwe"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "Kususwa incwadi yamakheli..."
@@ -1661,14 +1665,6 @@ msgstr "Iqembu lidaliwe"
 msgid "Group deleted"
 msgstr "Iqembu lisusiwe"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "I-ID yeqembu"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "Igama leqembu"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "Mathupha"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "Maka konke njengokufundiwe"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "I-Markdown iyasekelwa"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "Vula izilawuli zokubuka"
 msgid "Option name"
 msgstr "Igama lenketho"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "Incazelo yokuzikhethela"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "Xhuma kabusha ama-akhawunti akho kule server"
 msgid "Re-register your passkeys on this server"
 msgstr "Phinda ubhalise okhiye bakho bokungena kule seva"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "Etholiwe ({0})"
@@ -2555,7 +2543,7 @@ msgstr "Isikhumbuzi"
 msgid "Remove"
 msgstr "Khipha"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "Thumela umyalezo"
 msgid "Sending invitation..."
 msgstr "Ithumela isimemo..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "Ezithunyelwe ({0})"
@@ -3234,9 +3222,13 @@ msgstr "ULwesibili"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "Uhlobo"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "Uhlobo"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "Thayipha umyalezo…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "Thayipha ukuze useshe abasebenzisi"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "Thayipha ukuze useshe..."
 
@@ -3300,6 +3290,10 @@ msgstr "I-United States"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "Akwaziwa"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "Umuntu ongaziwa"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

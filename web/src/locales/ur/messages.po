@@ -487,8 +487,8 @@ msgid "Back"
 msgstr "واپس"
 
 #: src/features/groups/group-detail.tsx
-msgid "Back to friends"
-msgstr "دوستوں پر واپس"
+msgid "Back to contacts"
+msgstr "رابطوں پر واپس"
 
 #: ../../../lib/web/src/features/errors/access-denied-error.tsx
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
@@ -1121,6 +1121,10 @@ msgstr "حذف ہوا"
 msgid "Deleted {field}"
 msgstr "{field} حذف ہوا"
 
+#: src/features/groups/group-detail.tsx
+msgid "Deleted group"
+msgstr "حذف شدہ گروپ"
+
 #: src/components/layout/people-layout.tsx
 msgid "Deleting address book..."
 msgstr "ایڈریس بک حذف کی جا رہی ہے..."
@@ -1661,14 +1665,6 @@ msgstr "گروپ بنا دیا گیا"
 msgid "Group deleted"
 msgstr "گروپ حذف کر دیا گیا"
 
-#: src/features/groups/group-detail.tsx
-msgid "Group ID"
-msgstr "گروپ ID"
-
-#: src/features/groups/group-dialog.tsx
-msgid "Group name"
-msgstr "گروپ کا نام"
-
 #: src/api/groups.ts
 #: src/features/groups/group-detail.tsx
 msgid "Group not found"
@@ -1909,10 +1905,6 @@ msgstr "دستی"
 #: ../../../lib/web/src/components/layout/notification-menu.tsx
 msgid "Mark all as read"
 msgstr "سب کو پڑھا ہوا نشان زد کریں"
-
-#: src/features/profile/index.tsx
-msgid "Markdown supported"
-msgstr "Markdown سپورٹڈ ہے"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Maximum length"
@@ -2308,10 +2300,6 @@ msgstr "ویو کنٹرولز کھولیں"
 msgid "Option name"
 msgstr "آپشن کا نام"
 
-#: src/features/groups/group-dialog.tsx
-msgid "Optional description"
-msgstr "اختیاری تفصیل"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Options"
@@ -2481,7 +2469,7 @@ msgstr "اس سرور پر اپنے اکاؤنٹس دوبارہ لنک کریں"
 msgid "Re-register your passkeys on this server"
 msgstr "اس سرور پر اپنی پاس کیز دوبارہ رجسٹر کریں"
 
-#. placeholder {0}: filteredReceived.length
+#. placeholder {0}: formatNumber(filteredReceived.length)
 #: src/features/invitations/index.tsx
 msgid "Received ({0})"
 msgstr "موصول ({0})"
@@ -2555,7 +2543,7 @@ msgstr "یاد دہانی"
 msgid "Remove"
 msgstr "ہٹائیں"
 
-#. placeholder {0}: member.name
+#. placeholder {0}: nameOf(member)
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Remove {0}"
@@ -2910,7 +2898,7 @@ msgstr "پیغام بھیجیں"
 msgid "Sending invitation..."
 msgstr "دعوت بھیجی جا رہی ہے..."
 
-#. placeholder {0}: filteredSent.length
+#. placeholder {0}: formatNumber(filteredSent.length)
 #: src/features/invitations/index.tsx
 msgid "Sent ({0})"
 msgstr "بھیجی ({0})"
@@ -3234,9 +3222,13 @@ msgstr "منگل"
 
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
+msgid "Type"
+msgstr "قسم"
+
 #: src/features/contacts/editor.tsx
 #: src/features/contacts/editor.tsx
 #: src/features/groups/group-detail.tsx
+msgctxt "kind"
 msgid "Type"
 msgstr "قسم"
 
@@ -3249,12 +3241,10 @@ msgid "Type a message…"
 msgstr "پیغام ٹائپ کریں…"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search users"
 msgstr "صارفین تلاش کرنے کے لیے ٹائپ کریں"
 
 #: ../../../lib/web/src/features/access/access-dialog.tsx
-#: src/features/groups/member-dialog.tsx
 msgid "Type to search..."
 msgstr "تلاش کرنے کے لیے ٹائپ کریں..."
 
@@ -3300,6 +3290,10 @@ msgstr "ریاستہائے متحدہ"
 #: ../../../lib/web/src/features/accounts/types.ts
 msgid "Unknown"
 msgstr "نامعلوم"
+
+#: src/features/groups/group-detail.tsx
+msgid "Unknown person"
+msgstr "نامعلوم شخص"
 
 #: ../../../lib/web/src/components/options-menu.tsx
 msgid "Unsubscribe"

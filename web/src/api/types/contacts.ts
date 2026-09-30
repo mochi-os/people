@@ -9,6 +9,9 @@ export interface Property {
   name: string
   params: Record<string, string[]>
   value: string
+  // The vCard group tying the property to its siblings (item1.EMAIL and
+  // item1.X-ABLabel); absent for none.
+  group?: string
 }
 
 // A contacts-list row: lean, with no card. The editor fetches the card.

@@ -31,6 +31,11 @@ describe('searchRange', () => {
     expect(searchRange('Jane', 'x')).toBeNull()
   })
 
+  it('ignores the spaces around a query', () => {
+    expect(searchRange('Jane Doe', ' doe ')).toEqual([5, 8])
+    expect(searchRange('Jane Doe', '   ')).toBeNull()
+  })
+
   it('agrees with searchMatches on every case', () => {
     for (const [text, query] of [
       ['Émile', 'emi'],
@@ -41,5 +46,16 @@ describe('searchRange', () => {
     ]) {
       expect(searchRange(text, query) !== null).toBe(searchMatches(text, query))
     }
+  })
+})
+
+describe('searchMatches', () => {
+  it('filters nothing for a search of only spaces', () => {
+    expect(searchMatches('Jane Doe', '   ')).toBe(true)
+  })
+
+  it('ignores the spaces around a search', () => {
+    expect(searchMatches('Jane Doe', ' jane ')).toBe(true)
+    expect(searchMatches('Jane Doe', ' x ')).toBe(false)
   })
 })

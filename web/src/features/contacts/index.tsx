@@ -360,6 +360,7 @@ export function Contacts({
         <AddContactDialog
           open={addDialogOpen}
           onOpenChange={setAddDialogOpen}
+          book={book}
         />
 
         <ConfirmDialog

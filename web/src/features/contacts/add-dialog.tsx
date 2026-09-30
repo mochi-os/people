@@ -59,6 +59,8 @@ type AddContactDialogProps = {
    * the card to the person picked, and the dialog closes once it is sent.
    */
   link?: { contact: string; name: string }
+  /** The address book being viewed, where a contact made here goes. */
+  book?: string
 }
 
 type PreviewState = {
@@ -77,6 +79,7 @@ export function AddContactDialog({
   onOpenChange,
   open,
   link,
+  book,
 }: AddContactDialogProps) {
   const { t } = useLingui()
   const navigate = useNavigate()
@@ -115,6 +118,7 @@ export function AddContactDialog({
         createMutation.mutateAsync({
           person,
           properties: [{ name: 'FN', params: {}, value: name }],
+          book,
         }),
         {
           loading: t`Adding contact...`,
@@ -133,14 +137,21 @@ export function AddContactDialog({
   const sendInvite = async (person: string, name: string) => {
     try {
       await toastAction(
-        inviteMutation.mutateAsync({ person, name, contact: link?.contact }),
+        // Linking names the card; otherwise the invite makes a contact,
+        // which goes in the book being viewed.
+        inviteMutation.mutateAsync(
+          link
+            ? { person, name, contact: link.contact }
+            : { person, name, book }
+        ),
         {
-        loading: t`Sending invitation...`,
-        success: t`Invitation sent`,
-        successOptions: () => ({
-          description: t`A friend invitation has been sent to ${name}.`,
-        }),
-        error: (error) => getErrorMessage(error, t`Failed to send invitation`),
+          loading: t`Sending invitation...`,
+          success: t`Invitation sent`,
+          successOptions: () => ({
+            description: t`A friend invitation has been sent to ${name}.`,
+          }),
+          error: (error) =>
+            getErrorMessage(error, t`Failed to send invitation`),
         }
       )
       setInvited((current) => new Set(current).add(person))
@@ -252,7 +263,7 @@ export function AddContactDialog({
               className='w-full justify-start'
               onClick={() => {
                 onOpenChange(false)
-                void navigate({ to: '/contacts/new' })
+                void navigate({ to: '/contacts/new', search: { book } })
               }}
             >
               <BookUser className='size-4' />
@@ -419,7 +430,7 @@ function PersonRow({
   const { t } = useLingui()
   const appPath = getAppPath()
   const relationship = person.relationship ?? 'none'
-  const inContacts = !linking && (added || Boolean(person.contact))
+  const inContacts = added || Boolean(person.contact)
   const isInvited = invited || relationship === 'invited'
 
   const noop = () => {}
@@ -478,6 +489,9 @@ function PersonRow({
           disabled: false,
           onClick: onInvite,
         }
+    // Linking a card offers only the invite that links it: adding the person
+    // would make the very duplicate linking is there to prevent.
+    if (linking) return [{ ...invite, variant: 'default' }]
     if (inContacts) {
       return [
         {

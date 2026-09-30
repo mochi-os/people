@@ -72,7 +72,14 @@ function statusOf(error: unknown): number | undefined {
     : undefined
 }
 
-export function ContactEditor({ id }: { id?: string } = {}) {
+export function ContactEditor({
+  id,
+  book: start,
+}: {
+  id?: string
+  // The address book a new contact was started from.
+  book?: string
+} = {}) {
   const { t } = useLingui()
   const navigate = useNavigate()
   const heading = id ? t`Edit contact` : t`New contact`
@@ -145,37 +152,55 @@ export function ContactEditor({ id }: { id?: string } = {}) {
     }
   }
 
+  // A failed unfriend leaves the dialog open, so it can be tried again.
   const confirmUnfriend = async () => {
     if (!contact) return
-    await toastAction(
-      removeFriendMutation.mutateAsync({ person: contact.person }),
-      {
-        loading: t`Removing friend...`,
-        success: t`Friend removed`,
-        error: (error) => getErrorMessage(error, t`Failed to remove friend`),
-      }
-    ).catch(() => {})
-    setUnfriendOpen(false)
+    try {
+      await toastAction(
+        removeFriendMutation.mutateAsync({ person: contact.person }),
+        {
+          loading: t`Removing friend...`,
+          success: t`Friend removed`,
+          error: (error) => getErrorMessage(error, t`Failed to remove friend`),
+        }
+      )
+      setUnfriendOpen(false)
+    } catch {
+      // toastAction already showed error
+    }
   }
 
-  // The etag the form was built from. A refetch that brings a different card -
-  // the reload a 412 asks for - rebuilds the form; an identical one leaves the
-  // user's typing alone.
-  const applied = useRef<string | null>(null)
+  // The card the form was read from: its etag, which a save sends so a change
+  // made elsewhere is refused rather than overwritten, and its editable
+  // properties. The friend switch changes only the columns beside the card,
+  // so a new etag over the same editable properties is taken without touching
+  // what the user has typed. A card changed elsewhere waits: the save is
+  // refused, and the reload that follows reads it.
+  const applied = useRef<{ etag: string; card: string } | null>(null)
+  const reloading = useRef(false)
   useEffect(() => {
     if (!contact) return
-    if (applied.current === contact.etag) return
-    applied.current = contact.etag
+    const base = applied.current
+    if (base?.etag === contact.etag) return
+    const card = JSON.stringify(propertiesFromForm(formFromCard(contact.card)))
+    if (base && !reloading.current) {
+      if (base.card === card) applied.current = { etag: contact.etag, card }
+      return
+    }
+    reloading.current = false
+    applied.current = { etag: contact.etag, card }
     setForm(formFromCard(contact.card))
     setBook(contact.book)
   }, [contact])
 
-  // A new contact lands in the default book unless the user picks another.
+  // A new contact goes in the book it was started from, else the default.
   useEffect(() => {
     if (id || book) return
-    const fallback = booksData?.books.find((row) => row.default)
-    if (fallback) setBook(fallback.id)
-  }, [id, book, booksData?.books])
+    const rows = booksData?.books ?? []
+    const chosen =
+      rows.find((row) => row.id === start) ?? rows.find((row) => row.default)
+    if (chosen) setBook(chosen.id)
+  }, [id, book, start, booksData?.books])
 
   const update = (changes: Partial<ContactForm>) =>
     setForm((current) => ({ ...current, ...changes }))
@@ -187,7 +212,7 @@ export function ContactEditor({ id }: { id?: string } = {}) {
         await toastAction(
           updateMutation.mutateAsync({
             contact: id,
-            etag: contact?.etag,
+            etag: applied.current?.etag,
             properties,
             book,
           }),
@@ -209,6 +234,7 @@ export function ContactEditor({ id }: { id?: string } = {}) {
       // The card moved under us: show the server's own wording and reload the
       // contact so the form reflects what is actually stored.
       if (statusOf(error) === 412) {
+        reloading.current = true
         void query.refetch()
       }
     }
@@ -301,7 +327,10 @@ export function ContactEditor({ id }: { id?: string } = {}) {
         }
       />
       <Main>
+        {/* The browser's own checks would refuse a URL a phone stored without
+            its scheme, in words the page cannot translate. */}
         <form
+          noValidate
           className='mx-auto w-full max-w-3xl divide-y p-3 sm:p-4'
           onSubmit={(event) => {
             event.preventDefault()

@@ -12,9 +12,12 @@ const fold = (value: string): string =>
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
 
+// The spaces around a search are not part of it: a box holding only spaces
+// filters nothing.
 export function searchMatches(haystack: string, needle: string): boolean {
-  if (!needle) return true
-  return fold(haystack).includes(fold(needle))
+  const query = needle.trim()
+  if (!query) return true
+  return fold(haystack).includes(fold(query))
 }
 
 // Where the folded needle sits in the ORIGINAL haystack, as [start, end)
@@ -26,7 +29,7 @@ export function searchRange(
   haystack: string,
   needle: string
 ): [number, number] | null {
-  const query = fold(needle)
+  const query = fold(needle.trim())
   if (!query) return null
   let folded = ''
   const starts: number[] = []

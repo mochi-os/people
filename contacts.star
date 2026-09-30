@@ -27,11 +27,11 @@ _INVITE_WINDOW = 3600
 # it is accepted, which is what keeps this cap meaningful.
 _INVITE_PENDING_MAXIMUM = 200
 
-# Bounds on a card. No photos in this release, so a card is text.
+# Bounds on a card made here. A value has no bound of its own beyond the
+# card's: a phone's NOTE can run long, and the editor must be able to save any
+# card the DAV path stored.
 _CARD_MAXIMUM = 262144
 _PROPERTIES_MAXIMUM = 200
-_VALUE_MAXIMUM = 8192
-_PARAMETER_MAXIMUM = 64
 
 # Properties the editor manages. A submission replaces all of these and leaves
 # every other property in the card untouched, so whatever a phone stores
@@ -45,7 +45,10 @@ _RESERVED = ["X-MOCHI-PERSON", "X-MOCHI-FRIEND"]
 # are wider than the editor's. A phone's contact photo is tens of kilobytes.
 _DAV_CARD_MAXIMUM = 524288
 _DAV_PROPERTIES_MAXIMUM = 500
-_DAV_PARAMETER_MAXIMUM = 1024
+
+# One parameter value, on either path: a vCard 4 ADR carries its whole
+# formatted address in LABEL.
+_PARAMETER_MAXIMUM = 1024
 _SLUG_MAXIMUM = 128
 
 # The label shown for a contact, in codepoints.
@@ -214,8 +217,9 @@ def property_name_valid(name):
 	return True
 
 # property_normalise(p) -> dict or None: a submitted property in canonical
-# form ({name, params, value}, parameters sorted), or None when invalid. Only
-# managed properties are accepted from the editor.
+# form ({name, params, value} and its group when it has one, parameters
+# sorted), or None when invalid. Only managed properties are accepted from the
+# editor.
 def property_normalise(p):
 	if type(p) != "dict":
 		return None
@@ -223,7 +227,7 @@ def property_normalise(p):
 	if not property_name_valid(name) or name not in _MANAGED:
 		return None
 	value = p.get("value", "")
-	if type(value) != "string" or len(value) > _VALUE_MAXIMUM:
+	if type(value) != "string":
 		return None
 	if value and not mochi.text.valid(value, "text"):
 		return None
@@ -243,23 +247,41 @@ def property_normalise(p):
 			return None
 		out = []
 		for v in values:
-			if type(v) != "string" or len(v) > _PARAMETER_MAXIMUM or not mochi.text.valid(v, "line"):
+			# The same bound the DAV path keeps, and no line break, which a
+			# parameter cannot carry. An empty value is a parameter's own.
+			if type(v) != "string" or len(v) > _PARAMETER_MAXIMUM or "\r" in v or "\n" in v:
 				return None
 			out.append(v)
 		clean[key] = out
-	return {"name": name, "params": clean, "value": value}
+	entry = {"name": name, "params": clean, "value": value}
+	# The group ties a property to its siblings, as item1.EMAIL to the
+	# item1.X-ABLabel that names it; losing it strands the label.
+	group = p.get("group", "")
+	if group:
+		if type(group) != "string" or not property_name_valid(group.upper()):
+			return None
+		entry["group"] = group
+	return entry
 
 # card_merge(card, properties) -> list or None: the card with every managed
-# property replaced by the submission and every other property kept. None when
-# the submission is malformed.
+# property replaced by the submission and every other property kept, a
+# submitted property with no group taking the one its unchanged self was in.
+# None when the submission is malformed.
 def card_merge(card, properties):
 	if type(properties) != "list" or len(properties) > _PROPERTIES_MAXIMUM:
 		return None
 	kept = []
+	# The group each managed property was in, by name and value. A client that
+	# knows nothing of groups - the phone's contacts, which rebuild a card from
+	# their own rows - sends a property back without one; an unchanged
+	# property takes its group back, so a custom label stays with its value.
+	groups = {}
 	for p in card:
 		if type(p) != "dict":
 			continue
 		name = p.get("name", "")
+		if name in _MANAGED and p.get("group"):
+			groups[(name, p.get("value", ""))] = p["group"]
 		if name in _MANAGED or name in _RESERVED:
 			continue
 		kept.append(p)
@@ -267,6 +289,10 @@ def card_merge(card, properties):
 		clean = property_normalise(p)
 		if clean == None:
 			return None
+		if "group" not in clean:
+			group = groups.get((clean["name"], clean["value"]))
+			if group:
+				clean["group"] = group
 		kept.append(clean)
 	if len(kept) > _DAV_PROPERTIES_MAXIMUM:
 		return None
@@ -458,12 +484,12 @@ def contact_insert(identity, book, person, friend, name, directory, card, slug="
 # created in the default book when there is none. The friend flag is untouched;
 # name is the invite's self-asserted name and seeds both the label and the
 # directory column of a new row.
-def contact_link(identity, person, name):
+def contact_link(identity, person, name, book=""):
 	row = contact_by_person(identity, person)
 	if row:
 		return row
 	card = [{"name": "FN", "params": {}, "value": name}] if name else []
-	return contact_insert(identity, book_default(identity), person, 0, name, name, card)
+	return contact_insert(identity, book or book_default(identity), person, 0, name, name, card)
 
 # contact_person_set(row, person, name): link an existing contact to a Mochi
 # person. The user's label stays; the directory column takes the name the
@@ -473,11 +499,11 @@ def contact_person_set(row, person, name):
 	mochi.db.execute("update contacts set person=?, directory=?, refreshed=0, etag=?, updated=? where id=?", person, name, etag, mochi.time.now(), row["id"])
 	book_touch(row["book"], row["id"])
 
-# contact_friend_set(identity, person, friend, name="") -> row: link the contact
-# and set its friend flag. A name refreshes the directory column, never the
-# user's label.
-def contact_friend_set(identity, person, friend, name=""):
-	row = contact_link(identity, person, name)
+# contact_friend_set(identity, person, friend, name="", book="") -> row: link the
+# contact and set its friend flag. A name refreshes the directory column, never
+# the user's label. A contact made here goes in book, else the default one.
+def contact_friend_set(identity, person, friend, name="", book=""):
+	row = contact_link(identity, person, name, book)
 	card = card_decode(row["card"])
 	# The cached photo is a friend's; it goes when the friendship does, and
 	# photographed resets so a new friendship fetches it straight away.
@@ -849,13 +875,14 @@ def person_valid(a, person, identity):
 		return False
 	return True
 
-# friend_invite(a, person, name, contact=""): send an invitation, or accept
+# friend_invite(a, person, name, contact="", book=""): send an invitation, or accept
 # one that is already waiting from the same person. The contact row exists
 # from the moment of inviting, so the invitation shows in the list; the flag
 # turns on when the other side accepts. A contact names an existing card to
 # link to the person first, so a card typed in by hand or synced from a
-# device becomes the friend instead of gaining a duplicate beside it.
-def friend_invite(a, person, name, contact=""):
+# device becomes the friend instead of gaining a duplicate beside it. A book
+# is where a contact the invitation makes goes, the default one otherwise.
+def friend_invite(a, person, name, contact="", book=""):
 	identity = a.user.identity.id
 	if not person_valid(a, person, identity):
 		return
@@ -864,6 +891,10 @@ def friend_invite(a, person, name, contact=""):
 		return
 	if not mochi.text.valid(name, "line"):
 		a.error.label(400, "errors.invalid_friend_name")
+		return
+	# The book the contact an invite makes goes in: the one being viewed.
+	if book and not book_get(identity, book):
+		a.error.label(404, "errors.book_not_found")
 		return
 	if contact:
 		row = contact_get(identity, contact)
@@ -881,7 +912,7 @@ def friend_invite(a, person, name, contact=""):
 			contact_person_set(row, person, name)
 	if mochi.db.exists("select id from invites where identity=? and id=? and direction='from'", identity, person):
 		# They already invited us - accept it.
-		contact_friend_set(identity, person, 1, name)
+		contact_friend_set(identity, person, 1, name, book)
 		mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/accept"})
 		invite_remove(identity, person)
 		return {"data": {}}
@@ -894,7 +925,7 @@ def friend_invite(a, person, name, contact=""):
 	mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/invite"}, {"name": a.user.identity.name})
 	invite_set(identity, person, "to", name)
 	mochi.db.execute("insert into sent ( identity, created ) values ( ?, ? )", identity, mochi.time.now())
-	contact_link(identity, person, name)
+	contact_link(identity, person, name, book)
 	return {"data": {}}
 
 def friend_accept(a, person):
@@ -934,7 +965,7 @@ def friend_remove(a, person):
 	return {"data": {}}
 
 def action_friend_invite(a):
-	return friend_invite(a, person_input(a), a.input("name", ""), a.input("contact", ""))
+	return friend_invite(a, person_input(a), a.input("name", ""), a.input("contact", ""), a.input("book", ""))
 
 def action_friend_accept(a):
 	return friend_accept(a, person_input(a))
@@ -1180,7 +1211,7 @@ def dav_card_clean(card):
 				return None
 			kept = []
 			for v in values:
-				if type(v) != "string" or len(v) > _DAV_PARAMETER_MAXIMUM:
+				if type(v) != "string" or len(v) > _PARAMETER_MAXIMUM:
 					return None
 				kept.append(v)
 			clean[key] = kept

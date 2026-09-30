@@ -5,6 +5,19 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { ContactEditor } from '@/features/contacts/editor'
 
+interface SearchParams {
+  // The address book the contact was started from.
+  book?: string
+}
+
 export const Route = createFileRoute('/_authenticated/contacts/new')({
-  component: ContactEditor,
+  validateSearch: (search: Record<string, unknown>): SearchParams => ({
+    book: typeof search.book === 'string' ? search.book : undefined,
+  }),
+  component: NewContactPage,
 })
+
+function NewContactPage() {
+  const { book } = Route.useSearch()
+  return <ContactEditor book={book} />
+}

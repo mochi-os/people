@@ -91,6 +91,7 @@ describe('propertiesFromForm', () => {
         country: '',
         type: 'home',
         params: {},
+        group: '',
         pobox: '',
         extended: '',
       },
@@ -171,7 +172,7 @@ describe('propertiesFromForm', () => {
       property('N', 'Doe;Jane;;;'),
       property('NICKNAME', 'Janie'),
       property('EMAIL', 'jane@example.com', { TYPE: ['home'] }),
-      property('TEL', '+372 5555 5555', { TYPE: ['mobile'] }),
+      property('TEL', '+372 5555 5555', { TYPE: ['cell'] }),
       property('ADR', ';;12 Long Street;Tallinn;Harju;10115;Estonia', {
         TYPE: ['work'],
       }),
@@ -182,5 +183,131 @@ describe('propertiesFromForm', () => {
       property('NOTE', 'Met at the conference'),
     ]
     expect(propertiesFromForm(formFromCard(card))).toEqual(card)
+  })
+})
+
+describe('types', () => {
+  const phone = (params: Record<string, string[]>) =>
+    formFromCard([property('FN', 'Jane'), property('TEL', '1', params)])
+  const written = (form: ReturnType<typeof formFromCard>, name: string) =>
+    propertiesFromForm(form).find((p) => p.name === name)
+
+  it('writes a mobile number as vCard CELL', () => {
+    const form = formFromCard([property('FN', 'Jane')])
+    form.phones = [{ value: '1', type: 'mobile', params: {}, group: '' }]
+    expect(written(form, 'TEL')?.params).toEqual({ TYPE: ['cell'] })
+  })
+
+  it('corrects the mobile this editor used to write', () => {
+    expect(written(phone({ TYPE: ['mobile'] }), 'TEL')?.params).toEqual({
+      TYPE: ['cell'],
+    })
+  })
+
+  it('keeps every other TYPE value, as written, when the type is unchanged', () => {
+    expect(
+      written(phone({ TYPE: ['CELL', 'VOICE', 'pref'] }), 'TEL')?.params
+    ).toEqual({ TYPE: ['CELL', 'VOICE', 'pref'] })
+  })
+
+  it('swaps only its own value when the type changes', () => {
+    const form = phone({ TYPE: ['CELL', 'VOICE', 'pref'] })
+    form.phones[0].type = 'work'
+    expect(written(form, 'TEL')?.params).toEqual({
+      TYPE: ['work', 'VOICE', 'pref'],
+    })
+  })
+
+  it('keeps a fax a fax', () => {
+    const form = phone({ TYPE: ['FAX', 'WORK'] })
+    expect(form.phones[0].type).toBe('work')
+    form.phones[0].type = 'home'
+    expect(written(form, 'TEL')?.params).toEqual({ TYPE: ['FAX', 'home'] })
+  })
+
+  it('leaves an untyped value untyped', () => {
+    const form = formFromCard([
+      property('FN', 'Jane'),
+      property('EMAIL', 'jane@example.com'),
+      property('TEL', '1'),
+      property('ADR', ';;12 Long Street;;;;'),
+    ])
+    expect(form.emails[0].type).toBe('other')
+    for (const name of ['EMAIL', 'TEL', 'ADR']) {
+      expect(written(form, name)?.params).toEqual({})
+    }
+  })
+
+  it('writes Other as no type, dropping the one this editor used to write', () => {
+    expect(written(phone({ TYPE: ['other'] }), 'TEL')?.params).toEqual({})
+    const form = phone({ TYPE: ['home', 'pref'] })
+    form.phones[0].type = 'other'
+    expect(written(form, 'TEL')?.params).toEqual({ TYPE: ['pref'] })
+  })
+})
+
+describe('single-valued properties', () => {
+  const written = (
+    card: Property[],
+    change?: (form: ReturnType<typeof formFromCard>) => void
+  ) => {
+    const form = formFromCard(card)
+    change?.(form)
+    return propertiesFromForm(form)
+  }
+
+  it('keeps the parameters each came with', () => {
+    const card = [
+      property('FN', 'Jane Doe', { LANGUAGE: ['en'] }),
+      property('N', 'Doe;Jane;;;', { 'SORT-AS': ['Doe,Jane'] }),
+      property('BDAY', '1604-04-12', { 'X-APPLE-OMIT-YEAR': ['1604'] }),
+      property('ORG', 'Mochisoft', { 'SORT-AS': ['Mochisoft'] }),
+      property('URL', 'https://example.com', { TYPE: ['work'] }),
+      property('NOTE', 'Hi', { LANGUAGE: ['en'] }),
+    ]
+    expect(written(card)).toEqual(card)
+  })
+
+  it('drops the sort key and value type that described a value since changed', () => {
+    const out = written(
+      [
+        property('FN', 'Jane Doe'),
+        property('N', 'Doe;Jane;;;', {
+          'SORT-AS': ['Doe,Jane'],
+          LANGUAGE: ['en'],
+        }),
+        property('BDAY', 'circa 1800', { VALUE: ['text'] }),
+      ],
+      (form) => {
+        form.family = 'Smith'
+        form.birthday = '1800-01-01'
+      }
+    )
+    expect(out.find((p) => p.name === 'N')?.params).toEqual({
+      LANGUAGE: ['en'],
+    })
+    expect(out.find((p) => p.name === 'BDAY')?.params).toEqual({})
+  })
+})
+
+describe('groups', () => {
+  it('keeps each property in its group', () => {
+    const card: Property[] = [
+      { name: 'FN', params: {}, value: 'Jane', group: 'item9' },
+      { name: 'EMAIL', params: {}, value: 'jane@example.com', group: 'item1' },
+      { name: 'TEL', params: { TYPE: ['cell'] }, value: '1', group: 'item2' },
+      {
+        name: 'ADR',
+        params: {},
+        value: ';;12 Long Street;;;;',
+        group: 'item3',
+      },
+    ]
+    expect(propertiesFromForm(formFromCard(card))).toEqual(card)
+  })
+
+  it('writes no group for a property that had none', () => {
+    const written = propertiesFromForm(formFromCard([property('FN', 'Jane')]))
+    expect(written[0]).not.toHaveProperty('group')
   })
 })

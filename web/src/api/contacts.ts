@@ -124,7 +124,12 @@ const deleteBook = (book: string) =>
     })
   )
 
-const inviteFriend = (payload: { person: string; name: string; contact?: string }) =>
+const inviteFriend = (payload: {
+  person: string
+  name: string
+  contact?: string
+  book?: string
+}) =>
   toMutationSuccess(
     requestHelpers.post(endpoints.friends.invite, body(payload), {
       ...form,

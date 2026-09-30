@@ -19,6 +19,9 @@ export interface TypedValue {
   // Whatever else the property carried (PREF and friends), kept so a round
   // trip through the editor does not drop it.
   params: Record<string, string[]>
+  // The group tying the property to its siblings, as item1.EMAIL to the
+  // item1.X-ABLabel that names it; empty for none.
+  group: string
 }
 
 export interface AddressValue {
@@ -29,9 +32,18 @@ export interface AddressValue {
   country: string
   type: PropertyType
   params: Record<string, string[]>
+  group: string
   // The two leading components of ADR, which the editor does not show.
   pobox: string
   extended: string
+}
+
+// A single-valued property as the card held it: its parameters and group, and
+// its value as the form writes it back when left alone.
+export interface Original {
+  params: Record<string, string[]>
+  group: string
+  value: string
 }
 
 export interface ContactForm {
@@ -57,6 +69,10 @@ export interface ContactForm {
   // kept for the round trip: a card may hold two URLs or NOTEs, and a save
   // replaces all of them.
   extras: Property[]
+  // The first instance of each property the form has one field for, by name,
+  // so its parameters and group survive a save (LANGUAGE on FN, SORT-AS on
+  // N, Apple's X-APPLE-OMIT-YEAR on a birthday without its year).
+  originals: Record<string, Original>
 }
 
 // The properties the form shows one instance of.
@@ -123,11 +139,32 @@ function all(card: Property[], name: string): Property[] {
   return card.filter((property) => property.name === name)
 }
 
-function typeOf(property: Property, allowed: PropertyType[]): PropertyType {
-  const values = property.params?.TYPE ?? []
-  for (const value of values) {
+// The vCard TYPE value each choice writes. vCard has no "other": an Other
+// value is written with no type of its own, and mobile is vCard's CELL.
+function token(type: PropertyType): string | null {
+  if (type === 'mobile') return 'cell'
+  if (type === 'other') return null
+  return type
+}
+
+// The TYPE values a choice owns: the tokens of the choices offered, and the
+// "mobile" and "other" this editor wrote before, which a save corrects. Any
+// other value (pref, voice, fax) is the property's own and is kept.
+function owned(allowed: PropertyType[]): Set<string> {
+  const tokens = new Set(['mobile', 'other'])
+  for (const type of allowed) {
+    const value = token(type)
+    if (value) tokens.add(value)
+  }
+  return tokens
+}
+
+function typeOf(
+  params: Record<string, string[]> | undefined,
+  allowed: PropertyType[]
+): PropertyType {
+  for (const value of params?.TYPE ?? []) {
     const folded = value.toLowerCase()
-    // Clients that predate this editor label mobile numbers CELL.
     const mapped = folded === 'cell' ? 'mobile' : folded
     if ((allowed as string[]).includes(mapped)) {
       return mapped as PropertyType
@@ -136,11 +173,32 @@ function typeOf(property: Property, allowed: PropertyType[]): PropertyType {
   return 'other'
 }
 
+// The parameters with the chosen type in place of the one the property had.
+// The owned value is replaced where it stood, and kept as written when it
+// already says the chosen type; every other TYPE value stays.
 function withType(
   params: Record<string, string[]>,
-  type: PropertyType
+  type: PropertyType,
+  allowed: PropertyType[]
 ): Record<string, string[]> {
-  return { ...params, TYPE: [type] }
+  const tokens = owned(allowed)
+  const chosen = token(type)
+  const values: string[] = []
+  let placed = false
+  for (const value of params.TYPE ?? []) {
+    const folded = value.toLowerCase()
+    if (!tokens.has(folded)) {
+      values.push(value)
+      continue
+    }
+    if (placed || !chosen) continue
+    values.push(folded === chosen ? value : chosen)
+    placed = true
+  }
+  if (chosen && !placed) values.push(chosen)
+  const rest = { ...params }
+  delete rest.TYPE
+  return values.length > 0 ? { ...rest, TYPE: values } : rest
 }
 
 export function emptyForm(): ContactForm {
@@ -162,11 +220,12 @@ export function emptyForm(): ContactForm {
     suffix: '',
     organisationUnits: [],
     extras: [],
+    originals: {},
   }
 }
 
 export function newTypedValue(type: PropertyType): TypedValue {
-  return { value: '', type, params: {} }
+  return { value: '', type, params: {}, group: '' }
 }
 
 export function newAddress(type: PropertyType): AddressValue {
@@ -178,6 +237,7 @@ export function newAddress(type: PropertyType): AddressValue {
     country: '',
     type,
     params: {},
+    group: '',
     pobox: '',
     extended: '',
   }
@@ -211,14 +271,16 @@ export function formFromCard(card: Property[]): ContactForm {
 
   form.emails = all(card, 'EMAIL').map((property) => ({
     value: property.value,
-    type: typeOf(property, EMAIL_TYPES),
+    type: typeOf(property.params, EMAIL_TYPES),
     params: property.params ?? {},
+    group: property.group ?? '',
   }))
 
   form.phones = all(card, 'TEL').map((property) => ({
     value: property.value,
-    type: typeOf(property, PHONE_TYPES),
+    type: typeOf(property.params, PHONE_TYPES),
     params: property.params ?? {},
+    group: property.group ?? '',
   }))
 
   form.addresses = all(card, 'ADR').map((property) => {
@@ -231,8 +293,9 @@ export function formFromCard(card: Property[]): ContactForm {
       region: component(parts, 4),
       postcode: component(parts, 5),
       country: component(parts, 6),
-      type: typeOf(property, ADDRESS_TYPES),
+      type: typeOf(property.params, ADDRESS_TYPES),
       params: property.params ?? {},
+      group: property.group ?? '',
     }
   })
 
@@ -251,7 +314,38 @@ export function formFromCard(card: Property[]): ContactForm {
 
   form.extras = SINGLE.flatMap((name) => all(card, name).slice(1))
 
+  const written = singles(form)
+  for (const name of SINGLE) {
+    const property = first(card, name)
+    if (!property) continue
+    form.originals[name] = {
+      params: property.params ?? {},
+      group: property.group ?? '',
+      value: written[name] ?? '',
+    }
+  }
+
   return form
+}
+
+// The value each single-valued field writes, by property name.
+function singles(form: ContactForm): Record<string, string> {
+  return {
+    FN: form.name.trim(),
+    N: join([
+      form.family.trim(),
+      form.given.trim(),
+      form.additional,
+      form.prefix,
+      form.suffix,
+    ]),
+    NICKNAME: form.nickname.trim(),
+    BDAY: form.birthday.trim(),
+    ORG: join([form.organisation.trim(), ...form.organisationUnits]),
+    TITLE: form.title.trim(),
+    URL: form.url.trim(),
+    NOTE: form.note.trim(),
+  }
 }
 
 // propertiesFromForm(form) -> the full managed set, which replaces whatever the
@@ -261,31 +355,54 @@ export function propertiesFromForm(form: ContactForm): Property[] {
   const add = (
     name: string,
     value: string,
-    params: Record<string, string[]> = {}
+    params: Record<string, string[]> = {},
+    group = ''
   ) => {
     if (value.trim() === '') return
-    properties.push({ name, params, value })
+    properties.push(
+      group ? { name, params, value, group } : { name, params, value }
+    )
   }
 
-  add('FN', form.name.trim())
+  // A single field keeps the parameters and group its property came with. A
+  // changed value drops the two that described the old one: its sort key and
+  // its value type, which a date typed into the field no longer is.
+  const written = singles(form)
+  const single = (name: string) => {
+    const value = written[name]
+    const original = form.originals[name]
+    if (!original) {
+      add(name, value)
+      return
+    }
+    const params = { ...original.params }
+    if (value !== original.value) {
+      delete params['SORT-AS']
+      delete params.VALUE
+    }
+    add(name, value, params, original.group)
+  }
 
-  const name = join([
-    form.family.trim(),
-    form.given.trim(),
-    form.additional,
-    form.prefix,
-    form.suffix,
-  ])
-  add('N', name)
-
-  add('NICKNAME', form.nickname.trim())
+  single('FN')
+  single('N')
+  single('NICKNAME')
 
   for (const email of form.emails) {
-    add('EMAIL', email.value.trim(), withType(email.params, email.type))
+    add(
+      'EMAIL',
+      email.value.trim(),
+      withType(email.params, email.type, EMAIL_TYPES),
+      email.group
+    )
   }
 
   for (const phone of form.phones) {
-    add('TEL', phone.value.trim(), withType(phone.params, phone.type))
+    add(
+      'TEL',
+      phone.value.trim(),
+      withType(phone.params, phone.type, PHONE_TYPES),
+      phone.group
+    )
   }
 
   for (const address of form.addresses) {
@@ -298,14 +415,19 @@ export function propertiesFromForm(form: ContactForm): Property[] {
       address.postcode.trim(),
       address.country.trim(),
     ])
-    add('ADR', value, withType(address.params, address.type))
+    add(
+      'ADR',
+      value,
+      withType(address.params, address.type, ADDRESS_TYPES),
+      address.group
+    )
   }
 
-  add('BDAY', form.birthday.trim())
-  add('ORG', join([form.organisation.trim(), ...form.organisationUnits]))
-  add('TITLE', form.title.trim())
-  add('URL', form.url.trim())
-  add('NOTE', form.note.trim())
+  single('BDAY')
+  single('ORG')
+  single('TITLE')
+  single('URL')
+  single('NOTE')
 
   properties.push(...form.extras)
 

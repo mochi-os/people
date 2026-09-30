@@ -3,6 +3,7 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { useEffect, useMemo, useState } from 'react'
+import { useMatchRoute, useNavigate } from '@tanstack/react-router'
 import { plural } from '@lingui/core/macro'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
@@ -79,6 +80,8 @@ function PeopleLayoutInner() {
   const { data: contactsData } = useContactsQuery()
   const { data: booksData } = useBooksQuery()
   const myIdentity = useAuthStore((s) => s.identity)
+  const matchRoute = useMatchRoute()
+  const navigate = useNavigate()
   const {
     createDialogOpen: createGroupDialogOpen,
     closeCreateDialog: closeCreateGroupDialog,
@@ -111,6 +114,10 @@ function PeopleLayoutInner() {
         error: (error) =>
           getErrorMessage(error, t`Failed to delete address book`),
       })
+      // The page of a deleted book has nothing left to show.
+      if (matchRoute({ to: '/books/$id', params: { id: deleteBook.id } })) {
+        void navigate({ to: '/' })
+      }
       setDeleteBook(null)
     } catch {
       // toastAction already showed error

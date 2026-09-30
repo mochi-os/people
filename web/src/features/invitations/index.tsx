@@ -24,6 +24,7 @@ import {
   useListAutoAnimate,
 } from '@mochi/web'
 import { UserPlus, UserX, Send, X, Check, Settings } from 'lucide-react'
+import { formatFingerprint } from '@/lib/fingerprint'
 import { searchMatches } from '@/lib/search'
 import {
   useContactsQuery,
@@ -110,29 +111,19 @@ export function Invitations() {
   const handleAcceptAll = async () => {
     setAcceptingAll(true)
     try {
-      const results = await toastAction(
-        Promise.allSettled(
-          // The filtered list, not the whole one: the button sits under a
-          // "Received (n)" heading counting what the search left, so acting on
-          // anything the user cannot see would be acting on the wrong set.
-          filteredReceived.map(({ id }) =>
-            acceptInviteMutation.mutateAsync({ person: id })
-          )
-        ),
-        {
-          loading: t`Accepting invitations...`,
-          success: false,
-          error: (e) => getErrorMessage(e, t`Failed to accept invitations`),
-        }
+      // The filtered list, not the whole one: the button sits under a
+      // "Received (n)" heading counting what the search left, so acting on
+      // anything the user cannot see would be acting on the wrong set.
+      const results = await Promise.allSettled(
+        filteredReceived.map(({ id }) =>
+          acceptInviteMutation.mutateAsync({ person: id })
+        )
       )
-      const failed = results.filter((r) => r.status === 'rejected').length
-      if (failed > 0) {
+      if (results.some((result) => result.status === 'rejected')) {
         toast.error(t`Some invitations could not be accepted`)
       } else {
         toast.success(t`All invitations accepted`)
       }
-    } catch {
-      // toastAction already showed error
     } finally {
       setAcceptingAll(false)
     }
@@ -141,26 +132,16 @@ export function Invitations() {
   const handleDeclineAll = async () => {
     setDecliningAll(true)
     try {
-      const results = await toastAction(
-        Promise.allSettled(
-          filteredReceived.map(({ id }) =>
-            declineInviteMutation.mutateAsync({ person: id })
-          )
-        ),
-        {
-          loading: t`Declining invitations...`,
-          success: false,
-          error: (e) => getErrorMessage(e, t`Failed to decline invitations`),
-        }
+      const results = await Promise.allSettled(
+        filteredReceived.map(({ id }) =>
+          declineInviteMutation.mutateAsync({ person: id })
+        )
       )
-      const failed = results.filter((r) => r.status === 'rejected').length
-      if (failed > 0) {
+      if (results.some((result) => result.status === 'rejected')) {
         toast.error(t`Some invitations could not be declined`)
       } else {
         toast.success(t`All invitations declined`)
       }
-    } catch {
-      // toastAction already showed error
     } finally {
       setDecliningAll(false)
     }
@@ -169,26 +150,14 @@ export function Invitations() {
   const handleCancelAll = async () => {
     setCancellingAll(true)
     try {
-      const results = await toastAction(
-        Promise.allSettled(
-          filteredSent.map(({ id }) =>
-            removeMutation.mutateAsync({ person: id })
-          )
-        ),
-        {
-          loading: t`Cancelling invitations...`,
-          success: false,
-          error: (e) => getErrorMessage(e, t`Failed to cancel invitations`),
-        }
+      const results = await Promise.allSettled(
+        filteredSent.map(({ id }) => removeMutation.mutateAsync({ person: id }))
       )
-      const failed = results.filter((r) => r.status === 'rejected').length
-      if (failed > 0) {
+      if (results.some((result) => result.status === 'rejected')) {
         toast.error(t`Some invitations could not be cancelled`)
       } else {
         toast.success(t`All invitations cancelled`)
       }
-    } catch {
-      // toastAction already showed error
     } finally {
       setCancellingAll(false)
     }
@@ -202,6 +171,7 @@ export function Invitations() {
     <Input
       type='text'
       placeholder={t`Search...`}
+      aria-label={t`Search`}
       value={search}
       onChange={(e) => setSearch(e.target.value)}
       className='w-48'
@@ -333,9 +303,18 @@ export function Invitations() {
                           name={invite.name}
                           size='md'
                         />
-                        <div className='flex flex-col'>
+                        <div className='flex min-w-0 flex-col'>
                           <span className='truncate font-medium'>
                             {invite.name}
+                          </span>
+                          {/* The name and photo are the sender's own claim;
+                              the fingerprint and the directory's name are
+                              what an impersonator cannot copy. */}
+                          <span className='text-muted-foreground truncate text-xs'>
+                            {formatFingerprint(invite.fingerprint)}
+                            {invite.directory &&
+                              invite.directory !== invite.name &&
+                              ` · ${t`Listed as ${invite.directory}`}`}
                           </span>
                         </div>
                       </div>

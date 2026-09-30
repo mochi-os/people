@@ -5,7 +5,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { AddContactDialog } from './add-dialog'
 
@@ -22,23 +22,40 @@ const person = {
   relationship: 'none',
 }
 
-// The requests the dialog makes, and where it navigates.
+// A profile with something in it, which gets a preview step before connecting.
+const profile = {
+  id: 'p1',
+  fingerprint: 'abcdefghi',
+  name: 'Ada Lovelace',
+  avatar: 'a1',
+  banner: '',
+  profile: '',
+  style: { accent: '' },
+}
+
+// The requests the dialog makes, what the search finds, and where it navigates.
 const calls = vi.hoisted(() => ({
   create: vi.fn(),
   invite: vi.fn(),
+  accept: vi.fn(),
+  information: vi.fn(),
   navigate: vi.fn(),
+  results: [] as unknown[],
 }))
 
 beforeEach(() => {
   calls.create = vi.fn().mockResolvedValue({})
   calls.invite = vi.fn().mockResolvedValue({})
+  calls.accept = vi.fn().mockResolvedValue({})
+  calls.information = vi.fn().mockResolvedValue({})
   calls.navigate = vi.fn()
+  calls.results = [person]
 })
 
 vi.mock('@/hooks/useContacts', () => ({
   useContactsQuery: () => ({ data: { contacts: [], received: [], sent: [] } }),
   useSearchDirectoryQuery: () => ({
-    data: { results: [person] },
+    data: { results: calls.results },
     isLoading: false,
     isError: false,
     error: null,
@@ -52,26 +69,41 @@ vi.mock('@/hooks/useContacts', () => ({
     mutateAsync: calls.invite,
     isPending: false,
   }),
-  useAcceptFriendMutation: () => ({ mutateAsync: vi.fn(), isPending: false }),
+  useAcceptFriendMutation: () => ({
+    mutateAsync: calls.accept,
+    isPending: false,
+  }),
 }))
 vi.mock('@/api/person', () => ({
-  personApi: { getInformation: () => Promise.resolve({}) },
+  personApi: { getInformation: (id: string) => calls.information(id) },
 }))
 vi.mock('@tanstack/react-router', () => ({
   useNavigate: () => calls.navigate,
 }))
 
+function dialog(
+  props: {
+    book?: string
+    link?: { contact: string; name: string }
+  },
+  open = true
+) {
+  return (
+    <QueryClientProvider client={client}>
+      <I18nProvider i18n={i18n}>
+        <AddContactDialog open={open} onOpenChange={vi.fn()} {...props} />
+      </I18nProvider>
+    </QueryClientProvider>
+  )
+}
+
+const client = new QueryClient()
+
 function show(props: {
   book?: string
   link?: { contact: string; name: string }
 }) {
-  render(
-    <QueryClientProvider client={new QueryClient()}>
-      <I18nProvider i18n={i18n}>
-        <AddContactDialog open onOpenChange={vi.fn()} {...props} />
-      </I18nProvider>
-    </QueryClientProvider>
-  )
+  return render(dialog(props))
 }
 
 async function search() {
@@ -108,6 +140,48 @@ describe('AddContactDialog', () => {
       name: 'Ada Lovelace',
       book: 'b2',
     })
+  })
+
+  it('drops a profile that arrives after the dialog closed', async () => {
+    let arrive: (information: unknown) => void = () => {}
+    calls.information = vi.fn(
+      () => new Promise((resolve) => (arrive = resolve))
+    )
+    const { rerender } = show({})
+    await search()
+    fireEvent.click(screen.getByRole('button', { name: /Invite/ }))
+    expect(calls.information).toHaveBeenCalledTimes(1)
+    rerender(dialog({}, false))
+    await act(async () => arrive(profile))
+    rerender(dialog({}, true))
+    expect(await screen.findByText('Add contact')).toBeInTheDocument()
+    expect(screen.queryByText(/Preview Ada Lovelace/)).toBeNull()
+    expect(calls.invite).not.toHaveBeenCalled()
+  })
+
+  it('describes the preview of an invitation being accepted as such', async () => {
+    calls.results = [{ ...person, relationship: 'pending' }]
+    calls.information = vi.fn().mockResolvedValue(profile)
+    show({})
+    await search()
+    fireEvent.click(screen.getByRole('button', { name: /Accept/ }))
+    expect(
+      await screen.findByText(
+        "Preview Ada Lovelace's profile before accepting their friend invitation."
+      )
+    ).toBeInTheDocument()
+  })
+
+  it('describes the preview of an invitation being sent as such', async () => {
+    calls.information = vi.fn().mockResolvedValue(profile)
+    show({})
+    await search()
+    fireEvent.click(screen.getByRole('button', { name: /Invite/ }))
+    expect(
+      await screen.findByText(
+        "Preview Ada Lovelace's profile before sending a friend invitation."
+      )
+    ).toBeInTheDocument()
   })
 
   it('starts a new contact in the book being viewed', () => {

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from '@tanstack/react-router'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
@@ -89,6 +89,9 @@ export function AddContactDialog({
   const [added, setAdded] = useState<Set<string>>(new Set())
   const [pending, setPending] = useState<string | null>(null)
   const [preview, setPreview] = useState<PreviewState | null>(null)
+  // Counts profile requests; closing the dialog moves it on, so a profile that
+  // arrives afterwards is dropped instead of reopening on a stale preview.
+  const request = useRef(0)
   const { isMobile } = useScreenSize()
   const { data: contactsData } = useContactsQuery()
   const sentPersons = useMemo(
@@ -188,9 +191,11 @@ export function AddContactDialog({
     intent: 'invite' | 'accept'
   ) => {
     setPending(person.id)
+    const ticket = ++request.current
     personApi
       .getInformation(person.id)
       .then((info) => {
+        if (ticket !== request.current) return
         if (hasProfileContent(info)) {
           setPreview({ person, info, intent })
           setPending(null)
@@ -201,6 +206,7 @@ export function AddContactDialog({
         }
       })
       .catch(() => {
+        if (ticket !== request.current) return
         if (intent === 'accept') void acceptInvite(person.id)
         else void sendInvite(person.id, person.name)
       })
@@ -216,6 +222,7 @@ export function AddContactDialog({
   // Closing clears the search, back to the card's name when linking one.
   useEffect(() => {
     if (!open) {
+      request.current++
       setSearch(link?.name ?? '')
       setDebounced(link?.name ?? '')
       setInvited(new Set())
@@ -248,9 +255,11 @@ export function AddContactDialog({
             {preview ? preview.person.name : t`Add contact`}
           </ResponsiveDialogTitle>
           <ResponsiveDialogDescription className='sr-only'>
-            {preview
-              ? t`Preview ${preview.person.name}'s profile before sending a friend invitation.`
-              : t`Create a contact, or find someone on Mochi.`}
+            {!preview
+              ? t`Create a contact, or find someone on Mochi.`
+              : preview.intent === 'accept'
+                ? t`Preview ${preview.person.name}'s profile before accepting their friend invitation.`
+                : t`Preview ${preview.person.name}'s profile before sending a friend invitation.`}
           </ResponsiveDialogDescription>
         </ResponsiveDialogHeader>
 

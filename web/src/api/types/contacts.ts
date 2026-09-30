@@ -42,9 +42,17 @@ export interface Invite {
   updated: number
 }
 
+// A received invite also carries what the sender cannot choose for
+// themselves: their fingerprint, and the directory's name for them ('' when
+// the directory does not list them).
+export interface Received extends Invite {
+  fingerprint: string
+  directory: string
+}
+
 export interface GetContactsResponse {
   contacts: Contact[]
-  received: Invite[]
+  received: Received[]
   sent: Invite[]
 }
 

@@ -89,8 +89,19 @@ def invite_remove(identity, id, direction=None):
 		return
 	mochi.db.execute("delete from invites where identity=? and id=?", identity, id)
 
+# invites_received(identity) -> list: the invitations waiting on the user. The
+# name on one is the sender's own claim, so each also carries the sender's
+# fingerprint and the directory's name for them, which tell the real person
+# from someone using their name and photo.
 def invites_received(identity):
-	return mochi.db.rows("select * from invites where identity=? and direction='from' order by updated desc", identity)
+	out = []
+	for row in mochi.db.rows("select * from invites where identity=? and direction='from' order by updated desc", identity):
+		info = mochi.directory.get(row["id"])
+		invite = dict(row)
+		invite["fingerprint"] = mochi.entity.fingerprint(row["id"])
+		invite["directory"] = (info.get("name") if info else "") or ""
+		out.append(invite)
+	return out
 
 def invites_sent(identity):
 	return mochi.db.rows("select * from invites where identity=? and direction='to' order by updated desc", identity)
@@ -461,8 +472,8 @@ def card_photo(row, card):
 	return out
 
 def friend_projection(row):
-	# The row shape the friends service and the -/friends alias have always
-	# returned: id is the person entity id, name the user's label.
+	# The row shape the friends service has always returned: id is the person
+	# entity id, name the user's label.
 	return {"identity": row["identity"], "id": row["person"], "name": row["name"], "class": "person", "created": row["created"], "refreshed": row["refreshed"]}
 
 # contact_insert(identity, book, person, friend, name, directory, card, slug="") -> row
@@ -896,6 +907,7 @@ def friend_invite(a, person, name, contact="", book=""):
 	if book and not book_get(identity, book):
 		a.error.label(404, "errors.book_not_found")
 		return
+	row = None
 	if contact:
 		row = contact_get(identity, contact)
 		if not row:
@@ -908,20 +920,22 @@ def friend_invite(a, person, name, contact="", book=""):
 		if other and other["id"] != row["id"]:
 			a.error.label(409, "errors.person_linked")
 			return
-		if not row["person"]:
-			contact_person_set(row, person, name)
-	if mochi.db.exists("select id from invites where identity=? and id=? and direction='from'", identity, person):
+	mutual = mochi.db.exists("select id from invites where identity=? and id=? and direction='from'", identity, person)
+	# An invite is the only friends message that can target a stranger, so it is
+	# the one primitive for spraying or probing entity ids; core's send limit is
+	# far looser. Accepting one already waiting sends nothing new.
+	if not mutual and invites_recent(identity) >= _INVITE_LIMIT:
+		a.error.label(429, "errors.too_many_invites")
+		return
+	# Every refusal is behind us: the card changes only for an invite that goes.
+	if row and not row["person"]:
+		contact_person_set(row, person, name)
+	if mutual:
 		# They already invited us - accept it.
 		contact_friend_set(identity, person, 1, name, book)
 		mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/accept"})
 		invite_remove(identity, person)
 		return {"data": {}}
-	# An invite is the only friends message that can target a stranger, so it is
-	# the one primitive for spraying or probing entity ids; core's send limit is
-	# far looser.
-	if invites_recent(identity) >= _INVITE_LIMIT:
-		a.error.label(429, "errors.too_many_invites")
-		return
 	mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/invite"}, {"name": a.user.identity.name})
 	invite_set(identity, person, "to", name)
 	mochi.db.execute("insert into sent ( identity, created ) values ( ?, ? )", identity, mochi.time.now())
@@ -987,7 +1001,7 @@ def event_accept(e):
 	# They accepted our invitation: the contact made at invite time becomes a friend.
 	contact_friend_set(identity, sender, 1, i["name"])
 	invite_remove(identity, sender)
-	notify("accept/accepted", "", mochi.app.label("notifications.title.friend_request_accepted"), mochi.app.label("notifications.body.accepted_invitation", name=i["name"]), "/people", sender, event_id="accept/accepted:" + sender + ":" + identity)
+	notify("accept/accepted", "", mochi.app.label("notifications.title.friend_request_accepted"), mochi.app.label("notifications.body.accepted_invitation", name=i["name"]), "/people", sender, event="accept/accepted:" + sender + ":" + identity)
 
 def event_invite(e):
 	# Incoming friend invite. The user-configurable `invite_policy` preference
@@ -1011,7 +1025,7 @@ def event_invite(e):
 		contact_friend_set(identity, sender, 1, name)
 		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
 		invite_remove(identity, sender)
-		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event_id="accept/matched:" + sender + ":" + identity)
+		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event="accept/matched:" + sender + ":" + identity)
 		return
 
 	policy = e.user.preference.get("invite_policy") or "notify"
@@ -1023,7 +1037,7 @@ def event_invite(e):
 		# Auto-accept: mirror the mutual path without writing to invites.
 		contact_friend_set(identity, sender, 1, name)
 		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
-		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event_id="accept/matched:" + sender + ":" + identity)
+		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event="accept/matched:" + sender + ":" + identity)
 		return
 
 	# silent or notify: store the pending invite. A sender already pending only
@@ -1038,7 +1052,7 @@ def event_invite(e):
 	invite_set(identity, sender, "from", name)
 
 	if policy == "notify" and not pending:
-		notify("invite/received", "", mochi.app.label("notifications.title.friend_invitation"), mochi.app.label("notifications.body.invited_you", name=name), "/people/invitations", sender, event_id="invite/received:" + sender + ":" + identity)
+		notify("invite/received", "", mochi.app.label("notifications.title.friend_invitation"), mochi.app.label("notifications.body.invited_you", name=name), "/people/invitations", sender, event="invite/received:" + sender + ":" + identity)
 
 def event_cancel(e):
 	# Remove the invitation from the recipient's side

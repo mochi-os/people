@@ -47,10 +47,8 @@ const body = (fields: Record<string, string | undefined>) =>
 
 // The request helper unwraps the {"data": ...} envelope; action_contacts
 // answers exactly this shape.
-const listContacts = (book?: string): Promise<GetContactsResponse> =>
-  requestHelpers.get<GetContactsResponse>(endpoints.contacts.list, {
-    params: book ? { book } : undefined,
-  })
+const listContacts = (): Promise<GetContactsResponse> =>
+  requestHelpers.get<GetContactsResponse>(endpoints.contacts.list)
 
 const getContact = (contact: string): Promise<GetContactResponse> =>
   requestHelpers.post<GetContactResponse>(

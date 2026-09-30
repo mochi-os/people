@@ -45,9 +45,11 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
   const setPolicy = useSetPreferencesMutation()
   const [value, setValue] = useState<InvitePolicy>('notify')
 
+  // Each opening starts from the saved policy, so a choice left behind by
+  // Cancel is not shown as though it were the setting.
   useEffect(() => {
-    if (data?.policy) setValue(data.policy)
-  }, [data?.policy])
+    if (open && data?.policy) setValue(data.policy)
+  }, [open, data?.policy])
 
   const handleSave = async () => {
     if (data?.policy && value === data.policy) {
@@ -92,22 +94,17 @@ export function InviteSettingsDialog({ open, onOpenChange }: Props) {
             className='py-2'
           >
             {options.map((opt) => (
-              <label
+              <Label
                 key={opt.value}
                 htmlFor={`invite-policy-${opt.value}`}
-                className='hover:bg-hover flex cursor-pointer items-center gap-3 rounded-md border p-3'
+                className='hover:bg-hover cursor-pointer gap-3 rounded-md border p-3'
               >
                 <RadioGroupItem
                   value={opt.value}
                   id={`invite-policy-${opt.value}`}
                 />
-                <Label
-                  htmlFor={`invite-policy-${opt.value}`}
-                  className='cursor-pointer font-medium'
-                >
-                  {opt.label}
-                </Label>
-              </label>
+                {opt.label}
+              </Label>
             ))}
           </RadioGroup>
         )}

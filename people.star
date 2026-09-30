@@ -11,14 +11,15 @@
 # digit forms (Arabic-Indic "٣", Devanagari "३") that int() rejects,
 # which aborts the action as a 500 instead of taking the guard's else branch.
 def decimal(value):
-    if not value:
-        return False
-    for c in value.elems():
-        if c not in "0123456789":
-            return False
-    return True
-def notify(topic, object="", title="", body="", url="", sender="", event_id=""):
-	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event=event_id)
+	if not value:
+		return False
+	for c in value.elems():
+		if c not in "0123456789":
+			return False
+	return True
+
+def notify(topic, object="", title="", body="", url="", sender="", event=""):
+	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event=event)
 
 def database_upgrade(version):
 	if version == 14:

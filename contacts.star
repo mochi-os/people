@@ -48,10 +48,6 @@ _DAV_PROPERTIES_MAXIMUM = 500
 _DAV_PARAMETER_MAXIMUM = 1024
 _SLUG_MAXIMUM = 128
 
-# Contacts per identity. Far past any real address book; it bounds what one
-# account can make a listing or a query walk.
-_CONTACTS_MAXIMUM = 20000
-
 # The label shown for a contact, in codepoints.
 _LABEL_MAXIMUM = 500
 
@@ -297,10 +293,6 @@ def label_clean(text):
 	if not text or not mochi.text.valid(text, "name"):
 		return ""
 	return text
-
-def contacts_full(identity):
-	row = mochi.db.row("select count(*) as count from contacts where identity=?", identity)
-	return row != None and row["count"] >= _CONTACTS_MAXIMUM
 
 # contact_etag(card, person, friend, photo="") -> string: the etag a DAV
 # client compares. The photo stamp joins only when there is one, so a contact
@@ -640,9 +632,6 @@ def action_contact_create(a):
 		existing = contact_by_slug(identity, book, slug)
 		if existing:
 			return {"data": {"contact": contact_full(existing)}}
-	if contacts_full(identity):
-		a.error.label(400, "errors.too_many_contacts")
-		return
 	directory = ""
 	if person:
 		info = mochi.directory.get(person)
@@ -1235,8 +1224,6 @@ def function_dav_put(context, identity, collection, name, card, match="", absent
 			return {"error": "invalid"}
 		label = row["name"]
 	if not row:
-		if contacts_full(identity):
-			return {"error": "full"}
 		inserted = contact_insert(identity, book["id"], "", 0, label, "", clean, name)
 		return {"name": name, "etag": inserted["etag"], "updated": inserted["updated"]}
 	etag = contact_etag(clean, row["person"], row["friend"], row.get("photo", ""))

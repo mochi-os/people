@@ -380,12 +380,8 @@ export function Contacts({
               ? The contact stays in your address book.
             </Trans>
           }
-          confirmText={
-            <>
-              <UserX className='size-4' />
-              <Trans>Unfriend</Trans>
-            </>
-          }
+          confirmText={<Trans>Unfriend</Trans>}
+          icon={<UserX className='size-4' />}
           destructive
           handleConfirm={confirmUnfriend}
           isLoading={removeFriendMutation.isPending}
@@ -414,12 +410,8 @@ export function Contacts({
               </Trans>
             )
           }
-          confirmText={
-            <>
-              <Trash2 className='size-4' />
-              <Trans>Delete</Trans>
-            </>
-          }
+          confirmText={<Trans>Delete</Trans>}
+          icon={<Trash2 className='size-4' />}
           destructive
           handleConfirm={confirmDelete}
           isLoading={deleteMutation.isPending}

@@ -290,12 +290,8 @@ function PeopleLayoutInner() {
             })}
           </>
         }
-        confirmText={
-          <>
-            <Trash2 className='size-4' />
-            <Trans>Delete</Trans>
-          </>
-        }
+        confirmText={<Trans>Delete</Trans>}
+        icon={<Trash2 className='size-4' />}
         destructive
         handleConfirm={confirmDeleteBook}
         isLoading={deleteBookMutation.isPending}

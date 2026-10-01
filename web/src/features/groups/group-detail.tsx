@@ -316,12 +316,8 @@ export function GroupDetail() {
               from this group?
             </Trans>
           }
-          confirmText={
-            <>
-              <UserMinus className='size-4' />
-              <Trans>Remove member</Trans>
-            </>
-          }
+          confirmText={<Trans>Remove member</Trans>}
+          icon={<UserMinus className='size-4' />}
           destructive
           handleConfirm={confirmRemoveMember}
           isLoading={removeMemberMutation.isPending}
@@ -347,12 +343,8 @@ export function GroupDetail() {
           onOpenChange={setConfirmDeleteOpen}
           title={t`Delete group`}
           desc={t`Delete group "${group?.name}"? This cannot be undone.`}
-          confirmText={
-            <>
-              <Trash2 className='size-4' />
-              <Trans>Delete</Trans>
-            </>
-          }
+          confirmText={<Trans>Delete</Trans>}
+          icon={<Trash2 className='size-4' />}
           destructive
           isLoading={deleteMutation.isPending}
           handleConfirm={handleConfirmDelete}

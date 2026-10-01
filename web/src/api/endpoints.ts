@@ -2,20 +2,22 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { getAppPath } from '@mochi/web'
+import { getAppPath, isDomainEntityRouting } from '@mochi/web'
 
 // Class-level actions are addressed absolutely: on a profile URL
 // (/people/<entity>) the request layer's baseURL becomes /people/<entity>/-/,
 // and a relative "-/contacts" falls through to the SPA catch-all. Under domain
 // routing getAppPath() is empty and the baseURL already ends in "-/", so the
-// action is named relative to it.
-const app = getAppPath()
+// action is named relative to it. On a direct entity URL (/<entity>) the app
+// path is empty too, but only the app's own path reaches a class action, as
+// forums and feeds fall back to theirs.
+const app = getAppPath() || (isDomainEntityRouting() ? '' : '/people')
 const action = (name: string) => (app ? `${app}/-/${name}` : name)
 
 // Entity-scoped actions name their own entity, so they are absolute and do not
-// depend on which entity the page happens to have been loaded under. On a
-// direct entity URL (/<entity>) the app path is empty and the entity's own
-// path addresses them.
+// depend on which entity the page happens to have been loaded under. Under
+// domain routing the app path is empty and the entity's own path addresses
+// them.
 const person = (id: string, name: string) => `${app}/${id}/-/${name}`
 
 type Asset = 'avatar' | 'banner' | 'favicon' | 'style'

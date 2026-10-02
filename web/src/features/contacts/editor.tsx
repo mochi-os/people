@@ -26,6 +26,7 @@ import {
   getErrorMessage,
   naturalCompare,
   toastAction,
+  useLeaveGuard,
   usePageTitle,
 } from '@mochi/web'
 import {
@@ -87,6 +88,11 @@ export function ContactEditor({
 
   const [form, setForm] = useState<ContactForm>(emptyForm)
   const [book, setBook] = useState('')
+  // The editable properties and book the form was read with, which an edit is
+  // measured against. A new contact has none.
+  const [loaded, setLoaded] = useState<{ card: string; book: string } | null>(
+    null
+  )
   const [deleteOpen, setDeleteOpen] = useState(false)
   const [linkOpen, setLinkOpen] = useState(false)
   const [unfriendOpen, setUnfriendOpen] = useState(false)
@@ -191,6 +197,7 @@ export function ContactEditor({
     applied.current = { etag: contact.etag, card }
     setForm(formFromCard(contact.card))
     setBook(contact.book)
+    setLoaded({ card, book: contact.book })
   }, [contact])
 
   // A new contact goes in the book it was started from, else the default.
@@ -204,6 +211,32 @@ export function ContactEditor({
 
   const update = (changes: Partial<ContactForm>) =>
     setForm((current) => ({ ...current, ...changes }))
+
+  // A contact is unsaved once what a save would write differs from what was
+  // read; a new one, once any field is filled. The book a new contact starts
+  // in is chosen for it, so it is not an edit.
+  const written = propertiesFromForm(form)
+  const unsaved = id
+    ? loaded !== null &&
+      (JSON.stringify(written) !== loaded.card || book !== loaded.book)
+    : written.length > 0
+  const leaving = useLeaveGuard(unsaved)
+  // Shown wherever the guard can hold: a refetch that fails after an edit swaps
+  // the form for the error, and the edit is still there to lose.
+  const leaveDialog = (
+    <ConfirmDialog
+      open={leaving.asking}
+      onOpenChange={(open) => {
+        if (!open) leaving.stay()
+      }}
+      title={t`Discard changes?`}
+      desc=''
+      confirmText={t`Discard`}
+      icon={<X className='size-4' />}
+      destructive
+      handleConfirm={leaving.proceed}
+    />
+  )
 
   const save = async () => {
     const properties = propertiesFromForm(form)
@@ -229,6 +262,7 @@ export function ContactEditor({
           error: (error) => getErrorMessage(error, t`Failed to create contact`),
         })
       }
+      leaving.release()
       void navigate({ to: '/' })
     } catch (error) {
       // The card moved under us: show the server's own wording and reload the
@@ -249,6 +283,7 @@ export function ContactEditor({
         error: (error) => getErrorMessage(error, t`Failed to delete contact`),
       })
       setDeleteOpen(false)
+      leaving.release()
       void navigate({ to: '/' })
     } catch {
       // toastAction already showed error
@@ -294,6 +329,7 @@ export function ContactEditor({
               reset={() => query.refetch()}
             />
           </div>
+          {leaveDialog}
         </Main>
       </>
     )
@@ -577,6 +613,8 @@ export function ContactEditor({
           handleConfirm={confirmDelete}
           isLoading={deleteMutation.isPending}
         />
+
+        {leaveDialog}
       </Main>
     </>
   )

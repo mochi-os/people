@@ -15,10 +15,33 @@ const queries = vi.hoisted(() => ({
   books: {} as Record<string, unknown>,
 }))
 
-// The requests a save and an unfriend make.
+// The requests a save, a delete and an unfriend make.
 const mutations = vi.hoisted(() => ({
+  create: { isPending: false, mutateAsync: vi.fn() },
   update: { isPending: false, mutateAsync: vi.fn() },
+  delete: { isPending: false, mutateAsync: vi.fn() },
   remove: { isPending: false, mutateAsync: vi.fn() },
+}))
+
+type Block = (locations: {
+  current: { pathname: string }
+  next: { pathname: string }
+}) => boolean
+
+const away = {
+  current: { pathname: '/contacts/c1' },
+  next: { pathname: '/' },
+}
+
+// The router's blocker as the editor registers it, and whether each
+// navigation the editor makes would have been held at the moment it was made.
+const router = vi.hoisted(() => ({
+  block: null as Block | null,
+  blocked: false,
+  proceed: vi.fn(),
+  reset: vi.fn(),
+  navigate: vi.fn(),
+  held: [] as boolean[],
 }))
 
 vi.mock('@/hooks/useContacts', () => ({
@@ -27,12 +50,23 @@ vi.mock('@/hooks/useContacts', () => ({
   useContactsQuery: () => ({ data: { contacts: [], received: [], sent: [] } }),
   useInviteFriendMutation: () => idle,
   useRemoveFriendMutation: () => mutations.remove,
-  useCreateContactMutation: () => idle,
-  useDeleteContactMutation: () => idle,
+  useCreateContactMutation: () => mutations.create,
+  useDeleteContactMutation: () => mutations.delete,
   useUpdateContactMutation: () => mutations.update,
 }))
 vi.mock('./add-dialog', () => ({ AddContactDialog: () => null }))
-vi.mock('@tanstack/react-router', () => ({ useNavigate: () => vi.fn() }))
+vi.mock('@tanstack/react-router', () => ({
+  useNavigate: () => (options: unknown) => {
+    router.held.push(router.block!(away))
+    router.navigate(options)
+  },
+  useBlocker: (options: { shouldBlockFn: Block }) => {
+    router.block = options.shouldBlockFn
+    return router.blocked
+      ? { status: 'blocked', proceed: router.proceed, reset: router.reset }
+      : { status: 'idle' }
+  },
+}))
 
 const book = {
   id: 'b1',
@@ -90,8 +124,16 @@ function show(id?: string) {
 beforeEach(() => {
   queries.contact = loaded({ contact })
   queries.books = loaded({ books: [book] })
+  mutations.create.mutateAsync = vi.fn().mockResolvedValue({ contact })
   mutations.update.mutateAsync = vi.fn().mockResolvedValue({ contact })
+  mutations.delete.mutateAsync = vi.fn().mockResolvedValue({})
   mutations.remove.mutateAsync = vi.fn().mockResolvedValue({})
+  router.block = null
+  router.blocked = false
+  router.proceed.mockReset()
+  router.reset.mockReset()
+  router.navigate.mockReset()
+  router.held = []
 })
 
 function again(id?: string, start?: string) {
@@ -321,5 +363,82 @@ describe('ContactEditor', () => {
         screen.getByRole('combobox', { name: 'Address book' })
       ).toHaveTextContent('Work')
     )
+  })
+})
+
+describe('ContactEditor leaving', () => {
+  const name = () => screen.getByRole('textbox', { name: 'Name' })
+
+  it('lets a link away through while nothing is edited', () => {
+    show('c1')
+    expect(router.block!(away)).toBe(false)
+  })
+
+  it('holds a link away while an edit is unsaved', () => {
+    show('c1')
+    fireEvent.change(name(), { target: { value: 'Ada King' } })
+    expect(router.block!(away)).toBe(true)
+    fireEvent.change(name(), { target: { value: 'Ada' } })
+    expect(router.block!(away)).toBe(false)
+  })
+
+  it('asks before Cancel drops an edit', () => {
+    show('c1')
+    fireEvent.change(name(), { target: { value: 'Ada King' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Cancel' }))
+    expect(router.held).toEqual([true])
+  })
+
+  it('does not hold a new contact with nothing filled', async () => {
+    show()
+    // The default book is chosen for it, which is not an edit.
+    await waitFor(() =>
+      expect(
+        screen.getByRole('combobox', { name: 'Address book' })
+      ).toHaveTextContent('Contacts')
+    )
+    expect(router.block!(away)).toBe(false)
+  })
+
+  it('holds a new contact once a field is filled', () => {
+    show()
+    fireEvent.change(screen.getByRole('textbox', { name: 'Nickname' }), {
+      target: { value: 'Countess' },
+    })
+    expect(router.block!(away)).toBe(true)
+  })
+
+  it('leaves without asking after a save', async () => {
+    show('c1')
+    fireEvent.change(name(), { target: { value: 'Ada King' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }))
+    await waitFor(() => expect(router.navigate).toHaveBeenCalledTimes(1))
+    expect(router.held).toEqual([false])
+  })
+
+  it('leaves without asking after a new contact is created', async () => {
+    show()
+    fireEvent.change(name(), { target: { value: 'Grace' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }))
+    await waitFor(() => expect(router.navigate).toHaveBeenCalledTimes(1))
+    expect(mutations.create.mutateAsync).toHaveBeenCalledTimes(1)
+    expect(router.held).toEqual([false])
+  })
+
+  it('leaves without asking after a delete', async () => {
+    show('c1')
+    fireEvent.change(name(), { target: { value: 'Ada King' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Delete' }))
+    fireEvent.click(await screen.findByRole('button', { name: 'Delete' }))
+    await waitFor(() => expect(router.navigate).toHaveBeenCalledTimes(1))
+    expect(router.held).toEqual([false])
+  })
+
+  it('leaves once the edit is discarded', () => {
+    router.blocked = true
+    show('c1')
+    expect(screen.getByText('Discard changes?')).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('button', { name: 'Discard' }))
+    expect(router.proceed).toHaveBeenCalledTimes(1)
   })
 })

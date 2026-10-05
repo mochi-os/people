@@ -8,6 +8,8 @@ import { Trans, useLingui } from '@lingui/react/macro'
 import {
   DatePicker,
   Button,
+  Card,
+  CardContent,
   ConfirmDialog,
   Switch,
   DetailSkeleton,
@@ -367,166 +369,186 @@ export function ContactEditor({
             its scheme, in words the page cannot translate. */}
         <form
           noValidate
-          className='mx-auto w-full max-w-3xl divide-y p-3 sm:p-4'
+          className='mx-auto w-full max-w-3xl space-y-4'
           onSubmit={(event) => {
             event.preventDefault()
             void save()
           }}
         >
-          <section className='space-y-2 pb-4'>
-            <Field
-              id='contact-name'
-              label={t({ message: 'Name', context: 'person' })}
-            >
-              <Input
-                id='contact-name'
-                value={form.name}
-                onChange={(event) => update({ name: event.target.value })}
-              />
-            </Field>
-            <Field id='contact-given' label={t`Forename`}>
-              <Input
-                id='contact-given'
-                value={form.given}
-                onChange={(event) => update({ given: event.target.value })}
-              />
-            </Field>
-            <Field id='contact-family' label={t`Surname`}>
-              <Input
-                id='contact-family'
-                value={form.family}
-                onChange={(event) => update({ family: event.target.value })}
-              />
-            </Field>
-            <Field id='contact-nickname' label={t`Nickname`}>
-              <Input
-                id='contact-nickname'
-                value={form.nickname}
-                onChange={(event) => update({ nickname: event.target.value })}
-              />
-            </Field>
+          <section>
+            <Card>
+              <CardContent className='space-y-2'>
+                <Field
+                  id='contact-name'
+                  label={t({ message: 'Name', context: 'person' })}
+                >
+                  <Input
+                    id='contact-name'
+                    value={form.name}
+                    onChange={(event) => update({ name: event.target.value })}
+                  />
+                </Field>
+                <Field id='contact-given' label={t`Forename`}>
+                  <Input
+                    id='contact-given'
+                    value={form.given}
+                    onChange={(event) => update({ given: event.target.value })}
+                  />
+                </Field>
+                <Field id='contact-family' label={t`Surname`}>
+                  <Input
+                    id='contact-family'
+                    value={form.family}
+                    onChange={(event) => update({ family: event.target.value })}
+                  />
+                </Field>
+                <Field id='contact-nickname' label={t`Nickname`}>
+                  <Input
+                    id='contact-nickname'
+                    value={form.nickname}
+                    onChange={(event) =>
+                      update({ nickname: event.target.value })
+                    }
+                  />
+                </Field>
+              </CardContent>
+            </Card>
           </section>
 
-          <section className='space-y-4 py-4'>
-            <div className='flex flex-wrap justify-end gap-2'>
-              <AddButton
-                label={t`Add email`}
-                onClick={() =>
-                  update({ emails: [...form.emails, newTypedValue('home')] })
-                }
-              />
-              <AddButton
-                label={t`Add telephone`}
-                onClick={() =>
-                  update({ phones: [...form.phones, newTypedValue('mobile')] })
-                }
-              />
-              <AddButton
-                label={t`Add address`}
-                onClick={() =>
-                  update({ addresses: [...form.addresses, newAddress('home')] })
-                }
-              />
-            </div>
-            {form.emails.length > 0 && (
-              <div className='space-y-2'>
-                <TypedRows
-                  icon={Mail}
-                  label={t`Emails`}
-                  inputType='email'
-                  removeLabel={t`Remove email`}
-                  types={EMAIL_TYPES}
-                  values={form.emails}
-                  onChange={(emails) => update({ emails })}
-                />
-              </div>
-            )}
-            {form.phones.length > 0 && (
-              <div className='space-y-2'>
-                <TypedRows
-                  icon={Phone}
-                  label={t`Telephones`}
-                  inputType='tel'
-                  removeLabel={t`Remove telephone`}
-                  types={PHONE_TYPES}
-                  values={form.phones}
-                  onChange={(phones) => update({ phones })}
-                />
-              </div>
-            )}
-            {form.addresses.length > 0 && (
-              <div className='space-y-2'>
-                <AddressRows
-                  icon={MapPin}
-                  values={form.addresses}
-                  onChange={(addresses) => update({ addresses })}
-                />
-              </div>
-            )}
+          <section>
+            <Card>
+              <CardContent className='space-y-4'>
+                <div className='flex flex-wrap justify-end gap-2'>
+                  <AddButton
+                    label={t`Add email`}
+                    onClick={() =>
+                      update({
+                        emails: [...form.emails, newTypedValue('home')],
+                      })
+                    }
+                  />
+                  <AddButton
+                    label={t`Add telephone`}
+                    onClick={() =>
+                      update({
+                        phones: [...form.phones, newTypedValue('mobile')],
+                      })
+                    }
+                  />
+                  <AddButton
+                    label={t`Add address`}
+                    onClick={() =>
+                      update({
+                        addresses: [...form.addresses, newAddress('home')],
+                      })
+                    }
+                  />
+                </div>
+                {form.emails.length > 0 && (
+                  <div className='space-y-2'>
+                    <TypedRows
+                      icon={Mail}
+                      label={t`Emails`}
+                      inputType='email'
+                      removeLabel={t`Remove email`}
+                      types={EMAIL_TYPES}
+                      values={form.emails}
+                      onChange={(emails) => update({ emails })}
+                    />
+                  </div>
+                )}
+                {form.phones.length > 0 && (
+                  <div className='space-y-2'>
+                    <TypedRows
+                      icon={Phone}
+                      label={t`Telephones`}
+                      inputType='tel'
+                      removeLabel={t`Remove telephone`}
+                      types={PHONE_TYPES}
+                      values={form.phones}
+                      onChange={(phones) => update({ phones })}
+                    />
+                  </div>
+                )}
+                {form.addresses.length > 0 && (
+                  <div className='space-y-2'>
+                    <AddressRows
+                      icon={MapPin}
+                      values={form.addresses}
+                      onChange={(addresses) => update({ addresses })}
+                    />
+                  </div>
+                )}
+              </CardContent>
+            </Card>
           </section>
 
-          <section className='space-y-2 py-4'>
-            <Heading title={t`Details`} />
-            <Field id='contact-book' label={t`Address book`}>
-              <Select value={book} onValueChange={chooseBook}>
-                <SelectTrigger id='contact-book' className='w-full sm:w-72'>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {books.map((row) => (
-                    <SelectItem key={row.id} value={row.id}>
-                      {row.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </Field>
-            <Field id='contact-birthday' label={t`Birthday`}>
-              <DatePicker
-                id='contact-birthday'
-                className='w-48'
-                value={form.birthday}
-                onChange={(day) => update({ birthday: day })}
-              />
-            </Field>
-            <Field id='contact-organisation' label={t`Organisation`}>
-              <Input
-                id='contact-organisation'
-                value={form.organisation}
-                onChange={(event) =>
-                  update({ organisation: event.target.value })
-                }
-              />
-            </Field>
-            <Field
-              id='contact-title'
-              label={t({ message: 'Title', context: 'job title' })}
-            >
-              <Input
-                id='contact-title'
-                value={form.title}
-                onChange={(event) => update({ title: event.target.value })}
-              />
-            </Field>
-            <Field id='contact-url' label={t`URL`}>
-              <Input
-                id='contact-url'
-                type='url'
-                value={form.url}
-                onChange={(event) => update({ url: event.target.value })}
-              />
-            </Field>
-            <Field id='contact-note' label={t`Note`} top>
-              <Textarea
-                id='contact-note'
-                rows={3}
-                value={form.note}
-                onChange={(event) => update({ note: event.target.value })}
-              />
-            </Field>
+          <section>
+            <Card>
+              <CardContent className='space-y-2'>
+                <Heading title={t`Details`} />
+                <Field id='contact-book' label={t`Address book`}>
+                  <Select value={book} onValueChange={chooseBook}>
+                    <SelectTrigger id='contact-book' className='w-full sm:w-72'>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {books.map((row) => (
+                        <SelectItem key={row.id} value={row.id}>
+                          {row.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </Field>
+                <Field id='contact-birthday' label={t`Birthday`}>
+                  <DatePicker
+                    id='contact-birthday'
+                    className='w-48'
+                    value={form.birthday}
+                    onChange={(day) => update({ birthday: day })}
+                  />
+                </Field>
+                <Field id='contact-organisation' label={t`Organisation`}>
+                  <Input
+                    id='contact-organisation'
+                    value={form.organisation}
+                    onChange={(event) =>
+                      update({ organisation: event.target.value })
+                    }
+                  />
+                </Field>
+                <Field
+                  id='contact-title'
+                  label={t({ message: 'Title', context: 'job title' })}
+                >
+                  <Input
+                    id='contact-title'
+                    value={form.title}
+                    onChange={(event) => update({ title: event.target.value })}
+                  />
+                </Field>
+                <Field id='contact-url' label={t`URL`}>
+                  <Input
+                    id='contact-url'
+                    type='url'
+                    value={form.url}
+                    onChange={(event) => update({ url: event.target.value })}
+                  />
+                </Field>
+                <Field id='contact-note' label={t`Note`} top>
+                  <Textarea
+                    id='contact-note'
+                    rows={3}
+                    value={form.note}
+                    onChange={(event) => update({ note: event.target.value })}
+                  />
+                </Field>
+              </CardContent>
+            </Card>
           </section>
 
-          <div className='flex flex-wrap items-center justify-end gap-2 pt-4'>
+          <div className='flex flex-wrap items-center justify-end gap-2'>
             {id ? (
               <Button
                 type='button'
@@ -623,9 +645,10 @@ export function ContactEditor({
 // The label column, which the type of an email, telephone or address also
 // sits in, so every value starts on the same line.
 const COLUMNS = 'grid gap-1 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-4'
-// A typed row keeps its type beside the value on a narrow screen too.
+// Below sm the type sits on its own line above the value: beside it, the
+// type select and the remove button leave an email about 70 px to be typed in.
 const TYPED =
-  'flex items-center gap-2 sm:grid sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-4'
+  'grid gap-2 sm:grid-cols-[9rem_minmax(0,1fr)] sm:items-center sm:gap-4'
 
 /** A section's heading line. */
 function Heading({ title }: { title: string }) {

@@ -114,7 +114,7 @@ describe('ConnectDialog', () => {
       .mockResolvedValue({ tokens, username: 'someone@example.test' })
   })
 
-  it('opens on the devices, with the server, the address and the username', async () => {
+  it('opens on the devices, with the address and the username and no bare server beside them', async () => {
     show()
     expect(await screen.findByText('Phone')).toBeInTheDocument()
     expect(
@@ -125,6 +125,7 @@ describe('ConnectDialog', () => {
       screen.getByRole('button', { name: 'Add device' })
     ).toBeInTheDocument()
     expect(screen.queryByLabelText('Device name')).toBeNull()
+    expect(screen.queryByText('Server')).toBeNull()
   })
 
   it('lists the devices by name', async () => {

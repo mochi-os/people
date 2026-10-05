@@ -67,8 +67,7 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
     }
   }, [open, resetCreate])
 
-  const server = window.location.origin
-  const address = `${server}${getAppPath()}/carddav/`
+  const address = `${window.location.origin}${getAppPath()}/carddav/`
 
   const create = async () => {
     const trimmed = name.trim()
@@ -107,11 +106,11 @@ export function ConnectDialog({ onOpenChange, open }: ConnectDialogProps) {
   // A new device's own answer covers a list that has not come back.
   const account = data?.username || username
 
-  // Only the password is secret: the server, the address and the username
-  // are the same for every device, so they stay on show.
+  // Only the password is secret: the address and the username are the same
+  // for every device, so they stay on show. The address serves where a
+  // client asks for a server as well, so no bare server is offered beside it.
   const details = (
     <>
-      <Detail label={t`Server`} value={server} />
       <Detail label={t`Address book URL`} value={address} />
       {account && <Detail label={t`Username`} value={account} />}
     </>

@@ -280,11 +280,11 @@ export function Contacts({
                           <HighlightText text={contact.name} query={search} />
                         </span>
                         {contact.friend ? (
-                          <Badge variant='secondary'>
+                          <Badge variant='secondary' className='shrink-0'>
                             <Trans>Friend</Trans>
                           </Badge>
                         ) : contact.person ? (
-                          <Badge variant='outline'>
+                          <Badge variant='outline' className='shrink-0'>
                             <Trans>On Mochi</Trans>
                           </Badge>
                         ) : null}
@@ -295,7 +295,10 @@ export function Contacts({
                         </span>
                       ) : null}
                     </div>
-                    <div className='flex items-center gap-2'>
+                    {/* Below sm three labelled buttons leave the name a
+                        letter or two. Message keeps its icon, and Edit
+                        moves into the row's menu. */}
+                    <div className='flex shrink-0 items-center gap-2'>
                       {contact.friend ? (
                         <Button
                           variant='outline'
@@ -303,12 +306,15 @@ export function Contacts({
                           onClick={() => startChat(contact)}
                         >
                           <MessageSquare className='h-4 w-4' />
-                          <Trans context='verb'>Message</Trans>
+                          <span className='max-sm:sr-only'>
+                            <Trans context='verb'>Message</Trans>
+                          </span>
                         </Button>
                       ) : null}
                       <Button
                         variant='outline'
                         size='sm'
+                        className='max-sm:hidden'
                         onClick={() => edit(contact)}
                       >
                         <Pencil className='h-4 w-4' />
@@ -324,6 +330,13 @@ export function Contacts({
                           />
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align='end'>
+                          <DropdownMenuItem
+                            className='sm:hidden'
+                            onSelect={() => edit(contact)}
+                          >
+                            <Pencil className='size-4' />
+                            <Trans>Edit</Trans>
+                          </DropdownMenuItem>
                           {contact.person && !contact.friend && !invited ? (
                             <DropdownMenuItem onSelect={() => invite(contact)}>
                               <Send className='size-4' />

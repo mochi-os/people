@@ -623,10 +623,9 @@ export function ContactEditor({
 // The label column, which the type of an email, telephone or address also
 // sits in, so every value starts on the same line.
 const COLUMNS = 'grid gap-1 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-4'
-// Below sm the type sits on its own line above the value: beside it, the
-// type select and the remove button leave an email about 70 px to be typed in.
+// A typed row keeps its type beside the value on a narrow screen too.
 const TYPED =
-  'grid gap-2 sm:grid-cols-[9rem_minmax(0,1fr)] sm:items-center sm:gap-4'
+  'flex items-center gap-2 sm:grid sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-4'
 
 /** A section's heading line. */
 function Heading({ title }: { title: string }) {

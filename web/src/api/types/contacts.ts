@@ -28,7 +28,7 @@ export interface Contact {
 
 // A single contact with its card, as contacts/get and the write actions
 // return it.
-interface ContactFull extends Contact {
+export interface ContactFull extends Contact {
   card: Property[]
   etag: string
 }
@@ -58,6 +58,9 @@ export interface GetContactsResponse {
 
 export interface GetContactResponse {
   contact: ContactFull
+  // A merge preview: the contact absorbed into this one, whose card holds
+  // both cards' details.
+  source?: ContactFull
 }
 
 export interface CreateContactRequest {
@@ -73,6 +76,8 @@ export interface UpdateContactRequest {
   etag?: string
   properties?: Property[]
   book?: string
+  // The contact merged into this one and deleted, as it was previewed.
+  source?: { id: string; etag?: string }
 }
 
 export interface Book {

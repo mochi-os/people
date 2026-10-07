@@ -78,6 +78,13 @@ export const useContactQuery = (
     ...options,
   })
 
+// The merge of two contacts as it would be saved, read without writing.
+export const useMergePreviewMutation = () =>
+  useMutation({
+    mutationFn: ({ contact, source }: { contact: string; source: string }) =>
+      contactsApi.get(contact, source),
+  })
+
 export const useBooksQuery = () =>
   useQuery<GetBooksResponse>({
     queryKey: contactKeys.books(),
@@ -148,6 +155,15 @@ export const useUpdateContactMutation = (
       queryClient.invalidateQueries({
         queryKey: contactKeys.one(variables.contact),
       })
+      // A merge writes to whichever contact survives and deletes the other.
+      if (variables.source) {
+        queryClient.invalidateQueries({
+          queryKey: contactKeys.one(data.contact.id),
+        })
+        queryClient.removeQueries({
+          queryKey: contactKeys.one(variables.source.id),
+        })
+      }
       onSuccess?.(data, variables, context, mutation)
     },
     ...rest,

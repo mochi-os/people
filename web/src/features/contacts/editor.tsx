@@ -24,6 +24,7 @@ import {
   cn,
   getErrorMessage,
   naturalCompare,
+  toast,
   toastAction,
   useLeaveGuard,
   usePageTitle,
@@ -34,6 +35,7 @@ import {
   Copy,
   Mail,
   MapPin,
+  Merge,
   Phone,
   Plus,
   Trash2,
@@ -41,6 +43,7 @@ import {
   X,
   type LucideIcon,
 } from 'lucide-react'
+import type { ContactFull } from '@/api/types/contacts'
 import {
   ADDRESS_TYPES,
   EMAIL_TYPES,
@@ -63,10 +66,12 @@ import {
   useRemoveFriendMutation,
   useCreateContactMutation,
   useDeleteContactMutation,
+  useMergePreviewMutation,
   useUpdateContactMutation,
 } from '@/hooks/useContacts'
 import { AddContactDialog } from './add-dialog'
 import { BirthdayField } from './birthday'
+import { MergeDialog } from './merge-dialog'
 
 function statusOf(error: unknown): number | undefined {
   return typeof error === 'object' && error !== null && 'status' in error
@@ -88,12 +93,22 @@ export function ContactEditor({
   // this one; the server starts it from this card, so what the form does not
   // show comes with it.
   const [copying, setCopying] = useState(false)
+  // A merge turns the editor into one for the contact that survives, filled
+  // with both cards' details as the server would combine them; saving writes
+  // that contact and deletes the other.
+  const [merge, setMerge] = useState<{
+    contact: ContactFull
+    source: ContactFull
+  } | null>(null)
+  const [mergeOpen, setMergeOpen] = useState(false)
   const editing = Boolean(id) && !copying
   const heading = copying
     ? t`Copy contact`
-    : id
-      ? t`Edit contact`
-      : t`New contact`
+    : merge
+      ? t`Merge contacts`
+      : id
+        ? t`Edit contact`
+        : t`New contact`
   usePageTitle(heading)
 
   const [form, setForm] = useState<ContactForm>(emptyForm)
@@ -108,7 +123,7 @@ export function ContactEditor({
   const [linkOpen, setLinkOpen] = useState(false)
   const [unfriendOpen, setUnfriendOpen] = useState(false)
 
-  const query = useContactQuery(id ?? '', { enabled: editing })
+  const query = useContactQuery(id ?? '', { enabled: editing && !merge })
   const contact = query.data?.contact
   const { data: booksData } = useBooksQuery()
   const books = [...(booksData?.books ?? [])].sort((a, b) =>
@@ -118,6 +133,7 @@ export function ContactEditor({
   const createMutation = useCreateContactMutation()
   const updateMutation = useUpdateContactMutation()
   const deleteMutation = useDeleteContactMutation()
+  const previewMutation = useMergePreviewMutation()
   const inviteMutation = useInviteFriendMutation()
   const removeFriendMutation = useRemoveFriendMutation()
   const saving = createMutation.isPending || updateMutation.isPending
@@ -227,10 +243,13 @@ export function ContactEditor({
   // read; a new one, once any field is filled. The book a new contact starts
   // in is chosen for it, so it is not an edit.
   const written = propertiesFromForm(form)
-  const unsaved = id
-    ? loaded !== null &&
-      (JSON.stringify(written) !== loaded.card || book !== loaded.book)
-    : written.length > 0
+  // A merge is unsaved until it is saved: leaving drops it.
+  const unsaved = merge
+    ? true
+    : id
+      ? loaded !== null &&
+        (JSON.stringify(written) !== loaded.card || book !== loaded.book)
+      : written.length > 0
   const leaving = useLeaveGuard(unsaved)
   // Shown wherever the guard can hold: a refetch that fails after an edit swaps
   // the form for the error, and the edit is still there to lose.
@@ -255,7 +274,23 @@ export function ContactEditor({
   const save = async () => {
     const properties = propertiesFromForm(form)
     try {
-      if (editing && id) {
+      if (merge) {
+        await toastAction(
+          updateMutation.mutateAsync({
+            contact: merge.contact.id,
+            etag: merge.contact.etag,
+            source: { id: merge.source.id, etag: merge.source.etag },
+            properties,
+            book,
+          }),
+          {
+            loading: t`Merging contacts...`,
+            success: t`Contacts merged`,
+            error: (error) =>
+              getErrorMessage(error, t`Failed to merge contacts`),
+          }
+        )
+      } else if (editing && id) {
         await toastAction(
           updateMutation.mutateAsync({
             contact: id,
@@ -288,9 +323,11 @@ export function ContactEditor({
       void navigate({ to: '/' })
     } catch (error) {
       // The card moved under us: show the server's own wording and reload the
-      // contact so the form reflects what is actually stored.
+      // contact so the form reflects what is actually stored. A merge read
+      // from cards since changed is dropped, to be made again from them.
       if (statusOf(error) === 412) {
         reloading.current = true
+        setMerge(null)
         void query.refetch()
       }
     }
@@ -308,6 +345,27 @@ export function ContactEditor({
         name.select()
       }
     })
+  }
+
+  // The chosen contact and this one, combined as the server would, fill the
+  // form in place of this card. The survivor is whichever is linked to a
+  // Mochi person, so it need not be the contact that was opened.
+  const pickMerge = async (source: string) => {
+    if (!id) return
+    try {
+      const data = await previewMutation.mutateAsync({ contact: id, source })
+      if (!data.source) return
+      setMerge({ contact: data.contact, source: data.source })
+      setForm(formFromCard(data.contact.card))
+      setBook(data.contact.book)
+      setMergeOpen(false)
+      requestAnimationFrame(() => {
+        const name = document.getElementById('contact-name')
+        if (name instanceof HTMLInputElement) name.focus()
+      })
+    } catch (error) {
+      toast.error(getErrorMessage(error, t`Failed to merge contacts`))
+    }
   }
 
   const confirmDelete = async () => {
@@ -379,7 +437,7 @@ export function ContactEditor({
         actions={
           // The header renders its actions twice, one copy per breakpoint,
           // so the switch is named by the label around it, not by an id.
-          contact && !copying ? (
+          contact && !copying && !merge ? (
             <Label className='flex items-center gap-3'>
               <span className='text-end'>
                 <Trans>Mochi friend</Trans>
@@ -563,7 +621,7 @@ export function ContactEditor({
           </section>
 
           <div className='flex flex-wrap items-center justify-end gap-2 pt-4'>
-            {editing ? (
+            {editing && !merge ? (
               <>
                 <Button
                   type='button'
@@ -573,14 +631,18 @@ export function ContactEditor({
                   <Trash2 className='size-4' />
                   <Trans>Delete</Trans>
                 </Button>
+                <Button type='button' variant='outline' onClick={copy}>
+                  <Copy className='size-4' />
+                  <Trans>Copy</Trans>
+                </Button>
                 <Button
                   type='button'
                   variant='outline'
                   className='me-auto'
-                  onClick={copy}
+                  onClick={() => setMergeOpen(true)}
                 >
-                  <Copy className='size-4' />
-                  <Trans>Copy</Trans>
+                  <Merge className='size-4' />
+                  <Trans context='combine'>Merge</Trans>
                 </Button>
               </>
             ) : null}
@@ -601,6 +663,21 @@ export function ContactEditor({
             </Button>
           </div>
         </form>
+
+        {id && (
+          <MergeDialog
+            open={mergeOpen}
+            onOpenChange={setMergeOpen}
+            contacts={contactsData?.contacts ?? []}
+            exclude={id}
+            pending={
+              previewMutation.isPending
+                ? (previewMutation.variables?.source ?? null)
+                : null
+            }
+            onPick={(source) => void pickMerge(source)}
+          />
+        )}
 
         {contact && !contact.person && (
           <AddContactDialog

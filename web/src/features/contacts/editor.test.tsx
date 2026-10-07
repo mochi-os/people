@@ -13,6 +13,8 @@ const idle = { isPending: false, mutateAsync: vi.fn() }
 const queries = vi.hoisted(() => ({
   contact: {} as Record<string, unknown>,
   books: {} as Record<string, unknown>,
+  // The contacts the merge list offers.
+  contacts: [] as Record<string, unknown>[],
   // Whether the editor last asked for the contact to be fetched.
   enabled: undefined as boolean | undefined,
 }))
@@ -23,6 +25,11 @@ const mutations = vi.hoisted(() => ({
   update: { isPending: false, mutateAsync: vi.fn() },
   delete: { isPending: false, mutateAsync: vi.fn() },
   remove: { isPending: false, mutateAsync: vi.fn() },
+  preview: {
+    isPending: false,
+    variables: undefined as unknown,
+    mutateAsync: vi.fn(),
+  },
 }))
 
 type Block = (locations: {
@@ -52,23 +59,37 @@ vi.mock('@/hooks/useContacts', () => ({
     return queries.contact
   },
   useBooksQuery: () => queries.books,
-  useContactsQuery: () => ({ data: { contacts: [], received: [], sent: [] } }),
+  useContactsQuery: () => ({
+    data: { contacts: queries.contacts, received: [], sent: [] },
+  }),
   useInviteFriendMutation: () => idle,
   useRemoveFriendMutation: () => mutations.remove,
   useCreateContactMutation: () => mutations.create,
   useDeleteContactMutation: () => mutations.delete,
   useUpdateContactMutation: () => mutations.update,
+  useMergePreviewMutation: () => mutations.preview,
 }))
 vi.mock('./add-dialog', () => ({ AddContactDialog: () => null }))
 // The messages each save shows, as the editor hands them to the toast.
 const toasts = vi.hoisted(() => [] as { success?: unknown }[])
-vi.mock('@mochi/web', async (actual) => ({
-  ...(await actual<typeof import('@mochi/web')>()),
-  toastAction: (promise: Promise<unknown>, messages: { success?: unknown }) => {
-    toasts.push(messages)
-    return promise
-  },
-}))
+const failures = vi.hoisted(() => [] as unknown[])
+vi.mock('@mochi/web', async (actual) => {
+  const real = await actual<typeof import('@mochi/web')>()
+  return {
+    ...real,
+    toast: {
+      ...real.toast,
+      error: (message: unknown) => failures.push(message),
+    },
+    toastAction: (
+      promise: Promise<unknown>,
+      messages: { success?: unknown }
+    ) => {
+      toasts.push(messages)
+      return promise
+    },
+  }
+})
 vi.mock('@tanstack/react-router', () => ({
   useNavigate: () => (options: unknown) => {
     router.held.push(router.block!(away))
@@ -172,6 +193,9 @@ beforeEach(() => {
   mutations.update.mutateAsync = vi.fn().mockResolvedValue({ contact })
   mutations.delete.mutateAsync = vi.fn().mockResolvedValue({})
   mutations.remove.mutateAsync = vi.fn().mockResolvedValue({})
+  mutations.preview.mutateAsync = vi.fn()
+  queries.contacts = []
+  failures.length = 0
   router.block = null
   router.blocked = false
   router.proceed.mockReset()
@@ -628,5 +652,136 @@ describe('ContactEditor leaving', () => {
     expect(screen.getByText('Discard changes?')).toBeInTheDocument()
     fireEvent.click(screen.getByRole('button', { name: 'Discard' }))
     expect(router.proceed).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe('ContactEditor merging', () => {
+  // The opened card is plain; the one picked is linked to a Mochi person, so
+  // it survives and the opened one is absorbed into it.
+  const linked = {
+    ...contact,
+    id: 'c2',
+    person: 'p1',
+    name: 'Ada Byron',
+    etag: 'e2',
+  }
+  const merged = {
+    ...linked,
+    card: [
+      { name: 'FN', params: {}, value: 'Ada Byron' },
+      { name: 'EMAIL', params: {}, value: 'ada@example.com' },
+      { name: 'EMAIL', params: {}, value: 'byron@example.com' },
+    ],
+  }
+  const name = () => screen.getByRole('textbox', { name: 'Name' })
+  const open = () =>
+    fireEvent.click(screen.getByRole('button', { name: 'Merge' }))
+
+  // The update the merge's Save sent.
+  function sent() {
+    const calls = mutations.update.mutateAsync.mock.calls
+    return calls[calls.length - 1]?.[0] as {
+      contact: string
+      etag?: string
+      source?: { id: string; etag?: string }
+      properties: { name: string; value: string }[]
+      book: string
+    }
+  }
+
+  async function merge() {
+    queries.contacts = [contact, linked]
+    mutations.preview.mutateAsync = vi
+      .fn()
+      .mockResolvedValue({ contact: merged, source: contact })
+    show('c1')
+    open()
+    fireEvent.click(await screen.findByRole('button', { name: /Ada Byron/ }))
+    await waitFor(() => expect(name()).toHaveValue('Ada Byron'))
+  }
+
+  it('offers every other contact, not the one being edited', async () => {
+    queries.contacts = [contact, linked]
+    show('c1')
+    open()
+    expect(
+      await screen.findByRole('button', { name: /Ada Byron/ })
+    ).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /^Ada$/ })).toBeNull()
+  })
+
+  it('fills the form with the merged card of the contact that survives', async () => {
+    await merge()
+    expect(mutations.preview.mutateAsync).toHaveBeenCalledWith({
+      contact: 'c1',
+      source: 'c2',
+    })
+    expect(screen.getAllByText('Merge contacts').length).toBeGreaterThan(0)
+    expect(screen.getAllByDisplayValue('byron@example.com').length).toBe(1)
+  })
+
+  it('saves the merge into the survivor, naming the contact it absorbs', async () => {
+    await merge()
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }))
+    await waitFor(() =>
+      expect(mutations.update.mutateAsync).toHaveBeenCalledTimes(1)
+    )
+    expect(mutations.create.mutateAsync).not.toHaveBeenCalled()
+    const request = sent()
+    expect(request.contact).toBe('c2')
+    expect(request.etag).toBe('e2')
+    expect(request.source).toEqual({ id: 'c1', etag: 'e1' })
+    expect(request.book).toBe('b1')
+    expect(request.properties).toContainEqual(
+      expect.objectContaining({ name: 'EMAIL', value: 'byron@example.com' })
+    )
+    expect(toasts[toasts.length - 1]?.success).toBe('Contacts merged')
+  })
+
+  it('offers no friend switch, Delete, Copy or second Merge while merging', async () => {
+    await merge()
+    expect(screen.queryAllByRole('switch', { name: /Mochi friend/ })).toEqual(
+      []
+    )
+    expect(screen.queryByRole('button', { name: 'Delete' })).toBeNull()
+    expect(screen.queryByRole('button', { name: 'Copy' })).toBeNull()
+    expect(screen.queryByRole('button', { name: 'Merge' })).toBeNull()
+  })
+
+  it('stops following the opened contact, which the merge may delete', async () => {
+    await merge()
+    expect(queries.enabled).toBe(false)
+  })
+
+  it('holds a link away from a merge not yet saved', async () => {
+    await merge()
+    expect(router.block!(away)).toBe(true)
+  })
+
+  it('stays on the contact and says why when the merge is refused', async () => {
+    queries.contacts = [contact, linked]
+    mutations.preview.mutateAsync = vi
+      .fn()
+      .mockRejectedValue(new Error('Both contacts are linked'))
+    show('c1')
+    open()
+    fireEvent.click(await screen.findByRole('button', { name: /Ada Byron/ }))
+    await waitFor(() => expect(failures).toEqual(['Both contacts are linked']))
+    expect(screen.getAllByText('Edit contact').length).toBeGreaterThan(0)
+    // The list stays open to pick another; the form behind it is untouched.
+    expect(screen.getByRole('button', { name: /Ada Byron/ })).toBeEnabled()
+    expect(screen.getByDisplayValue('Ada')).toBeInTheDocument()
+  })
+
+  it('drops the merge and reloads when a card changed since it was read', async () => {
+    await merge()
+    mutations.update.mutateAsync = vi
+      .fn()
+      .mockRejectedValue(Object.assign(new Error('changed'), { status: 412 }))
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }))
+    await waitFor(() =>
+      expect(screen.getAllByText('Edit contact').length).toBeGreaterThan(0)
+    )
+    expect(queries.enabled).toBe(true)
   })
 })

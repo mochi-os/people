@@ -31,6 +31,7 @@ import {
 import {
   BookUser,
   Check,
+  Copy,
   Mail,
   MapPin,
   Phone,
@@ -83,7 +84,16 @@ export function ContactEditor({
 } = {}) {
   const { t } = useLingui()
   const navigate = useNavigate()
-  const heading = id ? t`Edit contact` : t`New contact`
+  // A copy turns the editor, in place, into one for a new contact filled from
+  // this one; the server starts it from this card, so what the form does not
+  // show comes with it.
+  const [copying, setCopying] = useState(false)
+  const editing = Boolean(id) && !copying
+  const heading = copying
+    ? t`Copy contact`
+    : id
+      ? t`Edit contact`
+      : t`New contact`
   usePageTitle(heading)
 
   const [form, setForm] = useState<ContactForm>(emptyForm)
@@ -98,7 +108,7 @@ export function ContactEditor({
   const [linkOpen, setLinkOpen] = useState(false)
   const [unfriendOpen, setUnfriendOpen] = useState(false)
 
-  const query = useContactQuery(id ?? '', { enabled: Boolean(id) })
+  const query = useContactQuery(id ?? '', { enabled: editing })
   const contact = query.data?.contact
   const { data: booksData } = useBooksQuery()
   const books = [...(booksData?.books ?? [])].sort((a, b) =>
@@ -245,7 +255,7 @@ export function ContactEditor({
   const save = async () => {
     const properties = propertiesFromForm(form)
     try {
-      if (id) {
+      if (editing && id) {
         await toastAction(
           updateMutation.mutateAsync({
             contact: id,
@@ -260,11 +270,19 @@ export function ContactEditor({
           }
         )
       } else {
-        await toastAction(createMutation.mutateAsync({ properties, book }), {
-          loading: t`Creating contact...`,
-          success: t`Contact created`,
-          error: (error) => getErrorMessage(error, t`Failed to create contact`),
-        })
+        await toastAction(
+          createMutation.mutateAsync({
+            properties,
+            book,
+            source: copying ? id : undefined,
+          }),
+          {
+            loading: t`Creating contact...`,
+            success: copying ? t`Contact copied` : t`Contact created`,
+            error: (error) =>
+              getErrorMessage(error, t`Failed to create contact`),
+          }
+        )
       }
       leaving.release()
       void navigate({ to: '/' })
@@ -276,6 +294,20 @@ export function ContactEditor({
         void query.refetch()
       }
     }
+  }
+
+  // The edits not yet saved go into the copy, and the original is left as it
+  // is stored. The cursor goes to the name, since the button that was clicked
+  // has gone with the Delete beside it.
+  const copy = () => {
+    setCopying(true)
+    requestAnimationFrame(() => {
+      const name = document.getElementById('contact-name')
+      if (name instanceof HTMLInputElement) {
+        name.focus()
+        name.select()
+      }
+    })
   }
 
   const confirmDelete = async () => {
@@ -347,7 +379,7 @@ export function ContactEditor({
         actions={
           // The header renders its actions twice, one copy per breakpoint,
           // so the switch is named by the label around it, not by an id.
-          contact ? (
+          contact && !copying ? (
             <Label className='flex items-center gap-3'>
               <span className='text-end'>
                 <Trans>Mochi friend</Trans>
@@ -531,16 +563,26 @@ export function ContactEditor({
           </section>
 
           <div className='flex flex-wrap items-center justify-end gap-2 pt-4'>
-            {id ? (
-              <Button
-                type='button'
-                variant='outline'
-                className='me-auto'
-                onClick={() => setDeleteOpen(true)}
-              >
-                <Trash2 className='size-4' />
-                <Trans>Delete</Trans>
-              </Button>
+            {editing ? (
+              <>
+                <Button
+                  type='button'
+                  variant='outline'
+                  onClick={() => setDeleteOpen(true)}
+                >
+                  <Trash2 className='size-4' />
+                  <Trans>Delete</Trans>
+                </Button>
+                <Button
+                  type='button'
+                  variant='outline'
+                  className='me-auto'
+                  onClick={copy}
+                >
+                  <Copy className='size-4' />
+                  <Trans>Copy</Trans>
+                </Button>
+              </>
             ) : null}
             <Button
               type='button'

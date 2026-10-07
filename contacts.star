@@ -625,11 +625,27 @@ def action_contact_create(a):
 	if body == None:
 		a.error.label(400, "errors.invalid_properties")
 		return
-	card = card_merge([], body.get("properties", []))
+	# A copy names the contact it was made from and starts from that card, so
+	# what the editor does not show - a photo, a client's own fields, the
+	# labels it groups values under - comes with it, while the editor's own
+	# properties replace the card's. The card's UID stays with the original.
+	base = []
+	source = body.get("source", "")
+	if source:
+		if type(source) != "string":
+			a.error.label(400, "errors.missing_contact_id")
+			return
+		original = contact_get(identity, source)
+		if not original:
+			a.error.label(404, "errors.contact_not_found")
+			return
+		base = [p for p in card_decode(original["card"]) if type(p) == "dict" and p.get("name") != "UID"]
+	card = card_merge(base, body.get("properties", []))
 	if card == None:
 		a.error.label(400, "errors.invalid_properties")
 		return
-	if len(card_encode(card)) > _CARD_MAXIMUM:
+	# A copied card may carry the photo a phone stored, as an updated one may.
+	if len(card_encode(card)) > (_DAV_CARD_MAXIMUM if source else _CARD_MAXIMUM):
 		a.error.label(400, "errors.contact_too_large")
 		return
 	person = body.get("person", "")

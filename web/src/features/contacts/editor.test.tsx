@@ -13,6 +13,8 @@ const idle = { isPending: false, mutateAsync: vi.fn() }
 const queries = vi.hoisted(() => ({
   contact: {} as Record<string, unknown>,
   books: {} as Record<string, unknown>,
+  // Whether the editor last asked for the contact to be fetched.
+  enabled: undefined as boolean | undefined,
 }))
 
 // The requests a save, a delete and an unfriend make.
@@ -45,7 +47,10 @@ const router = vi.hoisted(() => ({
 }))
 
 vi.mock('@/hooks/useContacts', () => ({
-  useContactQuery: () => queries.contact,
+  useContactQuery: (_: string, options?: { enabled?: boolean }) => {
+    queries.enabled = options?.enabled
+    return queries.contact
+  },
   useBooksQuery: () => queries.books,
   useContactsQuery: () => ({ data: { contacts: [], received: [], sent: [] } }),
   useInviteFriendMutation: () => idle,
@@ -55,6 +60,15 @@ vi.mock('@/hooks/useContacts', () => ({
   useUpdateContactMutation: () => mutations.update,
 }))
 vi.mock('./add-dialog', () => ({ AddContactDialog: () => null }))
+// The messages each save shows, as the editor hands them to the toast.
+const toasts = vi.hoisted(() => [] as { success?: unknown }[])
+vi.mock('@mochi/web', async (actual) => ({
+  ...(await actual<typeof import('@mochi/web')>()),
+  toastAction: (promise: Promise<unknown>, messages: { success?: unknown }) => {
+    toasts.push(messages)
+    return promise
+  },
+}))
 vi.mock('@tanstack/react-router', () => ({
   useNavigate: () => (options: unknown) => {
     router.held.push(router.block!(away))
@@ -451,6 +465,92 @@ describe('ContactEditor', () => {
         screen.getByRole('combobox', { name: 'Address book' })
       ).toHaveTextContent('Work')
     )
+  })
+})
+
+describe('ContactEditor copying', () => {
+  const name = () => screen.getByRole('textbox', { name: 'Name' })
+  const copy = () =>
+    fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
+
+  // The create request the copy's Save sent.
+  function created() {
+    const calls = mutations.create.mutateAsync.mock.calls
+    return calls[calls.length - 1]?.[0] as {
+      properties: { name: string; value: string }[]
+      book: string
+      source?: string
+    }
+  }
+
+  it('saves a copy as a new contact in the same book, made from the original', async () => {
+    queries.contact = loaded({
+      contact: {
+        ...contact,
+        card: [
+          ...contact.card,
+          { name: 'EMAIL', params: {}, value: 'ada@example.com' },
+        ],
+      },
+    })
+    show('c1')
+    copy()
+    expect(screen.getAllByText('Copy contact').length).toBeGreaterThan(0)
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }))
+    await waitFor(() =>
+      expect(mutations.create.mutateAsync).toHaveBeenCalledTimes(1)
+    )
+    expect(mutations.update.mutateAsync).not.toHaveBeenCalled()
+    expect(toasts[toasts.length - 1]?.success).toBe('Contact copied')
+    const sent = created()
+    expect(sent.source).toBe('c1')
+    expect(sent.book).toBe('b1')
+    expect(sent.properties).toContainEqual(
+      expect.objectContaining({ name: 'FN', value: 'Ada' })
+    )
+    expect(sent.properties).toContainEqual(
+      expect.objectContaining({ name: 'EMAIL', value: 'ada@example.com' })
+    )
+  })
+
+  it('carries edits not yet saved into the copy', async () => {
+    show('c1')
+    fireEvent.change(name(), { target: { value: 'Ada Lovelace' } })
+    copy()
+    expect(name()).toHaveValue('Ada Lovelace')
+    await waitFor(() => expect(name()).toHaveFocus())
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }))
+    await waitFor(() =>
+      expect(mutations.create.mutateAsync).toHaveBeenCalledTimes(1)
+    )
+    expect(created().properties).toContainEqual(
+      expect.objectContaining({ name: 'FN', value: 'Ada Lovelace' })
+    )
+  })
+
+  it('stops following the original once copied', () => {
+    show('c1')
+    expect(queries.enabled).toBe(true)
+    copy()
+    expect(queries.enabled).toBe(false)
+  })
+
+  it('offers no friend switch, Delete or second Copy on a copy', () => {
+    show('c1')
+    copy()
+    expect(screen.queryAllByRole('switch', { name: /Mochi friend/ })).toEqual(
+      []
+    )
+    expect(screen.queryByRole('button', { name: 'Delete' })).toBeNull()
+    expect(screen.queryByRole('button', { name: 'Copy' })).toBeNull()
+  })
+
+  it('holds a link away from a copy that carries an edit, and not from an untouched one', () => {
+    show('c1')
+    copy()
+    expect(router.block!(away)).toBe(false)
+    fireEvent.change(name(), { target: { value: 'Ada King' } })
+    expect(router.block!(away)).toBe(true)
   })
 })
 

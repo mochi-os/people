@@ -64,6 +64,8 @@ export interface CreateContactRequest {
   properties: Property[]
   person?: string
   book?: string
+  // The contact a copy is made from, whose card the copy starts from.
+  source?: string
 }
 
 export interface UpdateContactRequest {

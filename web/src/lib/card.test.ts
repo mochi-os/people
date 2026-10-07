@@ -50,6 +50,18 @@ describe('formFromCard', () => {
     expect(form.birthday).toBe('--0412')
   })
 
+  it("reads Apple's placeholder year as a birthday without its year", () => {
+    const apple = formFromCard([
+      property('BDAY', '1604-04-12', { 'X-APPLE-OMIT-YEAR': ['1604'] }),
+    ])
+    expect(apple.birthday).toBe('--0412')
+    // A real year is a year, whatever the parameter says.
+    const real = formFromCard([
+      property('BDAY', '1985-04-12', { 'X-APPLE-OMIT-YEAR': ['1604'] }),
+    ])
+    expect(real.birthday).toBe('1985-04-12')
+  })
+
   it('reads the TYPE parameter and maps CELL onto mobile', () => {
     const form = formFromCard([
       property('TEL', '+372 5555 5555', { TYPE: ['CELL'] }),
@@ -287,6 +299,23 @@ describe('single-valued properties', () => {
       LANGUAGE: ['en'],
     })
     expect(out.find((p) => p.name === 'BDAY')?.params).toEqual({})
+  })
+
+  it("drops Apple's placeholder year once the birthday changes", () => {
+    const out = written(
+      [property('BDAY', '1604-04-12', { 'X-APPLE-OMIT-YEAR': ['1604'] })],
+      (form) => {
+        form.birthday = '--0513'
+      }
+    )
+    expect(out.find((p) => p.name === 'BDAY')).toEqual(
+      property('BDAY', '--0513')
+    )
+  })
+
+  it('writes a birthday left alone as the card held it', () => {
+    const card = [property('BDAY', '19850412')]
+    expect(written(card)).toEqual(card)
   })
 })
 

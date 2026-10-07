@@ -38,12 +38,14 @@ export interface AddressValue {
   extended: string
 }
 
-// A single-valued property as the card held it: its parameters and group, and
-// its value as the form writes it back when left alone.
+// A single-valued property as the card held it: its parameters and group, its
+// value as the form writes it back when left alone, and the value as the card
+// wrote it.
 export interface Original {
   params: Record<string, string[]>
   group: string
   value: string
+  raw: string
 }
 
 export interface ContactForm {
@@ -244,9 +246,16 @@ export function newAddress(type: PropertyType): AddressValue {
 }
 
 // A birthday in vCard's basic form, 19850412 as Thunderbird writes it, reads as
-// the YYYY-MM-DD the date field takes. Any other form, such as one without its
-// year, is kept as written.
-function birthday(value: string): string {
+// YYYY-MM-DD. Apple writes one without its year as a date in a placeholder year
+// that X-APPLE-OMIT-YEAR names, which reads as --MMDD. Any other form is kept
+// as written.
+function birthday(
+  value: string,
+  params: Record<string, string[]> = {}
+): string {
+  const omitted = params['X-APPLE-OMIT-YEAR']?.[0]
+  const apple = /^(\d{4})-?(\d{2})-?(\d{2})$/.exec(value)
+  if (apple && omitted === apple[1]) return `--${apple[2]}${apple[3]}`
   const basic = /^(\d{4})(\d{2})(\d{2})$/.exec(value)
   return basic ? `${basic[1]}-${basic[2]}-${basic[3]}` : value
 }
@@ -299,7 +308,8 @@ export function formFromCard(card: Property[]): ContactForm {
     }
   })
 
-  form.birthday = birthday(first(card, 'BDAY')?.value ?? '')
+  const born = first(card, 'BDAY')
+  form.birthday = birthday(born?.value ?? '', born?.params)
 
   const organisation = first(card, 'ORG')
   if (organisation) {
@@ -322,6 +332,7 @@ export function formFromCard(card: Property[]): ContactForm {
       params: property.params ?? {},
       group: property.group ?? '',
       value: written[name] ?? '',
+      raw: property.value,
     }
   }
 
@@ -365,8 +376,10 @@ export function propertiesFromForm(form: ContactForm): Property[] {
   }
 
   // A single field keeps the parameters and group its property came with. A
-  // changed value drops the two that described the old one: its sort key and
-  // its value type, which a date typed into the field no longer is.
+  // changed value drops the ones that described the old one: its sort key, its
+  // value type, which a date typed into the field no longer is, and Apple's
+  // placeholder year. A birthday left alone is written as the card held it,
+  // so Apple's form keeps the year its parameter names.
   const written = singles(form)
   const single = (name: string) => {
     const value = written[name]
@@ -379,8 +392,11 @@ export function propertiesFromForm(form: ContactForm): Property[] {
     if (value !== original.value) {
       delete params['SORT-AS']
       delete params.VALUE
+      delete params['X-APPLE-OMIT-YEAR']
+      add(name, value, params, original.group)
+      return
     }
-    add(name, value, params, original.group)
+    add(name, name === 'BDAY' ? original.raw : value, params, original.group)
   }
 
   single('FN')

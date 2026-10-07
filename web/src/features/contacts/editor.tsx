@@ -6,7 +6,6 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { useNavigate } from '@tanstack/react-router'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
-  DatePicker,
   Button,
   ConfirmDialog,
   Switch,
@@ -66,6 +65,7 @@ import {
   useUpdateContactMutation,
 } from '@/hooks/useContacts'
 import { AddContactDialog } from './add-dialog'
+import { BirthdayField } from './birthday'
 
 function statusOf(error: unknown): number | undefined {
   return typeof error === 'object' && error !== null && 'status' in error
@@ -94,6 +94,7 @@ export function ContactEditor({
     null
   )
   const [deleteOpen, setDeleteOpen] = useState(false)
+  const [birthdayInvalid, setBirthdayInvalid] = useState(false)
   const [linkOpen, setLinkOpen] = useState(false)
   const [unfriendOpen, setUnfriendOpen] = useState(false)
 
@@ -238,6 +239,9 @@ export function ContactEditor({
     />
   )
 
+  // Enter in a field submits the form past the Save button's disabled state.
+  const blocked = form.name.trim() === '' || birthdayInvalid
+
   const save = async () => {
     const properties = propertiesFromForm(form)
     try {
@@ -370,7 +374,7 @@ export function ContactEditor({
           className='mx-auto w-full max-w-3xl divide-y p-3 sm:p-4'
           onSubmit={(event) => {
             event.preventDefault()
-            void save()
+            if (!blocked) void save()
           }}
         >
           <section className='space-y-2 pb-4'>
@@ -482,11 +486,11 @@ export function ContactEditor({
               </Select>
             </Field>
             <Field id='contact-birthday' label={t`Birthday`}>
-              <DatePicker
+              <BirthdayField
                 id='contact-birthday'
-                className='w-48'
                 value={form.birthday}
-                onChange={(day) => update({ birthday: day })}
+                onChange={(birthday) => update({ birthday })}
+                onInvalid={setBirthdayInvalid}
               />
             </Field>
             <Field id='contact-organisation' label={t`Organisation`}>
@@ -548,7 +552,7 @@ export function ContactEditor({
             <Button
               type='submit'
               loading={saving}
-              disabled={form.name.trim() === ''}
+              disabled={blocked}
               icon={<Check className='size-4' />}
             >
               <Trans>Save</Trans>

@@ -112,6 +112,36 @@ const disabled = {
   refetch: vi.fn(),
 }
 
+// Give the contact a birthday as stored.
+function born(value: string, params: Record<string, string[]> = {}) {
+  queries.contact = loaded({
+    contact: {
+      ...contact,
+      card: [...contact.card, { name: 'BDAY', params, value }],
+    },
+  })
+}
+
+// One of the birthday's fields, by its name.
+function field(name: 'Day' | 'Month' | 'Year') {
+  return screen.getByRole(name === 'Month' ? 'combobox' : 'textbox', { name })
+}
+
+// Choose a month in the birthday's month list.
+function pick(month: string) {
+  fireEvent.keyDown(field('Month'), { key: 'Enter' })
+  fireEvent.click(screen.getByRole('option', { name: month }))
+}
+
+// The properties of one name in the last update sent.
+function saved(name: string) {
+  const calls = mutations.update.mutateAsync.mock.calls
+  const call = calls[calls.length - 1]?.[0] as {
+    properties: { name: string }[]
+  }
+  return call.properties.filter((property) => property.name === name)
+}
+
 function show(id?: string) {
   if (!id) queries.contact = disabled
   return render(
@@ -185,32 +215,90 @@ describe('ContactEditor', () => {
   })
 
   it('opens a contact whose birthday is in the basic form', () => {
-    queries.contact = loaded({
-      contact: {
-        ...contact,
-        card: [
-          ...contact.card,
-          { name: 'BDAY', params: {}, value: '19850412' },
-        ],
-      },
-    })
+    born('19850412')
     show('c1')
-    expect(screen.getByRole('textbox', { name: 'Birthday' })).toHaveValue(
-      '1985-04-12'
-    )
+    expect(field('Day')).toHaveValue('12')
+    expect(field('Month')).toHaveTextContent('April')
+    expect(field('Year')).toHaveValue('1985')
   })
 
-  it('opens a contact whose birthday has no year and shows it as written', () => {
-    queries.contact = loaded({
-      contact: {
-        ...contact,
-        card: [...contact.card, { name: 'BDAY', params: {}, value: '--04-12' }],
-      },
-    })
+  it('opens a contact whose birthday has no year with the year left empty', () => {
+    born('--04-12')
     show('c1')
-    expect(screen.getByRole('textbox', { name: 'Birthday' })).toHaveValue(
-      '--04-12'
+    expect(field('Day')).toHaveValue('12')
+    expect(field('Month')).toHaveTextContent('April')
+    expect(field('Year')).toHaveValue('')
+  })
+
+  it('saves a birthday entered without its year', async () => {
+    show('c1')
+    fireEvent.change(field('Day'), { target: { value: '2' } })
+    pick('October')
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }))
+    await waitFor(() =>
+      expect(mutations.update.mutateAsync).toHaveBeenCalledTimes(1)
     )
+    expect(saved('BDAY')).toEqual([
+      { name: 'BDAY', params: {}, value: '--1002' },
+    ])
+  })
+
+  it('holds Save, and Enter, while the birthday is not a day', async () => {
+    show('c1')
+    fireEvent.change(field('Day'), { target: { value: '31' } })
+    pick('April')
+    expect(screen.getByRole('button', { name: 'Save' })).toBeDisabled()
+    fireEvent.submit(field('Day').closest('form')!)
+    fireEvent.change(field('Day'), { target: { value: '30' } })
+    expect(screen.getByRole('button', { name: 'Save' })).toBeEnabled()
+    expect(mutations.update.mutateAsync).not.toHaveBeenCalled()
+  })
+
+  it('keeps the day as typed while the birthday it makes comes back', () => {
+    born('--04-12')
+    show('c1')
+    fireEvent.change(field('Day'), { target: { value: '05' } })
+    expect(field('Day')).toHaveValue('05')
+  })
+
+  it('removes a birthday with Clear', async () => {
+    born('1985-04-12')
+    show('c1')
+    fireEvent.click(screen.getByRole('button', { name: 'Clear' }))
+    expect(field('Day')).toHaveValue('')
+    expect(field('Year')).toHaveValue('')
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }))
+    await waitFor(() =>
+      expect(mutations.update.mutateAsync).toHaveBeenCalledTimes(1)
+    )
+    expect(saved('BDAY')).toEqual([])
+  })
+
+  it('shows a birthday it cannot read as written, until it is cleared', async () => {
+    born('circa 1800', { VALUE: ['text'] })
+    show('c1')
+    expect(screen.getByDisplayValue('circa 1800')).toHaveAttribute('readonly')
+    expect(screen.queryByRole('textbox', { name: 'Day' })).toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: 'Clear' }))
+    expect(field('Day')).toHaveValue('')
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }))
+    await waitFor(() =>
+      expect(mutations.update.mutateAsync).toHaveBeenCalledTimes(1)
+    )
+    expect(saved('BDAY')).toEqual([])
+  })
+
+  it('orders the birthday fields as the date format writes a date', () => {
+    show('c1')
+    const group = screen.getByRole('group', { name: 'Birthday' })
+    const parts = [field('Year'), field('Month'), field('Day')]
+    for (const part of parts) expect(group).toContainElement(part)
+    for (let index = 1; index < parts.length; index++) {
+      expect(
+        parts[index - 1].compareDocumentPosition(parts[index]) &
+          Node.DOCUMENT_POSITION_FOLLOWING
+      ).toBeTruthy()
+    }
   })
 
   it('puts a new contact in the default book', async () => {
@@ -259,7 +347,7 @@ describe('ContactEditor', () => {
   it('keeps the address book at the head of the details, before the birthday', () => {
     show('c1')
     const select = screen.getByRole('combobox', { name: 'Address book' })
-    const birthday = screen.getByRole('textbox', { name: 'Birthday' })
+    const birthday = screen.getByRole('group', { name: 'Birthday' })
     expect(
       select.compareDocumentPosition(birthday) &
         Node.DOCUMENT_POSITION_FOLLOWING

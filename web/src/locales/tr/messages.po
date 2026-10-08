@@ -218,7 +218,7 @@ msgstr "Erişim ekle"
 msgid "Add account"
 msgstr "Hesap ekle"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Adres ekle"
 
@@ -241,7 +241,7 @@ msgstr "Kişi ekle"
 msgid "Add device"
 msgstr "Cihaz ekle"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "E-posta ekle"
 
@@ -281,7 +281,7 @@ msgstr "Başlamak için birini ekleyin"
 msgid "Add tag..."
 msgstr "Etiket ekle..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Telefon ekle"
 
@@ -324,7 +324,7 @@ msgstr "Üye ekleniyor..."
 msgid "address book"
 msgstr "adres defteri"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Adres defteri"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Banner güncellendi"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Doğum günü"
 
@@ -583,7 +583,6 @@ msgstr "Kamera kullanılamıyor"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "İptal edildi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Davet iptal ediliyor..."
@@ -681,7 +680,7 @@ msgstr "Saat seçin"
 msgid "Choose language"
 msgstr "Dil seçin"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Şehir"
 
@@ -820,28 +819,25 @@ msgstr "Bağlanıyor..."
 msgid "Contact added"
 msgstr "Kişi eklendi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Kişi kopyalandı"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Kişi oluşturuldu"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Kişi silindi"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Kişi kaydedildi"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Kişiler"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Kişiler birleştirildi"
 
@@ -883,13 +879,9 @@ msgstr "Panoya kopyalandı"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Kopyala"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Kişiyi kopyala"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Yeniden kimlik doğrulama başlatılamadı. Lütfen tekrar deneyin."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Bu hesapla doğrulama yapılamadı. Lütfen tekrar deneyin."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Ülke"
 
@@ -925,6 +917,7 @@ msgstr "Ülke"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Oluştur"
 
@@ -971,7 +964,8 @@ msgstr "{field} oluşturuldu"
 msgid "Creating address book..."
 msgstr "Adres defteri oluşturuluyor..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Kişi oluşturuluyor..."
 
@@ -1044,10 +1038,9 @@ msgstr "Varsayılan sıralama"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Sil"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "<0>{0}</0> silinsin mi?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "<0>{0}</0> silinsin mi? Bu, arkadaşlığınızı da sona erdirir."
 
@@ -1085,8 +1078,9 @@ msgstr "Sütunu sil"
 msgid "Delete comment"
 msgstr "Yorumu sil"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Kişiyi sil"
 
@@ -1155,8 +1149,8 @@ msgstr "Silinmiş grup"
 msgid "Deleting address book..."
 msgstr "Adres defteri siliniyor..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Kişi siliniyor..."
 
@@ -1178,7 +1172,7 @@ msgstr "Azalan"
 msgid "Description"
 msgstr "Açıklama"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Ayrıntılar"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Dizin listesi"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "At"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "Değişiklikler atılsın mı?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "{label} düzenle"
 msgid "Edit caption"
 msgstr "Resim yazısını düzenle"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Kişiyi düzenle"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Alanı düzenle"
@@ -1332,14 +1317,14 @@ msgstr "E-posta"
 msgid "Email code"
 msgstr "E-posta kodu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "E-postalar"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "<0>{0}</0> ile arkadaşlığınız sona ersin mi? Kişi adres defterinizde kalır."
 
@@ -1408,7 +1393,7 @@ msgstr "Kişi eklenemedi"
 msgid "Failed to add member"
 msgstr "Üye eklenemedi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Davet iptal edilemedi"
@@ -1427,7 +1412,8 @@ msgstr "Kopyalanamadı"
 msgid "Failed to create address book"
 msgstr "Adres defteri oluşturulamadı"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Kişi oluşturulamadı"
 
@@ -1460,8 +1446,8 @@ msgstr "Ek silinemedi"
 msgid "Failed to delete comment"
 msgstr "Yorum silinemedi"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Kişi silinemedi"
 
@@ -1518,8 +1504,8 @@ msgstr "Video yüklenemedi"
 msgid "Failed to load your invite policy"
 msgstr "Davet ilkeniz yüklenemedi"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Kişiler birleştirilemedi"
 
@@ -1531,8 +1517,8 @@ msgstr "Taşınamadı"
 msgid "Failed to post comment"
 msgstr "Yorum gönderilemedi"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Arkadaş kaldırılamadı"
 
@@ -1561,7 +1547,7 @@ msgstr "Kaydedilemedi"
 msgid "Failed to save accent"
 msgstr "Vurgu rengi kaydedilemedi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Kişi kaydedilemedi"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Komut kaydedilemedi"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Davet gönderilemedi"
 
@@ -1637,7 +1623,7 @@ msgstr "Bayraklar"
 msgid "Flat"
 msgstr "Düz"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Ad"
 
@@ -1645,8 +1631,8 @@ msgstr "Ad"
 msgid "Friday"
 msgstr "Cuma"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Arkadaş kaldırıldı"
 
@@ -1725,7 +1711,7 @@ msgstr "Geçmiş"
 msgid "Home"
 msgstr "Ana sayfa"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Ev"
@@ -1788,7 +1774,7 @@ msgstr "Geçersiz tarih"
 msgid "Invitation accepted"
 msgstr "Davet kabul edildi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Davet iptal edildi"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Davet reddedildi"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Davet gönderildi"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Davet ayarları"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Davet edildi"
 
@@ -1970,18 +1956,17 @@ msgstr "Üye sayısı"
 msgid "Menu"
 msgstr "Menü"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Birleştir"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Kişileri birleştir"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "Kişiler birleştiriliyor..."
 
@@ -2006,12 +1991,12 @@ msgstr "Mikrofon izni reddedildi"
 msgid "Minimum length"
 msgstr "Asgari uzunluk"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Cep"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Mochi arkadaşı"
 
@@ -2062,8 +2047,8 @@ msgstr "{0} tarihine taşınıyor"
 msgid "Name"
 msgstr "Ad"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Ad"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Ad < veya > karakterleri içeremez"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Ad gerekli"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "En yeni"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Yeni kişi"
 
@@ -2131,7 +2117,7 @@ msgstr "Sonraki ay"
 msgid "Next year"
 msgstr "Sonraki yıl"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Takma ad"
 
@@ -2270,7 +2256,7 @@ msgstr "Bulunamadı"
 msgid "Not set"
 msgstr "Ayarlanmamış"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Not"
 
@@ -2345,7 +2331,7 @@ msgstr "Seçenek adı"
 msgid "Options"
 msgstr "Seçenekler"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Kurum"
 
@@ -2353,7 +2339,7 @@ msgstr "Kurum"
 msgid "Other"
 msgstr "Diğer"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Diğer"
@@ -2417,7 +2403,7 @@ msgstr "Lütfen tekrar deneyin."
 msgid "Please wait a moment and try again."
 msgstr "Lütfen biraz bekleyip tekrar deneyin."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Posta kodu"
 
@@ -2543,7 +2529,7 @@ msgstr "Girişe yönlendiriliyor."
 msgid "Reduce interest"
 msgstr "İlgiyi azalt"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Bölge"
 
@@ -2616,11 +2602,11 @@ msgstr "\"{0}\" için erişim kuralı kaldırılsın mı?"
 msgid "Remove access?"
 msgstr "Erişim kaldırılsın mı?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Adresi kaldır"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "E-postayı kaldır"
 
@@ -2643,12 +2629,12 @@ msgstr "Bağlantıyı kaldır"
 msgid "Remove member"
 msgstr "Üyeyi kaldır"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Telefonu kaldır"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Arkadaş kaldırılıyor..."
 
@@ -2758,7 +2744,6 @@ msgstr "Cumartesi"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Adı kaydet"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Bu parolayı şimdi kaydedin. Bir daha gösterilemez."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Kişi kaydediliyor..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Mesaj gönder"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Davet gönderiliyor..."
 
@@ -3056,7 +3037,7 @@ msgstr "İzlemeyi bırak"
 msgid "Store silently"
 msgstr "Sessizce sakla"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Sokak"
 
@@ -3082,7 +3063,7 @@ msgstr "Abone ol"
 msgid "Sunday"
 msgstr "Pazar"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Soyadı"
 
@@ -3113,7 +3094,7 @@ msgstr "Etiket en fazla 50 karakter olmalıdır"
 msgid "Tags"
 msgstr "Etiketler"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Telefonlar"
 
@@ -3192,7 +3173,7 @@ msgstr "Bu işlem oyunu ve sohbetini kalıcı olarak siler. Bu işlem geri alın
 msgid "Thursday"
 msgstr "Perşembe"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Unvan"
@@ -3261,8 +3242,8 @@ msgstr "Salı"
 msgid "Type"
 msgstr "Tür"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Kullanılamıyor"
 msgid "Unexpected API error"
 msgstr "Beklenmeyen API hatası"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Arkadaşlıktan çıkar"
 
@@ -3378,7 +3359,7 @@ msgstr "Yükleme ilerlemesi"
 msgid "Uploading..."
 msgstr "Yükleniyor..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "<0>{0}</0> adresine bir doğrulama kodu gönderdik. E-posta adresinizi d
 msgid "Wednesday"
 msgstr "Çarşamba"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "İş"

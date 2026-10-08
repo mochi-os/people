@@ -218,7 +218,7 @@ msgstr "Yongeza ufikelelo"
 msgid "Add account"
 msgstr "Yongeza i-akhawunti"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Yongeza idilesi"
 
@@ -241,7 +241,7 @@ msgstr "Yongeza oqhagamshelwana naye"
 msgid "Add device"
 msgstr "Yongeza isixhobo"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Yongeza i-imeyili"
 
@@ -281,7 +281,7 @@ msgstr "Yongeza umntu ukuze uqalise"
 msgid "Add tag..."
 msgstr "Yongeza ithegi..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Yongeza ifowuni"
 
@@ -324,7 +324,7 @@ msgstr "Ukongeza ilungu..."
 msgid "address book"
 msgstr "incwadi yeedilesi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Incwadi yeedilesi"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Ibhena ihlaziyiwe"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Umhla wokuzalwa"
 
@@ -583,7 +583,6 @@ msgstr "Ikhamera ayifumaneki"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Kurhoxisiwe"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Ukurhoxisa isimemo..."
@@ -681,7 +680,7 @@ msgstr "Khetha ixesha"
 msgid "Choose language"
 msgstr "Khetha ulwimi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Isixeko"
 
@@ -820,28 +819,25 @@ msgstr "Iyaqhagamshela..."
 msgid "Contact added"
 msgstr "Oqhagamshelwana naye wongeziwe"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Oqhagamshelwana naye ukotshelwe"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Oqhagamshelwana naye wenziwe"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Oqhagamshelwana naye ucinyiwe"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Oqhagamshelwana naye ugciniwe"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Abaqhagamshelwana nabo"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Unxibelelwano ludityanisiwe"
 
@@ -883,13 +879,9 @@ msgstr "Kukotshelwe kwibhodi yokukotshela"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Kotshela"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Kotshela oqhagamshelwana naye"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Ayikwazanga ukuqalisa ukuqinisekiswa kwakhona. Nceda uzame kwakhona."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Akukwazekanga ukuqinisekisa ngaloo akhawunti. Nceda uzame kwakhona."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Ilizwe"
 
@@ -925,6 +917,7 @@ msgstr "Ilizwe"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Yenza"
 
@@ -971,7 +964,8 @@ msgstr "Kwenziwe {field}"
 msgid "Creating address book..."
 msgstr "Kwenziwa incwadi yeedilesi..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Kwenziwa oqhagamshelwana naye..."
 
@@ -1044,10 +1038,9 @@ msgstr "Ukuhlela koqobo"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Cima"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "Cima u-<0>{0}</0>?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "Cima u-<0>{0}</0>? Oku kuphelisa nobuhlobo benu."
 
@@ -1085,8 +1078,9 @@ msgstr "Cima ikholamu"
 msgid "Delete comment"
 msgstr "Cima isiphawuli"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Cima oqhagamshelwana naye"
 
@@ -1155,8 +1149,8 @@ msgstr "Iqela elicinyiweyo"
 msgid "Deleting address book..."
 msgstr "Kucinywa incwadi yeedilesi..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Kucinywa oqhagamshelwana naye..."
 
@@ -1178,7 +1172,7 @@ msgstr "Ukwehla"
 msgid "Description"
 msgstr "Inkcazo"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Iinkcukacha"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Uluhlu lovimba"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Lahla"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "Lahla utshintsho?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "Hlela {label}"
 msgid "Edit caption"
 msgstr "Hlela umbhalo"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Hlela oqhagamshelwana naye"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Hlela imbala"
@@ -1332,14 +1317,14 @@ msgstr "I-imeyili"
 msgid "Email code"
 msgstr "Ikhowudi ye-imeyili"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "Ii-imeyili"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Phelisa ubuhlobo bakho no-<0>{0}</0>? Oqhagamshelwana naye uhlala kwincwadi yakho yeedilesi."
 
@@ -1408,7 +1393,7 @@ msgstr "Ayiphumelelanga ukongeza oqhagamshelwana naye"
 msgid "Failed to add member"
 msgstr "Ayiphumelelanga ukongeza ilungu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Ayiphumelelanga ukurhoxisa isimemo"
@@ -1427,7 +1412,8 @@ msgstr "Ayiphumelelanga ukukhuphela"
 msgid "Failed to create address book"
 msgstr "Ayiphumelelanga ukwenza incwadi yeedilesi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Ayiphumelelanga ukwenza oqhagamshelwana naye"
 
@@ -1460,8 +1446,8 @@ msgstr "Ayiphumelelanga ukucima isiqhoboshelo"
 msgid "Failed to delete comment"
 msgstr "Ayiphumelelanga ukucima uluvo"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Ayiphumelelanga ukucima oqhagamshelwana naye"
 
@@ -1518,8 +1504,8 @@ msgstr "Ayikwazanga ukulayisha ividiyo"
 msgid "Failed to load your invite policy"
 msgstr "Ayiphumelelanga ukulayisha umgaqo-nkqubo wakho wokumema"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Ayiphumelelanga ukudibanisa unxibelelwano"
 
@@ -1531,8 +1517,8 @@ msgstr "Akuphumelelanga ukushenxisa"
 msgid "Failed to post comment"
 msgstr "Ayiphumelelanga ukuposa uluvo"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Ayiphumelelanga ukususa umhlobo"
 
@@ -1561,7 +1547,7 @@ msgstr "Ayiphumelelanga ukugcina"
 msgid "Failed to save accent"
 msgstr "Ayiphumelelanga ukugcina i-accent"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Ayiphumelelanga ukugcina oqhagamshelwana naye"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Ayiphumelelanga ukugcina isikhumbuzo"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Ayiphumelelanga ukuthumela isimemo"
 
@@ -1637,7 +1623,7 @@ msgstr "Iiflegi"
 msgid "Flat"
 msgstr "Isicaba"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Igama"
 
@@ -1645,8 +1631,8 @@ msgstr "Igama"
 msgid "Friday"
 msgstr "ULwesihlanu"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Umhlobo ususiwe"
 
@@ -1725,7 +1711,7 @@ msgstr "Imbali"
 msgid "Home"
 msgstr "Ekhaya"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Ekhaya"
@@ -1788,7 +1774,7 @@ msgstr "Umhla ongasebenziyo"
 msgid "Invitation accepted"
 msgstr "Isimemo samkelwe"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Isimemo sirhoxisiwe"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Isimemo siwaliwe"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Isimemo sithunyelwe"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Iisetingi zokumema"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Umenyiwe"
 
@@ -1970,18 +1956,17 @@ msgstr "Inani Lamalungu"
 msgid "Menu"
 msgstr "Imenyu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Dibanisa"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Dibanisa unxibelelwano"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "Kudityaniswa unxibelelwano..."
 
@@ -2006,12 +1991,12 @@ msgstr "Imvume yemakrofoni ikhatyiwe"
 msgid "Minimum length"
 msgstr "Ubude obuncinane"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Iselula"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Umhlobo we-Mochi"
 
@@ -2062,8 +2047,8 @@ msgstr "Kushenxiselwa ku-{0}"
 msgid "Name"
 msgstr "Igama"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Igama"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Igama alikwazi ukuba neempawu ze-< okanye ze->"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Igama liyafuneka"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "Ezintsha"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Oqhagamshelwana naye omtsha"
 
@@ -2131,7 +2117,7 @@ msgstr "Inyanga ezayo"
 msgid "Next year"
 msgstr "Unyaka ozayo"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Isiteketiso"
 
@@ -2270,7 +2256,7 @@ msgstr "Ayifumanekanga"
 msgid "Not set"
 msgstr "Akumiselwanga"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Inqaku"
 
@@ -2345,7 +2331,7 @@ msgstr "Igama lekhetho"
 msgid "Options"
 msgstr "Iikhetho"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Umbutho"
 
@@ -2353,7 +2339,7 @@ msgstr "Umbutho"
 msgid "Other"
 msgstr "Okunye"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Okunye"
@@ -2417,7 +2403,7 @@ msgstr "Nceda uzame kwakhona."
 msgid "Please wait a moment and try again."
 msgstr "Nceda ulinde umzuzwana uze uzame kwakhona."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Iposi-khowudi"
 
@@ -2543,7 +2529,7 @@ msgstr "Iyahanjiswa kwiportal yokungena."
 msgid "Reduce interest"
 msgstr "Nciphisa umnxili"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Ummandla"
 
@@ -2616,11 +2602,11 @@ msgstr "Susa umthetho wofikelelo we-\"{0}\"?"
 msgid "Remove access?"
 msgstr "Susa ufikelelo?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Susa idilesi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Susa i-imeyili"
 
@@ -2643,12 +2629,12 @@ msgstr "Susa ikhonkco"
 msgid "Remove member"
 msgstr "Susa ilungu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Susa ifowuni"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Ukususa umhlobo..."
 
@@ -2758,7 +2744,6 @@ msgstr "Umgqibelo"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Gcina igama"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Gcina eli gama lokugqitha ngoku. Alinakuboniswa kwakhona."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Kugcinwa oqhagamshelwana naye..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Thumela umyalezo"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Ukuthumela isimemo..."
 
@@ -3056,7 +3037,7 @@ msgstr "Yeka ukubukela"
 msgid "Store silently"
 msgstr "Gcina ngokuthe cwaka"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Isitalato"
 
@@ -3082,7 +3063,7 @@ msgstr "Rhuma"
 msgid "Sunday"
 msgstr "Icawa"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Ifani"
 
@@ -3113,7 +3094,7 @@ msgstr "Ithegi kufuneka ibe ngamagama angama-50 okanye ngaphantsi"
 msgid "Tags"
 msgstr "Iiletile"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Iifowuni"
 
@@ -3192,7 +3173,7 @@ msgstr "Oku kuza kucima umdlalo nengxoxo yawo ngokusisigxina. Esi senzo asinakug
 msgid "Thursday"
 msgstr "Ulwesine"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Isikhundla"
@@ -3261,8 +3242,8 @@ msgstr "Ulwesibini"
 msgid "Type"
 msgstr "Uhlobo"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Ayifumaneki"
 msgid "Unexpected API error"
 msgstr "Impazamo ye-API engalindelekanga"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Phelisa ubuhlobo"
 
@@ -3378,7 +3359,7 @@ msgstr "Inkqubela yokulayisha"
 msgid "Uploading..."
 msgstr "Iyalayisha..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "Sithumele ikhowudi yoqinisekiso ku-<0>{0}</0>. Faka ikhowudi ngezantsi u
 msgid "Wednesday"
 msgstr "Ulwesithathu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Emsebenzini"

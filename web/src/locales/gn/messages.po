@@ -218,7 +218,7 @@ msgstr "Embojuaju jeike"
 msgid "Add account"
 msgstr "Embojuaju mba'ete"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Embojuaju dirección"
 
@@ -241,7 +241,7 @@ msgstr "Embojuaju contacto"
 msgid "Add device"
 msgstr "Embojuaju peteĩ mba'e'oka"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Embojuaju email"
 
@@ -281,7 +281,7 @@ msgstr "Embojuaju peteĩ tapicha eñepyrũ hag̃ua"
 msgid "Add tag..."
 msgstr "Embojuaju teramoĩ..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Embojuaju pumbyry"
 
@@ -324,7 +324,7 @@ msgstr "Oñembojuajuhína irũ..."
 msgid "address book"
 msgstr "ogarenda kuatia"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Ogarenda kuatia"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Banner oñembohekopyahúma"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Aramboty"
 
@@ -583,7 +583,6 @@ msgstr "Cámara ndaipóri"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Oñehéja"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Oñehejahína ñehenói..."
@@ -681,7 +680,7 @@ msgstr "Eiporavo peteĩ aravo"
 msgid "Choose language"
 msgstr "Eiporavo ñe'ẽ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Táva"
 
@@ -820,28 +819,25 @@ msgstr "Ojoajúhína..."
 msgid "Contact added"
 msgstr "Contacto ojembojuajúma"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Contacto oñekopia"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Contacto oñemoheñóima"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Contacto oñehundíma"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Contacto oñeñongatúma"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Contactokuéra"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Contacto ojembojoajúma"
 
@@ -883,13 +879,9 @@ msgstr "Oñekopiáma clipboard-pe"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Kopia"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Ekopia contacto"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Ndaikatúi oñepyrũ jehechajey. Eha'ã jey."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Ndaikatúi ojehechajey upe mba'ete ndive. Eha'ã jey."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Tetã"
 
@@ -925,6 +917,7 @@ msgstr "Tetã"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Emoheñói"
 
@@ -971,7 +964,8 @@ msgstr "{field} oñemoheñói"
 msgid "Creating address book..."
 msgstr "Ojejapohína ogarenda kuatia..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Ojejapohína contacto..."
 
@@ -1044,10 +1038,9 @@ msgstr "Ñemoĩporã ypygua"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Hundi"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "Ehundíta <0>{0}</0>?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "Ehundíta <0>{0}</0>? Kóva opa avei pende angirũreko."
 
@@ -1085,8 +1078,9 @@ msgstr "Hundi columna"
 msgid "Delete comment"
 msgstr "Hundi comentario"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Ehundi contacto"
 
@@ -1155,8 +1149,8 @@ msgstr "Atypy oñembogue va'ekue"
 msgid "Deleting address book..."
 msgstr "Oñehundihína ogarenda kuatia..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Oñehundihína contacto..."
 
@@ -1178,7 +1172,7 @@ msgstr "Oguejýva"
 msgid "Description"
 msgstr "Ñemombe'u"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Detallekuéra"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Directorio rysýi"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Mboyke"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "¿Remboykese umi ñemoambue?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "Embosako'i {label}"
 msgid "Edit caption"
 msgstr "Embosako'i ñemyesakã"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Embosako'i contacto"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Embosako'i campo"
@@ -1332,14 +1317,14 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Código email"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "Emailkuéra"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Emboguéta pende angirũreko <0>{0}</0> ndive? Contacto opytáta ne ogarenda kuatiápe."
 
@@ -1408,7 +1393,7 @@ msgstr "Ndaikatúi ojembojuaju contacto"
 msgid "Failed to add member"
 msgstr "Ndaikatúi oñembojuaju irũ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Ndaikatúi oñeheja ñehenói"
@@ -1427,7 +1412,8 @@ msgstr "Ndaikatúi oñekopia"
 msgid "Failed to create address book"
 msgstr "Ndaikatúi oñemoheñói ogarenda kuatia"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Ndaikatúi oñemoheñói contacto"
 
@@ -1460,8 +1446,8 @@ msgstr "Ndaikatúi oñehundi adjunto"
 msgid "Failed to delete comment"
 msgstr "Ndaikatúi oñehundi comentario"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Ndaikatúi oñehundi contacto"
 
@@ -1518,8 +1504,8 @@ msgstr "Ndaikatúi omyanyhẽ video"
 msgid "Failed to load your invite policy"
 msgstr "Ndaikatúi oñemyanyhẽ nde ñehenói política"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Ndaikatúi ojembojoaju contacto"
 
@@ -1531,8 +1517,8 @@ msgstr "Ndaikatúi omongu'e"
 msgid "Failed to post comment"
 msgstr "Ndaikatúi oñemondo comentario"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Ndaikatúi oñembogue angirũ"
 
@@ -1561,7 +1547,7 @@ msgstr "Ndaikatúi oñeñongatu"
 msgid "Failed to save accent"
 msgstr "Ndaikatúi oñeñongatu acento"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Ndaikatúi oñeñongatu contacto"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Ndaikatúi oñeñongatu prompt"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Ndaikatúi oñemondo ñe'ẽrenói"
 
@@ -1637,7 +1623,7 @@ msgstr "Banderakuéra"
 msgid "Flat"
 msgstr "Ipe"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Téra"
 
@@ -1645,8 +1631,8 @@ msgstr "Téra"
 msgid "Friday"
 msgstr "Arapo"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Angirũ oñenohẽma"
 
@@ -1725,7 +1711,7 @@ msgstr "Tembiasakue"
 msgid "Home"
 msgstr "Óga"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Óga"
@@ -1788,7 +1774,7 @@ msgstr "Ára ndovaléi"
 msgid "Invitation accepted"
 msgstr "Ñe'ẽrenói oñemoneĩ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Ñe'ẽrenói ojeheja"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Ñe'ẽrenói oñemboyke"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Oñemondo ñe'ẽrenói"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Ñe'ẽrenói ñemboheko"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Oñehenóima"
 
@@ -1970,18 +1956,17 @@ msgstr "Irũnguéra papapy"
 msgid "Menu"
 msgstr "Menu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Mbojoaju"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Mbojoaju contacto"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "Ojembojoajuhína contacto..."
 
@@ -2006,12 +1991,12 @@ msgstr "Ojejokóma micrófono ñemoneĩ"
 msgid "Minimum length"
 msgstr "Pukukue mínimo"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Celular"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Mochi angirũ"
 
@@ -2062,8 +2047,8 @@ msgstr "Oñemongu'ehína {0}-pe"
 msgid "Name"
 msgstr "Téra"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Téra"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Téra ndaikatúi oguereko < térã > tai'ã"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Téra tekotevẽ"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "Ipyahuvéva"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Contacto pyahu"
 
@@ -2131,7 +2117,7 @@ msgstr "Jasy oúva"
 msgid "Next year"
 msgstr "Ary oúva"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Téra mbyky"
 
@@ -2270,7 +2256,7 @@ msgstr "Ndojejuhúi"
 msgid "Not set"
 msgstr "Noñemoĩri"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Jehaipyre"
 
@@ -2345,7 +2331,7 @@ msgstr "Jeporavorã téra"
 msgid "Options"
 msgstr "Jeporavorã"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Atyguasu"
 
@@ -2353,7 +2339,7 @@ msgstr "Atyguasu"
 msgid "Other"
 msgstr "Ambue"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Ambue"
@@ -2417,7 +2403,7 @@ msgstr "Eha'ãjey angána."
 msgid "Please wait a moment and try again."
 msgstr "Eha'arõmi sapy'aite ha eha'ã jey."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Código postal"
 
@@ -2543,7 +2529,7 @@ msgstr "Oñembojevyhína login-pe."
 msgid "Reduce interest"
 msgstr "Emomichĩ interés"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Tetãvore"
 
@@ -2616,11 +2602,11 @@ msgstr "¿Embogue jeike léi \"{0}\" peg̃uarã?"
 msgid "Remove access?"
 msgstr "¿Embogue jeike?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Embogue ogarenda"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Embogue email"
 
@@ -2643,12 +2629,12 @@ msgstr "Embogue juajuha"
 msgid "Remove member"
 msgstr "Embogue irũ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Embogue pumbyry"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Oñenohẽhína angirũ..."
 
@@ -2758,7 +2744,6 @@ msgstr "Arapoteĩ"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Eñongatu téra"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Eñongatu ko ñe'ẽñemi ko'ág̃a. Ndaikatumo'ãi ojehechauka jey."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Oñeñongatuhína contacto..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Emondo ñe'ẽmondo"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Oñemondohína invitación..."
 
@@ -3056,7 +3037,7 @@ msgstr "Ani ema'ẽve"
 msgid "Store silently"
 msgstr "Eñongatu kirirĩháme"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Tape"
 
@@ -3082,7 +3063,7 @@ msgstr "Esuscribi"
 msgid "Sunday"
 msgstr "Arapokõi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Terajoapy"
 
@@ -3113,7 +3094,7 @@ msgstr "Teramoĩ oguerekova'erã 50 tai térã sa'ive"
 msgid "Tags"
 msgstr "Teramoĩnguéra"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Pumbyrykuéra"
 
@@ -3192,7 +3173,7 @@ msgstr "Kóva ombogue tapiaite ñembosarái ha ichat. Kóva ndaikatúi oñemboje
 msgid "Thursday"
 msgstr "Ararundy"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Tembiapo réra"
@@ -3261,8 +3242,8 @@ msgstr "Arakõi"
 msgid "Type"
 msgstr "Mba'éichagua"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Ndaipóri"
 msgid "Unexpected API error"
 msgstr "API javy ñeha'arõ'ỹva"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Embogue angirũ"
 
@@ -3378,7 +3359,7 @@ msgstr "Jehupi jeku'e"
 msgid "Uploading..."
 msgstr "Ojehupihína..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "Romondo peteĩ verificación código <0>{0}</0>-pe. Emoinge código ko'�
 msgid "Wednesday"
 msgstr "Araapy"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Tembiapo"

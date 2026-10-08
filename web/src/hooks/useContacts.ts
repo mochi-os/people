@@ -125,12 +125,18 @@ export const useCreateContactMutation = (
     unknown
   >
 ) => {
+  const queryClient = useQueryClient()
   const invalidate = useInvalidateContacts()
   const { onSuccess, ...rest } = options ?? {}
   return useMutation({
     mutationFn: (payload: CreateContactRequest) => contactsApi.create(payload),
     onSuccess: (data, variables, context, mutation) => {
       invalidate()
+      // The contact as made, so the panel that opens on it shows it at once.
+      queryClient.setQueryData<GetContactResponse>(
+        contactKeys.one(data.contact.id),
+        { contact: data.contact }
+      )
       onSuccess?.(data, variables, context, mutation)
     },
     ...rest,

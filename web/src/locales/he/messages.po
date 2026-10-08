@@ -218,7 +218,7 @@ msgstr "הוסף גישה"
 msgid "Add account"
 msgstr "הוסף חשבון"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "הוספת כתובת"
 
@@ -241,7 +241,7 @@ msgstr "הוספת איש קשר"
 msgid "Add device"
 msgstr "הוספת מכשיר"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "הוספת אימייל"
 
@@ -281,7 +281,7 @@ msgstr "הוסיפו מישהו כדי להתחיל"
 msgid "Add tag..."
 msgstr "הוסף תגית..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "הוספת טלפון"
 
@@ -324,7 +324,7 @@ msgstr "מוסיף חבר..."
 msgid "address book"
 msgstr "פנקס כתובות"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "פנקס כתובות"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "הבאנר עודכן"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "יום הולדת"
 
@@ -583,7 +583,6 @@ msgstr "המצלמה אינה זמינה"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "בוטל"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "מבטל את ההזמנה..."
@@ -681,7 +680,7 @@ msgstr "בחירת שעה"
 msgid "Choose language"
 msgstr "בחר שפה"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "עיר"
 
@@ -820,28 +819,25 @@ msgstr "מתחבר..."
 msgid "Contact added"
 msgstr "איש הקשר נוסף"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "איש הקשר הועתק"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "איש הקשר נוצר"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "איש הקשר נמחק"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "איש הקשר נשמר"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "אנשי קשר"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "אנשי הקשר מוזגו"
 
@@ -883,13 +879,9 @@ msgstr "הועתק ללוח"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "העתק"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "העתקת איש קשר"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "לא ניתן היה להתחיל את האימות מחדש. נסה ש�
 msgid "Couldn't verify with that account. Please try again."
 msgstr "לא ניתן היה לאמת עם החשבון הזה. נסה שוב."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "מדינה"
 
@@ -925,6 +917,7 @@ msgstr "מדינה"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "צור"
 
@@ -971,7 +964,8 @@ msgstr "{field} נוצר"
 msgid "Creating address book..."
 msgstr "יוצר פנקס כתובות..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "יוצר איש קשר..."
 
@@ -1044,10 +1038,9 @@ msgstr "מיון ברירת מחדל"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "מחק"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "למחוק את <0>{0}</0>?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "למחוק את <0>{0}</0>? פעולה זו גם מסיימת את החברות ביניכם."
 
@@ -1085,8 +1078,9 @@ msgstr "מחק עמודה"
 msgid "Delete comment"
 msgstr "מחק תגובה"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "מחיקת איש קשר"
 
@@ -1155,8 +1149,8 @@ msgstr "קבוצה שנמחקה"
 msgid "Deleting address book..."
 msgstr "מוחק פנקס כתובות..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "מוחק איש קשר..."
 
@@ -1178,7 +1172,7 @@ msgstr "סדר יורד"
 msgid "Description"
 msgstr "תיאור"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "פרטים"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "רשימת המדריך"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "מחיקה"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "למחוק את השינויים?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "עריכת {label}"
 msgid "Edit caption"
 msgstr "עריכת כיתוב"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "עריכת איש קשר"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "ערוך שדה"
@@ -1332,14 +1317,14 @@ msgstr "אימייל"
 msgid "Email code"
 msgstr "קוד אימייל"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "כתובות אימייל"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "לסיים את החברות עם <0>{0}</0>? איש הקשר יישאר בפנקס הכתובות שלכם."
 
@@ -1408,7 +1393,7 @@ msgstr "הוספת איש הקשר נכשלה"
 msgid "Failed to add member"
 msgstr "הוספת חבר נכשלה"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "ביטול ההזמנה נכשל"
@@ -1427,7 +1412,8 @@ msgstr "ההעתקה נכשלה"
 msgid "Failed to create address book"
 msgstr "יצירת פנקס הכתובות נכשלה"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "יצירת איש הקשר נכשלה"
 
@@ -1460,8 +1446,8 @@ msgstr "מחיקת הקובץ המצורף נכשלה"
 msgid "Failed to delete comment"
 msgstr "מחיקת התגובה נכשלה"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "מחיקת איש הקשר נכשלה"
 
@@ -1518,8 +1504,8 @@ msgstr "טעינת הווידאו נכשלה"
 msgid "Failed to load your invite policy"
 msgstr "טעינת מדיניות ההזמנות שלך נכשלה"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "מיזוג אנשי הקשר נכשל"
 
@@ -1531,8 +1517,8 @@ msgstr "ההעברה נכשלה"
 msgid "Failed to post comment"
 msgstr "פרסום התגובה נכשל"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "הסרת החבר נכשלה"
 
@@ -1561,7 +1547,7 @@ msgstr "השמירה נכשלה"
 msgid "Failed to save accent"
 msgstr "שמירת צבע ההדגשה נכשלה"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "שמירת איש הקשר נכשלה"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "שמירת הפרומפט נכשלה"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "שליחת ההזמנה נכשלה"
 
@@ -1637,7 +1623,7 @@ msgstr "דגלים"
 msgid "Flat"
 msgstr "שטוח"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "שם פרטי"
 
@@ -1645,8 +1631,8 @@ msgstr "שם פרטי"
 msgid "Friday"
 msgstr "שישי"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "החבר הוסר"
 
@@ -1725,7 +1711,7 @@ msgstr "היסטוריה"
 msgid "Home"
 msgstr "בית"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "בית"
@@ -1788,7 +1774,7 @@ msgstr "תאריך לא תקין"
 msgid "Invitation accepted"
 msgstr "ההזמנה התקבלה"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "ההזמנה בוטלה"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "ההזמנה נדחתה"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "ההזמנה נשלחה"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "הגדרות הזמנה"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "הוזמן"
 
@@ -1970,18 +1956,17 @@ msgstr "מספר חברים"
 msgid "Menu"
 msgstr "תפריט"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "מיזוג"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "מיזוג אנשי קשר"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "ממזג אנשי קשר..."
 
@@ -2006,12 +1991,12 @@ msgstr "הרשאת המיקרופון נדחתה"
 msgid "Minimum length"
 msgstr "אורך מינימלי"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "נייד"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "חבר ב-Mochi"
 
@@ -2062,8 +2047,8 @@ msgstr "מעביר אל {0}"
 msgid "Name"
 msgstr "שם"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "שם"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "השם לא יכול להכיל את התווים < או >"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "שם נדרש"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "חדשים"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "איש קשר חדש"
 
@@ -2131,7 +2117,7 @@ msgstr "החודש הבא"
 msgid "Next year"
 msgstr "השנה הבאה"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "כינוי"
 
@@ -2270,7 +2256,7 @@ msgstr "לא נמצא"
 msgid "Not set"
 msgstr "לא הוגדר"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "הערה"
 
@@ -2345,7 +2331,7 @@ msgstr "שם אפשרות"
 msgid "Options"
 msgstr "אפשרויות"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "ארגון"
 
@@ -2353,7 +2339,7 @@ msgstr "ארגון"
 msgid "Other"
 msgstr "אחר"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "אחר"
@@ -2417,7 +2403,7 @@ msgstr "אנא נסה שוב."
 msgid "Please wait a moment and try again."
 msgstr "יש להמתין מעט ולנסות שוב."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "מיקוד"
 
@@ -2543,7 +2529,7 @@ msgstr "מפנה לדף ההתחברות."
 msgid "Reduce interest"
 msgstr "הפחת עניין"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "אזור"
 
@@ -2616,11 +2602,11 @@ msgstr "להסיר את כלל הגישה עבור \"{0}\"?"
 msgid "Remove access?"
 msgstr "להסיר גישה?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "הסרת כתובת"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "הסרת אימייל"
 
@@ -2643,12 +2629,12 @@ msgstr "הסרת קישור"
 msgid "Remove member"
 msgstr "הסר חבר"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "הסרת טלפון"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "מסיר חבר..."
 
@@ -2758,7 +2744,6 @@ msgstr "שבת"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "שמור שם"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "שמרו את הסיסמה הזו עכשיו. לא ניתן יהיה להציג אותה שוב."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "שומר איש קשר..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "שלח הודעה"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "שולח הזמנה..."
 
@@ -3056,7 +3037,7 @@ msgstr "הפסק לעקוב"
 msgid "Store silently"
 msgstr "אחסן בשקט"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "רחוב"
 
@@ -3082,7 +3063,7 @@ msgstr "הירשם"
 msgid "Sunday"
 msgstr "יום ראשון"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "שם משפחה"
 
@@ -3113,7 +3094,7 @@ msgstr "התג חייב להיות עד 50 תווים"
 msgid "Tags"
 msgstr "תגיות"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "טלפונים"
 
@@ -3192,7 +3173,7 @@ msgstr "פעולה זו תמחק לצמיתות את המשחק ואת הצ'אט
 msgid "Thursday"
 msgstr "יום חמישי"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "תפקיד"
@@ -3261,8 +3242,8 @@ msgstr "יום שלישי"
 msgid "Type"
 msgstr "סוג"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "לא זמין"
 msgid "Unexpected API error"
 msgstr "שגיאת API בלתי צפויה"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "הסרת חבר"
 
@@ -3378,7 +3359,7 @@ msgstr "התקדמות ההעלאה"
 msgid "Uploading..."
 msgstr "מעלה..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "שלחנו קוד אימות אל <0>{0}</0>. הזן את הקוד למ�
 msgid "Wednesday"
 msgstr "יום רביעי"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "עבודה"

@@ -218,7 +218,7 @@ msgstr "Gihîştin zêde bike"
 msgid "Add account"
 msgstr "Hesab zêde bike"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Navnîşan zêde bike"
 
@@ -241,7 +241,7 @@ msgstr "Têkilî zêde bike"
 msgid "Add device"
 msgstr "Cîhazekê zêde bike"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "E-name zêde bike"
 
@@ -281,7 +281,7 @@ msgstr "Ji bo destpêkirinê kesekî zêde bike"
 msgid "Add tag..."
 msgstr "Etîket zêde bike..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Telefon zêde bike"
 
@@ -324,7 +324,7 @@ msgstr "Endam tê zêdekirin..."
 msgid "address book"
 msgstr "pirtûka navnîşanan"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Pirtûka navnîşanan"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Banner hat nûkirin"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Rojbûn"
 
@@ -583,7 +583,6 @@ msgstr "Kamera tune ye"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Hat betalkirin"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Vexwendin tê betalkirin..."
@@ -681,7 +680,7 @@ msgstr "Demekê hilbijêre"
 msgid "Choose language"
 msgstr "Ziman hilbijêre"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Bajar"
 
@@ -820,28 +819,25 @@ msgstr "Tê girêdan..."
 msgid "Contact added"
 msgstr "Têkilî hate zêdekirin"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Têkilî hate kopîkirin"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Têkilî hate çêkirin"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Têkilî hate jêbirin"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Têkilî hate tomarkirin"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Têkilî"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Têkilî hatin yekkirin"
 
@@ -883,13 +879,9 @@ msgstr "Hat kopîkirin li clipboard"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Kopî bike"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Têkiliyê kopî bike"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Verastkirina ji nû ve nehate destpêkirin. Ji kerema xwe dîsa bicerib�
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Bi wê hesabê re piştrastkirin pêk nehat. Ji kerema xwe dîsa biceribîne."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Welat"
 
@@ -925,6 +917,7 @@ msgstr "Welat"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Çêbike"
 
@@ -971,7 +964,8 @@ msgstr "{field} hate afirandin"
 msgid "Creating address book..."
 msgstr "Pirtûka navnîşanan tê çêkirin..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Têkilî tê çêkirin..."
 
@@ -1044,10 +1038,9 @@ msgstr "Rêzkirina standard"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Jê bibe"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "<0>{0}</0> were jêbirin?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "<0>{0}</0> were jêbirin? Ev hevaltiya te jî diqedîne."
 
@@ -1085,8 +1078,9 @@ msgstr "Stûnê jê bibe"
 msgid "Delete comment"
 msgstr "Şîroveyê jê bibe"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Têkiliyê jê bibe"
 
@@ -1155,8 +1149,8 @@ msgstr "Koma jêbirî"
 msgid "Deleting address book..."
 msgstr "Pirtûka navnîşanan tê jêbirin..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Têkilî tê jêbirin..."
 
@@ -1178,7 +1172,7 @@ msgstr "Daketî"
 msgid "Description"
 msgstr "Şirove"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Hûragahî"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Lîsteya pelrêçê"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Bavêje"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "Guhertin bên avêtin?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "{label} biguherîne"
 msgid "Edit caption"
 msgstr "Binnivîsê biguherîne"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Têkiliyê sererast bike"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Qadê sererast bike"
@@ -1332,14 +1317,14 @@ msgstr "E-name"
 msgid "Email code"
 msgstr "Koda e-nameyê"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "E-name"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Hevaltiya xwe bi <0>{0}</0> re biqedînî? Têkilî di pirtûka navnîşanan a te de dimîne."
 
@@ -1408,7 +1393,7 @@ msgstr "Zêdekirina têkiliyê neserkeftî bû"
 msgid "Failed to add member"
 msgstr "Zêdekirina endamê neserkeftî bû"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Betalkirina vexwendinê neserkeftî bû"
@@ -1427,7 +1412,8 @@ msgstr "Kopîkirin neserkeftî bû"
 msgid "Failed to create address book"
 msgstr "Çêkirina pirtûka navnîşanan neserkeftî bû"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Çêkirina têkiliyê neserkeftî bû"
 
@@ -1460,8 +1446,8 @@ msgstr "Jêbirina pêvekê neserkeftî bû"
 msgid "Failed to delete comment"
 msgstr "Jêbirina şîroveyê neserkeftî bû"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Jêbirina têkiliyê neserkeftî bû"
 
@@ -1518,8 +1504,8 @@ msgstr "Vîdyo nehat barkirin"
 msgid "Failed to load your invite policy"
 msgstr "Barkirina polîtîkaya vexwendina te neserkeftî bû"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Yekkirina têkiliyan bi ser neket"
 
@@ -1531,8 +1517,8 @@ msgstr "Veguhastin bi ser neket"
 msgid "Failed to post comment"
 msgstr "Şandina şîroveyê neserkeftî bû"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Rakirina hevalî neserkeftî bû"
 
@@ -1561,7 +1547,7 @@ msgstr "Tomarkirin neserkeftî bû"
 msgid "Failed to save accent"
 msgstr "Tomarkirina aksanê neserkeftî bû"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Tomarkirina têkiliyê neserkeftî bû"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Tomarkirina prompt neserkeftî bû"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Şandina vexwendinê neserkeftî bû"
 
@@ -1637,7 +1623,7 @@ msgstr "Ala"
 msgid "Flat"
 msgstr "Tasî"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Nav"
 
@@ -1645,8 +1631,8 @@ msgstr "Nav"
 msgid "Friday"
 msgstr "Înî"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Heval hat rakirin"
 
@@ -1725,7 +1711,7 @@ msgstr "Dîrok"
 msgid "Home"
 msgstr "Mal"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Mal"
@@ -1788,7 +1774,7 @@ msgstr "Tarîxa nederbasdar"
 msgid "Invitation accepted"
 msgstr "Vexwendin hat qebûlkirin"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Vexwendin hat betalkirin"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Vexwendin hat redkirin"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Vexwendin hat şandin"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Mîhengên vexwendinê"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Vexwendî"
 
@@ -1970,18 +1956,17 @@ msgstr "Hejmara endaman"
 msgid "Menu"
 msgstr "Menû"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Yek bike"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Têkiliyan yek bike"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "Têkilî têne yekkirin..."
 
@@ -2006,12 +1991,12 @@ msgstr "Destûra mîkrofonê hat redkirin"
 msgid "Minimum length"
 msgstr "Dirêjahiya kêmtirîn"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Mobîl"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Hevalê Mochi"
 
@@ -2062,8 +2047,8 @@ msgstr "Tê veguhastin bo {0}"
 msgid "Name"
 msgstr "Nav"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Nav"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Nav nikare tîpên < an > bigire nav xwe"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Nav pêwîst e"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "Herî nû"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Têkiliya nû"
 
@@ -2131,7 +2117,7 @@ msgstr "Meha bê"
 msgid "Next year"
 msgstr "Sala bê"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Leqeb"
 
@@ -2270,7 +2256,7 @@ msgstr "Nehat dîtin"
 msgid "Not set"
 msgstr "Nehatiye danîn"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Nîşe"
 
@@ -2345,7 +2331,7 @@ msgstr "Navê vebijêrkê"
 msgid "Options"
 msgstr "Vebijêrk"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Rêxistin"
 
@@ -2353,7 +2339,7 @@ msgstr "Rêxistin"
 msgid "Other"
 msgstr "Yên din"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Yên din"
@@ -2417,7 +2403,7 @@ msgstr "Ji kerema xwe dîsa biceribîne."
 msgid "Please wait a moment and try again."
 msgstr "Ji kerema xwe kêliyekê bisekine û dîsa biceribîne."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Koda postê"
 
@@ -2543,7 +2529,7 @@ msgstr "Beralîkirin ber bi têketinê ve."
 msgid "Reduce interest"
 msgstr "Balkêşî kêm bike"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Herêm"
 
@@ -2616,11 +2602,11 @@ msgstr "Rêbaza gihîştinê ya \"{0}\" were rakirin?"
 msgid "Remove access?"
 msgstr "Destpêkirinê rake?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Navnîşanê rake"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "E-nameyê rake"
 
@@ -2643,12 +2629,12 @@ msgstr "Girêdanê rake"
 msgid "Remove member"
 msgstr "Endamê rake"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Telefonê rake"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Heval tê rakirin..."
 
@@ -2758,7 +2744,6 @@ msgstr "Şemî"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Navê tomar bike"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Vê şîfreyê niha tomar bike. Careke din nayê nîşandan."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Têkilî tê tomarkirin..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Peyamê bişîne"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Vexwendin tê şandin..."
 
@@ -3056,7 +3037,7 @@ msgstr "Temaşekirinê rawestîne"
 msgid "Store silently"
 msgstr "Bê deng tomar bike"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Kolan"
 
@@ -3082,7 +3063,7 @@ msgstr "Abone bibe"
 msgid "Sunday"
 msgstr "Yekşem"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Paşnav"
 
@@ -3113,7 +3094,7 @@ msgstr "Etîket divê 50 tîp an kêmtir be"
 msgid "Tags"
 msgstr "Nîşan"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Telefon"
 
@@ -3192,7 +3173,7 @@ msgstr "Ev ê lîstik û sohbeta wê bi awayekî domdar jê bibe. Ev kirin nayê
 msgid "Thursday"
 msgstr "Pêncşem"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Pozîsyon"
@@ -3261,8 +3242,8 @@ msgstr "Sêşem"
 msgid "Type"
 msgstr "Cure"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Ne berdest"
 msgid "Unexpected API error"
 msgstr "Çewtiya API ya nediyar"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Hevaltiyê biqedîne"
 
@@ -3378,7 +3359,7 @@ msgstr "Pêşketina barkirinê"
 msgid "Uploading..."
 msgstr "Tê barkirin..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "Me kodek pejirandinê şand bo <0>{0}</0>. Ji bo pejirandina navnîşana
 msgid "Wednesday"
 msgstr "Çarşem"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Kar"

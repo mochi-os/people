@@ -218,7 +218,7 @@ msgstr "Adaugă acces"
 msgid "Add account"
 msgstr "Adaugă cont"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Adaugă adresă"
 
@@ -241,7 +241,7 @@ msgstr "Adaugă contact"
 msgid "Add device"
 msgstr "Adaugă un dispozitiv"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Adaugă email"
 
@@ -281,7 +281,7 @@ msgstr "Adaugă pe cineva pentru a începe"
 msgid "Add tag..."
 msgstr "Adaugă etichetă..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Adaugă telefon"
 
@@ -324,7 +324,7 @@ msgstr "Se adaugă membrul..."
 msgid "address book"
 msgstr "agendă"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Agendă"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Banner actualizat"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Data nașterii"
 
@@ -583,7 +583,6 @@ msgstr "Camera nu este disponibilă"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Anulat"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Se anulează invitația..."
@@ -681,7 +680,7 @@ msgstr "Alegeți o oră"
 msgid "Choose language"
 msgstr "Alege limba"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Oraș"
 
@@ -820,28 +819,25 @@ msgstr "Se conectează..."
 msgid "Contact added"
 msgstr "Contact adăugat"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Contact copiat"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Contact creat"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Contact șters"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Contact salvat"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Contacte"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Contactele au fost îmbinate"
 
@@ -883,13 +879,9 @@ msgstr "Copiat în clipboard"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Copiază"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Copiază contactul"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Reautentificarea nu a putut fi inițiată. Încearcă din nou."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Nu s-a putut verifica cu acel cont. Încearcă din nou."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Țară"
 
@@ -925,6 +917,7 @@ msgstr "Țară"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Creează"
 
@@ -971,7 +964,8 @@ msgstr "Creat {field}"
 msgid "Creating address book..."
 msgstr "Se creează agenda..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Se creează contactul..."
 
@@ -1044,10 +1038,9 @@ msgstr "Sortare implicită"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Șterge"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "Ștergi <0>{0}</0>?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "Ștergi <0>{0}</0>? Astfel se încheie și prietenia voastră."
 
@@ -1085,8 +1078,9 @@ msgstr "Șterge coloana"
 msgid "Delete comment"
 msgstr "Șterge comentariul"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Șterge contactul"
 
@@ -1155,8 +1149,8 @@ msgstr "Grup șters"
 msgid "Deleting address book..."
 msgstr "Se șterge agenda..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Se șterge contactul..."
 
@@ -1178,7 +1172,7 @@ msgstr "Descrescător"
 msgid "Description"
 msgstr "Descriere"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Detalii"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Listă director"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Renunță"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "Renunți la modificări?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "Editează {label}"
 msgid "Edit caption"
 msgstr "Editează legenda"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Editează contactul"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Editează câmpul"
@@ -1332,14 +1317,14 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Cod email"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "Adrese de email"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Închei prietenia cu <0>{0}</0>? Contactul rămâne în agenda ta."
 
@@ -1408,7 +1393,7 @@ msgstr "Adăugarea contactului a eșuat"
 msgid "Failed to add member"
 msgstr "Adăugarea membrului a eșuat"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Anularea invitației a eșuat"
@@ -1427,7 +1412,8 @@ msgstr "Copierea a eșuat"
 msgid "Failed to create address book"
 msgstr "Crearea agendei a eșuat"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Crearea contactului a eșuat"
 
@@ -1460,8 +1446,8 @@ msgstr "Ștergerea atașamentului a eșuat"
 msgid "Failed to delete comment"
 msgstr "Ștergerea comentariului a eșuat"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Ștergerea contactului a eșuat"
 
@@ -1518,8 +1504,8 @@ msgstr "Videoclipul nu a putut fi încărcat"
 msgid "Failed to load your invite policy"
 msgstr "Încărcarea politicii tale de invitații a eșuat"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Contactele nu au putut fi îmbinate"
 
@@ -1531,8 +1517,8 @@ msgstr "Mutarea a eșuat"
 msgid "Failed to post comment"
 msgstr "Postarea comentariului a eșuat"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Eliminarea prietenului a eșuat"
 
@@ -1561,7 +1547,7 @@ msgstr "Salvarea a eșuat"
 msgid "Failed to save accent"
 msgstr "Salvarea accentului a eșuat"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Salvarea contactului a eșuat"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Salvarea promptului a eșuat"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Trimiterea invitației a eșuat"
 
@@ -1637,7 +1623,7 @@ msgstr "Indicatoare"
 msgid "Flat"
 msgstr "Plat"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Prenume"
 
@@ -1645,8 +1631,8 @@ msgstr "Prenume"
 msgid "Friday"
 msgstr "Vineri"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Prieten eliminat"
 
@@ -1725,7 +1711,7 @@ msgstr "Istoric"
 msgid "Home"
 msgstr "Acasă"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Domiciliu"
@@ -1788,7 +1774,7 @@ msgstr "Dată invalidă"
 msgid "Invitation accepted"
 msgstr "Invitație acceptată"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Invitație anulată"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Invitație refuzată"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Invitație trimisă"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Setări invitații"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Invitat"
 
@@ -1970,18 +1956,17 @@ msgstr "Număr de membri"
 msgid "Menu"
 msgstr "Meniu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Îmbină"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Îmbină contactele"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "Se îmbină contactele..."
 
@@ -2006,12 +1991,12 @@ msgstr "Permisiunea pentru microfon refuzată"
 msgid "Minimum length"
 msgstr "Lungime minimă"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Mobil"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Prieten Mochi"
 
@@ -2062,8 +2047,8 @@ msgstr "Se mută în {0}"
 msgid "Name"
 msgstr "Nume"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Nume"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Numele nu poate conține caracterele < sau >"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Numele este obligatoriu"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "Cele mai noi"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Contact nou"
 
@@ -2131,7 +2117,7 @@ msgstr "Luna următoare"
 msgid "Next year"
 msgstr "Anul următor"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Poreclă"
 
@@ -2270,7 +2256,7 @@ msgstr "Nu a fost găsit"
 msgid "Not set"
 msgstr "Nesetat"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Notă"
 
@@ -2345,7 +2331,7 @@ msgstr "Nume opțiune"
 msgid "Options"
 msgstr "Opțiuni"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Organizație"
 
@@ -2353,7 +2339,7 @@ msgstr "Organizație"
 msgid "Other"
 msgstr "Altele"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Altele"
@@ -2417,7 +2403,7 @@ msgstr "Încearcă din nou."
 msgid "Please wait a moment and try again."
 msgstr "Așteptați un moment și încercați din nou."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Cod poștal"
 
@@ -2543,7 +2529,7 @@ msgstr "Se redirecționează către autentificare."
 msgid "Reduce interest"
 msgstr "Reduce interesul"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Regiune"
 
@@ -2616,11 +2602,11 @@ msgstr "Eliminați regula de acces pentru „{0}”?"
 msgid "Remove access?"
 msgstr "Elimini accesul?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Elimină adresa"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Elimină adresa de email"
 
@@ -2643,12 +2629,12 @@ msgstr "Elimină linkul"
 msgid "Remove member"
 msgstr "Elimină membrul"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Elimină telefonul"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Se elimină prietenul..."
 
@@ -2758,7 +2744,6 @@ msgstr "Sâmbătă"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Salvează numele"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Salvează această parolă acum. Nu va mai putea fi afișată."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Se salvează contactul..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Trimite mesajul"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Se trimite invitația..."
 
@@ -3056,7 +3037,7 @@ msgstr "Nu mai urmări"
 msgid "Store silently"
 msgstr "Stochează silențios"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Stradă"
 
@@ -3082,7 +3063,7 @@ msgstr "Abonează-te"
 msgid "Sunday"
 msgstr "Duminică"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Nume de familie"
 
@@ -3113,7 +3094,7 @@ msgstr "Eticheta trebuie să aibă cel mult 50 de caractere"
 msgid "Tags"
 msgstr "Etichete"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Telefoane"
 
@@ -3192,7 +3173,7 @@ msgstr "Aceasta va șterge definitiv jocul și discuția asociată. Această ac�
 msgid "Thursday"
 msgstr "Joi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Funcție"
@@ -3261,8 +3242,8 @@ msgstr "Marți"
 msgid "Type"
 msgstr "Tip"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Indisponibil"
 msgid "Unexpected API error"
 msgstr "Eroare API neașteptată"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Încheie prietenia"
 
@@ -3378,7 +3359,7 @@ msgstr "Progresul încărcării"
 msgid "Uploading..."
 msgstr "Se încarcă..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "Am trimis un cod de verificare la <0>{0}</0>. Introduceți codul mai jos
 msgid "Wednesday"
 msgstr "Miercuri"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Serviciu"

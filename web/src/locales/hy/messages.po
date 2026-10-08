@@ -218,7 +218,7 @@ msgstr "Ավելացնել մուտք"
 msgid "Add account"
 msgstr "Ավելացնել հաշիվ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Ավելացնել հասցե"
 
@@ -241,7 +241,7 @@ msgstr "Ավելացնել կոնտակտ"
 msgid "Add device"
 msgstr "Ավելացնել սարք"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Ավելացնել էլ․ փոստ"
 
@@ -281,7 +281,7 @@ msgstr "Ավելացրեք որևէ մեկին՝ սկսելու համար"
 msgid "Add tag..."
 msgstr "Ավելացնել պիտակ..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Ավելացնել հեռախոս"
 
@@ -324,7 +324,7 @@ msgstr "Անդամ է ավելացվում..."
 msgid "address book"
 msgstr "հասցեագիրք"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Հասցեագիրք"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Բանները թարմացվեց"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Ծննդյան օր"
 
@@ -583,7 +583,6 @@ msgstr "Տեսախցիկը հասանելի չէ"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Չեղարկված"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Հրավերը չեղարկվում է..."
@@ -681,7 +680,7 @@ msgstr "Ընտրեք ժամը"
 msgid "Choose language"
 msgstr "Ընտրել լեզուն"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Քաղաք"
 
@@ -820,28 +819,25 @@ msgstr "Միանում է..."
 msgid "Contact added"
 msgstr "Կոնտակտն ավելացվեց"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Կոնտակտը պատճենվեց"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Կոնտակտը ստեղծվեց"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Կոնտակտը ջնջվեց"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Կոնտակտը պահպանվեց"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Կոնտակտներ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Կոնտակտները միավորվեցին"
 
@@ -883,13 +879,9 @@ msgstr "Պատճենվեց սեղմատախտակին"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Պատճենել"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Պատճենել կոնտակտը"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Չհաջողվեց սկսել վերանույնականացումը։ �
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Չհաջողվեց ստուգել այդ հաշվով։ Խնդրում ենք նորից փորձել։"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Երկիր"
 
@@ -925,6 +917,7 @@ msgstr "Երկիր"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Ստեղծել"
 
@@ -971,7 +964,8 @@ msgstr "Ստեղծվել է {field}"
 msgid "Creating address book..."
 msgstr "Հասցեագիրքը ստեղծվում է..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Կոնտակտը ստեղծվում է..."
 
@@ -1044,10 +1038,9 @@ msgstr "Լռելյայն տեսակավորում"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Ջնջել"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "Ջնջե՞լ <0>{0}</0>-ը։"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "Ջնջե՞լ <0>{0}</0>-ը։ Սա նաև կավարտի ձեր ընկերությունը։"
 
@@ -1085,8 +1078,9 @@ msgstr "Ջնջել սյունակը"
 msgid "Delete comment"
 msgstr "Ջնջել մեկնաբանությունը"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Ջնջել կոնտակտը"
 
@@ -1155,8 +1149,8 @@ msgstr "Ջնջված խումբ"
 msgid "Deleting address book..."
 msgstr "Հասցեագիրքը ջնջվում է..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Կոնտակտը ջնջվում է..."
 
@@ -1178,7 +1172,7 @@ msgstr "Նվազման կարգով"
 msgid "Description"
 msgstr "Նկարագրություն"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Մանրամասներ"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Տեղեկատուի ցանկ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Հրաժարվել"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "Հրաժարվե՞լ փոփոխություններից։"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "Խմբագրել {label}"
 msgid "Edit caption"
 msgstr "Խմբագրել մակագրությունը"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Խմբագրել կոնտակտը"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Խմբագրել դաշտը"
@@ -1332,14 +1317,14 @@ msgstr "Էլ․ փոստ"
 msgid "Email code"
 msgstr "Էլ․ փոստի կոդ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "Էլ․ փոստի հասցեներ"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Ավարտե՞լ ձեր ընկերությունը <0>{0}</0>-ի հետ։ Կոնտակտը կմնա ձեր հասցեագրքում։"
 
@@ -1408,7 +1393,7 @@ msgstr "Չհաջողվեց ավելացնել կոնտակտը"
 msgid "Failed to add member"
 msgstr "Չհաջողվեց ավելացնել անդամին"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Չհաջողվեց չեղարկել հրավերը"
@@ -1427,7 +1412,8 @@ msgstr "Չհաջողվեց պատճենել"
 msgid "Failed to create address book"
 msgstr "Չհաջողվեց ստեղծել հասցեագիրքը"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Չհաջողվեց ստեղծել կոնտակտը"
 
@@ -1460,8 +1446,8 @@ msgstr "Չհաջողվեց ջնջել կցորդը"
 msgid "Failed to delete comment"
 msgstr "Չհաջողվեց ջնջել մեկնաբանությունը"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Չհաջողվեց ջնջել կոնտակտը"
 
@@ -1518,8 +1504,8 @@ msgstr "Չհաջողվեց բեռնել տեսանյութը"
 msgid "Failed to load your invite policy"
 msgstr "Չհաջողվեց բեռնել ձեր հրավերների քաղաքականությունը"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Չհաջողվեց միավորել կոնտակտները"
 
@@ -1531,8 +1517,8 @@ msgstr "Չհաջողվեց տեղափոխել"
 msgid "Failed to post comment"
 msgstr "Չհաջողվեց հրապարակել մեկնաբանությունը"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Չհաջողվեց հեռացնել ընկերոջը"
 
@@ -1561,7 +1547,7 @@ msgstr "Չհաջողվեց պահպանել"
 msgid "Failed to save accent"
 msgstr "Չհաջողվեց պահպանել առոգանությունը"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Չհաջողվեց պահպանել կոնտակտը"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Չհաջողվեց պահպանել հուշումը"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Չհաջողվեց ուղարկել հրավերը"
 
@@ -1637,7 +1623,7 @@ msgstr "Դրոշներ"
 msgid "Flat"
 msgstr "Հարթ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Անուն"
 
@@ -1645,8 +1631,8 @@ msgstr "Անուն"
 msgid "Friday"
 msgstr "Ուրբաթ"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Ընկերը հեռացվեց"
 
@@ -1725,7 +1711,7 @@ msgstr "Պատմություն"
 msgid "Home"
 msgstr "Գլխավոր"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Տուն"
@@ -1788,7 +1774,7 @@ msgstr "Անվավեր ամսաթիվ"
 msgid "Invitation accepted"
 msgstr "Հրավերն ընդունվեց"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Հրավերը չեղարկվեց"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Հրավերը մերժվեց"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Հրավերն ուղարկվեց"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Հրավերների կարգավորումներ"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Հրավիրված"
 
@@ -1970,18 +1956,17 @@ msgstr "Անդամների քանակ"
 msgid "Menu"
 msgstr "Մենյու"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Միավորել"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Միավորել կոնտակտները"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "Կոնտակտները միավորվում են..."
 
@@ -2006,12 +1991,12 @@ msgstr "Խոսափողի թույլտվությունը մերժված է"
 msgid "Minimum length"
 msgstr "Նվազագույն երկարություն"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Բջջային"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Mochi ընկեր"
 
@@ -2062,8 +2047,8 @@ msgstr "Տեղափոխվում է {0}"
 msgid "Name"
 msgstr "Անուն"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Անուն"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Անունը չի կարող պարունակել < կամ > նիշերը"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Անունը պարտադիր է"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "Նորերը"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Նոր կոնտակտ"
 
@@ -2131,7 +2117,7 @@ msgstr "Հաջորդ ամիս"
 msgid "Next year"
 msgstr "Հաջորդ տարի"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Մականուն"
 
@@ -2270,7 +2256,7 @@ msgstr "Չի գտնվել"
 msgid "Not set"
 msgstr "Չի սահմանված"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Նշում"
 
@@ -2345,7 +2331,7 @@ msgstr "Տարբերակի անունը"
 msgid "Options"
 msgstr "Տարբերակներ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Կազմակերպություն"
 
@@ -2353,7 +2339,7 @@ msgstr "Կազմակերպություն"
 msgid "Other"
 msgstr "Այլ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Այլ"
@@ -2417,7 +2403,7 @@ msgstr "Խնդրում ենք կրկին փորձել։"
 msgid "Please wait a moment and try again."
 msgstr "Խնդրում ենք մի փոքր սպասել և նորից փորձել։"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Փոստային ինդեքս"
 
@@ -2543,7 +2529,7 @@ msgstr "Վերահղում մուտք էջ։"
 msgid "Reduce interest"
 msgstr "Նվազեցնել հետաքրքրությունը"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Տարածաշրջան"
 
@@ -2616,11 +2602,11 @@ msgstr "Հեռացնե՞լ «{0}»-ի մուտքի կանոնը։"
 msgid "Remove access?"
 msgstr "Հեռացնե՞լ մուտքը։"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Հեռացնել հասցեն"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Հեռացնել էլ․ փոստը"
 
@@ -2643,12 +2629,12 @@ msgstr "Հեռացնել հղումը"
 msgid "Remove member"
 msgstr "Հեռացնել անդամին"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Հեռացնել հեռախոսը"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Ընկերը հեռացվում է..."
 
@@ -2758,7 +2744,6 @@ msgstr "Շաբաթ"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Պահպանել անունը"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Պահեք այս գաղտնաբառը հիմա։ Այն այլևս հնարավոր չի լինի ցուցադրել։"
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Կոնտակտը պահպանվում է..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Ուղարկել հաղորդագրությունը"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Հրավերն ուղարկվում է..."
 
@@ -3056,7 +3037,7 @@ msgstr "Դադարեցնել դիտումը"
 msgid "Store silently"
 msgstr "Պահպանել անձայն"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Փողոց"
 
@@ -3082,7 +3063,7 @@ msgstr "Բաժանորդագրվել"
 msgid "Sunday"
 msgstr "Կիրակի"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Ազգանուն"
 
@@ -3113,7 +3094,7 @@ msgstr "Պիտակը պետք է լինի առավելագույնը 50 նիշ"
 msgid "Tags"
 msgstr "Թեգեր"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Հեռախոսներ"
 
@@ -3192,7 +3173,7 @@ msgstr "Սա ընդմիշտ կջնջի խաղը և դրա չաթը։ Այս գո
 msgid "Thursday"
 msgstr "Հինգշաբթի"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Պաշտոն"
@@ -3261,8 +3242,8 @@ msgstr "Երեքշաբթի"
 msgid "Type"
 msgstr "Տեսակ"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Անհասանելի"
 msgid "Unexpected API error"
 msgstr "API-ի անսպասելի սխալ"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Հեռացնել ընկերներից"
 
@@ -3378,7 +3359,7 @@ msgstr "Վերբեռնման ընթացքը"
 msgid "Uploading..."
 msgstr "Վերբեռնվում է..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "Մենք հաստատման կոդ ուղարկեցինք <0>{0}</0> հ�
 msgid "Wednesday"
 msgstr "Չորեքշաբթի"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Աշխատանք"

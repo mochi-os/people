@@ -218,7 +218,7 @@ msgstr "Ychwanegu mynediad"
 msgid "Add account"
 msgstr "Ychwanegu cyfrif"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Ychwanegu cyfeiriad"
 
@@ -241,7 +241,7 @@ msgstr "Ychwanegu cyswllt"
 msgid "Add device"
 msgstr "Ychwanegu dyfais"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Ychwanegu e-bost"
 
@@ -281,7 +281,7 @@ msgstr "Ychwanegwch rywun i ddechrau"
 msgid "Add tag..."
 msgstr "Ychwanegu tag..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Ychwanegu ffôn"
 
@@ -324,7 +324,7 @@ msgstr "Yn ychwanegu aelod..."
 msgid "address book"
 msgstr "llyfr cyfeiriadau"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Llyfr cyfeiriadau"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Baner wedi'i diweddaru"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Pen-blwydd"
 
@@ -583,7 +583,6 @@ msgstr "Camera ddim ar gael"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Wedi'i ganslo"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Yn canslo gwahoddiad..."
@@ -681,7 +680,7 @@ msgstr "Dewiswch amser"
 msgid "Choose language"
 msgstr "Dewiswch iaith"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Dinas"
 
@@ -820,28 +819,25 @@ msgstr "Yn cysylltu..."
 msgid "Contact added"
 msgstr "Cyswllt wedi'i ychwanegu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Cyswllt wedi'i gopïo"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Cyswllt wedi'i greu"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Cyswllt wedi'i ddileu"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Cyswllt wedi'i gadw"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Cysylltiadau"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Cysylltiadau wedi'u cyfuno"
 
@@ -883,13 +879,9 @@ msgstr "Wedi'i gopïo i'r clipfwrdd"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Copïo"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Copïo cyswllt"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Methwyd dechrau ailddilysu. Rhowch gynnig arall arni."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Methwyd dilysu gyda'r cyfrif hwnnw. Rhowch gynnig arall arni."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Gwlad"
 
@@ -925,6 +917,7 @@ msgstr "Gwlad"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Creu"
 
@@ -971,7 +964,8 @@ msgstr "Crëwyd {field}"
 msgid "Creating address book..."
 msgstr "Yn creu llyfr cyfeiriadau..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Yn creu cyswllt..."
 
@@ -1044,10 +1038,9 @@ msgstr "Trefnu diofyn"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Dileu"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "Dileu <0>{0}</0>?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "Dileu <0>{0}</0>? Mae hyn hefyd yn dod â'ch cyfeillgarwch i ben."
 
@@ -1085,8 +1078,9 @@ msgstr "Dileu colofn"
 msgid "Delete comment"
 msgstr "Dileu sylw"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Dileu cyswllt"
 
@@ -1155,8 +1149,8 @@ msgstr "Grŵp wedi'i ddileu"
 msgid "Deleting address book..."
 msgstr "Yn dileu llyfr cyfeiriadau..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Yn dileu cyswllt..."
 
@@ -1178,7 +1172,7 @@ msgstr "Disgynnol"
 msgid "Description"
 msgstr "Disgrifiad"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Manylion"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Rhestr y cyfeiriadur"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Hepgor"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "Hepgor y newidiadau?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "Golygu {label}"
 msgid "Edit caption"
 msgstr "Golygu capsiwn"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Golygu cyswllt"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Golygu maes"
@@ -1332,14 +1317,14 @@ msgstr "E-bost"
 msgid "Email code"
 msgstr "Cod e-bost"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "Cyfeiriadau e-bost"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Dod â'ch cyfeillgarwch â <0>{0}</0> i ben? Bydd y cyswllt yn aros yn eich llyfr cyfeiriadau."
 
@@ -1408,7 +1393,7 @@ msgstr "Methwyd ychwanegu'r cyswllt"
 msgid "Failed to add member"
 msgstr "Methwyd ychwanegu aelod"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Methwyd canslo'r gwahoddiad"
@@ -1427,7 +1412,8 @@ msgstr "Methwyd copïo"
 msgid "Failed to create address book"
 msgstr "Methwyd creu'r llyfr cyfeiriadau"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Methwyd creu'r cyswllt"
 
@@ -1460,8 +1446,8 @@ msgstr "Methwyd dileu'r atodiad"
 msgid "Failed to delete comment"
 msgstr "Methwyd dileu'r sylw"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Methwyd dileu'r cyswllt"
 
@@ -1518,8 +1504,8 @@ msgstr "Methwyd llwytho'r fideo"
 msgid "Failed to load your invite policy"
 msgstr "Methwyd llwytho eich polisi gwahodd"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Methu cyfuno cysylltiadau"
 
@@ -1531,8 +1517,8 @@ msgstr "Methwyd symud"
 msgid "Failed to post comment"
 msgstr "Methwyd postio sylw"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Methwyd dileu'r ffrind"
 
@@ -1561,7 +1547,7 @@ msgstr "Methwyd cadw"
 msgid "Failed to save accent"
 msgstr "Methwyd cadw'r acen"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Methwyd cadw'r cyswllt"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Methwyd cadw'r anogiad"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Methwyd anfon y gwahoddiad"
 
@@ -1637,7 +1623,7 @@ msgstr "Baneri"
 msgid "Flat"
 msgstr "Gwastad"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Enw cyntaf"
 
@@ -1645,8 +1631,8 @@ msgstr "Enw cyntaf"
 msgid "Friday"
 msgstr "Dydd Gwener"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Cyfaill wedi'i dynnu"
 
@@ -1725,7 +1711,7 @@ msgstr "Hanes"
 msgid "Home"
 msgstr "Cartref"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Cartref"
@@ -1788,7 +1774,7 @@ msgstr "Dyddiad annilys"
 msgid "Invitation accepted"
 msgstr "Gwahoddiad wedi'i dderbyn"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Gwahoddiad wedi'i ganslo"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Gwahoddiad wedi'i wrthod"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Gwahoddiad wedi'i anfon"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Gosodiadau gwahodd"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Wedi'i wahodd"
 
@@ -1970,18 +1956,17 @@ msgstr "Cyfrif aelodau"
 msgid "Menu"
 msgstr "Dewislen"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Cyfuno"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Cyfuno cysylltiadau"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "Wrthi'n cyfuno cysylltiadau..."
 
@@ -2006,12 +1991,12 @@ msgstr "Gwrthodwyd caniatâd y meicroffon"
 msgid "Minimum length"
 msgstr "Hyd lleiaf"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Symudol"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Ffrind Mochi"
 
@@ -2062,8 +2047,8 @@ msgstr "Yn symud i {0}"
 msgid "Name"
 msgstr "Enw"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Enw"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Ni all yr enw gynnwys nodau < neu >"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Mae angen enw"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "Diweddaraf"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Cyswllt newydd"
 
@@ -2131,7 +2117,7 @@ msgstr "Mis nesaf"
 msgid "Next year"
 msgstr "Blwyddyn nesaf"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Llysenw"
 
@@ -2270,7 +2256,7 @@ msgstr "Heb ei ganfod"
 msgid "Not set"
 msgstr "Heb ei osod"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Nodyn"
 
@@ -2345,7 +2331,7 @@ msgstr "Enw'r opsiwn"
 msgid "Options"
 msgstr "Opsiynau"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Sefydliad"
 
@@ -2353,7 +2339,7 @@ msgstr "Sefydliad"
 msgid "Other"
 msgstr "Arall"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Arall"
@@ -2417,7 +2403,7 @@ msgstr "Rhowch gynnig arall arni."
 msgid "Please wait a moment and try again."
 msgstr "Arhoswch funud a rhowch gynnig arall arni."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Cod post"
 
@@ -2543,7 +2529,7 @@ msgstr "Yn ailgyfeirio i'r mewngofnodi."
 msgid "Reduce interest"
 msgstr "Lleihau diddordeb"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Rhanbarth"
 
@@ -2616,11 +2602,11 @@ msgstr "Tynnu'r rheol mynediad ar gyfer \"{0}\"?"
 msgid "Remove access?"
 msgstr "Tynnu mynediad?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Tynnu cyfeiriad"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Tynnu e-bost"
 
@@ -2643,12 +2629,12 @@ msgstr "Tynnu dolen"
 msgid "Remove member"
 msgstr "Tynnu aelod"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Tynnu ffôn"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Yn tynnu cyfaill..."
 
@@ -2758,7 +2744,6 @@ msgstr "Dydd Sadwrn"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Cadw’r enw"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Cadwch y cyfrinair hwn nawr. Ni ellir ei ddangos eto."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Yn cadw cyswllt..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Anfon neges"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Yn anfon gwahoddiad..."
 
@@ -3056,7 +3037,7 @@ msgstr "Stopio gwylio"
 msgid "Store silently"
 msgstr "Storio'n dawel"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Stryd"
 
@@ -3082,7 +3063,7 @@ msgstr "Tanysgrifio"
 msgid "Sunday"
 msgstr "Dydd Sul"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Cyfenw"
 
@@ -3113,7 +3094,7 @@ msgstr "Rhaid i'r tag fod yn 50 nod neu lai"
 msgid "Tags"
 msgstr "Tagiau"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Ffonau"
 
@@ -3192,7 +3173,7 @@ msgstr "Bydd hyn yn dileu'r gêm a'i sgwrs yn barhaol. Ni ellir dadwneud hyn."
 msgid "Thursday"
 msgstr "Dydd Iau"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Teitl swydd"
@@ -3261,8 +3242,8 @@ msgstr "Dydd Mawrth"
 msgid "Type"
 msgstr "Math"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Ddim ar gael"
 msgid "Unexpected API error"
 msgstr "Gwall API annisgwyl"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Tynnu fel ffrind"
 
@@ -3378,7 +3359,7 @@ msgstr "Cynnydd llwytho i fyny"
 msgid "Uploading..."
 msgstr "Yn llwytho i fyny..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "Rydym wedi anfon cod dilysu i <0>{0}</0>. Rhowch y cod isod i ddilysu ei
 msgid "Wednesday"
 msgstr "Dydd Mercher"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Gwaith"

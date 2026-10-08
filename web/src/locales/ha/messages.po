@@ -218,7 +218,7 @@ msgstr "Ƙara damar shiga"
 msgid "Add account"
 msgstr "Ƙara asusu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Ƙara adireshi"
 
@@ -241,7 +241,7 @@ msgstr "Ƙara lambar sadarwa"
 msgid "Add device"
 msgstr "Ƙara na'ura"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Ƙara imel"
 
@@ -281,7 +281,7 @@ msgstr "Ƙara wani don farawa"
 msgid "Add tag..."
 msgstr "Ƙara tag..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Ƙara waya"
 
@@ -324,7 +324,7 @@ msgstr "Ana ƙara memba..."
 msgid "address book"
 msgstr "littafin adireshi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Littafin adireshi"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "An sabunta banner"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Ranar haihuwa"
 
@@ -583,7 +583,6 @@ msgstr "Babu kyamara"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "An soke"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Ana soke gayyata..."
@@ -681,7 +680,7 @@ msgstr "Zaɓi lokaci"
 msgid "Choose language"
 msgstr "Zaɓi harshe"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Birni"
 
@@ -820,28 +819,25 @@ msgstr "Ana haɗawa..."
 msgid "Contact added"
 msgstr "An ƙara lambar sadarwa"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "An kwafi lambar sadarwa"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "An ƙirƙiri lambar sadarwa"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "An share lambar sadarwa"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "An adana lambar sadarwa"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Lambobin sadarwa"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "An haɗa lambobi"
 
@@ -883,13 +879,9 @@ msgstr "An kwafi zuwa clipboard"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Kwafi"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Kwafi lambar sadarwa"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "An kasa fara sake tantancewa. Don Allah a sake gwadawa."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "An kasa tabbatar da wannan asusun. Da fatan za a sake gwadawa."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Ƙasa"
 
@@ -925,6 +917,7 @@ msgstr "Ƙasa"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Ƙirƙira"
 
@@ -971,7 +964,8 @@ msgstr "An ƙirƙiri {field}"
 msgid "Creating address book..."
 msgstr "Ana ƙirƙirar littafin adireshi..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Ana ƙirƙirar lambar sadarwa..."
 
@@ -1044,10 +1038,9 @@ msgstr "Jeri na tsoho"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Goge"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "A goge <0>{0}</0>?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "A goge <0>{0}</0>? Wannan kuma zai kawo ƙarshen abokantakarku."
 
@@ -1085,8 +1078,9 @@ msgstr "Goge column"
 msgid "Delete comment"
 msgstr "Goge sharhi"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Goge lambar sadarwa"
 
@@ -1155,8 +1149,8 @@ msgstr "Ƙungiyar da aka goge"
 msgid "Deleting address book..."
 msgstr "Ana goge littafin adireshi..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Ana goge lambar sadarwa..."
 
@@ -1178,7 +1172,7 @@ msgstr "Sauka ƙasa"
 msgid "Description"
 msgstr "Bayani"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Cikakkun bayanai"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Jerin jagora"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Watsar"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "A watsar da canje-canjen?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "Gyara {label}"
 msgid "Edit caption"
 msgstr "Gyara bayanin hoto"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Gyara lambar sadarwa"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Gyara field"
@@ -1332,14 +1317,14 @@ msgstr "Imel"
 msgid "Email code"
 msgstr "Lambar imel"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "Imel"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "A kawo ƙarshen abokantakarka da <0>{0}</0>? Lambar sadarwa za ta ci gaba da kasancewa a littafin adireshi naka."
 
@@ -1408,7 +1393,7 @@ msgstr "An gaza ƙara lambar sadarwa"
 msgid "Failed to add member"
 msgstr "An gaza ƙara memba"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "An gaza soke gayyata"
@@ -1427,7 +1412,8 @@ msgstr "An gaza kwafewa"
 msgid "Failed to create address book"
 msgstr "An gaza ƙirƙirar littafin adireshi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "An gaza ƙirƙirar lambar sadarwa"
 
@@ -1460,8 +1446,8 @@ msgstr "An gaza share attachment"
 msgid "Failed to delete comment"
 msgstr "An gaza share comment"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "An gaza share lambar sadarwa"
 
@@ -1518,8 +1504,8 @@ msgstr "An kasa loda bidiyon"
 msgid "Failed to load your invite policy"
 msgstr "An gaza loading manufar gayyatarka"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "An kasa haɗa lambobi"
 
@@ -1531,8 +1517,8 @@ msgstr "An kasa matsawa"
 msgid "Failed to post comment"
 msgstr "An gaza post comment"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "An gaza cire aboki"
 
@@ -1561,7 +1547,7 @@ msgstr "An gaza ajiyewa"
 msgid "Failed to save accent"
 msgstr "An gaza ajiye accent"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "An gaza ajiye lambar sadarwa"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "An gaza ajiye prompt"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "An gaza aika gayyata"
 
@@ -1637,7 +1623,7 @@ msgstr "Tutoci"
 msgid "Flat"
 msgstr "Lebur"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Sunan farko"
 
@@ -1645,8 +1631,8 @@ msgstr "Sunan farko"
 msgid "Friday"
 msgstr "Jumma'a"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "An cire aboki"
 
@@ -1725,7 +1711,7 @@ msgstr "Tarihi"
 msgid "Home"
 msgstr "Gida"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Gida"
@@ -1788,7 +1774,7 @@ msgstr "Kwanan wata mara inganci"
 msgid "Invitation accepted"
 msgstr "An karɓi gayyata"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "An soke gayyata"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "An ƙi gayyata"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "An aika gayyata"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Saitin gayyata"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "An gayyata"
 
@@ -1970,18 +1956,17 @@ msgstr "Adadin Membobi"
 msgid "Menu"
 msgstr "Jeri"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Haɗa"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Haɗa lambobi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "Ana haɗa lambobi..."
 
@@ -2006,12 +1991,12 @@ msgstr "An hana izinin makirufo"
 msgid "Minimum length"
 msgstr "Mafi ƙarancin tsawo"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Wayar hannu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Abokin Mochi"
 
@@ -2062,8 +2047,8 @@ msgstr "Ana matsawa zuwa {0}"
 msgid "Name"
 msgstr "Suna"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Suna"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Suna ba zai iya ƙunsar haruffan < ko > ba"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Ana buƙatar suna"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "Mafi sabo"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Sabuwar lambar sadarwa"
 
@@ -2131,7 +2117,7 @@ msgstr "Wata mai zuwa"
 msgid "Next year"
 msgstr "Shekara mai zuwa"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Laƙabi"
 
@@ -2270,7 +2256,7 @@ msgstr "Ba a samu ba"
 msgid "Not set"
 msgstr "Ba a saita ba"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Bayanin kula"
 
@@ -2345,7 +2331,7 @@ msgstr "Sunan zaɓi"
 msgid "Options"
 msgstr "Zaɓuɓɓuka"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Ƙungiya"
 
@@ -2353,7 +2339,7 @@ msgstr "Ƙungiya"
 msgid "Other"
 msgstr "Sauran"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Sauran"
@@ -2417,7 +2403,7 @@ msgstr "Da fatan za a sake gwadawa."
 msgid "Please wait a moment and try again."
 msgstr "Da fatan za a jira ɗan lokaci sannan a sake gwadawa."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Lambar gidan waya"
 
@@ -2543,7 +2529,7 @@ msgstr "Ana redirecting zuwa shiga."
 msgid "Reduce interest"
 msgstr "Rage sha'awa"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Yanki"
 
@@ -2616,11 +2602,11 @@ msgstr "A cire ka'idar shiga don \"{0}\"?"
 msgid "Remove access?"
 msgstr "A cire damar shiga?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Cire adireshi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Cire imel"
 
@@ -2643,12 +2629,12 @@ msgstr "Cire mahaɗi"
 msgid "Remove member"
 msgstr "Cire memba"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Cire waya"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Ana cire aboki..."
 
@@ -2758,7 +2744,6 @@ msgstr "Asabar"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Adana suna"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Ajiye wannan kalmar sirri yanzu. Ba za a sake nuna ta ba."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Ana ajiye lambar sadarwa..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Aika saƙo"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Ana aika gayyata..."
 
@@ -3056,7 +3037,7 @@ msgstr "Daina kallo"
 msgid "Store silently"
 msgstr "Adana shiru"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Titi"
 
@@ -3082,7 +3063,7 @@ msgstr "Yi subscribe"
 msgid "Sunday"
 msgstr "Lahadi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Sunan iyali"
 
@@ -3113,7 +3094,7 @@ msgstr "Tag dole ne ya kasance haruffa 50 ko ƙasa"
 msgid "Tags"
 msgstr "Alamomi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Wayoyi"
 
@@ -3192,7 +3173,7 @@ msgstr "Wannan zai goge wasan da hirarsa har abada. Ba za a iya sokewa ba."
 msgid "Thursday"
 msgstr "Alhamis"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Mukami"
@@ -3261,8 +3242,8 @@ msgstr "Talata"
 msgid "Type"
 msgstr "Nau'i"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Ba ya samuwa"
 msgid "Unexpected API error"
 msgstr "Kuskuren API da ba a tsammani ba"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Cire aboki"
 
@@ -3378,7 +3359,7 @@ msgstr "Ci gaban lodawa"
 msgid "Uploading..."
 msgstr "Ana lodawa..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "Mun aika lambar tabbatarwa zuwa <0>{0}</0>. Shigar da lambar a ƙasa don
 msgid "Wednesday"
 msgstr "Laraba"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Aiki"

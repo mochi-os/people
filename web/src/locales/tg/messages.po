@@ -218,7 +218,7 @@ msgstr "Иловаи дастрасӣ"
 msgid "Add account"
 msgstr "Иловаи ҳисоб"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Илова кардани суроға"
 
@@ -241,7 +241,7 @@ msgstr "Илова кардани тамос"
 msgid "Add device"
 msgstr "Иловаи дастгоҳ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Илова кардани имейл"
 
@@ -281,7 +281,7 @@ msgstr "Барои оғоз касеро илова кунед"
 msgid "Add tag..."
 msgstr "Иловаи барчасп..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Илова кардани телефон"
 
@@ -324,7 +324,7 @@ msgstr "Аъзо илова карда мешавад..."
 msgid "address book"
 msgstr "дафтари суроғаҳо"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Дафтари суроғаҳо"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Баннер навсозӣ шуд"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Зодрӯз"
 
@@ -583,7 +583,6 @@ msgstr "Камера дастрас нест"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Бекор карда шуд"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Даъват бекор карда мешавад..."
@@ -681,7 +680,7 @@ msgstr "Вақтро интихоб кунед"
 msgid "Choose language"
 msgstr "Забон интихоб кунед"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Шаҳр"
 
@@ -820,28 +819,25 @@ msgstr "Пайваст шуда истодааст..."
 msgid "Contact added"
 msgstr "Тамос илова шуд"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Тамос нусхабардорӣ шуд"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Тамос эҷод шуд"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Тамос нест карда шуд"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Тамос захира шуд"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Тамосҳо"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Тамосҳо муттаҳид шуданд"
 
@@ -883,13 +879,9 @@ msgstr "Ба буфер нусхабардорӣ шуд"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Нусхабардорӣ"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Нусхабардории тамос"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Аз нав аутентификатсияро оғоз кардан и�
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Бо он ҳисоб тасдиқ кардан имконнопазир буд. Лутфан, бори дигар кӯшиш кунед."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Кишвар"
 
@@ -925,6 +917,7 @@ msgstr "Кишвар"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Эҷод кардан"
 
@@ -971,7 +964,8 @@ msgstr "{field} сохта шуд"
 msgid "Creating address book..."
 msgstr "Дафтари суроғаҳо эҷод карда мешавад..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Тамос эҷод карда мешавад..."
 
@@ -1044,10 +1038,9 @@ msgstr "Ҷобаҷогузории пешфарз"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Нест кардан"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "<0>{0}</0> нест карда шавад?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "<0>{0}</0> нест карда шавад? Ин дӯстии шуморо низ ба охир мерасонад."
 
@@ -1085,8 +1078,9 @@ msgstr "Нест кардани сутун"
 msgid "Delete comment"
 msgstr "Нест кардани шарҳ"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Нест кардани тамос"
 
@@ -1155,8 +1149,8 @@ msgstr "Гурӯҳи ҳазфшуда"
 msgid "Deleting address book..."
 msgstr "Дафтари суроғаҳо нест карда мешавад..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Тамос нест карда мешавад..."
 
@@ -1178,7 +1172,7 @@ msgstr "Камшаванда"
 msgid "Description"
 msgstr "Тавсиф"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Тафсилот"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Рӯйхати феҳрист"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Партофтан"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "Тағйирот партофта шаванд?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "{label}-ро таҳрир кунед"
 msgid "Edit caption"
 msgstr "Таҳрири зернавис"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Таҳрири тамос"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Таҳрири майдон"
@@ -1332,14 +1317,14 @@ msgstr "Имейл"
 msgid "Email code"
 msgstr "Рамзи email"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "Имейлҳо"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Дӯстӣ бо <0>{0}</0> ба охир расонда шавад? Тамос дар дафтари суроғаҳои шумо мемонад."
 
@@ -1408,7 +1393,7 @@ msgstr "Илова кардани тамос ба анҷом нарасид"
 msgid "Failed to add member"
 msgstr "Илова кардани узв ба анҷом нарасид"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Бекор кардани даъват ба анҷом нарасид"
@@ -1427,7 +1412,8 @@ msgstr "Нусхабардорӣ ба анҷом нарасид"
 msgid "Failed to create address book"
 msgstr "Эҷоди дафтари суроғаҳо ба анҷом нарасид"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Эҷоди тамос ба анҷом нарасид"
 
@@ -1460,8 +1446,8 @@ msgstr "Ҳазфи замима ба анҷом нарасид"
 msgid "Failed to delete comment"
 msgstr "Ҳазфи шарҳ ба анҷом нарасид"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Нест кардани тамос ба анҷом нарасид"
 
@@ -1518,8 +1504,8 @@ msgstr "Видео бор карда нашуд"
 msgid "Failed to load your invite policy"
 msgstr "Боркунии сиёсати даъватномаҳои шумо ба анҷом нарасид"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Муттаҳид кардани тамосҳо иҷро нашуд"
 
@@ -1531,8 +1517,8 @@ msgstr "Интиқол ноком шуд"
 msgid "Failed to post comment"
 msgstr "Гузоштани шарҳ ба анҷом нарасид"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Бартараф кардани дӯст ба анҷом нарасид"
 
@@ -1561,7 +1547,7 @@ msgstr "Захира ба анҷом нарасид"
 msgid "Failed to save accent"
 msgstr "Захира кардани лаҳҷа ба анҷом нарасид"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Захираи тамос ба анҷом нарасид"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Захира кардани дархост ба анҷом нарасид"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Фиристодани даъватнома ба анҷом нарасид"
 
@@ -1637,7 +1623,7 @@ msgstr "Парчамҳо"
 msgid "Flat"
 msgstr "Ҳамвор"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Ном"
 
@@ -1645,8 +1631,8 @@ msgstr "Ном"
 msgid "Friday"
 msgstr "Ҷумъа"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Дӯст хориҷ карда шуд"
 
@@ -1725,7 +1711,7 @@ msgstr "Таърих"
 msgid "Home"
 msgstr "Хона"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Хона"
@@ -1788,7 +1774,7 @@ msgstr "Сана нодуруст"
 msgid "Invitation accepted"
 msgstr "Даъватнома қабул шуд"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Даъватнома бекор карда шуд"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Даъватнома рад карда шуд"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Даъватнома ирсол шуд"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Танзимоти даъватномаҳо"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Даъват шуд"
 
@@ -1970,18 +1956,17 @@ msgstr "Шумораи аъзоҳо"
 msgid "Menu"
 msgstr "Меню"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Муттаҳид кардан"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Муттаҳид кардани тамосҳо"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "Тамосҳо муттаҳид карда мешаванд..."
 
@@ -2006,12 +1991,12 @@ msgstr "Иҷозати микрофон рад шуд"
 msgid "Minimum length"
 msgstr "Дарозии камтарин"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Мобилӣ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Дӯсти Mochi"
 
@@ -2062,8 +2047,8 @@ msgstr "Ба {0} интиқол дода мешавад"
 msgid "Name"
 msgstr "Ном"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Ном"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Ном наметавонад аломатҳои < ё > дошта бошад"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Ном талаб карда мешавад"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "Навтарин"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Тамоси нав"
 
@@ -2131,7 +2117,7 @@ msgstr "Моҳи оянда"
 msgid "Next year"
 msgstr "Соли оянда"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Лақаб"
 
@@ -2270,7 +2256,7 @@ msgstr "Ёфт нашуд"
 msgid "Not set"
 msgstr "Танзим нашудааст"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Қайд"
 
@@ -2345,7 +2331,7 @@ msgstr "Номи вариант"
 msgid "Options"
 msgstr "Вариантҳо"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Ташкилот"
 
@@ -2353,7 +2339,7 @@ msgstr "Ташкилот"
 msgid "Other"
 msgstr "Дигар"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Дигар"
@@ -2417,7 +2403,7 @@ msgstr "Лутфан, бори дигар кӯшиш кунед."
 msgid "Please wait a moment and try again."
 msgstr "Лутфан каме интизор шавед ва аз нав кӯшиш кунед."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Рамзи почта"
 
@@ -2543,7 +2529,7 @@ msgstr "Тағйир ба воридшавӣ."
 msgid "Reduce interest"
 msgstr "Кам кардани шавқу ҳавас"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Минтақа"
 
@@ -2616,11 +2602,11 @@ msgstr "Қоидаи дастрасӣ барои «{0}» нест карда ш�
 msgid "Remove access?"
 msgstr "Дастрасиро хориҷ кардан?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Хориҷ кардани суроға"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Хориҷ кардани имейл"
 
@@ -2643,12 +2629,12 @@ msgstr "Истинодро тоза кунед"
 msgid "Remove member"
 msgstr "Хориҷ кардани аъзо"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Хориҷ кардани телефон"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Дӯст хориҷ карда мешавад..."
 
@@ -2758,7 +2744,6 @@ msgstr "Шанбе"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Номро нигоҳ доштан"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Ин рамзро ҳозир нигоҳ доред. Онро дигар нишон додан мумкин нест."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Тамос захира карда мешавад..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Паём фиристодан"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Даъват фиристода мешавад..."
 
@@ -3056,7 +3037,7 @@ msgstr "Назоратро қатъ кардан"
 msgid "Store silently"
 msgstr "Хомӯш нигоҳ доштан"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Кӯча"
 
@@ -3082,7 +3063,7 @@ msgstr "Обуна шудан"
 msgid "Sunday"
 msgstr "Якшанбе"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Насаб"
 
@@ -3113,7 +3094,7 @@ msgstr "Барчасп бояд то 50 аломат бошад"
 msgid "Tags"
 msgstr "Барчаспҳо"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Телефонҳо"
 
@@ -3192,7 +3173,7 @@ msgstr "Ин бозӣ ва чати онро якумра нест мекуна�
 msgid "Thursday"
 msgstr "Панҷшанбе"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Вазифа"
@@ -3261,8 +3242,8 @@ msgstr "Сешанбе"
 msgid "Type"
 msgstr "Намуд"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Дастрас нест"
 msgid "Unexpected API error"
 msgstr "Хатои ғайричашмдошти API"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Хотима додани дӯстӣ"
 
@@ -3378,7 +3359,7 @@ msgstr "Рафти боркунӣ"
 msgid "Uploading..."
 msgstr "Бор шуда истодааст..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "Мо рамзи тасдиқро ба <0>{0}</0> фиристодем. �
 msgid "Wednesday"
 msgstr "Чоршанбе"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Кор"

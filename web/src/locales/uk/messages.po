@@ -218,7 +218,7 @@ msgstr "Додати доступ"
 msgid "Add account"
 msgstr "Додати обліковий запис"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Додати адресу"
 
@@ -241,7 +241,7 @@ msgstr "Додати контакт"
 msgid "Add device"
 msgstr "Додати пристрій"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Додати електронну пошту"
 
@@ -281,7 +281,7 @@ msgstr "Додайте когось, щоб почати"
 msgid "Add tag..."
 msgstr "Додати тег..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Додати телефон"
 
@@ -324,7 +324,7 @@ msgstr "Додавання учасника..."
 msgid "address book"
 msgstr "адресна книга"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Адресна книга"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Банер оновлено"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "День народження"
 
@@ -583,7 +583,6 @@ msgstr "Камера недоступна"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Скасовано"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Скасування запрошення..."
@@ -681,7 +680,7 @@ msgstr "Виберіть час"
 msgid "Choose language"
 msgstr "Виберіть мову"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Місто"
 
@@ -820,28 +819,25 @@ msgstr "З'єднання..."
 msgid "Contact added"
 msgstr "Контакт додано"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Контакт скопійовано"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Контакт створено"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Контакт видалено"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Контакт збережено"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Контакти"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Контакти об'єднано"
 
@@ -883,13 +879,9 @@ msgstr "Скопійовано в буфер обміну"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Копіювати"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Копіювати контакт"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Не вдалося розпочати повторну автентиф
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Не вдалося підтвердити за допомогою цього облікового запису. Спробуйте ще раз."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Країна"
 
@@ -925,6 +917,7 @@ msgstr "Країна"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Створити"
 
@@ -971,7 +964,8 @@ msgstr "Створено {field}"
 msgid "Creating address book..."
 msgstr "Створення адресної книги..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Створення контакту..."
 
@@ -1044,10 +1038,9 @@ msgstr "Сортування за замовчуванням"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Видалити"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "Видалити <0>{0}</0>?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "Видалити <0>{0}</0>? Це також припинить вашу дружбу."
 
@@ -1085,8 +1078,9 @@ msgstr "Видалити стовпець"
 msgid "Delete comment"
 msgstr "Видалити коментар"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Видалити контакт"
 
@@ -1155,8 +1149,8 @@ msgstr "Видалена група"
 msgid "Deleting address book..."
 msgstr "Видалення адресної книги..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Видалення контакту..."
 
@@ -1178,7 +1172,7 @@ msgstr "За спаданням"
 msgid "Description"
 msgstr "Опис"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Деталі"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Список каталогу"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Відхилити"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "Відхилити зміни?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "Редагувати {label}"
 msgid "Edit caption"
 msgstr "Редагувати підпис"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Редагувати контакт"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Редагувати поле"
@@ -1332,14 +1317,14 @@ msgstr "Електронна пошта"
 msgid "Email code"
 msgstr "Код електронної пошти"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "Електронні адреси"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Припинити дружбу з <0>{0}</0>? Контакт залишиться у вашій адресній книзі."
 
@@ -1408,7 +1393,7 @@ msgstr "Не вдалося додати контакт"
 msgid "Failed to add member"
 msgstr "Не вдалося додати учасника"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Не вдалося скасувати запрошення"
@@ -1427,7 +1412,8 @@ msgstr "Не вдалося скопіювати"
 msgid "Failed to create address book"
 msgstr "Не вдалося створити адресну книгу"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Не вдалося створити контакт"
 
@@ -1460,8 +1446,8 @@ msgstr "Не вдалося видалити вкладення"
 msgid "Failed to delete comment"
 msgstr "Не вдалося видалити коментар"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Не вдалося видалити контакт"
 
@@ -1518,8 +1504,8 @@ msgstr "Не вдалося завантажити відео"
 msgid "Failed to load your invite policy"
 msgstr "Не вдалося завантажити вашу політику запрошень"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Не вдалося об'єднати контакти"
 
@@ -1531,8 +1517,8 @@ msgstr "Не вдалося перемістити"
 msgid "Failed to post comment"
 msgstr "Не вдалося опублікувати коментар"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Не вдалося видалити друга"
 
@@ -1561,7 +1547,7 @@ msgstr "Не вдалося зберегти"
 msgid "Failed to save accent"
 msgstr "Не вдалося зберегти акцентний колір"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Не вдалося зберегти контакт"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Не вдалося зберегти запит"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Не вдалося надіслати запрошення"
 
@@ -1637,7 +1623,7 @@ msgstr "Прапорці"
 msgid "Flat"
 msgstr "Плаский"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Ім'я"
 
@@ -1645,8 +1631,8 @@ msgstr "Ім'я"
 msgid "Friday"
 msgstr "П'ятниця"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Друга видалено"
 
@@ -1725,7 +1711,7 @@ msgstr "Історія"
 msgid "Home"
 msgstr "Головна"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Домашній"
@@ -1788,7 +1774,7 @@ msgstr "Недійсна дата"
 msgid "Invitation accepted"
 msgstr "Запрошення прийнято"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Запрошення скасовано"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Запрошення відхилено"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Запрошення надіслано"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Налаштування запрошень"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Запрошено"
 
@@ -1970,18 +1956,17 @@ msgstr "Кількість учасників"
 msgid "Menu"
 msgstr "Меню"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Об'єднати"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Об'єднати контакти"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "Об'єднання контактів..."
 
@@ -2006,12 +1991,12 @@ msgstr "Дозвіл на мікрофон відхилено"
 msgid "Minimum length"
 msgstr "Мінімальна довжина"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Мобільний"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Друг у Mochi"
 
@@ -2062,8 +2047,8 @@ msgstr "Переміщення на {0}"
 msgid "Name"
 msgstr "Назва"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Ім'я"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Назва не може містити символи < або >"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Назва обов'язкова"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "Нові"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Новий контакт"
 
@@ -2131,7 +2117,7 @@ msgstr "Наступний місяць"
 msgid "Next year"
 msgstr "Наступний рік"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Псевдонім"
 
@@ -2270,7 +2256,7 @@ msgstr "Не знайдено"
 msgid "Not set"
 msgstr "Не встановлено"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Нотатка"
 
@@ -2345,7 +2331,7 @@ msgstr "Назва параметра"
 msgid "Options"
 msgstr "Параметри"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Організація"
 
@@ -2353,7 +2339,7 @@ msgstr "Організація"
 msgid "Other"
 msgstr "Інше"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Інший"
@@ -2417,7 +2403,7 @@ msgstr "Спробуйте ще раз."
 msgid "Please wait a moment and try again."
 msgstr "Зачекайте трохи та повторіть спробу."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Поштовий індекс"
 
@@ -2543,7 +2529,7 @@ msgstr "Перенаправлення на сторінку входу."
 msgid "Reduce interest"
 msgstr "Зменшити інтерес"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Регіон"
 
@@ -2616,11 +2602,11 @@ msgstr "Вилучити правило доступу для «{0}»?"
 msgid "Remove access?"
 msgstr "Видалити доступ?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Видалити адресу"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Видалити електронну адресу"
 
@@ -2643,12 +2629,12 @@ msgstr "Видалити посилання"
 msgid "Remove member"
 msgstr "Видалити учасника"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Видалити телефон"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Видалення друга..."
 
@@ -2758,7 +2744,6 @@ msgstr "Субота"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Зберегти ім'я"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Збережіть цей пароль зараз. Його не можна буде показати знову."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Збереження контакту..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Надіслати повідомлення"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Надсилання запрошення..."
 
@@ -3056,7 +3037,7 @@ msgstr "Припинити стеження"
 msgid "Store silently"
 msgstr "Зберегти беззвучно"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Вулиця"
 
@@ -3082,7 +3063,7 @@ msgstr "Підписатися"
 msgid "Sunday"
 msgstr "Неділя"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Прізвище"
 
@@ -3113,7 +3094,7 @@ msgstr "Тег має бути не довшим за 50 символів"
 msgid "Tags"
 msgstr "Теги"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Телефони"
 
@@ -3192,7 +3173,7 @@ msgstr "Це назавжди видалить гру та її чат. Цю д�
 msgid "Thursday"
 msgstr "Четвер"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Посада"
@@ -3261,8 +3242,8 @@ msgstr "Вівторок"
 msgid "Type"
 msgstr "Тип"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Недоступно"
 msgid "Unexpected API error"
 msgstr "Неочікувана помилка API"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Припинити дружбу"
 
@@ -3378,7 +3359,7 @@ msgstr "Хід завантаження"
 msgid "Uploading..."
 msgstr "Завантаження..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "Ми надіслали код підтвердження на <0>{0}</0
 msgid "Wednesday"
 msgstr "Середа"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Робочий"

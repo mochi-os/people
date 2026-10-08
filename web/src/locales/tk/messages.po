@@ -218,7 +218,7 @@ msgstr "Giriş goşmak"
 msgid "Add account"
 msgstr "Hasap goşmak"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Salgy goş"
 
@@ -241,7 +241,7 @@ msgstr "Kontakt goş"
 msgid "Add device"
 msgstr "Enjam goş"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "E-poçta goş"
 
@@ -281,7 +281,7 @@ msgstr "Başlamak üçin birini goşuň"
 msgid "Add tag..."
 msgstr "Bellik goşuň..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Telefon goş"
 
@@ -324,7 +324,7 @@ msgstr "Agza goşulýar..."
 msgid "address book"
 msgstr "salgy kitaby"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Salgy kitaby"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Banner täzelendi"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Doglan güni"
 
@@ -583,7 +583,6 @@ msgstr "Kamera elýeterli däl"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Ýatyryldy"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Çakylyk ýatyrylýar..."
@@ -681,7 +680,7 @@ msgstr "Wagty saýlaň"
 msgid "Choose language"
 msgstr "Dil saýlaň"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Şäher"
 
@@ -820,28 +819,25 @@ msgstr "Birikdirilýär..."
 msgid "Contact added"
 msgstr "Kontakt goşuldy"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Kontakt nusgalandy"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Kontakt döredildi"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Kontakt pozuldy"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Kontakt saklandy"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Kontaktlar"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Kontaktlar birleşdirildi"
 
@@ -883,13 +879,9 @@ msgstr "Aralyk buferine nusgalandy"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Nusgalamak"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Kontakty nusgala"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Gaýtadan tassyklamany başlatmak başartmady. Täzeden synanyşyň."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Şol hasap bilen barlap bolmady. Täzeden synanyşyň."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Ýurt"
 
@@ -925,6 +917,7 @@ msgstr "Ýurt"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Döretmek"
 
@@ -971,7 +964,8 @@ msgstr "{field} döredildi"
 msgid "Creating address book..."
 msgstr "Salgy kitaby döredilýär..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Kontakt döredilýär..."
 
@@ -1044,10 +1038,9 @@ msgstr "Adaty tertipleşdirme"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Pozmak"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "<0>{0}</0> pozulsynmy?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "<0>{0}</0> pozulsynmy? Bu dostlugyňyzy hem tamamlar."
 
@@ -1085,8 +1078,9 @@ msgstr "Sütüni pozmak"
 msgid "Delete comment"
 msgstr "Teswiri pozmak"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Kontakty poz"
 
@@ -1155,8 +1149,8 @@ msgstr "Pozulan topar"
 msgid "Deleting address book..."
 msgstr "Salgy kitaby pozulýar..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Kontakt pozulýar..."
 
@@ -1178,7 +1172,7 @@ msgstr "Kemelýän tertipde"
 msgid "Description"
 msgstr "Düşündiriş"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Jikme-jiklikler"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Katalog sanawy"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Taşla"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "Üýtgeşmeler taşlansynmy?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "{label} redaktirle"
 msgid "Edit caption"
 msgstr "Düşündirişi üýtgetmek"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Kontakty düzet"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Meýdany düzet"
@@ -1332,14 +1317,14 @@ msgstr "E-poçta"
 msgid "Email code"
 msgstr "E-poçta kody"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "E-poçtalar"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "<0>{0}</0> bilen dostlugyňyz tamamlansynmy? Kontakt salgy kitabyňyzda galar."
 
@@ -1408,7 +1393,7 @@ msgstr "Kontakt goşulmady"
 msgid "Failed to add member"
 msgstr "Agza goşulmady"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Çakylyk ýatyrylmady"
@@ -1427,7 +1412,8 @@ msgstr "Göçürilmedi"
 msgid "Failed to create address book"
 msgstr "Salgy kitaby döredilmedi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Kontakt döredilmedi"
 
@@ -1460,8 +1446,8 @@ msgstr "Goşundy pozulmady"
 msgid "Failed to delete comment"
 msgstr "Teswir pozulmady"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Kontakt pozulmady"
 
@@ -1518,8 +1504,8 @@ msgstr "Wideo ýüklenip bilinmedi"
 msgid "Failed to load your invite policy"
 msgstr "Çakylyk syýasatyňyz ýüklenmedi"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Kontaktlary birleşdirip bolmady"
 
@@ -1531,8 +1517,8 @@ msgstr "Göçürmek başartmady"
 msgid "Failed to post comment"
 msgstr "Teswir ýerleşdirilmedi"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Dost aýrylmady"
 
@@ -1561,7 +1547,7 @@ msgstr "Saklanyp galynmady"
 msgid "Failed to save accent"
 msgstr "Reňk saklanyp galynmady"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Kontakt saklanmady"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Görkezme saklanyp galynmady"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Çakylyk iberilmedi"
 
@@ -1637,7 +1623,7 @@ msgstr "Belliler"
 msgid "Flat"
 msgstr "Tekiz"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Ady"
 
@@ -1645,8 +1631,8 @@ msgstr "Ady"
 msgid "Friday"
 msgstr "Anna"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Dost aýryldy"
 
@@ -1725,7 +1711,7 @@ msgstr "Taryh"
 msgid "Home"
 msgstr "Baş sahypa"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Öý"
@@ -1788,7 +1774,7 @@ msgstr "Nädogry sene"
 msgid "Invitation accepted"
 msgstr "Çakylyk kabul edildi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Çakylyk ýatyryldy"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Çakylyk ret edildi"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Çakylyk iberildi"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Çakylyk sazlamalary"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Çakylyk iberildi"
 
@@ -1970,18 +1956,17 @@ msgstr "Agzalaryň sany"
 msgid "Menu"
 msgstr "Menýu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Birleşdir"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Kontaktlary birleşdir"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "Kontaktlar birleşdirilýär..."
 
@@ -2006,12 +1991,12 @@ msgstr "Mikrofon rugsady ret edildi"
 msgid "Minimum length"
 msgstr "Iň az uzynlyk"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Jübi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Mochi dosty"
 
@@ -2062,8 +2047,8 @@ msgstr "{0} senesine geçirilýär"
 msgid "Name"
 msgstr "At"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "At"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "At < ýa-da > nyşanlaryny saklap bilmez"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "At hökmandyr"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "Iň täze"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Täze kontakt"
 
@@ -2131,7 +2117,7 @@ msgstr "Indiki aý"
 msgid "Next year"
 msgstr "Indiki ýyl"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Lakam"
 
@@ -2270,7 +2256,7 @@ msgstr "Tapylmady"
 msgid "Not set"
 msgstr "Bellenilmedik"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Bellik"
 
@@ -2345,7 +2331,7 @@ msgstr "Wariantyň ady"
 msgid "Options"
 msgstr "Wariantlar"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Gurama"
 
@@ -2353,7 +2339,7 @@ msgstr "Gurama"
 msgid "Other"
 msgstr "Beýleki"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Beýleki"
@@ -2417,7 +2403,7 @@ msgstr "Haýyş, gaýtadan synanyşyň."
 msgid "Please wait a moment and try again."
 msgstr "Biraz garaşyň we täzeden synanyşyň."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Poçta indeksi"
 
@@ -2543,7 +2529,7 @@ msgstr "Girişe gönükdirilýär."
 msgid "Reduce interest"
 msgstr "Gyzyklanmany azalt"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Sebit"
 
@@ -2616,11 +2602,11 @@ msgstr "\"{0}\" üçin giriş düzgüni aýrylsynmy?"
 msgid "Remove access?"
 msgstr "Girişi aýyrmak?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Salgyny aýyr"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "E-poçtany aýyr"
 
@@ -2643,12 +2629,12 @@ msgstr "Baglanyşygy aýyr"
 msgid "Remove member"
 msgstr "Agzany aýyr"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Telefony aýyr"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Dost aýrylýar..."
 
@@ -2758,7 +2744,6 @@ msgstr "Şenbe"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Ady ýatda sakla"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Bu paroly häzir ýatda sakla. Ony gaýtadan görkezip bolmaz."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Kontakt saklanýar..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Habar iber"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Çakylyk iberilýär..."
 
@@ -3056,7 +3037,7 @@ msgstr "Synlamagy bes et"
 msgid "Store silently"
 msgstr "Sessiz sakla"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Köçe"
 
@@ -3082,7 +3063,7 @@ msgstr "Abuna ýaz"
 msgid "Sunday"
 msgstr "Ýekşenbe"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Familiýasy"
 
@@ -3113,7 +3094,7 @@ msgstr "Bellik iň köp 50 harp bolmaly"
 msgid "Tags"
 msgstr "Bellikler"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Telefonlar"
 
@@ -3192,7 +3173,7 @@ msgstr "Bu oýny we onuň söhbetdeşligini hemişelik pozar. Bu hereketi yzyna 
 msgid "Thursday"
 msgstr "Penşenbe"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Wezipe"
@@ -3261,8 +3242,8 @@ msgstr "Sişenbe"
 msgid "Type"
 msgstr "Görnüş"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Elýeterli däl"
 msgid "Unexpected API error"
 msgstr "Garaşylmadyk API ýalňyşlygy"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Dostlukdan aýyr"
 
@@ -3378,7 +3359,7 @@ msgstr "Ýükleme ýagdaýy"
 msgid "Uploading..."
 msgstr "Ýüklenýär..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "Biz <0>{0}</0> salgysyna tassyklaýyş kody iberdik. E-poçta salgyňyzy
 msgid "Wednesday"
 msgstr "Çarşenbe"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Iş"

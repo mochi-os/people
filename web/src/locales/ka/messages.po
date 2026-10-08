@@ -218,7 +218,7 @@ msgstr "წვდომის დამატება"
 msgid "Add account"
 msgstr "ანგარიშის დამატება"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "მისამართის დამატება"
 
@@ -241,7 +241,7 @@ msgstr "კონტაქტის დამატება"
 msgid "Add device"
 msgstr "მოწყობილობის დამატება"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "ელფოსტის დამატება"
 
@@ -281,7 +281,7 @@ msgstr "დასაწყებად დაამატეთ ვინმე"
 msgid "Add tag..."
 msgstr "ტეგის დამატება..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "ტელეფონის დამატება"
 
@@ -324,7 +324,7 @@ msgstr "წევრის დამატება..."
 msgid "address book"
 msgstr "მისამართების წიგნი"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "მისამართების წიგნი"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "ბანერი განახლდა"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "დაბადების დღე"
 
@@ -583,7 +583,6 @@ msgstr "კამერა მიუწვდომელია"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "გაუქმებულია"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "მოწვევის გაუქმება..."
@@ -681,7 +680,7 @@ msgstr "აირჩიეთ დრო"
 msgid "Choose language"
 msgstr "აირჩიეთ ენა"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "ქალაქი"
 
@@ -820,28 +819,25 @@ msgstr "დაკავშირება..."
 msgid "Contact added"
 msgstr "კონტაქტი დაემატა"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "კონტაქტი დაკოპირდა"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "კონტაქტი შეიქმნა"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "კონტაქტი წაიშალა"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "კონტაქტი შეინახა"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "კონტაქტები"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "კონტაქტები გაერთიანდა"
 
@@ -883,13 +879,9 @@ msgstr "ბუფერში დაკოპირდა"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "კოპირება"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "კონტაქტის კოპირება"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "ხელახალი ავთენტიფიკაციის �
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ამ ანგარიშით ვერ მოხერხდა გადამოწმება. გთხოვთ, სცადოთ თავიდან."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "ქვეყანა"
 
@@ -925,6 +917,7 @@ msgstr "ქვეყანა"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "შექმნა"
 
@@ -971,7 +964,8 @@ msgstr "შეიქმნა {field}"
 msgid "Creating address book..."
 msgstr "მიმდინარეობს მისამართების წიგნის შექმნა..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "მიმდინარეობს კონტაქტის შექმნა..."
 
@@ -1044,10 +1038,9 @@ msgstr "ნაგულისხმევი დახარისხება"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "წაშლა"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "წაიშალოს <0>{0}</0>?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "წაიშალოს <0>{0}</0>? ამით თქვენი მეგობრობაც სრულდება."
 
@@ -1085,8 +1078,9 @@ msgstr "სვეტის წაშლა"
 msgid "Delete comment"
 msgstr "კომენტარის წაშლა"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "კონტაქტის წაშლა"
 
@@ -1155,8 +1149,8 @@ msgstr "წაშლილი ჯგუფი"
 msgid "Deleting address book..."
 msgstr "მიმდინარეობს მისამართების წიგნის წაშლა..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "მიმდინარეობს კონტაქტის წაშლა..."
 
@@ -1178,7 +1172,7 @@ msgstr "კლებადობით"
 msgid "Description"
 msgstr "აღწერა"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "დეტალები"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "დირექტორიის სია"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "გადაგდება"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "გადავაგდოთ ცვლილებები?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "{label}-ის რედაქტირება"
 msgid "Edit caption"
 msgstr "წარწერის რედაქტირება"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "კონტაქტის რედაქტირება"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "ველის რედაქტირება"
@@ -1332,14 +1317,14 @@ msgstr "ელფოსტა"
 msgid "Email code"
 msgstr "ელფოსტის კოდი"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "ელფოსტის მისამართები"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "დასრულდეს თქვენი მეგობრობა <0>{0}</0>-თან? კონტაქტი დარჩება თქვენს მისამართების წიგნში."
 
@@ -1408,7 +1393,7 @@ msgstr "კონტაქტის დამატება ვერ მოხ
 msgid "Failed to add member"
 msgstr "წევრის დამატება ვერ მოხერხდა"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "მოწვევის გაუქმება ვერ მოხერხდა"
@@ -1427,7 +1412,8 @@ msgstr "კოპირება ვერ მოხერხდა"
 msgid "Failed to create address book"
 msgstr "მისამართების წიგნის შექმნა ვერ მოხერხდა"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "კონტაქტის შექმნა ვერ მოხერხდა"
 
@@ -1460,8 +1446,8 @@ msgstr "დანართის წაშლა ვერ მოხერხდ
 msgid "Failed to delete comment"
 msgstr "კომენტარის წაშლა ვერ მოხერხდა"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "კონტაქტის წაშლა ვერ მოხერხდა"
 
@@ -1518,8 +1504,8 @@ msgstr "ვიდეოს ჩატვირთვა ვერ მოხერ
 msgid "Failed to load your invite policy"
 msgstr "თქვენი მოწვევის პოლიტიკის ჩატვირთვა ვერ მოხერხდა"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "კონტაქტების გაერთიანება ვერ მოხერხდა"
 
@@ -1531,8 +1517,8 @@ msgstr "გადატანა ვერ მოხერხდა"
 msgid "Failed to post comment"
 msgstr "კომენტარის გამოქვეყნება ვერ მოხერხდა"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "მეგობრის წაშლა ვერ მოხერხდა"
 
@@ -1561,7 +1547,7 @@ msgstr "შენახვა ვერ მოხერხდა"
 msgid "Failed to save accent"
 msgstr "აქცენტის შენახვა ვერ მოხერხდა"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "კონტაქტის შენახვა ვერ მოხერხდა"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "მოთხოვნის შენახვა ვერ მოხერხდა"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "მოწვევის გაგზავნა ვერ მოხერხდა"
 
@@ -1637,7 +1623,7 @@ msgstr "დროშები"
 msgid "Flat"
 msgstr "ბრტყელი"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "სახელი"
 
@@ -1645,8 +1631,8 @@ msgstr "სახელი"
 msgid "Friday"
 msgstr "პარასკევი"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "მეგობარი წაიშალა"
 
@@ -1725,7 +1711,7 @@ msgstr "ისტორია"
 msgid "Home"
 msgstr "მთავარი"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "სახლი"
@@ -1788,7 +1774,7 @@ msgstr "არასწორი თარიღი"
 msgid "Invitation accepted"
 msgstr "მოწვევა მიღებულია"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "მოწვევა გაუქმდა"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "მოწვევაზე უარი ეთქვა"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "მოწვევა გაიგზავნა"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "მოწვევის პარამეტრები"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "მოწვეული"
 
@@ -1970,18 +1956,17 @@ msgstr "წევრების რაოდენობა"
 msgid "Menu"
 msgstr "მენიუ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "გაერთიანება"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "კონტაქტების გაერთიანება"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "კონტაქტების გაერთიანება..."
 
@@ -2006,12 +1991,12 @@ msgstr "მიკროფონის ნებართვა უარყო�
 msgid "Minimum length"
 msgstr "მინიმალური სიგრძე"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "მობილური"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Mochi მეგობარი"
 
@@ -2062,8 +2047,8 @@ msgstr "მიმდინარეობს გადატანა {0}-ზე
 msgid "Name"
 msgstr "სახელი"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "სახელი"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "სახელი ვერ შეიცავს < ან > სიმბოლოებს"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "სახელი აუცილებელია"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "უახლესი"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "ახალი კონტაქტი"
 
@@ -2131,7 +2117,7 @@ msgstr "შემდეგი თვე"
 msgid "Next year"
 msgstr "შემდეგი წელი"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "მეტსახელი"
 
@@ -2270,7 +2256,7 @@ msgstr "ვერ მოიძებნა"
 msgid "Not set"
 msgstr "არ არის დაყენებული"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "შენიშვნა"
 
@@ -2345,7 +2331,7 @@ msgstr "ვარიანტის სახელი"
 msgid "Options"
 msgstr "ვარიანტები"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "ორგანიზაცია"
 
@@ -2353,7 +2339,7 @@ msgstr "ორგანიზაცია"
 msgid "Other"
 msgstr "სხვა"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "სხვა"
@@ -2417,7 +2403,7 @@ msgstr "გთხოვთ, კიდევ სცადეთ."
 msgid "Please wait a moment and try again."
 msgstr "გთხოვთ, ცოტა ხნით მოიცადოთ და ხელახლა სცადოთ."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "საფოსტო კოდი"
 
@@ -2543,7 +2529,7 @@ msgstr "შესვლის გვერდზე გადამისამ�
 msgid "Reduce interest"
 msgstr "ინტერესის შემცირება"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "რეგიონი"
 
@@ -2616,11 +2602,11 @@ msgstr "წავშალოთ წვდომის წესი „{0}“-�
 msgid "Remove access?"
 msgstr "წვდომის წაშლა?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "მისამართის წაშლა"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "ელფოსტის წაშლა"
 
@@ -2643,12 +2629,12 @@ msgstr "ბმულის წაშლა"
 msgid "Remove member"
 msgstr "წევრის წაშლა"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "ტელეფონის წაშლა"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "მეგობრის წაშლა..."
 
@@ -2758,7 +2744,6 @@ msgstr "შაბათი"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "სახელის შენახვა"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "შეინახეთ ეს პაროლი ახლავე. მისი ხელახლა ჩვენება შეუძლებელია."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "მიმდინარეობს კონტაქტის შენახვა..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "შეტყობინების გაგზავნა"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "მოწვევის გაგზავნა..."
 
@@ -3056,7 +3037,7 @@ msgstr "ყურების შეწყვეტა"
 msgid "Store silently"
 msgstr "ჩუმად შენახვა"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "ქუჩა"
 
@@ -3082,7 +3063,7 @@ msgstr "გამოწერა"
 msgid "Sunday"
 msgstr "კვირა"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "გვარი"
 
@@ -3113,7 +3094,7 @@ msgstr "ტეგი უნდა იყოს მაქსიმუმ 50 ს�
 msgid "Tags"
 msgstr "ტეგები"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "ტელეფონები"
 
@@ -3192,7 +3173,7 @@ msgstr "ეს სამუდამოდ წაშლის თამაშს
 msgid "Thursday"
 msgstr "ხუთშაბათი"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "თანამდებობა"
@@ -3261,8 +3242,8 @@ msgstr "სამშაბათი"
 msgid "Type"
 msgstr "ტიპი"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "მიუწვდომელი"
 msgid "Unexpected API error"
 msgstr "API-ის მოულოდნელი შეცდომა"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "მეგობრობის დასრულება"
 
@@ -3378,7 +3359,7 @@ msgstr "ატვირთვის მიმდინარეობა"
 msgid "Uploading..."
 msgstr "იტვირთება..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "გავაგზავნეთ დამადასტურებ�
 msgid "Wednesday"
 msgstr "ოთხშაბათი"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "სამსახური"

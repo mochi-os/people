@@ -218,7 +218,7 @@ msgstr "Thêm quyền truy cập"
 msgid "Add account"
 msgstr "Thêm tài khoản"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Thêm địa chỉ"
 
@@ -241,7 +241,7 @@ msgstr "Thêm liên hệ"
 msgid "Add device"
 msgstr "Thêm thiết bị"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Thêm email"
 
@@ -281,7 +281,7 @@ msgstr "Thêm một người để bắt đầu"
 msgid "Add tag..."
 msgstr "Thêm thẻ..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Thêm số điện thoại"
 
@@ -324,7 +324,7 @@ msgstr "Đang thêm thành viên..."
 msgid "address book"
 msgstr "sổ địa chỉ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Sổ địa chỉ"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Đã cập nhật banner"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Ngày sinh"
 
@@ -583,7 +583,6 @@ msgstr "Camera không khả dụng"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Đã hủy"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Đang hủy lời mời..."
@@ -681,7 +680,7 @@ msgstr "Chọn giờ"
 msgid "Choose language"
 msgstr "Chọn ngôn ngữ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Thành phố"
 
@@ -820,28 +819,25 @@ msgstr "Đang kết nối..."
 msgid "Contact added"
 msgstr "Đã thêm liên hệ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Đã sao chép liên hệ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Đã tạo liên hệ"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Đã xóa liên hệ"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Đã lưu liên hệ"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Liên hệ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Đã hợp nhất liên hệ"
 
@@ -883,13 +879,9 @@ msgstr "Đã sao chép vào bộ nhớ tạm"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Sao chép"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Sao chép liên hệ"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Không thể bắt đầu xác thực lại. Vui lòng thử lại."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Không thể xác minh bằng tài khoản đó. Vui lòng thử lại."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Quốc gia"
 
@@ -925,6 +917,7 @@ msgstr "Quốc gia"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Tạo"
 
@@ -971,7 +964,8 @@ msgstr "Đã tạo {field}"
 msgid "Creating address book..."
 msgstr "Đang tạo sổ địa chỉ..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Đang tạo liên hệ..."
 
@@ -1044,10 +1038,9 @@ msgstr "Sắp xếp mặc định"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Xóa"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "Xóa <0>{0}</0>?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "Xóa <0>{0}</0>? Việc này cũng chấm dứt tình bạn của bạn."
 
@@ -1085,8 +1078,9 @@ msgstr "Xóa cột"
 msgid "Delete comment"
 msgstr "Xóa bình luận"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Xóa liên hệ"
 
@@ -1155,8 +1149,8 @@ msgstr "Nhóm đã xoá"
 msgid "Deleting address book..."
 msgstr "Đang xóa sổ địa chỉ..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Đang xóa liên hệ..."
 
@@ -1178,7 +1172,7 @@ msgstr "Giảm dần"
 msgid "Description"
 msgstr "Mô tả"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Chi tiết"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Danh sách danh bạ"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Loại bỏ"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "Loại bỏ thay đổi?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "Chỉnh sửa {label}"
 msgid "Edit caption"
 msgstr "Sửa chú thích"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Sửa liên hệ"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Sửa trường"
@@ -1332,14 +1317,14 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Mã email"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "Email"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Chấm dứt tình bạn với <0>{0}</0>? Liên hệ vẫn ở trong sổ địa chỉ của bạn."
 
@@ -1408,7 +1393,7 @@ msgstr "Không thêm được liên hệ"
 msgid "Failed to add member"
 msgstr "Không thêm thành viên được"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Không huỷ lời mời được"
@@ -1427,7 +1412,8 @@ msgstr "Không sao chép được"
 msgid "Failed to create address book"
 msgstr "Không tạo được sổ địa chỉ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Không tạo được liên hệ"
 
@@ -1460,8 +1446,8 @@ msgstr "Không xoá tệp đính kèm được"
 msgid "Failed to delete comment"
 msgstr "Không xoá bình luận được"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Không xóa được liên hệ"
 
@@ -1518,8 +1504,8 @@ msgstr "Không tải được video"
 msgid "Failed to load your invite policy"
 msgstr "Không tải chính sách mời của bạn được"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Không thể hợp nhất liên hệ"
 
@@ -1531,8 +1517,8 @@ msgstr "Không thể di chuyển"
 msgid "Failed to post comment"
 msgstr "Không đăng bình luận được"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Không xoá bạn được"
 
@@ -1561,7 +1547,7 @@ msgstr "Không lưu được"
 msgid "Failed to save accent"
 msgstr "Không lưu màu nhấn được"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Không lưu được liên hệ"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Không lưu lời nhắc được"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Không gửi được lời mời"
 
@@ -1637,7 +1623,7 @@ msgstr "Cờ"
 msgid "Flat"
 msgstr "Phẳng"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Tên"
 
@@ -1645,8 +1631,8 @@ msgstr "Tên"
 msgid "Friday"
 msgstr "Thứ Sáu"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Đã xóa bạn bè"
 
@@ -1725,7 +1711,7 @@ msgstr "Lịch sử"
 msgid "Home"
 msgstr "Trang chủ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Nhà riêng"
@@ -1788,7 +1774,7 @@ msgstr "Ngày không hợp lệ"
 msgid "Invitation accepted"
 msgstr "Đã chấp nhận lời mời"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Đã huỷ lời mời"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Đã từ chối lời mời"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Đã gửi lời mời"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Cài đặt mời"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Đã mời"
 
@@ -1970,18 +1956,17 @@ msgstr "Số thành viên"
 msgid "Menu"
 msgstr "Menu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Hợp nhất"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Hợp nhất liên hệ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "Đang hợp nhất liên hệ..."
 
@@ -2006,12 +1991,12 @@ msgstr "Quyền micrô bị từ chối"
 msgid "Minimum length"
 msgstr "Độ dài tối thiểu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Di động"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Bạn bè Mochi"
 
@@ -2062,8 +2047,8 @@ msgstr "Đang chuyển đến {0}"
 msgid "Name"
 msgstr "Tên"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Tên"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Tên không được chứa ký tự < hoặc >"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Tên là bắt buộc"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "Mới nhất"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Liên hệ mới"
 
@@ -2131,7 +2117,7 @@ msgstr "Tháng sau"
 msgid "Next year"
 msgstr "Năm sau"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Biệt danh"
 
@@ -2270,7 +2256,7 @@ msgstr "Không tìm thấy"
 msgid "Not set"
 msgstr "Chưa đặt"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Ghi chú"
 
@@ -2345,7 +2331,7 @@ msgstr "Tên tuỳ chọn"
 msgid "Options"
 msgstr "Tuỳ chọn"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Tổ chức"
 
@@ -2353,7 +2339,7 @@ msgstr "Tổ chức"
 msgid "Other"
 msgstr "Khác"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Khác"
@@ -2417,7 +2403,7 @@ msgstr "Vui lòng thử lại."
 msgid "Please wait a moment and try again."
 msgstr "Vui lòng đợi một lát rồi thử lại."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Mã bưu chính"
 
@@ -2543,7 +2529,7 @@ msgstr "Đang chuyển hướng đến đăng nhập."
 msgid "Reduce interest"
 msgstr "Giảm sự quan tâm"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Khu vực"
 
@@ -2616,11 +2602,11 @@ msgstr "Xóa quy tắc truy cập cho \"{0}\"?"
 msgid "Remove access?"
 msgstr "Xoá quyền truy cập?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Xóa địa chỉ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Xóa email"
 
@@ -2643,12 +2629,12 @@ msgstr "Xóa liên kết"
 msgid "Remove member"
 msgstr "Xoá thành viên"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Xóa số điện thoại"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Đang xóa bạn bè..."
 
@@ -2758,7 +2744,6 @@ msgstr "Thứ bảy"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Lưu tên"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Hãy lưu mật khẩu này ngay. Mật khẩu sẽ không thể hiển thị lại."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Đang lưu liên hệ..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Gửi tin nhắn"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Đang gửi lời mời..."
 
@@ -3056,7 +3037,7 @@ msgstr "Ngừng theo dõi"
 msgid "Store silently"
 msgstr "Lưu trữ ẩn"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Đường"
 
@@ -3082,7 +3063,7 @@ msgstr "Đăng ký"
 msgid "Sunday"
 msgstr "Chủ nhật"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Họ"
 
@@ -3113,7 +3094,7 @@ msgstr "Thẻ phải có tối đa 50 ký tự"
 msgid "Tags"
 msgstr "Các thẻ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Điện thoại"
 
@@ -3192,7 +3173,7 @@ msgstr "Thao tác này sẽ xóa vĩnh viễn trận đấu và cuộc trò chuy
 msgid "Thursday"
 msgstr "Thứ năm"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Chức danh"
@@ -3261,8 +3242,8 @@ msgstr "Thứ ba"
 msgid "Type"
 msgstr "Loại"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Không khả dụng"
 msgid "Unexpected API error"
 msgstr "Lỗi API không mong muốn"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Bỏ kết bạn"
 
@@ -3378,7 +3359,7 @@ msgstr "Tiến trình tải lên"
 msgid "Uploading..."
 msgstr "Đang tải lên..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "Chúng tôi đã gửi mã xác minh đến <0>{0}</0>. Nhập mã bên 
 msgid "Wednesday"
 msgstr "Thứ tư"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Cơ quan"

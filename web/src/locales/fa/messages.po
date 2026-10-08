@@ -218,7 +218,7 @@ msgstr "افزودن دسترسی"
 msgid "Add account"
 msgstr "افزودن حساب"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "افزودن نشانی"
 
@@ -241,7 +241,7 @@ msgstr "افزودن مخاطب"
 msgid "Add device"
 msgstr "افزودن دستگاه"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "افزودن ایمیل"
 
@@ -281,7 +281,7 @@ msgstr "برای شروع، کسی را اضافه کنید"
 msgid "Add tag..."
 msgstr "افزودن برچسب..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "افزودن تلفن"
 
@@ -324,7 +324,7 @@ msgstr "در حال افزودن عضو..."
 msgid "address book"
 msgstr "دفترچه نشانی"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "دفترچه نشانی"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "بنر به‌روزرسانی شد"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "تاریخ تولد"
 
@@ -583,7 +583,6 @@ msgstr "دوربین در دسترس نیست"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "لغوشده"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "در حال لغو دعوت..."
@@ -681,7 +680,7 @@ msgstr "یک زمان انتخاب کنید"
 msgid "Choose language"
 msgstr "انتخاب زبان"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "شهر"
 
@@ -820,28 +819,25 @@ msgstr "در حال اتصال..."
 msgid "Contact added"
 msgstr "مخاطب افزوده شد"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "مخاطب کپی شد"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "مخاطب ساخته شد"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "مخاطب حذف شد"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "مخاطب ذخیره شد"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "مخاطبین"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "مخاطبان ادغام شدند"
 
@@ -883,13 +879,9 @@ msgstr "در کلیپ‌بورد کپی شد"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "کپی"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "کپی مخاطب"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "شروع احراز هویت مجدد ممکن نشد. لطفاً دوب
 msgid "Couldn't verify with that account. Please try again."
 msgstr "تأیید با آن حساب ممکن نشد. لطفاً دوباره تلاش کنید."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "کشور"
 
@@ -925,6 +917,7 @@ msgstr "کشور"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "ساختن"
 
@@ -971,7 +964,8 @@ msgstr "{field} ایجاد شد"
 msgid "Creating address book..."
 msgstr "در حال ساختن دفترچه نشانی..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "در حال ساختن مخاطب..."
 
@@ -1044,10 +1038,9 @@ msgstr "مرتب‌سازی پیش‌فرض"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "حذف"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "<0>{0}</0> حذف شود؟"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "<0>{0}</0> حذف شود؟ این کار به دوستی شما هم پایان می‌دهد."
 
@@ -1085,8 +1078,9 @@ msgstr "حذف ستون"
 msgid "Delete comment"
 msgstr "حذف نظر"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "حذف مخاطب"
 
@@ -1155,8 +1149,8 @@ msgstr "گروه حذف‌شده"
 msgid "Deleting address book..."
 msgstr "در حال حذف دفترچه نشانی..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "در حال حذف مخاطب..."
 
@@ -1178,7 +1172,7 @@ msgstr "نزولی"
 msgid "Description"
 msgstr "توضیحات"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "جزئیات"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "فهرست دایرکتوری"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "دور انداختن"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "تغییرات دور انداخته شود؟"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "ویرایش {label}"
 msgid "Edit caption"
 msgstr "ویرایش شرح"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "ویرایش مخاطب"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "ویرایش فیلد"
@@ -1332,14 +1317,14 @@ msgstr "ایمیل"
 msgid "Email code"
 msgstr "کد ایمیل"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "ایمیل‌ها"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "به دوستی خود با <0>{0}</0> پایان می‌دهید؟ مخاطب در دفترچه نشانی شما باقی می‌ماند."
 
@@ -1408,7 +1393,7 @@ msgstr "افزودن مخاطب ناموفق بود"
 msgid "Failed to add member"
 msgstr "افزودن عضو ناموفق بود"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "لغو دعوت ناموفق بود"
@@ -1427,7 +1412,8 @@ msgstr "کپی ناموفق بود"
 msgid "Failed to create address book"
 msgstr "ساختن دفترچه نشانی ناموفق بود"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "ساختن مخاطب ناموفق بود"
 
@@ -1460,8 +1446,8 @@ msgstr "حذف پیوست ناموفق بود"
 msgid "Failed to delete comment"
 msgstr "حذف دیدگاه ناموفق بود"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "حذف مخاطب ناموفق بود"
 
@@ -1518,8 +1504,8 @@ msgstr "بارگذاری ویدیو ناموفق بود"
 msgid "Failed to load your invite policy"
 msgstr "بارگذاری سیاست دعوت شما ناموفق بود"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "ادغام مخاطبان ناموفق بود"
 
@@ -1531,8 +1517,8 @@ msgstr "انتقال ناموفق بود"
 msgid "Failed to post comment"
 msgstr "ارسال دیدگاه ناموفق بود"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "حذف دوست ناموفق بود"
 
@@ -1561,7 +1547,7 @@ msgstr "ذخیره ناموفق بود"
 msgid "Failed to save accent"
 msgstr "ذخیره رنگ تأکیدی ناموفق بود"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "ذخیره مخاطب ناموفق بود"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "ذخیره پرامپت ناموفق بود"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "ارسال دعوت ناموفق بود"
 
@@ -1637,7 +1623,7 @@ msgstr "پرچم‌ها"
 msgid "Flat"
 msgstr "تخت"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "نام"
 
@@ -1645,8 +1631,8 @@ msgstr "نام"
 msgid "Friday"
 msgstr "جمعه"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "دوست حذف شد"
 
@@ -1725,7 +1711,7 @@ msgstr "تاریخچه"
 msgid "Home"
 msgstr "خانه"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "خانه"
@@ -1788,7 +1774,7 @@ msgstr "تاریخ نامعتبر"
 msgid "Invitation accepted"
 msgstr "دعوت پذیرفته شد"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "دعوت لغو شد"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "دعوت رد شد"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "دعوت ارسال شد"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "تنظیمات دعوت"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "دعوت‌شده"
 
@@ -1970,18 +1956,17 @@ msgstr "تعداد اعضا"
 msgid "Menu"
 msgstr "منو"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "ادغام"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "ادغام مخاطبان"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "در حال ادغام مخاطبان..."
 
@@ -2006,12 +1991,12 @@ msgstr "اجازهٔ میکروفون رد شد"
 msgid "Minimum length"
 msgstr "حداقل طول"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "همراه"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "دوست Mochi"
 
@@ -2062,8 +2047,8 @@ msgstr "در حال جابه‌جایی به {0}"
 msgid "Name"
 msgstr "نام"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "نام"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "نام نمی‌تواند شامل کاراکترهای < یا > باشد"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "نام الزامی است"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "جدیدترین"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "مخاطب جدید"
 
@@ -2131,7 +2117,7 @@ msgstr "ماه بعد"
 msgid "Next year"
 msgstr "سال بعد"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "نام مستعار"
 
@@ -2270,7 +2256,7 @@ msgstr "یافت نشد"
 msgid "Not set"
 msgstr "تنظیم نشده"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "یادداشت"
 
@@ -2345,7 +2331,7 @@ msgstr "نام گزینه"
 msgid "Options"
 msgstr "گزینه‌ها"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "سازمان"
 
@@ -2353,7 +2339,7 @@ msgstr "سازمان"
 msgid "Other"
 msgstr "سایر"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "سایر"
@@ -2417,7 +2403,7 @@ msgstr "لطفاً دوباره تلاش کنید."
 msgid "Please wait a moment and try again."
 msgstr "لطفاً چند لحظه صبر کنید و دوباره امتحان کنید."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "کد پستی"
 
@@ -2543,7 +2529,7 @@ msgstr "در حال تغییر مسیر به ورود."
 msgid "Reduce interest"
 msgstr "کاهش علاقه"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "منطقه"
 
@@ -2616,11 +2602,11 @@ msgstr "قانون دسترسی برای «{0}» حذف شود؟"
 msgid "Remove access?"
 msgstr "حذف دسترسی؟"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "حذف نشانی"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "حذف ایمیل"
 
@@ -2643,12 +2629,12 @@ msgstr "حذف پیوند"
 msgid "Remove member"
 msgstr "حذف عضو"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "حذف تلفن"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "در حال حذف دوست..."
 
@@ -2758,7 +2744,6 @@ msgstr "شنبه"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "ذخیره نام"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "این گذرواژه را همین حالا ذخیره کنید. دیگر نمایش داده نخواهد شد."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "در حال ذخیره مخاطب..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "ارسال پیام"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "در حال ارسال دعوت..."
 
@@ -3056,7 +3037,7 @@ msgstr "توقف تماشا"
 msgid "Store silently"
 msgstr "ذخیره بدون اطلاع"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "خیابان"
 
@@ -3082,7 +3063,7 @@ msgstr "اشتراک"
 msgid "Sunday"
 msgstr "یکشنبه"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "نام خانوادگی"
 
@@ -3113,7 +3094,7 @@ msgstr "برچسب باید ۵۰ نویسه یا کمتر باشد"
 msgid "Tags"
 msgstr "برچسب‌ها"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "تلفن‌ها"
 
@@ -3192,7 +3173,7 @@ msgstr "این کار بازی و گفتگوی آن را برای همیشه ح�
 msgid "Thursday"
 msgstr "پنجشنبه"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "سمت"
@@ -3261,8 +3242,8 @@ msgstr "سه‌شنبه"
 msgid "Type"
 msgstr "نوع"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "در دسترس نیست"
 msgid "Unexpected API error"
 msgstr "خطای غیرمنتظره API"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "پایان دوستی"
 
@@ -3378,7 +3359,7 @@ msgstr "پیشرفت بارگذاری"
 msgid "Uploading..."
 msgstr "در حال بارگذاری..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "کد تأیید را به <0>{0}</0> ارسال کردیم. برای ت�
 msgid "Wednesday"
 msgstr "چهارشنبه"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "کار"

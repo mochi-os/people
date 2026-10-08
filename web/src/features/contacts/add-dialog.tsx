@@ -3,7 +3,6 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useNavigate } from '@tanstack/react-router'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
   Button,
@@ -61,6 +60,8 @@ type AddContactDialogProps = {
   link?: { contact: string; name: string }
   /** The address book being viewed, where a contact made here goes. */
   book?: string
+  /** Start a new contact, offered as the first choice when given. */
+  onNew?: () => void
 }
 
 type PreviewState = {
@@ -80,9 +81,9 @@ export function AddContactDialog({
   open,
   link,
   book,
+  onNew,
 }: AddContactDialogProps) {
   const { t } = useLingui()
-  const navigate = useNavigate()
   const [search, setSearch] = useState(link?.name ?? '')
   const [debounced, setDebounced] = useState(link?.name ?? '')
   const [invited, setInvited] = useState<Set<string>>(new Set())
@@ -267,17 +268,19 @@ export function AddContactDialog({
           <PersonPreview info={preview.info} />
         ) : (
           <div className='space-y-4'>
-            <Button
-              variant='outline'
-              className='w-full justify-start'
-              onClick={() => {
-                onOpenChange(false)
-                void navigate({ to: '/contacts/new', search: { book } })
-              }}
-            >
-              <BookUser className='size-4' />
-              <Trans>New contact</Trans>
-            </Button>
+            {onNew && (
+              <Button
+                variant='outline'
+                className='w-full justify-start'
+                onClick={() => {
+                  onOpenChange(false)
+                  onNew()
+                }}
+              >
+                <BookUser className='size-4' />
+                <Trans>New contact</Trans>
+              </Button>
+            )}
 
             <div className='space-y-2'>
               <p className='text-muted-foreground text-xs font-medium'>

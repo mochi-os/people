@@ -218,7 +218,7 @@ msgstr "Cuir inntrigeadh ris"
 msgid "Add account"
 msgstr "Cuir cunntas ris"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Cuir seòladh ris"
 
@@ -241,7 +241,7 @@ msgstr "Cuir neach-aithne ris"
 msgid "Add device"
 msgstr "Cuir inneal ris"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Cuir post-d ris"
 
@@ -281,7 +281,7 @@ msgstr "Cuir cuideigin ris gus tòiseachadh"
 msgid "Add tag..."
 msgstr "Cuir taga ris..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Cuir fòn ris"
 
@@ -324,7 +324,7 @@ msgstr "A’ cur ball ris..."
 msgid "address book"
 msgstr "leabhar-sheòlaidhean"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Leabhar-sheòlaidhean"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Bratach air ùrachadh"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Co-là-breith"
 
@@ -583,7 +583,6 @@ msgstr "Chan eil an camara ri fhaighinn"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Air a chur dheth"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "A’ cur dheth a’ chuireadh..."
@@ -681,7 +680,7 @@ msgstr "Tagh àm"
 msgid "Choose language"
 msgstr "Tagh cànan"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Baile"
 
@@ -820,28 +819,25 @@ msgstr "A' ceangal..."
 msgid "Contact added"
 msgstr "Chaidh an neach-aithne a chur ris"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Chaidh lethbhreac a dhèanamh dhen neach-aithne"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Chaidh an neach-aithne a chruthachadh"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Chaidh an neach-aithne a sguabadh às"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Chaidh an neach-aithne a shàbhaladh"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Luchd-aithne"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Chaidh an luchd-aithne a cho-aonadh"
 
@@ -883,13 +879,9 @@ msgstr "Air a chopaigeadh chun a' chliopaboird"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Dèan lethbhreac"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Dèan lethbhreac dhen neach-aithne"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Cha b' urrainn ath-dhearbhadh a thòiseachadh. Feuch ris a-rithist."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Cha b' urrainn dearbhadh leis a' chunntas sin. Feuch ris a-rithist."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Dùthaich"
 
@@ -925,6 +917,7 @@ msgstr "Dùthaich"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Cruthaich"
 
@@ -971,7 +964,8 @@ msgstr "Chaidh {field} a chruthachadh"
 msgid "Creating address book..."
 msgstr "A' cruthachadh an leabhair-sheòlaidhean..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "A' cruthachadh an neach-aithne..."
 
@@ -1044,10 +1038,9 @@ msgstr "Seòrsachadh bunaiteach"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Sguab às"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "A bheil thu airson <0>{0}</0> a sguabadh às?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "A bheil thu airson <0>{0}</0> a sguabadh às? Cuiridh seo crìoch air a' chàirdeas agaibh cuideachd."
 
@@ -1085,8 +1078,9 @@ msgstr "Sguab às colbh"
 msgid "Delete comment"
 msgstr "Sguab às beachd"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Sguab às an neach-aithne"
 
@@ -1155,8 +1149,8 @@ msgstr "Buidheann air a sguabadh às"
 msgid "Deleting address book..."
 msgstr "A' sguabadh às an leabhair-sheòlaidhean..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "A' sguabadh às an neach-aithne..."
 
@@ -1178,7 +1172,7 @@ msgstr "A' teàrnadh"
 msgid "Description"
 msgstr "Tuairisgeul"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Mion-fhiosrachadh"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Liosta an eòlaire"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Tilg air falbh"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "A bheil thu airson na h-atharraichean a thilgeil air falbh?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "Deasaich {label}"
 msgid "Edit caption"
 msgstr "Deasaich an caipsean"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Deasaich an neach-aithne"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Deasaich an raon"
@@ -1332,14 +1317,14 @@ msgstr "Post-d"
 msgid "Email code"
 msgstr "Còd puist-d"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "Seòlaidhean puist-d"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "A bheil thu airson crìoch a chur air a' chàirdeas agad le <0>{0}</0>? Fanaidh an neach-aithne san leabhar-sheòlaidhean agad."
 
@@ -1408,7 +1393,7 @@ msgstr "Cha b' urrainn an neach-aithne a chur ris"
 msgid "Failed to add member"
 msgstr "Cha b' urrainn ball a chur ris"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Cha b' urrainn cur dheth a' chuiridh"
@@ -1427,7 +1412,8 @@ msgstr "Cha b' urrainn copaigeadh"
 msgid "Failed to create address book"
 msgstr "Cha b' urrainn an leabhar-sheòlaidhean a chruthachadh"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Cha b' urrainn an neach-aithne a chruthachadh"
 
@@ -1460,8 +1446,8 @@ msgstr "Cha b' urrainn ceangaltas a sguabadh às"
 msgid "Failed to delete comment"
 msgstr "Cha b' urrainn am beachd a sguabadh às"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Cha b' urrainn an neach-aithne a sguabadh às"
 
@@ -1518,8 +1504,8 @@ msgstr "Dh'fhàillig luchdachadh a' video"
 msgid "Failed to load your invite policy"
 msgstr "Cha b' urrainn poileasaidh nan cuiridhean agad a luchdadh"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Cha b' urrainn dhuinn an luchd-aithne a cho-aonadh"
 
@@ -1531,8 +1517,8 @@ msgstr "Dh'fhàillig an gluasad"
 msgid "Failed to post comment"
 msgstr "Cha b' urrainn beachd a phostadh"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Cha b' urrainn caraid a thoirt air falbh"
 
@@ -1561,7 +1547,7 @@ msgstr "Cha b' urrainn sàbhaladh"
 msgid "Failed to save accent"
 msgstr "Cha b' urrainn am brìgh a shàbhaladh"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Cha b' urrainn an neach-aithne a shàbhaladh"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Cha b' urrainn am brodadh a shàbhaladh"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Cha b' urrainn an cuireadh a chur"
 
@@ -1637,7 +1623,7 @@ msgstr "Brataichean"
 msgid "Flat"
 msgstr "Còmhnard"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Ainm"
 
@@ -1645,8 +1631,8 @@ msgstr "Ainm"
 msgid "Friday"
 msgstr "DihAoine"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Chaidh an caraid a thoirt air falbh"
 
@@ -1725,7 +1711,7 @@ msgstr "Eachdraidh"
 msgid "Home"
 msgstr "Dachaigh"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Dachaigh"
@@ -1788,7 +1774,7 @@ msgstr "Ceann-latha mì-dhligheach"
 msgid "Invitation accepted"
 msgstr "Chaidh gabhail ris a' chuireadh"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Chaidh an cuireadh a chur dheth"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Chaidh an cuireadh a dhiùltadh"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Chaidh an cuireadh a chur"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Roghainnean nan cuiridhean"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Chaidh cuireadh a thoirt"
 
@@ -1970,18 +1956,17 @@ msgstr "Cunntas nam Buill"
 msgid "Menu"
 msgstr "Clàr-taice"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Co-aonaich"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Co-aonaich luchd-aithne"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "A' co-aonadh an luchd-aithne..."
 
@@ -2006,12 +1991,12 @@ msgstr "Chaidh cead a' mhicreofoin a dhiùltadh"
 msgid "Minimum length"
 msgstr "Faid as lugha"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Fòn-làimhe"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Caraid Mochi"
 
@@ -2062,8 +2047,8 @@ msgstr "Ga ghluasad gu {0}"
 msgid "Name"
 msgstr "Ainm"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Ainm"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Chan fhaod < no > a bhith san ainm"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Tha ainm a dhìth"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "As ùire"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Neach-aithne ùr"
 
@@ -2131,7 +2117,7 @@ msgstr "An ath-mhìos"
 msgid "Next year"
 msgstr "An ath-bhliadhna"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Far-ainm"
 
@@ -2270,7 +2256,7 @@ msgstr "Cha deach a lorg"
 msgid "Not set"
 msgstr "Cha deach a shuidheachadh"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Nòta"
 
@@ -2345,7 +2331,7 @@ msgstr "Ainm na roghainn"
 msgid "Options"
 msgstr "Roghainnean"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Buidheann"
 
@@ -2353,7 +2339,7 @@ msgstr "Buidheann"
 msgid "Other"
 msgstr "Eile"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Eile"
@@ -2417,7 +2403,7 @@ msgstr "Feuch ris a-rithist."
 msgid "Please wait a moment and try again."
 msgstr "Fuirich greiseag is feuch ris a-rithist."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Còd-puist"
 
@@ -2543,7 +2529,7 @@ msgstr "Ag ath-stiùireadh dhan log a-steach."
 msgid "Reduce interest"
 msgstr "Lùghdaich an ùidh"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Roinn"
 
@@ -2616,11 +2602,11 @@ msgstr "A bheil thu airson riaghailt inntrigidh \"{0}\" a thoirt air falbh?"
 msgid "Remove access?"
 msgstr "Thoir an cothrom air falbh?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Thoir an seòladh air falbh"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Thoir am post-d air falbh"
 
@@ -2643,12 +2629,12 @@ msgstr "Thoir an ceangal air falbh"
 msgid "Remove member"
 msgstr "Thoir am ball air falbh"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Thoir am fòn air falbh"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "A’ toirt air falbh caraid..."
 
@@ -2758,7 +2744,6 @@ msgstr "Disathairne"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Sàbhail an t-ainm"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Sàbhail am facal-faire seo an-dràsta. Chan urrainn dhuinn a shealltainn a-rithist."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "A' sàbhaladh an neach-aithne..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Cuir teachdaireachd"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "A’ cur a’ chuireadh..."
 
@@ -3056,7 +3037,7 @@ msgstr "Sguir a' coimhead"
 msgid "Store silently"
 msgstr "Stòr gu sàmhach"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Sràid"
 
@@ -3082,7 +3063,7 @@ msgstr "Fo-sgrìobh"
 msgid "Sunday"
 msgstr "Didòmhnaich"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Sloinneadh"
 
@@ -3113,7 +3094,7 @@ msgstr "Feumaidh an taga a bhith 50 caractar no nas lugha"
 msgid "Tags"
 msgstr "Tagaichean"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Àireamhan fòn"
 
@@ -3192,7 +3173,7 @@ msgstr "Sguabaidh seo às an geama agus an cabadaich aige gu buan. Chan urrainn 
 msgid "Thursday"
 msgstr "Diardaoin"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Dreuchd"
@@ -3261,8 +3242,8 @@ msgstr "Dimàirt"
 msgid "Type"
 msgstr "Seòrsa"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Cha eil ri làimh"
 msgid "Unexpected API error"
 msgstr "Mearachd API ris nach robh dùil"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Cuir crìoch air a' chàirdeas"
 
@@ -3378,7 +3359,7 @@ msgstr "Adhartas an luchdaidh suas"
 msgid "Uploading..."
 msgstr "A' luchdadh suas..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "Chuir sinn còd dearbhaidh gu <0>{0}</0>. Cuir a-steach an còd gu h-ìo
 msgid "Wednesday"
 msgstr "Diciadain"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Obair"

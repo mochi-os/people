@@ -218,7 +218,7 @@ msgstr "Aggiungi accesso"
 msgid "Add account"
 msgstr "Aggiungi account"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Aggiungi indirizzo"
 
@@ -241,7 +241,7 @@ msgstr "Aggiungi contatto"
 msgid "Add device"
 msgstr "Aggiungi un dispositivo"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Aggiungi email"
 
@@ -281,7 +281,7 @@ msgstr "Aggiungi qualcuno per iniziare"
 msgid "Add tag..."
 msgstr "Aggiungi tag..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Aggiungi telefono"
 
@@ -324,7 +324,7 @@ msgstr "Aggiunta membro in corso..."
 msgid "address book"
 msgstr "rubrica"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Rubrica"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Banner aggiornato"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Compleanno"
 
@@ -583,7 +583,6 @@ msgstr "Fotocamera non disponibile"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Annullato"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Annullamento invito in corso..."
@@ -681,7 +680,7 @@ msgstr "Scegli un orario"
 msgid "Choose language"
 msgstr "Scegli la lingua"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Città"
 
@@ -820,28 +819,25 @@ msgstr "Connessione..."
 msgid "Contact added"
 msgstr "Contatto aggiunto"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Contatto copiato"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Contatto creato"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Contatto eliminato"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Contatto salvato"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Contatti"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Contatti uniti"
 
@@ -883,13 +879,9 @@ msgstr "Copiato negli appunti"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Copia"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Copia contatto"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Impossibile avviare la nuova autenticazione. Riprova."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Impossibile verificare con quell'account. Riprova."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Paese"
 
@@ -925,6 +917,7 @@ msgstr "Paese"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Crea"
 
@@ -971,7 +964,8 @@ msgstr "Creato {field}"
 msgid "Creating address book..."
 msgstr "Creazione rubrica in corso..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Creazione contatto in corso..."
 
@@ -1044,10 +1038,9 @@ msgstr "Ordinamento predefinito"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Elimina"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "Eliminare <0>{0}</0>?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "Eliminare <0>{0}</0>? Questo termina anche la vostra amicizia."
 
@@ -1085,8 +1078,9 @@ msgstr "Elimina colonna"
 msgid "Delete comment"
 msgstr "Elimina commento"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Elimina contatto"
 
@@ -1155,8 +1149,8 @@ msgstr "Gruppo eliminato"
 msgid "Deleting address book..."
 msgstr "Eliminazione rubrica in corso..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Eliminazione contatto in corso..."
 
@@ -1178,7 +1172,7 @@ msgstr "Decrescente"
 msgid "Description"
 msgstr "Descrizione"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Dettagli"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Elenco della directory"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Scarta"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "Scartare le modifiche?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "Modifica {label}"
 msgid "Edit caption"
 msgstr "Modifica didascalia"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Modifica contatto"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Modifica campo"
@@ -1332,14 +1317,14 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Codice email"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "Email"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Terminare l’amicizia con <0>{0}</0>? Il contatto resta nella tua rubrica."
 
@@ -1408,7 +1393,7 @@ msgstr "Impossibile aggiungere il contatto"
 msgid "Failed to add member"
 msgstr "Impossibile aggiungere il membro"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Impossibile annullare l'invito"
@@ -1427,7 +1412,8 @@ msgstr "Impossibile copiare"
 msgid "Failed to create address book"
 msgstr "Impossibile creare la rubrica"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Impossibile creare il contatto"
 
@@ -1460,8 +1446,8 @@ msgstr "Impossibile eliminare l'allegato"
 msgid "Failed to delete comment"
 msgstr "Impossibile eliminare il commento"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Impossibile eliminare il contatto"
 
@@ -1518,8 +1504,8 @@ msgstr "Impossibile caricare il video"
 msgid "Failed to load your invite policy"
 msgstr "Impossibile caricare la tua politica degli inviti"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Impossibile unire i contatti"
 
@@ -1531,8 +1517,8 @@ msgstr "Spostamento non riuscito"
 msgid "Failed to post comment"
 msgstr "Impossibile pubblicare il commento"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Impossibile rimuovere l'amico"
 
@@ -1561,7 +1547,7 @@ msgstr "Impossibile salvare"
 msgid "Failed to save accent"
 msgstr "Impossibile salvare l'accento"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Impossibile salvare il contatto"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Impossibile salvare il prompt"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Impossibile inviare l’invito"
 
@@ -1637,7 +1623,7 @@ msgstr "Segnalazioni"
 msgid "Flat"
 msgstr "Piatta"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Nome"
 
@@ -1645,8 +1631,8 @@ msgstr "Nome"
 msgid "Friday"
 msgstr "Venerdì"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Amico rimosso"
 
@@ -1725,7 +1711,7 @@ msgstr "Cronologia"
 msgid "Home"
 msgstr "Home"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Casa"
@@ -1788,7 +1774,7 @@ msgstr "Data non valida"
 msgid "Invitation accepted"
 msgstr "Invito accettato"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Invito annullato"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Invito rifiutato"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Invito inviato"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Impostazioni inviti"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Invitato"
 
@@ -1970,18 +1956,17 @@ msgstr "Numero di membri"
 msgid "Menu"
 msgstr "Menu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Unisci"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Unisci contatti"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "Unione dei contatti..."
 
@@ -2006,12 +1991,12 @@ msgstr "Autorizzazione del microfono negata"
 msgid "Minimum length"
 msgstr "Lunghezza minima"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Cellulare"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Amico Mochi"
 
@@ -2062,8 +2047,8 @@ msgstr "Spostamento a {0}"
 msgid "Name"
 msgstr "Nome"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Nome"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Il nome non può contenere i caratteri < o >"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Il nome è obbligatorio"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "Più recenti"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Nuovo contatto"
 
@@ -2131,7 +2117,7 @@ msgstr "Mese successivo"
 msgid "Next year"
 msgstr "Anno successivo"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Soprannome"
 
@@ -2270,7 +2256,7 @@ msgstr "Non trovato"
 msgid "Not set"
 msgstr "Non impostato"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Nota"
 
@@ -2345,7 +2331,7 @@ msgstr "Nome opzione"
 msgid "Options"
 msgstr "Opzioni"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Organizzazione"
 
@@ -2353,7 +2339,7 @@ msgstr "Organizzazione"
 msgid "Other"
 msgstr "Altro"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Altro"
@@ -2417,7 +2403,7 @@ msgstr "Riprova."
 msgid "Please wait a moment and try again."
 msgstr "Attendi qualche istante e riprova."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "CAP"
 
@@ -2543,7 +2529,7 @@ msgstr "Reindirizzamento all'accesso."
 msgid "Reduce interest"
 msgstr "Riduci interesse"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Regione"
 
@@ -2616,11 +2602,11 @@ msgstr "Rimuovere la regola di accesso per «{0}»?"
 msgid "Remove access?"
 msgstr "Rimuovere l'accesso?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Rimuovi indirizzo"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Rimuovi email"
 
@@ -2643,12 +2629,12 @@ msgstr "Rimuovi collegamento"
 msgid "Remove member"
 msgstr "Rimuovi membro"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Rimuovi telefono"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Rimozione amico in corso..."
 
@@ -2758,7 +2744,6 @@ msgstr "Sabato"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Salva nome"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Salva questa password adesso. Non potrà essere mostrata di nuovo."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Salvataggio contatto in corso..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Invia messaggio"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Invio invito in corso..."
 
@@ -3056,7 +3037,7 @@ msgstr "Smetti di seguire"
 msgid "Store silently"
 msgstr "Archivia silenziosamente"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Via"
 
@@ -3082,7 +3063,7 @@ msgstr "Iscriviti"
 msgid "Sunday"
 msgstr "Domenica"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Cognome"
 
@@ -3113,7 +3094,7 @@ msgstr "L'etichetta deve avere al massimo 50 caratteri"
 msgid "Tags"
 msgstr "Tag"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Telefoni"
 
@@ -3192,7 +3173,7 @@ msgstr "Questa azione eliminerà definitivamente la partita e la relativa chat. 
 msgid "Thursday"
 msgstr "Giovedì"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Qualifica"
@@ -3261,8 +3242,8 @@ msgstr "Martedì"
 msgid "Type"
 msgstr "Tipo"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Non disponibile"
 msgid "Unexpected API error"
 msgstr "Errore API imprevisto"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Rimuovi dagli amici"
 
@@ -3378,7 +3359,7 @@ msgstr "Avanzamento del caricamento"
 msgid "Uploading..."
 msgstr "Caricamento in corso..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "Abbiamo inviato un codice di verifica a <0>{0}</0>. Inserisci il codice 
 msgid "Wednesday"
 msgstr "Mercoledì"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Lavoro"

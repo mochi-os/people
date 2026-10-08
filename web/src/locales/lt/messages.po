@@ -218,7 +218,7 @@ msgstr "Pridėti prieigą"
 msgid "Add account"
 msgstr "Pridėti paskyrą"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Pridėti adresą"
 
@@ -241,7 +241,7 @@ msgstr "Pridėti kontaktą"
 msgid "Add device"
 msgstr "Pridėti įrenginį"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Pridėti el. paštą"
 
@@ -281,7 +281,7 @@ msgstr "Pridėkite ką nors, kad pradėtumėte"
 msgid "Add tag..."
 msgstr "Pridėti žymą..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Pridėti telefoną"
 
@@ -324,7 +324,7 @@ msgstr "Pridedamas narys..."
 msgid "address book"
 msgstr "adresų knyga"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Adresų knyga"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Reklamjuostė atnaujinta"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Gimtadienis"
 
@@ -583,7 +583,6 @@ msgstr "Kamera nepasiekiama"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Atšaukta"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Atšaukiamas kvietimas..."
@@ -681,7 +680,7 @@ msgstr "Pasirinkite laiką"
 msgid "Choose language"
 msgstr "Pasirinkite kalbą"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Miestas"
 
@@ -820,28 +819,25 @@ msgstr "Jungiamasi..."
 msgid "Contact added"
 msgstr "Kontaktas pridėtas"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Kontaktas nukopijuotas"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Kontaktas sukurtas"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Kontaktas ištrintas"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Kontaktas išsaugotas"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Kontaktai"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Kontaktai sujungti"
 
@@ -883,13 +879,9 @@ msgstr "Nukopijuota į iškarpinę"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Kopijuoti"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Kopijuoti kontaktą"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Nepavyko pradėti pakartotinio tapatybės patvirtinimo. Bandykite dar ka
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Nepavyko patvirtinti su ta paskyra. Bandykite dar kartą."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Šalis"
 
@@ -925,6 +917,7 @@ msgstr "Šalis"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Sukurti"
 
@@ -971,7 +964,8 @@ msgstr "{field} sukurta"
 msgid "Creating address book..."
 msgstr "Kuriama adresų knyga..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Kuriamas kontaktas..."
 
@@ -1044,10 +1038,9 @@ msgstr "Numatytasis rūšiavimas"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Ištrinti"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "Ištrinti <0>{0}</0>?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "Ištrinti <0>{0}</0>? Taip pat nutrūks jūsų draugystė."
 
@@ -1085,8 +1078,9 @@ msgstr "Ištrinti stulpelį"
 msgid "Delete comment"
 msgstr "Ištrinti komentarą"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Ištrinti kontaktą"
 
@@ -1155,8 +1149,8 @@ msgstr "Ištrinta grupė"
 msgid "Deleting address book..."
 msgstr "Trinama adresų knyga..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Trinamas kontaktas..."
 
@@ -1178,7 +1172,7 @@ msgstr "Mažėjančiai"
 msgid "Description"
 msgstr "Aprašymas"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Detalės"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Katalogo sąrašas"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Atmesti"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "Atmesti pakeitimus?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "Redaguoti {label}"
 msgid "Edit caption"
 msgstr "Redaguoti antraštę"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Redaguoti kontaktą"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Redaguoti lauką"
@@ -1332,14 +1317,14 @@ msgstr "El. paštas"
 msgid "Email code"
 msgstr "El. pašto kodas"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "El. paštai"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Nutraukti draugystę su <0>{0}</0>? Kontaktas liks jūsų adresų knygoje."
 
@@ -1408,7 +1393,7 @@ msgstr "Nepavyko pridėti kontakto"
 msgid "Failed to add member"
 msgstr "Nepavyko pridėti nario"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Nepavyko atšaukti kvietimo"
@@ -1427,7 +1412,8 @@ msgstr "Nepavyko nukopijuoti"
 msgid "Failed to create address book"
 msgstr "Nepavyko sukurti adresų knygos"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Nepavyko sukurti kontakto"
 
@@ -1460,8 +1446,8 @@ msgstr "Nepavyko ištrinti priedo"
 msgid "Failed to delete comment"
 msgstr "Nepavyko ištrinti komentaro"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Nepavyko ištrinti kontakto"
 
@@ -1518,8 +1504,8 @@ msgstr "Nepavyko įkelti vaizdo įrašo"
 msgid "Failed to load your invite policy"
 msgstr "Nepavyko įkelti jūsų kvietimų politikos"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Nepavyko sujungti kontaktų"
 
@@ -1531,8 +1517,8 @@ msgstr "Nepavyko perkelti"
 msgid "Failed to post comment"
 msgstr "Nepavyko paskelbti komentaro"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Nepavyko pašalinti draugo"
 
@@ -1561,7 +1547,7 @@ msgstr "Nepavyko išsaugoti"
 msgid "Failed to save accent"
 msgstr "Nepavyko išsaugoti akcento"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Nepavyko išsaugoti kontakto"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Nepavyko išsaugoti raginimo"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Nepavyko išsiųsti kvietimo"
 
@@ -1637,7 +1623,7 @@ msgstr "Žymos"
 msgid "Flat"
 msgstr "Plokščia"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Vardas"
 
@@ -1645,8 +1631,8 @@ msgstr "Vardas"
 msgid "Friday"
 msgstr "Penktadienis"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Draugas pašalintas"
 
@@ -1725,7 +1711,7 @@ msgstr "Istorija"
 msgid "Home"
 msgstr "Pradžia"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Namai"
@@ -1788,7 +1774,7 @@ msgstr "Netinkama data"
 msgid "Invitation accepted"
 msgstr "Kvietimas priimtas"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Kvietimas atšauktas"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Kvietimas atmestas"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Kvietimas išsiųstas"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Kvietimų nustatymai"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Pakviesta"
 
@@ -1970,18 +1956,17 @@ msgstr "Narių skaičius"
 msgid "Menu"
 msgstr "Meniu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Sujungti"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Sujungti kontaktus"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "Jungiami kontaktai..."
 
@@ -2006,12 +1991,12 @@ msgstr "Mikrofono leidimas uždraustas"
 msgid "Minimum length"
 msgstr "Mažiausias ilgis"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Mobilusis"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Mochi draugas"
 
@@ -2062,8 +2047,8 @@ msgstr "Perkeliama į {0}"
 msgid "Name"
 msgstr "Pavadinimas"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Vardas"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Pavadinime negali būti < ar > simbolių"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Pavadinimas yra privalomas"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "Naujausi"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Naujas kontaktas"
 
@@ -2131,7 +2117,7 @@ msgstr "Kitas mėnuo"
 msgid "Next year"
 msgstr "Kiti metai"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Slapyvardis"
 
@@ -2270,7 +2256,7 @@ msgstr "Nerasta"
 msgid "Not set"
 msgstr "Nenustatyta"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Pastaba"
 
@@ -2345,7 +2331,7 @@ msgstr "Parinkties pavadinimas"
 msgid "Options"
 msgstr "Parinktys"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Organizacija"
 
@@ -2353,7 +2339,7 @@ msgstr "Organizacija"
 msgid "Other"
 msgstr "Kita"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Kita"
@@ -2417,7 +2403,7 @@ msgstr "Bandykite dar kartą."
 msgid "Please wait a moment and try again."
 msgstr "Palaukite šiek tiek ir bandykite dar kartą."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Pašto kodas"
 
@@ -2543,7 +2529,7 @@ msgstr "Peradresuojama į prisijungimą."
 msgid "Reduce interest"
 msgstr "Sumažinti susidomėjimą"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Regionas"
 
@@ -2616,11 +2602,11 @@ msgstr "Pašalinti prieigos taisyklę „{0}“?"
 msgid "Remove access?"
 msgstr "Šalinti prieigą?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Šalinti adresą"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Šalinti el. paštą"
 
@@ -2643,12 +2629,12 @@ msgstr "Pašalinti nuorodą"
 msgid "Remove member"
 msgstr "Šalinti narį"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Šalinti telefoną"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Šalinamas draugas..."
 
@@ -2758,7 +2744,6 @@ msgstr "Šeštadienis"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Išsaugoti vardą"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Išsaugokite šį slaptažodį dabar. Jo nebus galima parodyti dar kartą."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Išsaugomas kontaktas..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Siųsti žinutę"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Siunčiamas kvietimas..."
 
@@ -3056,7 +3037,7 @@ msgstr "Nebestebėti"
 msgid "Store silently"
 msgstr "Tyliai išsaugoti"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Gatvė"
 
@@ -3082,7 +3063,7 @@ msgstr "Prenumeruoti"
 msgid "Sunday"
 msgstr "Sekmadienis"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Pavardė"
 
@@ -3113,7 +3094,7 @@ msgstr "Žymė turi būti ne ilgesnė kaip 50 simbolių"
 msgid "Tags"
 msgstr "Žymos"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Telefonai"
 
@@ -3192,7 +3173,7 @@ msgstr "Tai visam laikui ištrins žaidimą ir jo pokalbį. Šio veiksmo negalim
 msgid "Thursday"
 msgstr "Ketvirtadienis"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Pareigos"
@@ -3261,8 +3242,8 @@ msgstr "Antradienis"
 msgid "Type"
 msgstr "Tipas"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Neprieinama"
 msgid "Unexpected API error"
 msgstr "Netikėta API klaida"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Nutraukti draugystę"
 
@@ -3378,7 +3359,7 @@ msgstr "Įkėlimo eiga"
 msgid "Uploading..."
 msgstr "Įkeliama..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "Išsiuntėme patvirtinimo kodą adresu <0>{0}</0>. Įveskite kodą žemi
 msgid "Wednesday"
 msgstr "Trečiadienis"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Darbas"

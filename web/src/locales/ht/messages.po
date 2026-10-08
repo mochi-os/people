@@ -218,7 +218,7 @@ msgstr "Ajoute aksè"
 msgid "Add account"
 msgstr "Ajoute kont"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Ajoute adrès"
 
@@ -241,7 +241,7 @@ msgstr "Ajoute kontak"
 msgid "Add device"
 msgstr "Ajoute yon aparèy"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Ajoute imèl"
 
@@ -281,7 +281,7 @@ msgstr "Ajoute yon moun pou kòmanse"
 msgid "Add tag..."
 msgstr "Ajoute etikèt..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Ajoute telefòn"
 
@@ -324,7 +324,7 @@ msgstr "Ap ajoute manm..."
 msgid "address book"
 msgstr "kanè adrès"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Kanè adrès"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Banyè mete ajou"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Dat nesans"
 
@@ -583,7 +583,6 @@ msgstr "Kamera pa disponib"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Anile"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Ap anile envitasyon an..."
@@ -681,7 +680,7 @@ msgstr "Chwazi yon lè"
 msgid "Choose language"
 msgstr "Chwazi lang"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Vil"
 
@@ -820,28 +819,25 @@ msgstr "Konekte..."
 msgid "Contact added"
 msgstr "Kontak ajoute"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Kontak kopye"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Kontak kreye"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Kontak efase"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Kontak sove"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Kontak"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Kontak yo fizyone"
 
@@ -883,13 +879,9 @@ msgstr "Kopye nan clipboard"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Kopye"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Kopye kontak"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Nou pa t kapab kòmanse re-otantifikasyon an. Tanpri eseye ankò."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Nou pa t kapab verifye ak kont sa a. Tanpri eseye ankò."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Peyi"
 
@@ -925,6 +917,7 @@ msgstr "Peyi"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Kreye"
 
@@ -971,7 +964,8 @@ msgstr "{field} kreye"
 msgid "Creating address book..."
 msgstr "Ap kreye kanè adrès..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Ap kreye kontak..."
 
@@ -1044,10 +1038,9 @@ msgstr "Klasman defo"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Efase"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "Efase <0>{0}</0>?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "Efase <0>{0}</0>? Sa ap fini zanmitay ou tou."
 
@@ -1085,8 +1078,9 @@ msgstr "Efase kolòn"
 msgid "Delete comment"
 msgstr "Efase kòmantè"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Efase kontak"
 
@@ -1155,8 +1149,8 @@ msgstr "Gwoup efase"
 msgid "Deleting address book..."
 msgstr "Ap efase kanè adrès..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Ap efase kontak..."
 
@@ -1178,7 +1172,7 @@ msgstr "Desann"
 msgid "Description"
 msgstr "Deskripsyon"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Detay"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Lis anyè"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Jete"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "Jete chanjman yo?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "Modifye {label}"
 msgid "Edit caption"
 msgstr "Modifye lejand"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Modifye kontak"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Modifye chan"
@@ -1332,14 +1317,14 @@ msgstr "Imèl"
 msgid "Email code"
 msgstr "Kòd imèl"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "Imèl"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Fini zanmitay ou ak <0>{0}</0>? Kontak la ap rete nan kanè adrès ou."
 
@@ -1408,7 +1393,7 @@ msgstr "Echwe pou ajoute kontak"
 msgid "Failed to add member"
 msgstr "Echwe pou ajoute manm"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Echwe pou anile envitasyon"
@@ -1427,7 +1412,8 @@ msgstr "Echwe pou kopye"
 msgid "Failed to create address book"
 msgstr "Echwe pou kreye kanè adrès"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Echwe pou kreye kontak"
 
@@ -1460,8 +1446,8 @@ msgstr "Echwe pou efase atachman"
 msgid "Failed to delete comment"
 msgstr "Echwe pou efase kòmantè"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Echwe pou efase kontak"
 
@@ -1518,8 +1504,8 @@ msgstr "Echèk chajman videyo a"
 msgid "Failed to load your invite policy"
 msgstr "Echwe pou chaje politik envitasyon ou an"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Echèk pou fizyone kontak yo"
 
@@ -1531,8 +1517,8 @@ msgstr "Echèk deplasman"
 msgid "Failed to post comment"
 msgstr "Echwe pou poste kòmantè"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Echwe pou retire zanmi"
 
@@ -1561,7 +1547,7 @@ msgstr "Echwe pou sove"
 msgid "Failed to save accent"
 msgstr "Echwe pou sove aksan"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Echwe pou sove kontak"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Echwe pou sove prompt"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Echwe pou voye envitasyon"
 
@@ -1637,7 +1623,7 @@ msgstr "Drapo"
 msgid "Flat"
 msgstr "Plat"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Prenon"
 
@@ -1645,8 +1631,8 @@ msgstr "Prenon"
 msgid "Friday"
 msgstr "Vandredi"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Zanmi an retire"
 
@@ -1725,7 +1711,7 @@ msgstr "Istwa"
 msgid "Home"
 msgstr "Akèy"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Lakay"
@@ -1788,7 +1774,7 @@ msgstr "Dat envalid"
 msgid "Invitation accepted"
 msgstr "Envitasyon aksepte"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Envitasyon anile"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Envitasyon refize"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Envitasyon voye"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Paramèt envitasyon"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Envite"
 
@@ -1970,18 +1956,17 @@ msgstr "Kantite Manm"
 msgid "Menu"
 msgstr "Meni"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Fizyone"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Fizyone kontak"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "N ap fizyone kontak yo..."
 
@@ -2006,12 +1991,12 @@ msgstr "Pèmisyon mikwofòn refize"
 msgid "Minimum length"
 msgstr "Longè minimòm"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Mobil"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Zanmi Mochi"
 
@@ -2062,8 +2047,8 @@ msgstr "Ap deplase nan {0}"
 msgid "Name"
 msgstr "Non"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Non"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Non pa ka gen karaktè < oswa >"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Non obligatwa"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "Pi nouvo"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Nouvo kontak"
 
@@ -2131,7 +2117,7 @@ msgstr "Mwa pwochen"
 msgid "Next year"
 msgstr "Ane pwochen"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Ti non"
 
@@ -2270,7 +2256,7 @@ msgstr "Pa jwenn"
 msgid "Not set"
 msgstr "Pa defini"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Nòt"
 
@@ -2345,7 +2331,7 @@ msgstr "Non opsyon"
 msgid "Options"
 msgstr "Opsyon"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Òganizasyon"
 
@@ -2353,7 +2339,7 @@ msgstr "Òganizasyon"
 msgid "Other"
 msgstr "Lòt"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Lòt"
@@ -2417,7 +2403,7 @@ msgstr "Tanpri, eseye ankò."
 msgid "Please wait a moment and try again."
 msgstr "Tanpri tann yon ti moman epi eseye ankò."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Kòd postal"
 
@@ -2543,7 +2529,7 @@ msgstr "Ap redirije nan koneksyon."
 msgid "Reduce interest"
 msgstr "Diminye enterè"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Rejyon"
 
@@ -2616,11 +2602,11 @@ msgstr "Retire règ aksè pou \"{0}\"?"
 msgid "Remove access?"
 msgstr "Retire aksè?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Retire adrès"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Retire imèl"
 
@@ -2643,12 +2629,12 @@ msgstr "Retire lyen"
 msgid "Remove member"
 msgstr "Retire manm"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Retire telefòn"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Ap retire zanmi..."
 
@@ -2758,7 +2744,6 @@ msgstr "Samdi"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Sove non"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Sove modpas sa a kounye a. Li pa ka parèt ankò."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Ap sove kontak..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Voye mesaj"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Ap voye envitasyon..."
 
@@ -3056,7 +3037,7 @@ msgstr "Sispann gade"
 msgid "Store silently"
 msgstr "Konsève san bri"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Ri"
 
@@ -3082,7 +3063,7 @@ msgstr "Abone"
 msgid "Sunday"
 msgstr "Dimanch"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Non fanmi"
 
@@ -3113,7 +3094,7 @@ msgstr "Etikèt la dwe gen 50 karaktè oswa mwens"
 msgid "Tags"
 msgstr "Tag yo"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Telefòn"
 
@@ -3192,7 +3173,7 @@ msgstr "Sa a ap efase jwèt la ak chat li pou tout tan. Aksyon sa a pa ka anile.
 msgid "Thursday"
 msgstr "Jedi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Tit travay"
@@ -3261,8 +3242,8 @@ msgstr "Madi"
 msgid "Type"
 msgstr "Tip"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Pa disponib"
 msgid "Unexpected API error"
 msgstr "Erè API inatandi"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Retire zanmi"
 
@@ -3378,7 +3359,7 @@ msgstr "Pwogrè chajman an"
 msgid "Uploading..."
 msgstr "Ap telechaje..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "Nou voye yon kòd verifikasyon nan <0>{0}</0>. Antre kòd la anba a pou 
 msgid "Wednesday"
 msgstr "Mèkredi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Travay"

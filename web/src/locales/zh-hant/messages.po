@@ -218,7 +218,7 @@ msgstr "新增存取權"
 msgid "Add account"
 msgstr "新增帳戶"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "新增地址"
 
@@ -241,7 +241,7 @@ msgstr "新增聯絡人"
 msgid "Add device"
 msgstr "新增裝置"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "新增電子郵件"
 
@@ -281,7 +281,7 @@ msgstr "新增一個人即可開始"
 msgid "Add tag..."
 msgstr "新增標籤..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "新增電話"
 
@@ -324,7 +324,7 @@ msgstr "正在新增成員..."
 msgid "address book"
 msgstr "通訊錄"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "通訊錄"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "已更新橫幅"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "生日"
 
@@ -583,7 +583,6 @@ msgstr "相機不可用"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "已取消"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "正在取消邀請..."
@@ -681,7 +680,7 @@ msgstr "選擇時間"
 msgid "Choose language"
 msgstr "選擇語言"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "城市"
 
@@ -820,28 +819,25 @@ msgstr "正在連線..."
 msgid "Contact added"
 msgstr "聯絡人已新增"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "已複製聯絡人"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "聯絡人已建立"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "聯絡人已刪除"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "聯絡人已儲存"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "聯絡人"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "聯絡人已合併"
 
@@ -883,13 +879,9 @@ msgstr "已複製到剪貼簿"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "複製"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "複製聯絡人"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "無法開始重新驗證。請再試一次。"
 msgid "Couldn't verify with that account. Please try again."
 msgstr "無法使用該帳戶進行驗證。請重試。"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "國家/地區"
 
@@ -925,6 +917,7 @@ msgstr "國家/地區"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "建立"
 
@@ -971,7 +964,8 @@ msgstr "已建立{field}"
 msgid "Creating address book..."
 msgstr "正在建立通訊錄..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "正在建立聯絡人..."
 
@@ -1044,10 +1038,9 @@ msgstr "預設排序"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "刪除"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "刪除 <0>{0}</0>?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "刪除 <0>{0}</0>?這也會結束你們的好友關係。"
 
@@ -1085,8 +1078,9 @@ msgstr "刪除欄位"
 msgid "Delete comment"
 msgstr "刪除留言"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "刪除聯絡人"
 
@@ -1155,8 +1149,8 @@ msgstr "已刪除的群組"
 msgid "Deleting address book..."
 msgstr "正在刪除通訊錄..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "正在刪除聯絡人..."
 
@@ -1178,7 +1172,7 @@ msgstr "降冪"
 msgid "Description"
 msgstr "說明"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "詳細資料"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "目錄清單"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "捨棄"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "捨棄變更？"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "編輯 {label}"
 msgid "Edit caption"
 msgstr "編輯說明文字"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "編輯聯絡人"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "編輯欄位"
@@ -1332,14 +1317,14 @@ msgstr "電子郵件"
 msgid "Email code"
 msgstr "電子郵件代碼"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "電子郵件"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "結束與 <0>{0}</0> 的好友關係?該聯絡人仍會保留在您的通訊錄中。"
 
@@ -1408,7 +1393,7 @@ msgstr "新增聯絡人失敗"
 msgid "Failed to add member"
 msgstr "新增成員失敗"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "取消邀請失敗"
@@ -1427,7 +1412,8 @@ msgstr "複製失敗"
 msgid "Failed to create address book"
 msgstr "建立通訊錄失敗"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "建立聯絡人失敗"
 
@@ -1460,8 +1446,8 @@ msgstr "刪除附件失敗"
 msgid "Failed to delete comment"
 msgstr "刪除留言失敗"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "刪除聯絡人失敗"
 
@@ -1518,8 +1504,8 @@ msgstr "無法載入影片"
 msgid "Failed to load your invite policy"
 msgstr "載入邀請政策失敗"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "無法合併聯絡人"
 
@@ -1531,8 +1517,8 @@ msgstr "移動失敗"
 msgid "Failed to post comment"
 msgstr "張貼留言失敗"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "移除朋友失敗"
 
@@ -1561,7 +1547,7 @@ msgstr "儲存失敗"
 msgid "Failed to save accent"
 msgstr "儲存重點色失敗"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "儲存聯絡人失敗"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "儲存提示失敗"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "發送邀請失敗"
 
@@ -1637,7 +1623,7 @@ msgstr "標記"
 msgid "Flat"
 msgstr "扁平"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "名字"
 
@@ -1645,8 +1631,8 @@ msgstr "名字"
 msgid "Friday"
 msgstr "星期五"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "已移除好友"
 
@@ -1725,7 +1711,7 @@ msgstr "記錄"
 msgid "Home"
 msgstr "首頁"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "住家"
@@ -1788,7 +1774,7 @@ msgstr "無效的日期"
 msgid "Invitation accepted"
 msgstr "邀請已接受"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "邀請已取消"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "邀請已拒絕"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "邀請已發送"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "邀請設定"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "已邀請"
 
@@ -1970,18 +1956,17 @@ msgstr "成員數量"
 msgid "Menu"
 msgstr "選單"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "合併"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "合併聯絡人"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "正在合併聯絡人..."
 
@@ -2006,12 +1991,12 @@ msgstr "麥克風權限遭拒"
 msgid "Minimum length"
 msgstr "最小長度"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "手機"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Mochi 好友"
 
@@ -2062,8 +2047,8 @@ msgstr "正在移動到 {0}"
 msgid "Name"
 msgstr "名稱"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "姓名"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "名稱不能包含 < 或 > 字元"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "需要名稱"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "最新"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "新聯絡人"
 
@@ -2131,7 +2117,7 @@ msgstr "下個月"
 msgid "Next year"
 msgstr "下一年"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "暱稱"
 
@@ -2270,7 +2256,7 @@ msgstr "找不到"
 msgid "Not set"
 msgstr "未設定"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "備註"
 
@@ -2345,7 +2331,7 @@ msgstr "選項名稱"
 msgid "Options"
 msgstr "選項"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "組織"
 
@@ -2353,7 +2339,7 @@ msgstr "組織"
 msgid "Other"
 msgstr "其他"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "其他"
@@ -2417,7 +2403,7 @@ msgstr "請再試一次。"
 msgid "Please wait a moment and try again."
 msgstr "請稍候片刻，然後再試一次。"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "郵遞區號"
 
@@ -2543,7 +2529,7 @@ msgstr "重新導向至登入。"
 msgid "Reduce interest"
 msgstr "降低興趣"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "區域"
 
@@ -2616,11 +2602,11 @@ msgstr "移除「{0}」的存取規則？"
 msgid "Remove access?"
 msgstr "移除存取權?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "移除地址"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "移除電子郵件"
 
@@ -2643,12 +2629,12 @@ msgstr "移除連結"
 msgid "Remove member"
 msgstr "移除成員"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "移除電話"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "正在移除好友..."
 
@@ -2758,7 +2744,6 @@ msgstr "星期六"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "儲存姓名"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "請立即儲存此密碼。它無法再次顯示。"
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "正在儲存聯絡人..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "傳送訊息"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "正在傳送邀請..."
 
@@ -3056,7 +3037,7 @@ msgstr "停止關注"
 msgid "Store silently"
 msgstr "靜默儲存"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "街道"
 
@@ -3082,7 +3063,7 @@ msgstr "訂閱"
 msgid "Sunday"
 msgstr "星期日"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "姓氏"
 
@@ -3113,7 +3094,7 @@ msgstr "標籤不得超過 50 個字元"
 msgid "Tags"
 msgstr "標籤"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "電話"
 
@@ -3192,7 +3173,7 @@ msgstr "此操作將永久刪除對局及其聊天記錄，且無法復原。"
 msgid "Thursday"
 msgstr "星期四"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "職稱"
@@ -3261,8 +3242,8 @@ msgstr "星期二"
 msgid "Type"
 msgstr "類型"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "無法使用"
 msgid "Unexpected API error"
 msgstr "意外的 API 錯誤"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "解除好友關係"
 
@@ -3378,7 +3359,7 @@ msgstr "上傳進度"
 msgid "Uploading..."
 msgstr "上傳中..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "我們已將驗證碼傳送至 <0>{0}</0>。請在下方輸入驗證碼�
 msgid "Wednesday"
 msgstr "星期三"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "公司"

@@ -218,7 +218,7 @@ msgstr "Kirish qoʻshish"
 msgid "Add account"
 msgstr "Hisob qoʻshish"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Manzil qoʻshish"
 
@@ -241,7 +241,7 @@ msgstr "Kontakt qoʻshish"
 msgid "Add device"
 msgstr "Qurilma qoʻshish"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Email qoʻshish"
 
@@ -281,7 +281,7 @@ msgstr "Boshlash uchun kimnidir qoʻshing"
 msgid "Add tag..."
 msgstr "Teg qoʻshish..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Telefon qoʻshish"
 
@@ -324,7 +324,7 @@ msgstr "Aʼzo qoʻshilmoqda..."
 msgid "address book"
 msgstr "manzillar kitobi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Manzillar kitobi"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Banner yangilandi"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Tugʻilgan kun"
 
@@ -583,7 +583,6 @@ msgstr "Kamera mavjud emas"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Bekor qilindi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Taklif bekor qilinmoqda..."
@@ -681,7 +680,7 @@ msgstr "Vaqtni tanlang"
 msgid "Choose language"
 msgstr "Tilni tanlang"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Shahar"
 
@@ -820,28 +819,25 @@ msgstr "Ulanmoqda..."
 msgid "Contact added"
 msgstr "Kontakt qoʻshildi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Kontakt nusxalandi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Kontakt yaratildi"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Kontakt oʻchirildi"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Kontakt saqlandi"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Kontaktlar"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Kontaktlar birlashtirildi"
 
@@ -883,13 +879,9 @@ msgstr "Buferga nusxalandi"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Nusxalash"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Kontaktni nusxalash"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Qayta autentifikatsiyani boshlab bo'lmadi. Iltimos, qaytadan urinib ko'r
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Ushbu hisob bilan tasdiqlab bo‘lmadi. Iltimos, qayta urinib ko‘ring."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Mamlakat"
 
@@ -925,6 +917,7 @@ msgstr "Mamlakat"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Yaratish"
 
@@ -971,7 +964,8 @@ msgstr "{field} yaratildi"
 msgid "Creating address book..."
 msgstr "Manzillar kitobi yaratilmoqda..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Kontakt yaratilmoqda..."
 
@@ -1044,10 +1038,9 @@ msgstr "Standart saralash"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Oʻchirish"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "<0>{0}</0> oʻchirilsinmi?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "<0>{0}</0> oʻchirilsinmi? Bu doʻstligingizni ham tugatadi."
 
@@ -1085,8 +1078,9 @@ msgstr "Ustunni oʻchirish"
 msgid "Delete comment"
 msgstr "Izohni oʻchirish"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Kontaktni oʻchirish"
 
@@ -1155,8 +1149,8 @@ msgstr "Oʻchirilgan guruh"
 msgid "Deleting address book..."
 msgstr "Manzillar kitobi oʻchirilmoqda..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Kontakt oʻchirilmoqda..."
 
@@ -1178,7 +1172,7 @@ msgstr "Kamayish boʻyicha"
 msgid "Description"
 msgstr "Tavsif"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Tafsilotlar"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Katalog ro'yxati"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Tashlab yuborish"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "Oʻzgarishlar tashlab yuborilsinmi?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "{label}ni tahrirlash"
 msgid "Edit caption"
 msgstr "Izohni tahrirlash"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Kontaktni tahrirlash"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Maydonni tahrirlash"
@@ -1332,14 +1317,14 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Email kodi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "Emaillar"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "<0>{0}</0> bilan doʻstligingiz tugatilsinmi? Kontakt manzillar kitobingizda qoladi."
 
@@ -1408,7 +1393,7 @@ msgstr "Kontakt qoʻshilmadi"
 msgid "Failed to add member"
 msgstr "Aʼzo qoʻshib boʻlmadi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Taklifni bekor qilib boʻlmadi"
@@ -1427,7 +1412,8 @@ msgstr "Nusxalab boʻlmadi"
 msgid "Failed to create address book"
 msgstr "Manzillar kitobi yaratilmadi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Kontakt yaratilmadi"
 
@@ -1460,8 +1446,8 @@ msgstr "Ilovani oʻchirib boʻlmadi"
 msgid "Failed to delete comment"
 msgstr "Izohni oʻchirib boʻlmadi"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Kontakt oʻchirilmadi"
 
@@ -1518,8 +1504,8 @@ msgstr "Videoni yuklab bo'lmadi"
 msgid "Failed to load your invite policy"
 msgstr "Taklif siyosatingizni yuklab boʻlmadi"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Kontaktlarni birlashtirib boʻlmadi"
 
@@ -1531,8 +1517,8 @@ msgstr "Ko'chirib bo'lmadi"
 msgid "Failed to post comment"
 msgstr "Izoh joylashtirib boʻlmadi"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Doʻstni olib tashlab boʻlmadi"
 
@@ -1561,7 +1547,7 @@ msgstr "Saqlab boʻlmadi"
 msgid "Failed to save accent"
 msgstr "Urgʻuni saqlab boʻlmadi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Kontakt saqlanmadi"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Soʻrovni saqlab boʻlmadi"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Taklif yuborilmadi"
 
@@ -1637,7 +1623,7 @@ msgstr "Bayroqlar"
 msgid "Flat"
 msgstr "Tekis"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Ism"
 
@@ -1645,8 +1631,8 @@ msgstr "Ism"
 msgid "Friday"
 msgstr "Juma"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Doʻst oʻchirildi"
 
@@ -1725,7 +1711,7 @@ msgstr "Tarix"
 msgid "Home"
 msgstr "Bosh sahifa"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Uy"
@@ -1788,7 +1774,7 @@ msgstr "Notoʻgʻri sana"
 msgid "Invitation accepted"
 msgstr "Taklif qabul qilindi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Taklif bekor qilindi"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Taklif rad etildi"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Taklif yuborildi"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Taklif sozlamalari"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Taklif qilingan"
 
@@ -1970,18 +1956,17 @@ msgstr "Aʼzolar soni"
 msgid "Menu"
 msgstr "Menyu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Birlashtirish"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Kontaktlarni birlashtirish"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "Kontaktlar birlashtirilmoqda..."
 
@@ -2006,12 +1991,12 @@ msgstr "Mikrofon ruxsati rad etildi"
 msgid "Minimum length"
 msgstr "Minimal uzunlik"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Mobil"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Mochi doʻsti"
 
@@ -2062,8 +2047,8 @@ msgstr "{0} sanasiga koʻchirilmoqda"
 msgid "Name"
 msgstr "Nomi"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Ism"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Nom < yoki > belgilarini oʻz ichiga olishi mumkin emas"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Nom kerak"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "Eng yangi"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Yangi kontakt"
 
@@ -2131,7 +2117,7 @@ msgstr "Keyingi oy"
 msgid "Next year"
 msgstr "Keyingi yil"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Taxallus"
 
@@ -2270,7 +2256,7 @@ msgstr "Topilmadi"
 msgid "Not set"
 msgstr "Oʻrnatilmagan"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Izoh"
 
@@ -2345,7 +2331,7 @@ msgstr "Variant nomi"
 msgid "Options"
 msgstr "Variantlar"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Tashkilot"
 
@@ -2353,7 +2339,7 @@ msgstr "Tashkilot"
 msgid "Other"
 msgstr "Boshqa"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Boshqa"
@@ -2417,7 +2403,7 @@ msgstr "Iltimos, qayta urinib ko'ring."
 msgid "Please wait a moment and try again."
 msgstr "Biroz kuting va qayta urinib koʻring."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Indeks"
 
@@ -2543,7 +2529,7 @@ msgstr "Kirish sahifasiga yoʻnaltirilmoqda."
 msgid "Reduce interest"
 msgstr "Qiziqishni kamaytirish"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Hudud"
 
@@ -2616,11 +2602,11 @@ msgstr "\"{0}\" uchun kirish qoidasi olib tashlansinmi?"
 msgid "Remove access?"
 msgstr "Kirishni olib tashlasinmi?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Manzilni olib tashlash"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Emailni olib tashlash"
 
@@ -2643,12 +2629,12 @@ msgstr "Havolani olib tashlash"
 msgid "Remove member"
 msgstr "Aʼzoni olib tashlash"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Telefonni olib tashlash"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Doʻst oʻchirilmoqda..."
 
@@ -2758,7 +2744,6 @@ msgstr "Shanba"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Ismni saqlash"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Bu parolni hozir saqlab qoʻying. Uni qayta koʻrsatib boʻlmaydi."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Kontakt saqlanmoqda..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Xabar yuborish"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Taklif yuborilmoqda..."
 
@@ -3056,7 +3037,7 @@ msgstr "Kuzatishni toʻxtatish"
 msgid "Store silently"
 msgstr "Sokin saqlash"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Koʻcha"
 
@@ -3082,7 +3063,7 @@ msgstr "Obuna boʻlish"
 msgid "Sunday"
 msgstr "Yakshanba"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Familiya"
 
@@ -3113,7 +3094,7 @@ msgstr "Teg 50 ta belgidan oshmasligi kerak"
 msgid "Tags"
 msgstr "Teglar"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Telefonlar"
 
@@ -3192,7 +3173,7 @@ msgstr "Bu oʻyin va uning chatini butunlay oʻchirib tashlaydi. Bu amalni bekor
 msgid "Thursday"
 msgstr "Payshanba"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Lavozim"
@@ -3261,8 +3242,8 @@ msgstr "Seshanba"
 msgid "Type"
 msgstr "Tur"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Mavjud emas"
 msgid "Unexpected API error"
 msgstr "Kutilmagan API xatosi"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Doʻstlikni tugatish"
 
@@ -3378,7 +3359,7 @@ msgstr "Yuklash jarayoni"
 msgid "Uploading..."
 msgstr "Yuklanmoqda..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "Biz <0>{0}</0> manziliga tasdiqlash kodini yubordik. Elektron pochta man
 msgid "Wednesday"
 msgstr "Chorshanba"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Ish"

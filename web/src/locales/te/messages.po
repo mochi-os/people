@@ -218,7 +218,7 @@ msgstr "యాక్సెస్‌ను జోడించండి"
 msgid "Add account"
 msgstr "ఖాతాను జోడించండి"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "చిరునామా జోడించండి"
 
@@ -241,7 +241,7 @@ msgstr "పరిచయాన్ని జోడించండి"
 msgid "Add device"
 msgstr "పరికరాన్ని జోడించండి"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "ఇమెయిల్ జోడించండి"
 
@@ -281,7 +281,7 @@ msgstr "ప్రారంభించడానికి ఎవరినైన�
 msgid "Add tag..."
 msgstr "ట్యాగ్‌ను జోడించండి..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "ఫోన్ జోడించండి"
 
@@ -324,7 +324,7 @@ msgstr "సభ్యుడిని జోడిస్తోంది..."
 msgid "address book"
 msgstr "చిరునామా పుస్తకం"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "చిరునామా పుస్తకం"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "బ్యానర్ నవీకరించబడింది"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "పుట్టినరోజు"
 
@@ -583,7 +583,6 @@ msgstr "కెమెరా అందుబాటులో లేదు"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "రద్దు చేయబడింది"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "ఆహ్వానాన్ని రద్దు చేస్తోంది..."
@@ -681,7 +680,7 @@ msgstr "సమయాన్ని ఎంచుకోండి"
 msgid "Choose language"
 msgstr "భాషను ఎంచుకోండి"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "నగరం"
 
@@ -820,28 +819,25 @@ msgstr "కనెక్ట్ అవుతోంది..."
 msgid "Contact added"
 msgstr "పరిచయం జోడించబడింది"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "పరిచయం కాపీ చేయబడింది"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "పరిచయం సృష్టించబడింది"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "పరిచయం తొలగించబడింది"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "పరిచయం సేవ్ చేయబడింది"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "పరిచయాలు"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "పరిచయాలు విలీనం చేయబడ్డాయి"
 
@@ -883,13 +879,9 @@ msgstr "క్లిప్‌బోర్డ్‌కి కాపీ చేయ�
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "కాపీ చేయండి"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "పరిచయాన్ని కాపీ చేయండి"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "పునఃప్రమాణీకరణను ప్రారంభ�
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ఆ ఖాతాతో ధృవీకరించడం సాధ్యం కాలేదు. దయచేసి మళ్లీ ప్రయత్నించండి."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "దేశం"
 
@@ -925,6 +917,7 @@ msgstr "దేశం"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "సృష్టించండి"
 
@@ -971,7 +964,8 @@ msgstr "{field} సృష్టించబడింది"
 msgid "Creating address book..."
 msgstr "చిరునామా పుస్తకాన్ని సృష్టిస్తోంది..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "పరిచయాన్ని సృష్టిస్తోంది..."
 
@@ -1044,10 +1038,9 @@ msgstr "డిఫాల్ట్ క్రమబద్ధీకరణ"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "తొలగించండి"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "<0>{0}</0> తొలగించాలా?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "<0>{0}</0> తొలగించాలా? దీనితో మీ స్నేహం కూడా ముగుస్తుంది."
 
@@ -1085,8 +1078,9 @@ msgstr "కాలమ్‌ను తొలగించండి"
 msgid "Delete comment"
 msgstr "వ్యాఖ్యను తొలగించండి"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "పరిచయాన్ని తొలగించండి"
 
@@ -1155,8 +1149,8 @@ msgstr "తొలగించిన గ్రూప్"
 msgid "Deleting address book..."
 msgstr "చిరునామా పుస్తకాన్ని తొలగిస్తోంది..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "పరిచయాన్ని తొలగిస్తోంది..."
 
@@ -1178,7 +1172,7 @@ msgstr "అవరోహణ"
 msgid "Description"
 msgstr "వివరణ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "వివరాలు"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "డైరెక్టరీ జాబితా"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "విస్మరించు"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "మార్పులను విస్మరించాలా?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "{label} సవరించు"
 msgid "Edit caption"
 msgstr "క్యాప్షన్ సవరించండి"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "పరిచయాన్ని సవరించండి"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "ఫీల్డ్‌ను సవరించండి"
@@ -1332,14 +1317,14 @@ msgstr "ఇమెయిల్"
 msgid "Email code"
 msgstr "ఇమెయిల్ కోడ్"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "ఇమెయిల్‌లు"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "<0>{0}</0>తో మీ స్నేహాన్ని ముగించాలా? పరిచయం మీ చిరునామా పుస్తకంలో ఉంటుంది."
 
@@ -1408,7 +1393,7 @@ msgstr "పరిచయాన్ని జోడించడంలో విఫ�
 msgid "Failed to add member"
 msgstr "సభ్యుని జోడించడంలో విఫలమైంది"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "ఆహ్వానాన్ని రద్దు చేయడంలో విఫలమైంది"
@@ -1427,7 +1412,8 @@ msgstr "కాపీ చేయడంలో విఫలమైంది"
 msgid "Failed to create address book"
 msgstr "చిరునామా పుస్తకాన్ని సృష్టించడంలో విఫలమైంది"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "పరిచయాన్ని సృష్టించడంలో విఫలమైంది"
 
@@ -1460,8 +1446,8 @@ msgstr "జోడింపును తొలగించడంలో విఫ�
 msgid "Failed to delete comment"
 msgstr "వ్యాఖ్యను తొలగించడంలో విఫలమైంది"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "పరిచయాన్ని తొలగించడంలో విఫలమైంది"
 
@@ -1518,8 +1504,8 @@ msgstr "వీడియోను లోడ్ చేయడంలో విఫల
 msgid "Failed to load your invite policy"
 msgstr "మీ ఆహ్వాన విధానాన్ని లోడ్ చేయడంలో విఫలమైంది"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "పరిచయాలను విలీనం చేయడం విఫలమైంది"
 
@@ -1531,8 +1517,8 @@ msgstr "తరలించడంలో విఫలమైంది"
 msgid "Failed to post comment"
 msgstr "వ్యాఖ్యను పోస్ట్ చేయడంలో విఫలమైంది"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "స్నేహితుని తీసివేయడంలో విఫలమైంది"
 
@@ -1561,7 +1547,7 @@ msgstr "సేవ్ చేయడంలో విఫలమైంది"
 msgid "Failed to save accent"
 msgstr "యాక్సెంట్‌ను సేవ్ చేయడంలో విఫలమైంది"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "పరిచయాన్ని సేవ్ చేయడంలో విఫలమైంది"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "ప్రాంప్ట్‌ను సేవ్ చేయడంలో విఫలమైంది"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "ఆహ్వానం పంపడంలో విఫలమైంది"
 
@@ -1637,7 +1623,7 @@ msgstr "ఫ్లాగ్‌లు"
 msgid "Flat"
 msgstr "చదునైనది"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "మొదటి పేరు"
 
@@ -1645,8 +1631,8 @@ msgstr "మొదటి పేరు"
 msgid "Friday"
 msgstr "శుక్రవారం"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "స్నేహితుడు తీసివేయబడ్డాడు"
 
@@ -1725,7 +1711,7 @@ msgstr "చరిత్ర"
 msgid "Home"
 msgstr "హోమ్"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "ఇల్లు"
@@ -1788,7 +1774,7 @@ msgstr "చెల్లని తేదీ"
 msgid "Invitation accepted"
 msgstr "ఆహ్వానం అంగీకరించబడింది"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "ఆహ్వానం రద్దు చేయబడింది"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "ఆహ్వానం తిరస్కరించబడింది"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "ఆహ్వానం పంపబడింది"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "ఆహ్వాన సెట్టింగ్‌లు"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "ఆహ్వానించబడింది"
 
@@ -1970,18 +1956,17 @@ msgstr "సభ్యుల సంఖ్య"
 msgid "Menu"
 msgstr "మెనూ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "విలీనం చేయండి"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "పరిచయాలను విలీనం చేయండి"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "పరిచయాలను విలీనం చేస్తోంది..."
 
@@ -2006,12 +1991,12 @@ msgstr "మైక్రోఫోన్ అనుమతి నిరాకరి�
 msgid "Minimum length"
 msgstr "కనిష్ట పొడవు"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "మొబైల్"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Mochi స్నేహితుడు"
 
@@ -2062,8 +2047,8 @@ msgstr "{0}కి తరలిస్తోంది"
 msgid "Name"
 msgstr "పేరు"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "పేరు"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "పేరులో < లేదా > క్యారెక్టర్‌లు ఉండకూడదు"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "పేరు అవసరం"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "సరికొత్తవి"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "కొత్త పరిచయం"
 
@@ -2131,7 +2117,7 @@ msgstr "తదుపరి నెల"
 msgid "Next year"
 msgstr "తదుపరి సంవత్సరం"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "ముద్దుపేరు"
 
@@ -2270,7 +2256,7 @@ msgstr "కనుగొనబడలేదు"
 msgid "Not set"
 msgstr "సెట్ చేయబడలేదు"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "గమనిక"
 
@@ -2345,7 +2331,7 @@ msgstr "ఆప్షన్ పేరు"
 msgid "Options"
 msgstr "ఆప్షన్‌లు"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "సంస్థ"
 
@@ -2353,7 +2339,7 @@ msgstr "సంస్థ"
 msgid "Other"
 msgstr "ఇతర"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "ఇతర"
@@ -2417,7 +2403,7 @@ msgstr "దయచేసి మళ్లీ ప్రయత్నించండ�
 msgid "Please wait a moment and try again."
 msgstr "కాసేపు వేచి ఉండి, మళ్లీ ప్రయత్నించండి."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "పోస్ట్‌కోడ్"
 
@@ -2543,7 +2529,7 @@ msgstr "లాగిన్‌కు రీడైరెక్ట్ చేస్�
 msgid "Reduce interest"
 msgstr "ఆసక్తిని తగ్గించండి"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "ప్రాంతం"
 
@@ -2616,11 +2602,11 @@ msgstr "\"{0}\" కోసం యాక్సెస్ నియమాన్న�
 msgid "Remove access?"
 msgstr "యాక్సెస్‌ను తొలగించాలా?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "చిరునామాను తీసివేయండి"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "ఇమెయిల్‌ను తీసివేయండి"
 
@@ -2643,12 +2629,12 @@ msgstr "లింక్‌ను తీసివేయి"
 msgid "Remove member"
 msgstr "సభ్యుడిని తొలగించండి"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "ఫోన్‌ను తీసివేయండి"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "స్నేహితుడిని తీసివేస్తోంది..."
 
@@ -2758,7 +2744,6 @@ msgstr "శనివారం"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "పేరును భద్రపరచండి"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "ఈ పాస్‌వర్డ్‌ను ఇప్పుడే సేవ్ చేయండి. దీన్ని మళ్లీ చూపించడం సాధ్యం కాదు."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "పరిచయాన్ని సేవ్ చేస్తోంది..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "సందేశాన్ని పంపండి"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "ఆహ్వానాన్ని పంపుతోంది..."
 
@@ -3056,7 +3037,7 @@ msgstr "చూడటం ఆపండి"
 msgid "Store silently"
 msgstr "నిశ్శబ్దంగా స్టోర్ చేయండి"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "వీధి"
 
@@ -3082,7 +3063,7 @@ msgstr "చందా చేరండి"
 msgid "Sunday"
 msgstr "ఆదివారం"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "ఇంటిపేరు"
 
@@ -3113,7 +3094,7 @@ msgstr "ట్యాగ్ 50 అక్షరాలు లేదా తక్క
 msgid "Tags"
 msgstr "ట్యాగ్‌లు"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "ఫోన్‌లు"
 
@@ -3192,7 +3173,7 @@ msgstr "ఇది గేమ్‌ను మరియు దాని చాట�
 msgid "Thursday"
 msgstr "గురువారం"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "హోదా"
@@ -3261,8 +3242,8 @@ msgstr "మంగళవారం"
 msgid "Type"
 msgstr "రకం"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "అందుబాటులో లేదు"
 msgid "Unexpected API error"
 msgstr "ఊహించని API లోపం"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "స్నేహం ముగించండి"
 
@@ -3378,7 +3359,7 @@ msgstr "అప్‌లోడ్ పురోగతి"
 msgid "Uploading..."
 msgstr "అప్‌లోడ్ చేస్తోంది..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "మేము <0>{0}</0> కు ధృవీకరణ కోడ్‌న�
 msgid "Wednesday"
 msgstr "బుధవారం"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "కార్యాలయం"

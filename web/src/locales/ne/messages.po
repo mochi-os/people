@@ -218,7 +218,7 @@ msgstr "पहुँच थप्नुहोस्"
 msgid "Add account"
 msgstr "खाता थप्नुहोस्"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "ठेगाना थप्नुहोस्"
 
@@ -241,7 +241,7 @@ msgstr "सम्पर्क थप्नुहोस्"
 msgid "Add device"
 msgstr "उपकरण थप्नुहोस्"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "इमेल थप्नुहोस्"
 
@@ -281,7 +281,7 @@ msgstr "सुरु गर्न कसैलाई थप्नुहोस्
 msgid "Add tag..."
 msgstr "ट्याग थप्नुहोस्..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "फोन थप्नुहोस्"
 
@@ -324,7 +324,7 @@ msgstr "सदस्य थप्दै..."
 msgid "address book"
 msgstr "ठेगाना पुस्तिका"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "ठेगाना पुस्तिका"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "ब्यानर अद्यावधिक भयो"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "जन्मदिन"
 
@@ -583,7 +583,6 @@ msgstr "क्यामेरा उपलब्ध छैन"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "रद्द"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "निमन्त्रणा रद्द गर्दै..."
@@ -681,7 +680,7 @@ msgstr "समय छान्नुहोस्"
 msgid "Choose language"
 msgstr "भाषा छनोट गर्नुहोस्"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "सहर"
 
@@ -820,28 +819,25 @@ msgstr "जडान हुँदै..."
 msgid "Contact added"
 msgstr "सम्पर्क थपियो"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "सम्पर्क प्रतिलिपि गरियो"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "सम्पर्क सिर्जना गरियो"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "सम्पर्क मेटाइयो"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "सम्पर्क सुरक्षित गरियो"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "सम्पर्कहरू"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "सम्पर्कहरू मर्ज गरियो"
 
@@ -883,13 +879,9 @@ msgstr "क्लिपबोर्डमा प्रतिलिपि गर�
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "प्रतिलिपि"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "सम्पर्क प्रतिलिपि गर्नुहोस्"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "पुन: प्रमाणीकरण सुरु गर्न स�
 msgid "Couldn't verify with that account. Please try again."
 msgstr "त्यो खातासँग प्रमाणित गर्न सकिएन। कृपया फेरि प्रयास गर्नुहोस्।"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "देश"
 
@@ -925,6 +917,7 @@ msgstr "देश"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "सिर्जना गर्नुहोस्"
 
@@ -971,7 +964,8 @@ msgstr "{field} सिर्जना गरियो"
 msgid "Creating address book..."
 msgstr "ठेगाना पुस्तिका सिर्जना गर्दै..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "सम्पर्क सिर्जना गर्दै..."
 
@@ -1044,10 +1038,9 @@ msgstr "पूर्वनिर्धारित क्रमबद्ध"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "मेटाउनुहोस्"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "<0>{0}</0> मेटाउने?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "<0>{0}</0> मेटाउने? यसले तपाईंहरूको मित्रता पनि समाप्त गर्छ।"
 
@@ -1085,8 +1078,9 @@ msgstr "स्तम्भ मेटाउनुहोस्"
 msgid "Delete comment"
 msgstr "टिप्पणी मेटाउनुहोस्"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "सम्पर्क मेटाउनुहोस्"
 
@@ -1155,8 +1149,8 @@ msgstr "मेटाइएको समूह"
 msgid "Deleting address book..."
 msgstr "ठेगाना पुस्तिका मेटाउँदै..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "सम्पर्क मेटाउँदै..."
 
@@ -1178,7 +1172,7 @@ msgstr "घट्दो क्रम"
 msgid "Description"
 msgstr "विवरण"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "विवरणहरू"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "निर्देशिका सूची"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "हटाउनुहोस्"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "परिवर्तनहरू हटाउने?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "{label} सम्पादन गर्नुहोस्"
 msgid "Edit caption"
 msgstr "क्याप्शन सम्पादन गर्नुहोस्"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "सम्पर्क सम्पादन गर्नुहोस्"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "फिल्ड सम्पादन गर्नुहोस्"
@@ -1332,14 +1317,14 @@ msgstr "इमेल"
 msgid "Email code"
 msgstr "इमेल कोड"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "इमेलहरू"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "<0>{0}</0> सँगको मित्रता समाप्त गर्ने? सम्पर्क तपाईंको ठेगाना पुस्तिकामै रहनेछ।"
 
@@ -1408,7 +1393,7 @@ msgstr "सम्पर्क थप्न असफल"
 msgid "Failed to add member"
 msgstr "सदस्य थप्न असफल"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "निमन्त्रणा रद्द गर्न असफल"
@@ -1427,7 +1412,8 @@ msgstr "प्रतिलिपि गर्न असफल"
 msgid "Failed to create address book"
 msgstr "ठेगाना पुस्तिका सिर्जना गर्न असफल"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "सम्पर्क सिर्जना गर्न असफल"
 
@@ -1460,8 +1446,8 @@ msgstr "एट्याचमेन्ट मेटाउन असफल"
 msgid "Failed to delete comment"
 msgstr "टिप्पणी मेटाउन असफल"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "सम्पर्क मेटाउन असफल"
 
@@ -1518,8 +1504,8 @@ msgstr "भिडियो लोड गर्न असफल"
 msgid "Failed to load your invite policy"
 msgstr "तपाईंको निमन्त्रणा नीति लोड गर्न असफल"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "सम्पर्कहरू मर्ज गर्न सकिएन"
 
@@ -1531,8 +1517,8 @@ msgstr "सार्न असफल"
 msgid "Failed to post comment"
 msgstr "टिप्पणी पोस्ट गर्न असफल"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "साथी हटाउन असफल"
 
@@ -1561,7 +1547,7 @@ msgstr "सुरक्षित गर्न असफल"
 msgid "Failed to save accent"
 msgstr "एक्सेन्ट सुरक्षित गर्न असफल"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "सम्पर्क सुरक्षित गर्न असफल"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "प्रम्प्ट सुरक्षित गर्न असफल"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "निमन्त्रणा पठाउन असफल"
 
@@ -1637,7 +1623,7 @@ msgstr "फ्ल्यागहरू"
 msgid "Flat"
 msgstr "सम्म"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "नाम"
 
@@ -1645,8 +1631,8 @@ msgstr "नाम"
 msgid "Friday"
 msgstr "शुक्रबार"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "साथी हटाइयो"
 
@@ -1725,7 +1711,7 @@ msgstr "इतिहास"
 msgid "Home"
 msgstr "होम"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "घर"
@@ -1788,7 +1774,7 @@ msgstr "अमान्य मिति"
 msgid "Invitation accepted"
 msgstr "निमन्त्रणा स्वीकार गरियो"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "निमन्त्रणा रद्द गरियो"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "निमन्त्रणा अस्वीकार गरियो"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "निमन्त्रणा पठाइयो"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "निमन्त्रणा सेटिङ"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "निमन्त्रित"
 
@@ -1970,18 +1956,17 @@ msgstr "सदस्य गणना"
 msgid "Menu"
 msgstr "मेनु"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "मर्ज गर्नुहोस्"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "सम्पर्कहरू मर्ज गर्नुहोस्"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "सम्पर्कहरू मर्ज गर्दै..."
 
@@ -2006,12 +1991,12 @@ msgstr "माइक्रोफोन अनुमति अस्वीकृ�
 msgid "Minimum length"
 msgstr "न्यूनतम लम्बाइ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "मोबाइल"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Mochi साथी"
 
@@ -2062,8 +2047,8 @@ msgstr "{0} मा सार्दै"
 msgid "Name"
 msgstr "नाम"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "नाम"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "नाममा < वा > वर्णहरू हुन सक्दैनन्"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "नाम आवश्यक छ"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "सबैभन्दा नयाँ"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "नयाँ सम्पर्क"
 
@@ -2131,7 +2117,7 @@ msgstr "अर्को महिना"
 msgid "Next year"
 msgstr "अर्को वर्ष"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "उपनाम"
 
@@ -2270,7 +2256,7 @@ msgstr "फेला परेन"
 msgid "Not set"
 msgstr "सेट गरिएको छैन"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "टिप्पणी"
 
@@ -2345,7 +2331,7 @@ msgstr "विकल्प नाम"
 msgid "Options"
 msgstr "विकल्पहरू"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "संस्था"
 
@@ -2353,7 +2339,7 @@ msgstr "संस्था"
 msgid "Other"
 msgstr "अन्य"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "अन्य"
@@ -2417,7 +2403,7 @@ msgstr "कृपया फेरि प्रयास गर्नुहोस
 msgid "Please wait a moment and try again."
 msgstr "कृपया केही बेर पर्खनुहोस् र फेरि प्रयास गर्नुहोस्।"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "पोस्टकोड"
 
@@ -2543,7 +2529,7 @@ msgstr "लग इनमा रिडाइरेक्ट गर्दै।"
 msgid "Reduce interest"
 msgstr "रुचि घटाउनुहोस्"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "क्षेत्र"
 
@@ -2616,11 +2602,11 @@ msgstr "\"{0}\" का लागि पहुँच नियम हटाउन
 msgid "Remove access?"
 msgstr "पहुँच हटाउने?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "ठेगाना हटाउनुहोस्"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "इमेल हटाउनुहोस्"
 
@@ -2643,12 +2629,12 @@ msgstr "लिङ्क हटाउनुहोस्"
 msgid "Remove member"
 msgstr "सदस्य हटाउनुहोस्"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "फोन हटाउनुहोस्"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "साथी हटाउँदै..."
 
@@ -2758,7 +2744,6 @@ msgstr "शनिबार"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "नाम सुरक्षित गर्नुहोस्"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "यो पासवर्ड अहिले नै सुरक्षित गर्नुहोस्। यो फेरि देखाउन सकिँदैन।"
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "सम्पर्क सुरक्षित गर्दै..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "सन्देश पठाउनुहोस्"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "निमन्त्रणा पठाउँदै..."
 
@@ -3056,7 +3037,7 @@ msgstr "हेर्न रोक्नुहोस्"
 msgid "Store silently"
 msgstr "मौनरूपमा भण्डारण गर्नुहोस्"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "सडक"
 
@@ -3082,7 +3063,7 @@ msgstr "सदस्यता लिनुहोस्"
 msgid "Sunday"
 msgstr "आइतबार"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "थर"
 
@@ -3113,7 +3094,7 @@ msgstr "ट्याग ५० वर्ण वा सोभन्दा कम 
 msgid "Tags"
 msgstr "ट्यागहरू"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "फोनहरू"
 
@@ -3192,7 +3173,7 @@ msgstr "यसले खेल र यसको च्याटलाई स्�
 msgid "Thursday"
 msgstr "बिहीबार"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "पद"
@@ -3261,8 +3242,8 @@ msgstr "मङ्गलबार"
 msgid "Type"
 msgstr "प्रकार"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "अनुपलब्ध"
 msgid "Unexpected API error"
 msgstr "अप्रत्याशित API त्रुटि"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "मित्रता अन्त्य गर्नुहोस्"
 
@@ -3378,7 +3359,7 @@ msgstr "अपलोड प्रगति"
 msgid "Uploading..."
 msgstr "अपलोड गर्दै..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "हामीले <0>{0}</0> मा प्रमाणीकरण क�
 msgid "Wednesday"
 msgstr "बुधबार"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "कार्यालय"

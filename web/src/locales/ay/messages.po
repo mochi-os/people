@@ -218,7 +218,7 @@ msgstr "Mantañ yapxataña"
 msgid "Add account"
 msgstr "Cuenta yapxataña"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Dirección yapxataña"
 
@@ -241,7 +241,7 @@ msgstr "Contacto yapxataña"
 msgid "Add device"
 msgstr "Mä dispositivo yapxataña"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Email yapxataña"
 
@@ -281,7 +281,7 @@ msgstr "Qalltañataki mä jaqi yapxatma"
 msgid "Add tag..."
 msgstr "Chimpu yapxataña..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Teléfono yapxataña"
 
@@ -324,7 +324,7 @@ msgstr "Integrante yapxataskiwa..."
 msgid "address book"
 msgstr "direccionanak libro"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Direccionanak libro"
 
@@ -512,7 +512,7 @@ msgid "Banner updated"
 msgstr "Banner machaqachata"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Yuriwi uru"
 
@@ -583,7 +583,6 @@ msgstr "Cámara jan utjkiti"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -620,7 +619,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Jaytata"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Jawsäwi jaytaskiwa..."
@@ -681,7 +680,7 @@ msgstr "Mä ura ajlliña"
 msgid "Choose language"
 msgstr "Aru ajllxaña"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Marka"
 
@@ -820,28 +819,25 @@ msgstr "Chikacht'asiskiwa..."
 msgid "Contact added"
 msgstr "Contacto yapxatatawa"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact copied"
 msgstr "Contacto copiatawa"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Contacto lurataxiwa"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Contacto chhaqtayatawa"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Contacto imatawa"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Contactonaka"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts merged"
 msgstr "Contactonakax mayachatawa"
 
@@ -883,13 +879,9 @@ msgstr "Clipboard-ru copiata"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Copiaña"
-
-#: src/features/contacts/editor.tsx
-msgid "Copy contact"
-msgstr "Contacto copiaña"
 
 #: src/features/profile/index.tsx
 msgid "Copy your ID"
@@ -915,7 +907,7 @@ msgstr "Janiw wasitat chiqanchaña qalltañjamäkiti. Wasitat yant'am."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Uka cuentampi jan chiqañchasiñjamäkiti. Mayampi yant'añamawa."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Suyu"
 
@@ -925,6 +917,7 @@ msgstr "Suyu"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Luraña"
 
@@ -971,7 +964,8 @@ msgstr "{field} lurata"
 msgid "Creating address book..."
 msgstr "Direccionanak libro luraskiwa..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Contacto luraskiwa..."
 
@@ -1044,10 +1038,9 @@ msgstr "Nayrïr siqichaña"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1057,15 +1050,15 @@ msgstr "Chhaqtayaña"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "<0>{0}</0> chhaqtayañati?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "<0>{0}</0> chhaqtayañati? Akax masisiñamsa tukuyarakiwa."
 
@@ -1085,8 +1078,9 @@ msgstr "Columna chhaqtayaña"
 msgid "Delete comment"
 msgstr "Comentario chhaqtayaña"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Contacto chhaqtayaña"
 
@@ -1155,8 +1149,8 @@ msgstr "Chhaqtayat tama"
 msgid "Deleting address book..."
 msgstr "Direccionanak libro chhaqtayaskiwa..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Contacto chhaqtayaskiwa..."
 
@@ -1178,7 +1172,7 @@ msgstr "Jach'at jisk'aru"
 msgid "Description"
 msgstr "Qhanañchawi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Detallenaka"
 
@@ -1214,13 +1208,8 @@ msgid "Directory listing"
 msgstr "Directorion uñstawi"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Jaqsuña"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "¿Mayjt'awinaka jaqsuñati?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,10 +1272,6 @@ msgstr "{label} askichaña"
 msgid "Edit caption"
 msgstr "Qhanañchawi askichaña"
 
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Contacto askichaña"
-
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
 msgstr "Campo askichaña"
@@ -1332,14 +1317,14 @@ msgstr "Email"
 msgid "Email code"
 msgstr "Email código"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "Emailanaka"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "<0>{0}</0> ukamp masisiñama tukuyañati? Contactox direccionanak libroman qhiparakiniwa."
 
@@ -1408,7 +1393,7 @@ msgstr "Janiw contacto yapxataña atkiti"
 msgid "Failed to add member"
 msgstr "Janiw integrante yapxataña atkiti"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Janiw jawsäwi jaytañ atkiti"
@@ -1427,7 +1412,8 @@ msgstr "Janiw copiañ atkiti"
 msgid "Failed to create address book"
 msgstr "Janiw direccionanak libro lurañ atkiti"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Janiw contacto luraña atkiti"
 
@@ -1460,8 +1446,8 @@ msgstr "Janiw adjunto chhaqtayañ atkiti"
 msgid "Failed to delete comment"
 msgstr "Janiw comentario chhaqtayaña atkiti"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Janiw contacto chhaqtayaña atkiti"
 
@@ -1518,8 +1504,8 @@ msgstr "Video apaqañax pantjawayi"
 msgid "Failed to load your invite policy"
 msgstr "Janiw jawsäwi kamachim apaqañ atkiti"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to merge contacts"
 msgstr "Janiw contactonak mayachañ puedkiti"
 
@@ -1531,8 +1517,8 @@ msgstr "Janiw unuqtayañ atkiti"
 msgid "Failed to post comment"
 msgstr "Janiw comentario apayañ atkiti"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Janiw masi apsuña atkiti"
 
@@ -1561,7 +1547,7 @@ msgstr "Janiw imaña atkiti"
 msgid "Failed to save accent"
 msgstr "Janiw acento imaña atkiti"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Janiw contacto imaña atkiti"
 
@@ -1582,8 +1568,8 @@ msgid "Failed to save prompt"
 msgstr "Janiw prompt imaña atkiti"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Janiw jawsäwi apayaña atkiti"
 
@@ -1637,7 +1623,7 @@ msgstr "Banderanaka"
 msgid "Flat"
 msgstr "Pallalla"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Suti"
 
@@ -1645,8 +1631,8 @@ msgstr "Suti"
 msgid "Friday"
 msgstr "Viernes"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Masi apaqatawa"
 
@@ -1725,7 +1711,7 @@ msgstr "Sarawi"
 msgid "Home"
 msgstr "Uta"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Uta"
@@ -1788,7 +1774,7 @@ msgstr "Uru jan walikiti"
 msgid "Invitation accepted"
 msgstr "Jawsäwi katuqatawa"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Jawsäwi jaytatawa"
@@ -1798,8 +1784,8 @@ msgid "Invitation declined"
 msgstr "Jawsäwi jan katuqatawa"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Jawsäwi apayatawa"
 
@@ -1824,7 +1810,7 @@ msgid "Invite settings"
 msgstr "Jawsäwi wakichäwinaka"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Jawsata"
 
@@ -1970,18 +1956,17 @@ msgstr "Integrantenak Jakhupa"
 msgid "Menu"
 msgstr "Menú"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "combine"
 msgid "Merge"
 msgstr "Mayachaña"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/merge-dialog.tsx
 #: src/features/contacts/merge-dialog.tsx
 msgid "Merge contacts"
 msgstr "Contactonak mayachaña"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Merging contacts..."
 msgstr "Contactonak mayachaski..."
 
@@ -2006,12 +1991,12 @@ msgstr "Micrófono permisox jark'atawa"
 msgid "Minimum length"
 msgstr "Mínimo jach'akama"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Celular"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Mochi masi"
 
@@ -2062,8 +2047,8 @@ msgstr "{0} uksaru unuqtayaskiwa"
 msgid "Name"
 msgstr "Suti"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Suti"
@@ -2073,6 +2058,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "< jan ukax > qillqanak sutin janiw utjkaspati"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Suti wakisiwa"
@@ -2105,7 +2091,7 @@ msgid "New"
 msgstr "Machaqanaka"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Machaq contacto"
 
@@ -2131,7 +2117,7 @@ msgstr "Arkiri phaxsi"
 msgid "Next year"
 msgstr "Arkiri mara"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Apodo"
 
@@ -2270,7 +2256,7 @@ msgstr "Janiw jikxatatäkiti"
 msgid "Not set"
 msgstr "Jan wakichata"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Nota"
 
@@ -2345,7 +2331,7 @@ msgstr "Opción suti"
 msgid "Options"
 msgstr "Opcionanaka"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Organización"
 
@@ -2353,7 +2339,7 @@ msgstr "Organización"
 msgid "Other"
 msgstr "Yaqha"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Yaqha"
@@ -2417,7 +2403,7 @@ msgstr "Wasitat yant'am."
 msgid "Please wait a moment and try again."
 msgstr "Mä juk'a suyt'am, ukat wasitat yant'am."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Código postal"
 
@@ -2543,7 +2529,7 @@ msgstr "Mantañar apayaskiwa."
 msgid "Reduce interest"
 msgstr "Munaña juk'achaña"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Región"
 
@@ -2616,11 +2602,11 @@ msgstr "¿\"{0}\" mantañataki kamachi apsuñati?"
 msgid "Remove access?"
 msgstr "¿Mantaña aparañati?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Dirección aparma"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Email aparma"
 
@@ -2643,12 +2629,12 @@ msgstr "Enlace apaqaña"
 msgid "Remove member"
 msgstr "Integrante aparma"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Teléfono aparma"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Masi apaqaskiwa..."
 
@@ -2758,7 +2744,6 @@ msgstr "Sábado"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2775,10 +2760,6 @@ msgstr "Suti imaña"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Aka contraseña jichha imaña. Janiw wasitat uñachayaskaspati."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Contacto imaskiwa..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2934,8 +2915,8 @@ msgid "Send message"
 msgstr "Mensaje apayaña"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Jawsäwi apayaskiwa..."
 
@@ -3056,7 +3037,7 @@ msgstr "Uñch'ukiñ tukuyaña"
 msgid "Store silently"
 msgstr "Amukiw imaña"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Thakhi"
 
@@ -3082,7 +3063,7 @@ msgstr "Suscribiña"
 msgid "Sunday"
 msgstr "Domingo"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Apellido"
 
@@ -3113,7 +3094,7 @@ msgstr "Chimpux 50 qillqanaka jan ukax juk'ampi jisk'äñapawa"
 msgid "Tags"
 msgstr "Chimpunaka"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Teléfononaka"
 
@@ -3192,7 +3173,7 @@ msgstr "Akax anata ukat chatap wiñayatak chhaqtayi. Janiw kutt'ayañjamäkiti."
 msgid "Thursday"
 msgstr "Jueves"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Irnaqäwi suti"
@@ -3261,8 +3242,8 @@ msgstr "Martes"
 msgid "Type"
 msgstr "Kasta"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3306,11 +3287,11 @@ msgstr "Janiw utjkiti"
 msgid "Unexpected API error"
 msgstr "Jan suyt'at API pantjasiwi"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Masi kankaña tukuyaña"
 
@@ -3378,7 +3359,7 @@ msgstr "Apkatäwi sarantawi"
 msgid "Uploading..."
 msgstr "Apkataskiwa..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3464,7 +3445,7 @@ msgstr "<0>{0}</0> ukar mä chiqanchañ código apayapxsma. Email direccionam ch
 msgid "Wednesday"
 msgstr "Miércoles"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Irnaqäwi"

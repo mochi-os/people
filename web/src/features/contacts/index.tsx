@@ -7,7 +7,6 @@ import { useNavigate } from '@tanstack/react-router'
 import { APP_ROUTES } from '@/config/app-routes'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
-  Badge,
   Button,
   ConfirmDialog,
   DropdownMenu,
@@ -38,7 +37,6 @@ import {
   BookUser,
   MessageSquare,
   MoreHorizontal,
-  Pencil,
   Send,
   Trash2,
   UserPlus,
@@ -257,9 +255,12 @@ export function Contacts({
                     : ''
                 const invited = sentPersons.has(contact.person)
                 return (
+                  // A click anywhere on the row opens the contact; the name
+                  // is the keyboard's way in.
                   <div
                     key={contact.id}
-                    className='hover:bg-hover flex items-center gap-3 px-4 py-3 transition-colors'
+                    className='hover:bg-hover flex cursor-pointer items-center gap-3 px-4 py-3 transition-colors'
+                    onClick={() => edit(contact)}
                   >
                     {contact.person ? (
                       <EntityAvatar
@@ -275,30 +276,32 @@ export function Contacts({
                       <EntityAvatar name={contact.name} size='lg' />
                     )}
                     <div className='flex min-w-0 flex-1 flex-col'>
-                      <span className='flex items-center gap-2 font-medium'>
-                        <span className='truncate'>
-                          <HighlightText text={contact.name} query={search} />
-                        </span>
-                        {contact.friend ? (
-                          <Badge variant='secondary' className='shrink-0'>
-                            <Trans>Friend</Trans>
-                          </Badge>
-                        ) : contact.person ? (
-                          <Badge variant='outline' className='shrink-0'>
-                            <Trans>On Mochi</Trans>
-                          </Badge>
-                        ) : null}
-                      </span>
+                      {/* Propagation stops here so the row does not open
+                          the contact a second time. */}
+                      <button
+                        type='button'
+                        className='focus-visible:ring-primary/40 truncate rounded-sm text-start font-medium outline-none focus-visible:ring-2'
+                        onClick={(event) => {
+                          event.stopPropagation()
+                          edit(contact)
+                        }}
+                      >
+                        <HighlightText text={contact.name} query={search} />
+                      </button>
                       {subtitle ? (
                         <span className='text-muted-foreground truncate text-xs'>
                           {subtitle}
                         </span>
                       ) : null}
                     </div>
-                    {/* Below sm three labelled buttons leave the name a
-                        letter or two. Message keeps its icon, and Edit
-                        moves into the row's menu. */}
-                    <div className='flex shrink-0 items-center gap-2'>
+                    {/* Below sm Message keeps only its icon, leaving the
+                        name its room. A click on a button or in the menu,
+                        whose items bubble here through the portal, stays out
+                        of the row's own click. */}
+                    <div
+                      className='flex shrink-0 items-center gap-2'
+                      onClick={(event) => event.stopPropagation()}
+                    >
                       {contact.friend ? (
                         <Button
                           variant='outline'
@@ -311,15 +314,6 @@ export function Contacts({
                           </span>
                         </Button>
                       ) : null}
-                      <Button
-                        variant='outline'
-                        size='sm'
-                        className='max-sm:hidden'
-                        onClick={() => edit(contact)}
-                      >
-                        <Pencil className='h-4 w-4' />
-                        <Trans>Edit</Trans>
-                      </Button>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button
@@ -330,13 +324,6 @@ export function Contacts({
                           />
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align='end'>
-                          <DropdownMenuItem
-                            className='sm:hidden'
-                            onSelect={() => edit(contact)}
-                          >
-                            <Pencil className='size-4' />
-                            <Trans>Edit</Trans>
-                          </DropdownMenuItem>
                           {contact.person && !contact.friend && !invited ? (
                             <DropdownMenuItem onSelect={() => invite(contact)}>
                               <Send className='size-4' />

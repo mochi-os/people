@@ -488,12 +488,16 @@ describe('ContactPanel', () => {
     }
   })
 
-  it('shows the friend switch above the name, and the details under a heading', () => {
+  it('shows the friend switch under the nickname with no divider between, and the details under a heading', () => {
     show('c1')
     const toggle = screen.getByRole('switch', { name: 'Mochi friend' })
     expect(
-      toggle.compareDocumentPosition(name()) & Node.DOCUMENT_POSITION_FOLLOWING
+      nickname().compareDocumentPosition(toggle) &
+        Node.DOCUMENT_POSITION_FOLLOWING
     ).toBeTruthy()
+    // The form divides its sections, so one section means no line between.
+    expect(toggle.closest('section')).toBe(nickname().closest('section'))
+    expect(toggle.closest('section')).toContainElement(name())
     expect(screen.getByRole('heading', { name: 'Details' })).toBeInTheDocument()
   })
 

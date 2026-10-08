@@ -541,27 +541,7 @@ export function ContactPanel({
         else void create()
       }}
     >
-      {contact && (
-        <section className='pb-4'>
-          <Field id='contact-friend' label={t`Mochi friend`}>
-            <div className='flex items-center gap-3'>
-              <Switch
-                id='contact-friend'
-                checked={friendState !== 'none'}
-                disabled={toggling}
-                onCheckedChange={(on) => void toggleFriend(on)}
-              />
-              {friendState === 'invited' && (
-                <span className='text-muted-foreground text-xs'>
-                  <Trans>Invited</Trans>
-                </span>
-              )}
-            </div>
-          </Field>
-        </section>
-      )}
-
-      <section className={contact ? 'space-y-2 py-4' : 'space-y-2 pb-4'}>
+      <section className='space-y-2 pb-4'>
         <Field id='contact-name' label={t({ message: 'Name', context: 'person' })}>
           <Input
             id='contact-name'
@@ -596,6 +576,23 @@ export function ContactPanel({
             onChange={(event) => update({ nickname: event.target.value })}
           />
         </Field>
+        {contact && (
+          <Field id='contact-friend' label={t`Mochi friend`}>
+            <div className='flex items-center gap-3'>
+              <Switch
+                id='contact-friend'
+                checked={friendState !== 'none'}
+                disabled={toggling}
+                onCheckedChange={(on) => void toggleFriend(on)}
+              />
+              {friendState === 'invited' && (
+                <span className='text-muted-foreground text-xs'>
+                  <Trans>Invited</Trans>
+                </span>
+              )}
+            </div>
+          </Field>
+        )}
       </section>
 
       <section className='space-y-4 py-4'>

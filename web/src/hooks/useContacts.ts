@@ -152,6 +152,12 @@ export const useUpdateContactMutation = (
     mutationFn: (payload: UpdateContactRequest) => contactsApi.update(payload),
     onSuccess: (data, variables, context, mutation) => {
       invalidate()
+      // The contact as saved, so the editor next opened on it starts from
+      // this card rather than the one kept from before the save.
+      queryClient.setQueryData<GetContactResponse>(
+        contactKeys.one(data.contact.id),
+        { contact: data.contact }
+      )
       queryClient.invalidateQueries({
         queryKey: contactKeys.one(variables.contact),
       })

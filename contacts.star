@@ -339,13 +339,51 @@ def merge_key(p):
 		value = "".join([c for c in value.elems() if c in "+0123456789"])
 	return (name, value)
 
+# components(value) -> list: a structured value split on its unescaped
+# semicolons, each component kept as written, escapes included, so joining
+# them with ";" gives the value back.
+def components(value):
+	parts = []
+	current = ""
+	escaped = False
+	for c in value.elems():
+		if escaped:
+			current += c
+			escaped = False
+		elif c == "\\":
+			current += c
+			escaped = True
+		elif c == ";":
+			parts.append(current)
+			current = ""
+		else:
+			current += c
+	parts.append(current)
+	return parts
+
+# name_fill(value, other) -> string: the name N value with each empty
+# component - family, given, additional, prefix, suffix - taken from other,
+# so a forename on one card and a surname on the other make one name.
+def name_fill(value, other):
+	if type(value) != "string" or type(other) != "string":
+		return value
+	mine = components(value)
+	theirs = components(other)
+	for i in range(len(theirs)):
+		if i >= len(mine):
+			mine.append("")
+		if not mine[i].strip() and theirs[i].strip():
+			mine[i] = theirs[i]
+	return ";".join(mine)
+
 # card_combine(first, second, photo=False) -> list: one card holding both. The
 # first card's properties all stay. From the second: every email, phone,
 # address, URL and other value the first lacks; a single-valued property only
-# where the first has none; its note joined to the first's. An iOS label
-# (X-ABLABEL) follows the value it names, so a duplicate takes its label with
-# it, and a group the first card already uses is renamed. photo says the first
-# card shows a friend's photo, which a stored PHOTO would hide.
+# where the first has none; the parts of its name the first's leaves empty;
+# its note joined to the first's. An iOS label (X-ABLABEL) follows the value
+# it names, so a duplicate takes its label with it, and a group the first card
+# already uses is renamed. photo says the first card shows a friend's photo,
+# which a stored PHOTO would hide.
 def card_combine(first, second, photo=False):
 	out = []
 	names = {}
@@ -388,6 +426,14 @@ def card_combine(first, second, photo=False):
 	for p in extra:
 		name = p.get("name", "").upper()
 		group = p.get("group", "")
+		if name == "N" and name in names:
+			for i in range(len(out)):
+				if out[i].get("name", "").upper() == "N":
+					filled = dict(out[i])
+					filled["value"] = name_fill(filled.get("value", ""), p.get("value", ""))
+					out[i] = filled
+					break
+			continue
 		if group and group.lower() in dropped:
 			continue
 		if name == "NOTE":

@@ -203,12 +203,34 @@ export function ContactEditor({
     }
   }
 
+  // A contact is unsaved once what a save would write differs from what was
+  // read; a new one, once any field is filled. The book a new contact starts
+  // in is chosen for it, so it is not an edit.
+  const written = propertiesFromForm(form)
+  // A merge is unsaved until it is saved: leaving drops it.
+  const unsaved = merge
+    ? true
+    : id
+      ? loaded !== null &&
+        (JSON.stringify(written) !== loaded.card || book !== loaded.book)
+      : written.length > 0
+
+  // Whether the form holds an edit, as of the last render, for the effect
+  // below: it runs first in each commit, so the effect sees the form as the
+  // user left it, not as a newly arrived card would make it.
+  const edited = useRef(false)
+  useEffect(() => {
+    edited.current = unsaved
+  })
+
   // The card the form was read from: its etag, which a save sends so a change
   // made elsewhere is refused rather than overwritten, and its editable
   // properties. The friend switch changes only the columns beside the card,
   // so a new etag over the same editable properties is taken without touching
-  // what the user has typed. A card changed elsewhere waits: the save is
-  // refused, and the reload that follows reads it.
+  // what the user has typed. A card changed elsewhere waits while the form
+  // holds an edit: the save is refused, and the reload that follows reads it.
+  // An untouched form takes the card as it now is, as it must when the card
+  // shown first was the copy kept from an earlier visit.
   const applied = useRef<{ etag: string; card: string } | null>(null)
   const reloading = useRef(false)
   useEffect(() => {
@@ -217,8 +239,11 @@ export function ContactEditor({
     if (base?.etag === contact.etag) return
     const card = JSON.stringify(propertiesFromForm(formFromCard(contact.card)))
     if (base && !reloading.current) {
-      if (base.card === card) applied.current = { etag: contact.etag, card }
-      return
+      if (base.card === card) {
+        applied.current = { etag: contact.etag, card }
+        return
+      }
+      if (edited.current) return
     }
     reloading.current = false
     applied.current = { etag: contact.etag, card }
@@ -239,17 +264,6 @@ export function ContactEditor({
   const update = (changes: Partial<ContactForm>) =>
     setForm((current) => ({ ...current, ...changes }))
 
-  // A contact is unsaved once what a save would write differs from what was
-  // read; a new one, once any field is filled. The book a new contact starts
-  // in is chosen for it, so it is not an edit.
-  const written = propertiesFromForm(form)
-  // A merge is unsaved until it is saved: leaving drops it.
-  const unsaved = merge
-    ? true
-    : id
-      ? loaded !== null &&
-        (JSON.stringify(written) !== loaded.card || book !== loaded.book)
-      : written.length > 0
   const leaving = useLeaveGuard(unsaved)
   // Shown wherever the guard can hold: a refetch that fails after an edit swaps
   // the form for the error, and the edit is still there to lose.

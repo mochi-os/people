@@ -462,6 +462,31 @@ describe('ContactEditor', () => {
     })
   })
 
+  it('takes a newer card while nothing is edited, as when the one shown first was kept from an earlier visit', async () => {
+    const view = show('c1')
+    queries.contact = loaded({
+      contact: {
+        ...contact,
+        etag: 'e2',
+        card: [
+          { name: 'FN', params: {}, value: 'Ada' },
+          { name: 'NICKNAME', params: {}, value: 'Countess' },
+        ],
+      },
+    })
+    view.rerender(again('c1'))
+    expect(screen.getByRole('textbox', { name: 'Nickname' })).toHaveValue(
+      'Countess'
+    )
+    fireEvent.click(screen.getByRole('button', { name: 'Save' }))
+    await waitFor(() =>
+      expect(mutations.update.mutateAsync).toHaveBeenCalledTimes(1)
+    )
+    expect(mutations.update.mutateAsync.mock.calls[0][0]).toMatchObject({
+      etag: 'e2',
+    })
+  })
+
   it('keeps the unfriend dialog open when the request fails', async () => {
     queries.contact = loaded({
       contact: { ...contact, person: 'p1', friend: true },

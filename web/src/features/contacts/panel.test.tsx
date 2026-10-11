@@ -599,7 +599,7 @@ describe('ContactPanel making a contact', () => {
     expect(screen.getByRole('button', { name: 'Create' })).toBeDisabled()
   })
 
-  it('creates the contact with Create and then follows it', async () => {
+  it('creates the contact with Create and then closes', async () => {
     show()
     await waitFor(() =>
       expect(
@@ -609,7 +609,8 @@ describe('ContactPanel making a contact', () => {
     fireEvent.change(name(), { target: { value: 'Grace' } })
     fireEvent.change(nickname(), { target: { value: 'Amazing' } })
     fireEvent.click(screen.getByRole('button', { name: 'Create' }))
-    await waitFor(() => expect(opened).toHaveBeenCalledWith('c9'))
+    await waitFor(() => expect(closed).toHaveBeenCalledTimes(1))
+    expect(opened).not.toHaveBeenCalled()
     const request = mutations.create.mutateAsync.mock.calls[0][0] as {
       properties: { name: string; value: string }[]
       book: string

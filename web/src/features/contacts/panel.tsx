@@ -291,7 +291,7 @@ export function ContactPanel({
     if (blocked) return
     const current = latest.current
     try {
-      const data = await toastAction(
+      await toastAction(
         createMutation.mutateAsync({
           properties: propertiesFromForm(current.form),
           book: current.book,
@@ -302,7 +302,9 @@ export function ContactPanel({
           error: (error) => getErrorMessage(error, t`Failed to create contact`),
         }
       )
-      onOpen(data.contact.id)
+      // Create is the end of making it, as an event's is; a copy, made to be
+      // changed, opens in the panel.
+      onClose()
     } catch {
       // toastAction already showed the error
     }

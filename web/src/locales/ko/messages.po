@@ -29,7 +29,7 @@ msgstr "(확장)"
 #. placeholder {0}: file.oldPath
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "(from {0})"
-msgstr ""
+msgstr "({0}에서)"
 
 #: ../../../lib/web/src/components/calendar/event-title.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -55,7 +55,7 @@ msgstr "{0, plural, other {연락처 #개도 함께 삭제됩니다.}}"
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
-msgstr ""
+msgstr "{0, plural, one {#개 파일 변경됨} other {#개 파일 변경됨}}"
 
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
@@ -130,7 +130,7 @@ msgstr "{totalDescendants, plural, one {답글 #개} other {답글 +#개 더}}"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{truncated, plural, one {# more file not shown} other {# more files not shown}}"
-msgstr ""
+msgstr "{truncated, plural, one {파일 #개 더 표시되지 않음} other {파일 #개 더 표시되지 않음}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -236,7 +236,7 @@ msgstr "접근 추가"
 msgid "Add account"
 msgstr "계정 추가"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "주소 추가"
 
@@ -259,7 +259,7 @@ msgstr "연락처 추가"
 msgid "Add device"
 msgstr "기기 추가"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "이메일 추가"
 
@@ -299,7 +299,7 @@ msgstr "시작하려면 사람을 추가하세요"
 msgid "Add tag..."
 msgstr "태그 추가..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "전화번호 추가"
 
@@ -342,7 +342,7 @@ msgstr "멤버 추가 중..."
 msgid "address book"
 msgstr "주소록"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "주소록"
 
@@ -531,10 +531,10 @@ msgstr "배너 업데이트됨"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Binary file not shown"
-msgstr ""
+msgstr "바이너리 파일은 표시되지 않습니다"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "생일"
 
@@ -605,7 +605,6 @@ msgstr "카메라를 사용할 수 없음"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -642,7 +641,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "취소됨"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "초대 취소 중..."
@@ -707,7 +706,7 @@ msgstr "시간 선택"
 msgid "Choose language"
 msgstr "언어 선택"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "도시"
 
@@ -730,6 +729,7 @@ msgstr "모두 지우기"
 
 #: ../../../lib/web/src/components/search-input.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/merge-dialog.tsx
 msgid "Clear search"
 msgstr "검색 지우기"
 
@@ -845,22 +845,27 @@ msgstr "연결 중..."
 msgid "Contact added"
 msgstr "연락처가 추가되었어요"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+msgid "Contact copied"
+msgstr "연락처가 복사되었어요"
+
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "연락처가 생성되었어요"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "연락처가 삭제되었어요"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "연락처가 저장되었어요"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "연락처"
+
+#: src/features/contacts/panel.tsx
+msgid "Contacts merged"
+msgstr "연락처를 병합했습니다"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -900,6 +905,7 @@ msgstr "클립보드에 복사되었어요"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "복사"
 
@@ -927,7 +933,7 @@ msgstr "재인증을 시작할 수 없습니다. 다시 시도해 주세요."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "해당 계정으로 인증하지 못했습니다. 다시 시도해 주세요."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "국가"
 
@@ -937,6 +943,7 @@ msgstr "국가"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "생성"
 
@@ -983,7 +990,8 @@ msgstr "{field} 생성됨"
 msgid "Creating address book..."
 msgstr "주소록 만드는 중..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "연락처 만드는 중..."
 
@@ -1056,10 +1064,9 @@ msgstr "기본 정렬"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1069,15 +1076,15 @@ msgstr "삭제"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "<0>{0}</0>을(를) 삭제할까요?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "<0>{0}</0>을(를) 삭제할까요? 친구 관계도 함께 끊어져요."
 
@@ -1097,8 +1104,9 @@ msgstr "컬럼 삭제"
 msgid "Delete comment"
 msgstr "댓글 삭제"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "연락처 삭제"
 
@@ -1167,8 +1175,8 @@ msgstr "삭제된 그룹"
 msgid "Deleting address book..."
 msgstr "주소록 삭제 중..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "연락처 삭제 중..."
 
@@ -1190,7 +1198,7 @@ msgstr "내림차순"
 msgid "Description"
 msgstr "설명"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "세부 정보"
 
@@ -1226,13 +1234,8 @@ msgid "Directory listing"
 msgstr "디렉터리 목록"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "버리기"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "변경사항을 버릴까요?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,8 +1286,6 @@ msgstr "난독증 친화적"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/contacts/index.tsx
-#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "편집"
@@ -1296,10 +1297,6 @@ msgstr "{label} 편집"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "캡션 편집"
-
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "연락처 편집"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1346,14 +1343,14 @@ msgstr "이메일"
 msgid "Email code"
 msgstr "이메일 코드"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "이메일"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "<0>{0}</0>님과의 친구 관계를 끊을까요? 연락처는 주소록에 그대로 남아요."
 
@@ -1422,7 +1419,7 @@ msgstr "연락처 추가에 실패했어요"
 msgid "Failed to add member"
 msgstr "멤버 추가에 실패했어요"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "초대 취소에 실패했어요"
@@ -1441,7 +1438,8 @@ msgstr "복사에 실패했어요"
 msgid "Failed to create address book"
 msgstr "주소록 생성에 실패했어요"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "연락처 생성에 실패했어요"
 
@@ -1474,8 +1472,8 @@ msgstr "첨부 파일 삭제에 실패했어요"
 msgid "Failed to delete comment"
 msgstr "댓글 삭제에 실패했어요"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "연락처 삭제에 실패했어요"
 
@@ -1536,6 +1534,11 @@ msgstr "동영상을 불러오지 못했어요"
 msgid "Failed to load your invite policy"
 msgstr "초대 정책 불러오기에 실패했어요"
 
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
+msgid "Failed to merge contacts"
+msgstr "연락처를 병합하지 못했습니다"
+
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Failed to move"
 msgstr "이동 실패"
@@ -1544,8 +1547,8 @@ msgstr "이동 실패"
 msgid "Failed to post comment"
 msgstr "댓글 게시에 실패했어요"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "친구 제거에 실패했어요"
 
@@ -1574,7 +1577,7 @@ msgstr "저장에 실패했어요"
 msgid "Failed to save accent"
 msgstr "악센트 저장에 실패했어요"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "연락처 저장에 실패했어요"
 
@@ -1595,8 +1598,8 @@ msgid "Failed to save prompt"
 msgstr "프롬프트 저장에 실패했어요"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "초대 보내기에 실패했어요"
 
@@ -1654,7 +1657,7 @@ msgstr "플래그"
 msgid "Flat"
 msgstr "평면"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "이름"
 
@@ -1663,11 +1666,7 @@ msgid "Friday"
 msgstr "금요일"
 
 #: src/features/contacts/index.tsx
-msgid "Friend"
-msgstr "친구"
-
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "친구가 삭제되었습니다"
 
@@ -1746,7 +1745,7 @@ msgstr "기록"
 msgid "Home"
 msgstr "홈"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "집"
@@ -1809,7 +1808,7 @@ msgstr "잘못된 날짜"
 msgid "Invitation accepted"
 msgstr "초대가 수락되었어요"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "초대가 취소되었어요"
@@ -1819,8 +1818,8 @@ msgid "Invitation declined"
 msgstr "초대가 거절되었어요"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "초대를 보냈습니다"
 
@@ -1845,7 +1844,7 @@ msgid "Invite settings"
 msgstr "초대 설정"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "초대됨"
 
@@ -1991,6 +1990,20 @@ msgstr "멤버 수"
 msgid "Menu"
 msgstr "메뉴"
 
+#: src/features/contacts/panel.tsx
+msgctxt "combine"
+msgid "Merge"
+msgstr "병합"
+
+#: src/features/contacts/merge-dialog.tsx
+#: src/features/contacts/merge-dialog.tsx
+msgid "Merge contacts"
+msgstr "연락처 병합"
+
+#: src/features/contacts/panel.tsx
+msgid "Merging contacts..."
+msgstr "연락처 병합 중..."
+
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 msgid "Message"
 msgstr "메시지"
@@ -2012,12 +2025,12 @@ msgstr "마이크 권한이 거부되었습니다"
 msgid "Minimum length"
 msgstr "최소 길이"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "휴대전화"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Mochi 친구"
 
@@ -2068,8 +2081,8 @@ msgstr "{0}(으)로 이동 중"
 msgid "Name"
 msgstr "이름"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "이름"
@@ -2079,6 +2092,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "이름에는 < 또는 > 문자를 사용할 수 없어요"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "이름은 필수예요"
@@ -2111,7 +2125,7 @@ msgid "New"
 msgstr "최신순"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "새 연락처"
 
@@ -2137,7 +2151,7 @@ msgstr "다음 달"
 msgid "Next year"
 msgstr "다음 연도"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "별명"
 
@@ -2159,13 +2173,14 @@ msgstr "설정된 배너가 없어요"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "No changes to display"
-msgstr ""
+msgstr "표시할 변경 사항이 없어요"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "No comments yet"
 msgstr "아직 댓글이 없어요"
 
 #: src/features/contacts/index.tsx
+#: src/features/contacts/merge-dialog.tsx
 msgid "No contacts yet"
 msgstr "아직 연락처가 없어요"
 
@@ -2213,6 +2228,7 @@ msgid "No places found"
 msgstr "장소를 찾을 수 없어요"
 
 #: src/features/contacts/index.tsx
+#: src/features/contacts/merge-dialog.tsx
 msgid "No results for \"{search}\""
 msgstr "\"{search}\"에 대한 결과 없음"
 
@@ -2272,11 +2288,11 @@ msgstr "기본"
 #. placeholder {0}: formatFileSize(file.limit)
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: larger than {0}"
-msgstr ""
+msgstr "비교하지 않음: {0}보다 큼"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: over the size limit"
-msgstr ""
+msgstr "비교하지 않음: 크기 제한 초과"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2287,7 +2303,7 @@ msgstr "찾을 수 없음"
 msgid "Not set"
 msgstr "설정되지 않음"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "메모"
 
@@ -2317,10 +2333,6 @@ msgstr "번호"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "켜짐"
-
-#: src/features/contacts/index.tsx
-msgid "On Mochi"
-msgstr "Mochi 사용자"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -2366,7 +2378,7 @@ msgstr "옵션 이름"
 msgid "Options"
 msgstr "옵션"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "회사"
 
@@ -2374,7 +2386,7 @@ msgstr "회사"
 msgid "Other"
 msgstr "기타"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "기타"
@@ -2438,7 +2450,7 @@ msgstr "다시 시도해 주세요."
 msgid "Please wait a moment and try again."
 msgstr "잠시 후 다시 시도해 주세요."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "우편번호"
 
@@ -2564,7 +2576,7 @@ msgstr "로그인으로 리디렉션 중이에요."
 msgid "Reduce interest"
 msgstr "관심사 줄이기"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "지역"
 
@@ -2637,11 +2649,11 @@ msgstr "\"{0}\"의 접근 규칙을 제거할까요?"
 msgid "Remove access?"
 msgstr "접근 권한을 제거할까요?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "주소 제거"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "이메일 제거"
 
@@ -2664,12 +2676,12 @@ msgstr "링크 제거"
 msgid "Remove member"
 msgstr "멤버 제거"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "전화번호 제거"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "친구 삭제 중..."
 
@@ -2779,7 +2791,6 @@ msgstr "토요일"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2796,10 +2807,6 @@ msgstr "이름 저장"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "이 비밀번호를 지금 저장하세요. 다시 표시할 수 없어요."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "연락처 저장 중..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2867,6 +2874,7 @@ msgstr "이 화면을 검색, 관찰하고 정렬해요."
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/merge-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "검색..."
@@ -2954,8 +2962,8 @@ msgid "Send message"
 msgstr "메시지 보내기"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "초대 보내는 중..."
 
@@ -3061,7 +3069,7 @@ msgstr "여유로운"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Split"
-msgstr ""
+msgstr "분할"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Start the discussion by adding the first comment."
@@ -3080,7 +3088,7 @@ msgstr "관찰 중지"
 msgid "Store silently"
 msgstr "조용히 저장"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "도로명 주소"
 
@@ -3106,7 +3114,7 @@ msgstr "구독"
 msgid "Sunday"
 msgstr "일요일"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "성"
 
@@ -3137,7 +3145,7 @@ msgstr "태그는 50자 이하여야 해요"
 msgid "Tags"
 msgstr "태그"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "전화번호"
 
@@ -3216,7 +3224,7 @@ msgstr "이 작업은 게임과 채팅을 영구적으로 삭제합니다. 이 �
 msgid "Thursday"
 msgstr "목요일"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "직책"
@@ -3285,8 +3293,8 @@ msgstr "화요일"
 msgid "Type"
 msgstr "유형"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3330,17 +3338,17 @@ msgstr "사용할 수 없음"
 msgid "Unexpected API error"
 msgstr "예기치 않은 API 오류"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "친구 끊기"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Unified"
-msgstr ""
+msgstr "통합됨"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -3406,7 +3414,7 @@ msgstr "업로드 진행률"
 msgid "Uploading..."
 msgstr "업로드 중..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3492,7 +3500,7 @@ msgstr "<0>{0}</0>(으)로 인증 코드를 보냈어요. 이메일 주소를 �
 msgid "Wednesday"
 msgstr "수요일"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "직장"

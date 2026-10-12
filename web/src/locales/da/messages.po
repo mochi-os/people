@@ -29,7 +29,7 @@ msgstr "(udvid)"
 #. placeholder {0}: file.oldPath
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "(from {0})"
-msgstr ""
+msgstr "(fra {0})"
 
 #: ../../../lib/web/src/components/calendar/event-title.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -55,7 +55,7 @@ msgstr "{0, plural, one {# kontakt slettes sammen med den.} other {# kontakter s
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
-msgstr ""
+msgstr "{0, plural, one {# fil ændret} other {# filer ændret}}"
 
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
@@ -130,7 +130,7 @@ msgstr "{totalDescendants, plural, one {# svar} other {+# flere svar}}"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{truncated, plural, one {# more file not shown} other {# more files not shown}}"
-msgstr ""
+msgstr "{truncated, plural, one {# fil mere vises ikke} other {# filer mere vises ikke}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -236,7 +236,7 @@ msgstr "Tilføj adgang"
 msgid "Add account"
 msgstr "Tilføj konto"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Tilføj adresse"
 
@@ -259,7 +259,7 @@ msgstr "Tilføj kontakt"
 msgid "Add device"
 msgstr "Tilføj en enhed"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Tilføj e-mail"
 
@@ -299,7 +299,7 @@ msgstr "Tilføj nogen for at komme i gang"
 msgid "Add tag..."
 msgstr "Tilføj tag..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Tilføj telefon"
 
@@ -342,7 +342,7 @@ msgstr "Tilføjer medlem..."
 msgid "address book"
 msgstr "adressebog"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Adressebog"
 
@@ -531,10 +531,10 @@ msgstr "Banner opdateret"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Binary file not shown"
-msgstr ""
+msgstr "Binær fil vises ikke"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Fødselsdag"
 
@@ -605,7 +605,6 @@ msgstr "Kamera ikke tilgængeligt"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -642,7 +641,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Aflyst"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Annullerer invitation..."
@@ -707,7 +706,7 @@ msgstr "Vælg et tidspunkt"
 msgid "Choose language"
 msgstr "Vælg sprog"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "By"
 
@@ -730,6 +729,7 @@ msgstr "Ryd alle"
 
 #: ../../../lib/web/src/components/search-input.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/merge-dialog.tsx
 msgid "Clear search"
 msgstr "Ryd søgning"
 
@@ -845,22 +845,27 @@ msgstr "Opretter forbindelse..."
 msgid "Contact added"
 msgstr "Kontakt tilføjet"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+msgid "Contact copied"
+msgstr "Kontakt kopieret"
+
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Kontakt oprettet"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Kontakt slettet"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Kontakt gemt"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Kontakter"
+
+#: src/features/contacts/panel.tsx
+msgid "Contacts merged"
+msgstr "Kontakter flettet"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -900,6 +905,7 @@ msgstr "Kopieret til udklipsholder"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Kopier"
 
@@ -927,7 +933,7 @@ msgstr "Kunne ikke starte gentaget godkendelse. Prøv igen."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Kunne ikke verificere med den konto. Prøv venligst igen."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Land"
 
@@ -937,6 +943,7 @@ msgstr "Land"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Opret"
 
@@ -983,7 +990,8 @@ msgstr "{field} oprettet"
 msgid "Creating address book..."
 msgstr "Opretter adressebog..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Opretter kontakt..."
 
@@ -1056,10 +1064,9 @@ msgstr "Standardsortering"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1069,15 +1076,15 @@ msgstr "Slet"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "Slet <0>{0}</0>?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "Slet <0>{0}</0>? Det afslutter også jeres venskab."
 
@@ -1097,8 +1104,9 @@ msgstr "Slet kolonne"
 msgid "Delete comment"
 msgstr "Slet kommentar"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Slet kontakt"
 
@@ -1167,8 +1175,8 @@ msgstr "Slettet gruppe"
 msgid "Deleting address book..."
 msgstr "Sletter adressebog..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Sletter kontakt..."
 
@@ -1190,7 +1198,7 @@ msgstr "Faldende"
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Detaljer"
 
@@ -1226,13 +1234,8 @@ msgid "Directory listing"
 msgstr "Mappeoversigt"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Kassér"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "Kassér ændringer?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,8 +1286,6 @@ msgstr "Ordblindevenlig"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/contacts/index.tsx
-#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Redigér"
@@ -1296,10 +1297,6 @@ msgstr "Rediger {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Rediger billedtekst"
-
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Redigér kontakt"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1346,14 +1343,14 @@ msgstr "E-mail"
 msgid "Email code"
 msgstr "E-mailkode"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "E-mailadresser"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Vil du afslutte dit venskab med <0>{0}</0>? Kontakten bliver i din adressebog."
 
@@ -1422,7 +1419,7 @@ msgstr "Kunne ikke tilføje kontakt"
 msgid "Failed to add member"
 msgstr "Kunne ikke tilføje medlem"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Kunne ikke annullere invitation"
@@ -1441,7 +1438,8 @@ msgstr "Kunne ikke kopiere"
 msgid "Failed to create address book"
 msgstr "Kunne ikke oprette adressebog"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Kunne ikke oprette kontakt"
 
@@ -1474,8 +1472,8 @@ msgstr "Kunne ikke slette vedhæftning"
 msgid "Failed to delete comment"
 msgstr "Kunne ikke slette kommentar"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Kunne ikke slette kontakt"
 
@@ -1536,6 +1534,11 @@ msgstr "Videoen kunne ikke indlæses"
 msgid "Failed to load your invite policy"
 msgstr "Kunne ikke indlæse din invitationspolitik"
 
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
+msgid "Failed to merge contacts"
+msgstr "Kunne ikke flette kontakter"
+
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Failed to move"
 msgstr "Kunne ikke flytte"
@@ -1544,8 +1547,8 @@ msgstr "Kunne ikke flytte"
 msgid "Failed to post comment"
 msgstr "Kunne ikke poste kommentar"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Kunne ikke fjerne ven"
 
@@ -1574,7 +1577,7 @@ msgstr "Kunne ikke gemme"
 msgid "Failed to save accent"
 msgstr "Kunne ikke gemme accent"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Kunne ikke gemme kontakt"
 
@@ -1595,8 +1598,8 @@ msgid "Failed to save prompt"
 msgstr "Kunne ikke gemme prompt"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Kunne ikke sende invitation"
 
@@ -1654,7 +1657,7 @@ msgstr "Flag"
 msgid "Flat"
 msgstr "Flad"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Fornavn"
 
@@ -1663,11 +1666,7 @@ msgid "Friday"
 msgstr "Fredag"
 
 #: src/features/contacts/index.tsx
-msgid "Friend"
-msgstr "Ven"
-
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Ven fjernet"
 
@@ -1746,7 +1745,7 @@ msgstr "Historik"
 msgid "Home"
 msgstr "Hjem"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Privat"
@@ -1809,7 +1808,7 @@ msgstr "Ugyldig dato"
 msgid "Invitation accepted"
 msgstr "Invitation accepteret"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Invitation annulleret"
@@ -1819,8 +1818,8 @@ msgid "Invitation declined"
 msgstr "Invitation afvist"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Invitation sendt"
 
@@ -1845,7 +1844,7 @@ msgid "Invite settings"
 msgstr "Invitationsindstillinger"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Inviteret"
 
@@ -1991,6 +1990,20 @@ msgstr "Antal medlemmer"
 msgid "Menu"
 msgstr "Menu"
 
+#: src/features/contacts/panel.tsx
+msgctxt "combine"
+msgid "Merge"
+msgstr "Flet"
+
+#: src/features/contacts/merge-dialog.tsx
+#: src/features/contacts/merge-dialog.tsx
+msgid "Merge contacts"
+msgstr "Flet kontakter"
+
+#: src/features/contacts/panel.tsx
+msgid "Merging contacts..."
+msgstr "Fletter kontakter..."
+
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 msgid "Message"
 msgstr "Besked"
@@ -2012,12 +2025,12 @@ msgstr "Mikrofontilladelse nægtet"
 msgid "Minimum length"
 msgstr "Minimumslængde"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Mobil"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Mochi-ven"
 
@@ -2068,8 +2081,8 @@ msgstr "Flytter til {0}"
 msgid "Name"
 msgstr "Navn"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Navn"
@@ -2079,6 +2092,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Navn må ikke indeholde tegnene < eller >"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Navn er påkrævet"
@@ -2111,7 +2125,7 @@ msgid "New"
 msgstr "Nyeste"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Ny kontakt"
 
@@ -2137,7 +2151,7 @@ msgstr "Næste måned"
 msgid "Next year"
 msgstr "Næste år"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Kaldenavn"
 
@@ -2159,13 +2173,14 @@ msgstr "Intet banner angivet"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "No changes to display"
-msgstr ""
+msgstr "Ingen ændringer at vise"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "No comments yet"
 msgstr "Ingen kommentarer endnu"
 
 #: src/features/contacts/index.tsx
+#: src/features/contacts/merge-dialog.tsx
 msgid "No contacts yet"
 msgstr "Ingen kontakter endnu"
 
@@ -2213,6 +2228,7 @@ msgid "No places found"
 msgstr "Ingen steder fundet"
 
 #: src/features/contacts/index.tsx
+#: src/features/contacts/merge-dialog.tsx
 msgid "No results for \"{search}\""
 msgstr "Ingen resultater for \"{search}\""
 
@@ -2272,11 +2288,11 @@ msgstr "Normal"
 #. placeholder {0}: formatFileSize(file.limit)
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: larger than {0}"
-msgstr ""
+msgstr "Ikke sammenlignet: større end {0}"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: over the size limit"
-msgstr ""
+msgstr "Ikke sammenlignet: over størrelsesgrænsen"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2287,7 +2303,7 @@ msgstr "Ikke fundet"
 msgid "Not set"
 msgstr "Ikke angivet"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Note"
 
@@ -2317,10 +2333,6 @@ msgstr "Nummer"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Til"
-
-#: src/features/contacts/index.tsx
-msgid "On Mochi"
-msgstr "På Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -2366,7 +2378,7 @@ msgstr "Indstillingsnavn"
 msgid "Options"
 msgstr "Indstillinger"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Organisation"
 
@@ -2374,7 +2386,7 @@ msgstr "Organisation"
 msgid "Other"
 msgstr "Andet"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Andet"
@@ -2438,7 +2450,7 @@ msgstr "Prøv igen."
 msgid "Please wait a moment and try again."
 msgstr "Vent et øjeblik, og prøv igen."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Postnummer"
 
@@ -2564,7 +2576,7 @@ msgstr "Omdirigerer til logind."
 msgid "Reduce interest"
 msgstr "Reducér interesse"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Region"
 
@@ -2637,11 +2649,11 @@ msgstr "Fjern adgangsregel for \"{0}\"?"
 msgid "Remove access?"
 msgstr "Fjern adgang?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Fjern adresse"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Fjern e-mail"
 
@@ -2664,12 +2676,12 @@ msgstr "Fjern link"
 msgid "Remove member"
 msgstr "Fjern medlem"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Fjern telefon"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Fjerner ven..."
 
@@ -2779,7 +2791,6 @@ msgstr "Lørdag"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2796,10 +2807,6 @@ msgstr "Gem navn"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Gem denne adgangskode nu. Den kan ikke vises igen."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Gemmer kontakt..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2867,6 +2874,7 @@ msgstr "Søg, overvåg og sortér denne visning."
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/merge-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Søg..."
@@ -2954,8 +2962,8 @@ msgid "Send message"
 msgstr "Send besked"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Sender invitation..."
 
@@ -3061,7 +3069,7 @@ msgstr "Rummeligt"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Split"
-msgstr ""
+msgstr "Opdel"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Start the discussion by adding the first comment."
@@ -3080,7 +3088,7 @@ msgstr "Stop overvågning"
 msgid "Store silently"
 msgstr "Gem stille"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Gade"
 
@@ -3106,7 +3114,7 @@ msgstr "Abonnér"
 msgid "Sunday"
 msgstr "Søndag"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Efternavn"
 
@@ -3137,7 +3145,7 @@ msgstr "Tagget må højst være 50 tegn"
 msgid "Tags"
 msgstr "Tags"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Telefonnumre"
 
@@ -3216,7 +3224,7 @@ msgstr "Dette sletter spillet og dets chat permanent. Dette kan ikke fortrydes."
 msgid "Thursday"
 msgstr "Torsdag"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Stilling"
@@ -3285,8 +3293,8 @@ msgstr "Tirsdag"
 msgid "Type"
 msgstr "Type"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3330,17 +3338,17 @@ msgstr "Ikke tilgængelig"
 msgid "Unexpected API error"
 msgstr "Uventet API-fejl"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Fjern som ven"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Unified"
-msgstr ""
+msgstr "Samlet"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -3406,7 +3414,7 @@ msgstr "Fremgang for upload"
 msgid "Uploading..."
 msgstr "Uploader..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3492,7 +3500,7 @@ msgstr "Vi har sendt en bekræftelseskode til <0>{0}</0>. Indtast koden nedenfor
 msgid "Wednesday"
 msgstr "Onsdag"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Arbejde"

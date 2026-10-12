@@ -29,10 +29,15 @@ const toMutationSuccess = async <T>(
 const listContacts = (): Promise<GetContactsResponse> =>
   requestHelpers.get<GetContactsResponse>(endpoints.contacts.list)
 
-const getContact = (contact: string): Promise<GetContactResponse> =>
+// With a source, the merge of the two: the contact that survives, its card
+// holding both cards' details, and the one it absorbs.
+const getContact = (
+  contact: string,
+  source?: string
+): Promise<GetContactResponse> =>
   requestHelpers.post<GetContactResponse>(
     endpoints.contacts.get,
-    body({ contact }),
+    body(source ? { contact, source } : { contact }),
     { ...form, ...quiet }
   )
 

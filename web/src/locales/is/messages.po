@@ -29,7 +29,7 @@ msgstr "(útvíkka)"
 #. placeholder {0}: file.oldPath
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "(from {0})"
-msgstr ""
+msgstr "(frá {0})"
 
 #: ../../../lib/web/src/components/calendar/event-title.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -55,7 +55,7 @@ msgstr "{0, plural, one {# tengilið er eytt með henni.} other {# tengiliðum e
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
-msgstr ""
+msgstr "{0, plural, one {# skrá breytt} other {# skrám breytt}}"
 
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
@@ -130,7 +130,7 @@ msgstr "{totalDescendants, plural, one {# svar} other {+# fleiri svör}}"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{truncated, plural, one {# more file not shown} other {# more files not shown}}"
-msgstr ""
+msgstr "{truncated, plural, one {# skrá til viðbótar ekki sýnd} other {# skrár til viðbótar ekki sýndar}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -236,7 +236,7 @@ msgstr "Bæta við aðgangi"
 msgid "Add account"
 msgstr "Bæta við reikningi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "Bæta við heimilisfangi"
 
@@ -259,7 +259,7 @@ msgstr "Bæta við tengilið"
 msgid "Add device"
 msgstr "Bæta við tæki"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "Bæta við netfangi"
 
@@ -299,7 +299,7 @@ msgstr "Bættu einhverjum við til að byrja"
 msgid "Add tag..."
 msgstr "Bæta við merki..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "Bæta við símanúmeri"
 
@@ -342,7 +342,7 @@ msgstr "Bæti við meðlim..."
 msgid "address book"
 msgstr "tengiliðaskrá"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "Tengiliðaskrá"
 
@@ -531,10 +531,10 @@ msgstr "Borði uppfærður"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Binary file not shown"
-msgstr ""
+msgstr "Tvíundarskrá er ekki sýnd"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "Afmælisdagur"
 
@@ -605,7 +605,6 @@ msgstr "Myndavél ekki tiltæk"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -642,7 +641,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "Aflýst"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "Hætti við beiðni..."
@@ -707,7 +706,7 @@ msgstr "Veldu tíma"
 msgid "Choose language"
 msgstr "Veldu tungumál"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "Borg"
 
@@ -730,6 +729,7 @@ msgstr "Hreinsa allt"
 
 #: ../../../lib/web/src/components/search-input.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/merge-dialog.tsx
 msgid "Clear search"
 msgstr "Hreinsa leit"
 
@@ -845,22 +845,27 @@ msgstr "Tengist..."
 msgid "Contact added"
 msgstr "Tengilið bætt við"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+msgid "Contact copied"
+msgstr "Tengiliður afritaður"
+
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "Tengiliður búinn til"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "Tengilið eytt"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "Tengiliður vistaður"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "Tengiliðir"
+
+#: src/features/contacts/panel.tsx
+msgid "Contacts merged"
+msgstr "Tengiliðir sameinaðir"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -900,6 +905,7 @@ msgstr "Afritað á klippiborðið"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "Afrita"
 
@@ -927,7 +933,7 @@ msgstr "Ekki tókst að hefja endurauðkenningu. Reyndu aftur."
 msgid "Couldn't verify with that account. Please try again."
 msgstr "Ekki tókst að staðfesta með þeim reikningi. Reyndu aftur."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "Land"
 
@@ -937,6 +943,7 @@ msgstr "Land"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "Búa til"
 
@@ -983,7 +990,8 @@ msgstr "Bjó til {field}"
 msgid "Creating address book..."
 msgstr "Bý til tengiliðaskrá..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "Bý til tengilið..."
 
@@ -1056,10 +1064,9 @@ msgstr "Sjálfgefin röðun"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1069,15 +1076,15 @@ msgstr "Eyða"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "Eyða <0>{0}</0>?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "Eyða <0>{0}</0>? Þetta bindur einnig enda á vináttu ykkar."
 
@@ -1097,8 +1104,9 @@ msgstr "Eyða dálki"
 msgid "Delete comment"
 msgstr "Eyða athugasemd"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "Eyða tengilið"
 
@@ -1167,8 +1175,8 @@ msgstr "Eyddur hópur"
 msgid "Deleting address book..."
 msgstr "Eyði tengiliðaskrá..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "Eyði tengilið..."
 
@@ -1190,7 +1198,7 @@ msgstr "Lækkandi"
 msgid "Description"
 msgstr "Lýsing"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "Smáatriði"
 
@@ -1226,13 +1234,8 @@ msgid "Directory listing"
 msgstr "Skráarlisti"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "Henda"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "Henda breytingum?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,8 +1286,6 @@ msgstr "Lesblinduvænt"
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/contacts/index.tsx
-#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "Breyta"
@@ -1296,10 +1297,6 @@ msgstr "Breyta {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "Breyta myndatexta"
-
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "Breyta tengilið"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1346,14 +1343,14 @@ msgstr "Tölvupóstur"
 msgid "Email code"
 msgstr "Tölvupóstkóði"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "Netföng"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "Binda enda á vináttu þína við <0>{0}</0>? Tengiliðurinn verður áfram í tengiliðaskránni þinni."
 
@@ -1422,7 +1419,7 @@ msgstr "Tókst ekki að bæta við tengilið"
 msgid "Failed to add member"
 msgstr "Tókst ekki að bæta við meðlimi"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "Tókst ekki að hætta við boð"
@@ -1441,7 +1438,8 @@ msgstr "Tókst ekki að afrita"
 msgid "Failed to create address book"
 msgstr "Tókst ekki að búa til tengiliðaskrá"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "Tókst ekki að búa til tengilið"
 
@@ -1474,8 +1472,8 @@ msgstr "Tókst ekki að eyða viðhengi"
 msgid "Failed to delete comment"
 msgstr "Tókst ekki að eyða athugasemd"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "Tókst ekki að eyða tengilið"
 
@@ -1536,6 +1534,11 @@ msgstr "Ekki tókst að hlaða myndskeið"
 msgid "Failed to load your invite policy"
 msgstr "Tókst ekki að hlaða boðsstefnu þína"
 
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
+msgid "Failed to merge contacts"
+msgstr "Ekki tókst að sameina tengiliði"
+
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Failed to move"
 msgstr "Ekki tókst að færa"
@@ -1544,8 +1547,8 @@ msgstr "Ekki tókst að færa"
 msgid "Failed to post comment"
 msgstr "Tókst ekki að senda athugasemd"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "Tókst ekki að fjarlægja vin"
 
@@ -1574,7 +1577,7 @@ msgstr "Tókst ekki að vista"
 msgid "Failed to save accent"
 msgstr "Tókst ekki að vista áherslu"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "Tókst ekki að vista tengilið"
 
@@ -1595,8 +1598,8 @@ msgid "Failed to save prompt"
 msgstr "Tókst ekki að vista kvaðningu"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "Tókst ekki að senda boð"
 
@@ -1654,7 +1657,7 @@ msgstr "Flögg"
 msgid "Flat"
 msgstr "Flatt"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "Eiginnafn"
 
@@ -1663,11 +1666,7 @@ msgid "Friday"
 msgstr "Föstudagur"
 
 #: src/features/contacts/index.tsx
-msgid "Friend"
-msgstr "Vinur"
-
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "Vinur fjarlægður"
 
@@ -1746,7 +1745,7 @@ msgstr "Saga"
 msgid "Home"
 msgstr "Heim"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "Heima"
@@ -1809,7 +1808,7 @@ msgstr "Ógild dagsetning"
 msgid "Invitation accepted"
 msgstr "Boð samþykkt"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "Hætt við boð"
@@ -1819,8 +1818,8 @@ msgid "Invitation declined"
 msgstr "Boði hafnað"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "Boð sent"
 
@@ -1845,7 +1844,7 @@ msgid "Invite settings"
 msgstr "Stillingar boða"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "Boðið"
 
@@ -1991,6 +1990,20 @@ msgstr "Fjöldi meðlima"
 msgid "Menu"
 msgstr "Valmynd"
 
+#: src/features/contacts/panel.tsx
+msgctxt "combine"
+msgid "Merge"
+msgstr "Sameina"
+
+#: src/features/contacts/merge-dialog.tsx
+#: src/features/contacts/merge-dialog.tsx
+msgid "Merge contacts"
+msgstr "Sameina tengiliði"
+
+#: src/features/contacts/panel.tsx
+msgid "Merging contacts..."
+msgstr "Sameina tengiliði..."
+
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 msgid "Message"
 msgstr "Skilaboð"
@@ -2012,12 +2025,12 @@ msgstr "Heimild fyrir hljóðnema hafnað"
 msgid "Minimum length"
 msgstr "Lágmarkslengd"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "Farsími"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Mochi-vinur"
 
@@ -2068,8 +2081,8 @@ msgstr "Færi á {0}"
 msgid "Name"
 msgstr "Nafn"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "Nafn"
@@ -2079,6 +2092,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "Nafn má ekki innihalda stafi < eða >"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "Nafn er nauðsynlegt"
@@ -2111,7 +2125,7 @@ msgid "New"
 msgstr "Nýjast"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Nýr tengiliður"
 
@@ -2137,7 +2151,7 @@ msgstr "Næsti mánuður"
 msgid "Next year"
 msgstr "Næsta ár"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "Gælunafn"
 
@@ -2159,13 +2173,14 @@ msgstr "Enginn borði stilltur"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "No changes to display"
-msgstr ""
+msgstr "Engar breytingar til að birta"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "No comments yet"
 msgstr "Engar athugasemdir ennþá"
 
 #: src/features/contacts/index.tsx
+#: src/features/contacts/merge-dialog.tsx
 msgid "No contacts yet"
 msgstr "Engir tengiliðir ennþá"
 
@@ -2213,6 +2228,7 @@ msgid "No places found"
 msgstr "Engir staðir fundust"
 
 #: src/features/contacts/index.tsx
+#: src/features/contacts/merge-dialog.tsx
 msgid "No results for \"{search}\""
 msgstr "Engar niðurstöður fyrir \"{search}\""
 
@@ -2272,11 +2288,11 @@ msgstr "Venjulegt"
 #. placeholder {0}: formatFileSize(file.limit)
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: larger than {0}"
-msgstr ""
+msgstr "Ekki borið saman: stærra en {0}"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: over the size limit"
-msgstr ""
+msgstr "Ekki borið saman: yfir stærðarmörkum"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2287,7 +2303,7 @@ msgstr "Fannst ekki"
 msgid "Not set"
 msgstr "Ekki stillt"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "Athugasemd"
 
@@ -2317,10 +2333,6 @@ msgstr "Númer"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "Kveikt"
-
-#: src/features/contacts/index.tsx
-msgid "On Mochi"
-msgstr "Á Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -2366,7 +2378,7 @@ msgstr "Heiti valkosts"
 msgid "Options"
 msgstr "Valkostir"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "Fyrirtæki"
 
@@ -2374,7 +2386,7 @@ msgstr "Fyrirtæki"
 msgid "Other"
 msgstr "Annað"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "Annað"
@@ -2438,7 +2450,7 @@ msgstr "Reyndu aftur."
 msgid "Please wait a moment and try again."
 msgstr "Bíddu aðeins og reyndu aftur."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "Póstnúmer"
 
@@ -2564,7 +2576,7 @@ msgstr "Áframsendi á innskráningu."
 msgid "Reduce interest"
 msgstr "Minnka áhuga"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "Svæði"
 
@@ -2637,11 +2649,11 @@ msgstr "Fjarlægja aðgangsreglu fyrir „{0}“?"
 msgid "Remove access?"
 msgstr "Fjarlægja aðgang?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "Fjarlægja heimilisfang"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Fjarlægja netfang"
 
@@ -2664,12 +2676,12 @@ msgstr "Fjarlægja tengil"
 msgid "Remove member"
 msgstr "Fjarlægja meðlim"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Fjarlægja símanúmer"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "Fjarlægi vin..."
 
@@ -2779,7 +2791,6 @@ msgstr "Laugardagur"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2796,10 +2807,6 @@ msgstr "Vista nafn"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "Vistaðu þetta lykilorð núna. Ekki er hægt að birta það aftur."
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "Vista tengilið..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2867,6 +2874,7 @@ msgstr "Leita, fylgjast með og raða þessari sýn."
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/merge-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "Leita..."
@@ -2954,8 +2962,8 @@ msgid "Send message"
 msgstr "Senda skilaboð"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "Sendi beiðni..."
 
@@ -3061,7 +3069,7 @@ msgstr "Rúmgott"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Split"
-msgstr ""
+msgstr "Skipta"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Start the discussion by adding the first comment."
@@ -3080,7 +3088,7 @@ msgstr "Hætta að fylgjast með"
 msgid "Store silently"
 msgstr "Geyma hljóðlaust"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "Gata"
 
@@ -3106,7 +3114,7 @@ msgstr "Gerast áskrifandi"
 msgid "Sunday"
 msgstr "Sunnudagur"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "Eftirnafn"
 
@@ -3137,7 +3145,7 @@ msgstr "Merkið má mest vera 50 stafir"
 msgid "Tags"
 msgstr "Merki"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "Símanúmer"
 
@@ -3216,7 +3224,7 @@ msgstr "Þetta eyðir leiknum og spjallinu varanlega. Ekki er hægt að afturkal
 msgid "Thursday"
 msgstr "Fimmtudagur"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "Starfsheiti"
@@ -3285,8 +3293,8 @@ msgstr "Þriðjudagur"
 msgid "Type"
 msgstr "Tegund"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3330,17 +3338,17 @@ msgstr "Ekki tiltækt"
 msgid "Unexpected API error"
 msgstr "Óvænt API-villa"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "Fjarlægja vin"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Unified"
-msgstr ""
+msgstr "Sameinað"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -3406,7 +3414,7 @@ msgstr "Framvinda upphleðslu"
 msgid "Uploading..."
 msgstr "Hleð upp..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3492,7 +3500,7 @@ msgstr "Við sendum staðfestingarkóða á <0>{0}</0>. Sláðu inn kóðann hé
 msgid "Wednesday"
 msgstr "Miðvikudagur"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "Vinna"

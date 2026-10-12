@@ -78,6 +78,13 @@ export const useContactQuery = (
     ...options,
   })
 
+// The merge of two contacts as it would be saved, read without writing.
+export const useMergePreviewMutation = () =>
+  useMutation({
+    mutationFn: ({ contact, source }: { contact: string; source: string }) =>
+      contactsApi.get(contact, source),
+  })
+
 export const useBooksQuery = () =>
   useQuery<GetBooksResponse>({
     queryKey: contactKeys.books(),
@@ -118,12 +125,18 @@ export const useCreateContactMutation = (
     unknown
   >
 ) => {
+  const queryClient = useQueryClient()
   const invalidate = useInvalidateContacts()
   const { onSuccess, ...rest } = options ?? {}
   return useMutation({
     mutationFn: (payload: CreateContactRequest) => contactsApi.create(payload),
     onSuccess: (data, variables, context, mutation) => {
       invalidate()
+      // The contact as made, so the panel that opens on it shows it at once.
+      queryClient.setQueryData<GetContactResponse>(
+        contactKeys.one(data.contact.id),
+        { contact: data.contact }
+      )
       onSuccess?.(data, variables, context, mutation)
     },
     ...rest,
@@ -145,9 +158,24 @@ export const useUpdateContactMutation = (
     mutationFn: (payload: UpdateContactRequest) => contactsApi.update(payload),
     onSuccess: (data, variables, context, mutation) => {
       invalidate()
+      // The contact as saved, so the editor next opened on it starts from
+      // this card rather than the one kept from before the save.
+      queryClient.setQueryData<GetContactResponse>(
+        contactKeys.one(data.contact.id),
+        { contact: data.contact }
+      )
       queryClient.invalidateQueries({
         queryKey: contactKeys.one(variables.contact),
       })
+      // A merge writes to whichever contact survives and deletes the other.
+      if (variables.source) {
+        queryClient.invalidateQueries({
+          queryKey: contactKeys.one(data.contact.id),
+        })
+        queryClient.removeQueries({
+          queryKey: contactKeys.one(variables.source.id),
+        })
+      }
       onSuccess?.(data, variables, context, mutation)
     },
     ...rest,

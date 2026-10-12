@@ -29,7 +29,7 @@ msgstr "(ချဲ့ရန်)"
 #. placeholder {0}: file.oldPath
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "(from {0})"
-msgstr ""
+msgstr "({0} မှ)"
 
 #: ../../../lib/web/src/components/calendar/event-title.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -55,7 +55,7 @@ msgstr "{0, plural, other {အဆက်အသွယ် # ခုလည်း ၎�
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
-msgstr ""
+msgstr "{0, plural, one {ဖိုင် # ခု ပြောင်းလဲခဲ့သည်} other {ဖိုင် # ခု ပြောင်းလဲခဲ့သည်}}"
 
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
@@ -130,7 +130,7 @@ msgstr "{totalDescendants, plural, other {+ ပြန်ဖြေချက် # 
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{truncated, plural, one {# more file not shown} other {# more files not shown}}"
-msgstr ""
+msgstr "{truncated, plural, other {နောက်ထပ်ဖိုင် # ခုကို မပြပါ}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -236,7 +236,7 @@ msgstr "ဝင်ရောက်ခွင့် ထည့်မည်"
 msgid "Add account"
 msgstr "အကောင့် ထည့်မည်"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "လိပ်စာ ထည့်မည်"
 
@@ -259,7 +259,7 @@ msgstr "အဆက်အသွယ် ထည့်မည်"
 msgid "Add device"
 msgstr "ကိရိယာ ထည့်မည်"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "အီးမေးလ် ထည့်မည်"
 
@@ -299,7 +299,7 @@ msgstr "စတင်ရန် တစ်ဦးဦးကို ထည့်ပါ"
 msgid "Add tag..."
 msgstr "တက်ဂ် ထည့်ရန်..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "ဖုန်းနံပါတ် ထည့်မည်"
 
@@ -342,7 +342,7 @@ msgstr "အဖွဲ့ဝင် ထည့်နေသည်..."
 msgid "address book"
 msgstr "လိပ်စာစာအုပ်"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "လိပ်စာစာအုပ်"
 
@@ -531,10 +531,10 @@ msgstr "ပိုစတာ ပြောင်းပြီး"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Binary file not shown"
-msgstr ""
+msgstr "ဘိုင်နရီဖိုင်ကို မပြထားပါ"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "မွေးနေ့"
 
@@ -605,7 +605,6 @@ msgstr "ကင်မရာ မရနိုင်ပါ"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -642,7 +641,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "ဖျက်သိမ်းပြီး"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "ဖိတ်ကြားချက်ကို ပယ်ဖျက်နေသည်..."
@@ -707,7 +706,7 @@ msgstr "အချိန် ရွေးပါ"
 msgid "Choose language"
 msgstr "ဘာသာစကား ရွေးချယ်ပါ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "မြို့"
 
@@ -730,6 +729,7 @@ msgstr "အားလုံး ရှင်းမည်"
 
 #: ../../../lib/web/src/components/search-input.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/merge-dialog.tsx
 msgid "Clear search"
 msgstr "ရှာဖွေမှု ရှင်းမည်"
 
@@ -845,22 +845,27 @@ msgstr "ချိတ်ဆက်နေသည်..."
 msgid "Contact added"
 msgstr "အဆက်အသွယ် ထည့်ပြီးပါပြီ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+msgid "Contact copied"
+msgstr "အဆက်အသွယ် ကူးပြီးပါပြီ"
+
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "အဆက်အသွယ် ဖန်တီးပြီးပါပြီ"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "အဆက်အသွယ် ဖျက်ပြီးပါပြီ"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "အဆက်အသွယ် သိမ်းပြီးပါပြီ"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "အဆက်အသွယ်များ"
+
+#: src/features/contacts/panel.tsx
+msgid "Contacts merged"
+msgstr "အဆက်အသွယ်များ ပေါင်းစည်းပြီးပါပြီ"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -900,6 +905,7 @@ msgstr "ကလစ်ဘုတ်သို့ ကူးပြီး"
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "ကူးမည်"
 
@@ -927,7 +933,7 @@ msgstr "ပြန်လည်အတည်ပြုခြင်းကို စ�
 msgid "Couldn't verify with that account. Please try again."
 msgstr "ထိုအကောင့်ဖြင့် အတည်ပြု၍မရပါ။ ကျေးဇူးပြု၍ ထပ်မံကြိုးစားပါ။"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "နိုင်ငံ"
 
@@ -937,6 +943,7 @@ msgstr "နိုင်ငံ"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "ဖန်တီးမည်"
 
@@ -983,7 +990,8 @@ msgstr "{field} ကို ဖန်တီးခဲ့သည်"
 msgid "Creating address book..."
 msgstr "လိပ်စာစာအုပ် ဖန်တီးနေသည်..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "အဆက်အသွယ် ဖန်တီးနေသည်..."
 
@@ -1056,10 +1064,9 @@ msgstr "မူရင်း စီစဉ်မှု"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1069,15 +1076,15 @@ msgstr "ဖျက်မည်"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "<0>{0}</0> ကို ဖျက်မှာသေချာပါသလား?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "<0>{0}</0> ကို ဖျက်မှာသေချာပါသလား? ဤသည် သင်တို့၏ သူငယ်ချင်းဖြစ်မှုကိုပါ အဆုံးသတ်မည်။"
 
@@ -1097,8 +1104,9 @@ msgstr "ကော်လံ ဖျက်မည်"
 msgid "Delete comment"
 msgstr "မှတ်ချက် ဖျက်မည်"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "အဆက်အသွယ် ဖျက်မည်"
 
@@ -1167,8 +1175,8 @@ msgstr "ဖျက်ထားသော အုပ်စု"
 msgid "Deleting address book..."
 msgstr "လိပ်စာစာအုပ် ဖျက်နေသည်..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "အဆက်အသွယ် ဖျက်နေသည်..."
 
@@ -1190,7 +1198,7 @@ msgstr "ကြီးစဉ်ငယ်လိုက်"
 msgid "Description"
 msgstr "ဖော်ပြချက်"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "အသေးစိတ်များ"
 
@@ -1226,13 +1234,8 @@ msgid "Directory listing"
 msgstr "လမ်းညွှန်စာရင်း"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "ဖျက်ပစ်ရန်"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "အပြောင်းအလဲများကို ဖျက်ပစ်မလား။"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,8 +1286,6 @@ msgstr "စာဖတ်ရခက်သူများအတွက်ရိုး
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/contacts/index.tsx
-#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "တည်းဖြတ်"
@@ -1296,10 +1297,6 @@ msgstr "{label} ကို တည်းဖြတ်ပါ"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "စာတန်းကို ပြင်ဆင်ရန်"
-
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "အဆက်အသွယ် တည်းဖြတ်မည်"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1346,14 +1343,14 @@ msgstr "အီးမေးလ်"
 msgid "Email code"
 msgstr "အီးမေးလ် ကုဒ်"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "အီးမေးလ်များ"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "<0>{0}</0> နှင့် သူငယ်ချင်းဖြစ်မှုကို အဆုံးသတ်မှာသေချာပါသလား? အဆက်အသွယ်မှာ သင့်လိပ်စာစာအုပ်ထဲတွင် ဆက်ရှိနေမည်။"
 
@@ -1422,7 +1419,7 @@ msgstr "အဆက်အသွယ် ထည့်၍ မရပါ"
 msgid "Failed to add member"
 msgstr "အဖွဲ့ဝင် ထည့်၍ မရပါ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "ဖိတ်ကြားမှု ပယ်ဖျက်၍ မရပါ"
@@ -1441,7 +1438,8 @@ msgstr "ကူးယူ၍ မရပါ"
 msgid "Failed to create address book"
 msgstr "လိပ်စာစာအုပ် ဖန်တီး၍ မရပါ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "အဆက်အသွယ် ဖန်တီး၍ မရပါ"
 
@@ -1474,8 +1472,8 @@ msgstr "တွဲဖက်ဖိုင် ဖျက်၍ မရပါ"
 msgid "Failed to delete comment"
 msgstr "မှတ်ချက် ဖျက်၍ မရပါ"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "အဆက်အသွယ် ဖျက်၍ မရပါ"
 
@@ -1536,6 +1534,11 @@ msgstr "ဗီဒီယိုကို ဖွင့်၍မရပါ"
 msgid "Failed to load your invite policy"
 msgstr "သင့်ဖိတ်ကြားမှု မူဝါဒ တင်၍ မရပါ"
 
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
+msgid "Failed to merge contacts"
+msgstr "အဆက်အသွယ်များ ပေါင်းစည်း၍မရပါ"
+
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Failed to move"
 msgstr "ရွှေ့၍ မရပါ"
@@ -1544,8 +1547,8 @@ msgstr "ရွှေ့၍ မရပါ"
 msgid "Failed to post comment"
 msgstr "မှတ်ချက် တင်၍ မရပါ"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "သူငယ်ချင်း ဖယ်ရှား၍ မရပါ"
 
@@ -1574,7 +1577,7 @@ msgstr "သိမ်း၍ မရပါ"
 msgid "Failed to save accent"
 msgstr "အသံထွက် သိမ်း၍ မရပါ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "အဆက်အသွယ် သိမ်း၍ မရပါ"
 
@@ -1595,8 +1598,8 @@ msgid "Failed to save prompt"
 msgstr "လမ်းညွှန် သိမ်း၍ မရပါ"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "ဖိတ်ကြားချက် ပို့၍ မရပါ"
 
@@ -1654,7 +1657,7 @@ msgstr "အလံများ"
 msgid "Flat"
 msgstr "ပြားသော"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "ကိုယ်ပိုင်အမည်"
 
@@ -1663,11 +1666,7 @@ msgid "Friday"
 msgstr "သောကြာ"
 
 #: src/features/contacts/index.tsx
-msgid "Friend"
-msgstr "သူငယ်ချင်း"
-
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "သူငယ်ချင်းကို ဖယ်ရှားပြီးပါပြီ"
 
@@ -1746,7 +1745,7 @@ msgstr "မှတ်တမ်း"
 msgid "Home"
 msgstr "ပင်မ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "အိမ်"
@@ -1809,7 +1808,7 @@ msgstr "မမှန်ကန်သော ရက်စွဲ"
 msgid "Invitation accepted"
 msgstr "ဖိတ်ကြားမှု လက်ခံပြီးပါပြီ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "ဖိတ်ကြားမှု ပယ်ဖျက်ပြီးပါပြီ"
@@ -1819,8 +1818,8 @@ msgid "Invitation declined"
 msgstr "ဖိတ်ကြားမှု ငြင်းပယ်ပြီးပါပြီ"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "ဖိတ်ကြားမှု ပို့ပြီးပါပြီ"
 
@@ -1845,7 +1844,7 @@ msgid "Invite settings"
 msgstr "ဖိတ်ကြားမှု ဆက်တင်များ"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "ဖိတ်ကြားထား"
 
@@ -1991,6 +1990,20 @@ msgstr "အဖွဲ့ဝင် အရေအတွက်"
 msgid "Menu"
 msgstr "မီနူး"
 
+#: src/features/contacts/panel.tsx
+msgctxt "combine"
+msgid "Merge"
+msgstr "ပေါင်းစည်းရန်"
+
+#: src/features/contacts/merge-dialog.tsx
+#: src/features/contacts/merge-dialog.tsx
+msgid "Merge contacts"
+msgstr "အဆက်အသွယ်များ ပေါင်းစည်းရန်"
+
+#: src/features/contacts/panel.tsx
+msgid "Merging contacts..."
+msgstr "အဆက်အသွယ်များ ပေါင်းစည်းနေသည်..."
+
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 msgid "Message"
 msgstr "မက်ဆေ့ဂျ်"
@@ -2012,12 +2025,12 @@ msgstr "မိုက်ခရိုဖုန်း ခွင့်ပြုခ�
 msgid "Minimum length"
 msgstr "အနည်းဆုံး အရှည်"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "မိုဘိုင်း"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "Mochi သူငယ်ချင်း"
 
@@ -2068,8 +2081,8 @@ msgstr "{0} သို့ ရွှေ့နေသည်"
 msgid "Name"
 msgstr "အမည်"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "အမည်"
@@ -2079,6 +2092,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "အမည်တွင် < သို့မဟုတ် > စာလုံးများ မပါဝင်ရ"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "အမည် လိုအပ်သည်"
@@ -2111,7 +2125,7 @@ msgid "New"
 msgstr "အသစ်ဆုံး"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "အဆက်အသွယ်အသစ်"
 
@@ -2137,7 +2151,7 @@ msgstr "နောက်လ"
 msgid "Next year"
 msgstr "နောက်နှစ်"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "အမည်ပြောင်"
 
@@ -2159,13 +2173,14 @@ msgstr "ပိုစတာ မသတ်မှတ်ထားပါ"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "No changes to display"
-msgstr ""
+msgstr "ပြသရန် ပြောင်းလဲမှုများ မရှိပါ"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "No comments yet"
 msgstr "comment များ မရှိသေးပါ"
 
 #: src/features/contacts/index.tsx
+#: src/features/contacts/merge-dialog.tsx
 msgid "No contacts yet"
 msgstr "အဆက်အသွယ် မရှိသေးပါ"
 
@@ -2213,6 +2228,7 @@ msgid "No places found"
 msgstr "နေရာများ မတွေ့ပါ"
 
 #: src/features/contacts/index.tsx
+#: src/features/contacts/merge-dialog.tsx
 msgid "No results for \"{search}\""
 msgstr "\"{search}\" အတွက် ရလဒ်မရှိပါ"
 
@@ -2272,11 +2288,11 @@ msgstr "ပုံမှန်"
 #. placeholder {0}: formatFileSize(file.limit)
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: larger than {0}"
-msgstr ""
+msgstr "နှိုင်းယှဉ်မထားပါ - {0} ထက်ကြီးသည်"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: over the size limit"
-msgstr ""
+msgstr "နှိုင်းယှဉ်မထားပါ - အရွယ်အစားကန့်သတ်ချက်ကို ကျော်လွန်သည်"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2287,7 +2303,7 @@ msgstr "ရှာမတွေ့ပါ"
 msgid "Not set"
 msgstr "မသတ်မှတ်ထားပါ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "မှတ်စု"
 
@@ -2317,10 +2333,6 @@ msgstr "နံပါတ်"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "ဖွင့်"
-
-#: src/features/contacts/index.tsx
-msgid "On Mochi"
-msgstr "Mochi ပေါ်တွင်"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -2366,7 +2378,7 @@ msgstr "ရွေးချယ်စရာ အမည်"
 msgid "Options"
 msgstr "ရွေးချယ်စရာများ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "အဖွဲ့အစည်း"
 
@@ -2374,7 +2386,7 @@ msgstr "အဖွဲ့အစည်း"
 msgid "Other"
 msgstr "အခြား"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "အခြား"
@@ -2438,7 +2450,7 @@ msgstr "ကျေးဇူးပြု၍ ထပ်ကြိုးစားပ�
 msgid "Please wait a moment and try again."
 msgstr "ကျေးဇူးပြု၍ ခဏစောင့်ပြီး ထပ်စမ်းကြည့်ပါ။"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "စာတိုက်သင်္ကေတ"
 
@@ -2564,7 +2576,7 @@ msgstr "ဝင်ရောက်ခြင်း သို့ လမ်းကြ�
 msgid "Reduce interest"
 msgstr "စိတ်ဝင်စားမှု လျှော့ချ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "ဒေသ"
 
@@ -2637,11 +2649,11 @@ msgstr "\"{0}\" အတွက် ဝင်ရောက်ခွင့်စည်
 msgid "Remove access?"
 msgstr "ဝင်ရောက်ခွင့် ဖယ်ရှားမလား?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "လိပ်စာ ဖယ်ရှားမည်"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "အီးမေးလ် ဖယ်ရှားမည်"
 
@@ -2664,12 +2676,12 @@ msgstr "လင့်ခ် ဖယ်ရှားရန်"
 msgid "Remove member"
 msgstr "အဖွဲ့ဝင် ဖယ်ရှား"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "ဖုန်းနံပါတ် ဖယ်ရှားမည်"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "သူငယ်ချင်းကို ဖယ်ရှားနေသည်..."
 
@@ -2779,7 +2791,6 @@ msgstr "စနေနေ့"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2796,10 +2807,6 @@ msgstr "အမည် သိမ်းပါ"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "ဤစကားဝှက်ကို ယခုသိမ်းပါ။ ထပ်မံ ပြသ၍ မရပါ။"
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "အဆက်အသွယ် သိမ်းနေသည်..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2867,6 +2874,7 @@ msgstr "ဤ ကြည့်ရှုမှု ကို ရှာဖွေ၊ �
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/merge-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "ရှာဖွေ..."
@@ -2954,8 +2962,8 @@ msgid "Send message"
 msgstr "မက်ဆေ့ပို့မည်"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "ဖိတ်ကြားချက် ပို့နေသည်..."
 
@@ -3061,7 +3069,7 @@ msgstr "ကျယ်ပြန့်သော"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Split"
-msgstr ""
+msgstr "ခွဲခြားမည်"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Start the discussion by adding the first comment."
@@ -3080,7 +3088,7 @@ msgstr "ကြည့်ရှုခြင်း ရပ်မည်"
 msgid "Store silently"
 msgstr "တိတ်တိတ်သိမ်းမည်"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "လမ်း"
 
@@ -3106,7 +3114,7 @@ msgstr "စာရင်းသွင်းမည်"
 msgid "Sunday"
 msgstr "တနင်္ဂနွေ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "မျိုးရိုးအမည်"
 
@@ -3137,7 +3145,7 @@ msgstr "တဂ်သည် စာလုံး ၅၀ သို့မဟုတ်
 msgid "Tags"
 msgstr "တက်ဂ်များ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "ဖုန်းနံပါတ်များ"
 
@@ -3216,7 +3224,7 @@ msgstr "ဤလုပ်ဆောင်ချက်သည် ဂိမ်းန�
 msgid "Thursday"
 msgstr "ကြာသပတေး"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "ရာထူး"
@@ -3285,8 +3293,8 @@ msgstr "အင်္ဂါ"
 msgid "Type"
 msgstr "အမျိုးအစား"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3330,17 +3338,17 @@ msgstr "မရရှိနိုင်ပါ"
 msgid "Unexpected API error"
 msgstr "မမျှော်လင့်သော API အမှား"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "သူငယ်ချင်းဖြုတ်မည်"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Unified"
-msgstr ""
+msgstr "ပေါင်းစပ်ထား"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -3406,7 +3414,7 @@ msgstr "အပ်လုဒ်တိုးတက်မှု"
 msgid "Uploading..."
 msgstr "Upload လုပ်နေသည်..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3492,7 +3500,7 @@ msgstr "<0>{0}</0> သို့ အတည်ပြုကုဒ် ပို့�
 msgid "Wednesday"
 msgstr "ဗုဒ္ဓဟူး"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "အလုပ်"

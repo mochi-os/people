@@ -309,6 +309,163 @@ def card_merge(card, properties):
 		return None
 	return kept
 
+# Properties a card holds one of. In a merge the surviving card's stands and
+# the other card's fills a gap; the other card's UID never moves.
+_SINGLE = ["FN", "N", "NICKNAME", "BDAY", "ORG", "TITLE", "VERSION", "PRODID", "REV", "KIND", "GENDER", "ANNIVERSARY", "TZ", "GEO", "PHOTO", "LOGO", "SOUND", "CLASS", "SORT-STRING"]
+
+# merge_pair(first, second) -> (survivor, absorbed) or None: the card that
+# survives a merge is the one linked to a Mochi person, whichever was opened.
+# The other card is deleted, and deleting a linked card would end its
+# friendship or cancel its invite, so two linked cards are never merged.
+def merge_pair(first, second):
+	if second["person"]:
+		if first["person"]:
+			return None
+		return (second, first)
+	return (first, second)
+
+# merge_key(p) -> tuple: what makes two properties the same value. An email
+# ignores case and a phone everything but its digits, so "+44 20 7946 0000"
+# and "+442079460000" are one number.
+def merge_key(p):
+	name = p.get("name", "").upper()
+	value = p.get("value", "")
+	if type(value) != "string":
+		value = ""
+	value = value.strip()
+	if name == "EMAIL":
+		value = value.lower()
+	elif name == "TEL":
+		value = "".join([c for c in value.elems() if c in "+0123456789"])
+	return (name, value)
+
+# components(value) -> list: a structured value split on its unescaped
+# semicolons, each component kept as written, escapes included, so joining
+# them with ";" gives the value back.
+def components(value):
+	parts = []
+	current = ""
+	escaped = False
+	for c in value.elems():
+		if escaped:
+			current += c
+			escaped = False
+		elif c == "\\":
+			current += c
+			escaped = True
+		elif c == ";":
+			parts.append(current)
+			current = ""
+		else:
+			current += c
+	parts.append(current)
+	return parts
+
+# name_fill(value, other) -> string: the name N value with each empty
+# component - family, given, additional, prefix, suffix - taken from other,
+# so a forename on one card and a surname on the other make one name.
+def name_fill(value, other):
+	if type(value) != "string" or type(other) != "string":
+		return value
+	mine = components(value)
+	theirs = components(other)
+	for i in range(len(theirs)):
+		if i >= len(mine):
+			mine.append("")
+		if not mine[i].strip() and theirs[i].strip():
+			mine[i] = theirs[i]
+	return ";".join(mine)
+
+# card_combine(first, second, photo=False) -> list: one card holding both. The
+# first card's properties all stay. From the second: every email, phone,
+# address, URL and other value the first lacks; a single-valued property only
+# where the first has none; the parts of its name the first's leaves empty;
+# its note joined to the first's. An iOS label (X-ABLABEL) follows the value
+# it names, so a duplicate takes its label with it, and a group the first card
+# already uses is renamed. photo says the first card shows a friend's photo,
+# which a stored PHOTO would hide.
+def card_combine(first, second, photo=False):
+	out = []
+	names = {}
+	seen = {}
+	used = {}
+	note = -1
+	for p in first:
+		if type(p) != "dict" or p.get("name", "").upper() in _RESERVED:
+			continue
+		name = p.get("name", "").upper()
+		names[name] = True
+		seen[merge_key(p)] = True
+		if p.get("group"):
+			used[p["group"].lower()] = True
+		if name == "NOTE" and note < 0:
+			note = len(out)
+		out.append(p)
+	extra = [p for p in second if type(p) == "dict" and p.get("name", "").upper() not in _RESERVED and p.get("name", "").upper() != "UID"]
+	dropped = {}
+	for p in extra:
+		name = p.get("name", "").upper()
+		if name == "X-ABLABEL" or name == "NOTE":
+			continue
+		if (name in _SINGLE and name in names) or (name == "PHOTO" and photo) or merge_key(p) in seen:
+			if p.get("group"):
+				dropped[p["group"].lower()] = True
+	renamed = {}
+	number = 1
+	for p in extra:
+		group = p.get("group", "")
+		if not group or group.lower() in dropped or group.lower() in renamed or group.lower() not in used:
+			continue
+		for _ in range(len(used) + len(extra) + 1):
+			candidate = "item" + str(number)
+			number += 1
+			if candidate not in used:
+				break
+		used[candidate] = True
+		renamed[group.lower()] = candidate
+	for p in extra:
+		name = p.get("name", "").upper()
+		group = p.get("group", "")
+		if name == "N" and name in names:
+			for i in range(len(out)):
+				if out[i].get("name", "").upper() == "N":
+					filled = dict(out[i])
+					filled["value"] = name_fill(filled.get("value", ""), p.get("value", ""))
+					out[i] = filled
+					break
+			continue
+		if group and group.lower() in dropped:
+			continue
+		if name == "NOTE":
+			text = p.get("value", "")
+			if type(text) != "string" or not text.strip():
+				continue
+			if note >= 0:
+				existing = out[note].get("value", "")
+				if text.strip() not in [part.strip() for part in existing.split("\n\n")]:
+					joined = dict(out[note])
+					joined["value"] = (existing + "\n\n" + text) if existing.strip() else text
+					out[note] = joined
+				continue
+			note = len(out)
+		elif name != "X-ABLABEL":
+			if (name in _SINGLE and name in names) or (name == "PHOTO" and photo):
+				continue
+			key = merge_key(p)
+			if key in seen:
+				continue
+			seen[key] = True
+		if group and group.lower() in renamed:
+			p = dict(p)
+			p["group"] = renamed[group.lower()]
+		out.append(p)
+	return out
+
+# card_merged(survivor, absorbed) -> list: the survivor's card holding the
+# absorbed card's details too.
+def card_merged(survivor, absorbed):
+	return card_combine(card_decode(survivor["card"]), card_decode(absorbed["card"]), bool(survivor.get("photo")))
+
 # card_name(card) -> string: the label for a card, from FN. The label reaches
 # every friends-service caller and every list, so it is one line, bounded,
 # and free of markup characters; the card keeps FN exactly as written.
@@ -617,7 +774,34 @@ def action_contact_get(a):
 	if not row:
 		a.error.label(404, "errors.contact_not_found")
 		return
-	return {"data": {"contact": contact_full(row)}}
+	source = a.input("source", "")
+	if not source:
+		return {"data": {"contact": contact_full(row)}}
+	# A merge is previewed here: the contact that survives, its card holding
+	# both cards' details, and the contact it absorbs.
+	pair = merge_rows(a, identity, row, source)
+	if not pair:
+		return
+	survivor, absorbed = pair
+	out = contact_full(survivor)
+	out["card"] = card_photo(survivor, card_merged(survivor, absorbed))
+	return {"data": {"contact": out, "source": contact_full(absorbed)}}
+
+# merge_rows(a, identity, row, source) -> (survivor, absorbed) or None, having
+# answered the error: the pair for merging row with the contact source names.
+def merge_rows(a, identity, row, source):
+	other = contact_get(identity, source)
+	if not other:
+		a.error.label(404, "errors.contact_not_found")
+		return None
+	if other["id"] == row["id"]:
+		a.error.label(400, "errors.contact_same")
+		return None
+	pair = merge_pair(row, other)
+	if not pair:
+		a.error.label(409, "errors.contacts_linked")
+		return None
+	return pair
 
 def action_contact_create(a):
 	identity = a.user.identity.id
@@ -625,11 +809,27 @@ def action_contact_create(a):
 	if body == None:
 		a.error.label(400, "errors.invalid_properties")
 		return
-	card = card_merge([], body.get("properties", []))
+	# A copy names the contact it was made from and starts from that card, so
+	# what the editor does not show - a photo, a client's own fields, the
+	# labels it groups values under - comes with it, while the editor's own
+	# properties replace the card's. The card's UID stays with the original.
+	base = []
+	source = body.get("source", "")
+	if source:
+		if type(source) != "string":
+			a.error.label(400, "errors.missing_contact_id")
+			return
+		original = contact_get(identity, source)
+		if not original:
+			a.error.label(404, "errors.contact_not_found")
+			return
+		base = [p for p in card_decode(original["card"]) if type(p) == "dict" and p.get("name") != "UID"]
+	card = card_merge(base, body.get("properties", []))
 	if card == None:
 		a.error.label(400, "errors.invalid_properties")
 		return
-	if len(card_encode(card)) > _CARD_MAXIMUM:
+	# A copied card may carry the photo a phone stored, as an updated one may.
+	if len(card_encode(card)) > (_DAV_CARD_MAXIMUM if source else _CARD_MAXIMUM):
 		a.error.label(400, "errors.contact_too_large")
 		return
 	person = body.get("person", "")
@@ -696,7 +896,24 @@ def action_contact_update(a):
 	if expected and expected != row["etag"]:
 		a.error.label(412, "errors.contact_changed")
 		return
-	card = card_decode(row["card"])
+	# A merge names the contact absorbed into this one. The survivor takes the
+	# absorbed card's details, the submission replaces the managed properties
+	# as it does for any update, and the absorbed contact is then deleted.
+	absorbed = None
+	source = body.get("source")
+	if source != None:
+		if type(source) != "dict" or type(source.get("id")) != "string" or not source["id"]:
+			a.error.label(400, "errors.missing_contact_id")
+			return
+		pair = merge_rows(a, identity, row, source["id"])
+		if not pair:
+			return
+		match = source.get("etag", "")
+		if match and match != (pair[1] if pair[0]["id"] == row["id"] else pair[0])["etag"]:
+			a.error.label(412, "errors.contact_changed")
+			return
+		row, absorbed = pair
+	card = card_merged(row, absorbed) if absorbed else card_decode(row["card"])
 	if "properties" in body:
 		card = card_merge(card, body.get("properties"))
 		if card == None:
@@ -735,6 +952,15 @@ def action_contact_update(a):
 	book_touch(book, row["id"])
 	if book != row["book"]:
 		book_touch(row["book"])
+	# The absorbed contact holds no person, so deleting it ends nothing. It
+	# goes only as it was merged: one changed since is left in place, where the
+	# merge loses nothing.
+	if absorbed:
+		mochi.db.execute("delete from contacts where id=? and identity=? and etag=?", absorbed["id"], identity, absorbed["etag"])
+		if not contact_get(identity, absorbed["id"]):
+			photo_delete(absorbed)
+			book_touch(absorbed["book"], absorbed["id"], 1)
+			changes_prune(identity)
 	return {"data": {"contact": contact_full(after)}}
 
 def action_contact_delete(a):

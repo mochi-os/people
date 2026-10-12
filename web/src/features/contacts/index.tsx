@@ -2,12 +2,11 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { useMemo, useState } from 'react'
-import { useNavigate } from '@tanstack/react-router'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useRouter } from '@tanstack/react-router'
 import { APP_ROUTES } from '@/config/app-routes'
 import { Trans, useLingui } from '@lingui/react/macro'
 import {
-  Badge,
   Button,
   ConfirmDialog,
   DropdownMenu,
@@ -27,10 +26,12 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  getAppPath,
   getErrorMessage,
   naturalCompare,
   shellNavigateExternal,
   toastAction,
+  useKeyboardShortcuts,
   useListAutoAnimate,
   usePageTitle,
 } from '@mochi/web'
@@ -38,7 +39,6 @@ import {
   BookUser,
   MessageSquare,
   MoreHorizontal,
-  Pencil,
   Send,
   Trash2,
   UserPlus,
@@ -55,6 +55,7 @@ import {
   useRemoveFriendMutation,
 } from '@/hooks/useContacts'
 import { AddContactDialog } from './add-dialog'
+import { ContactPanel } from './panel'
 
 type SortBy = 'name' | 'recent'
 
@@ -68,9 +69,22 @@ const closedDialog: ContactDialog = { open: false, contact: null }
 export function Contacts({
   book,
   autoAdd,
-}: { book?: string; autoAdd?: boolean } = {}) {
+  open,
+  create,
+}: {
+  book?: string
+  autoAdd?: boolean
+  /** The contact to open in the panel, from a link to it. */
+  open?: string
+  /** Open the panel on a new contact. */
+  create?: boolean
+} = {}) {
   const { t } = useLingui()
-  const navigate = useNavigate()
+  const router = useRouter()
+  // The contact in the side panel, or a new one ({} with no id).
+  const [panel, setPanel] = useState<{ id?: string } | null>(
+    open ? { id: open } : create ? {} : null
+  )
   const [search, setSearch] = useState('')
   const [sortBy, setSortBy] = useState<SortBy>('name')
   const [addDialogOpen, setAddDialogOpen] = useState(autoAdd ?? false)
@@ -171,9 +185,53 @@ export function Contacts({
     shellNavigateExternal(url)
   }
 
-  const edit = (contact: Contact) => {
-    void navigate({ to: '/contacts/$id', params: { id: contact.id } })
-  }
+  const edit = (contact: Contact) => setPanel({ id: contact.id })
+
+  // The URL names the contact in the panel, as a project's does its object,
+  // so a link to it opens it. It is replaced in place, with the router's
+  // subscribers held off, so the list stays mounted beneath; replaceState
+  // keeps the shell's copy of the URL in step.
+  // The app's path is read once, before the panel has changed the address it
+  // can be read from.
+  const [base] = useState(() => getAppPath() || '')
+  const mounted = useRef(false)
+  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true
+      return
+    }
+    const path = panel?.id
+      ? `${base}/contacts/${panel.id}`
+      : book
+        ? `${base}/books/${book}`
+        : `${base}/`
+    const history = router.history as unknown as {
+      _ignoreSubscribers?: boolean
+    }
+    history._ignoreSubscribers = true
+    try {
+      window.history.replaceState(null, '', path)
+    } finally {
+      history._ignoreSubscribers = false
+    }
+  }, [panel?.id, book, base, router])
+
+  // While a contact is open, the next and previous keys step through the
+  // list as it is shown.
+  const step = useCallback(
+    (by: number) => {
+      if (!panel?.id || filtered.length === 0) return
+      const index = filtered.findIndex((contact) => contact.id === panel.id)
+      const next = (index + by + filtered.length) % filtered.length
+      setPanel({ id: filtered[next].id })
+    },
+    [panel?.id, filtered]
+  )
+  useKeyboardShortcuts({
+    onSelectNext: () => step(1),
+    onSelectPrevious: () => step(-1),
+    enabled: Boolean(panel?.id),
+  })
 
   return (
     <>
@@ -257,9 +315,12 @@ export function Contacts({
                     : ''
                 const invited = sentPersons.has(contact.person)
                 return (
+                  // A click anywhere on the row opens the contact; the name
+                  // is the keyboard's way in.
                   <div
                     key={contact.id}
-                    className='hover:bg-hover flex items-center gap-3 px-4 py-3 transition-colors'
+                    className='hover:bg-hover flex cursor-pointer items-center gap-3 px-4 py-3 transition-colors'
+                    onClick={() => edit(contact)}
                   >
                     {contact.person ? (
                       <EntityAvatar
@@ -275,30 +336,27 @@ export function Contacts({
                       <EntityAvatar name={contact.name} size='lg' />
                     )}
                     <div className='flex min-w-0 flex-1 flex-col'>
-                      <span className='flex items-center gap-2 font-medium'>
-                        <span className='truncate'>
-                          <HighlightText text={contact.name} query={search} />
-                        </span>
-                        {contact.friend ? (
-                          <Badge variant='secondary' className='shrink-0'>
-                            <Trans>Friend</Trans>
-                          </Badge>
-                        ) : contact.person ? (
-                          <Badge variant='outline' className='shrink-0'>
-                            <Trans>On Mochi</Trans>
-                          </Badge>
-                        ) : null}
-                      </span>
+                      <button
+                        type='button'
+                        className='focus-visible:ring-primary/40 truncate rounded-sm text-start font-medium outline-none focus-visible:ring-2'
+                        onClick={() => edit(contact)}
+                      >
+                        <HighlightText text={contact.name} query={search} />
+                      </button>
                       {subtitle ? (
                         <span className='text-muted-foreground truncate text-xs'>
                           {subtitle}
                         </span>
                       ) : null}
                     </div>
-                    {/* Below sm three labelled buttons leave the name a
-                        letter or two. Message keeps its icon, and Edit
-                        moves into the row's menu. */}
-                    <div className='flex shrink-0 items-center gap-2'>
+                    {/* Below sm Message keeps only its icon, leaving the
+                        name its room. A click on a button or in the menu,
+                        whose items bubble here through the portal, stays out
+                        of the row's own click. */}
+                    <div
+                      className='flex shrink-0 items-center gap-2'
+                      onClick={(event) => event.stopPropagation()}
+                    >
                       {contact.friend ? (
                         <Button
                           variant='outline'
@@ -311,15 +369,6 @@ export function Contacts({
                           </span>
                         </Button>
                       ) : null}
-                      <Button
-                        variant='outline'
-                        size='sm'
-                        className='max-sm:hidden'
-                        onClick={() => edit(contact)}
-                      >
-                        <Pencil className='h-4 w-4' />
-                        <Trans>Edit</Trans>
-                      </Button>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button
@@ -330,13 +379,6 @@ export function Contacts({
                           />
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align='end'>
-                          <DropdownMenuItem
-                            className='sm:hidden'
-                            onSelect={() => edit(contact)}
-                          >
-                            <Pencil className='size-4' />
-                            <Trans>Edit</Trans>
-                          </DropdownMenuItem>
                           {contact.person && !contact.friend && !invited ? (
                             <DropdownMenuItem onSelect={() => invite(contact)}>
                               <Send className='size-4' />
@@ -376,7 +418,18 @@ export function Contacts({
           open={addDialogOpen}
           onOpenChange={setAddDialogOpen}
           book={book}
+          onNew={() => setPanel({})}
         />
+
+        {panel && (
+          <ContactPanel
+            key={panel.id ?? 'new'}
+            id={panel.id}
+            book={book}
+            onOpen={(id) => setPanel({ id })}
+            onClose={() => setPanel(null)}
+          />
+        )}
 
         <ConfirmDialog
           open={unfriendDialog.open}

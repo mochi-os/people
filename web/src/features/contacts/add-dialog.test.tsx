@@ -33,13 +33,13 @@ const profile = {
   style: { accent: '' },
 }
 
-// The requests the dialog makes, what the search finds, and where it navigates.
+// The requests the dialog makes, what the search finds, and New contact.
 const calls = vi.hoisted(() => ({
   create: vi.fn(),
   invite: vi.fn(),
   accept: vi.fn(),
   information: vi.fn(),
-  navigate: vi.fn(),
+  start: vi.fn(),
   results: [] as unknown[],
 }))
 
@@ -48,7 +48,7 @@ beforeEach(() => {
   calls.invite = vi.fn().mockResolvedValue({})
   calls.accept = vi.fn().mockResolvedValue({})
   calls.information = vi.fn().mockResolvedValue({})
-  calls.navigate = vi.fn()
+  calls.start = vi.fn()
   calls.results = [person]
 })
 
@@ -77,14 +77,12 @@ vi.mock('@/hooks/useContacts', () => ({
 vi.mock('@/api/person', () => ({
   personApi: { getInformation: (id: string) => calls.information(id) },
 }))
-vi.mock('@tanstack/react-router', () => ({
-  useNavigate: () => calls.navigate,
-}))
 
 function dialog(
   props: {
     book?: string
     link?: { contact: string; name: string }
+    onNew?: () => void
   },
   open = true
 ) {
@@ -102,6 +100,7 @@ const client = new QueryClient()
 function show(props: {
   book?: string
   link?: { contact: string; name: string }
+  onNew?: () => void
 }) {
   return render(dialog(props))
 }
@@ -195,12 +194,14 @@ describe('AddContactDialog', () => {
       expect(icon.getAttribute('class')).not.toMatch(/\bm[se]-2\b/)
   })
 
-  it('starts a new contact in the book being viewed', () => {
-    show({ book: 'b2' })
+  it('starts a new contact where the list asks', () => {
+    show({ book: 'b2', onNew: calls.start })
     fireEvent.click(screen.getByRole('button', { name: /New contact/ }))
-    expect(calls.navigate).toHaveBeenCalledWith({
-      to: '/contacts/new',
-      search: { book: 'b2' },
-    })
+    expect(calls.start).toHaveBeenCalledTimes(1)
+  })
+
+  it('offers no new contact while linking a card', () => {
+    show({ link: { contact: 'c1', name: 'Ada Lovelace' } })
+    expect(screen.queryByRole('button', { name: /New contact/ })).toBeNull()
   })
 })

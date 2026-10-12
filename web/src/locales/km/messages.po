@@ -29,7 +29,7 @@ msgstr "(ពង្រីក)"
 #. placeholder {0}: file.oldPath
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "(from {0})"
-msgstr ""
+msgstr "(ពី {0})"
 
 #: ../../../lib/web/src/components/calendar/event-title.tsx
 #: ../../../lib/web/src/components/calendar/tooltip.ts
@@ -55,7 +55,7 @@ msgstr "{0, plural, other {ទំនាក់ទំនង # ក៏ត្រូ�
 #. placeholder {0}: files.length
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{0, plural, one {# file changed} other {# files changed}}"
-msgstr ""
+msgstr "{0, plural, one {បានផ្លាស់ប្ដូរឯកសារ #} other {បានផ្លាស់ប្ដូរឯកសារ #}}"
 
 #. placeholder {0}: visible.length
 #: ../../../lib/web/src/components/inline-entity-search.tsx
@@ -130,7 +130,7 @@ msgstr "{totalDescendants, plural, other {+# ការឆ្លើយតបប�
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "{truncated, plural, one {# more file not shown} other {# more files not shown}}"
-msgstr ""
+msgstr "{truncated, plural, other {ឯកសារ # ទៀតមិនបានបង្ហាញ}}"
 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 msgid "{unreadCount, plural, one {Open menu (# unread notification)} other {Open menu (# unread notifications)}}"
@@ -236,7 +236,7 @@ msgstr "បន្ថែមការចូលប្រើ"
 msgid "Add account"
 msgstr "បន្ថែមគណនី"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add address"
 msgstr "បន្ថែមអាសយដ្ឋាន"
 
@@ -259,7 +259,7 @@ msgstr "បន្ថែមទំនាក់ទំនង"
 msgid "Add device"
 msgstr "បន្ថែមឧបករណ៍"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add email"
 msgstr "បន្ថែមអ៊ីមែល"
 
@@ -299,7 +299,7 @@ msgstr "បន្ថែមនរណាម្នាក់ដើម្បីចា
 msgid "Add tag..."
 msgstr "បន្ថែមស្លាក..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Add telephone"
 msgstr "បន្ថែមលេខទូរស័ព្ទ"
 
@@ -342,7 +342,7 @@ msgstr "កំពុងបន្ថែមសមាជិក..."
 msgid "address book"
 msgstr "សៀវភៅអាសយដ្ឋាន"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Address book"
 msgstr "សៀវភៅអាសយដ្ឋាន"
 
@@ -531,10 +531,10 @@ msgstr "បានធ្វើបច្ចុប្បន្នភាពបដា
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Binary file not shown"
-msgstr ""
+msgstr "ឯកសារ​គោលពីរ​មិន​ត្រូវ​បាន​បង្ហាញ​ទេ"
 
 #: src/features/contacts/birthday.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Birthday"
 msgstr "ថ្ងៃកំណើត"
 
@@ -605,7 +605,6 @@ msgstr "កាមេរ៉ាមិនអាចប្រើបាន"
 #: ../../../lib/web/src/features/accounts/account-verify.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/groups/member-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
@@ -642,7 +641,7 @@ msgctxt "event status"
 msgid "Cancelled"
 msgstr "បានបោះបង់"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Cancelling invitation..."
 msgstr "កំពុងលុបចោលការអញ្ជើញ..."
@@ -707,7 +706,7 @@ msgstr "ជ្រើសរើសម៉ោង"
 msgid "Choose language"
 msgstr "ជ្រើសរើសភាសា"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "City"
 msgstr "ទីក្រុង"
 
@@ -730,6 +729,7 @@ msgstr "សម្អាតទាំងអស់"
 
 #: ../../../lib/web/src/components/search-input.tsx
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/merge-dialog.tsx
 msgid "Clear search"
 msgstr "សម្អាតការស្វែងរក"
 
@@ -845,22 +845,27 @@ msgstr "កំពុងភ្ជាប់..."
 msgid "Contact added"
 msgstr "បានបន្ថែមទំនាក់ទំនង"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+msgid "Contact copied"
+msgstr "បានចម្លងទំនាក់ទំនង"
+
+#: src/features/contacts/panel.tsx
 msgid "Contact created"
 msgstr "បានបង្កើតទំនាក់ទំនង"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contact deleted"
 msgstr "បានលុបទំនាក់ទំនង"
 
-#: src/features/contacts/editor.tsx
-msgid "Contact saved"
-msgstr "បានរក្សាទុកទំនាក់ទំនង"
-
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Contacts"
 msgstr "ទំនាក់ទំនង"
+
+#: src/features/contacts/panel.tsx
+msgid "Contacts merged"
+msgstr "បានបញ្ចូលទំនាក់ទំនងគ្នា"
 
 #: ../../../lib/web/src/lib/handle-server-error.ts
 msgid "Content not found."
@@ -900,6 +905,7 @@ msgstr "បានចម្លងទៅក្ដារតម្បៀតខ្ទ
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/calendar/time-grid.tsx
 #: ../../../lib/web/src/components/ui/copy-button.tsx
+#: src/features/contacts/panel.tsx
 msgid "Copy"
 msgstr "ចម្លង"
 
@@ -927,7 +933,7 @@ msgstr "មិនអាចចាប់ផ្ដើមការផ្ទៀងផ
 msgid "Couldn't verify with that account. Please try again."
 msgstr "មិនអាចផ្ទៀងផ្ទាត់ជាមួយគណនីនោះបានទេ។ សូមព្យាយាមម្តងទៀត។"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Country"
 msgstr "ប្រទេស"
 
@@ -937,6 +943,7 @@ msgstr "ប្រទេស"
 #: ../../../lib/web/src/components/entity/entity-create-object-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-tree-view.tsx
 #: src/features/contacts/connect-dialog.tsx
+#: src/features/contacts/panel.tsx
 msgid "Create"
 msgstr "បង្កើត"
 
@@ -983,7 +990,8 @@ msgstr "បានបង្កើត {field}"
 msgid "Creating address book..."
 msgstr "កំពុងបង្កើតសៀវភៅអាសយដ្ឋាន..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Creating contact..."
 msgstr "កំពុងបង្កើតទំនាក់ទំនង..."
 
@@ -1056,10 +1064,9 @@ msgstr "ការតម្រៀបលំនាំដើម"
 #: src/components/layout/people-layout.tsx
 #: src/components/layout/people-layout.tsx
 #: src/features/contacts/connect-dialog.tsx
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-detail.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Delete"
@@ -1069,15 +1076,15 @@ msgstr "លុប"
 #. placeholder {0}: deleteBook?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>?"
 msgstr "លុប <0>{0}</0> ឬ?"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: deleteDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete <0>{0}</0>? This also ends your friendship."
 msgstr "លុប <0>{0}</0> ឬ? នេះក៏បញ្ចប់មិត្តភាពរបស់អ្នកផងដែរ។"
 
@@ -1097,8 +1104,9 @@ msgstr "លុបជួរឈរ"
 msgid "Delete comment"
 msgstr "លុបមតិយោបល់"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Delete contact"
 msgstr "លុបទំនាក់ទំនង"
 
@@ -1167,8 +1175,8 @@ msgstr "ក្រុមដែលបានលុប"
 msgid "Deleting address book..."
 msgstr "កំពុងលុបសៀវភៅអាសយដ្ឋាន..."
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Deleting contact..."
 msgstr "កំពុងលុបទំនាក់ទំនង..."
 
@@ -1190,7 +1198,7 @@ msgstr "តាមលំដាប់ថយ"
 msgid "Description"
 msgstr "ការពិពណ៌នា"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Details"
 msgstr "ព័ត៌មានលម្អិត"
 
@@ -1226,13 +1234,8 @@ msgid "Directory listing"
 msgstr "បញ្ជីថត"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
-#: src/features/contacts/editor.tsx
 msgid "Discard"
 msgstr "បោះចោល"
-
-#: src/features/contacts/editor.tsx
-msgid "Discard changes?"
-msgstr "បោះចោលការផ្លាស់ប្ដូរឬ?"
 
 #: ../../../lib/web/src/components/comment-composer.tsx
 msgid "Discard draft?"
@@ -1283,8 +1286,6 @@ msgstr "ស័ក្តិសមនឹងជំងឺឌីស្លេកស៊
 
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
 #: ../../../lib/web/src/components/entity/entity-comment-thread.tsx
-#: src/features/contacts/index.tsx
-#: src/features/contacts/index.tsx
 #: src/features/groups/group-detail.tsx
 msgid "Edit"
 msgstr "កែសម្រួល"
@@ -1296,10 +1297,6 @@ msgstr "កែ {label}"
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Edit caption"
 msgstr "កែសម្រួលចំណងជើង"
-
-#: src/features/contacts/editor.tsx
-msgid "Edit contact"
-msgstr "កែសម្រួលទំនាក់ទំនង"
 
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
 msgid "Edit field"
@@ -1346,14 +1343,14 @@ msgstr "អ៊ីមែល"
 msgid "Email code"
 msgstr "កូដអ៊ីមែល"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Emails"
 msgstr "អ៊ីមែល"
 
 #. placeholder {0}: contact?.name ?? ''
 #. placeholder {0}: unfriendDialog.contact?.name ?? ''
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "End your friendship with <0>{0}</0>? The contact stays in your address book."
 msgstr "បញ្ចប់មិត្តភាពជាមួយ <0>{0}</0> ឬ? ទំនាក់ទំនងនៅតែស្ថិតក្នុងសៀវភៅអាសយដ្ឋានរបស់អ្នក។"
 
@@ -1422,7 +1419,7 @@ msgstr "បរាជ័យក្នុងការបន្ថែមទំនា
 msgid "Failed to add member"
 msgstr "បរាជ័យក្នុងការបន្ថែមសមាជិក"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Failed to cancel invitation"
 msgstr "បរាជ័យក្នុងការបោះបង់ការអញ្ជើញ"
@@ -1441,7 +1438,8 @@ msgstr "បរាជ័យក្នុងការចម្លង"
 msgid "Failed to create address book"
 msgstr "បរាជ័យក្នុងការបង្កើតសៀវភៅអាសយដ្ឋាន"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to create contact"
 msgstr "បរាជ័យក្នុងការបង្កើតទំនាក់ទំនង"
 
@@ -1474,8 +1472,8 @@ msgstr "បរាជ័យក្នុងការលុបឯកសារភ្
 msgid "Failed to delete comment"
 msgstr "បរាជ័យក្នុងការលុបមតិយោបល់"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to delete contact"
 msgstr "បរាជ័យក្នុងការលុបទំនាក់ទំនង"
 
@@ -1536,6 +1534,11 @@ msgstr "បរាជ័យក្នុងការផ្ទុកវីដេអ
 msgid "Failed to load your invite policy"
 msgstr "បរាជ័យក្នុងការផ្ទុកគោលការណ៍អញ្ជើញរបស់អ្នក"
 
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
+msgid "Failed to merge contacts"
+msgstr "បរាជ័យក្នុងការបញ្ចូលទំនាក់ទំនងគ្នា"
+
 #: ../../../lib/web/src/components/entity/entity-object-detail-panel.tsx
 msgid "Failed to move"
 msgstr "ការផ្លាស់ទីបានបរាជ័យ"
@@ -1544,8 +1547,8 @@ msgstr "ការផ្លាស់ទីបានបរាជ័យ"
 msgid "Failed to post comment"
 msgstr "បរាជ័យក្នុងការបង្ហោះមតិយោបល់"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to remove friend"
 msgstr "បរាជ័យក្នុងការដកមិត្ត"
 
@@ -1574,7 +1577,7 @@ msgstr "បរាជ័យក្នុងការរក្សាទុក"
 msgid "Failed to save accent"
 msgstr "បរាជ័យក្នុងការរក្សាទុកពណ៌សំខាន់"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to save contact"
 msgstr "បរាជ័យក្នុងការរក្សាទុកទំនាក់ទំនង"
 
@@ -1595,8 +1598,8 @@ msgid "Failed to save prompt"
 msgstr "បរាជ័យក្នុងការរក្សាទុកប្រអប់បញ្ចូល"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Failed to send invitation"
 msgstr "បរាជ័យក្នុងការផ្ញើការអញ្ជើញ"
 
@@ -1654,7 +1657,7 @@ msgstr "ទង់"
 msgid "Flat"
 msgstr "រាបស្មើ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Forename"
 msgstr "នាមខ្លួន"
 
@@ -1663,11 +1666,7 @@ msgid "Friday"
 msgstr "ថ្ងៃសុក្រ"
 
 #: src/features/contacts/index.tsx
-msgid "Friend"
-msgstr "មិត្ត"
-
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Friend removed"
 msgstr "បានដកមិត្តភក្តិចេញ"
 
@@ -1746,7 +1745,7 @@ msgstr "ប្រវត្តិ"
 msgid "Home"
 msgstr "ទំព័រដើម"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Home"
 msgstr "ផ្ទះ"
@@ -1809,7 +1808,7 @@ msgstr "កាលបរិច្ឆេទមិនត្រឹមត្រូវ
 msgid "Invitation accepted"
 msgstr "បានទទួលយកការអញ្ជើញ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/invitations/index.tsx
 msgid "Invitation cancelled"
 msgstr "បានបោះបង់ការអញ្ជើញ"
@@ -1819,8 +1818,8 @@ msgid "Invitation declined"
 msgstr "បានបដិសេធការអញ្ជើញ"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invitation sent"
 msgstr "បានផ្ញើការអញ្ជើញ"
 
@@ -1845,7 +1844,7 @@ msgid "Invite settings"
 msgstr "ការកំណត់ការអញ្ជើញ"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Invited"
 msgstr "បានអញ្ជើញ"
 
@@ -1991,6 +1990,20 @@ msgstr "ចំនួនសមាជិក"
 msgid "Menu"
 msgstr "ម៉ឺនុយ"
 
+#: src/features/contacts/panel.tsx
+msgctxt "combine"
+msgid "Merge"
+msgstr "បញ្ចូលគ្នា"
+
+#: src/features/contacts/merge-dialog.tsx
+#: src/features/contacts/merge-dialog.tsx
+msgid "Merge contacts"
+msgstr "បញ្ចូលទំនាក់ទំនងគ្នា"
+
+#: src/features/contacts/panel.tsx
+msgid "Merging contacts..."
+msgstr "កំពុងបញ្ចូលទំនាក់ទំនងគ្នា..."
+
 #: ../../../lib/web/src/components/game/game-chat-input.tsx
 msgid "Message"
 msgstr "សារ"
@@ -2012,12 +2025,12 @@ msgstr "ការអនុញ្ញាតមីក្រូហ្វូនត្
 msgid "Minimum length"
 msgstr "ប្រវែងអប្បបរមា"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Mobile"
 msgstr "ទូរស័ព្ទដៃ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Mochi friend"
 msgstr "មិត្ត Mochi"
 
@@ -2068,8 +2081,8 @@ msgstr "កំពុងផ្លាស់ទីទៅ {0}"
 msgid "Name"
 msgstr "ឈ្មោះ"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "person"
 msgid "Name"
 msgstr "ឈ្មោះ"
@@ -2079,6 +2092,7 @@ msgid "Name cannot contain < or > characters"
 msgstr "ឈ្មោះមិនអាចមានតួអក្សរ < ឬ >"
 
 #: ../../../lib/web/src/components/ui/create-entity-dialog.tsx
+#: src/features/contacts/panel.tsx
 #: src/features/groups/group-dialog.tsx
 msgid "Name is required"
 msgstr "តម្រូវឱ្យបញ្ចូលឈ្មោះ"
@@ -2111,7 +2125,7 @@ msgid "New"
 msgstr "ថ្មីបំផុត"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "ទំនាក់ទំនងថ្មី"
 
@@ -2137,7 +2151,7 @@ msgstr "ខែក្រោយ"
 msgid "Next year"
 msgstr "ឆ្នាំក្រោយ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Nickname"
 msgstr "ឈ្មោះហៅក្រៅ"
 
@@ -2159,13 +2173,14 @@ msgstr "មិនមានបដាដែលបានកំណត់"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "No changes to display"
-msgstr ""
+msgstr "មិនមានការផ្លាស់ប្តូរដើម្បីបង្ហាញ"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "No comments yet"
 msgstr "មិនទាន់មានមតិយោបល់"
 
 #: src/features/contacts/index.tsx
+#: src/features/contacts/merge-dialog.tsx
 msgid "No contacts yet"
 msgstr "មិនទាន់មានទំនាក់ទំនងទេ"
 
@@ -2213,6 +2228,7 @@ msgid "No places found"
 msgstr "រកមិនឃើញកន្លែង"
 
 #: src/features/contacts/index.tsx
+#: src/features/contacts/merge-dialog.tsx
 msgid "No results for \"{search}\""
 msgstr "គ្មានលទ្ធផលសម្រាប់ \"{search}\""
 
@@ -2272,11 +2288,11 @@ msgstr "ធម្មតា"
 #. placeholder {0}: formatFileSize(file.limit)
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: larger than {0}"
-msgstr ""
+msgstr "មិនបានប្រៀបធៀបទេ៖ ធំជាង {0}"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Not compared: over the size limit"
-msgstr ""
+msgstr "មិនបានប្រៀបធៀបទេ៖ លើសដែនកំណត់ទំហំ"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 #: ../../../lib/web/src/features/errors/general-error.tsx
@@ -2287,7 +2303,7 @@ msgstr "រកមិនឃើញ"
 msgid "Not set"
 msgstr "មិនបានកំណត់"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Note"
 msgstr "កំណត់ចំណាំ"
 
@@ -2317,10 +2333,6 @@ msgstr "លេខ"
 #: ../../../lib/web/src/components/filter-bar.tsx
 msgid "On"
 msgstr "បើក"
-
-#: src/features/contacts/index.tsx
-msgid "On Mochi"
-msgstr "នៅលើ Mochi"
 
 #: ../../../lib/web/src/features/errors/not-found-error.tsx
 msgid "Oops! Page Not Found!"
@@ -2366,7 +2378,7 @@ msgstr "ឈ្មោះជម្រើស"
 msgid "Options"
 msgstr "ជម្រើស"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Organisation"
 msgstr "អង្គភាព"
 
@@ -2374,7 +2386,7 @@ msgstr "អង្គភាព"
 msgid "Other"
 msgstr "ផ្សេងទៀត"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Other"
 msgstr "ផ្សេងទៀត"
@@ -2438,7 +2450,7 @@ msgstr "សូមព្យាយាមម្តងទៀត។"
 msgid "Please wait a moment and try again."
 msgstr "សូមរង់ចាំបន្តិច ហើយព្យាយាមម្តងទៀត។"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Postcode"
 msgstr "លេខកូដប្រៃសណីយ៍"
 
@@ -2564,7 +2576,7 @@ msgstr "កំពុងបញ្ជូនបន្តទៅការចូល។
 msgid "Reduce interest"
 msgstr "កាត់បន្ថយចំណាប់អារម្មណ៍"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Region"
 msgstr "តំបន់"
 
@@ -2637,11 +2649,11 @@ msgstr "លុបច្បាប់ចូលប្រើសម្រាប់ \"
 msgid "Remove access?"
 msgstr "យកសិទ្ធិចូលប្រើចេញ?"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Remove address"
 msgstr "យកអាសយដ្ឋានចេញ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "យកអ៊ីមែលចេញ"
 
@@ -2664,12 +2676,12 @@ msgstr "លុបតំណ"
 msgid "Remove member"
 msgstr "យកសមាជិកចេញ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "យកលេខទូរស័ព្ទចេញ"
 
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Removing friend..."
 msgstr "កំពុងដកមិត្តភក្តិចេញ..."
 
@@ -2779,7 +2791,6 @@ msgstr "ថ្ងៃសៅរ៍"
 #: ../../../lib/web/src/components/ui/editable-field-row.tsx
 #: ../../../lib/web/src/components/ui/secret-field.tsx
 #: src/components/layout/people-layout.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/groups/group-dialog.tsx
 #: src/features/invitations/invite-settings-dialog.tsx
 #: src/features/profile/index.tsx
@@ -2796,10 +2807,6 @@ msgstr "រក្សាទុកឈ្មោះ"
 #: src/features/contacts/connect-dialog.tsx
 msgid "Save this password now. It cannot be shown again."
 msgstr "រក្សាទុកពាក្យសម្ងាត់នេះឥឡូវនេះ។ វាមិនអាចបង្ហាញម្ដងទៀតបានទេ។"
-
-#: src/features/contacts/editor.tsx
-msgid "Saving contact..."
-msgstr "កំពុងរក្សាទុកទំនាក់ទំនង..."
 
 #: src/features/profile/index.tsx
 msgid "Saving profile..."
@@ -2867,6 +2874,7 @@ msgstr "ស្វែងរក មើល និងតម្រៀបទិដ្�
 #: ../../../lib/web/src/components/person-picker.tsx
 #: ../../../lib/web/src/components/search-entity-page.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/merge-dialog.tsx
 #: src/features/invitations/index.tsx
 msgid "Search..."
 msgstr "ស្វែងរក..."
@@ -2954,8 +2962,8 @@ msgid "Send message"
 msgstr "ផ្ញើសារ"
 
 #: src/features/contacts/add-dialog.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
 msgid "Sending invitation..."
 msgstr "កំពុងផ្ញើការអញ្ជើញ..."
 
@@ -3061,7 +3069,7 @@ msgstr "ធំទូលាយ"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Split"
-msgstr ""
+msgstr "បំបែក"
 
 #: ../../../lib/web/src/components/entity/entity-comment-list.tsx
 msgid "Start the discussion by adding the first comment."
@@ -3080,7 +3088,7 @@ msgstr "បញ្ឈប់ការតាមដាន"
 msgid "Store silently"
 msgstr "រក្សាទុកដោយស្ងៀមស្ងាត់"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgid "Street"
 msgstr "ផ្លូវ"
 
@@ -3106,7 +3114,7 @@ msgstr "ជាវ"
 msgid "Sunday"
 msgstr "ថ្ងៃអាទិត្យ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Surname"
 msgstr "នាមត្រកូល"
 
@@ -3137,7 +3145,7 @@ msgstr "ស្លាកត្រូវមានយ៉ាងច្រើន 50 �
 msgid "Tags"
 msgstr "ស្លាក"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "Telephones"
 msgstr "លេខទូរស័ព្ទ"
 
@@ -3216,7 +3224,7 @@ msgstr "សកម្មភាពនេះនឹងលុបហ្គេម ន�
 msgid "Thursday"
 msgstr "ថ្ងៃព្រហស្បតិ៍"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgctxt "job title"
 msgid "Title"
 msgstr "មុខតំណែង"
@@ -3285,8 +3293,8 @@ msgstr "ថ្ងៃអង្គារ"
 msgid "Type"
 msgstr "ប្រភេទ"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
+#: src/features/contacts/fields.tsx
 #: src/features/groups/group-detail.tsx
 msgctxt "kind"
 msgid "Type"
@@ -3330,17 +3338,17 @@ msgstr "មិនអាចប្រើបាន"
 msgid "Unexpected API error"
 msgstr "កំហុស API ដែលមិនរំពឹងទុក"
 
-#: src/features/contacts/editor.tsx
-#: src/features/contacts/editor.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
 #: src/features/contacts/index.tsx
+#: src/features/contacts/panel.tsx
+#: src/features/contacts/panel.tsx
 msgid "Unfriend"
 msgstr "ឈប់ធ្វើជាមិត្ត"
 
 #: ../../../lib/web/src/components/diff-viewer.tsx
 msgid "Unified"
-msgstr ""
+msgstr "រួមបញ្ចូលគ្នា"
 
 #: ../../../lib/web/src/lib/preference-utils.ts
 msgid "United States"
@@ -3406,7 +3414,7 @@ msgstr "វឌ្ឍនភាពនៃការផ្ទុកឡើង"
 msgid "Uploading..."
 msgstr "កំពុងបង្ហោះ..."
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/panel.tsx
 msgid "URL"
 msgstr ""
 
@@ -3492,7 +3500,7 @@ msgstr "យើងបានផ្ញើលេខកូដផ្ទៀងផ្ទ
 msgid "Wednesday"
 msgstr "ថ្ងៃពុធ"
 
-#: src/features/contacts/editor.tsx
+#: src/features/contacts/fields.tsx
 msgctxt "contact type"
 msgid "Work"
 msgstr "កន្លែងធ្វើការ"

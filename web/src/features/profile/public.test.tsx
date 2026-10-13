@@ -43,4 +43,44 @@ describe('PublicProfile', () => {
       client.getQueryData(['person', 'information', 'abcdefghi'])
     ).toMatchObject({ name: 'Ada Lovelace' })
   })
+
+  it("links the person's accounts elsewhere with rel=me, web links only", async () => {
+    calls.information = vi.fn().mockResolvedValue({
+      id: 'p1',
+      fingerprint: 'abcdefghi',
+      name: 'Ada Lovelace',
+      profile: '',
+      style: {},
+      avatar: '',
+      banner: '',
+      favicon: '',
+      accounts: [
+        {
+          type: 'mastodon',
+          identifier: '@ada@mastodon.social',
+          name: 'Ada',
+          url: 'https://mastodon.social/@ada',
+        },
+        {
+          type: 'bluesky',
+          identifier: 'ada.bsky.social',
+          name: 'Ada',
+          url: 'javascript:alert(1)',
+        },
+      ],
+    })
+    render(
+      <QueryClientProvider client={new QueryClient()}>
+        <I18nProvider i18n={i18n}>
+          <PublicProfile fingerprint='abcdefghi' />
+        </I18nProvider>
+      </QueryClientProvider>
+    )
+    const link = await screen.findByRole('link', {
+      name: 'Mastodon · @ada@mastodon.social',
+    })
+    expect(link).toHaveAttribute('href', 'https://mastodon.social/@ada')
+    expect(link.getAttribute('rel')).toContain('me')
+    expect(screen.queryByText(/ada\.bsky\.social/)).toBeNull()
+  })
 })

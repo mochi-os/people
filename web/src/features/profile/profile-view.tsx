@@ -2,9 +2,15 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { EntityAvatar, EntityBanner, markdownUrlTransform } from '@mochi/web'
+import {
+  EntityAvatar,
+  EntityBanner,
+  markdownUrlTransform,
+  providerName,
+} from '@mochi/web'
 import Markdown, { defaultUrlTransform } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import type { ProfileAccount } from '@/api/types/person'
 
 // A profile is written by the person being viewed, including strangers and
 // anonymous readers of the public page, so its images stay on this origin.
@@ -16,6 +22,7 @@ interface ProfileViewProps {
   accent?: string
   avatarUrl: string | null
   bannerUrl: string | null
+  accounts?: ProfileAccount[]
 }
 
 export function ProfileView({
@@ -24,6 +31,7 @@ export function ProfileView({
   accent,
   avatarUrl,
   bannerUrl,
+  accounts = [],
 }: ProfileViewProps) {
   const styleVars = accent
     ? ({ ['--accent-colour' as string]: accent } as React.CSSProperties)
@@ -41,6 +49,26 @@ export function ProfileView({
           {name}
         </h1>
       </div>
+      {/* The person's accounts elsewhere, each a rel="me" link the network
+          verifies against a link back from the account. */}
+      {accounts.length > 0 && (
+        <ul className='flex flex-wrap gap-x-4 gap-y-1 px-4 pb-2 text-sm'>
+          {accounts
+            .filter((account) => /^https:\/\//.test(account.url))
+            .map((account) => (
+              <li key={account.url}>
+                <a
+                  href={account.url}
+                  rel='me noopener noreferrer'
+                  target='_blank'
+                  className='text-primary hover:underline'
+                >
+                  {providerName(account.type)} · {account.identifier}
+                </a>
+              </li>
+            ))}
+        </ul>
+      )}
       {profile && (
         <div className='markdown-body p-4 text-sm leading-relaxed'>
           <Markdown remarkPlugins={[remarkGfm]} urlTransform={urlTransform}>

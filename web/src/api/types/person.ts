@@ -14,6 +14,15 @@ export interface PersonInformation {
   avatar: string
   banner: string
   favicon: string
+  // The person's accounts on other networks, as the profile links them.
+  accounts?: ProfileAccount[]
+}
+
+export interface ProfileAccount {
+  type: string
+  identifier: string
+  name: string
+  url: string
 }
 
 export type MutationSuccess = Record<string, unknown>

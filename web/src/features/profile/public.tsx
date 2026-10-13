@@ -80,6 +80,7 @@ export function PublicProfile({ fingerprint }: { fingerprint: string }) {
       accent={data.style.accent}
       avatarUrl={avatarUrl}
       bannerUrl={bannerUrl}
+      accounts={data.accounts}
     />
   )
 }

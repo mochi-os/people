@@ -582,12 +582,20 @@ def build_information(person_id, entity):
 		"avatar": "",
 		"banner": "",
 		"favicon": "",
+		"accounts": profile_accounts(),
 	}
 	for slot in _IMAGE_SLOTS:
 		att = slot_attachment(person_id, slot)
 		if att:
 			out[slot] = att.get("id", "")
 	return out
+
+def profile_accounts():
+	"""The person's accounts on other networks that they show on their
+	profile, as the page links them: type, identifier, name and url. The
+	page's links to them carry rel="me", which those networks verify by
+	fetching the page, so the accounts show the profile as the person's."""
+	return [{"type": acc.get("type", ""), "identifier": acc.get("identifier", ""), "name": acc.get("name", ""), "url": acc["url"]} for acc in (mochi.account.profile() or []) if acc.get("url", "").startswith("https://")]
 
 def get_person_entity(person_id):
 	if not person_id:
@@ -833,6 +841,9 @@ def opengraph_person(params):
 	if entity.get("privacy", "public") == "private":
 		return og
 	og["title"] = entity.get("name") or mochi.app.label("opengraph.fallback.title")
+	# The accounts the person shows, as rel="me" links in the served HTML:
+	# the network's verifier reads the page as a crawler does.
+	og["links"] = [{"rel": "me", "href": acc["url"]} for acc in profile_accounts()]
 	profile = get_profile_row(person_id)
 	if profile.get("profile"):
 		# Flatten whitespace so multi-line markdown doesn't break meta attributes

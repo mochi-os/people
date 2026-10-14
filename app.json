@@ -5,7 +5,7 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 
 {
-	"version": "4.0",
+	"version": "4.1",
 	"label": "app.name",
 	"classes": ["person", "book"],
 	"paths": ["people"],
@@ -112,6 +112,9 @@
 		"list": {"function": "function_list", "permission": "friends/read"},
 		"count": {"function": "function_count", "permission": "friends/read"},
 		"users/search": {"function": "function_users_search"},
+		// What a hosted account's fediverse document shows of the person,
+		// asked by core's ActivityPub engine.
+		"activitypub/profile": {"function": "function_activitypub_profile"},
 		"groups/list": {"function": "function_groups_list", "permission": "groups/read"},
 		"contacts/list": {"function": "function_contacts_list", "permission": "contacts/read"},
 		"contacts/get": {"function": "function_contacts_get", "permission": "contacts/read"},

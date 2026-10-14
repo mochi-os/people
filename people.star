@@ -225,6 +225,32 @@ def function_users_search(context, query):
 def function_groups_list(context):
 	return mochi.group.list()
 
+# What a hosted account's document on the fediverse shows of the person behind
+# it (the federation plan, phase 15), asked by core's ActivityPub engine: the
+# profile text as HTML, the avatar and banner where the person has uploaded
+# them, and the accounts shown on the profile as the document's links. Nothing
+# private: everything here is what the public profile page already shows.
+def function_activitypub_profile(context, account, person):
+	entity = get_person_entity(person)
+	if not entity:
+		return {}
+	out = {"name": entity.get("name", "")}
+	profile = get_profile_row(person)
+	if profile.get("profile"):
+		out["summary"] = mochi.text.markdown(profile["profile"])
+	base = mochi.server.url()
+	fingerprint = mochi.entity.fingerprint(person)
+	if base and fingerprint:
+		for slot in ("avatar", "banner"):
+			if slot_attachment(person, slot):
+				out[slot] = base + "/people/" + fingerprint + "/-/" + slot
+	out["links"] = [{"name": network_name(acc["type"]), "url": acc["url"]} for acc in profile_accounts()]
+	return out
+
+# The name a network is shown under on the profile's links.
+def network_name(type):
+	return {"mastodon": "Mastodon", "lemmy": "Lemmy", "bluesky": "Bluesky", "matrix": "Matrix", "xmpp": "XMPP", "fediverse": "Fediverse"}.get(type, type)
+
 # Group management actions
 
 def action_groups(a):

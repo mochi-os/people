@@ -4,9 +4,16 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import {
+  act,
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { ContactPanel } from './panel'
+import { ContactPanel, type ContactCopy } from './panel'
 
 const idle = { isPending: false, mutateAsync: vi.fn() }
 
@@ -109,19 +116,27 @@ const disabled = {
 }
 
 const opened = vi.fn()
+const copied = vi.fn()
 const closed = vi.fn()
 
-function panel(id?: string, start?: string) {
+function panel(id?: string, start?: string, copy?: ContactCopy) {
   return (
     <I18nProvider i18n={i18n}>
-      <ContactPanel id={id} book={start} onOpen={opened} onClose={closed} />
+      <ContactPanel
+        id={id}
+        book={start}
+        copy={copy}
+        onOpen={opened}
+        onCopy={copied}
+        onClose={closed}
+      />
     </I18nProvider>
   )
 }
 
-function show(id?: string, start?: string) {
+function show(id?: string, start?: string, copy?: ContactCopy) {
   if (!id) queries.contact = disabled
-  return render(panel(id, start))
+  return render(panel(id, start, copy))
 }
 
 // Give the contact a birthday as stored.
@@ -188,6 +203,7 @@ beforeEach(() => {
   failures.length = 0
   toasts.length = 0
   opened.mockReset()
+  copied.mockReset()
   closed.mockReset()
 })
 
@@ -626,11 +642,34 @@ describe('ContactPanel making a contact', () => {
 })
 
 describe('ContactPanel copying', () => {
-  it('makes the copy at once from the card as it stands, and opens it', async () => {
+  it('saves the card, then opens the copy as a new contact, making nothing', async () => {
     show('c1')
     fireEvent.change(nickname(), { target: { value: 'Countess' } })
     fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
-    await waitFor(() => expect(opened).toHaveBeenCalledWith('c9'))
+    await waitFor(() => expect(copied).toHaveBeenCalledTimes(1))
+    // What was typed is saved to the card the copy is made from.
+    expect(updates()).toHaveLength(1)
+    const copy = copied.mock.calls[0][0] as ContactCopy
+    expect(copy.source).toBe('c1')
+    expect(copy.book).toBe('b1')
+    expect(copy.form.name).toBe('Ada')
+    expect(copy.form.nickname).toBe('Countess')
+    expect(mutations.create.mutateAsync).not.toHaveBeenCalled()
+    expect(opened).not.toHaveBeenCalled()
+  })
+
+  it('opens a copy as a new contact filled from the original, and makes it with Create', async () => {
+    show('c1')
+    fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
+    await waitFor(() => expect(copied).toHaveBeenCalledTimes(1))
+    cleanup()
+    show(undefined, undefined, copied.mock.calls[0][0] as ContactCopy)
+    expect(
+      screen.getByRole('heading', { name: 'New contact' })
+    ).toBeInTheDocument()
+    expect(name()).toHaveValue('Ada')
+    fireEvent.click(screen.getByRole('button', { name: 'Create' }))
+    await waitFor(() => expect(closed).toHaveBeenCalledTimes(1))
     const request = mutations.create.mutateAsync.mock.calls[0][0] as {
       properties: { name: string; value: string }[]
       book: string
@@ -638,10 +677,39 @@ describe('ContactPanel copying', () => {
     }
     expect(request.source).toBe('c1')
     expect(request.book).toBe('b1')
-    expect(request.properties.map((p) => p.value)).toEqual(['Ada', 'Countess'])
-    expect(toasts.some((toast) => toast.success === 'Contact copied')).toBe(
-      true
-    )
+    expect(request.properties.map((p) => p.value)).toEqual(['Ada'])
+  })
+
+  it("makes a copy in the original's address book", async () => {
+    queries.books = loaded({
+      books: [
+        book,
+        { ...book, id: 'b2', fingerprint: 'f2', name: 'Work', default: false },
+      ],
+    })
+    show('c1')
+    fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
+    await waitFor(() => expect(copied).toHaveBeenCalledTimes(1))
+    cleanup()
+    const copy = copied.mock.calls[0][0] as ContactCopy
+    show(undefined, undefined, { ...copy, book: 'b2' })
+    fireEvent.click(screen.getByRole('button', { name: 'Create' }))
+    await waitFor(() => expect(closed).toHaveBeenCalledTimes(1))
+    const request = mutations.create.mutateAsync.mock.calls[0][0] as {
+      book: string
+    }
+    expect(request.book).toBe('b2')
+  })
+
+  it('closes a copy without making it', async () => {
+    show('c1')
+    fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
+    await waitFor(() => expect(copied).toHaveBeenCalledTimes(1))
+    cleanup()
+    show(undefined, undefined, copied.mock.calls[0][0] as ContactCopy)
+    fireEvent.click(screen.getByRole('button', { name: 'Close' }))
+    expect(closed).toHaveBeenCalledTimes(1)
+    expect(mutations.create.mutateAsync).not.toHaveBeenCalled()
   })
 })
 

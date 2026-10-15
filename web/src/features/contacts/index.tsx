@@ -55,7 +55,7 @@ import {
   useRemoveFriendMutation,
 } from '@/hooks/useContacts'
 import { AddContactDialog } from './add-dialog'
-import { ContactPanel } from './panel'
+import { ContactPanel, type ContactCopy } from './panel'
 
 type SortBy = 'name' | 'recent'
 
@@ -82,9 +82,10 @@ export function Contacts({
   const { t } = useLingui()
   const router = useRouter()
   // The contact in the side panel, or a new one ({} with no id).
-  const [panel, setPanel] = useState<{ id?: string } | null>(
-    open ? { id: open } : create ? {} : null
-  )
+  const [panel, setPanel] = useState<{
+    id?: string
+    copy?: ContactCopy
+  } | null>(open ? { id: open } : create ? {} : null)
   const [search, setSearch] = useState('')
   const [sortBy, setSortBy] = useState<SortBy>('name')
   const [addDialogOpen, setAddDialogOpen] = useState(autoAdd ?? false)
@@ -423,10 +424,12 @@ export function Contacts({
 
         {panel && (
           <ContactPanel
-            key={panel.id ?? 'new'}
+            key={panel.id ?? (panel.copy ? `copy:${panel.copy.source}` : 'new')}
             id={panel.id}
             book={book}
+            copy={panel.copy}
             onOpen={(id) => setPanel({ id })}
+            onCopy={(copy) => setPanel({ copy })}
             onClose={() => setPanel(null)}
           />
         )}

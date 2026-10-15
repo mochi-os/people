@@ -89,27 +89,43 @@ const written = (form: ContactForm) => JSON.stringify(propertiesFromForm(form))
 const PAUSE = 1000
 
 /**
+ * A copy of a contact not yet made: the contact it is copied from, and the
+ * form and book it opens on, the original's as it stood.
+ */
+export interface ContactCopy {
+  source: string
+  form: ContactForm
+  book: string
+}
+
+/**
  * A contact in a side panel over the list, as a project's object opens: each
  * field saves once typing rests and again when it is left, and a choice at
- * once. With no id, the panel makes a new contact, which its Create button
- * saves; it then follows as the contact it made.
+ * once. With no id, the panel makes a new contact, or a copy of one, which
+ * its Create button saves before the panel closes.
  */
 export function ContactPanel({
   id,
   book: start,
+  copy: copied,
   onOpen,
+  onCopy,
   onClose,
 }: {
   id?: string
   /** The address book a new contact goes in, else the default. */
   book?: string
-  /** Show another contact in the panel: one made, copied or merged into. */
+  /** The copy a new contact is, when it is one. */
+  copy?: ContactCopy
+  /** Show another contact in the panel: the one a merge left standing. */
   onOpen: (id: string) => void
+  /** Show a copy of this contact in the panel, as a new contact. */
+  onCopy: (copy: ContactCopy) => void
   onClose: () => void
 }) {
   const { t } = useLingui()
-  const [form, setForm] = useState<ContactForm>(emptyForm)
-  const [book, setBook] = useState('')
+  const [form, setForm] = useState<ContactForm>(copied?.form ?? emptyForm)
+  const [book, setBook] = useState(copied?.book ?? '')
   const [unreadable, setUnreadable] = useState(false)
   const [deleteOpen, setDeleteOpen] = useState(false)
   const [mergeOpen, setMergeOpen] = useState(false)
@@ -303,6 +319,7 @@ export function ContactPanel({
         createMutation.mutateAsync({
           properties: propertiesFromForm(current.form),
           book: current.book,
+          source: copied?.source,
         }),
         {
           loading: t`Creating contact...`,
@@ -310,37 +327,21 @@ export function ContactPanel({
           error: (error) => getErrorMessage(error, t`Failed to create contact`),
         }
       )
-      // Create is the end of making it, as an event's is; a copy, made to be
-      // changed, opens in the panel.
+      // Create is the end of making it, a copy's as any new contact's.
       onClose()
     } catch {
       // toastAction already showed the error
     }
   }
 
-  // A copy is made at once from this card as it stands, so what the form does
-  // not show comes with it, and opens in the panel.
+  // A copy opens as a new contact from this card as it stands, saved first,
+  // and is made by Create as any new contact is. It names this one, so what
+  // the form does not show comes with it.
   const copy = async () => {
     if (!id || blocked) return
     await settle()
     const current = latest.current
-    try {
-      const data = await toastAction(
-        createMutation.mutateAsync({
-          properties: propertiesFromForm(current.form),
-          book: current.book,
-          source: id,
-        }),
-        {
-          loading: t`Creating contact...`,
-          success: t`Contact copied`,
-          error: (error) => getErrorMessage(error, t`Failed to create contact`),
-        }
-      )
-      onOpen(data.contact.id)
-    } catch {
-      // toastAction already showed the error
-    }
+    onCopy({ source: id, form: current.form, book: current.book })
   }
 
   // The chosen contact is merged in as soon as it is picked. The server

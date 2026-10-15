@@ -247,6 +247,22 @@ def function_activitypub_profile(context, account, person):
 	out["links"] = [{"name": network_name(acc["type"]), "url": acc["url"]} for acc in profile_accounts()]
 	return out
 
+# The person's avatar and banner as bytes, each {data, type}, for the profile
+# record of a hosted Bluesky account, asked by core's AT Protocol engine; the
+# same images the public profile page shows.
+def function_profile_media(context, person):
+	out = {}
+	if not get_person_entity(person):
+		return out
+	for slot in ("avatar", "banner"):
+		image = slot_attachment(person, slot)
+		if not image:
+			continue
+		data = mochi.file.read(slot_path(person, slot), _SLOT_CAPS[slot])
+		if data != None:
+			out[slot] = {"data": data, "type": image.get("content_type", "")}
+	return out
+
 # The name a network is shown under on the profile's links.
 def network_name(type):
 	return {"mastodon": "Mastodon", "lemmy": "Lemmy", "bluesky": "Bluesky", "matrix": "Matrix", "xmpp": "XMPP", "fediverse": "Fediverse"}.get(type, type)

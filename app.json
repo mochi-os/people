@@ -116,6 +116,9 @@
 		// What a hosted account's fediverse document shows of the person,
 		// asked by core's ActivityPub engine.
 		"activitypub/profile": {"function": "function_activitypub_profile"},
+		// The person's avatar and banner as bytes, for a hosted Bluesky
+		// account's profile record, asked by core's AT Protocol engine.
+		"profile/media": {"function": "function_profile_media"},
 		"groups/list": {"function": "function_groups_list", "permission": "groups/read"},
 		"contacts/list": {"function": "function_contacts_list", "permission": "contacts/read"},
 		"contacts/get": {"function": "function_contacts_get", "permission": "contacts/read"},

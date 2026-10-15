@@ -40,6 +40,7 @@
 		"-/contacts/update": {"function": "action_contact_update"},
 		"-/contacts/delete": {"function": "action_contact_delete"},
 		"-/contacts/search": {"function": "action_contact_search"},
+		"-/contacts/handle/lookup": {"function": "action_contact_handle_lookup"},
 		"-/contacts/changes": {"function": "action_contacts_changes"},
 		"-/contacts/batch": {"function": "action_contacts_batch"},
 		"-/books": {"function": "action_books"},
@@ -120,6 +121,9 @@
 		"contacts/get": {"function": "function_contacts_get", "permission": "contacts/read"},
 		"contacts/search": {"function": "function_contacts_search", "permission": "contacts/read"},
 		"contacts/birthdays": {"function": "function_contacts_birthdays", "permission": "contacts/read"},
+		// The contacts with a handle on another network, for feeds to offer as
+		// people to follow.
+		"handles": {"function": "function_handles", "permission": "contacts/read"},
 		"dav/collections": {"function": "function_dav_collections", "permission": "contacts/read"},
 		"dav/collections/create": {"function": "function_dav_collection_create", "permission": "contacts/read"},
 		"dav/collections/delete": {"function": "function_dav_collection_delete", "permission": "contacts/read"},

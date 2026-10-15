@@ -3,9 +3,11 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import type { ReactNode } from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { useLingui } from '@lingui/react/macro'
 import {
   Button,
+  EntityAvatar,
   Input,
   Label,
   Select,
@@ -14,14 +16,24 @@ import {
   SelectTrigger,
   SelectValue,
   cn,
+  providerName,
+  requestHelpers,
+  useDebounce,
 } from '@mochi/web'
-import { Plus, X, type LucideIcon } from 'lucide-react'
+import { AtSign, Plus, X, type LucideIcon } from 'lucide-react'
+import endpoints from '@/api/endpoints'
 import {
   ADDRESS_TYPES,
+  HANDLE_NETWORKS,
   type AddressValue,
+  type HandleNetwork,
+  type HandleValue,
   type PropertyType,
   type TypedValue,
 } from '@/lib/card'
+
+// Example handles, shown as placeholders.
+const HANDLE_EXAMPLES = { fediverse: '@name@server.example', bluesky: 'name.bsky.social' }
 
 // The label column, which the type of an email, telephone or address also
 // sits in, so every value starts on the same line.
@@ -293,5 +305,108 @@ export function AddressRows({
         </div>
       ))}
     </>
+  )
+}
+
+/**
+ * A handle on another network per row (phase 17): the network in the label
+ * column, the handle, and what the network shows of the person once the
+ * handle resolves, so a typo is seen before the card is saved.
+ */
+export function HandleRows({
+  values,
+  onChange,
+}: {
+  values: HandleValue[]
+  onChange: (values: HandleValue[]) => void
+}) {
+  const { t } = useLingui()
+  const replace = (index: number, changes: Partial<HandleValue>) =>
+    onChange(
+      values.map((row, position) =>
+        position === index ? { ...row, ...changes } : row
+      )
+    )
+  return (
+    <>
+      {values.map((row, index) => (
+        <div key={index} className='space-y-1'>
+          <div className={TYPED}>
+            <div className='flex items-center gap-2'>
+              <AtSign
+                className='text-muted-foreground size-4 shrink-0'
+                aria-hidden='true'
+              />
+              <Select
+                value={row.network}
+                onValueChange={(next) =>
+                  replace(index, { network: next as HandleNetwork })
+                }
+              >
+                <SelectTrigger className='w-28 shrink-0' aria-label={t`Network`}>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {HANDLE_NETWORKS.map((network) => (
+                    <SelectItem key={network} value={network}>
+                      {providerName(network)}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className='flex flex-1 items-center gap-2'>
+              <Input
+                className='flex-1'
+                aria-label={t`Handle`}
+                placeholder={
+                  row.network === 'bluesky'
+                    ? HANDLE_EXAMPLES.bluesky
+                    : HANDLE_EXAMPLES.fediverse
+                }
+                value={row.value}
+                onChange={(event) =>
+                  replace(index, { value: event.target.value })
+                }
+              />
+              <RemoveButton
+                label={t`Remove handle`}
+                onClick={() =>
+                  onChange(values.filter((_, position) => position !== index))
+                }
+              />
+            </div>
+          </div>
+          <HandlePreview handle={row.value} />
+        </div>
+      ))}
+    </>
+  )
+}
+
+/** What the network shows of a handle: the person's avatar, name and address. */
+function HandlePreview({ handle }: { handle: string }) {
+  const debounced = useDebounce(handle.trim(), 600)
+  const { data } = useQuery({
+    queryKey: ['contacts', 'handle', debounced],
+    queryFn: () =>
+      requestHelpers.get<{
+        name?: string
+        avatar?: string
+        page?: string
+        address?: string
+      }>(endpoints.contacts.handleLookup, { params: { handle: debounced } }),
+    enabled: debounced.length > 3 && !debounced.includes(' '),
+    retry: false,
+    staleTime: 10 * 60 * 1000,
+  })
+  if (!data?.name && !data?.address) return null
+  return (
+    <div className='text-muted-foreground flex items-center gap-2 text-xs sm:ps-[calc(9rem+1rem)]'>
+      <EntityAvatar src={data.avatar || null} name={data.name || ''} size='xs' />
+      <span className='truncate'>
+        {[data.name, data.address].filter(Boolean).join(' · ')}
+      </span>
+    </div>
   )
 }

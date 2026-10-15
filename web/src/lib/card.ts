@@ -24,6 +24,18 @@ export interface TypedValue {
   group: string
 }
 
+// A handle on another network (SOCIALPROFILE, RFC 9554): the handle and the
+// network its SERVICE-TYPE names.
+export type HandleNetwork = 'fediverse' | 'bluesky'
+export const HANDLE_NETWORKS: HandleNetwork[] = ['fediverse', 'bluesky']
+
+export interface HandleValue {
+  value: string
+  network: HandleNetwork
+  params: Record<string, string[]>
+  group: string
+}
+
 export interface AddressValue {
   street: string
   city: string
@@ -56,6 +68,7 @@ export interface ContactForm {
   emails: TypedValue[]
   phones: TypedValue[]
   addresses: AddressValue[]
+  handles: HandleValue[]
   birthday: string
   organisation: string
   title: string
@@ -212,6 +225,7 @@ export function emptyForm(): ContactForm {
     emails: [],
     phones: [],
     addresses: [],
+    handles: [],
     birthday: '',
     organisation: '',
     title: '',
@@ -228,6 +242,29 @@ export function emptyForm(): ContactForm {
 
 export function newTypedValue(type: PropertyType): TypedValue {
   return { value: '', type, params: {}, group: '' }
+}
+
+export function newHandle(network: HandleNetwork = 'fediverse'): HandleValue {
+  return { value: '', network, params: {}, group: '' }
+}
+
+// The network a SOCIALPROFILE names: its SERVICE-TYPE where one is written
+// (Fediverse or Mastodon, Bluesky), else the handle's own shape - an @ in it
+// is a fediverse handle, a bare domain a Bluesky one.
+export function handleNetwork(
+  params: Record<string, string[]> | undefined,
+  value: string
+): HandleNetwork {
+  const service = (params?.['SERVICE-TYPE'] ?? [])[0]?.toLowerCase()
+  if (service === 'bluesky') return 'bluesky'
+  if (service === 'fediverse' || service === 'mastodon') return 'fediverse'
+  return value.includes('@') ? 'fediverse' : 'bluesky'
+}
+
+// The SERVICE-TYPE a network is written as.
+function serviceType(network: HandleNetwork): string {
+  // eslint-disable-next-line lingui/no-unlocalized-strings -- vCard SERVICE-TYPE values, not shown
+  return network === 'bluesky' ? 'Bluesky' : 'Fediverse'
 }
 
 export function newAddress(type: PropertyType): AddressValue {
@@ -288,6 +325,13 @@ export function formFromCard(card: Property[]): ContactForm {
   form.phones = all(card, 'TEL').map((property) => ({
     value: property.value,
     type: typeOf(property.params, PHONE_TYPES),
+    params: property.params ?? {},
+    group: property.group ?? '',
+  }))
+
+  form.handles = all(card, 'SOCIALPROFILE').map((property) => ({
+    value: property.value,
+    network: handleNetwork(property.params, property.value),
     params: property.params ?? {},
     group: property.group ?? '',
   }))
@@ -436,6 +480,17 @@ export function propertiesFromForm(form: ContactForm): Property[] {
       value,
       withType(address.params, address.type, ADDRESS_TYPES),
       address.group
+    )
+  }
+
+  for (const handle of form.handles) {
+    const rest = { ...handle.params }
+    delete rest['SERVICE-TYPE']
+    add(
+      'SOCIALPROFILE',
+      handle.value.trim(),
+      { ...rest, 'SERVICE-TYPE': [serviceType(handle.network)] },
+      handle.group
     )
   }
 

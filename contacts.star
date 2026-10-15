@@ -36,7 +36,10 @@ _PROPERTIES_MAXIMUM = 200
 # Properties the editor manages. A submission replaces all of these and leaves
 # every other property in the card untouched, so whatever a phone stores
 # survives an edit made here.
-_MANAGED = ["FN", "N", "NICKNAME", "EMAIL", "TEL", "ADR", "BDAY", "ORG", "TITLE", "URL", "NOTE"]
+# SOCIALPROFILE (RFC 9554) carries a handle on another network, its
+# SERVICE-TYPE naming the network (Fediverse, Bluesky), so the card keeps it
+# for CardDAV and feeds can offer the person as someone to follow.
+_MANAGED = ["FN", "N", "NICKNAME", "EMAIL", "TEL", "ADR", "BDAY", "ORG", "TITLE", "URL", "NOTE", "SOCIALPROFILE"]
 
 # Properties the server owns. Never accepted from a client; regenerated on read.
 _RESERVED = ["X-MOCHI-PERSON", "X-MOCHI-FRIEND"]
@@ -767,6 +770,22 @@ def action_contacts(a):
 		"received": invites_received(identity),
 		"sent": invites_sent(identity),
 	}}
+
+def action_contact_handle_lookup(a):
+	"""What a network shows of a handle on a contact's card (phase 17): the
+	person's name, avatar, page and address, or nothing where the network
+	does not answer."""
+	if not a.user or not a.user.identity or not a.user.identity.id:
+		a.error.label(401, "errors.not_logged_in")
+		return
+	handle = (a.input("handle") or "").strip()
+	if not handle or len(handle) > 500 or " " in handle:
+		a.error.label(400, "errors.invalid_handle")
+		return
+	found = mochi.account.resolve(handle)
+	if not found:
+		return {"data": {}}
+	return {"data": {"id": found.get("id", ""), "name": found.get("name", ""), "avatar": found.get("avatar", ""), "page": found.get("url", ""), "address": found.get("address", ""), "network": found.get("network", "")}}
 
 def action_contact_get(a):
 	identity = a.user.identity.id
@@ -1639,6 +1658,54 @@ def function_contacts_birthdays(context, identity):
 				out.append({"id": row["id"], "name": row["name"] or row["directory"], "year": date[0], "month": date[1], "day": date[2]})
 			break
 	return out
+
+# The networks a SOCIALPROFILE may name, by SERVICE-TYPE, and the network
+# Mochi's lookup knows each as.
+HANDLE_NETWORKS = {"fediverse": "fediverse", "mastodon": "fediverse", "bluesky": "bluesky"}
+
+def function_handles(context, identity):
+	"""The contacts with a handle on another network: each contact's id and
+	name, the handle, its network, and the person as the network shows them
+	where the lookup answers (id, avatar, page), for feeds to offer as people
+	to follow."""
+	if not identity:
+		return []
+	out = []
+	for row in contacts_rows(identity):
+		for p in card_decode(row["card"]):
+			if type(p) != "dict" or p.get("name") != "SOCIALPROFILE":
+				continue
+			handle = str(p.get("value", "") or "").strip()
+			network = handle_network(p)
+			if not handle or not network:
+				continue
+			entry = {"contact": row["id"], "name": row["name"] or row["directory"], "handle": handle, "network": network}
+			found = mochi.account.resolve(handle)
+			if found:
+				entry["id"] = found.get("id", "")
+				entry["avatar"] = found.get("avatar", "")
+				entry["page"] = found.get("url", "")
+				entry["address"] = found.get("address", "")
+				entry["person"] = found.get("name", "")
+			out.append(entry)
+	return out
+
+def handle_network(p):
+	"""The network a SOCIALPROFILE names, from its SERVICE-TYPE or the handle's
+	own shape: a fediverse handle has an @ in it, a Bluesky one is a domain."""
+	params = p.get("params") if type(p.get("params")) == "dict" else {}
+	for key in params:
+		if key.upper() == "SERVICE-TYPE":
+			for value in (params[key] if type(params[key]) == "list" else [params[key]]):
+				network = HANDLE_NETWORKS.get(str(value).lower(), "")
+				if network:
+					return network
+	handle = str(p.get("value", "") or "")
+	if "@" in handle:
+		return "fediverse"
+	if "." in handle and " " not in handle and not handle.startswith("http"):
+		return "bluesky"
+	return ""
 
 def birthday_parse(value):
 	if type(value) != "string":

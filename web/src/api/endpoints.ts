@@ -30,6 +30,8 @@ const endpoints = {
     update: action('contacts/update'),
     delete: action('contacts/delete'),
     search: action('contacts/search'),
+    // What a network shows of a handle on a card (phase 17).
+    handleLookup: action('contacts/handle/lookup'),
   },
   books: {
     list: action('books'),

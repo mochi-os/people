@@ -48,6 +48,7 @@ import {
   emptyForm,
   formFromCard,
   newAddress,
+  newHandle,
   newTypedValue,
   propertiesFromForm,
   type ContactForm,
@@ -65,7 +66,14 @@ import {
 } from '@/hooks/useContacts'
 import { AddContactDialog } from './add-dialog'
 import { BirthdayField } from './birthday'
-import { AddButton, AddressRows, Field, Heading, TypedRows } from './fields'
+import {
+  AddButton,
+  AddressRows,
+  Field,
+  HandleRows,
+  Heading,
+  TypedRows,
+} from './fields'
 import { MergeDialog } from './merge-dialog'
 
 function statusOf(error: unknown): number | undefined {
@@ -617,6 +625,10 @@ export function ContactPanel({
               update({ addresses: [...form.addresses, newAddress('home')] })
             }
           />
+          <AddButton
+            label={t`Add handle`}
+            onClick={() => update({ handles: [...form.handles, newHandle()] })}
+          />
         </div>
         {form.emails.length > 0 && (
           <div className='space-y-2'>
@@ -650,6 +662,14 @@ export function ContactPanel({
               icon={MapPin}
               values={form.addresses}
               onChange={(addresses) => update({ addresses })}
+            />
+          </div>
+        )}
+        {form.handles.length > 0 && (
+          <div className='space-y-2'>
+            <HandleRows
+              values={form.handles}
+              onChange={(handles) => update({ handles })}
             />
           </div>
         )}

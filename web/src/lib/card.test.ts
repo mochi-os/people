@@ -340,3 +340,51 @@ describe('groups', () => {
     expect(written[0]).not.toHaveProperty('group')
   })
 })
+
+describe('handles on another network (SOCIALPROFILE)', () => {
+  it('reads the network from SERVICE-TYPE, else from the handle', () => {
+    const form = formFromCard([
+      property('SOCIALPROFILE', '@bob@remote.example', {
+        'SERVICE-TYPE': ['Mastodon'],
+      }),
+      property('SOCIALPROFILE', 'bob.bsky.social'),
+      property('SOCIALPROFILE', '@carol@remote.example'),
+    ])
+    expect(form.handles.map((h) => h.network)).toEqual([
+      'fediverse',
+      'bluesky',
+      'fediverse',
+    ])
+    expect(form.handles[0].value).toBe('@bob@remote.example')
+  })
+
+  it('writes each handle with its network as SERVICE-TYPE, keeping other parameters', () => {
+    const form = formFromCard([
+      property('SOCIALPROFILE', 'bob.bsky.social', {
+        'SERVICE-TYPE': ['Bluesky'],
+        PREF: ['1'],
+      }),
+    ])
+    form.handles.push({
+      value: ' @dave@remote.example ',
+      network: 'fediverse',
+      params: {},
+      group: '',
+    })
+    const written = propertiesFromForm(form).filter(
+      (p) => p.name === 'SOCIALPROFILE'
+    )
+    expect(written).toEqual([
+      {
+        name: 'SOCIALPROFILE',
+        params: { PREF: ['1'], 'SERVICE-TYPE': ['Bluesky'] },
+        value: 'bob.bsky.social',
+      },
+      {
+        name: 'SOCIALPROFILE',
+        params: { 'SERVICE-TYPE': ['Fediverse'] },
+        value: '@dave@remote.example',
+      },
+    ])
+  })
+})

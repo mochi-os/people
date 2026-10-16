@@ -388,3 +388,53 @@ describe('handles on another network (SOCIALPROFILE)', () => {
     ])
   })
 })
+
+describe('messaging addresses (IMPP)', () => {
+  it('reads the network from the scheme, keeping another scheme whole', () => {
+    const form = formFromCard([
+      property('IMPP', 'acct:bob@remote.example'),
+      property('IMPP', 'matrix:u/carol:matrix.example'),
+      property('IMPP', 'xmpp:dave@jabber.example'),
+      property('IMPP', 'sip:erin@voip.example'),
+    ])
+    expect(form.messaging.map((m) => [m.network, m.value])).toEqual([
+      ['fediverse', '@bob@remote.example'],
+      ['matrix', '@carol:matrix.example'],
+      ['xmpp', 'dave@jabber.example'],
+      ['other', 'sip:erin@voip.example'],
+    ])
+  })
+
+  it('writes each address with its network as the scheme', () => {
+    const form = formFromCard([])
+    form.messaging.push(
+      { value: ' @bob@remote.example ', network: 'fediverse', params: {}, group: '', raw: '', read: '' },
+      { value: '@carol:matrix.example', network: 'matrix', params: {}, group: '', raw: '', read: '' },
+      { value: 'xmpp:dave@jabber.example', network: 'xmpp', params: {}, group: '', raw: '', read: '' },
+      { value: 'sip:erin@voip.example', network: 'other', params: {}, group: '', raw: '', read: '' }
+    )
+    expect(
+      propertiesFromForm(form)
+        .filter((p) => p.name === 'IMPP')
+        .map((p) => p.value)
+    ).toEqual([
+      'acct:bob@remote.example',
+      'matrix:u/carol:matrix.example',
+      'xmpp:dave@jabber.example',
+      'sip:erin@voip.example',
+    ])
+  })
+
+  it('writes an address left alone exactly as the card held it, parameters and all', () => {
+    const form = formFromCard([
+      property('IMPP', 'matrix:@carol:matrix.example', { PREF: ['1'] }),
+    ])
+    expect(propertiesFromForm(form).filter((p) => p.name === 'IMPP')).toEqual([
+      { name: 'IMPP', params: { PREF: ['1'] }, value: 'matrix:@carol:matrix.example' },
+    ])
+    form.messaging[0].value = '@carol:other.example'
+    expect(
+      propertiesFromForm(form).find((p) => p.name === 'IMPP')?.value
+    ).toBe('matrix:u/carol:other.example')
+  })
+})

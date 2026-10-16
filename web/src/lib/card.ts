@@ -36,6 +36,30 @@ export interface HandleValue {
   group: string
 }
 
+// A messaging address (IMPP, RFC 6350): a URI whose scheme names the network -
+// acct: for the fediverse, matrix:, xmpp:. Any other scheme is kept as written
+// and edited whole.
+export type MessagingNetwork = 'fediverse' | 'matrix' | 'xmpp' | 'other'
+export const MESSAGING_NETWORKS: MessagingNetwork[] = [
+  'fediverse',
+  'matrix',
+  'xmpp',
+  'other',
+]
+
+export interface MessagingValue {
+  // The address as the editor shows it: without its scheme, or the whole URI
+  // for another scheme.
+  value: string
+  network: MessagingNetwork
+  params: Record<string, string[]>
+  group: string
+  // The URI as the card held it and the address it read as, so one left
+  // alone is written back exactly as it came.
+  raw: string
+  read: string
+}
+
 export interface AddressValue {
   street: string
   city: string
@@ -69,6 +93,7 @@ export interface ContactForm {
   phones: TypedValue[]
   addresses: AddressValue[]
   handles: HandleValue[]
+  messaging: MessagingValue[]
   birthday: string
   organisation: string
   title: string
@@ -226,6 +251,7 @@ export function emptyForm(): ContactForm {
     phones: [],
     addresses: [],
     handles: [],
+    messaging: [],
     birthday: '',
     organisation: '',
     title: '',
@@ -265,6 +291,46 @@ export function handleNetwork(
 function serviceType(network: HandleNetwork): string {
   // eslint-disable-next-line lingui/no-unlocalized-strings -- vCard SERVICE-TYPE values, not shown
   return network === 'bluesky' ? 'Bluesky' : 'Fediverse'
+}
+
+export function newMessaging(
+  network: MessagingNetwork = 'fediverse'
+): MessagingValue {
+  return { value: '', network, params: {}, group: '', raw: '', read: '' }
+}
+
+// A messaging address as the editor shows it. A fediverse address is acct:
+// with the handle; a Matrix one is matrix:u/ with the user id after its @, or
+// written plainly after matrix: as some clients do.
+export function messagingRead(uri: string): {
+  network: MessagingNetwork
+  value: string
+} {
+  const match = /^([a-z][a-z0-9+.-]*):(.+)$/i.exec(uri.trim())
+  const scheme = match?.[1].toLowerCase()
+  const rest = match?.[2] ?? ''
+  if (scheme === 'acct') return { network: 'fediverse', value: '@' + rest }
+  if (scheme === 'xmpp') return { network: 'xmpp', value: rest }
+  if (scheme === 'matrix')
+    return {
+      network: 'matrix',
+      value: rest.startsWith('u/') ? '@' + rest.slice(2) : rest,
+    }
+  return { network: 'other', value: uri.trim() }
+}
+
+// The URI a messaging address is written as.
+export function messagingUri(row: MessagingValue): string {
+  const value = row.value.trim()
+  if (!value) return ''
+  if (row.raw && row.network === messagingRead(row.raw).network && value === row.read)
+    return row.raw
+  if (row.network === 'other') return value
+  const bare = value.replace(/^(acct|matrix|xmpp):/i, '')
+  if (row.network === 'fediverse') return 'acct:' + bare.replace(/^@/, '')
+  if (row.network === 'matrix')
+    return bare.startsWith('@') ? 'matrix:u/' + bare.slice(1) : 'matrix:' + bare
+  return 'xmpp:' + bare
 }
 
 export function newAddress(type: PropertyType): AddressValue {
@@ -335,6 +401,18 @@ export function formFromCard(card: Property[]): ContactForm {
     params: property.params ?? {},
     group: property.group ?? '',
   }))
+
+  form.messaging = all(card, 'IMPP').map((property) => {
+    const read = messagingRead(property.value)
+    return {
+      value: read.value,
+      network: read.network,
+      params: property.params ?? {},
+      group: property.group ?? '',
+      raw: property.value,
+      read: read.value,
+    }
+  })
 
   form.addresses = all(card, 'ADR').map((property) => {
     const parts = split(property.value)
@@ -492,6 +570,10 @@ export function propertiesFromForm(form: ContactForm): Property[] {
       { ...rest, 'SERVICE-TYPE': [serviceType(handle.network)] },
       handle.group
     )
+  }
+
+  for (const row of form.messaging) {
+    add('IMPP', messagingUri(row), row.params, row.group)
   }
 
   single('BDAY')

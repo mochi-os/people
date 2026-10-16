@@ -20,20 +20,29 @@ import {
   requestHelpers,
   useDebounce,
 } from '@mochi/web'
-import { AtSign, Plus, X, type LucideIcon } from 'lucide-react'
+import { AtSign, MessageCircle, Plus, X, type LucideIcon } from 'lucide-react'
 import endpoints from '@/api/endpoints'
 import {
   ADDRESS_TYPES,
   HANDLE_NETWORKS,
+  MESSAGING_NETWORKS,
   type AddressValue,
   type HandleNetwork,
   type HandleValue,
+  type MessagingNetwork,
+  type MessagingValue,
   type PropertyType,
   type TypedValue,
 } from '@/lib/card'
 
 // Example handles, shown as placeholders.
 const HANDLE_EXAMPLES = { fediverse: '@name@server.example', bluesky: 'name.bsky.social' }
+const MESSAGING_EXAMPLES: Record<MessagingNetwork, string> = {
+  fediverse: '@name@server.example',
+  matrix: '@name:server.example',
+  xmpp: 'name@server.example',
+  other: '',
+}
 
 // The label column, which the type of an email, telephone or address also
 // sits in, so every value starts on the same line.
@@ -408,5 +417,79 @@ function HandlePreview({ handle }: { handle: string }) {
         {[data.name, data.address].filter(Boolean).join(' · ')}
       </span>
     </div>
+  )
+}
+
+/**
+ * A messaging address per row (IMPP): the network in the label column and the
+ * address beside it, written with the scheme its network takes.
+ */
+export function MessagingRows({
+  values,
+  onChange,
+}: {
+  values: MessagingValue[]
+  onChange: (values: MessagingValue[]) => void
+}) {
+  const { t } = useLingui()
+  const names: Record<MessagingNetwork, string> = {
+    fediverse: providerName('fediverse'),
+    matrix: providerName('matrix'),
+    xmpp: 'XMPP',
+    other: t({ message: 'Other', context: 'messaging network' }),
+  }
+  const replace = (index: number, changes: Partial<MessagingValue>) =>
+    onChange(
+      values.map((row, position) =>
+        position === index ? { ...row, ...changes } : row
+      )
+    )
+  return (
+    <>
+      {values.map((row, index) => (
+        <div key={index} className={TYPED}>
+          <div className='flex items-center gap-2'>
+            <MessageCircle
+              className='text-muted-foreground size-4 shrink-0'
+              aria-hidden='true'
+            />
+            <Select
+              value={row.network}
+              onValueChange={(next) =>
+                replace(index, { network: next as MessagingNetwork })
+              }
+            >
+              <SelectTrigger className='w-28 shrink-0' aria-label={t`Network`}>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {MESSAGING_NETWORKS.map((network) => (
+                  <SelectItem key={network} value={network}>
+                    {names[network]}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className='flex flex-1 items-center gap-2'>
+            <Input
+              className='flex-1'
+              aria-label={t`Messaging address`}
+              placeholder={MESSAGING_EXAMPLES[row.network]}
+              value={row.value}
+              onChange={(event) =>
+                replace(index, { value: event.target.value })
+              }
+            />
+            <RemoveButton
+              label={t`Remove messaging address`}
+              onClick={() =>
+                onChange(values.filter((_, position) => position !== index))
+              }
+            />
+          </div>
+        </div>
+      ))}
+    </>
   )
 }

@@ -38,8 +38,10 @@ _PROPERTIES_MAXIMUM = 200
 # survives an edit made here.
 # SOCIALPROFILE (RFC 9554) carries a handle on another network, its
 # SERVICE-TYPE naming the network (Fediverse, Bluesky), so the card keeps it
-# for CardDAV and feeds can offer the person as someone to follow.
-_MANAGED = ["FN", "N", "NICKNAME", "EMAIL", "TEL", "ADR", "BDAY", "ORG", "TITLE", "URL", "NOTE", "SOCIALPROFILE"]
+# for CardDAV and feeds can offer the person as someone to follow. IMPP (RFC
+# 6350) is a messaging address as a URI - xmpp:, matrix:, acct: - which chat
+# can message where one of the user's accounts reaches its network.
+_MANAGED = ["FN", "N", "NICKNAME", "EMAIL", "TEL", "ADR", "BDAY", "ORG", "TITLE", "URL", "NOTE", "SOCIALPROFILE", "IMPP"]
 
 # Properties the server owns. Never accepted from a client; regenerated on read.
 _RESERVED = ["X-MOCHI-PERSON", "X-MOCHI-FRIEND"]
@@ -765,11 +767,39 @@ def action_contacts(a):
 	rows = contacts_rows(identity, book)
 	contacts_refresh(identity, rows)
 	photos_refresh(identity, rows)
+	contacts = []
+	reachable = {}
+	for row in rows:
+		contact = contact_public(row)
+		message = contact_message(row, reachable)
+		if message:
+			contact["message"] = message
+		contacts.append(contact)
 	return {"data": {
-		"contacts": [contact_public(row) for row in rows],
+		"contacts": contacts,
 		"received": invites_received(identity),
 		"sent": invites_sent(identity),
 	}}
+
+def contact_message(row, reachable):
+	"""The contact's first messaging address chat can reach, with the account
+	that reaches it: {address, account}, or None. Chat is asked once per
+	scheme, since what reaches an address is the user's account on its
+	network."""
+	if "IMPP" not in (row.get("card") or ""):
+		return None
+	for p in card_decode(row["card"]):
+		if type(p) != "dict" or str(p.get("name", "")).upper() != "IMPP":
+			continue
+		address = str(p.get("value", "") or "").strip()
+		scheme = address.split(":", 1)[0].lower() if ":" in address else ""
+		if not scheme or len(address) > 500:
+			continue
+		if scheme not in reachable:
+			reachable[scheme] = mochi.service.call("chat", "reachable", address) or []
+		if reachable[scheme]:
+			return {"address": address, "account": reachable[scheme][0]["id"]}
+	return None
 
 def action_contact_handle_lookup(a):
 	"""What a network shows of a handle on a contact's card (phase 17): the

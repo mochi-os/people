@@ -24,6 +24,9 @@ export interface Contact {
   directory: string
   created: number
   updated: number
+  // The contact's messaging address chat can reach, with the user's account
+  // that reaches it.
+  message?: { address: string; account: string }
 }
 
 // A single contact with its card, as contacts/get and the write actions

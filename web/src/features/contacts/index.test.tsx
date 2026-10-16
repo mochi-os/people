@@ -29,6 +29,23 @@ const stranger = {
   name: 'Grace Hopper',
 }
 
+// Someone off Mochi whose messaging address chat can reach through one of
+// the user's accounts.
+const remote = {
+  ...contact,
+  id: 'c3',
+  person: '',
+  friend: false,
+  name: 'Linus Remote',
+  message: { address: 'acct:linus@remote.example', account: 'a1' },
+}
+
+const navigated = vi.hoisted(() => [] as string[])
+vi.mock('@mochi/web', async (original) => ({
+  ...(await original<typeof import('@mochi/web')>()),
+  shellNavigateExternal: (url: string) => navigated.push(url),
+}))
+
 const idle = vi.hoisted(() => () => ({
   mutateAsync: vi.fn(),
   isPending: false,
@@ -36,8 +53,8 @@ const idle = vi.hoisted(() => () => ({
 
 vi.mock('@/hooks/useContacts', () => ({
   useContactsQuery: () => ({
-    data: { contacts: [contact, stranger], received: [], sent: [] },
-    contacts: [contact, stranger],
+    data: { contacts: [contact, stranger, remote], received: [], sent: [] },
+    contacts: [contact, stranger, remote],
     isLoading: false,
     error: null,
     refetch: vi.fn(),
@@ -189,5 +206,16 @@ describe('Contacts', () => {
         )
       fireEvent.keyDown(screen.getByRole('menu'), { key: 'Escape' })
     }
+  })
+
+  it('messages a friend on Mochi and anyone else at the address chat can reach', () => {
+    show()
+    const buttons = screen.getAllByRole('button', { name: 'Message' })
+    expect(buttons).toHaveLength(2)
+    navigated.length = 0
+    for (const button of buttons) fireEvent.click(button)
+    expect(navigated[0]).toContain('with=p1')
+    expect(navigated[1]).toContain('account=a1')
+    expect(navigated[1]).toContain('address=acct%3Alinus%40remote.example')
   })
 })

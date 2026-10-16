@@ -49,6 +49,7 @@ import {
   formFromCard,
   newAddress,
   newHandle,
+  newMessaging,
   newTypedValue,
   propertiesFromForm,
   type ContactForm,
@@ -72,6 +73,7 @@ import {
   Field,
   HandleRows,
   Heading,
+  MessagingRows,
   TypedRows,
 } from './fields'
 import { MergeDialog } from './merge-dialog'
@@ -630,6 +632,12 @@ export function ContactPanel({
             label={t`Add handle`}
             onClick={() => update({ handles: [...form.handles, newHandle()] })}
           />
+          <AddButton
+            label={t`Add messaging address`}
+            onClick={() =>
+              update({ messaging: [...form.messaging, newMessaging()] })
+            }
+          />
         </div>
         {form.emails.length > 0 && (
           <div className='space-y-2'>
@@ -671,6 +679,14 @@ export function ContactPanel({
             <HandleRows
               values={form.handles}
               onChange={(handles) => update({ handles })}
+            />
+          </div>
+        )}
+        {form.messaging.length > 0 && (
+          <div className='space-y-2'>
+            <MessagingRows
+              values={form.messaging}
+              onChange={(messaging) => update({ messaging })}
             />
           </div>
         )}

@@ -180,9 +180,14 @@ export function Contacts({
     }
   }
 
+  // A friend is messaged on Mochi; anyone else at the messaging address chat
+  // can reach, through the account that reaches it.
   const startChat = (contact: Contact) => {
     const base = import.meta.env.VITE_APP_CHAT_URL || APP_ROUTES.CHAT.HOME
-    const url = `${base}?with=${encodeURIComponent(contact.person)}&name=${encodeURIComponent(contact.name)}`
+    const url =
+      contact.friend || !contact.message
+        ? `${base}?with=${encodeURIComponent(contact.person)}&name=${encodeURIComponent(contact.name)}`
+        : `${base}?account=${encodeURIComponent(contact.message.account)}&address=${encodeURIComponent(contact.message.address)}&name=${encodeURIComponent(contact.name)}`
     shellNavigateExternal(url)
   }
 
@@ -358,7 +363,7 @@ export function Contacts({
                       className='flex shrink-0 items-center gap-2'
                       onClick={(event) => event.stopPropagation()}
                     >
-                      {contact.friend ? (
+                      {contact.friend || contact.message ? (
                         <Button
                           variant='outline'
                           size='sm'

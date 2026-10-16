@@ -2,15 +2,19 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
+import { Trans } from '@lingui/react/macro'
 import {
   EntityAvatar,
   EntityBanner,
   markdownUrlTransform,
   providerName,
+  shellNavigateExternal,
+  useFormat,
 } from '@mochi/web'
+import { FileText, MessageSquare } from 'lucide-react'
 import Markdown, { defaultUrlTransform } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import type { ProfileAccount } from '@/api/types/person'
+import type { ProfileAccount, ProfileHistory } from '@/api/types/person'
 
 // A profile is written by the person being viewed, including strangers and
 // anonymous readers of the public page, so its images stay on this origin.
@@ -23,6 +27,7 @@ interface ProfileViewProps {
   avatarUrl: string | null
   bannerUrl: string | null
   accounts?: ProfileAccount[]
+  history?: ProfileHistory[]
 }
 
 export function ProfileView({
@@ -32,6 +37,7 @@ export function ProfileView({
   avatarUrl,
   bannerUrl,
   accounts = [],
+  history = [],
 }: ProfileViewProps) {
   const styleVars = accent
     ? ({ ['--accent-colour' as string]: accent } as React.CSSProperties)
@@ -76,6 +82,55 @@ export function ProfileView({
           </Markdown>
         </div>
       )}
+      {history.length > 0 && <ProfileHistoryList history={history} />}
     </div>
+  )
+}
+
+// The person's newest posts and comments in forums, each opening in forums.
+function ProfileHistoryList({ history }: { history: ProfileHistory[] }) {
+  const { formatTimestamp } = useFormat()
+  return (
+    <section className='p-4' data-testid='profile-history'>
+      <h2 className='text-muted-foreground mb-2 text-xs font-medium tracking-wide uppercase'>
+        <Trans>Forums</Trans>
+      </h2>
+      <ul className='space-y-1'>
+        {history.map((item) => {
+          const url = `/forums/${item.fingerprint || item.forum}/${item.post}`
+          return (
+            <li key={`${item.kind}:${item.id}`}>
+              <a
+                href={url}
+                onClick={(event) => {
+                  event.preventDefault()
+                  shellNavigateExternal(url)
+                }}
+                className='hover:bg-hover flex gap-3 rounded-lg p-2'
+              >
+                {item.kind === 'post' ? (
+                  <FileText className='text-muted-foreground mt-0.5 size-4 shrink-0' />
+                ) : (
+                  <MessageSquare className='text-muted-foreground mt-0.5 size-4 shrink-0' />
+                )}
+                <span className='min-w-0 flex-1'>
+                  <span className='block truncate text-sm font-medium'>
+                    {item.title}
+                  </span>
+                  {item.kind === 'comment' && item.body && (
+                    <span className='text-muted-foreground line-clamp-2 block text-sm'>
+                      {item.body}
+                    </span>
+                  )}
+                  <span className='text-muted-foreground block text-xs'>
+                    {item.forum_name} · {formatTimestamp(item.created)}
+                  </span>
+                </span>
+              </a>
+            </li>
+          )
+        })}
+      </ul>
+    </section>
   )
 }

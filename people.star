@@ -625,6 +625,9 @@ def build_information(person_id, entity):
 		"banner": "",
 		"favicon": "",
 		"accounts": profile_accounts(),
+		# The person's posts and comments in public forums, from the forums
+		# app where it is installed (the federation plan, phase 21).
+		"history": mochi.service.call("forums", "history", person_id) or [],
 	}
 	for slot in _IMAGE_SLOTS:
 		att = slot_attachment(person_id, slot)

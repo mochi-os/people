@@ -81,6 +81,7 @@ export function PublicProfile({ fingerprint }: { fingerprint: string }) {
       avatarUrl={avatarUrl}
       bannerUrl={bannerUrl}
       accounts={data.accounts}
+      history={data.history}
     />
   )
 }

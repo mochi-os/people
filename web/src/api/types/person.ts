@@ -16,6 +16,25 @@ export interface PersonInformation {
   favicon: string
   // The person's accounts on other networks, as the profile links them.
   accounts?: ProfileAccount[]
+  // The person's newest posts and comments in public forums.
+  history?: ProfileHistory[]
+}
+
+export interface ProfileHistory {
+  kind: 'post' | 'comment'
+  id: string
+  post: string
+  forum: string
+  forum_name: string
+  fingerprint: string
+  // The post's title; for a comment, the title of the post it is under.
+  title: string
+  // The start of a comment's text.
+  body?: string
+  created: number
+  up: number
+  down: number
+  comments?: number
 }
 
 export interface ProfileAccount {

@@ -582,6 +582,7 @@ function ProfileEditor({
             avatarUrl={avatarUrl}
             bannerUrl={bannerUrl}
             accounts={info.accounts}
+            history={info.history}
           />
         </ResponsiveDialogContent>
       </ResponsiveDialog>

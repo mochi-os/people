@@ -1074,8 +1074,51 @@ def action_contact_search(a):
 	# An empty query reaches the directory as `name like '%%'`, and core applies
 	# no LIMIT, so one request would return every person in the directory.
 	if len(search) < 1:
-		return {"data": {"results": []}}
-	return {"data": {"results": search_annotated(identity, search)}}
+		return {"data": {"results": [], "networks": []}}
+	return {"data": {"results": search_annotated(identity, search), "networks": network_people(identity, search)}}
+
+def address_key(address):
+	"""A messaging address as two contacts' are compared: a Matrix address the
+	same whether written @name:host or matrix:u/name:host."""
+	value = str(address or "").strip().lower()
+	if value.startswith("matrix:u/"):
+		value = "@" + value[len("matrix:u/"):]
+	return value
+
+def contacts_addresses(identity):
+	"""Each messaging address on the user's contacts (vCard IMPP), compared as
+	address_key does, with the contact it is on."""
+	out = {}
+	for row in contacts_rows(identity):
+		if "IMPP" not in (row.get("card") or ""):
+			continue
+		for p in card_decode(row["card"]):
+			if type(p) == "dict" and str(p.get("name", "")).upper() == "IMPP":
+				key = address_key(p.get("value"))
+				if key and key not in out:
+					out[key] = row["id"]
+	return out
+
+def network_people(identity, search):
+	"""People on other networks a search finds through the user's accounts,
+	which chat holds (phase 24): each {id, name, address, network} and the
+	contact already holding their address, if any."""
+	found = mochi.service.call("chat", "directory", search) or []
+	known = contacts_addresses(identity)
+	out = []
+	for p in found:
+		if type(p) != "dict" or not p.get("address"):
+			continue
+		out.append({"id": str(p.get("id", "")), "name": str(p.get("name", "")), "address": str(p["address"]), "network": str(p.get("network", "")), "contact": known.get(address_key(p["address"]), "")})
+	return out
+
+def function_contacts_known(context, identity, address):
+	"""Whether a messaging address is on one of the user's contacts, for chat
+	to tell an invitation from someone the user knows."""
+	key = address_key(address)
+	if not identity or not key:
+		return False
+	return key in contacts_addresses(identity)
 
 # === Actions: address books ===
 

@@ -41,6 +41,7 @@ const calls = vi.hoisted(() => ({
   information: vi.fn(),
   start: vi.fn(),
   results: [] as unknown[],
+  networks: [] as unknown[],
 }))
 
 beforeEach(() => {
@@ -50,12 +51,21 @@ beforeEach(() => {
   calls.information = vi.fn().mockResolvedValue({})
   calls.start = vi.fn()
   calls.results = [person]
+  calls.networks = []
 })
+
+// Someone on Matrix a search found through the user's accounts.
+const dave = {
+  id: '@dave:matrix.example',
+  name: 'Dave Fleet',
+  address: 'matrix:u/dave:matrix.example',
+  network: 'matrix',
+}
 
 vi.mock('@/hooks/useContacts', () => ({
   useContactsQuery: () => ({ data: { contacts: [], received: [], sent: [] } }),
   useSearchDirectoryQuery: () => ({
-    data: { results: calls.results },
+    data: { results: calls.results, networks: calls.networks },
     isLoading: false,
     isError: false,
     error: null,
@@ -192,6 +202,51 @@ describe('AddContactDialog', () => {
     await search()
     for (const icon of document.querySelectorAll('button svg'))
       expect(icon.getAttribute('class')).not.toMatch(/\bm[se]-2\b/)
+  })
+
+  it('adds someone on Matrix as a card holding their address', async () => {
+    calls.networks = [dave]
+    show({ book: 'b2' })
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'dave' } })
+    await screen.findByText('Dave Fleet')
+    expect(screen.getByText('@dave:matrix.example')).toBeInTheDocument()
+    const buttons = screen.getAllByRole('button', { name: /Add to contacts/ })
+    fireEvent.click(buttons[buttons.length - 1])
+    await waitFor(() => expect(calls.create).toHaveBeenCalledTimes(1))
+    const request = calls.create.mock.calls[0][0]
+    expect(request).toEqual({
+      properties: [
+        { name: 'FN', params: {}, value: 'Dave Fleet' },
+        { name: 'IMPP', params: {}, value: 'matrix:u/dave:matrix.example' },
+      ],
+      book: 'b2',
+    })
+    expect(request).not.toHaveProperty('person')
+  })
+
+  it('shows someone on Matrix a contact holds already as in contacts', async () => {
+    calls.results = []
+    calls.networks = [{ ...dave, contact: 'c9' }]
+    show({})
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'dave' } })
+    await screen.findByText('Dave Fleet')
+    expect(screen.getByRole('button', { name: /In contacts/ })).toBeDisabled()
+    expect(screen.queryByRole('button', { name: /Add to contacts/ })).toBeNull()
+  })
+
+  it('lists people on Matrix where the directory finds no one', async () => {
+    calls.results = []
+    calls.networks = [dave]
+    show({})
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'dave' } })
+    expect(await screen.findByText('Dave Fleet')).toBeInTheDocument()
+  })
+
+  it('offers no one on Matrix while linking a card', async () => {
+    calls.networks = [dave]
+    show({ link: { contact: 'c1', name: 'Ada Lovelace' } })
+    await screen.findByText('Ada Lovelace')
+    expect(screen.queryByText('Dave Fleet')).toBeNull()
   })
 
   it('starts a new contact where the list asks', () => {

@@ -39,7 +39,7 @@ import Markdown, { defaultUrlTransform } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import endpoints from '@/api/endpoints'
 import { personApi } from '@/api/person'
-import type { DirectoryPerson } from '@/api/types/contacts'
+import type { DirectoryPerson, NetworkPerson } from '@/api/types/contacts'
 import type { PersonInformation } from '@/api/types/person'
 import { formatFingerprint } from '@/lib/fingerprint'
 import {
@@ -115,15 +115,32 @@ export function AddContactDialog({
   const acceptMutation = useAcceptFriendMutation()
 
   const results = useMemo(() => data?.results ?? [], [data?.results])
+  const networks = useMemo(() => data?.networks ?? [], [data?.networks])
 
-  const addToContacts = async (person: string, name: string) => {
+  const addToContacts = async (
+    person: string,
+    name: string,
+    address?: string
+  ) => {
     try {
       await toastAction(
-        createMutation.mutateAsync({
-          person,
-          properties: [{ name: 'FN', params: {}, value: name }],
-          book,
-        }),
+        createMutation.mutateAsync(
+          // Someone on another network is a card with their address; a
+          // Mochi person is linked to the card by their identity.
+          address
+            ? {
+                properties: [
+                  { name: 'FN', params: {}, value: name },
+                  { name: 'IMPP', params: {}, value: address },
+                ],
+                book,
+              }
+            : {
+                person,
+                properties: [{ name: 'FN', params: {}, value: name }],
+                book,
+              }
+        ),
         {
           loading: t`Adding contact...`,
           success: t`Contact added`,
@@ -238,7 +255,7 @@ export function AddContactDialog({
     if (!hasQuery) return 'idle'
     if (isLoading) return 'loading'
     if (isError) return 'error'
-    if (results.length === 0) return 'empty'
+    if (results.length === 0 && networks.length === 0) return 'empty'
     return 'results'
   })()
 
@@ -366,6 +383,23 @@ export function AddContactDialog({
                         }
                       />
                     ))}
+                    {!link &&
+                      networks.map((person) => (
+                        <NetworkRow
+                          key={person.address}
+                          person={person}
+                          busy={pending === person.address}
+                          added={added.has(person.address)}
+                          onAdd={() => {
+                            setPending(person.address)
+                            void addToContacts(
+                              person.address,
+                              person.name,
+                              person.address
+                            )
+                          }}
+                        />
+                      ))}
                   </div>
                 )}
               </div>
@@ -572,6 +606,58 @@ function PersonRow({
               {action.label}
             </Button>
           )
+        )}
+      </div>
+    </div>
+  )
+}
+
+// Someone on another network: their name and address, and whether a contact
+// holds them already.
+function NetworkRow({
+  person,
+  busy,
+  added,
+  onAdd,
+}: {
+  person: NetworkPerson
+  busy: boolean
+  added: boolean
+  onAdd: () => void
+}) {
+  const { t } = useLingui()
+  const inContacts = added || Boolean(person.contact)
+  return (
+    <div className='hover:bg-hover hover:text-hover-foreground group flex items-center justify-between gap-3 rounded-lg p-3 transition-all'>
+      <div className='flex min-w-0 flex-1 items-center gap-3'>
+        <EntityAvatar name={person.name} size='lg' />
+        <div className='flex min-w-0 flex-1 flex-col'>
+          <span className='truncate text-sm font-medium'>{person.name}</span>
+          <span className='text-muted-foreground truncate text-xs'>
+            {person.id}
+          </span>
+        </div>
+      </div>
+      <div className='flex shrink-0 items-center gap-2'>
+        {inContacts ? (
+          <Button
+            size='sm'
+            variant='outline'
+            icon={<BookUser className='size-4' />}
+            disabled
+          >
+            {t`In contacts`}
+          </Button>
+        ) : (
+          <Button
+            size='sm'
+            variant='default'
+            onClick={onAdd}
+            loading={busy}
+            icon={<UserPlus className='size-4' />}
+          >
+            {t`Add to contacts`}
+          </Button>
         )}
       </div>
     </div>

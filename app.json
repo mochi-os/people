@@ -127,6 +127,9 @@
 		// The contacts with a handle on another network, for feeds to offer as
 		// people to follow.
 		"handles": {"function": "function_handles", "permission": "contacts/read"},
+		// Whether a messaging address is a contact's, for chat to police an
+		// invitation from another network (phase 24).
+		"contacts/known": {"function": "function_contacts_known", "permission": "friends/read"},
 		"dav/collections": {"function": "function_dav_collections", "permission": "contacts/read"},
 		"dav/collections/create": {"function": "function_dav_collection_create", "permission": "contacts/read"},
 		"dav/collections/delete": {"function": "function_dav_collection_delete", "permission": "contacts/read"},

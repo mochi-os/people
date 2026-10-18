@@ -125,8 +125,20 @@ export interface DirectoryPerson {
   contact?: string
 }
 
+/** Someone on another network a search found through the user's accounts. */
+export interface NetworkPerson {
+  id: string
+  name: string
+  /** Their messaging address, as a contact card holds it (vCard IMPP). */
+  address: string
+  network: string
+  /** The contact already holding the address, if any. */
+  contact?: string
+}
+
 export interface SearchDirectoryResponse {
   results: DirectoryPerson[]
+  networks?: NetworkPerson[]
 }
 
 interface LocalUser {

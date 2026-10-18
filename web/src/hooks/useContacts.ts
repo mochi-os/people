@@ -236,11 +236,23 @@ interface PersonMutationVariables {
   person: string
 }
 
+// Ending a friendship or an invitation; on XMPP, through one account alone
+// where one is named.
+interface RemoveMutationVariables extends PersonMutationVariables {
+  account?: string
+}
+
 export const useInviteFriendMutation = (
   options?: UseMutationOptions<
     MutationSuccessResponse,
     unknown,
-    { person: string; name: string; contact?: string; book?: string },
+    {
+      person: string
+      name: string
+      contact?: string
+      book?: string
+      account?: string
+    },
     unknown
   >
 ) => {
@@ -252,6 +264,7 @@ export const useInviteFriendMutation = (
       name: string
       contact?: string
       book?: string
+      account?: string
     }) => contactsApi.invite(payload),
     onSuccess: (data, variables, context, mutation) => {
       invalidate()
@@ -308,15 +321,15 @@ export const useRemoveFriendMutation = (
   options?: UseMutationOptions<
     MutationSuccessResponse,
     unknown,
-    PersonMutationVariables,
+    RemoveMutationVariables,
     unknown
   >
 ) => {
   const invalidate = useInvalidateContacts()
   const { onSuccess, ...rest } = options ?? {}
   return useMutation({
-    mutationFn: ({ person }: PersonMutationVariables) =>
-      contactsApi.removeFriend(person),
+    mutationFn: ({ person, account }: RemoveMutationVariables) =>
+      contactsApi.removeFriend(person, account),
     onSuccess: (data, variables, context, mutation) => {
       invalidate()
       onSuccess?.(data, variables, context, mutation)

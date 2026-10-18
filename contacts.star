@@ -84,8 +84,8 @@ def invites_pending(identity):
 	row = mochi.db.row("select count(*) as pending from invites where identity=? and direction='from'", identity)
 	return row["pending"] if row else 0
 
-def invite_set(identity, id, direction, name):
-	mochi.db.execute("insert into invites ( identity, id, direction, name, updated ) values ( ?, ?, ?, ?, ? ) on conflict ( identity, id, direction ) do update set name=excluded.name, updated=excluded.updated", identity, id, direction, name, mochi.time.now())
+def invite_set(identity, id, direction, name, account=""):
+	mochi.db.execute("insert into invites ( identity, id, direction, name, updated, account ) values ( ?, ?, ?, ?, ?, ? ) on conflict ( identity, id, direction ) do update set name=excluded.name, updated=excluded.updated, account=excluded.account", identity, id, direction, name, mochi.time.now(), account)
 
 def invite_remove(identity, id, direction=None):
 	# Remove the invite(s) between identity and id. direction=None removes both.
@@ -101,15 +101,29 @@ def invite_remove(identity, id, direction=None):
 def invites_received(identity):
 	out = []
 	for row in mochi.db.rows("select * from invites where identity=? and direction='from' order by updated desc", identity):
-		info = mochi.directory.get(row["id"])
 		invite = dict(row)
+		# A request on XMPP is known by its address, which is what tells it
+		# apart; it has no fingerprint and no directory entry.
+		if row["id"].startswith("xmpp:"):
+			invite["address"] = row["id"][len("xmpp:"):]
+			invite["fingerprint"] = ""
+			invite["directory"] = ""
+			out.append(invite)
+			continue
+		info = mochi.directory.get(row["id"])
 		invite["fingerprint"] = mochi.entity.fingerprint(row["id"])
 		invite["directory"] = (info.get("name") if info else "") or ""
 		out.append(invite)
 	return out
 
 def invites_sent(identity):
-	return mochi.db.rows("select * from invites where identity=? and direction='to' order by updated desc", identity)
+	out = []
+	for row in mochi.db.rows("select * from invites where identity=? and direction='to' order by updated desc", identity):
+		invite = dict(row)
+		if row["id"].startswith("xmpp:"):
+			invite["address"] = row["id"][len("xmpp:"):]
+		out.append(invite)
+	return out
 
 # === Address books ===
 
@@ -698,6 +712,7 @@ def contact_friend_set(identity, person, friend, name="", book=""):
 # before it goes. A friendship is removed and a pending outgoing invite
 # cancelled, on both sides.
 def contact_release(identity, row):
+	xmpp_release(identity, row)
 	person = row["person"]
 	if not person:
 		return
@@ -825,7 +840,9 @@ def action_contact_get(a):
 		return
 	source = a.input("source", "")
 	if not source:
-		return {"data": {"contact": contact_full(row)}}
+		contact = contact_full(row)
+		contact["xmpp"] = contact_xmpp(row)
+		return {"data": {"contact": contact}}
 	# A merge is previewed here: the contact that survives, its card holding
 	# both cards' details, and the contact it absorbs.
 	pair = merge_rows(a, identity, row, source)
@@ -1213,6 +1230,8 @@ def person_valid(a, person, identity):
 # is where a contact the invitation makes goes, the default one otherwise.
 def friend_invite(a, person, name, contact="", book=""):
 	identity = a.user.identity.id
+	if xmpp_person(person):
+		return xmpp_invite(a, identity, person, name, a.input("account", ""))
 	if not person_valid(a, person, identity):
 		return
 	if not name:
@@ -1262,6 +1281,12 @@ def friend_invite(a, person, name, contact="", book=""):
 
 def friend_accept(a, person):
 	identity = a.user.identity.id
+	if xmpp_person(person):
+		i = mochi.db.row("select * from invites where identity=? and id=? and direction='from'", identity, person)
+		if not i:
+			a.error.label(400, "errors.invitation_not_found")
+			return
+		return xmpp_invite(a, identity, person, i["name"], i["account"])
 	if not person_valid(a, person, identity):
 		return
 	i = mochi.db.row("select * from invites where identity=? and id=? and direction='from'", identity, person)
@@ -1275,6 +1300,8 @@ def friend_accept(a, person):
 
 def friend_ignore(a, person):
 	identity = a.user.identity.id
+	if xmpp_person(person):
+		return xmpp_end(a, identity, person, "from")
 	if not person_valid(a, person, identity):
 		return
 	invite_remove(identity, person, "from")
@@ -1284,6 +1311,8 @@ def friend_ignore(a, person):
 # invitation. The contact stays.
 def friend_remove(a, person):
 	identity = a.user.identity.id
+	if xmpp_person(person):
+		return xmpp_end(a, identity, person, None)
 	if not person_valid(a, person, identity):
 		return
 	row = contact_by_person(identity, person)
@@ -1804,3 +1833,191 @@ def function_contacts_search(context, identity, search):
 		return []
 	needle = search.strip().lower()
 	return [contact_public(row) for row in contacts_rows(identity) if needle in row["name"].lower() or needle in row["directory"].lower()]
+
+# === Contacts on XMPP (the federation plan, phase 25) ===
+#
+# A contact's XMPP address is invited and accepted as a friend is, through the
+# user's hosted XMPP account: inviting asks to see their presence and lets
+# them see the user's, accepting approves their request and asks back.
+# Core's engine keeps the subscriptions and tells this app of each change
+# through xmpp/roster; a request waits among the invitations, under the
+# user's invitation policy, and a contact on XMPP gets a contact here with
+# their address. Friends with an XMPP address are on the roster too, which
+# core asks through xmpp/friends.
+
+def xmpp_person(person):
+	"""Whether an invitation's person is an address on XMPP."""
+	return type(person) == "string" and person.startswith("xmpp:")
+
+def xmpp_address(value):
+	"""An XMPP address as a contact's card or a request writes it, bare and
+	lowercased: name@host, or None."""
+	value = str(value or "").strip()
+	if value.lower().startswith("xmpp:"):
+		value = value[5:]
+	value = value.split("?")[0].split("/")[0].lower()
+	if value.count("@") != 1 or value.startswith("@") or value.endswith("@") or " " in value or len(value) > 500:
+		return None
+	return value
+
+def xmpp_roster():
+	"""The user's hosted XMPP accounts and their contacts there."""
+	return mochi.account.roster.list() or {"accounts": [], "items": []}
+
+def xmpp_account_for(roster, account, address):
+	"""The account an XMPP invitation goes through: the one named, else the
+	one the address is already a contact of, else the user's first."""
+	ids = [str(acc["id"]) for acc in roster.get("accounts", [])]
+	if account:
+		return account if account in ids else None
+	for item in roster.get("items", []):
+		if item.get("address") == address and str(item.get("account", "")) in ids:
+			return str(item["account"])
+	return ids[0] if ids else None
+
+def xmpp_invite(a, identity, person, name, account):
+	"""Invite an XMPP address, or accept its request: the account asks to
+	see their presence and approves theirs."""
+	address = xmpp_address(person)
+	if not address:
+		a.error.label(400, "errors.invalid_friend_id_format")
+		return
+	roster = xmpp_roster()
+	account = xmpp_account_for(roster, account, address)
+	if not account:
+		a.error.label(400, "errors.no_xmpp_account")
+		return
+	name = str(name or "").strip()
+	if name and not mochi.text.valid(name, "line"):
+		a.error.label(400, "errors.invalid_friend_name")
+		return
+	mochi.account.roster.add(account, address, name=name)
+	invite_remove(identity, "xmpp:" + address, "from")
+	invite_set(identity, "xmpp:" + address, "to", name or address, account)
+	contact_xmpp_link(identity, address, name or address)
+	return {"data": {}}
+
+def xmpp_end(a, identity, person, direction):
+	"""End what the user has with an XMPP address: a request declined, an
+	invitation withdrawn, or the contact on XMPP removed."""
+	address = xmpp_address(person)
+	if not address:
+		a.error.label(400, "errors.invalid_friend_id_format")
+		return
+	account = a.input("account", "")
+	roster = xmpp_roster()
+	for item in roster.get("items", []):
+		if item.get("address") == address and (not account or str(item.get("account", "")) == account):
+			mochi.account.roster.remove(str(item["account"]), address)
+	invite_remove(identity, "xmpp:" + address, direction)
+	return {"data": {}}
+
+def xmpp_release(identity, row):
+	"""End the XMPP subscriptions of a contact that is going."""
+	if "IMPP" not in (row.get("card") or ""):
+		return
+	addresses = [xmpp_address(p.get("value")) for p in card_decode(row["card"]) if type(p) == "dict" and str(p.get("name", "")).upper() == "IMPP" and str(p.get("value", "")).lower().startswith("xmpp:")]
+	addresses = [address for address in addresses if address]
+	if not addresses:
+		return
+	for item in xmpp_roster().get("items", []):
+		if item.get("address") in addresses:
+			mochi.account.roster.remove(str(item["account"]), item["address"])
+	for address in addresses:
+		invite_remove(identity, "xmpp:" + address)
+
+def contact_xmpp_link(identity, address, name):
+	"""The contact with an XMPP address on their card, made in the default
+	book where there is none."""
+	found = contacts_addresses(identity).get(address_key("xmpp:" + address))
+	if found:
+		return contact_get(identity, found)
+	card = [{"name": "FN", "params": {}, "value": name}, {"name": "IMPP", "params": {}, "value": "xmpp:" + address}]
+	row = contact_insert(identity, book_default(identity), "", 0, name, "", card)
+	devices_sync()
+	return row
+
+def contact_xmpp(row):
+	"""How a contact stands on XMPP: for each of their XMPP addresses and each
+	of the user's hosted XMPP accounts, {account, identifier, address,
+	subscription, ask, pending}."""
+	if "IMPP" not in (row.get("card") or ""):
+		return []
+	addresses = []
+	for p in card_decode(row["card"]):
+		if type(p) == "dict" and str(p.get("name", "")).upper() == "IMPP" and str(p.get("value", "")).lower().startswith("xmpp:"):
+			address = xmpp_address(p.get("value"))
+			if address and address not in addresses:
+				addresses.append(address)
+	if not addresses:
+		return []
+	roster = xmpp_roster()
+	items = {}
+	for item in roster.get("items", []):
+		items[str(item.get("account", "")) + " " + str(item.get("address", ""))] = item
+	out = []
+	for acc in roster.get("accounts", []):
+		for address in addresses:
+			item = items.get(str(acc["id"]) + " " + address) or {}
+			out.append({"account": acc["id"], "identifier": acc.get("address", ""), "address": address, "subscription": item.get("subscription", "none"), "ask": item.get("ask") == True, "pending": item.get("pending") == True})
+	return out
+
+def function_xmpp_roster(context, identity, account, address, name="", subscription="none", ask=False, pending=False, event=""):
+	"""A contact on XMPP as core's engine now has it, and what just happened:
+	a request waits among the invitations under the user's invitation
+	policy, the user's own waits among those sent, and a contact either way
+	has a contact here with their address."""
+	address = xmpp_address(address)
+	if not identity or not address:
+		return None
+	id = "xmpp:" + address
+	label = str(name or "").strip()
+	if not label or not mochi.text.valid(label, "display"):
+		label = address
+	if pending and event == "invite":
+		policy = mochi.user.preference.get("invite_policy") or "notify"
+		if policy == "reject":
+			mochi.account.roster.remove(account, address)
+			invite_remove(identity, id)
+			return None
+		if policy == "accept":
+			mochi.account.roster.add(account, address, name=label)
+			contact_xmpp_link(identity, address, label)
+			notify("accept/matched", "", mochi.app.label("notifications.title.xmpp_contact"), mochi.app.label("notifications.body.xmpp_contact", name=label), "/people", id, event="accept/matched:" + id + ":" + identity)
+			return None
+	if pending:
+		fresh = not mochi.db.exists("select id from invites where identity=? and id=? and direction='from'", identity, id)
+		if fresh and invites_pending(identity) >= _INVITE_PENDING_MAXIMUM:
+			return None
+		invite_set(identity, id, "from", label, account)
+		if fresh and event == "invite" and (mochi.user.preference.get("invite_policy") or "notify") == "notify":
+			notify("invite/received", "", mochi.app.label("notifications.title.xmpp_invitation"), mochi.app.label("notifications.body.xmpp_invited", name=label), "/people/invitations", id, event="invite/received:" + id + ":" + identity)
+	else:
+		invite_remove(identity, id, "from")
+	if ask:
+		invite_set(identity, id, "to", label, account)
+	else:
+		invite_remove(identity, id, "to")
+	if subscription != "none" or ask:
+		contact_xmpp_link(identity, address, label)
+	if event == "accept":
+		notify("accept/accepted", "", mochi.app.label("notifications.title.xmpp_accepted"), mochi.app.label("notifications.body.xmpp_accepted", name=label), "/people", id, event="accept/accepted:" + id + ":" + identity)
+	return None
+
+def function_xmpp_friends(context, identity):
+	"""The user's friends with the XMPP addresses their contact cards give,
+	for core to put on the roster: each {person, name, addresses}. Core
+	finds a friend's account on this server where the card gives none."""
+	if not identity:
+		return []
+	out = []
+	for row in mochi.db.rows("select * from contacts where identity=? and friend=1 and person!=''", identity):
+		addresses = []
+		if "IMPP" in (row.get("card") or ""):
+			for p in card_decode(row["card"]):
+				if type(p) == "dict" and str(p.get("name", "")).upper() == "IMPP":
+					address = xmpp_address(p.get("value")) if str(p.get("value", "")).lower().startswith("xmpp:") else None
+					if address and address not in addresses:
+						addresses.append(address)
+		out.append({"person": row["person"], "name": row["name"] or row["directory"], "addresses": ["xmpp:" + address for address in addresses]})
+	return out

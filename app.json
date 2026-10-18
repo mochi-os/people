@@ -17,7 +17,7 @@
 	"require": {"version": {"minimum": "2.0.12"}},
 
 	"database": {
-		"schema": 14,
+		"schema": 15,
 		"file": "people.db",
 		"create": {"function": "database_create"},
 		"upgrade": {"function": "database_upgrade"},
@@ -130,6 +130,10 @@
 		// Whether a messaging address is a contact's, for chat to police an
 		// invitation from another network (phase 24).
 		"contacts/known": {"function": "function_contacts_known", "permission": "friends/read"},
+		// A contact on XMPP as it now stands, and the friends with an XMPP
+		// address, asked by core's XMPP engine (phase 25).
+		"xmpp/roster": {"function": "function_xmpp_roster", "permission": "roster/write"},
+		"xmpp/friends": {"function": "function_xmpp_friends", "permission": "friends/read"},
 		"dav/collections": {"function": "function_dav_collections", "permission": "contacts/read"},
 		"dav/collections/create": {"function": "function_dav_collection_create", "permission": "contacts/read"},
 		"dav/collections/delete": {"function": "function_dav_collection_delete", "permission": "contacts/read"},

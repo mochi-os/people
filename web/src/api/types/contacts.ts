@@ -29,11 +29,26 @@ export interface Contact {
   message?: { address: string; account: string }
 }
 
+// How a contact stands on XMPP through one of the user's hosted XMPP
+// accounts: whether the account sees their presence (to), they see the
+// account's (from), both or neither, and the requests waiting either way.
+export interface XmppContact {
+  account: string
+  identifier: string
+  address: string
+  subscription: 'none' | 'to' | 'from' | 'both'
+  ask: boolean
+  pending: boolean
+}
+
 // A single contact with its card, as contacts/get and the write actions
 // return it.
 export interface ContactFull extends Contact {
   card: Property[]
   etag: string
+  // For each XMPP address on the card and each hosted XMPP account; only
+  // contacts/get sends it.
+  xmpp?: XmppContact[]
 }
 
 // A row of the invites table; it has no class or created column.
@@ -43,6 +58,10 @@ interface Invite {
   direction: 'from' | 'to'
   name: string
   updated: number
+  // An invitation on XMPP: the user's account it is through, and the other
+  // side's address.
+  account?: string
+  address?: string
 }
 
 // A received invite also carries what the sender cannot choose for

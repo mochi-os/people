@@ -95,6 +95,36 @@ describe('Invitations', () => {
     expect(screen.queryByText(/Listed as/)).toBeNull()
   })
 
+  it('shows a request on XMPP by its address, with no fingerprint', () => {
+    state.received = [
+      invite({
+        id: 'xmpp:dave@example.org',
+        name: 'Dave',
+        address: 'dave@example.org',
+        account: 'x1',
+        fingerprint: '',
+        directory: '',
+      }),
+    ]
+    show()
+    expect(screen.getByText('Dave')).toBeInTheDocument()
+    expect(screen.getByText('dave@example.org')).toBeInTheDocument()
+    expect(screen.queryByText(/Listed as/)).toBeNull()
+  })
+
+  it('accepts a request on XMPP by its address', async () => {
+    state.received = [
+      invite({ id: 'xmpp:dave@example.org', name: 'Dave', address: 'dave@example.org' }),
+    ]
+    show()
+    fireEvent.click(screen.getByRole('button', { name: /^Accept$/ }))
+    await waitFor(() =>
+      expect(state.accept).toHaveBeenCalledWith({
+        person: 'xmpp:dave@example.org',
+      })
+    )
+  })
+
   it('counts the received invitations through the number formatter', () => {
     state.received = [invite({}), invite({ id: 'p2', name: 'Grace' })]
     show()

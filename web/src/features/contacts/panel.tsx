@@ -41,7 +41,7 @@ import {
   UserX,
   type LucideIcon,
 } from 'lucide-react'
-import type { ContactFull } from '@/api/types/contacts'
+import type { ContactFull, XmppContact } from '@/api/types/contacts'
 import {
   EMAIL_TYPES,
   PHONE_TYPES,
@@ -416,6 +416,40 @@ export function ContactPanel({
     }
   }
 
+  // A contact on XMPP is invited and removed as a friend is, through one of
+  // the user's hosted XMPP accounts: the switch is on while the account sees
+  // their presence or has asked to.
+  const toggleXmpp = async (entry: XmppContact, on: boolean) => {
+    if (!contact) return
+    const person = `xmpp:${entry.address}`
+    if (on) {
+      await toastAction(
+        inviteMutation.mutateAsync({
+          person,
+          name: contact.name,
+          account: entry.account,
+        }),
+        {
+          loading: t`Sending invitation...`,
+          success: t`Invitation sent`,
+          error: (error) =>
+            getErrorMessage(error, t`Failed to send invitation`),
+        }
+      ).catch(() => {})
+      return
+    }
+    await toastAction(
+      removeFriendMutation.mutateAsync({ person, account: entry.account }),
+      {
+        loading: t`Removing XMPP contact...`,
+        success: t`XMPP contact removed`,
+        error: (error) =>
+          getErrorMessage(error, t`Failed to remove XMPP contact`),
+      }
+    ).catch(() => {})
+  }
+  const xmpp = contact?.xmpp ?? []
+
   // A failed unfriend leaves the dialog open, so it can be tried again.
   const confirmUnfriend = async () => {
     if (!contact) return
@@ -606,6 +640,39 @@ export function ContactPanel({
             </div>
           </Field>
         )}
+        {xmpp.map((entry) => {
+          const seen =
+            entry.subscription === 'to' || entry.subscription === 'both'
+          const key = `${entry.account} ${entry.address}`
+          return (
+            <Field
+              key={key}
+              id={`contact-xmpp-${key}`}
+              label={t`XMPP contact`}
+            >
+              <div className='flex items-center gap-3'>
+                <Switch
+                  id={`contact-xmpp-${key}`}
+                  checked={seen || entry.ask}
+                  disabled={toggling}
+                  onCheckedChange={(on) => void toggleXmpp(entry, on)}
+                />
+                {entry.ask && !seen && (
+                  <span className='text-muted-foreground text-xs'>
+                    <Trans>Invited</Trans>
+                  </span>
+                )}
+                {/* Which address, through which account, once there is
+                    more than one of either. */}
+                {xmpp.length > 1 && (
+                  <span className='text-muted-foreground truncate text-xs'>
+                    {entry.address} · {entry.identifier}
+                  </span>
+                )}
+              </div>
+            </Field>
+          )
+        })}
       </section>
 
       <section className='space-y-4 py-4'>

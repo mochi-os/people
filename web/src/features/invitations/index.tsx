@@ -298,24 +298,38 @@ export function Invitations() {
                       className='hover:bg-hover flex items-center justify-between px-4 py-3 transition-colors'
                     >
                       <div className='flex items-center gap-3'>
-                        <EntityAvatar
-                          src={endpoints.person.asset(invite.id, 'avatar')}
-                          styleUrl={endpoints.person.asset(invite.id, 'style')}
-                          name={invite.name}
-                          size='md'
-                        />
+                        {invite.address ? (
+                          <EntityAvatar name={invite.name} size='md' />
+                        ) : (
+                          <EntityAvatar
+                            src={endpoints.person.asset(invite.id, 'avatar')}
+                            styleUrl={endpoints.person.asset(
+                              invite.id,
+                              'style'
+                            )}
+                            name={invite.name}
+                            size='md'
+                          />
+                        )}
                         <div className='flex min-w-0 flex-col'>
                           <span className='truncate font-medium'>
                             {invite.name}
                           </span>
                           {/* The name and photo are the sender's own claim;
                               the fingerprint and the directory's name are
-                              what an impersonator cannot copy. */}
+                              what an impersonator cannot copy. A request on
+                              XMPP is known by its address. */}
                           <span className='text-muted-foreground truncate text-xs'>
-                            {formatFingerprint(invite.fingerprint)}
-                            {invite.directory &&
-                              invite.directory !== invite.name &&
-                              ` · ${t`Listed as ${invite.directory}`}`}
+                            {invite.address ? (
+                              invite.address
+                            ) : (
+                              <>
+                                {formatFingerprint(invite.fingerprint)}
+                                {invite.directory &&
+                                  invite.directory !== invite.name &&
+                                  ` · ${t`Listed as ${invite.directory}`}`}
+                              </>
+                            )}
                           </span>
                         </div>
                       </div>
@@ -384,18 +398,26 @@ export function Invitations() {
                       className='hover:bg-hover flex items-center justify-between px-4 py-3 transition-colors'
                     >
                       <div className='flex items-center gap-3'>
-                        <EntityAvatar
-                          src={endpoints.person.asset(invite.id, 'avatar')}
-                          styleUrl={endpoints.person.asset(invite.id, 'style')}
-                          name={invite.name}
-                          size='md'
-                        />
+                        {invite.address ? (
+                          <EntityAvatar name={invite.name} size='md' />
+                        ) : (
+                          <EntityAvatar
+                            src={endpoints.person.asset(invite.id, 'avatar')}
+                            styleUrl={endpoints.person.asset(
+                              invite.id,
+                              'style'
+                            )}
+                            name={invite.name}
+                            size='md'
+                          />
+                        )}
                         <div className='flex flex-col'>
                           <span className='truncate font-medium'>
                             {invite.name}
                           </span>
                           <span className='text-muted-foreground text-xs'>
                             <Trans>Pending</Trans>
+                            {invite.address && ` · ${invite.address}`}
                           </span>
                         </div>
                       </div>

@@ -15,8 +15,6 @@ import {
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { ContactPanel, type ContactCopy } from './panel'
 
-const idle = { isPending: false, mutateAsync: vi.fn() }
-
 const queries = vi.hoisted(() => ({
   contact: {} as Record<string, unknown>,
   books: {} as Record<string, unknown>,
@@ -30,6 +28,7 @@ const mutations = vi.hoisted(() => ({
   update: { isPending: false, mutateAsync: vi.fn() },
   delete: { isPending: false, mutateAsync: vi.fn() },
   remove: { isPending: false, mutateAsync: vi.fn() },
+  invite: { isPending: false, mutateAsync: vi.fn() },
   preview: {
     isPending: false,
     variables: undefined as unknown,
@@ -43,7 +42,7 @@ vi.mock('@/hooks/useContacts', () => ({
   useContactsQuery: () => ({
     data: { contacts: queries.contacts, received: [], sent: [] },
   }),
-  useInviteFriendMutation: () => idle,
+  useInviteFriendMutation: () => mutations.invite,
   useRemoveFriendMutation: () => mutations.remove,
   useCreateContactMutation: () => mutations.create,
   useDeleteContactMutation: () => mutations.delete,
@@ -199,6 +198,7 @@ beforeEach(() => {
     .mockResolvedValue({ contact: { ...contact, etag: 'e2' } })
   mutations.delete.mutateAsync = vi.fn().mockResolvedValue({})
   mutations.remove.mutateAsync = vi.fn().mockResolvedValue({})
+  mutations.invite.mutateAsync = vi.fn().mockResolvedValue({})
   mutations.preview.mutateAsync = vi.fn()
   failures.length = 0
   toasts.length = 0
@@ -556,6 +556,71 @@ describe('ContactPanel', () => {
     )
     await new Promise((resolve) => setTimeout(resolve, 50))
     expect(screen.getByText(/End your friendship with/)).toBeInTheDocument()
+  })
+
+  it('invites an XMPP address through the account, and removes it once on', async () => {
+    const entry = {
+      account: 'x1',
+      identifier: 'me@example.com',
+      address: 'dave@example.org',
+      subscription: 'none' as const,
+      ask: false,
+      pending: false,
+    }
+    queries.contact = loaded({ contact: { ...contact, xmpp: [entry] } })
+    const view = show('c1')
+    const toggle = screen.getByRole('switch', { name: 'XMPP contact' })
+    expect(toggle).not.toBeChecked()
+    fireEvent.click(toggle)
+    await waitFor(() =>
+      expect(mutations.invite.mutateAsync).toHaveBeenCalledWith({
+        person: 'xmpp:dave@example.org',
+        name: 'Ada',
+        account: 'x1',
+      })
+    )
+    view.unmount()
+    queries.contact = loaded({
+      contact: { ...contact, xmpp: [{ ...entry, ask: true }] },
+    })
+    show('c1')
+    expect(screen.getByRole('switch', { name: 'XMPP contact' })).toBeChecked()
+    expect(screen.getByText('Invited')).toBeInTheDocument()
+    fireEvent.click(screen.getByRole('switch', { name: 'XMPP contact' }))
+    await waitFor(() =>
+      expect(mutations.remove.mutateAsync).toHaveBeenCalledWith({
+        person: 'xmpp:dave@example.org',
+        account: 'x1',
+      })
+    )
+  })
+
+  it('names the address and account of each XMPP switch once there are several', () => {
+    const entry = {
+      account: 'x1',
+      identifier: 'me@example.com',
+      address: 'dave@example.org',
+      subscription: 'both' as const,
+      ask: false,
+      pending: false,
+    }
+    queries.contact = loaded({
+      contact: {
+        ...contact,
+        xmpp: [entry, { ...entry, account: 'x2', identifier: 'me@other.net' }],
+      },
+    })
+    show('c1')
+    expect(screen.getAllByRole('switch', { name: 'XMPP contact' })).toHaveLength(2)
+    expect(
+      screen.getByText('dave@example.org · me@other.net')
+    ).toBeInTheDocument()
+    expect(screen.queryByText('Invited')).toBeNull()
+  })
+
+  it('shows no XMPP switch for a contact without an XMPP address', () => {
+    show('c1')
+    expect(screen.queryByRole('switch', { name: 'XMPP contact' })).toBeNull()
   })
 
   it('deletes the contact once confirmed, and closes', async () => {

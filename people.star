@@ -22,6 +22,11 @@ def notify(topic, object="", title="", body="", url="", sender="", event=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event=event)
 
 def database_upgrade(version):
+	if version == 15:
+		# An invitation on XMPP names the user's account it is through
+		# (the federation plan, phase 25).
+		if not [c for c in mochi.db.table("invites") if c["name"] == "account"]:
+			mochi.db.execute("alter table invites add column account text not null default ''")
 	if version == 14:
 		# Every contact write replaces the contact's change row, found by contact.
 		mochi.db.execute("create index if not exists changes_contact on changes( contact )")
@@ -147,7 +152,7 @@ def database_create():
 	mochi.db.execute("create index if not exists changes_identity on changes( identity, id )")
 	mochi.db.execute("create index if not exists changes_contact on changes( contact )")
 	mochi.db.execute("create table if not exists pruned ( identity text not null primary key, change integer not null default 0 )")
-	mochi.db.execute("create table if not exists invites ( identity text not null, id text not null, direction text not null, name text not null default '', updated integer not null default 0, primary key ( identity, id, direction ) )")
+	mochi.db.execute("create table if not exists invites ( identity text not null, id text not null, direction text not null, name text not null default '', updated integer not null default 0, account text not null default '', primary key ( identity, id, direction ) )")
 	mochi.db.execute("create table if not exists sent ( identity text not null, created integer not null )")
 	mochi.db.execute("create index if not exists sent_identity_created on sent( identity, created )")
 	mochi.db.execute("create table if not exists profiles ( person text not null primary key, profile text not null default '', accent text not null default '', updated integer not null default 0 )")

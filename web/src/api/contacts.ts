@@ -111,6 +111,7 @@ const inviteFriend = (payload: {
   name: string
   contact?: string
   book?: string
+  account?: string
 }) =>
   toMutationSuccess(
     requestHelpers.post(endpoints.friends.invite, body(payload), {
@@ -136,9 +137,9 @@ const ignoreFriend = (person: string) =>
   )
 
 // Ends the friendship and keeps the contact; also cancels a sent invitation.
-const removeFriend = (person: string) =>
+const removeFriend = (person: string, account?: string) =>
   toMutationSuccess(
-    requestHelpers.post(endpoints.friends.remove, body({ person }), {
+    requestHelpers.post(endpoints.friends.remove, body({ person, account }), {
       ...form,
       ...quiet,
     })

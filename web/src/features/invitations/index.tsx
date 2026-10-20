@@ -9,7 +9,8 @@ import {
   EmptyState,
   EntityAvatar,
   GeneralError,
-  Input,
+  HeaderSearch,
+  IconButton,
   Main,
   usePageTitle,
   getErrorMessage,
@@ -168,25 +169,19 @@ export function Invitations() {
   const hasSent = filteredSent.length > 0
   const hasAny = hasReceived || hasSent
 
-  const searchInput = (
-    <Input
-      type='text'
-      placeholder={t`Search...`}
-      aria-label={t`Search`}
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
-      className='w-48'
-    />
-  )
-
   return (
     <>
       <PageHeader
         title={t`Invitations`}
         icon={<UserPlus className='size-4 md:size-5' />}
-        actions={
-          <>
-            {searchInput}
+        primaryAction={
+          <div className='flex items-center gap-1.5 md:gap-2'>
+            <HeaderSearch
+              value={search}
+              onValueChange={setSearch}
+              placeholder={t`Search...`}
+              label={t`Search`}
+            />
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
@@ -200,11 +195,22 @@ export function Invitations() {
               </TooltipTrigger>
               <TooltipContent>{t`Invite settings`}</TooltipContent>
             </Tooltip>
-            <Button onClick={() => setAddContactDialogOpen(true)}>
+            <IconButton
+              label={t`Add contact`}
+              variant='default'
+              className='md:hidden'
+              onClick={() => setAddContactDialogOpen(true)}
+            >
+              <UserPlus className='h-4 w-4' />
+            </IconButton>
+            <Button
+              className='hidden md:inline-flex'
+              onClick={() => setAddContactDialogOpen(true)}
+            >
               <UserPlus className='h-4 w-4' />
               <Trans>Add contact</Trans>
             </Button>
-          </>
+          </div>
         }
       />
       <Main>
@@ -247,11 +253,13 @@ export function Invitations() {
         ) : error && !contactsData ? null : !hasAny ? (
           <EmptyState
             icon={UserPlus}
-            title={t`No pending invitations`}
+            title={
+              search.trim()
+                ? t`No results for "${search}"`
+                : t`No pending invitations`
+            }
             description={
-              search
-                ? t`Try adjusting your search`
-                : t`New invitations will appear here`
+              search.trim() ? undefined : t`New invitations will appear here`
             }
           />
         ) : (

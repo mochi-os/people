@@ -135,7 +135,7 @@ describe('Invitations', () => {
     state.received = [invite({})]
     show()
     // The header renders its actions once per layout, so there may be two.
-    for (const box of screen.getAllByRole('textbox'))
+    for (const box of screen.getAllByRole('searchbox'))
       expect(box).toHaveAccessibleName('Search')
   })
 

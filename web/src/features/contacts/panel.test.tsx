@@ -173,6 +173,7 @@ function updates() {
         etag?: string
         source?: { id: string; etag?: string }
         properties?: { name: string; value: string }[]
+        managed?: string[]
         book?: string
       }
   )
@@ -240,6 +241,17 @@ describe('ContactPanel', () => {
     expect(saved('NICKNAME')).toEqual([
       { name: 'NICKNAME', params: {}, value: 'Countess' },
     ])
+  })
+
+  it('names the handles and messaging addresses among what it manages, so a save holding none removes them', async () => {
+    show('c1')
+    fireEvent.change(nickname(), { target: { value: 'Countess' } })
+    fireEvent.focusOut(nickname())
+    await waitFor(() => expect(updates()).toHaveLength(1))
+    expect(updates()[0].managed).toEqual(
+      expect.arrayContaining(['SOCIALPROFILE', 'IMPP'])
+    )
+    expect(saved('IMPP')).toEqual([])
   })
 
   it('saves once typing rests for a second, and not before', () => {
@@ -694,10 +706,16 @@ describe('ContactPanel making a contact', () => {
     expect(opened).not.toHaveBeenCalled()
     const request = mutations.create.mutateAsync.mock.calls[0][0] as {
       properties: { name: string; value: string }[]
+      managed: string[]
       book: string
       source?: string
     }
     expect(request.book).toBe('b1')
+    // A copy starts from its original's card, so what the form left out
+    // must be named to be left out of the copy.
+    expect(request.managed).toEqual(
+      expect.arrayContaining(['SOCIALPROFILE', 'IMPP'])
+    )
     expect(request.source).toBeUndefined()
     expect(request.properties.map((p) => [p.name, p.value])).toEqual([
       ['FN', 'Grace'],

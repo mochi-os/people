@@ -44,6 +44,7 @@ import {
 import type { ContactFull, XmppContact } from '@/api/types/contacts'
 import {
   EMAIL_TYPES,
+  MANAGED,
   PHONE_TYPES,
   emptyForm,
   formFromCard,
@@ -235,6 +236,7 @@ export function ContactPanel({
         contact: id,
         etag: base.etag,
         properties,
+        managed: MANAGED,
         book: current.book,
       })
       stored.current = {
@@ -320,6 +322,7 @@ export function ContactPanel({
       await toastAction(
         createMutation.mutateAsync({
           properties: propertiesFromForm(current.form),
+          managed: MANAGED,
           book: current.book,
           source: copied?.source,
         }),

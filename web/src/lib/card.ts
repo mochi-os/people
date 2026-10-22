@@ -481,6 +481,26 @@ function singles(form: ContactForm): Record<string, string> {
   }
 }
 
+// The property names propertiesFromForm writes, sent with each submission so
+// the server replaces every one of them, even a name the form now holds none
+// of. A submission that names none replaces the set clients had before
+// SOCIALPROFILE and IMPP, so an older client cannot delete what it never shows.
+export const MANAGED = [
+  'FN',
+  'N',
+  'NICKNAME',
+  'EMAIL',
+  'TEL',
+  'ADR',
+  'BDAY',
+  'ORG',
+  'TITLE',
+  'URL',
+  'NOTE',
+  'SOCIALPROFILE',
+  'IMPP',
+]
+
 // propertiesFromForm(form) -> the full managed set, which replaces whatever the
 // card held for these names. Empty fields are left out rather than sent blank.
 export function propertiesFromForm(form: ContactForm): Property[] {

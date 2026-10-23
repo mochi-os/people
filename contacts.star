@@ -33,15 +33,21 @@ _INVITE_PENDING_MAXIMUM = 200
 _CARD_MAXIMUM = 262144
 _PROPERTIES_MAXIMUM = 200
 
-# Properties the editor manages. A submission replaces all of these and leaves
-# every other property in the card untouched, so whatever a phone stores
-# survives an edit made here.
+# Properties the editor manages. A submission replaces these as _REPLACED
+# says and leaves every other property in the card untouched, so whatever a
+# phone stores survives an edit made here.
 # SOCIALPROFILE (RFC 9554) carries a handle on another network, its
 # SERVICE-TYPE naming the network (Fediverse, Bluesky), so the card keeps it
 # for CardDAV and feeds can offer the person as someone to follow. IMPP (RFC
 # 6350) is a messaging address as a URI - xmpp:, matrix:, acct: - which chat
 # can message where one of the user's accounts reaches its network.
 _MANAGED = ["FN", "N", "NICKNAME", "EMAIL", "TEL", "ADR", "BDAY", "ORG", "TITLE", "URL", "NOTE", "SOCIALPROFILE", "IMPP"]
+
+# The managed properties every submission replaces. A client written before
+# SOCIALPROFILE and IMPP were managed - an Android app already installed, a
+# phone's contacts syncing through it - sends neither, so those are replaced
+# only when the submission carries one or names it in its managed list.
+_REPLACED = ["FN", "N", "NICKNAME", "EMAIL", "TEL", "ADR", "BDAY", "ORG", "TITLE", "URL", "NOTE"]
 
 # Properties the server owns. Never accepted from a client; regenerated on read.
 _RESERVED = ["X-MOCHI-PERSON", "X-MOCHI-FRIEND"]
@@ -293,13 +299,29 @@ def property_normalise(p):
 		entry["group"] = group
 	return entry
 
-# card_merge(card, properties) -> list or None: the card with every managed
-# property replaced by the submission and every other property kept, a
-# submitted property with no group taking the one its unchanged self was in.
-# None when the submission is malformed.
-def card_merge(card, properties):
+# card_merge(card, properties, managed) -> list or None: the card with the
+# managed properties the submission replaces taken from it and every other
+# property kept, a submitted property with no group taking the one its
+# unchanged self was in. A submission replaces _REPLACED, each name it carries
+# and each name in managed. None when the submission is malformed.
+def card_merge(card, properties, managed=None):
 	if type(properties) != "list" or len(properties) > _PROPERTIES_MAXIMUM:
 		return None
+	replaced = list(_REPLACED)
+	if managed != None:
+		if type(managed) != "list" or len(managed) > len(_MANAGED):
+			return None
+		for name in managed:
+			if type(name) != "string" or name not in _MANAGED:
+				return None
+			replaced.append(name)
+	submitted = []
+	for p in properties:
+		clean = property_normalise(p)
+		if clean == None:
+			return None
+		replaced.append(clean["name"])
+		submitted.append(clean)
 	kept = []
 	# The group each managed property was in, by name and value. A client that
 	# knows nothing of groups - the phone's contacts, which rebuild a card from
@@ -312,13 +334,10 @@ def card_merge(card, properties):
 		name = p.get("name", "")
 		if name in _MANAGED and p.get("group"):
 			groups[(name, p.get("value", ""))] = p["group"]
-		if name in _MANAGED or name in _RESERVED:
+		if name in replaced or name in _RESERVED:
 			continue
 		kept.append(p)
-	for p in properties:
-		clean = property_normalise(p)
-		if clean == None:
-			return None
+	for clean in submitted:
 		if "group" not in clean:
 			group = groups.get((clean["name"], clean["value"]))
 			if group:
@@ -890,7 +909,7 @@ def action_contact_create(a):
 			a.error.label(404, "errors.contact_not_found")
 			return
 		base = [p for p in card_decode(original["card"]) if type(p) == "dict" and p.get("name") != "UID"]
-	card = card_merge(base, body.get("properties", []))
+	card = card_merge(base, body.get("properties", []), body.get("managed"))
 	if card == None:
 		a.error.label(400, "errors.invalid_properties")
 		return
@@ -981,7 +1000,7 @@ def action_contact_update(a):
 		row, absorbed = pair
 	card = card_merged(row, absorbed) if absorbed else card_decode(row["card"])
 	if "properties" in body:
-		card = card_merge(card, body.get("properties"))
+		card = card_merge(card, body.get("properties"), body.get("managed"))
 		if card == None:
 			a.error.label(400, "errors.invalid_properties")
 			return

@@ -87,6 +87,9 @@ export interface GetContactResponse {
 
 export interface CreateContactRequest {
   properties: Property[]
+  // The managed names the submission replaces, any it does not carry
+  // included; see MANAGED in lib/card.
+  managed?: string[]
   person?: string
   book?: string
   // The contact a copy is made from, whose card the copy starts from.
@@ -97,6 +100,9 @@ export interface UpdateContactRequest {
   contact: string
   etag?: string
   properties?: Property[]
+  // The managed names the submission replaces, any it does not carry
+  // included; see MANAGED in lib/card.
+  managed?: string[]
   book?: string
   // The contact merged into this one and deleted, as it was previewed.
   source?: { id: string; etag?: string }

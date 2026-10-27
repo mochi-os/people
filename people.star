@@ -757,6 +757,13 @@ def action_banner(a):
 def action_favicon(a):
 	return stream_person_asset(a, a.input("person"), "favicon")
 
+def profile_changed():
+	"""Tell the networks the person's profile changed, so the copies other
+	servers keep of their hosted accounts follow. A core without the call
+	leaves them as they were."""
+	if hasattr(mochi.account, "refresh"):
+		mochi.account.refresh()
+
 def set_image(a, slot):
 	person_id = a.input("person")
 	if not get_person_entity(person_id):
@@ -787,6 +794,8 @@ def set_image(a, slot):
 	now = mochi.time.now()
 	mochi.db.execute("insert or replace into images ( person, slot, content_type, size, updated ) values ( ?, ?, ?, ?, ? )",
 		person_id, slot, file.get("content_type", ""), size, now)
+	if slot in ("avatar", "banner"):
+		profile_changed()
 	return {"data": {"id": str(now)}}
 
 def action_avatar_set(a):
@@ -832,6 +841,7 @@ def action_profile_set(a):
 		a.error.label(400, "errors.invalid_profile")
 		return
 	upsert_profile(person_id, profile=profile)
+	profile_changed()
 	return {"data": {}}
 
 def action_name_set(a):
@@ -850,6 +860,7 @@ def action_name_set(a):
 		a.error.label(400, "errors.invalid_name")
 		return
 	mochi.entity.update(person_id, name=name)
+	profile_changed()
 	return {"data": {}}
 
 def action_privacy_set(a):

@@ -560,7 +560,7 @@ function ProfileEditor({
               id='privacy-public'
               checked={info.privacy === 'public'}
               onCheckedChange={handleTogglePrivacy}
-              disabled={privacyMutation.isPending}
+              loading={privacyMutation.isPending}
             />
           </div>
         </div>

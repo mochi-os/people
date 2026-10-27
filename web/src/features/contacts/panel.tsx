@@ -632,7 +632,7 @@ export function ContactPanel({
               <Switch
                 id='contact-friend'
                 checked={friendState !== 'none'}
-                disabled={toggling}
+                loading={toggling}
                 onCheckedChange={(on) => void toggleFriend(on)}
               />
               {friendState === 'invited' && (
@@ -657,7 +657,7 @@ export function ContactPanel({
                 <Switch
                   id={`contact-xmpp-${key}`}
                   checked={seen || entry.ask}
-                  disabled={toggling}
+                  loading={toggling}
                   onCheckedChange={(on) => void toggleXmpp(entry, on)}
                 />
                 {entry.ask && !seen && (

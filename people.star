@@ -249,7 +249,10 @@ def function_activitypub_profile(context, account, person):
 		for slot in ("avatar", "banner"):
 			if slot_attachment(person, slot):
 				out[slot] = base + "/people/" + fingerprint + "/-/" + slot
-	out["links"] = [{"name": network_name(acc["type"]), "url": acc["url"]} for acc in profile_accounts()]
+	# The account the document describes is not a link of its own: its
+	# address is its id, https://<domain>/~<account>.
+	own = "/~" + account
+	out["links"] = [{"name": network_name(acc["type"]), "url": acc["url"]} for acc in profile_accounts() if not acc["url"].endswith(own)]
 	return out
 
 # The person's avatar and banner as bytes, each {data, type}, for the profile

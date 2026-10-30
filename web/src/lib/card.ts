@@ -275,22 +275,28 @@ export function newHandle(network: HandleNetwork = 'fediverse'): HandleValue {
 }
 
 // The network a SOCIALPROFILE names: its SERVICE-TYPE where one is written
-// (Fediverse or Mastodon, Bluesky), else the handle's own shape - an @ in it
-// is a fediverse handle, a bare domain a Bluesky one.
+// (ActivityPub, Mastodon or the Fediverse earlier versions wrote, Bluesky),
+// else the handle's own shape - an @ in it is a fediverse handle, a bare
+// domain a Bluesky one.
 export function handleNetwork(
   params: Record<string, string[]> | undefined,
   value: string
 ): HandleNetwork {
   const service = (params?.['SERVICE-TYPE'] ?? [])[0]?.toLowerCase()
   if (service === 'bluesky') return 'bluesky'
-  if (service === 'fediverse' || service === 'mastodon') return 'fediverse'
+  if (
+    service === 'activitypub' ||
+    service === 'fediverse' ||
+    service === 'mastodon'
+  )
+    return 'fediverse'
   return value.includes('@') ? 'fediverse' : 'bluesky'
 }
 
-// The SERVICE-TYPE a network is written as.
+// The SERVICE-TYPE a network is written as: the name a phone shows it under.
 function serviceType(network: HandleNetwork): string {
-  // eslint-disable-next-line lingui/no-unlocalized-strings -- vCard SERVICE-TYPE values, not shown
-  return network === 'bluesky' ? 'Bluesky' : 'Fediverse'
+  // eslint-disable-next-line lingui/no-unlocalized-strings -- vCard SERVICE-TYPE values, network names
+  return network === 'bluesky' ? 'Bluesky' : 'ActivityPub'
 }
 
 export function newMessaging(

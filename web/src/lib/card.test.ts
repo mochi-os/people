@@ -349,10 +349,18 @@ describe('handles on another network (SOCIALPROFILE)', () => {
       }),
       property('SOCIALPROFILE', 'bob.bsky.social'),
       property('SOCIALPROFILE', '@carol@remote.example'),
+      property('SOCIALPROFILE', 'erin.example', {
+        'SERVICE-TYPE': ['ActivityPub'],
+      }),
+      property('SOCIALPROFILE', 'frank.example', {
+        'SERVICE-TYPE': ['Fediverse'],
+      }),
     ])
     expect(form.handles.map((h) => h.network)).toEqual([
       'fediverse',
       'bluesky',
+      'fediverse',
+      'fediverse',
       'fediverse',
     ])
     expect(form.handles[0].value).toBe('@bob@remote.example')
@@ -382,7 +390,7 @@ describe('handles on another network (SOCIALPROFILE)', () => {
       },
       {
         name: 'SOCIALPROFILE',
-        params: { 'SERVICE-TYPE': ['Fediverse'] },
+        params: { 'SERVICE-TYPE': ['ActivityPub'] },
         value: '@dave@remote.example',
       },
     ])

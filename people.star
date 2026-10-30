@@ -273,7 +273,7 @@ def function_profile_media(context, person):
 
 # The name a network is shown under on the profile's links.
 def network_name(type):
-	return {"mastodon": "Mastodon", "lemmy": "Lemmy", "bluesky": "Bluesky", "matrix": "Matrix", "xmpp": "XMPP", "fediverse": "Fediverse"}.get(type, type)
+	return {"mastodon": "Mastodon", "lemmy": "Lemmy", "bluesky": "Bluesky", "matrix": "Matrix", "xmpp": "XMPP", "fediverse": "ActivityPub"}.get(type, type)
 
 # Group management actions
 

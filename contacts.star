@@ -37,7 +37,7 @@ _PROPERTIES_MAXIMUM = 200
 # says and leaves every other property in the card untouched, so whatever a
 # phone stores survives an edit made here.
 # SOCIALPROFILE (RFC 9554) carries a handle on another network, its
-# SERVICE-TYPE naming the network (Fediverse, Bluesky), so the card keeps it
+# SERVICE-TYPE naming the network (ActivityPub, Bluesky), so the card keeps it
 # for CardDAV and feeds can offer the person as someone to follow. IMPP (RFC
 # 6350) is a messaging address as a URI - xmpp:, matrix:, acct: - which chat
 # can message where one of the user's accounts reaches its network.
@@ -1820,8 +1820,8 @@ def function_contacts_birthdays(context, identity):
 	return out
 
 # The networks a SOCIALPROFILE may name, by SERVICE-TYPE, and the network
-# Mochi's lookup knows each as.
-HANDLE_NETWORKS = {"fediverse": "fediverse", "mastodon": "fediverse", "bluesky": "bluesky"}
+# Mochi's lookup knows each as. Earlier versions wrote Fediverse.
+HANDLE_NETWORKS = {"activitypub": "fediverse", "fediverse": "fediverse", "mastodon": "fediverse", "bluesky": "bluesky"}
 
 def function_handles(context, identity):
 	"""The contacts with a handle on another network: each contact's id and

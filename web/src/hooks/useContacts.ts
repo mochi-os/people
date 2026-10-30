@@ -43,16 +43,39 @@ const useInvalidateContacts = () => {
   }
 }
 
-export const useContactsQuery = (book?: string) => {
-  const { data, isLoading, isError, error, refetch } = useQueryWithError<
-    GetContactsResponse,
-    Error
-  >({
-    // The book is not part of the key: one query serves every book view, so
-    // the invitations badge and the book pages share a single request.
-    queryKey: contactKeys.all(),
-    queryFn: () => contactsApi.list(),
+// The friends' photos, asked for after each list fetch rather than inside it,
+// so an offline friend's server never holds the list up. Keyed on when the
+// list arrived, so every listing asks once however many screens share it - a
+// refetch on focus, so a tab left open still gets the daily refresh, and the
+// one after a write such as accepting a friend, whose photo is due at once -
+// as the listing itself did before. The key sits outside contactKeys.all(),
+// and the list is reloaded only when a photo changed.
+const useContactPhotos = (listed: number) => {
+  const queryClient = useQueryClient()
+  useQuery({
+    queryKey: ['contact-photos', listed],
+    queryFn: async () => {
+      const { changed } = await contactsApi.photos()
+      if (changed > 0) {
+        void queryClient.invalidateQueries({ queryKey: contactKeys.all() })
+      }
+      return changed
+    },
+    enabled: listed > 0,
+    staleTime: Infinity,
+    retry: false,
   })
+}
+
+export const useContactsQuery = (book?: string) => {
+  const { data, dataUpdatedAt, isLoading, isError, error, refetch } =
+    useQueryWithError<GetContactsResponse, Error>({
+      // The book is not part of the key: one query serves every book view, so
+      // the invitations badge and the book pages share a single request.
+      queryKey: contactKeys.all(),
+      queryFn: () => contactsApi.list(),
+    })
+  useContactPhotos(dataUpdatedAt)
 
   const contacts = book
     ? (data?.contacts ?? []).filter((contact) => contact.book === book)

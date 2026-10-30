@@ -66,9 +66,11 @@ _SLUG_MAXIMUM = 128
 _LABEL_MAXIMUM = 500
 
 # A friend's avatar, downscaled, travels on the CardDAV card as PHOTO. Fetched
-# over P2P from the friend's server when the web listing runs, at most this
-# many friends per request and each at most once a day (_FRIEND_NAME_INTERVAL),
-# never from a scheduled pass. The thumbnail is read back through this cap.
+# over P2P from the friend's server when a client lists contacts - inside the
+# listing for one that predates photos=0, else through -/contacts/photos just
+# after it - at most this many friends per request and each at most once a day
+# (_FRIEND_NAME_INTERVAL), never from a scheduled pass. The thumbnail is read
+# back through this cap.
 _PHOTO_FETCHES = 3
 _PHOTO_MAXIMUM = 262144
 _PHOTO_EXTENSIONS = {"image/jpeg": "jpg", "image/png": "png", "image/webp": "webp"}
@@ -542,10 +544,13 @@ def photo_delete(row):
 	if row.get("photo"):
 		mochi.file.delete(photo_path(row["id"], row["photo"].split(":")[0]))
 
-# photo_fetch(row) -> string or None: fetch the friend's current avatar and
-# store its thumbnail, answering the new stamp ("<ext>:<hash>"), "" when the
-# friend has no avatar any more, or None when nothing changed or the fetch
-# failed. The source is written to file storage only long enough to downscale.
+# photo_fetch(row) -> (stamp, ext, thumbnail), "" or None: fetch the friend's
+# current avatar and downscale it, answering the new stamp ("<ext>:<hash>")
+# with the thumbnail to store, "" when the friend has no avatar any more, or
+# None when nothing changed or the fetch failed. Nothing is stored here: the
+# fetch can take seconds, so photos_refresh writes against the contact as it
+# is once it returns. The source is written to file storage only long enough
+# to downscale.
 def photo_fetch(row):
 	s = mochi.remote.stream(row["person"], "people", "avatar", {})
 	if not s:
@@ -574,16 +579,16 @@ def photo_fetch(row):
 	stamp = ext + ":" + mochi.crypto.hash.sha256(data)[:16]
 	if stamp == row.get("photo"):
 		return None
-	photo_delete(row)
-	mochi.file.write(photo_path(row["id"], ext), data)
-	return stamp
+	return (stamp, ext, data)
 
-# photos_refresh(identity, rows): refresh the photos of the friends among rows
-# whose last attempt is over a day old, a few per request. A change moves the
-# etag and the book version so DAV clients fetch the card again.
+# photos_refresh(identity, rows) -> int: refresh the photos of the friends among
+# rows whose last attempt is over a day old, a few per request, answering how
+# many changed. A change moves the etag and the book version so DAV clients
+# fetch the card again.
 def photos_refresh(identity, rows):
 	stale = mochi.time.now() - _FRIEND_NAME_INTERVAL
 	fetched = 0
+	changed = 0
 	for row in rows:
 		if fetched >= _PHOTO_FETCHES:
 			break
@@ -592,16 +597,34 @@ def photos_refresh(identity, rows):
 		fetched += 1
 		now = mochi.time.now()
 		mochi.db.execute("update contacts set photographed=? where id=?", now, row["id"])
-		stamp = photo_fetch(row)
-		if stamp == None:
+		fetch = photo_fetch(row)
+		if fetch == None:
 			continue
-		if stamp == "":
-			photo_delete(row)
-		etag = contact_etag(card_decode(row["card"]), row["person"], row["friend"], stamp)
-		mochi.db.execute("update contacts set photo=?, etag=?, updated=? where id=?", stamp, etag, now, row["id"])
+		# The fetch took seconds with an offline friend, and the list was on
+		# screen meanwhile: the contact may have been deleted, unfriended or
+		# edited since rows was read. Write against it as it is now - a photo
+		# on a deleted contact's id would log it changed over its tombstone,
+		# one on a former friend would stay on their card, and an etag from
+		# the old card would refuse the editor's next save.
+		current = mochi.db.row("select * from contacts where id=? and identity=?", row["id"], identity)
+		if not current or current["friend"] != 1 or current["person"] != row["person"]:
+			continue
+		if fetch == "":
+			stamp = ""
+		else:
+			stamp = fetch[0]
+			if stamp == current.get("photo"):
+				continue
+		photo_delete(current)
+		if stamp:
+			mochi.file.write(photo_path(current["id"], fetch[1]), fetch[2])
+		etag = contact_etag(card_decode(current["card"]), current["person"], current["friend"], stamp)
+		mochi.db.execute("update contacts set photo=?, etag=?, updated=? where id=?", stamp, etag, now, current["id"])
 		row["photo"] = stamp
 		row["etag"] = etag
-		book_touch(row["book"], row["id"])
+		book_touch(current["book"], current["id"])
+		changed += 1
+	return changed
 
 # === Contacts ===
 
@@ -800,7 +823,12 @@ def action_contacts(a):
 		return
 	rows = contacts_rows(identity, book)
 	contacts_refresh(identity, rows)
-	photos_refresh(identity, rows)
+	# A friend's photo is a fetch from their server, five seconds when it is
+	# offline. A client that asks -/contacts/photos once the list is drawn sends
+	# photos=0, so the list never waits; one that predates it still gets the
+	# fetch here.
+	if a.input("photos") != "0":
+		photos_refresh(identity, rows)
 	contacts = []
 	reachable = {}
 	for row in rows:
@@ -814,6 +842,17 @@ def action_contacts(a):
 		"received": invites_received(identity),
 		"sent": invites_sent(identity),
 	}}
+
+# action_contacts_photos: fetch the friends' photos a listing with photos=0 left
+# stale, asked once the list is drawn, answering how many changed so the client
+# reloads the list only then.
+def action_contacts_photos(a):
+	identity = a.user.identity.id
+	book = a.input("book", "")
+	if book and not book_get(identity, book):
+		a.error.label(404, "errors.book_not_found")
+		return
+	return {"data": {"changed": photos_refresh(identity, contacts_rows(identity, book))}}
 
 def contact_message(row, reachable):
 	"""The contact's first messaging address chat can reach, with the account

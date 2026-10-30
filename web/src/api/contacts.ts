@@ -25,9 +25,18 @@ const toMutationSuccess = async <T>(
 }
 
 // The request helper unwraps the {"data": ...} envelope; action_contacts
-// answers exactly this shape.
+// answers exactly this shape. photos=0 leaves the friends' photos to
+// refreshPhotos: each is a fetch from the friend's server, five seconds when
+// that server is offline, and the list would wait for up to three of them.
 const listContacts = (): Promise<GetContactsResponse> =>
-  requestHelpers.get<GetContactsResponse>(endpoints.contacts.list)
+  requestHelpers.get<GetContactsResponse>(endpoints.contacts.list, {
+    params: { photos: 0 },
+  })
+
+// Fetch the friends' photos the list left stale (at most a few, each once a
+// day), answering how many changed.
+const refreshPhotos = (): Promise<{ changed: number }> =>
+  requestHelpers.post<{ changed: number }>(endpoints.contacts.photos)
 
 // With a source, the merge of the two: the contact that survives, its card
 // holding both cards' details, and the one it absorbs.
@@ -165,6 +174,7 @@ const setPreferences = (payload: { policy: InvitePolicy }) =>
 
 export const contactsApi = {
   list: listContacts,
+  photos: refreshPhotos,
   get: getContact,
   create: createContact,
   update: updateContact,

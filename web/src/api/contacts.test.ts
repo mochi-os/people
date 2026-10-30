@@ -34,3 +34,14 @@ describe('Invite request', () => {
     expect(sent().get('contact')).toBe('c1')
   })
 })
+
+describe('Contact list request', () => {
+  it('leaves the friends photos to their own request', async () => {
+    const { requestHelpers } = await import('@mochi/web')
+    vi.mocked(requestHelpers.get).mockResolvedValue({ contacts: [] })
+    await contactsApi.list()
+    expect(requestHelpers.get).toHaveBeenCalledWith(expect.any(String), {
+      params: { photos: 0 },
+    })
+  })
+})

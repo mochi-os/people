@@ -25,6 +25,8 @@ type Asset = 'avatar' | 'banner' | 'favicon' | 'style'
 const endpoints = {
   contacts: {
     list: action('contacts'),
+    // The friends' photos the list leaves for after it has drawn.
+    photos: action('contacts/photos'),
     get: action('contacts/get'),
     create: action('contacts/create'),
     update: action('contacts/update'),

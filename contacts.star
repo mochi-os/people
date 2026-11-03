@@ -528,13 +528,17 @@ def label_clean(text):
 		return ""
 	return text
 
-# contact_etag(card, person, friend, photo="") -> string: the etag a DAV
-# client compares. The photo stamp joins only when there is one, so a contact
-# without a photo keeps the etag it always had.
-def contact_etag(card, person, friend, photo=""):
+# contact_etag(card, person, friend, photo="", name="", directory="") ->
+# string: the etag a DAV client compares, and a sync client holds. The photo
+# stamp joins only when there is one. The names join too: a card with no FN is
+# served under the label or the directory's name (dav_object), and sync
+# clients show both, so a rename the directory reports must move it.
+def contact_etag(card, person, friend, photo="", name="", directory=""):
 	parts = [card, person, friend]
 	if photo:
 		parts.append(photo)
+	if name or directory:
+		parts.append({"name": name, "directory": directory})
 	return mochi.crypto.hash.sha256(json.encode(parts))
 
 def photo_path(id, ext):
@@ -576,6 +580,8 @@ def photo_fetch(row):
 	mochi.file.delete(source)
 	if not data:
 		return None
+	# Named for the thumbnail's bytes, not the avatar's: a WebP's is a JPEG.
+	ext = _PHOTO_EXTENSIONS.get(attachment_sniff(data), ext)
 	stamp = ext + ":" + mochi.crypto.hash.sha256(data)[:16]
 	if stamp == row.get("photo"):
 		return None
@@ -618,7 +624,7 @@ def photos_refresh(identity, rows):
 		photo_delete(current)
 		if stamp:
 			mochi.file.write(photo_path(current["id"], fetch[1]), fetch[2])
-		etag = contact_etag(card_decode(current["card"]), current["person"], current["friend"], stamp)
+		etag = contact_etag(card_decode(current["card"]), current["person"], current["friend"], stamp, current["name"], current["directory"])
 		mochi.db.execute("update contacts set photo=?, etag=?, updated=? where id=?", stamp, etag, now, current["id"])
 		row["photo"] = stamp
 		row["etag"] = etag
@@ -700,7 +706,7 @@ def contact_insert(identity, book, person, friend, name, directory, card, slug="
 	id = mochi.uid()
 	now = mochi.time.now()
 	encoded = card_encode(card)
-	etag = contact_etag(card, person, friend)
+	etag = contact_etag(card, person, friend, "", name, directory)
 	# refreshed stays 0: a name that arrived in an invite is the sender's own
 	# claim, so the first listing re-resolves the directory name straight away
 	# rather than trusting the claim for a day.
@@ -724,7 +730,7 @@ def contact_link(identity, person, name, book=""):
 # person. The user's label stays; the directory column takes the name the
 # directory gave and refreshed resets so the next listing checks it.
 def contact_person_set(row, person, name):
-	etag = contact_etag(card_decode(row["card"]), person, row["friend"], row.get("photo", ""))
+	etag = contact_etag(card_decode(row["card"]), person, row["friend"], row.get("photo", ""), row["name"], name)
 	mochi.db.execute("update contacts set person=?, directory=?, refreshed=0, etag=?, updated=? where id=?", person, name, etag, mochi.time.now(), row["id"])
 	book_touch(row["book"], row["id"])
 
@@ -739,7 +745,7 @@ def contact_friend_set(identity, person, friend, name="", book=""):
 	photo = row.get("photo", "") if friend else ""
 	if not friend:
 		photo_delete(row)
-	etag = contact_etag(card, person, friend, photo)
+	etag = contact_etag(card, person, friend, photo, row["name"], name or row["directory"])
 	now = mochi.time.now()
 	if name:
 		# The name is the peer's claim: it fills the directory column for now and
@@ -786,7 +792,9 @@ def changes_prune(identity):
 # contacts_refresh(identity, rows): re-resolve stale directory names. The
 # directory is the authority on a person's current name; reading it per row on
 # every request made this route O(contacts) directory reads, so only rows past
-# the interval are re-read, and the result goes into the directory column.
+# the interval are re-read, and the result goes into the directory column. A
+# new name moves the etag and the book logs the change, so DAV and sync
+# clients both fetch it.
 def contacts_refresh(identity, rows):
 	stale = mochi.time.now() - _FRIEND_NAME_INTERVAL
 	for row in rows:
@@ -794,9 +802,24 @@ def contacts_refresh(identity, rows):
 			continue
 		info = mochi.directory.get(row["person"])
 		name = info.get("name") if info else None
-		if name:
-			row["directory"] = name
-		mochi.db.execute("update contacts set directory=?, refreshed=? where id=?", row["directory"], mochi.time.now(), row["id"])
+		now = mochi.time.now()
+		if not name or name == row["directory"]:
+			mochi.db.execute("update contacts set refreshed=? where id=?", now, row["id"])
+			continue
+		# The directory read can be slow, and the contact may have been edited
+		# meanwhile: the etag is from the card as it is now, and written only
+		# over the one it was computed against.
+		current = mochi.db.row("select * from contacts where id=? and identity=?", row["id"], identity)
+		if not current:
+			continue
+		etag = contact_etag(card_decode(current["card"]), current["person"], current["friend"], current.get("photo", ""), current["name"], name)
+		mochi.db.execute("update contacts set directory=?, etag=?, refreshed=?, updated=? where id=? and etag=?", name, etag, now, now, current["id"], current["etag"])
+		if not mochi.db.exists("select id from contacts where id=? and etag=?", current["id"], etag):
+			continue
+		row["directory"] = name
+		row["etag"] = etag
+		row["updated"] = now
+		book_touch(current["book"], current["id"])
 
 def contacts_rows(identity, book=""):
 	if book:
@@ -1065,7 +1088,7 @@ def action_contact_update(a):
 			if contact_by_slug(identity, book, slug):
 				a.error.label(409, "errors.contact_exists")
 				return
-	etag = contact_etag(card, row["person"], row["friend"], row.get("photo", ""))
+	etag = contact_etag(card, row["person"], row["friend"], row.get("photo", ""), name, row["directory"])
 	now = mochi.time.now()
 	mochi.db.execute("update contacts set book=?, slug=?, name=?, card=?, etag=?, updated=? where id=? and identity=? and etag=?",
 		book, slug, name, card_encode(card), etag, now, row["id"], identity, row["etag"])
@@ -1502,8 +1525,12 @@ def function_count(context, identity):
 # here keep every property a client sent, photos and UID included; only the
 # server's own X-MOCHI properties are regenerated on every read.
 
+# dav_collection(row, default) -> dict: a book as the engine lists it. version
+# is the change token a client compares before it lists the contacts
+# (getctag): the book's own id with its count of changes, since a book deleted
+# and made again under its slug counts from nothing.
 def dav_collection(row, default):
-	return {"slug": row["slug"], "name": mochi.entity.name(row["id"]) or "", "description": "", "readonly": False, "version": row["version"], "default": row["id"] == default}
+	return {"slug": row["slug"], "name": mochi.entity.name(row["id"]) or "", "description": "", "readonly": False, "version": row["id"] + "-" + str(row["version"]), "default": row["id"] == default}
 
 # dav_caller(context) -> bool: the call came from the server's DAV engine. The
 # engine passes _server in the context; an app calling through the service
@@ -1676,7 +1703,7 @@ def function_dav_put(context, identity, collection, name, card, match="", absent
 	if not row:
 		inserted = contact_insert(identity, book["id"], "", 0, label, "", clean, name)
 		return {"name": name, "etag": inserted["etag"], "updated": inserted["updated"]}
-	etag = contact_etag(clean, row["person"], row["friend"], row.get("photo", ""))
+	etag = contact_etag(clean, row["person"], row["friend"], row.get("photo", ""), label, row["directory"])
 	now = mochi.time.now()
 	mochi.db.execute("update contacts set name=?, card=?, etag=?, updated=? where id=? and identity=? and etag=?",
 		label, card_encode(clean), etag, now, row["id"], identity, row["etag"])

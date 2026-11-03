@@ -73,13 +73,14 @@ export async function resizeImage(
 }
 
 // Per-slot defaults. Avatars are rendered at most 80px in the profile hero
-// (160px on retina); 512 is generous headroom. Banners reach ~1200px wide on
-// large desktop screens; 1600 covers retina with margin.
+// (160px on retina); 256 covers that with margin and matches the Android
+// client. Banners reach ~1200px wide on large desktop screens; 1600 covers
+// retina with margin.
 export const SLOT_RESIZE: Record<
   'avatar' | 'banner' | 'favicon',
   ResizeOptions
 > = {
-  avatar: { maxDim: 512, mime: 'image/jpeg', quality: 0.9 },
+  avatar: { maxDim: 256, mime: 'image/jpeg', quality: 0.9 },
   banner: { maxDim: 1600, mime: 'image/jpeg', quality: 0.85 },
   favicon: { maxDim: 128, mime: 'image/png' },
 }

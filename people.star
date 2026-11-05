@@ -22,6 +22,18 @@ def notify(topic, object="", title="", body="", url="", sender="", event=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event=event)
 
 def database_upgrade(version):
+	if version == 16:
+		# A slot image's type was the one its uploader's browser declared, and
+		# JPEG bytes stood as image/png. Each takes the type its bytes carry;
+		# one whose bytes carry no type recognised keeps what it has.
+		for row in mochi.db.rows("select person, slot, content_type from images"):
+			path = slot_path(row["person"], row["slot"])
+			if row["slot"] not in _SLOT_CAPS or not mochi.file.exists(path):
+				continue
+			data = mochi.file.read(path, _SLOT_CAPS[row["slot"]])
+			kind = attachment_sniff(data) if data != None else ""
+			if kind and kind != row["content_type"]:
+				mochi.db.execute("update images set content_type=? where person=? and slot=?", kind, row["person"], row["slot"])
 	if version == 15:
 		# An invitation on XMPP names the user's account it is through
 		# (the federation plan, phase 25).
@@ -586,14 +598,15 @@ def is_person_owner(a, person):
 def slot_path(person_id, slot):
 	return "images/" + person_id + "/" + slot
 
-# slot_attachment returns a person's slot image as {id, content_type, size}, or
-# None. `id` is the update timestamp - a non-empty presence-and-cache-bust
-# marker, since the image URL is built from the person id, not this value.
+# slot_attachment returns a person's slot image as {id, content_type, size,
+# updated}, or None. `id` is the update timestamp - a non-empty
+# presence-and-cache-bust marker, since the image URL is built from the person
+# id, not this value.
 def slot_attachment(person_id, slot):
 	row = mochi.db.row("select content_type, size, updated from images where person=? and slot=?", person_id, slot)
 	if not row:
 		return None
-	return {"id": str(row["updated"]), "content_type": row.get("content_type", ""), "size": row.get("size", 0)}
+	return {"id": str(row["updated"]), "content_type": row.get("content_type", ""), "size": row.get("size", 0), "updated": row.get("updated", 0)}
 
 def get_profile_row(person_id):
 	row = mochi.db.row("select * from profiles where person=?", person_id)
@@ -731,6 +744,13 @@ def stream_person_asset(a, person_id, asset):
 	if content_type not in _IMAGE_TYPES:
 		content_type = "application/octet-stream"
 	a.header("Content-Type", content_type)
+	# A validator from when the image was set and its size, so a browser
+	# revalidating its copy - the shell asks no-cache - is answered 304 by core
+	# without the bytes. A peer from before the stamp sends none, and its image
+	# is served without one as before.
+	updated = header.get("updated")
+	if type(updated) == "int" and updated > 0 and type(declared) == "int" and declared >= 0:
+		a.header("ETag", '"' + str(updated) + "-" + str(declared) + '"')
 	# The slot's own cap, not core's 1GB backstop: this is a profile image, and the
 	# size we accept on upload is the size we should relay. A peer that ignores it
 	# gets cut off mid-transfer rather than being allowed to stream indefinitely
@@ -775,8 +795,9 @@ def set_image(a, slot):
 	if not is_person_owner(a, person_id):
 		a.error.label(403, "errors.not_the_owner")
 		return
-	# Check size and type from a.file() before anything is written; it carries the
-	# same Content-Type the attachment would.
+	# Check size and type from a.file() before anything is written. The type is
+	# the one the bytes carry: the browser's declaration is whatever its platform
+	# guessed, and it went on to every server that relays the image.
 	file = a.file("file")
 	if not file:
 		a.error.label(400, "errors.no_file_uploaded")
@@ -784,7 +805,8 @@ def set_image(a, slot):
 	if file.get("size", 0) > _SLOT_CAPS[slot]:
 		a.error.label(400, "errors.asset_too_large", slot=slot)
 		return
-	if file.get("content_type", "") not in _IMAGE_TYPES:
+	content_type = attachment_sniff(file.get("data"))
+	if content_type not in _IMAGE_TYPES:
 		a.error.label(400, "errors.asset_must_be_image", slot=slot)
 		return
 	# One image per slot: stream the bytes to file storage at a fixed per-slot
@@ -796,7 +818,7 @@ def set_image(a, slot):
 		return
 	now = mochi.time.now()
 	mochi.db.execute("insert or replace into images ( person, slot, content_type, size, updated ) values ( ?, ?, ?, ?, ? )",
-		person_id, slot, file.get("content_type", ""), size, now)
+		person_id, slot, content_type, size, now)
 	if slot in ("avatar", "banner"):
 		profile_changed()
 	return {"data": {"id": str(now)}}
@@ -810,8 +832,13 @@ def action_banner_set(a):
 def action_favicon_set(a):
 	return set_image(a, "favicon")
 
+# The accent changes rarely and every page with a face asks for it, so a browser
+# keeps it as long as it keeps the avatar.
 def action_style(a):
-	return stream_person_asset(a, a.input("person"), "style")
+	out = stream_person_asset(a, a.input("person"), "style")
+	if out:
+		a.header("Cache-Control", "private, max-age=300")
+	return out
 
 def action_style_set(a):
 	person_id = a.input("person")
@@ -944,7 +971,10 @@ def serve_image_event(e, slot, fallback_slot=""):
 	if not att:
 		e.stream.write({"status": "404", "error": slot + " not set"})
 		return
-	e.stream.write({"status": "200", "content_type": att.get("content_type", "application/octet-stream"), "size": att.get("size", 0)})
+	# updated is when the image was set, from which the relaying server builds
+	# the validator a browser revalidates with. It goes out only here, after
+	# every check above, so a check added there runs before any answer.
+	e.stream.write({"status": "200", "content_type": att.get("content_type", "application/octet-stream"), "size": att.get("size", 0), "updated": att.get("updated", 0)})
 	e.write.file(slot_path(person_id, resolved))
 
 def event_avatar(e):

@@ -33,6 +33,7 @@ import {
   toastAction,
   useKeyboardShortcuts,
   useListAutoAnimate,
+  useProgressive,
   usePageTitle,
 } from '@mochi/web'
 import {
@@ -103,10 +104,6 @@ export function Contacts({
   const removeFriendMutation = useRemoveFriendMutation()
   const inviteMutation = useInviteFriendMutation()
 
-  const [listRef] = useListAutoAnimate<HTMLDivElement>({
-    disabled: (isLoading && !data) || search.trim().length > 0,
-  })
-
   const sentPersons = useMemo(
     () => new Set((data?.sent ?? []).map((invite) => invite.id)),
     [data?.sent]
@@ -127,6 +124,14 @@ export function Contacts({
         return naturalCompare(a.name, b.name)
       })
   }, [contacts, search, sortBy])
+
+  const [listRef] = useListAutoAnimate<HTMLDivElement>({
+    disabled: (isLoading && !data) || search.trim().length > 0,
+    count: filtered.length,
+  })
+  // A long list paints its first hundred contacts at once and the rest as the
+  // browser is idle.
+  const drawn = useProgressive(filtered.length)
 
   const confirmDelete = async () => {
     const contact = deleteDialog.contact
@@ -314,7 +319,7 @@ export function Contacts({
               ref={listRef}
               className='divide-border divide-y rounded-lg border'
             >
-              {filtered.map((contact) => {
+              {filtered.slice(0, drawn).map((contact) => {
                 const subtitle =
                   contact.directory && contact.directory !== contact.name
                     ? contact.directory

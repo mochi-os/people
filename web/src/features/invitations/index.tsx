@@ -49,13 +49,6 @@ export function Invitations() {
   const removeMutation = useRemoveFriendMutation()
   const suppressListAnimation =
     (isLoading && !contactsData) || search.trim().length > 0
-  const [receivedListRef] = useListAutoAnimate<HTMLDivElement>({
-    disabled: suppressListAnimation,
-  })
-  const [sentListRef] = useListAutoAnimate<HTMLDivElement>({
-    disabled: suppressListAnimation,
-  })
-
   const filteredReceived = useMemo(() => {
     const list = contactsData?.received ?? []
     return list.filter((invite) => searchMatches(invite.name, search))
@@ -65,6 +58,15 @@ export function Invitations() {
     const list = contactsData?.sent ?? []
     return list.filter((invite) => searchMatches(invite.name, search))
   }, [contactsData?.sent, search])
+
+  const [receivedListRef] = useListAutoAnimate<HTMLDivElement>({
+    disabled: suppressListAnimation,
+    count: filteredReceived.length,
+  })
+  const [sentListRef] = useListAutoAnimate<HTMLDivElement>({
+    disabled: suppressListAnimation,
+    count: filteredSent.length,
+  })
 
   const handleAcceptInvite = async (person: string) => {
     try {

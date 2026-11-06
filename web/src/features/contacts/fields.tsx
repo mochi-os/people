@@ -7,6 +7,10 @@ import { useQuery } from '@tanstack/react-query'
 import { useLingui } from '@lingui/react/macro'
 import {
   Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
   EntityAvatar,
   Input,
   Label,
@@ -45,11 +49,16 @@ const MESSAGING_EXAMPLES: Record<MessagingNetwork, string> = {
 }
 
 // The label column, which the type of an email, telephone or address also
-// sits in, so every value starts on the same line.
-const COLUMNS = 'grid gap-1 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-4'
+// sits in, so every value starts on the same line. It is wide enough for a
+// kind's glyph and the longest type or network name any locale gives it
+// (Swahili's "Simu ya mkononi"), which a select cannot wrap.
+const COLUMNS = 'grid gap-1 sm:grid-cols-[12rem_minmax(0,1fr)] sm:gap-4'
 // A typed row keeps its type beside the value on a narrow screen too.
 const TYPED =
-  'flex items-center gap-2 sm:grid sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-4'
+  'flex items-center gap-2 sm:grid sm:grid-cols-[12rem_minmax(0,1fr)] sm:gap-4'
+// A type or network select: as wide as its name on a narrow screen, the
+// whole label column beside its glyph on a wide one.
+const CHOICE = 'min-w-28 sm:min-w-0 sm:flex-1'
 
 /** A section's heading line. */
 export function Heading({ title }: { title: string }) {
@@ -83,12 +92,33 @@ export function Field({
   )
 }
 
-export function AddButton({ label, onClick }: { label: string; onClick: () => void }) {
+/** A kind of value the Add menu gives a contact. */
+export interface Addition {
+  label: string
+  icon: LucideIcon
+  add: () => void
+}
+
+/** One Add button whose menu offers every kind of value, so the kinds never wrap. */
+export function AddMenu({ additions }: { additions: Addition[] }) {
+  const { t } = useLingui()
   return (
-    <Button type='button' variant='outline' size='sm' onClick={onClick}>
-      <Plus className='size-4' />
-      {label}
-    </Button>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button type='button' variant='outline' size='sm'>
+          <Plus className='size-4' />
+          {t`Add`}
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align='start'>
+        {additions.map(({ label, icon: Icon, add }) => (
+          <DropdownMenuItem key={label} onSelect={add}>
+            <Icon className='size-4' aria-hidden='true' />
+            {label}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
 
@@ -137,7 +167,7 @@ function TypeSelect({
       value={value}
       onValueChange={(next) => onChange(next as PropertyType)}
     >
-      <SelectTrigger className='w-28 shrink-0' aria-label={label}>
+      <SelectTrigger className={CHOICE} aria-label={label}>
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
@@ -166,7 +196,7 @@ function Kind({
   onChange: (value: PropertyType) => void
 }) {
   return (
-    <div className='flex items-center gap-2'>
+    <div className='flex shrink-0 items-center gap-2'>
       <Icon
         className='text-muted-foreground size-4 shrink-0'
         aria-hidden='true'
@@ -341,7 +371,7 @@ export function HandleRows({
       {values.map((row, index) => (
         <div key={index} className='space-y-1'>
           <div className={TYPED}>
-            <div className='flex items-center gap-2'>
+            <div className='flex shrink-0 items-center gap-2'>
               <AtSign
                 className='text-muted-foreground size-4 shrink-0'
                 aria-hidden='true'
@@ -352,7 +382,7 @@ export function HandleRows({
                   replace(index, { network: next as HandleNetwork })
                 }
               >
-                <SelectTrigger className='w-28 shrink-0' aria-label={t`Network`}>
+                <SelectTrigger className={CHOICE} aria-label={t`Network`}>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -411,7 +441,7 @@ function HandlePreview({ handle }: { handle: string }) {
   })
   if (!data?.name && !data?.address) return null
   return (
-    <div className='text-muted-foreground flex items-center gap-2 text-xs sm:ps-[calc(9rem+1rem)]'>
+    <div className='text-muted-foreground flex items-center gap-2 text-xs sm:ps-[calc(12rem+1rem)]'>
       <EntityAvatar src={data.avatar || null} name={data.name || ''} size='xs' />
       <span className='truncate'>
         {[data.name, data.address].filter(Boolean).join(' · ')}
@@ -448,7 +478,7 @@ export function MessagingRows({
     <>
       {values.map((row, index) => (
         <div key={index} className={TYPED}>
-          <div className='flex items-center gap-2'>
+          <div className='flex shrink-0 items-center gap-2'>
             <MessageCircle
               className='text-muted-foreground size-4 shrink-0'
               aria-hidden='true'
@@ -459,7 +489,7 @@ export function MessagingRows({
                 replace(index, { network: next as MessagingNetwork })
               }
             >
-              <SelectTrigger className='w-28 shrink-0' aria-label={t`Network`}>
+              <SelectTrigger className={CHOICE} aria-label={t`Network`}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>

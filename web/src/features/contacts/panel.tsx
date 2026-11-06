@@ -31,10 +31,12 @@ import {
   toastAction,
 } from '@mochi/web'
 import {
+  AtSign,
   Copy,
   Mail,
   MapPin,
   Merge,
+  MessageCircle,
   Phone,
   Plus,
   Trash2,
@@ -69,7 +71,7 @@ import {
 import { AddContactDialog } from './add-dialog'
 import { BirthdayField } from './birthday'
 import {
-  AddButton,
+  AddMenu,
   AddressRows,
   Field,
   HandleRows,
@@ -679,36 +681,41 @@ export function ContactPanel({
       </section>
 
       <section className='space-y-4 py-4'>
-        <div className='flex flex-wrap justify-end gap-2'>
-          <AddButton
-            label={t`Add email`}
-            onClick={() =>
-              update({ emails: [...form.emails, newTypedValue('home')] })
-            }
-          />
-          <AddButton
-            label={t`Add telephone`}
-            onClick={() =>
-              update({ phones: [...form.phones, newTypedValue('mobile')] })
-            }
-          />
-          <AddButton
-            label={t`Add address`}
-            onClick={() =>
-              update({ addresses: [...form.addresses, newAddress('home')] })
-            }
-          />
-          <AddButton
-            label={t`Add handle`}
-            onClick={() => update({ handles: [...form.handles, newHandle()] })}
-          />
-          <AddButton
-            label={t`Add messaging address`}
-            onClick={() =>
-              update({ messaging: [...form.messaging, newMessaging()] })
-            }
-          />
-        </div>
+        <AddMenu
+          additions={[
+            {
+              label: t`Email`,
+              icon: Mail,
+              add: () =>
+                update({ emails: [...form.emails, newTypedValue('home')] }),
+            },
+            {
+              label: t`Telephone`,
+              icon: Phone,
+              add: () =>
+                update({ phones: [...form.phones, newTypedValue('mobile')] }),
+            },
+            {
+              // A postal address: elsewhere "Address" is a network's or a
+              // server's, so a translation memory would give it that word.
+              label: t({ message: 'Address', context: 'postal' }),
+              icon: MapPin,
+              add: () =>
+                update({ addresses: [...form.addresses, newAddress('home')] }),
+            },
+            {
+              label: t`Handle`,
+              icon: AtSign,
+              add: () => update({ handles: [...form.handles, newHandle()] }),
+            },
+            {
+              label: t`Messaging address`,
+              icon: MessageCircle,
+              add: () =>
+                update({ messaging: [...form.messaging, newMessaging()] }),
+            },
+          ]}
+        />
         {form.emails.length > 0 && (
           <div className='space-y-2'>
             <TypedRows

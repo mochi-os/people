@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import {
@@ -118,18 +119,23 @@ const opened = vi.fn()
 const copied = vi.fn()
 const closed = vi.fn()
 
+// A handle row looks its handle up, so the panel needs a query client.
+const client = new QueryClient()
+
 function panel(id?: string, start?: string, copy?: ContactCopy) {
   return (
-    <I18nProvider i18n={i18n}>
-      <ContactPanel
-        id={id}
-        book={start}
-        copy={copy}
-        onOpen={opened}
-        onCopy={copied}
-        onClose={closed}
-      />
-    </I18nProvider>
+    <QueryClientProvider client={client}>
+      <I18nProvider i18n={i18n}>
+        <ContactPanel
+          id={id}
+          book={start}
+          copy={copy}
+          onOpen={opened}
+          onCopy={copied}
+          onClose={closed}
+        />
+      </I18nProvider>
+    </QueryClientProvider>
   )
 }
 
@@ -156,6 +162,16 @@ function field(label: 'Day' | 'Month' | 'Year') {
   return screen.getByRole(label === 'Month' ? 'combobox' : 'textbox', {
     name: label,
   })
+}
+
+// Opens the Add menu and answers the kinds it offers, in order.
+function menu() {
+  fireEvent.pointerDown(screen.getByRole('button', { name: 'Add' }), {
+    button: 0,
+    ctrlKey: false,
+    pointerType: 'mouse',
+  })
+  return screen.getAllByRole('menuitem').map((item) => item.textContent)
 }
 
 // Choose an item in a select.
@@ -529,18 +545,44 @@ describe('ContactPanel', () => {
     expect(screen.getByRole('heading', { name: 'Details' })).toBeInTheDocument()
   })
 
-  it('offers the three add buttons on one line, and only the rows that exist', () => {
+  it('offers every kind of value in one Add menu, and only the rows that exist', () => {
     show('c1')
-    const buttons = ['Add email', 'Add telephone', 'Add address'].map((label) =>
-      screen.getByRole('button', { name: label })
-    )
-    expect(new Set(buttons.map((button) => button.parentElement)).size).toBe(1)
+    // THE POINT: one Add button, whatever the panel's width, where five
+    // buttons wrapped onto a second line.
+    expect(
+      screen.queryByRole('button', {
+        name: /^Add (email|telephone|address|handle|messaging address)$/,
+      })
+    ).toBeNull()
+    expect(menu()).toEqual([
+      'Email',
+      'Telephone',
+      'Address',
+      'Handle',
+      'Messaging address',
+    ])
     expect(screen.queryByRole('textbox', { name: 'Emails' })).toBeNull()
-    fireEvent.click(buttons[1])
+    fireEvent.click(screen.getByRole('menuitem', { name: 'Telephone' }))
     expect(
       screen.getByRole('textbox', { name: 'Telephones' })
     ).toBeInTheDocument()
     expect(screen.queryByRole('textbox', { name: 'Emails' })).toBeNull()
+  })
+
+  it('adds each kind from the Add menu', () => {
+    show('c1')
+    const rows: [string, string][] = [
+      ['Email', 'Emails'],
+      ['Address', 'Street'],
+      ['Handle', 'Handle'],
+      ['Messaging address', 'Messaging address'],
+    ]
+    for (const [item, field] of rows) {
+      expect(screen.queryByRole('textbox', { name: field })).toBeNull()
+      menu()
+      fireEvent.click(screen.getByRole('menuitem', { name: item }))
+      expect(screen.getByRole('textbox', { name: field })).toBeInTheDocument()
+    }
   })
 
   it('keeps the address book at the head of the details, before the birthday', () => {

@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import type { ReactNode } from 'react'
+import { Fragment, type ReactNode } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useLingui } from '@lingui/react/macro'
 import {
@@ -10,6 +10,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
   EntityAvatar,
   Input,
@@ -69,17 +70,22 @@ export function Heading({ title }: { title: string }) {
   )
 }
 
-/** One field: its label beside it, above it on a narrow screen. */
+/**
+ * One field: its label beside it, above it on a narrow screen, and a remove
+ * button at the end for a field that is shown only once added.
+ */
 export function Field({
   id,
   label,
   top,
+  remove,
   children,
 }: {
   id: string
   label: string
   /** Align the label with the top of a tall control. */
   top?: boolean
+  remove?: { label: string; onClick: () => void }
   children: ReactNode
 }) {
   return (
@@ -87,7 +93,19 @@ export function Field({
       <Label htmlFor={id} className={cn(top && 'sm:pt-2.5')}>
         {label}
       </Label>
-      <div className='min-w-0'>{children}</div>
+      {remove ? (
+        <div
+          className={cn(
+            'flex min-w-0 gap-2',
+            top ? 'items-start' : 'items-center'
+          )}
+        >
+          <div className='min-w-0 flex-1'>{children}</div>
+          <RemoveButton label={remove.label} onClick={remove.onClick} />
+        </div>
+      ) : (
+        <div className='min-w-0'>{children}</div>
+      )}
     </div>
   )
 }
@@ -99,9 +117,13 @@ export interface Addition {
   add: () => void
 }
 
-/** One Add button whose menu offers every kind of value, so the kinds never wrap. */
-export function AddMenu({ additions }: { additions: Addition[] }) {
+/**
+ * One Add button whose menu offers every kind of value, so the kinds never
+ * wrap: a line between each group, and none around an empty one.
+ */
+export function AddMenu({ groups }: { groups: Addition[][] }) {
   const { t } = useLingui()
+  const offered = groups.filter((group) => group.length > 0)
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -111,11 +133,16 @@ export function AddMenu({ additions }: { additions: Addition[] }) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='start'>
-        {additions.map(({ label, icon: Icon, add }) => (
-          <DropdownMenuItem key={label} onSelect={add}>
-            <Icon className='size-4' aria-hidden='true' />
-            {label}
-          </DropdownMenuItem>
+        {offered.map((group, index) => (
+          <Fragment key={group[0].label}>
+            {index > 0 && <DropdownMenuSeparator />}
+            {group.map(({ label, icon: Icon, add }) => (
+              <DropdownMenuItem key={label} onSelect={add}>
+                <Icon className='size-4' aria-hidden='true' />
+                {label}
+              </DropdownMenuItem>
+            ))}
+          </Fragment>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>

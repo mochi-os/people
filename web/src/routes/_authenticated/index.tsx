@@ -7,16 +7,20 @@ import { Contacts } from '@/features/contacts'
 
 interface SearchParams {
   action?: string
+  search?: string
 }
 
 export const Route = createFileRoute('/_authenticated/')({
   validateSearch: (search: Record<string, unknown>): SearchParams => ({
     action: typeof search.action === 'string' ? search.action : undefined,
+    search: typeof search.search === 'string' ? search.search : undefined,
   }),
   component: IndexPage,
 })
 
 function IndexPage() {
-  const { action } = Route.useSearch()
-  return <Contacts autoAdd={action === 'add'} />
+  const { action, search } = Route.useSearch()
+  // ?action=add&search=<person> opens Add on someone another app names, such
+  // as chat when they refuse a chat from a stranger.
+  return <Contacts autoAdd={action === 'add'} query={search} />
 }

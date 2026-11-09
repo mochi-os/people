@@ -60,6 +60,8 @@ type AddContactDialogProps = {
   link?: { contact: string; name: string }
   /** The address book being viewed, where a contact made here goes. */
   book?: string
+  /** A search to open on: a person another app names, by id or name. */
+  query?: string
   /** Start a new contact, offered as the first choice when given. */
   onNew?: () => void
 }
@@ -81,11 +83,12 @@ export function AddContactDialog({
   open,
   link,
   book,
+  query,
   onNew,
 }: AddContactDialogProps) {
   const { t } = useLingui()
-  const [search, setSearch] = useState(link?.name ?? '')
-  const [debounced, setDebounced] = useState(link?.name ?? '')
+  const [search, setSearch] = useState(link?.name ?? query ?? '')
+  const [debounced, setDebounced] = useState(link?.name ?? query ?? '')
   const [invited, setInvited] = useState<Set<string>>(new Set())
   const [added, setAdded] = useState<Set<string>>(new Set())
   const [pending, setPending] = useState<string | null>(null)

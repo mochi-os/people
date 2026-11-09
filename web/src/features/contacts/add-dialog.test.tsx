@@ -42,6 +42,8 @@ const calls = vi.hoisted(() => ({
   start: vi.fn(),
   results: [] as unknown[],
   networks: [] as unknown[],
+  // Each search the dialog asked for, and whether it was sent.
+  searched: [] as { query: string; enabled: boolean }[],
 }))
 
 beforeEach(() => {
@@ -52,6 +54,7 @@ beforeEach(() => {
   calls.start = vi.fn()
   calls.results = [person]
   calls.networks = []
+  calls.searched = []
 })
 
 // Someone on Matrix a search found through the user's accounts.
@@ -64,13 +67,16 @@ const dave = {
 
 vi.mock('@/hooks/useContacts', () => ({
   useContactsQuery: () => ({ data: { contacts: [], received: [], sent: [] } }),
-  useSearchDirectoryQuery: () => ({
-    data: { results: calls.results, networks: calls.networks },
-    isLoading: false,
-    isError: false,
-    error: null,
-    refetch: vi.fn(),
-  }),
+  useSearchDirectoryQuery: (query: string, options?: { enabled?: boolean }) => {
+    calls.searched.push({ query, enabled: options?.enabled ?? true })
+    return {
+      data: { results: calls.results, networks: calls.networks },
+      isLoading: false,
+      isError: false,
+      error: null,
+      refetch: vi.fn(),
+    }
+  },
   useCreateContactMutation: () => ({
     mutateAsync: calls.create,
     isPending: false,
@@ -92,6 +98,7 @@ function dialog(
   props: {
     book?: string
     link?: { contact: string; name: string }
+    query?: string
     onNew?: () => void
   },
   open = true
@@ -110,6 +117,7 @@ const client = new QueryClient()
 function show(props: {
   book?: string
   link?: { contact: string; name: string }
+  query?: string
   onNew?: () => void
 }) {
   return render(dialog(props))
@@ -121,6 +129,16 @@ async function search() {
 }
 
 describe('AddContactDialog', () => {
+  it('opens on the person another app names, ready to invite', async () => {
+    // THE POINT: chat sends someone who refused a chat here by id, and the
+    // search finds them at once, with Invite a tap away.
+    show({ query: 'p1' })
+    expect(screen.getByRole('textbox')).toHaveValue('p1')
+    await screen.findByText('Ada Lovelace')
+    expect(calls.searched).toContainEqual({ query: 'p1', enabled: true })
+    expect(screen.getByRole('button', { name: /Invite/ })).toBeEnabled()
+  })
+
   it('offers only the invite that links a card, never a second contact', async () => {
     show({ link: { contact: 'c1', name: 'Ada Lovelace' } })
     await screen.findByText('Ada Lovelace')

@@ -173,7 +173,7 @@ export function Invitations() {
   const searchInput = (
     <Input
       type='text'
-      placeholder={t`Search...`}
+      placeholder={t`Search`}
       aria-label={t`Search`}
       value={search}
       onChange={(e) => setSearch(e.target.value)}

@@ -265,7 +265,7 @@ export function Contacts({
             <HeaderSearch
               value={search}
               onValueChange={setSearch}
-              placeholder={t`Search...`}
+              placeholder={t`Search`}
               label={t`Search contacts`}
             />
             <IconButton

@@ -67,7 +67,7 @@ export function MergeDialog({
         </ResponsiveDialogHeader>
         <div className='space-y-3'>
           <SearchInput
-            placeholder={t`Search...`}
+            placeholder={t`Search`}
             value={search}
             onValueChange={setSearch}
             clearLabel={t`Clear search`}

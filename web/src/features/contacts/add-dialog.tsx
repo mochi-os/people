@@ -304,7 +304,7 @@ export function AddContactDialog({
                 <Trans>Find on Mochi</Trans>
               </p>
               <SearchInput
-                placeholder={t`Enter name to search...`}
+                placeholder={t`Enter name to search`}
                 value={search}
                 onValueChange={setSearch}
                 clearLabel={t`Clear search`}

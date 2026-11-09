@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "24 ຊົ່ວໂມງ"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "ສົ່ງຄຳເຊີນເປັນໝູ່ຫາ {name} ແລ້ວ."
 
@@ -168,6 +169,7 @@ msgstr "ບັນທຶກສີເນັ້ນແລ້ວ"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "ຍອມຮັບ"
 
@@ -181,6 +183,7 @@ msgstr "ຍອມຮັບອັດຕະໂນມັດ"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "ກຳລັງຮັບເອົາຄຳເຊີນ..."
 
@@ -213,6 +216,7 @@ msgstr "ກິດຈະກຳ"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "ເພີ່ມ"
 
@@ -236,10 +240,6 @@ msgstr "ເພີ່ມການເຂົ້າເຖິງ"
 msgid "Add account"
 msgstr "ເພີ່ມບັນຊີ"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "ເພີ່ມທີ່ຢູ່"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "ເພີ່ມຄຳບັນຍາຍ"
@@ -259,18 +259,10 @@ msgstr "ເພີ່ມຜູ້ຕິດຕໍ່"
 msgid "Add device"
 msgstr "ເພີ່ມອຸປະກອນ"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "ເພີ່ມອີເມວ"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "ເພີ່ມຊ່ອງຂໍ້ມູນ"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "ເພີ່ມຊື່ຜູ້ໃຊ້"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "ເພີ່ມລິ້ງ"
 msgid "Add member"
 msgstr "ເພີ່ມສະມາຊິກ"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "ເພີ່ມທີ່ຢູ່ສົ່ງຂໍ້ຄວາມ"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "ເພີ່ມຄົນເພື່ອເລີ່ມຕົ້ນ"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ເພີ່ມແທັກ..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "ເພີ່ມເບີໂທ"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "ກຳລັງເພີ່ມຜູ້ຕິດຕໍ່..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "ກຳລັງເພີ່ມສະມາຊິກ..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "ທີ່ຢູ່"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "ກຳລັງຍົກເລີກຄຳເຊີນ..."
 msgid "Caption"
 msgstr "ຄຳບັນຍາຍ"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "ໝວດໝູ່ສຳລັບການແຈ້ງເຕືອນເຫຼົ່ານີ້"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "ອັບເດດໝວດໝູ່ແລ້ວ"
@@ -731,8 +716,6 @@ msgstr "ເມືອງ"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "ລ້າງ"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "ແກ້ໄຂມຸມມອງ"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "ອີເມວ"
 
@@ -1426,6 +1410,7 @@ msgstr "ໃຫຍ່ພິເສດ"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "ຮັບຄຳເຊີນລົ້ມເຫຼວ"
 
@@ -1629,6 +1614,7 @@ msgstr "ບັນທຶກພຣອມທ໌ລົ້ມເຫຼວ"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "ສົ່ງຄຳເຊີນລົ້ມເຫຼວ"
 
@@ -1768,6 +1754,7 @@ msgid "Groups"
 msgstr "ກຸ່ມ"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
 msgstr "ຊື່ຜູ້ໃຊ້"
 
@@ -1843,6 +1830,7 @@ msgstr "ວັນທີ່ບໍ່ຖືກຕ້ອງ"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "ຮັບຄຳເຊີນແລ້ວ"
 
@@ -1859,6 +1847,7 @@ msgstr "ປະຕິເສດຄຳເຊີນແລ້ວ"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "ສົ່ງຄຳເຊີນແລ້ວ"
 
@@ -1870,6 +1859,7 @@ msgstr "ຄຳເຊີນ"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "ເຊີນ"
 
@@ -1885,6 +1875,7 @@ msgstr "ການຕັ້ງຄ່າຄຳເຊີນ"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "ເຊີນແລ້ວ"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "ສົ່ງຂໍ້ຄວາມ"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "ທີ່ຢູ່ສົ່ງຂໍ້ຄວາມ"
 
@@ -2163,6 +2155,10 @@ msgstr "ເຄືອຂ່າຍ"
 msgid "Network error"
 msgstr "ຂໍ້ຜິດພາດເຄືອຂ່າຍ"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "ເຄືອຂ່າຍ"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "ໃໝ່ລ່າສຸດ"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "ຜູ້ຕິດຕໍ່ໃໝ່"
@@ -2714,6 +2711,10 @@ msgid "Remove address"
 msgstr "ລຶບທີ່ຢູ່ອອກ"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "ລຶບວັນເກີດອອກ"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "ລຶບອີເມວອອກ"
 
@@ -2730,6 +2731,10 @@ msgstr "ລຶບຄວາມສົນໃຈ"
 msgid "Remove item"
 msgstr "ລຶບລາຍການ"
 
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "ລຶບຕຳແໜ່ງອອກ"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "ລຶບທີ່ຢູ່ສົ່ງຂໍ້ຄວາມອອກ"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "ລຶບຊື່ຫຼິ້ນອອກ"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "ລຶບໝາຍເຫດອອກ"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "ລຶບອົງກອນອອກ"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "ລຶບເບີໂທອອກ"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "ລຶບ URL ອອກ"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "ສົ່ງຂໍ້ຄວາມ"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "ກຳລັງສົ່ງຄຳເຊີນ..."
 
@@ -3070,6 +3092,7 @@ msgstr "ຕັ້ງຕົ້ນທາງແລະປາຍທາງ"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "ການຕັ້ງຄ່າ"
 
@@ -3222,6 +3245,10 @@ msgstr "ແທັກຕ້ອງມີບໍ່ເກີນ 50 ຕົວອັ�
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "ແທັກ"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "ໂທລະສັບ"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "ບໍ່ສາມາດເຊື່ອມຕໍ່ກັບເຊີບ
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "ບໍ່ສາມາດປ່ຽນເສັ້ນທາງໄປຫາການເຂົ້າສູ່ລະບົບ. ກະລຸນາລອງອີກຄັ້ງ."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "ບໍ່ໄດ້ມອບໝາຍ"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

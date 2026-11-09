@@ -28,7 +28,9 @@ import {
   UploadProgress,
   type Upload,
   getErrorMessage,
+  providerName,
   shellClipboardWrite,
+  shellNavigateExternal,
   toast,
   toastAction,
   useFormat,
@@ -41,6 +43,7 @@ import {
   Eye,
   Image as ImageIcon,
   Pencil,
+  Settings,
   Upload as UploadIcon,
   X,
 } from 'lucide-react'
@@ -169,6 +172,10 @@ function ProfileEditor({
   const faviconUrl = info.favicon
     ? endpoints.person.asset(info.fingerprint, 'favicon', info.favicon)
     : null
+  // Only web links, as the profile itself shows them.
+  const accounts = (info.accounts ?? []).filter((account) =>
+    /^https:\/\//.test(account.url)
+  )
 
   const [profile, setProfile] = useState(info.profile)
   useEffect(() => setProfile(info.profile), [info.profile])
@@ -474,6 +481,41 @@ function ProfileEditor({
             </Button>
           </div>
         </div>
+
+        {/* ── Networks ──────────────────────────────────────── */}
+        {/* The accounts elsewhere the profile shows, as it links them. Which
+            are shown is chosen in Settings › Networks, where the button goes. */}
+        {accounts.length > 0 && (
+          <div className='border-border/60 space-y-3 border-t pt-5'>
+            <div className='flex items-center justify-between gap-2'>
+              <p className='text-sm font-medium'>
+                <Trans>Networks</Trans>
+              </p>
+              <Button
+                variant='outline'
+                size='sm'
+                icon={<Settings className='size-3.5' />}
+                onClick={() => shellNavigateExternal('/settings/user/networks')}
+              >
+                <Trans>Settings</Trans>
+              </Button>
+            </div>
+            <ul className='space-y-1 text-sm'>
+              {accounts.map((account) => (
+                <li key={account.url}>
+                  <a
+                    href={account.url}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='text-primary hover:underline'
+                  >
+                    {providerName(account.type)} · {account.identifier}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {/* ── Appearance ────────────────────────────────────── */}
         <div className='border-border/60 space-y-3 border-t pt-5'>

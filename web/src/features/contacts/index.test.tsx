@@ -7,6 +7,7 @@ import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { usePageTitleStore } from '@mochi/web'
 import { Contacts } from './index'
 
 const contact = {
@@ -51,7 +52,13 @@ const idle = vi.hoisted(() => () => ({
   isPending: false,
 }))
 
+// The cards the panel's query has fetched, by contact.
+const cards = vi.hoisted(() => ({}) as Record<string, { name: string }>)
+
 vi.mock('@/hooks/useContacts', () => ({
+  useContactQuery: (id: string) => ({
+    data: cards[id] ? { contact: cards[id] } : undefined,
+  }),
   useContactsQuery: () => ({
     data: { contacts: [contact, stranger, remote], received: [], sent: [] },
     contacts: [contact, stranger, remote],
@@ -114,6 +121,7 @@ describe('Contacts', () => {
 
   afterEach(() => {
     vi.restoreAllMocks()
+    for (const id of Object.keys(cards)) delete cards[id]
   })
 
   it('opens a contact in the side panel from a click anywhere on its row, naming it in the URL', () => {
@@ -153,6 +161,34 @@ describe('Contacts', () => {
     expect(shown()).toBe('c2')
     fireEvent.keyDown(document.body, { key: 'k' })
     expect(shown()).toBe('c1')
+  })
+
+  it('names the tab for the contact the panel shows, and for the list again once it closes', () => {
+    const title = () => usePageTitleStore.getState().title
+    show()
+    expect(title()).toBe('All contacts')
+    fireEvent.click(screen.getByText('Grace Hopper'))
+    expect(title()).toBe('Grace Hopper')
+    fireEvent.click(screen.getByRole('button', { name: 'Close panel' }))
+    expect(title()).toBe('All contacts')
+  })
+
+  it('names the tab for the contact a link opens', () => {
+    show({ open: 'c1' })
+    expect(usePageTitleStore.getState().title).toBe('Ada Lovelace')
+  })
+
+  it("names the tab with the card's name once the card arrives", () => {
+    cards.c2 = { name: 'Grace Brewster Hopper' }
+    show({ open: 'c2' })
+    expect(usePageTitleStore.getState().title).toBe('Grace Brewster Hopper')
+  })
+
+  it('names the tab for a new contact as its panel is', () => {
+    show()
+    fireEvent.click(screen.getAllByRole('button', { name: 'Add contact' })[0])
+    fireEvent.click(screen.getByRole('button', { name: 'New contact' }))
+    expect(usePageTitleStore.getState().title).toBe('New contact')
   })
 
   it('opens a new contact in the panel from the add dialog', () => {

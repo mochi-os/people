@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "24 ಗಂಟೆಗಳು"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "{name} ಅವರಿಗೆ ಸ್ನೇಹಿತ ಆಹ್ವಾನವನ್ನು ಕಳುಹಿಸಲಾಗಿದೆ."
 
@@ -168,6 +169,7 @@ msgstr "ಉಚ್ಚಾರಣಾ ಬಣ್ಣವನ್ನು ಉಳಿಸಲಾ�
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "ಸ್ವೀಕರಿಸಿ"
 
@@ -181,6 +183,7 @@ msgstr "ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸ್ವೀಕರಿಸಿ"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "ಆಹ್ವಾನವನ್ನು ಸ್ವೀಕರಿಸಲಾಗುತ್ತಿದೆ..."
 
@@ -213,6 +216,7 @@ msgstr "ಚಟುವಟಿಕೆ"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "ಸೇರಿಸಿ"
 
@@ -236,10 +240,6 @@ msgstr "ಪ್ರವೇಶ ಸೇರಿಸಿ"
 msgid "Add account"
 msgstr "ಖಾತೆ ಸೇರಿಸಿ"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "ವಿಳಾಸ ಸೇರಿಸಿ"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "ಅಡಿಬರಹ ಸೇರಿಸಿ"
@@ -259,18 +259,10 @@ msgstr "ಸಂಪರ್ಕ ಸೇರಿಸಿ"
 msgid "Add device"
 msgstr "ಸಾಧನವನ್ನು ಸೇರಿಸಿ"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "ಇಮೇಲ್ ಸೇರಿಸಿ"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "ಫೀಲ್ಡ್ ಸೇರಿಸಿ"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "ಬಳಕೆದಾರಹೆಸರು ಸೇರಿಸಿ"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "ಲಿಂಕ್ ಸೇರಿಸಿ"
 msgid "Add member"
 msgstr "ಸದಸ್ಯರನ್ನು ಸೇರಿಸಿ"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "ಮೆಸೇಜಿಂಗ್ ವಿಳಾಸ ಸೇರಿಸಿ"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "ಪ್ರಾರಂಭಿಸಲು ಯಾರನ್ನಾದರೂ ಸೇ�
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ಟ್ಯಾಗ್ ಸೇರಿಸಿ..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "ಫೋನ್ ಸೇರಿಸಿ"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "ಸಂಪರ್ಕವನ್ನು ಸೇರಿಸಲಾಗುತ್ತ�
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "ಸದಸ್ಯರನ್ನು ಸೇರಿಸಲಾಗುತ್ತಿದೆ..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "ವಿಳಾಸ"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "ಆಹ್ವಾನವನ್ನು ರದ್ದುಗೊಳಿಸಲಾ�
 msgid "Caption"
 msgstr "ಅಡಿಬರಹ"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "ಈ ಅಧಿಸೂಚನೆಗಳಿಗಾಗಿ ವರ್ಗ"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "ವರ್ಗ ನವೀಕರಿಸಲಾಗಿದೆ"
@@ -731,8 +716,6 @@ msgstr "ನಗರ"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "ತೆರವುಗೊಳಿಸಿ"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "ವೀಕ್ಷಣೆ ಸಂಪಾದಿಸಿ"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "ಇಮೇಲ್"
 
@@ -1426,6 +1410,7 @@ msgstr "ಹೆಚ್ಚುವರಿ ದೊಡ್ಡದು"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "ಆಮಂತ್ರಣ ಸ್ವೀಕರಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -1629,6 +1614,7 @@ msgstr "ಪ್ರಾಂಪ್ಟ್ ಉಳಿಸಲು ವಿಫಲವಾಗಿ�
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "ಆಹ್ವಾನ ಕಳುಹಿಸಲು ವಿಫಲವಾಗಿದೆ"
 
@@ -1768,6 +1754,7 @@ msgid "Groups"
 msgstr "ಗುಂಪುಗಳು"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
 msgstr "ಬಳಕೆದಾರಹೆಸರು"
 
@@ -1843,6 +1830,7 @@ msgstr "ಅಮಾನ್ಯ ದಿನಾಂಕ"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "ಆಮಂತ್ರಣ ಸ್ವೀಕರಿಸಲಾಗಿದೆ"
 
@@ -1859,6 +1847,7 @@ msgstr "ಆಮಂತ್ರಣ ನಿರಾಕರಿಸಲಾಗಿದೆ"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "ಆಹ್ವಾನ ಕಳುಹಿಸಲಾಗಿದೆ"
 
@@ -1870,6 +1859,7 @@ msgstr "ಆಮಂತ್ರಣಗಳು"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "ಆಹ್ವಾನಿಸಿ"
 
@@ -1885,6 +1875,7 @@ msgstr "ಆಮಂತ್ರಣ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "ಆಹ್ವಾನಿಸಲಾಗಿದೆ"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "ಸಂದೇಶ ಕಳುಹಿಸಿ"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "ಮೆಸೇಜಿಂಗ್ ವಿಳಾಸ"
 
@@ -2163,6 +2155,10 @@ msgstr "ನೆಟ್‌ವರ್ಕ್"
 msgid "Network error"
 msgstr "ನೆಟ್‌ವರ್ಕ್ ದೋಷ"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "ನೆಟ್‌ವರ್ಕ್‌ಗಳು"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "ಇತ್ತೀಚಿನ"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "ಹೊಸ ಸಂಪರ್ಕ"
@@ -2714,6 +2711,10 @@ msgid "Remove address"
 msgstr "ವಿಳಾಸ ತೆಗೆದುಹಾಕಿ"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "ಹುಟ್ಟುಹಬ್ಬ ತೆಗೆದುಹಾಕಿ"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "ಇಮೇಲ್ ತೆಗೆದುಹಾಕಿ"
 
@@ -2730,6 +2731,10 @@ msgstr "ಆಸಕ್ತಿ ತೆಗೆದುಹಾಕಿ"
 msgid "Remove item"
 msgstr "ಐಟಂ ತೆಗೆದುಹಾಕಿ"
 
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "ಹುದ್ದೆ ತೆಗೆದುಹಾಕಿ"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "ಮೆಸೇಜಿಂಗ್ ವಿಳಾಸ ತೆಗೆದುಹಾಕಿ"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "ಅಡ್ಡಹೆಸರು ತೆಗೆದುಹಾಕಿ"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "ಟಿಪ್ಪಣಿ ತೆಗೆದುಹಾಕಿ"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "ಸಂಸ್ಥೆ ತೆಗೆದುಹಾಕಿ"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "ಫೋನ್ ತೆಗೆದುಹಾಕಿ"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "URL ತೆಗೆದುಹಾಕಿ"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "ಸಂದೇಶ ಕಳುಹಿಸಿ"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "ಆಹ್ವಾನವನ್ನು ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ..."
 
@@ -3070,6 +3092,7 @@ msgstr "ಮೂಲ ಮತ್ತು ಗಮ್ಯಸ್ಥಾನವನ್ನು ಹ
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "ಸೆಟ್ಟಿಂಗ್‌ಗಳು"
 
@@ -3222,6 +3245,10 @@ msgstr "ಟ್ಯಾಗ್ 50 ಅಕ್ಷರಗಳು ಅಥವಾ ಕಡಿಮ
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "ಟ್ಯಾಗ್‌ಗಳು"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "ಫೋನ್"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "ರಿಮೋಟ್ ಸರ್ವರ್‌ಗೆ ಸಂಪರ್ಕಿಸ�
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "ಲಾಗಿನ್‌ಗೆ ಮರುನಿರ್ದೇಶಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "ನಿಯೋಜಿಸದ"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

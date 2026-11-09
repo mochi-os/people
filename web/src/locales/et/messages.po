@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "24 tundi"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "Sõbrakutse on saadetud kasutajale {name}."
 
@@ -168,6 +169,7 @@ msgstr "Aktsent salvestatud"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "Nõustu"
 
@@ -181,6 +183,7 @@ msgstr "Aktsepteeri automaatselt"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "Kutse vastuvõtmine..."
 
@@ -213,6 +216,7 @@ msgstr "Tegevus"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "Lisa"
 
@@ -236,10 +240,6 @@ msgstr "Lisa juurdepääs"
 msgid "Add account"
 msgstr "Lisa konto"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "Lisa aadress"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Lisa pealdis"
@@ -259,18 +259,10 @@ msgstr "Lisa kontakt"
 msgid "Add device"
 msgstr "Lisa seade"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "Lisa e-post"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Lisa väli"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "Lisa kasutajanimi"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "Lisa link"
 msgid "Add member"
 msgstr "Lisa liige"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "Lisa kiirsuhtlusaadress"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "Alustamiseks lisa keegi"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Lisa silt..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "Lisa telefon"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "Kontakti lisamine..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Liikme lisamine..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "Aadress"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "Kutse tühistamine..."
 msgid "Caption"
 msgstr "Pealdis"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "Nende teavituste kategooria"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "Kategooria uuendatud"
@@ -731,8 +716,6 @@ msgstr "Linn"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "Tühjenda"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "Muuda vaadet"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "E-post"
 
@@ -1426,6 +1410,7 @@ msgstr "Eriti suur"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "Kutse vastuvõtmine ebaõnnestus"
 
@@ -1629,6 +1614,7 @@ msgstr "Viiba salvestamine ebaõnnestus"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "Kutse saatmine ebaõnnestus"
 
@@ -1768,6 +1754,7 @@ msgid "Groups"
 msgstr "Grupid"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
 msgstr "Kasutajanimi"
 
@@ -1843,6 +1830,7 @@ msgstr "Vigane kuupäev"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "Kutse vastu võetud"
 
@@ -1859,6 +1847,7 @@ msgstr "Kutsest keelduti"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "Kutse saadetud"
 
@@ -1870,6 +1859,7 @@ msgstr "Kutsed"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "Kutsu"
 
@@ -1885,6 +1875,7 @@ msgstr "Kutsete seaded"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "Kutsutud"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "Saada sõnum"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "Kiirsuhtlusaadress"
 
@@ -2163,6 +2155,10 @@ msgstr "Võrk"
 msgid "Network error"
 msgstr "Võrguviga"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "Võrgud"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "Uusimad"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Uus kontakt"
@@ -2714,6 +2711,10 @@ msgid "Remove address"
 msgstr "Eemalda aadress"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "Eemalda sünnipäev"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Eemalda e-post"
 
@@ -2730,6 +2731,10 @@ msgstr "Eemalda huvi"
 msgid "Remove item"
 msgstr "Eemalda üksus"
 
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "Eemalda ametinimetus"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "Eemalda kiirsuhtlusaadress"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "Eemalda hüüdnimi"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "Eemalda märkus"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "Eemalda organisatsioon"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Eemalda telefon"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "Eemalda URL"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "Saada sõnum"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "Kutse saatmine..."
 
@@ -3070,6 +3092,7 @@ msgstr "Määra lähtekoht ja sihtkoht"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "Seaded"
 
@@ -3222,6 +3245,10 @@ msgstr "Silt tohib olla kuni 50 tähemärki"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Sildid"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "Telefon"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "Kaugserveriga ei õnnestu ühendust luua"
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "Sisselogimisele ei õnnestu ümber suunata. Palun proovi uuesti."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "Määramata"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

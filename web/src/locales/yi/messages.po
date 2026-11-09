@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "24 שעה"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "אַ פֿרײַנדשאַפֿט־אײַנלאַדונג איז געשיקט געוואָרן צו {name}."
 
@@ -168,6 +169,7 @@ msgstr "אַקצענט אויפֿגעהיט"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "אָננעמען"
 
@@ -181,6 +183,7 @@ msgstr "אַוטאָמאַטיש אָננעמען"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "אננעמען פֿאַרבעטונג..."
 
@@ -213,6 +216,7 @@ msgstr "אַקטיוויטעט"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "צולייגן"
 
@@ -236,10 +240,6 @@ msgstr "צולייגן צוטריט"
 msgid "Add account"
 msgstr "צולייגן קאָנטע"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "צולייגן אַדרעס"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "צוגעבן אן אונטערשריפֿט"
@@ -259,18 +259,10 @@ msgstr "צולייגן קאָנטאַקט"
 msgid "Add device"
 msgstr "צולייגן אַ מיטל"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "צולייגן בליצפּאָסט"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "צולייגן פֿעלד"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "צולייגן צונאָמען"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "צולייגן לינק"
 msgid "Add member"
 msgstr "צולייגן מיטגליד"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "צולייגן מעסעדזש־אַדרעס"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "לייגט צו עמעצן צו אָנהייבן"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "צולייגן טאַג..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "צולייגן טעלעפֿאָן"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "צולייגן קאָנטאַקט..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "צוגעבן מיטגליד..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "אַדרעס"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "אַנולירן פֿאַרבעטונג..."
 msgid "Caption"
 msgstr "אונטערשריפֿט"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "קאַטעגאָריע פֿאַר די דאָזיקע נאָטיפֿיקאַציעס"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "קאַטעגאָריע באַנײַט"
@@ -731,8 +716,6 @@ msgstr "שטאָט"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "רייניקן"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "רעדאַקטירן בליק"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "בליצפּאָסט"
 
@@ -1426,6 +1410,7 @@ msgstr "עקסטרא גרויס"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "ניט געלונגען אָנצונעמען אײַנלאַדונג"
 
@@ -1629,6 +1614,7 @@ msgstr "ניט געלונגען אויפֿצוהיטן פּראָמפּט"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "ניט געלונגען צו שיקן אײַנלאַדונג"
 
@@ -1768,8 +1754,9 @@ msgid "Groups"
 msgstr "גרופּעס"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
-msgstr "צונאָמען"
+msgstr "באַניצער־נאָמען"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
 msgid "History"
@@ -1843,6 +1830,7 @@ msgstr "ניט גילטיקע דאַטע"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "אײַנלאַדונג אָנגענומען"
 
@@ -1859,6 +1847,7 @@ msgstr "אײַנלאַדונג אָפּגעזאָגט"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "אײַנלאַדונג געשיקט"
 
@@ -1870,6 +1859,7 @@ msgstr "אײַנלאַדונגען"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "אײַנלאַדן"
 
@@ -1885,6 +1875,7 @@ msgstr "אײַנלאַדונג־הגדרות"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "אײַנגעלאַדן"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "שיקן אַ בריוו"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "מעסעדזש־אַדרעס"
 
@@ -2163,6 +2155,10 @@ msgstr "נעץ"
 msgid "Network error"
 msgstr "נעץ פֿעלער"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "נעצן"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "נײַסטע"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "נײַער קאָנטאַקט"
@@ -2714,12 +2711,16 @@ msgid "Remove address"
 msgstr "אַראָפּנעמען אַדרעס"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "אַראָפּנעמען געבוירן־טאָג"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "אַראָפּנעמען בליצפּאָסט"
 
 #: src/features/contacts/fields.tsx
 msgid "Remove handle"
-msgstr "אַראָפּנעמען צונאָמען"
+msgstr "אַראָפּנעמען באַניצער־נאָמען"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2729,6 +2730,10 @@ msgstr "אַראָפּנעמען אינטערעס"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Remove item"
 msgstr "אַראָפּנעמען עלעמענט"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "אַראָפּנעמען שטעלע"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "אַראָפּנעמען מעסעדזש־אַדרעס"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "אַראָפּנעמען צונאָמען"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "אַראָפּנעמען נאָטיץ"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "אַראָפּנעמען אָרגאַניזאַציע"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "אַראָפּנעמען טעלעפֿאָן"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "אַראָפּנעמען URL"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "שיק אַ מעלדונג"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "שיקן פֿאַרבעטונג..."
 
@@ -3070,6 +3092,7 @@ msgstr "שטעל אָנהייב און ציל"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "אײַנשטעלונגען"
 
@@ -3222,6 +3245,10 @@ msgstr "דער טאַג מוז זײַן 50 שריפֿטצײכנס אָדער װ�
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "טאַגן"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "טעלעפֿאָן"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "ניט געקענט פֿאַרבינדן צום ווײַטן סערוו�
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "קאָן נישט רעדירעקטירן צו אַרײַנמעלדונג. פּרוּווט נאָך אַ מאָל."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "אומצוגעטיילט"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "24 గంటలు"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "{name}కి స్నేహ ఆహ్వానం పంపబడింది."
 
@@ -168,6 +169,7 @@ msgstr "యాస సేవ్ చేయబడింది"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "అంగీకరించండి"
 
@@ -181,6 +183,7 @@ msgstr "స్వయంచాలకంగా అంగీకరించండ�
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "ఆహ్వానాన్ని అంగీకరిస్తోంది..."
 
@@ -213,6 +216,7 @@ msgstr "కార్యకలాపం"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "జోడించండి"
 
@@ -236,10 +240,6 @@ msgstr "యాక్సెస్‌ను జోడించండి"
 msgid "Add account"
 msgstr "ఖాతాను జోడించండి"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "చిరునామా జోడించండి"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "క్యాప్షన్ జోడించండి"
@@ -259,18 +259,10 @@ msgstr "పరిచయాన్ని జోడించండి"
 msgid "Add device"
 msgstr "పరికరాన్ని జోడించండి"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "ఇమెయిల్ జోడించండి"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "ఫీల్డ్‌ను జోడించండి"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "హ్యాండిల్‌ను జోడించండి"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "లింక్‌ను జోడించండి"
 msgid "Add member"
 msgstr "సభ్యుడిని జోడించండి"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "మెసేజింగ్ చిరునామాను జోడించండి"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "ప్రారంభించడానికి ఎవరినైన�
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ట్యాగ్‌ను జోడించండి..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "ఫోన్ జోడించండి"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "పరిచయాన్ని జోడిస్తోంది..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "సభ్యుడిని జోడిస్తోంది..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "చిరునామా"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "ఆహ్వానాన్ని రద్దు చేస్తోం�
 msgid "Caption"
 msgstr "క్యాప్షన్"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "ఈ నోటిఫికేషన్ల కోసం వర్గం"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "వర్గం నవీకరించబడింది"
@@ -731,8 +716,6 @@ msgstr "నగరం"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "క్లియర్ చేయండి"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "వీక్షణను సవరించండి"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "ఇమెయిల్"
 
@@ -1426,6 +1410,7 @@ msgstr "అదనపు పెద్దది"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "ఆహ్వానాన్ని అంగీకరించడంలో విఫలమైంది"
 
@@ -1629,6 +1614,7 @@ msgstr "ప్రాంప్ట్‌ను సేవ్ చేయడంలో 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "ఆహ్వానం పంపడంలో విఫలమైంది"
 
@@ -1768,6 +1754,7 @@ msgid "Groups"
 msgstr "గ్రూపులు"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
 msgstr "హ్యాండిల్"
 
@@ -1843,6 +1830,7 @@ msgstr "చెల్లని తేదీ"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "ఆహ్వానం అంగీకరించబడింది"
 
@@ -1859,6 +1847,7 @@ msgstr "ఆహ్వానం తిరస్కరించబడింది"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "ఆహ్వానం పంపబడింది"
 
@@ -1870,6 +1859,7 @@ msgstr "ఆహ్వానాలు"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "ఆహ్వానించండి"
 
@@ -1885,6 +1875,7 @@ msgstr "ఆహ్వాన సెట్టింగ్‌లు"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "ఆహ్వానించబడింది"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "సందేశం పంపండి"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "మెసేజింగ్ చిరునామా"
 
@@ -2163,6 +2155,10 @@ msgstr "నెట్‌వర్క్"
 msgid "Network error"
 msgstr "నెట్‌వర్క్ లోపం"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "నెట్‌వర్క్‌లు"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "సరికొత్తవి"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "కొత్త పరిచయం"
@@ -2714,6 +2711,10 @@ msgid "Remove address"
 msgstr "చిరునామాను తీసివేయండి"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "పుట్టినరోజును తీసివేయండి"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "ఇమెయిల్‌ను తీసివేయండి"
 
@@ -2730,6 +2731,10 @@ msgstr "ఆసక్తిని తొలగించండి"
 msgid "Remove item"
 msgstr "ఐటెంను తొలగించండి"
 
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "హోదాను తీసివేయండి"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "మెసేజింగ్ చిరునామాను తీసివేయండి"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "ముద్దుపేరును తీసివేయండి"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "గమనికను తీసివేయండి"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "సంస్థను తీసివేయండి"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "ఫోన్‌ను తీసివేయండి"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "URLను తీసివేయండి"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "సందేశాన్ని పంపండి"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "ఆహ్వానాన్ని పంపుతోంది..."
 
@@ -3070,6 +3092,7 @@ msgstr "మూలం మరియు గమ్యస్థానాన్ని 
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "సెట్టింగ్‌లు"
 
@@ -3222,6 +3245,10 @@ msgstr "ట్యాగ్ 50 అక్షరాలు లేదా తక్క
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "ట్యాగ్‌లు"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "ఫోన్"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "రిమోట్ సర్వర్‌కు కనెక్ట్ చ
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "లాగిన్‌కు రీడైరెక్ట్ చేయలేకపోయింది. దయచేసి మళ్ళీ ప్రయత్నించండి."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "కేటాయించబడలేదు"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

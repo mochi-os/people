@@ -50,6 +50,7 @@ import type { Contact } from '@/api/types/contacts'
 import { searchMatches, searchRange } from '@/lib/search'
 import {
   useBooksQuery,
+  useContactQuery,
   useContactsQuery,
   useDeleteContactMutation,
   useInviteFriendMutation,
@@ -98,7 +99,17 @@ export function Contacts({
   const { data: booksData } = useBooksQuery()
   const bookName = booksData?.books.find((row) => row.id === book)?.name
   const title = book ? (bookName ?? t`Contacts`) : t`All contacts`
-  usePageTitle(title)
+  // The tab is named for the contact the panel shows, as its header is: the
+  // name it holds, the list's until it arrives.
+  const shown = useContactQuery(panel?.id ?? '', {
+    enabled: Boolean(panel?.id),
+  })
+  const shownName =
+    shown.data?.contact.name ||
+    data?.contacts.find((row) => row.id === panel?.id)?.name
+  usePageTitle(
+    panel ? (panel.id ? shownName || title : t`New contact`) : title
+  )
 
   const deleteMutation = useDeleteContactMutation()
   const removeFriendMutation = useRemoveFriendMutation()

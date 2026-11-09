@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "24 сағат"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "{name} пайдаланушысына достық шақыруы жіберілді."
 
@@ -168,6 +169,7 @@ msgstr "Акцент сақталды"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "Қабылдау"
 
@@ -181,6 +183,7 @@ msgstr "Автоматты қабылдау"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "Шақыру қабылдануда..."
 
@@ -213,6 +216,7 @@ msgstr "Әрекет"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "Қосу"
 
@@ -236,10 +240,6 @@ msgstr "Қол жеткізу қосу"
 msgid "Add account"
 msgstr "Тіркелгі қосу"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "Мекенжай қосу"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Түсіндірме қосу"
@@ -259,18 +259,10 @@ msgstr "Контакт қосу"
 msgid "Add device"
 msgstr "Құрылғы қосу"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "Электрондық пошта қосу"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Өріс қосу"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "Пайдаланушы атын қосу"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "Сілтеме қосу"
 msgid "Add member"
 msgstr "Мүше қосу"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "Хабар алмасу мекенжайын қосу"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "Бастау үшін біреуді қосыңыз"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Тег қосу..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "Телефон қосу"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "Контакт қосылуда..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Мүше қосылуда..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "Мекенжай"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "Шақыру кері қайтарылуда..."
 msgid "Caption"
 msgstr "Түсіндірме"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "Осы хабарландырулардың санаты"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "Санат жаңартылды"
@@ -731,8 +716,6 @@ msgstr "Қала"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "Тазалау"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "Көріністі өңдеу"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "Электрондық пошта"
 
@@ -1426,6 +1410,7 @@ msgstr "Өте үлкен"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "Шақыруды қабылдау сәтсіз аяқталды"
 
@@ -1629,6 +1614,7 @@ msgstr "Жолдамасын сақтау сәтсіз аяқталды"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "Шақыруды жіберу сәтсіз аяқталды"
 
@@ -1768,6 +1754,7 @@ msgid "Groups"
 msgstr "Топтар"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
 msgstr "Пайдаланушы аты"
 
@@ -1843,6 +1830,7 @@ msgstr "Жарамсыз күн"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "Шақыру қабылданды"
 
@@ -1859,6 +1847,7 @@ msgstr "Шақыру қабылданбады"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "Шақыру жіберілді"
 
@@ -1870,6 +1859,7 @@ msgstr "Шақырулар"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "Шақыру"
 
@@ -1885,6 +1875,7 @@ msgstr "Шақыру параметрлері"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "Шақырылды"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "Хабар жіберу"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "Хабар алмасу мекенжайы"
 
@@ -2163,6 +2155,10 @@ msgstr "Желі"
 msgid "Network error"
 msgstr "Желі қатесі"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "Желілер"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "Ең жаңа"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Жаңа контакт"
@@ -2714,6 +2711,10 @@ msgid "Remove address"
 msgstr "Мекенжайды жою"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "Туған күнді жою"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Электрондық поштаны жою"
 
@@ -2730,6 +2731,10 @@ msgstr "Қызығушылықты жою"
 msgid "Remove item"
 msgstr "Элементті жою"
 
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "Лауазымды жою"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "Хабар алмасу мекенжайын жою"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "Лақап атты жою"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "Ескертпені жою"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "Ұйымды жою"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Телефонды жою"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "URL-ді жою"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "Хабар жіберу"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "Шақыру жіберілуде..."
 
@@ -3070,6 +3092,7 @@ msgstr "Шығу және бару нүктесін орнату"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "Параметрлер"
 
@@ -3222,6 +3245,10 @@ msgstr "Тег ең көбі 50 таңба болуы керек"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Тегтер"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "Телефон"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "Қашықтағы серверге қосылу мүмкін болма
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "Кіру бетіне қайта бағыттау мүмкін болмады. Қайталап көріңіз."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "Тағайындалмаған"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "24 sagat"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "{name} üçin dostluk çakylygy iberildi."
 
@@ -168,6 +169,7 @@ msgstr "Aksent saklandy"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "Kabul etmek"
 
@@ -181,6 +183,7 @@ msgstr "Awtomatiki kabul etmek"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "Çakylyk kabul edilýär..."
 
@@ -213,6 +216,7 @@ msgstr "Hereketlilik"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "Goşmak"
 
@@ -236,10 +240,6 @@ msgstr "Giriş goşmak"
 msgid "Add account"
 msgstr "Hasap goşmak"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "Salgy goş"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Düşündiriş goşmak"
@@ -259,18 +259,10 @@ msgstr "Kontakt goş"
 msgid "Add device"
 msgstr "Enjam goş"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "E-poçta goş"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Meýdan goşmak"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "Lakam goş"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "Baglanyşyk goşmak"
 msgid "Add member"
 msgstr "Agza goşmak"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "Habarlaşma salgysyny goş"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "Başlamak üçin birini goşuň"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Bellik goşuň..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "Telefon goş"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "Kontakt goşulýar..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Agza goşulýar..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "Salgy"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "Çakylyk ýatyrylýar..."
 msgid "Caption"
 msgstr "Düşündiriş"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "Bu bildirişler üçin kategoriýa"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "Kategoriýa täzelendi"
@@ -731,8 +716,6 @@ msgstr "Şäher"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "Arassalamak"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "Görnüşi düzet"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "E-poçta"
 
@@ -1426,6 +1410,7 @@ msgstr "Goşmaça uly"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "Çakylyk kabul edilmedi"
 
@@ -1629,6 +1614,7 @@ msgstr "Görkezme saklanyp galynmady"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "Çakylyk iberilmedi"
 
@@ -1768,8 +1754,9 @@ msgid "Groups"
 msgstr "Toparlar"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
-msgstr "Lakam"
+msgstr "Ulanyjy ady"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
 msgid "History"
@@ -1843,6 +1830,7 @@ msgstr "Nädogry sene"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "Çakylyk kabul edildi"
 
@@ -1859,6 +1847,7 @@ msgstr "Çakylyk ret edildi"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "Çakylyk iberildi"
 
@@ -1870,6 +1859,7 @@ msgstr "Çakylyklar"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "Çagyr"
 
@@ -1885,6 +1875,7 @@ msgstr "Çakylyk sazlamalary"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "Çakylyk iberildi"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "Habar iber"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "Habarlaşma salgysy"
 
@@ -2163,6 +2155,10 @@ msgstr "Tor"
 msgid "Network error"
 msgstr "Tor ýalňyşlygy"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "Torlar"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "Iň täze"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Täze kontakt"
@@ -2714,12 +2711,16 @@ msgid "Remove address"
 msgstr "Salgyny aýyr"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "Doglan gününi aýyr"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "E-poçtany aýyr"
 
 #: src/features/contacts/fields.tsx
 msgid "Remove handle"
-msgstr "Lakamy aýyr"
+msgstr "Ulanyjy adyny aýyr"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2729,6 +2730,10 @@ msgstr "Gyzyklanmany aýyr"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Remove item"
 msgstr "Elementi aýyr"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "Wezipäni aýyr"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "Habarlaşma salgysyny aýyr"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "Lakamy aýyr"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "Belligi aýyr"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "Guramany aýyr"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Telefony aýyr"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "URL-i aýyr"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "Habar iber"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "Çakylyk iberilýär..."
 
@@ -3070,6 +3092,7 @@ msgstr "Başlangyç we baryljak ýeri belle"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "Sazlamalar"
 
@@ -3222,6 +3245,10 @@ msgstr "Bellik iň köp 50 harp bolmaly"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Bellikler"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "Telefon"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "Uzakdaky servere birikmek başartmady"
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "Girişe ugradyp bolmady. Gaýtadan synanyş."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "Bellenilmedik"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

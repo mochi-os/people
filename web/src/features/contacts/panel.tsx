@@ -31,13 +31,21 @@ import {
   toastAction,
 } from '@mochi/web'
 import {
+  AtSign,
+  Briefcase,
+  Building2,
+  Cake,
   Copy,
+  Link,
   Mail,
   MapPin,
   Merge,
+  MessageCircle,
   Phone,
   Plus,
+  StickyNote,
   Trash2,
+  UserRound,
   UserX,
   type LucideIcon,
 } from 'lucide-react'
@@ -69,7 +77,7 @@ import {
 import { AddContactDialog } from './add-dialog'
 import { BirthdayField } from './birthday'
 import {
-  AddButton,
+  AddMenu,
   AddressRows,
   Field,
   HandleRows,
@@ -90,6 +98,36 @@ const written = (form: ContactForm) => JSON.stringify(propertiesFromForm(form))
 
 // How long typing rests before it is saved.
 const PAUSE = 1000
+
+// The fields a contact has one of. Each shows once it holds a value or is
+// added from the Add menu, and stays until it is removed or the panel closes,
+// so emptying one to retype it does not take it away.
+type Single = 'nickname' | 'birthday' | 'organisation' | 'title' | 'url' | 'note'
+const SINGLES: Single[] = [
+  'nickname',
+  'birthday',
+  'organisation',
+  'title',
+  'url',
+  'note',
+]
+// Those shown under Details; the nickname is shown with the name.
+const DETAILS: Single[] = ['birthday', 'organisation', 'title', 'url', 'note']
+
+// The single fields a form holds a value in.
+const filled = (form: ContactForm) =>
+  SINGLES.filter((single) => form[single].trim() !== '')
+
+// The form with a single field removed. An organisation takes its units with
+// it, or the card would keep them under no name.
+const EMPTIED: Record<Single, Partial<ContactForm>> = {
+  nickname: { nickname: '' },
+  birthday: { birthday: '' },
+  organisation: { organisation: '', organisationUnits: [] },
+  title: { title: '' },
+  url: { url: '' },
+  note: { note: '' },
+}
 
 /**
  * A copy of a contact not yet made: the contact it is copied from, and the
@@ -130,6 +168,9 @@ export function ContactPanel({
   const [form, setForm] = useState<ContactForm>(copied?.form ?? emptyForm)
   const [book, setBook] = useState(copied?.book ?? '')
   const [unreadable, setUnreadable] = useState(false)
+  const [shown, setShown] = useState<Single[]>(() =>
+    filled(copied?.form ?? emptyForm())
+  )
   const [deleteOpen, setDeleteOpen] = useState(false)
   const [mergeOpen, setMergeOpen] = useState(false)
   const [linkOpen, setLinkOpen] = useState(false)
@@ -192,6 +233,11 @@ export function ContactPanel({
     latest.current = { ...latest.current, form: next, book: row.book }
     setForm(next)
     setBook(row.book)
+    // A card read shows the fields it fills, and keeps those already shown.
+    setShown((current) => [
+      ...current,
+      ...filled(next).filter((single) => !current.includes(single)),
+    ])
   }, [])
 
   // A card arriving with a new etag: the same editable properties under a new
@@ -298,9 +344,23 @@ export function ContactPanel({
     later()
   }
 
-  // A select inside a form mirrors its value into a hidden native select, and
-  // a value set before its item has mounted has no option there, so the
-  // mirror answers with an empty change. No book is ever empty: drop it.
+  const reveal = (single: Single) =>
+    setShown((current) =>
+      current.includes(single) ? current : [...current, single]
+    )
+
+  // Removing a field empties it, so the next save drops it from the card. A
+  // birthday half typed goes with it, and no longer holds Create.
+  const remove = (single: Single) => {
+    setShown((current) => current.filter((key) => key !== single))
+    if (single === 'birthday') setUnreadable(false)
+    update(EMPTIED[single])
+  }
+
+  // A select mirrors its value into a hidden native select until its trigger
+  // has mounted, and a value set before its item has mounted has no option
+  // there, so the mirror answers with an empty change. No book is ever
+  // empty: drop it.
   const chooseBook = (value: string) => {
     if (!value || value === latest.current.book) return
     setBook(value)
@@ -492,7 +552,8 @@ export function ContactPanel({
     title: ReactNode,
     body: ReactNode,
     actions?: ReactNode,
-    footer?: ReactNode
+    footer?: ReactNode,
+    place?: ReactNode
   ) => (
     <SidePanel
       open={true}
@@ -509,7 +570,22 @@ export function ContactPanel({
       }}
     >
       <SidePanelHeader actions={actions}>
-        <SidePanelTitle>{title}</SidePanelTitle>
+        {/* The name, then the book it is in: beside it on a wide screen,
+            under it on a narrow one. */}
+        <div className='flex min-w-0 flex-1 flex-col items-start gap-0.5 md:flex-row md:items-center md:gap-2'>
+          <SidePanelTitle className='max-w-full'>{title}</SidePanelTitle>
+          {place && (
+            <>
+              <span
+                className='text-muted-foreground hidden shrink-0 md:block'
+                aria-hidden='true'
+              >
+                ·
+              </span>
+              {place}
+            </>
+          )}
+        </div>
       </SidePanelHeader>
       <SidePanelBody>{body}</SidePanelBody>
       {footer && <SidePanelFooter>{footer}</SidePanelFooter>}
@@ -575,13 +651,49 @@ export function ContactPanel({
     </>
   ) : undefined
 
+  // How each single field is named, offered in the Add menu and removed.
+  const singles: Record<
+    Single,
+    { label: string; icon: LucideIcon; remove: string }
+  > = {
+    nickname: {
+      label: t`Nickname`,
+      icon: UserRound,
+      remove: t`Remove nickname`,
+    },
+    birthday: { label: t`Birthday`, icon: Cake, remove: t`Remove birthday` },
+    organisation: {
+      label: t`Organisation`,
+      icon: Building2,
+      remove: t`Remove organisation`,
+    },
+    title: {
+      label: t({ message: 'Title', context: 'job title' }),
+      icon: Briefcase,
+      remove: t`Remove job title`,
+    },
+    url: { label: t`URL`, icon: Link, remove: t`Remove URL` },
+    note: { label: t`Note`, icon: StickyNote, remove: t`Remove note` },
+  }
+  const removal = (single: Single) => ({
+    label: singles[single].remove,
+    onClick: () => remove(single),
+  })
+  const methods =
+    form.emails.length +
+      form.phones.length +
+      form.addresses.length +
+      form.handles.length +
+      form.messaging.length >
+    0
+  const details = DETAILS.some((single) => shown.includes(single))
+
   const body = (
     <>
     {/* Leaving a field saves it. The browser's own checks would refuse a URL
         a phone stored without its scheme, in words the page cannot translate. */}
     <form
       noValidate
-      className='divide-y'
       onBlur={() => {
         if (id) void save()
       }}
@@ -591,235 +703,282 @@ export function ContactPanel({
         else void create()
       }}
     >
-      <section className='space-y-2 pb-4'>
-        <Field id='contact-name' label={t({ message: 'Name', context: 'person' })}>
-          <Input
-            id='contact-name'
-            value={form.name}
-            aria-invalid={form.name.trim() === '' && Boolean(id)}
-            onChange={(event) => update({ name: event.target.value })}
-          />
-          {form.name.trim() === '' && id && (
-            <p className='text-destructive mt-1 text-xs'>
-              <Trans>Name is required</Trans>
-            </p>
-          )}
-        </Field>
-        <Field id='contact-given' label={t`Forename`}>
-          <Input
-            id='contact-given'
-            value={form.given}
-            onChange={(event) => update({ given: event.target.value })}
-          />
-        </Field>
-        <Field id='contact-family' label={t`Surname`}>
-          <Input
-            id='contact-family'
-            value={form.family}
-            onChange={(event) => update({ family: event.target.value })}
-          />
-        </Field>
-        <Field id='contact-nickname' label={t`Nickname`}>
-          <Input
-            id='contact-nickname'
-            value={form.nickname}
-            onChange={(event) => update({ nickname: event.target.value })}
-          />
-        </Field>
-        {contact && (
-          <Field id='contact-friend' label={t`Mochi friend`}>
-            <div className='flex items-center gap-3'>
-              <Switch
-                id='contact-friend'
-                checked={friendState !== 'none'}
-                loading={toggling}
-                onCheckedChange={(on) => void toggleFriend(on)}
-              />
-              {friendState === 'invited' && (
-                <span className='text-muted-foreground text-xs'>
-                  <Trans>Invited</Trans>
-                </span>
-              )}
-            </div>
+      <div className='divide-y'>
+        <section className='space-y-2 pb-4'>
+          <Field id='contact-name' label={t({ message: 'Name', context: 'person' })}>
+            <Input
+              id='contact-name'
+              value={form.name}
+              aria-invalid={form.name.trim() === '' && Boolean(id)}
+              onChange={(event) => update({ name: event.target.value })}
+            />
+            {form.name.trim() === '' && id && (
+              <p className='text-destructive mt-1 text-xs'>
+                <Trans>Name is required</Trans>
+              </p>
+            )}
           </Field>
-        )}
-        {xmpp.map((entry) => {
-          const seen =
-            entry.subscription === 'to' || entry.subscription === 'both'
-          const key = `${entry.account} ${entry.address}`
-          return (
+          <Field id='contact-given' label={t`Forename`}>
+            <Input
+              id='contact-given'
+              value={form.given}
+              onChange={(event) => update({ given: event.target.value })}
+            />
+          </Field>
+          <Field id='contact-family' label={t`Surname`}>
+            <Input
+              id='contact-family'
+              value={form.family}
+              onChange={(event) => update({ family: event.target.value })}
+            />
+          </Field>
+          {shown.includes('nickname') && (
             <Field
-              key={key}
-              id={`contact-xmpp-${key}`}
-              label={t`XMPP contact`}
+              id='contact-nickname'
+              label={singles.nickname.label}
+              remove={removal('nickname')}
             >
+              <Input
+                id='contact-nickname'
+                value={form.nickname}
+                onChange={(event) => update({ nickname: event.target.value })}
+              />
+            </Field>
+          )}
+          {contact && (
+            <Field id='contact-friend' label={t`Mochi friend`}>
               <div className='flex items-center gap-3'>
                 <Switch
-                  id={`contact-xmpp-${key}`}
-                  checked={seen || entry.ask}
+                  id='contact-friend'
+                  checked={friendState !== 'none'}
                   loading={toggling}
-                  onCheckedChange={(on) => void toggleXmpp(entry, on)}
+                  onCheckedChange={(on) => void toggleFriend(on)}
                 />
-                {entry.ask && !seen && (
+                {friendState === 'invited' && (
                   <span className='text-muted-foreground text-xs'>
                     <Trans>Invited</Trans>
                   </span>
                 )}
-                {/* Which address, through which account, once there is
-                    more than one of either. */}
-                {xmpp.length > 1 && (
-                  <span className='text-muted-foreground truncate text-xs'>
-                    {entry.address} · {entry.identifier}
-                  </span>
-                )}
               </div>
             </Field>
-          )
-        })}
-      </section>
+          )}
+          {xmpp.map((entry) => {
+            const seen =
+              entry.subscription === 'to' || entry.subscription === 'both'
+            const key = `${entry.account} ${entry.address}`
+            return (
+              <Field
+                key={key}
+                id={`contact-xmpp-${key}`}
+                label={t`XMPP contact`}
+              >
+                <div className='flex items-center gap-3'>
+                  <Switch
+                    id={`contact-xmpp-${key}`}
+                    checked={seen || entry.ask}
+                    loading={toggling}
+                    onCheckedChange={(on) => void toggleXmpp(entry, on)}
+                  />
+                  {entry.ask && !seen && (
+                    <span className='text-muted-foreground text-xs'>
+                      <Trans>Invited</Trans>
+                    </span>
+                  )}
+                  {/* Which address, through which account, once there is
+                      more than one of either. */}
+                  {xmpp.length > 1 && (
+                    <span className='text-muted-foreground truncate text-xs'>
+                      {entry.address} · {entry.identifier}
+                    </span>
+                  )}
+                </div>
+              </Field>
+            )
+          })}
+        </section>
 
-      <section className='space-y-4 py-4'>
-        <div className='flex flex-wrap justify-end gap-2'>
-          <AddButton
-            label={t`Add email`}
-            onClick={() =>
-              update({ emails: [...form.emails, newTypedValue('home')] })
-            }
-          />
-          <AddButton
-            label={t`Add telephone`}
-            onClick={() =>
-              update({ phones: [...form.phones, newTypedValue('mobile')] })
-            }
-          />
-          <AddButton
-            label={t`Add address`}
-            onClick={() =>
-              update({ addresses: [...form.addresses, newAddress('home')] })
-            }
-          />
-          <AddButton
-            label={t`Add handle`}
-            onClick={() => update({ handles: [...form.handles, newHandle()] })}
-          />
-          <AddButton
-            label={t`Add messaging address`}
-            onClick={() =>
-              update({ messaging: [...form.messaging, newMessaging()] })
-            }
-          />
-        </div>
-        {form.emails.length > 0 && (
-          <div className='space-y-2'>
-            <TypedRows
-              icon={Mail}
-              label={t`Emails`}
-              inputType='email'
-              removeLabel={t`Remove email`}
-              types={EMAIL_TYPES}
-              values={form.emails}
-              onChange={(emails) => update({ emails })}
-            />
-          </div>
+        {methods && (
+          <section className='space-y-4 py-4'>
+            {form.emails.length > 0 && (
+              <div className='space-y-2'>
+                <TypedRows
+                  icon={Mail}
+                  label={t`Emails`}
+                  inputType='email'
+                  removeLabel={t`Remove email`}
+                  types={EMAIL_TYPES}
+                  values={form.emails}
+                  onChange={(emails) => update({ emails })}
+                />
+              </div>
+            )}
+            {form.phones.length > 0 && (
+              <div className='space-y-2'>
+                <TypedRows
+                  icon={Phone}
+                  label={t`Telephones`}
+                  inputType='tel'
+                  removeLabel={t`Remove telephone`}
+                  types={PHONE_TYPES}
+                  values={form.phones}
+                  onChange={(phones) => update({ phones })}
+                />
+              </div>
+            )}
+            {form.addresses.length > 0 && (
+              <div className='space-y-2'>
+                <AddressRows
+                  icon={MapPin}
+                  values={form.addresses}
+                  onChange={(addresses) => update({ addresses })}
+                />
+              </div>
+            )}
+            {form.handles.length > 0 && (
+              <div className='space-y-2'>
+                <HandleRows
+                  values={form.handles}
+                  onChange={(handles) => update({ handles })}
+                />
+              </div>
+            )}
+            {form.messaging.length > 0 && (
+              <div className='space-y-2'>
+                <MessagingRows
+                  values={form.messaging}
+                  onChange={(messaging) => update({ messaging })}
+                />
+              </div>
+            )}
+          </section>
         )}
-        {form.phones.length > 0 && (
-          <div className='space-y-2'>
-            <TypedRows
-              icon={Phone}
-              label={t`Telephones`}
-              inputType='tel'
-              removeLabel={t`Remove telephone`}
-              types={PHONE_TYPES}
-              values={form.phones}
-              onChange={(phones) => update({ phones })}
-            />
-          </div>
-        )}
-        {form.addresses.length > 0 && (
-          <div className='space-y-2'>
-            <AddressRows
-              icon={MapPin}
-              values={form.addresses}
-              onChange={(addresses) => update({ addresses })}
-            />
-          </div>
-        )}
-        {form.handles.length > 0 && (
-          <div className='space-y-2'>
-            <HandleRows
-              values={form.handles}
-              onChange={(handles) => update({ handles })}
-            />
-          </div>
-        )}
-        {form.messaging.length > 0 && (
-          <div className='space-y-2'>
-            <MessagingRows
-              values={form.messaging}
-              onChange={(messaging) => update({ messaging })}
-            />
-          </div>
-        )}
-      </section>
 
-      <section className='space-y-2 pt-4'>
-        <Heading title={t`Details`} />
-        <Field id='contact-book' label={t`Address book`}>
-          <Select value={book} onValueChange={chooseBook}>
-            <SelectTrigger id='contact-book' className='w-full sm:w-72'>
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              {books.map((row) => (
-                <SelectItem key={row.id} value={row.id}>
-                  {row.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </Field>
-        <Field id='contact-birthday' label={t`Birthday`}>
-          <BirthdayField
-            id='contact-birthday'
-            value={form.birthday}
-            onChange={(birthday) => update({ birthday })}
-            onInvalid={setUnreadable}
-          />
-        </Field>
-        <Field id='contact-organisation' label={t`Organisation`}>
-          <Input
-            id='contact-organisation'
-            value={form.organisation}
-            onChange={(event) => update({ organisation: event.target.value })}
-          />
-        </Field>
-        <Field
-          id='contact-title'
-          label={t({ message: 'Title', context: 'job title' })}
-        >
-          <Input
-            id='contact-title'
-            value={form.title}
-            onChange={(event) => update({ title: event.target.value })}
-          />
-        </Field>
-        <Field id='contact-url' label={t`URL`}>
-          <Input
-            id='contact-url'
-            type='url'
-            value={form.url}
-            onChange={(event) => update({ url: event.target.value })}
-          />
-        </Field>
-        <Field id='contact-note' label={t`Note`} top>
-          <Textarea
-            id='contact-note'
-            rows={3}
-            value={form.note}
-            onChange={(event) => update({ note: event.target.value })}
-          />
-        </Field>
-      </section>
+        {details && (
+          <section className='space-y-2 py-4'>
+            <Heading title={t`Details`} />
+            {shown.includes('birthday') && (
+              <Field
+                id='contact-birthday'
+                label={singles.birthday.label}
+                remove={removal('birthday')}
+                top
+              >
+                <BirthdayField
+                  id='contact-birthday'
+                  value={form.birthday}
+                  onChange={(birthday) => update({ birthday })}
+                  onInvalid={setUnreadable}
+                />
+              </Field>
+            )}
+            {shown.includes('organisation') && (
+              <Field
+                id='contact-organisation'
+                label={singles.organisation.label}
+                remove={removal('organisation')}
+              >
+                <Input
+                  id='contact-organisation'
+                  value={form.organisation}
+                  onChange={(event) =>
+                    update({ organisation: event.target.value })
+                  }
+                />
+              </Field>
+            )}
+            {shown.includes('title') && (
+              <Field
+                id='contact-title'
+                label={singles.title.label}
+                remove={removal('title')}
+              >
+                <Input
+                  id='contact-title'
+                  value={form.title}
+                  onChange={(event) => update({ title: event.target.value })}
+                />
+              </Field>
+            )}
+            {shown.includes('url') && (
+              <Field
+                id='contact-url'
+                label={singles.url.label}
+                remove={removal('url')}
+              >
+                <Input
+                  id='contact-url'
+                  type='url'
+                  value={form.url}
+                  onChange={(event) => update({ url: event.target.value })}
+                />
+              </Field>
+            )}
+            {shown.includes('note') && (
+              <Field
+                id='contact-note'
+                label={singles.note.label}
+                remove={removal('note')}
+                top
+              >
+                <Textarea
+                  id='contact-note'
+                  rows={3}
+                  value={form.note}
+                  onChange={(event) => update({ note: event.target.value })}
+                />
+              </Field>
+            )}
+          </section>
+        )}
+      </div>
+
+      {/* Below everything it adds, so a new field appears above it: the
+          kinds a contact has several of, then the fields it has one of that
+          are not yet shown. */}
+      <AddMenu
+        groups={[
+          [
+            {
+              label: t`Email`,
+              icon: Mail,
+              add: () =>
+                update({ emails: [...form.emails, newTypedValue('home')] }),
+            },
+            {
+              label: t`Telephone`,
+              icon: Phone,
+              add: () =>
+                update({ phones: [...form.phones, newTypedValue('mobile')] }),
+            },
+            {
+              // A postal address: elsewhere "Address" is a network's or a
+              // server's, so a translation memory would give it that word.
+              label: t({ message: 'Address', context: 'postal' }),
+              icon: MapPin,
+              add: () =>
+                update({ addresses: [...form.addresses, newAddress('home')] }),
+            },
+            {
+              label: t`Handle`,
+              icon: AtSign,
+              add: () => update({ handles: [...form.handles, newHandle()] }),
+            },
+            {
+              label: t`Messaging address`,
+              icon: MessageCircle,
+              add: () =>
+                update({ messaging: [...form.messaging, newMessaging()] }),
+            },
+          ],
+          SINGLES.filter((single) => !shown.includes(single)).map(
+            (single) => ({
+              label: singles[single].label,
+              icon: singles[single].icon,
+              add: () => reveal(single),
+            })
+          ),
+        ]}
+      />
     </form>
 
       {id && (
@@ -911,5 +1070,26 @@ export function ContactPanel({
     </div>
   )
 
-  return frame(contact?.name || t`New contact`, body, actions, footer)
+  // The book the contact is in, beside its name, where choosing another
+  // moves it there.
+  const place = (
+    <Select value={book} onValueChange={chooseBook}>
+      <SelectTrigger
+        size='sm'
+        aria-label={t`Address book`}
+        className='text-muted-foreground -ms-2 max-w-48 shrink-0 border-0 bg-transparent px-2 shadow-none dark:bg-transparent'
+      >
+        <SelectValue />
+      </SelectTrigger>
+      <SelectContent>
+        {books.map((row) => (
+          <SelectItem key={row.id} value={row.id}>
+            {row.name}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  )
+
+  return frame(contact?.name || t`New contact`, body, actions, footer, place)
 }

@@ -5,7 +5,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLingui } from '@lingui/react/macro'
 import {
-  Button,
   Input,
   Select,
   SelectContent,
@@ -15,7 +14,6 @@ import {
   formatMonthName,
   useLocale,
 } from '@mochi/web'
-import { X } from 'lucide-react'
 import {
   NO_BIRTHDAY,
   birthdayOrder,
@@ -31,7 +29,7 @@ const MONTHS = Array.from({ length: 12 }, (_, index) => index + 1)
  * A birthday as a day, a month and an optional year, in the order the user's
  * date format writes them, so a birthday whose year is unknown can be entered
  * as one. A stored value the fields cannot show, such as text, stands as
- * written until it is cleared.
+ * written until the birthday is removed.
  */
 export function BirthdayField({
   id,
@@ -72,16 +70,10 @@ export function BirthdayField({
     onChange(written)
   }
 
-  const clear = () => change(NO_BIRTHDAY)
   const empty = !parts.day && !parts.month && !parts.year
 
   if (value && birthdayParts(value) === null && empty) {
-    return (
-      <div className='flex items-center gap-2'>
-        <Input id={id} className='w-48' value={value} readOnly />
-        <ClearButton label={t`Clear`} onClick={() => onChange('')} />
-      </div>
-    )
+    return <Input id={id} className='w-48' value={value} readOnly />
   }
 
   const order = birthdayOrder(dateFormat)
@@ -90,8 +82,8 @@ export function BirthdayField({
       return (
         // A select inside a form mirrors its value into a hidden native select,
         // which answers a value set before its item has mounted with an empty
-        // change. No month is ever chosen empty, so drop it; Clear empties the
-        // fields.
+        // change. No month is ever chosen empty, so drop it; removing the
+        // birthday empties the fields.
         <Select
           key={part}
           value={parts.month}
@@ -146,27 +138,6 @@ export function BirthdayField({
       className='flex flex-wrap items-center gap-2'
     >
       {order.map((part, index) => field(part, index === 0))}
-      {!empty && <ClearButton label={t`Clear`} onClick={clear} />}
     </div>
-  )
-}
-
-function ClearButton({
-  label,
-  onClick,
-}: {
-  label: string
-  onClick: () => void
-}) {
-  return (
-    <Button
-      type='button'
-      variant='ghost'
-      size='icon'
-      aria-label={label}
-      onClick={onClick}
-    >
-      <X className='size-4' />
-    </Button>
   )
 }

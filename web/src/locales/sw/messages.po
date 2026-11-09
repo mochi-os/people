@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "Masaa 24"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "Mwaliko wa urafiki umetumwa kwa {name}."
 
@@ -168,6 +169,7 @@ msgstr "Lafudhi imehifadhiwa"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "Kubali"
 
@@ -181,6 +183,7 @@ msgstr "Kubali kiotomatiki"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "Inakubali mwaliko..."
 
@@ -213,6 +216,7 @@ msgstr "Shughuli"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "Ongeza"
 
@@ -236,10 +240,6 @@ msgstr "Ongeza ufikiaji"
 msgid "Add account"
 msgstr "Ongeza akaunti"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "Ongeza anwani ya posta"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Ongeza maelezo mafupi"
@@ -259,18 +259,10 @@ msgstr "Ongeza anwani"
 msgid "Add device"
 msgstr "Ongeza kifaa"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "Ongeza barua pepe"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Ongeza uga"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "Ongeza jina la utani"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "Ongeza kiungo"
 msgid "Add member"
 msgstr "Ongeza mwanachama"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "Ongeza anwani ya ujumbe"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "Ongeza mtu ili kuanza"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Ongeza tagi..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "Ongeza simu"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "Inaongeza anwani..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Inaongeza mwanachama..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "Anwani ya posta"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "Inaghairi mwaliko..."
 msgid "Caption"
 msgstr "Maelezo mafupi"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "Kategoria ya arifa hizi"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "Kategoria imesasishwa"
@@ -731,8 +716,6 @@ msgstr "Jiji"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "Futa"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "Hariri mwonekano"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "Barua pepe"
 
@@ -1426,6 +1410,7 @@ msgstr "Kubwa zaidi"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "Imeshindwa kukubali mwaliko"
 
@@ -1629,6 +1614,7 @@ msgstr "Imeshindwa kuhifadhi kichocheo"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "Imeshindwa kutuma mwaliko"
 
@@ -1768,8 +1754,9 @@ msgid "Groups"
 msgstr "Vikundi"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
-msgstr "Jina la utani"
+msgstr "Jina la mtumiaji"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
 msgid "History"
@@ -1843,6 +1830,7 @@ msgstr "Tarehe batili"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "Mwaliko umekubaliwa"
 
@@ -1859,6 +1847,7 @@ msgstr "Mwaliko umekataliwa"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "Mwaliko umetumwa"
 
@@ -1870,6 +1859,7 @@ msgstr "Mialiko"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "Alika"
 
@@ -1885,6 +1875,7 @@ msgstr "Mipangilio ya mwaliko"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "Amealikwa"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "Tuma ujumbe"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "Anwani ya ujumbe"
 
@@ -2163,6 +2155,10 @@ msgstr "Mtandao"
 msgid "Network error"
 msgstr "Hitilafu ya mtandao"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "Mitandao"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "Mpya zaidi"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Anwani mpya"
@@ -2714,12 +2711,16 @@ msgid "Remove address"
 msgstr "Ondoa anwani ya posta"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "Ondoa siku ya kuzaliwa"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Ondoa barua pepe"
 
 #: src/features/contacts/fields.tsx
 msgid "Remove handle"
-msgstr "Ondoa jina la utani"
+msgstr "Ondoa jina la mtumiaji"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2729,6 +2730,10 @@ msgstr "Ondoa shauku"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Remove item"
 msgstr "Ondoa kipengele"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "Ondoa cheo"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "Ondoa anwani ya ujumbe"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "Ondoa jina la utani"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "Ondoa dokezo"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "Ondoa shirika"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Ondoa simu"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "Ondoa URL"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "Tuma ujumbe"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "Inatuma mwaliko..."
 
@@ -3070,6 +3092,7 @@ msgstr "Weka chanzo na marudio"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "Mipangilio"
 
@@ -3222,6 +3245,10 @@ msgstr "Lebo lazima iwe herufi 50 au chini"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Lebo"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "Simu"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "Imeshindwa kuunganisha kwenye seva ya mbali"
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "Imeshindwa kuelekeza upya kwenye kuingia. Tafadhali jaribu tena."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "Haijapewa"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

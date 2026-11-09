@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "၂၄ နာရီ"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "{name} ထံသို့ သူငယ်ချင်းဖိတ်ကြားချက် ပို့ပြီးပါပြီ။"
 
@@ -168,6 +169,7 @@ msgstr "အသားပေးအရောင် သိမ်းပြီး"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "လက်ခံမည်"
 
@@ -181,6 +183,7 @@ msgstr "အလိုအလျောက် လက်ခံမည်"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "ဖိတ်ကြားချက်ကို လက်ခံနေသည်..."
 
@@ -213,6 +216,7 @@ msgstr "လှုပ်ရှားမှု"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "ထည့်မည်"
 
@@ -236,10 +240,6 @@ msgstr "ဝင်ရောက်ခွင့် ထည့်မည်"
 msgid "Add account"
 msgstr "အကောင့် ထည့်မည်"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "လိပ်စာ ထည့်မည်"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "စာတန်းထည့်ရန်"
@@ -259,18 +259,10 @@ msgstr "အဆက်အသွယ် ထည့်မည်"
 msgid "Add device"
 msgstr "ကိရိယာ ထည့်မည်"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "အီးမေးလ် ထည့်မည်"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "အကွက် ထည့်မည်"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "သုံးစွဲသူအမည် ထည့်မည်"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "လင့်ခ် ထည့်မည်"
 msgid "Add member"
 msgstr "အဖွဲ့ဝင် ထည့်မည်"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "မက်ဆေ့ဂျ်ပို့ရန် လိပ်စာ ထည့်မည်"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "စတင်ရန် တစ်ဦးဦးကို ထည့်ပါ"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "တက်ဂ် ထည့်ရန်..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "ဖုန်းနံပါတ် ထည့်မည်"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "အဆက်အသွယ် ထည့်နေသည်..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "အဖွဲ့ဝင် ထည့်နေသည်..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "လိပ်စာ"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "ဖိတ်ကြားချက်ကို ပယ်ဖျက်န�
 msgid "Caption"
 msgstr "စာတန်း"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "ဤအကြောင်းကြားချက်များအတွက် အမျိုးအစား"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "အမျိုးအစား ပြောင်းပြီး"
@@ -731,8 +716,6 @@ msgstr "မြို့"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "ရှင်းမည်"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "မြင်ကွင်း တည်းဖြတ်"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "အီးမေးလ်"
 
@@ -1426,6 +1410,7 @@ msgstr "အလွန်ကြီး"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "ဖိတ်ကြားမှု လက်ခံ၍ မရပါ"
 
@@ -1629,6 +1614,7 @@ msgstr "လမ်းညွှန် သိမ်း၍ မရပါ"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "ဖိတ်ကြားချက် ပို့၍ မရပါ"
 
@@ -1768,6 +1754,7 @@ msgid "Groups"
 msgstr "အုပ်စုများ"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
 msgstr "သုံးစွဲသူအမည်"
 
@@ -1843,6 +1830,7 @@ msgstr "မမှန်ကန်သော ရက်စွဲ"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "ဖိတ်ကြားမှု လက်ခံပြီးပါပြီ"
 
@@ -1859,6 +1847,7 @@ msgstr "ဖိတ်ကြားမှု ငြင်းပယ်ပြီး�
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "ဖိတ်ကြားမှု ပို့ပြီးပါပြီ"
 
@@ -1870,6 +1859,7 @@ msgstr "ဖိတ်ကြားမှုများ"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "ဖိတ်ကြားမည်"
 
@@ -1885,6 +1875,7 @@ msgstr "ဖိတ်ကြားမှု ဆက်တင်များ"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "ဖိတ်ကြားထား"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "မက်ဆေ့ပို့မည်"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "မက်ဆေ့ဂျ်ပို့ရန် လိပ်စာ"
 
@@ -2163,6 +2155,10 @@ msgstr "ကွန်ရက်"
 msgid "Network error"
 msgstr "ကွန်ရက် အမှား"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "ကွန်ရက်များ"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "အသစ်ဆုံး"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "အဆက်အသွယ်အသစ်"
@@ -2714,6 +2711,10 @@ msgid "Remove address"
 msgstr "လိပ်စာ ဖယ်ရှားမည်"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "မွေးနေ့ ဖယ်ရှားမည်"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "အီးမေးလ် ဖယ်ရှားမည်"
 
@@ -2730,6 +2731,10 @@ msgstr "စိတ်ဝင်စားမှု ဖယ်ရှား"
 msgid "Remove item"
 msgstr "အရာ ဖယ်ရှား"
 
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "ရာထူး ဖယ်ရှားမည်"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "မက်ဆေ့ဂျ်ပို့ရန် လိပ်စာ ဖယ်ရှားမည်"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "အမည်ပြောင် ဖယ်ရှားမည်"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "မှတ်စု ဖယ်ရှားမည်"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "အဖွဲ့အစည်း ဖယ်ရှားမည်"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "ဖုန်းနံပါတ် ဖယ်ရှားမည်"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "URL ဖယ်ရှားမည်"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "မက်ဆေ့ပို့မည်"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "ဖိတ်ကြားချက် ပို့နေသည်..."
 
@@ -3070,6 +3092,7 @@ msgstr "မူရင်းနှင့် ဦးတည်ရာ သတ်မှ�
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "ဆက်တင်များ"
 
@@ -3222,6 +3245,10 @@ msgstr "တဂ်သည် စာလုံး ၅၀ သို့မဟုတ်
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "တက်ဂ်များ"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "ဖုန်း"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "အဝေးထိန်းဆာဗာသို့ ချိတ်ဆ�
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "ဝင်ရောက်ခြင်း သို့ လမ်းကြောင်းလွှဲ၍ မရပါ။ ထပ်ကြိုးစားပါ။"
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "မသတ်မှတ်ထား"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

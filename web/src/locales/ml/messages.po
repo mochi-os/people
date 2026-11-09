@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "24 മണിക്കൂർ"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "{name} എന്നയാൾക്ക് സുഹൃത്ത് ക്ഷണം അയച്ചു."
 
@@ -168,6 +169,7 @@ msgstr "ആക്സന്റ് സംരക്ഷിച്ചു"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "സ്വീകരിക്കുക"
 
@@ -181,6 +183,7 @@ msgstr "സ്വയമേവ സ്വീകരിക്കുക"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "ക്ഷണം സ്വീകരിക്കുന്നു..."
 
@@ -213,6 +216,7 @@ msgstr "പ്രവർത്തനം"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "ചേർക്കുക"
 
@@ -236,10 +240,6 @@ msgstr "ആക്സസ് ചേർക്കുക"
 msgid "Add account"
 msgstr "അക്കൗണ്ട് ചേർക്കുക"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "വിലാസം ചേർക്കുക"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "അടിക്കുറിപ്പ് ചേർക്കുക"
@@ -259,18 +259,10 @@ msgstr "കോൺടാക്റ്റ് ചേർക്കുക"
 msgid "Add device"
 msgstr "ഒരു ഡിവൈസ് ചേർക്കുക"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "ഇമെയിൽ ചേർക്കുക"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "ഫീൽഡ് ചേർക്കുക"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "ഉപയോക്തൃനാമം ചേർക്കുക"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "ലിങ്ക് ചേർക്കുക"
 msgid "Add member"
 msgstr "അംഗത്തെ ചേർക്കുക"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "മെസേജിംഗ് വിലാസം ചേർക്കുക"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "തുടങ്ങാൻ ഒരാളെ ചേർക്കുക"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "ടാഗ് ചേർക്കുക..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "ഫോൺ ചേർക്കുക"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "കോൺടാക്റ്റ് ചേർക്കുന്നു..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "അംഗത്തെ ചേർക്കുന്നു..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "വിലാസം"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "ക്ഷണം റദ്ദാക്കുന്നു..."
 msgid "Caption"
 msgstr "അടിക്കുറിപ്പ്"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "ഈ അറിയിപ്പുകൾക്കുള്ള വിഭാഗം"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "വിഭാഗം അപ്ഡേറ്റ് ചെയ്തു"
@@ -731,8 +716,6 @@ msgstr "നഗരം"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "മായ്ക്കുക"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "വ്യൂ എഡിറ്റ് ചെയ്യുക"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "ഇമെയിൽ"
 
@@ -1426,6 +1410,7 @@ msgstr "അധിക വലുത്"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "ക്ഷണം സ്വീകരിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -1629,6 +1614,7 @@ msgstr "പ്രോംപ്റ്റ് സംരക്ഷിക്കുന�
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "ക്ഷണം അയയ്ക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -1768,6 +1754,7 @@ msgid "Groups"
 msgstr "ഗ്രൂപ്പുകൾ"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
 msgstr "ഉപയോക്തൃനാമം"
 
@@ -1843,6 +1830,7 @@ msgstr "അസാധുവായ തീയതി"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "ക്ഷണം സ്വീകരിച്ചു"
 
@@ -1859,6 +1847,7 @@ msgstr "ക്ഷണം നിരസിച്ചു"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "ക്ഷണം അയച്ചു"
 
@@ -1870,6 +1859,7 @@ msgstr "ക്ഷണങ്ങൾ"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "ക്ഷണിക്കുക"
 
@@ -1885,6 +1875,7 @@ msgstr "ക്ഷണ ക്രമീകരണങ്ങൾ"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "ക്ഷണിച്ചു"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "സന്ദേശം അയയ്ക്കുക"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "മെസേജിംഗ് വിലാസം"
 
@@ -2163,6 +2155,10 @@ msgstr "നെറ്റ്‌വർക്ക്"
 msgid "Network error"
 msgstr "നെറ്റ്‌വർക്ക് പിശക്"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "നെറ്റ്‌വർക്കുകൾ"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "ഏറ്റവും പുതിയത്"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "പുതിയ കോൺടാക്റ്റ്"
@@ -2714,6 +2711,10 @@ msgid "Remove address"
 msgstr "വിലാസം നീക്കം ചെയ്യുക"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "ജന്മദിനം നീക്കം ചെയ്യുക"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "ഇമെയിൽ നീക്കം ചെയ്യുക"
 
@@ -2730,6 +2731,10 @@ msgstr "താൽപ്പര്യം നീക്കം ചെയ്യുക"
 msgid "Remove item"
 msgstr "ഇനം നീക്കം ചെയ്യുക"
 
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "പദവി നീക്കം ചെയ്യുക"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "മെസേജിംഗ് വിലാസം നീക്കം ചെയ്യുക"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "വിളിപ്പേര് നീക്കം ചെയ്യുക"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "കുറിപ്പ് നീക്കം ചെയ്യുക"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "സ്ഥാപനം നീക്കം ചെയ്യുക"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "ഫോൺ നീക്കം ചെയ്യുക"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "URL നീക്കം ചെയ്യുക"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "സന്ദേശം അയയ്ക്കുക"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "ക്ഷണം അയയ്ക്കുന്നു..."
 
@@ -3070,6 +3092,7 @@ msgstr "ഉത്ഭവവും ലക്ഷ്യസ്ഥാനവും സ�
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "ക്രമീകരണങ്ങൾ"
 
@@ -3222,6 +3245,10 @@ msgstr "ടാഗ് 50 പ്രതീകങ്ങളോ അതിൽ കുറ
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "ടാഗുകൾ"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "ഫോൺ"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "റിമോട്ട് സെർവറുമായി കണക്റ�
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "ലോഗിനിലേക്ക് റീഡയറക്റ്റ് ചെയ്യാൻ കഴിയുന്നില്ല. വീണ്ടും ശ്രമിക്കുക."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "നിയോഗിച്ചിട്ടില്ല"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

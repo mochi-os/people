@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "24 години"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "Запрошення в друзі надіслано до {name}."
 
@@ -168,6 +169,7 @@ msgstr "Акцент збережено"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "Прийняти"
 
@@ -181,6 +183,7 @@ msgstr "Приймати автоматично"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "Прийняття запрошення..."
 
@@ -213,6 +216,7 @@ msgstr "Активність"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "Додати"
 
@@ -236,10 +240,6 @@ msgstr "Додати доступ"
 msgid "Add account"
 msgstr "Додати обліковий запис"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "Додати адресу"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Додати підпис"
@@ -259,18 +259,10 @@ msgstr "Додати контакт"
 msgid "Add device"
 msgstr "Додати пристрій"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "Додати електронну пошту"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Додати поле"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "Додати псевдонім"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "Додати посилання"
 msgid "Add member"
 msgstr "Додати учасника"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "Додати адресу месенджера"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "Додайте когось, щоб почати"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Додати тег..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "Додати телефон"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "Додавання контакту..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Додавання учасника..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "Адреса"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "Скасування запрошення..."
 msgid "Caption"
 msgstr "Підпис"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "Категорія цих сповіщень"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "Категорію оновлено"
@@ -731,8 +716,6 @@ msgstr "Місто"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "Очистити"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "Редагувати вигляд"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "Електронна пошта"
 
@@ -1426,6 +1410,7 @@ msgstr "Дуже великий"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "Не вдалося прийняти запрошення"
 
@@ -1629,6 +1614,7 @@ msgstr "Не вдалося зберегти запит"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "Не вдалося надіслати запрошення"
 
@@ -1768,8 +1754,9 @@ msgid "Groups"
 msgstr "Групи"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
-msgstr "Псевдонім"
+msgstr "Імʼя користувача"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
 msgid "History"
@@ -1843,6 +1830,7 @@ msgstr "Недійсна дата"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "Запрошення прийнято"
 
@@ -1859,6 +1847,7 @@ msgstr "Запрошення відхилено"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "Запрошення надіслано"
 
@@ -1870,6 +1859,7 @@ msgstr "Запрошення"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "Запросити"
 
@@ -1885,6 +1875,7 @@ msgstr "Налаштування запрошень"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "Запрошено"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "Написати"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "Адреса месенджера"
 
@@ -2163,6 +2155,10 @@ msgstr "Мережа"
 msgid "Network error"
 msgstr "Помилка мережі"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "Мережі"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "Нові"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Новий контакт"
@@ -2714,12 +2711,16 @@ msgid "Remove address"
 msgstr "Видалити адресу"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "Видалити день народження"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Видалити електронну адресу"
 
 #: src/features/contacts/fields.tsx
 msgid "Remove handle"
-msgstr "Видалити псевдонім"
+msgstr "Видалити імʼя користувача"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2729,6 +2730,10 @@ msgstr "Видалити інтерес"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Remove item"
 msgstr "Видалити елемент"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "Видалити посаду"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "Видалити адресу месенджера"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "Видалити псевдонім"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "Видалити нотатку"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "Видалити організацію"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Видалити телефон"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "Видалити URL"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "Надіслати повідомлення"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "Надсилання запрошення..."
 
@@ -3070,6 +3092,7 @@ msgstr "Встановити пункти відправлення та приз
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "Налаштування"
 
@@ -3222,6 +3245,10 @@ msgstr "Тег має бути не довшим за 50 символів"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Теги"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "Телефон"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "Не вдалося підключитися до віддаленого
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "Не вдається перенаправити на сторінку входу. Спробуйте ще раз."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "Не призначено"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "24 uair"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "Chaidh cuireadh càirdeis a chur gu {name}."
 
@@ -168,6 +169,7 @@ msgstr "Stràc air a shàbhaladh"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "Gabh ris"
 
@@ -181,6 +183,7 @@ msgstr "Gabh ris gu fèin-obrachail"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "A’ gabhail ris a’ chuireadh..."
 
@@ -213,6 +216,7 @@ msgstr "Gnìomhachd"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "Cuir ris"
 
@@ -236,10 +240,6 @@ msgstr "Cuir inntrigeadh ris"
 msgid "Add account"
 msgstr "Cuir cunntas ris"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "Cuir seòladh ris"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Cuir caipsean ris"
@@ -259,18 +259,10 @@ msgstr "Cuir neach-aithne ris"
 msgid "Add device"
 msgstr "Cuir inneal ris"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "Cuir post-d ris"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Cuir raon ris"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "Cuir ainm-cleachdaiche ris"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "Cuir ceangal ris"
 msgid "Add member"
 msgstr "Cuir ball ris"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "Cuir seòladh teachdaireachdan ris"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "Cuir cuideigin ris gus tòiseachadh"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Cuir taga ris..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "Cuir fòn ris"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "A' cur neach-aithne ris..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "A’ cur ball ris..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "Seòladh"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "A’ cur dheth a’ chuireadh..."
 msgid "Caption"
 msgstr "Caipsean"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "Roinn airson nam brathan seo"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "Roinn air ùrachadh"
@@ -731,8 +716,6 @@ msgstr "Baile"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "Falamhaich"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "Deasaich an sealladh"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "Post-d"
 
@@ -1426,6 +1410,7 @@ msgstr "A bharrachd mòr"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "Cha do ghabh ris a' chuireadh"
 
@@ -1629,6 +1614,7 @@ msgstr "Cha b' urrainn am brodadh a shàbhaladh"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "Cha b' urrainn an cuireadh a chur"
 
@@ -1768,6 +1754,7 @@ msgid "Groups"
 msgstr "Buidhnean"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
 msgstr "Ainm-cleachdaiche"
 
@@ -1843,6 +1830,7 @@ msgstr "Ceann-latha mì-dhligheach"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "Chaidh gabhail ris a' chuireadh"
 
@@ -1859,6 +1847,7 @@ msgstr "Chaidh an cuireadh a dhiùltadh"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "Chaidh an cuireadh a chur"
 
@@ -1870,6 +1859,7 @@ msgstr "Cuiridhean"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "Thoir cuireadh"
 
@@ -1885,6 +1875,7 @@ msgstr "Roghainnean nan cuiridhean"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "Chaidh cuireadh a thoirt"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "Cuir teachdaireachd"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "Seòladh teachdaireachdan"
 
@@ -2163,6 +2155,10 @@ msgstr "Lìonra"
 msgid "Network error"
 msgstr "Mearachd lìonraidh"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "Lìonraidhean"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "As ùire"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Neach-aithne ùr"
@@ -2714,6 +2711,10 @@ msgid "Remove address"
 msgstr "Thoir an seòladh air falbh"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "Thoir an co-là-breith air falbh"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Thoir am post-d air falbh"
 
@@ -2730,6 +2731,10 @@ msgstr "Thoir an ùidh air falbh"
 msgid "Remove item"
 msgstr "Thoir an nì air falbh"
 
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "Thoir an dreuchd air falbh"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "Thoir an seòladh teachdaireachdan air falbh"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "Thoir am far-ainm air falbh"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "Thoir an nòta air falbh"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "Thoir am buidheann air falbh"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Thoir am fòn air falbh"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "Thoir an URL air falbh"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "Cuir teachdaireachd"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "A’ cur a’ chuireadh..."
 
@@ -3070,6 +3092,7 @@ msgstr "Suidhich tùs is ceann-uidhe"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "Roghainnean"
 
@@ -3222,6 +3245,10 @@ msgstr "Feumaidh an taga a bhith 50 caractar no nas lugha"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Tagaichean"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "Fòn"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "Cha ghabh ceangal ris an fhrithealaiche chèin"
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "Cha b' urrainnear ath-stiùireadh dhan log-a-steach. Feuch a-rithist."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "Gun shònrachadh"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "24 oras"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "Naipadala ang imbitasyon sa pagkakaibigan kay {name}."
 
@@ -168,6 +169,7 @@ msgstr "Na-save ang accent"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "Tanggapin"
 
@@ -181,6 +183,7 @@ msgstr "Tanggapin nang awtomatiko"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "Tinatanggap ang imbitasyon..."
 
@@ -213,6 +216,7 @@ msgstr "Aktibidad"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "Idagdag"
 
@@ -236,10 +240,6 @@ msgstr "Magdagdag ng access"
 msgid "Add account"
 msgstr "Magdagdag ng account"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "Magdagdag ng address"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Magdagdag ng caption"
@@ -259,18 +259,10 @@ msgstr "Magdagdag ng contact"
 msgid "Add device"
 msgstr "Magdagdag ng device"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "Magdagdag ng email"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Magdagdag ng field"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "Magdagdag ng palayaw"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "Magdagdag ng link"
 msgid "Add member"
 msgstr "Magdagdag ng member"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "Magdagdag ng address sa pagmemensahe"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "Magdagdag ng tao para makapagsimula"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Magdagdag ng tag..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "Magdagdag ng telepono"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "Idinadagdag ang contact..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Nagdaragdag ng miyembro..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "Tirahan"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "Kinakansela ang imbitasyon..."
 msgid "Caption"
 msgstr "Caption"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "Category para sa mga notification na ito"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "Na-update ang category"
@@ -731,8 +716,6 @@ msgstr "Lungsod"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "Burahin"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "I-edit ang view"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "Email"
 
@@ -1426,6 +1410,7 @@ msgstr "Sobrang laki"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "Nabigong tanggapin ang invitation"
 
@@ -1629,6 +1614,7 @@ msgstr "Nabigong i-save ang prompt"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "Hindi naipadala ang imbitasyon"
 
@@ -1768,8 +1754,9 @@ msgid "Groups"
 msgstr "Mga group"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
-msgstr "Palayaw"
+msgstr "Pangalan ng user"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
 msgid "History"
@@ -1843,6 +1830,7 @@ msgstr "Invalid na petsa"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "Tinanggap ang invitation"
 
@@ -1859,6 +1847,7 @@ msgstr "Tinanggihan ang invitation"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "Naipadala ang imbitasyon"
 
@@ -1870,6 +1859,7 @@ msgstr "Mga invitation"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "Imbitahan"
 
@@ -1885,6 +1875,7 @@ msgstr "Mga setting ng imbitasyon"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "Inimbitahan"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "Magmensahe"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "Address sa pagmemensahe"
 
@@ -2163,6 +2155,10 @@ msgstr "Network"
 msgid "Network error"
 msgstr "Error sa network"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "Mga network"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "Pinakabago"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Bagong contact"
@@ -2714,12 +2711,16 @@ msgid "Remove address"
 msgstr "Alisin ang address"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "Alisin ang kaarawan"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Alisin ang email"
 
 #: src/features/contacts/fields.tsx
 msgid "Remove handle"
-msgstr "Alisin ang palayaw"
+msgstr "Alisin ang pangalan ng user"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2729,6 +2730,10 @@ msgstr "Alisin ang interes"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Remove item"
 msgstr "Alisin ang item"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "Alisin ang posisyon"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "Alisin ang address sa pagmemensahe"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "Alisin ang palayaw"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "Alisin ang tala"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "Alisin ang organisasyon"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Alisin ang telepono"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "Alisin ang URL"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "Ipadala ang mensahe"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "Ipinapadala ang imbitasyon..."
 
@@ -3070,6 +3092,7 @@ msgstr "Itakda ang origin at destination"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "Mga setting"
 
@@ -3222,6 +3245,10 @@ msgstr "Ang tag ay dapat 50 character o mas kaunti"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Mga tag"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "Telepono"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "Hindi makakonekta sa malayong server"
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "Hindi maka-redirect sa login. Pakisubukang muli."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "Walang nakatalaga"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

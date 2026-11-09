@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "Wákàtí 24"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "A ti fi ìpè ọ̀rẹ́ ránṣẹ́ sí {name}."
 
@@ -168,6 +169,7 @@ msgstr "A ti fi àkàn àwọ̀ pamọ́"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "Gbà"
 
@@ -181,6 +183,7 @@ msgstr "Gbà fúnra rẹ̀"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "Ń gba ìpè..."
 
@@ -213,6 +216,7 @@ msgstr "Ìgbòkègbodò"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "Fi kún"
 
@@ -236,10 +240,6 @@ msgstr "Fi ìwọlé kún"
 msgid "Add account"
 msgstr "Fi àkáǹtì kún"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "Fi àdírẹ́sì kún"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Fi àlàyé kún"
@@ -259,18 +259,10 @@ msgstr "Fi olùbásọ̀rọ̀ kún"
 msgid "Add device"
 msgstr "Fi ẹ̀rọ kan kún"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "Fi ímẹ́ẹ̀lì kún"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Fi pápá kún"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "Fi ìnagijẹ kún"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "Fi ọ̀nà kún"
 msgid "Add member"
 msgstr "Fi ọmọ ẹgbẹ́ kún"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "Fi àdírẹ́sì ìfiránṣẹ́ kún"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "Fi ẹnìkan kún láti bẹ̀rẹ̀"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Fi tag kún..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "Fi fóònù kún"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "Ń fi olùbánisọ̀rọ̀ kún..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Ń fi ọmọ ẹgbẹ́ kún..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "Àdírẹ́sì"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "Ń fagilé ìpè..."
 msgid "Caption"
 msgstr "Àlàyé"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "Ẹ̀ka fún àwọn ìfitónilétí wọ̀nyí"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "A ti ṣe àtúnyẹ̀wò ẹ̀ka"
@@ -731,8 +716,6 @@ msgstr "Ìlú"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "Pa rẹ́"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "Ṣàtúnṣe wíwò"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "Ímẹ́ẹ̀lì"
 
@@ -1426,6 +1410,7 @@ msgstr "Tóbi gan"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "Kò lè gba ìpè"
 
@@ -1629,6 +1614,7 @@ msgstr "Kò lè fi prompt pamọ́"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "Kò lè fi ìpè ránṣẹ́"
 
@@ -1768,8 +1754,9 @@ msgid "Groups"
 msgstr "Àwọn àwùjọ"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
-msgstr "Ìnagijẹ"
+msgstr "Orúkọ olùmúlò"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
 msgid "History"
@@ -1843,6 +1830,7 @@ msgstr "Ọjọ́ aláìdára"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "A ti gba ìpè"
 
@@ -1859,6 +1847,7 @@ msgstr "A ti kọ ìpè"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "Ìpè ti ránṣẹ́"
 
@@ -1870,6 +1859,7 @@ msgstr "Àwọn ìpè"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "Pè"
 
@@ -1885,6 +1875,7 @@ msgstr "Àwọn ètò ìpè"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "A ti pè"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "Fi ìránṣẹ́ ránṣẹ́"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "Àdírẹ́sì ìfiránṣẹ́"
 
@@ -2163,6 +2155,10 @@ msgstr "Nẹ́tíwọ́kì"
 msgid "Network error"
 msgstr "Àṣìṣe nẹ́tíwọ́kì"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "Àwọn nẹ́tíwọ́kì"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "Tuntun jùlọ"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Olùbásọ̀rọ̀ tuntun"
@@ -2714,12 +2711,16 @@ msgid "Remove address"
 msgstr "Yọ àdírẹ́sì kúrò"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "Yọ ọjọ́ ìbí kúrò"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Yọ ímẹ́ẹ̀lì kúrò"
 
 #: src/features/contacts/fields.tsx
 msgid "Remove handle"
-msgstr "Yọ ìnagijẹ kúrò"
+msgstr "Yọ orúkọ olùmúlò kúrò"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2729,6 +2730,10 @@ msgstr "Yọ ìfẹ́ kúrò"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Remove item"
 msgstr "Yọ item kúrò"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "Yọ ipò iṣẹ́ kúrò"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "Yọ àdírẹ́sì ìfiránṣẹ́ kúrò"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "Yọ ìnagijẹ kúrò"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "Yọ àkọsílẹ̀ kúrò"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "Yọ àjọ kúrò"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Yọ fóònù kúrò"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "Yọ URL kúrò"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "Fi ìránṣẹ́ ránṣẹ́"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "Ń fi ìpè ránṣẹ́..."
 
@@ -3070,6 +3092,7 @@ msgstr "Ṣètò ibi tí o ti wá àti ibi tí o ń lọ"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "Àwọn ìṣètò"
 
@@ -3222,6 +3245,10 @@ msgstr "Àmì gbọ́dọ̀ jẹ́ àwọn lẹ́tà 50 tàbí kéré sí"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Àwọn àmì"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "Fóònù"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "Kò lè sopọ̀ mọ́ sáfà jíjìnnà"
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "A kò lè darí sí ojú-ìwé wíwọlé. Jọ̀wọ́ gbìyànjú lẹ́ẹ̀kan sí i."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "Aláìyàn"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

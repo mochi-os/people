@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "24 stundas"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "Draudzības ielūgums nosūtīts {name}."
 
@@ -168,6 +169,7 @@ msgstr "Akcents saglabāts"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "Pieņemt"
 
@@ -181,6 +183,7 @@ msgstr "Pieņemt automātiski"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "Pieņem uzaicinājumu..."
 
@@ -213,6 +216,7 @@ msgstr "Aktivitāte"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "Pievienot"
 
@@ -236,10 +240,6 @@ msgstr "Pievienot piekļuvi"
 msgid "Add account"
 msgstr "Pievienot kontu"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "Pievienot adresi"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Pievienot parakstu"
@@ -259,18 +259,10 @@ msgstr "Pievienot kontaktu"
 msgid "Add device"
 msgstr "Pievienot jaunu ierīci"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "Pievienot e-pastu"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Pievienot lauku"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "Pievienot lietotājvārdu"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "Pievienot saiti"
 msgid "Add member"
 msgstr "Pievienot dalībnieku"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "Pievienot ziņapmaiņas adresi"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "Pievienojiet kādu, lai sāktu"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Pievienot tagu..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "Pievienot tālruni"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "Pievieno kontaktu..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Pievieno dalībnieku..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "Adrese"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "Atceļ uzaicinājumu..."
 msgid "Caption"
 msgstr "Paraksts"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "Šo paziņojumu kategorija"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "Kategorija atjaunināta"
@@ -731,8 +716,6 @@ msgstr "Pilsēta"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "Notīrīt"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "Rediģēt skatu"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "E-pasts"
 
@@ -1426,6 +1410,7 @@ msgstr "Ļoti liels"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "Neizdevās pieņemt ielūgumu"
 
@@ -1629,6 +1614,7 @@ msgstr "Neizdevās saglabāt uzvedni"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "Neizdevās nosūtīt ielūgumu"
 
@@ -1768,6 +1754,7 @@ msgid "Groups"
 msgstr "Grupas"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
 msgstr "Lietotājvārds"
 
@@ -1843,6 +1830,7 @@ msgstr "Nederīgs datums"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "Ielūgums pieņemts"
 
@@ -1859,6 +1847,7 @@ msgstr "Ielūgums noraidīts"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "Ielūgums nosūtīts"
 
@@ -1870,6 +1859,7 @@ msgstr "Ielūgumi"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "Uzaicināt"
 
@@ -1885,6 +1875,7 @@ msgstr "Ielūgumu iestatījumi"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "Uzaicināts"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "Sūtīt ziņu"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "Ziņapmaiņas adrese"
 
@@ -2163,6 +2155,10 @@ msgstr "Tīkls"
 msgid "Network error"
 msgstr "Tīkla kļūda"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "Tīkli"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "Jaunākie"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Jauns kontakts"
@@ -2714,6 +2711,10 @@ msgid "Remove address"
 msgstr "Noņemt adresi"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "Noņemt dzimšanas dienu"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Noņemt e-pastu"
 
@@ -2730,6 +2731,10 @@ msgstr "Noņemt interesi"
 msgid "Remove item"
 msgstr "Noņemt vienumu"
 
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "Noņemt amatu"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "Noņemt ziņapmaiņas adresi"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "Noņemt segvārdu"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "Noņemt piezīmi"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "Noņemt organizāciju"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Noņemt tālruni"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "Noņemt URL"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "Sūtīt ziņu"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "Nosūta uzaicinājumu..."
 
@@ -3070,6 +3092,7 @@ msgstr "Iestatīt sākuma un galapunktu"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "Iestatījumi"
 
@@ -3222,6 +3245,10 @@ msgstr "Birkā drīkst būt ne vairāk kā 50 rakstzīmes"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Tagi"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "Tālrunis"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "Neizdevās izveidot savienojumu ar attālo serveri"
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "Nevar pāradresēt uz pieteikšanos. Lūdzu, mēģiniet vēlreiz."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "Nepiešķirts"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "24 siegħa"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "Intbagħtet stedina ta’ ħbiberija lil {name}."
 
@@ -168,6 +169,7 @@ msgstr "Aċċent issejvjat"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "Aċċetta"
 
@@ -181,6 +183,7 @@ msgstr "Aċċetta awtomatikament"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "Qed naċċetta l-istedina..."
 
@@ -213,6 +216,7 @@ msgstr "Attività"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "Żid"
 
@@ -236,10 +240,6 @@ msgstr "Żid aċċess"
 msgid "Add account"
 msgstr "Żid kont"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "Żid indirizz"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Żid didaskalija"
@@ -259,18 +259,10 @@ msgstr "Żid kuntatt"
 msgid "Add device"
 msgstr "Żid apparat"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "Żid email"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Żid kamp"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "Żid isem tal-utent"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "Żid link"
 msgid "Add member"
 msgstr "Żid membru"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "Żid indirizz tal-messaġġi"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "Żid lil xi ħadd biex tibda"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Żid tag..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "Żid telefon"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "Qed jiżdied il-kuntatt..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Qed inżid membru..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "Indirizz"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "Qed nikkanċella l-istedina..."
 msgid "Caption"
 msgstr "Didaskalija"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "Kategorija għal dawn in-notifiki"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "Kategorija aġġornata"
@@ -731,8 +716,6 @@ msgstr "Belt"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "Naddaf"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "Editja l-veduta"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "Email"
 
@@ -1426,6 +1410,7 @@ msgstr "Kbir ħafna"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "Ma rnexxiex tiġi aċċettata l-istedina"
 
@@ -1629,6 +1614,7 @@ msgstr "Ma rnexxiex jiġi ssejvjat il-prompt"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "Ma rnexxiex tintbagħat l-istedina"
 
@@ -1768,6 +1754,7 @@ msgid "Groups"
 msgstr "Gruppi"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
 msgstr "Isem tal-utent"
 
@@ -1843,6 +1830,7 @@ msgstr "Data invalida"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "L-istedina ġiet aċċettata"
 
@@ -1859,6 +1847,7 @@ msgstr "L-istedina ġiet irrifjutata"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "L-istedina ntbagħtet"
 
@@ -1870,6 +1859,7 @@ msgstr "Stediniet"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "Stieden"
 
@@ -1885,6 +1875,7 @@ msgstr "Settings tal-istedina"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "Mistieden"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "Ibgħat messaġġ"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "Indirizz tal-messaġġi"
 
@@ -2163,6 +2155,10 @@ msgstr "Netwerk"
 msgid "Network error"
 msgstr "Żball tan-network"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "Netwerks"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "L-aktar ġodda"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Kuntatt ġdid"
@@ -2714,6 +2711,10 @@ msgid "Remove address"
 msgstr "Neħħi l-indirizz"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "Neħħi għeluq is-sena"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Neħħi l-email"
 
@@ -2730,6 +2731,10 @@ msgstr "Neħħi interess"
 msgid "Remove item"
 msgstr "Neħħi oġġett"
 
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "Neħħi l-kariga"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "Neħħi l-indirizz tal-messaġġi"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "Neħħi l-laqam"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "Neħħi n-nota"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "Neħħi l-organizzazzjoni"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Neħħi t-telefon"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "Neħħi l-URL"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "Ibgħat messaġġ"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "Qed nibgħat l-istedina..."
 
@@ -3070,6 +3092,7 @@ msgstr "Issettja oriġini u destinazzjoni"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "Issettjar"
 
@@ -3222,6 +3245,10 @@ msgstr "It-tikketta trid tkun sa 50 karattru"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Tikketti"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "Telefon"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "Ma jistax jaqbad mas-server remot"
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "Ma rnexxiex jirridrettja għal-login. Jekk jogħġbok erġa' pprova."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "Mhux assenjat"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

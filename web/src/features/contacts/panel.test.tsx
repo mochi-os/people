@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import {
@@ -13,6 +14,7 @@ import {
   waitFor,
 } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { emptyForm } from '@/lib/card'
 import { ContactPanel, type ContactCopy } from './panel'
 
 const queries = vi.hoisted(() => ({
@@ -118,18 +120,23 @@ const opened = vi.fn()
 const copied = vi.fn()
 const closed = vi.fn()
 
+// A handle row looks its handle up, so the panel needs a query client.
+const client = new QueryClient()
+
 function panel(id?: string, start?: string, copy?: ContactCopy) {
   return (
-    <I18nProvider i18n={i18n}>
-      <ContactPanel
-        id={id}
-        book={start}
-        copy={copy}
-        onOpen={opened}
-        onCopy={copied}
-        onClose={closed}
-      />
-    </I18nProvider>
+    <QueryClientProvider client={client}>
+      <I18nProvider i18n={i18n}>
+        <ContactPanel
+          id={id}
+          book={start}
+          copy={copy}
+          onOpen={opened}
+          onCopy={copied}
+          onClose={closed}
+        />
+      </I18nProvider>
+    </QueryClientProvider>
   )
 }
 
@@ -155,6 +162,40 @@ const nickname = () => screen.getByRole('textbox', { name: 'Nickname' })
 function field(label: 'Day' | 'Month' | 'Year') {
   return screen.getByRole(label === 'Month' ? 'combobox' : 'textbox', {
     name: label,
+  })
+}
+
+// Opens the Add menu and answers the kinds it offers, in order.
+function menu() {
+  fireEvent.pointerDown(screen.getByRole('button', { name: 'Add' }), {
+    button: 0,
+    ctrlKey: false,
+    pointerType: 'mouse',
+  })
+  return screen.getAllByRole('menuitem').map((item) => item.textContent)
+}
+
+// Adds a field from the Add menu.
+function add(item: string) {
+  menu()
+  fireEvent.click(screen.getByRole('menuitem', { name: item }))
+}
+
+// Closes the Add menu without choosing.
+function dismiss() {
+  fireEvent.keyDown(screen.getByRole('menu'), { key: 'Escape' })
+}
+
+// Give the contact these properties after its name.
+function holding(...card: { name: string; value: string }[]) {
+  queries.contact = loaded({
+    contact: {
+      ...contact,
+      card: [
+        ...contact.card,
+        ...card.map((property) => ({ ...property, params: {} })),
+      ],
+    },
   })
 }
 
@@ -234,6 +275,7 @@ describe('ContactPanel', () => {
 
   it('saves a field when it is left, against the card it read', async () => {
     show('c1')
+    add('Nickname')
     fireEvent.change(nickname(), { target: { value: 'Countess' } })
     fireEvent.focusOut(nickname())
     await waitFor(() => expect(updates()).toHaveLength(1))
@@ -245,6 +287,7 @@ describe('ContactPanel', () => {
 
   it('names the handles and messaging addresses among what it manages, so a save holding none removes them', async () => {
     show('c1')
+    add('Nickname')
     fireEvent.change(nickname(), { target: { value: 'Countess' } })
     fireEvent.focusOut(nickname())
     await waitFor(() => expect(updates()).toHaveLength(1))
@@ -257,6 +300,7 @@ describe('ContactPanel', () => {
   it('saves once typing rests for a second, and not before', () => {
     vi.useFakeTimers()
     show('c1')
+    add('Nickname')
     fireEvent.change(nickname(), { target: { value: 'Count' } })
     act(() => vi.advanceTimersByTime(900))
     fireEvent.change(nickname(), { target: { value: 'Countess' } })
@@ -269,6 +313,7 @@ describe('ContactPanel', () => {
 
   it('saves nothing when a field is left unchanged', async () => {
     show('c1')
+    add('Nickname')
     fireEvent.focusOut(nickname())
     await new Promise((resolve) => setTimeout(resolve, 20))
     expect(updates()).toHaveLength(0)
@@ -283,6 +328,7 @@ describe('ContactPanel', () => {
       )
       .mockResolvedValue({ contact: { ...contact, etag: 'e3' } })
     show('c1')
+    add('Nickname')
     fireEvent.change(nickname(), { target: { value: 'Count' } })
     fireEvent.focusOut(nickname())
     fireEvent.change(nickname(), { target: { value: 'Countess' } })
@@ -326,9 +372,11 @@ describe('ContactPanel', () => {
       .fn()
       .mockRejectedValue(Object.assign(new Error('changed'), { status: 412 }))
     show('c1')
+    add('Nickname')
     fireEvent.change(nickname(), { target: { value: 'Countess' } })
     fireEvent.focusOut(nickname())
     await waitFor(() => expect(name()).toHaveValue('Ada Byron'))
+    // The card read holds no nickname; the one added stays, emptied.
     expect(nickname()).toHaveValue('')
     expect(failures).toHaveLength(1)
   })
@@ -351,6 +399,7 @@ describe('ContactPanel', () => {
 
   it('keeps what was typed when the friend switch changes only the etag, and saves against the new one', async () => {
     const view = show('c1')
+    add('Nickname')
     fireEvent.change(nickname(), { target: { value: 'Countess' } })
     queries.contact = loaded({ contact: { ...contact, etag: 'e2' } })
     view.rerender(panel('c1'))
@@ -362,6 +411,7 @@ describe('ContactPanel', () => {
 
   it('keeps an edit when the card changes elsewhere, and saves it against the card it read', async () => {
     const view = show('c1')
+    add('Nickname')
     fireEvent.change(nickname(), { target: { value: 'Countess' } })
     queries.contact = loaded({
       contact: {
@@ -379,6 +429,7 @@ describe('ContactPanel', () => {
 
   it('saves what was typed when it is closed', async () => {
     show('c1')
+    add('Nickname')
     fireEvent.change(nickname(), { target: { value: 'Countess' } })
     fireEvent.click(screen.getByRole('button', { name: 'Close' }))
     await waitFor(() => expect(updates()).toHaveLength(1))
@@ -387,6 +438,7 @@ describe('ContactPanel', () => {
 
   it('saves what was typed when the next contact takes its place', async () => {
     const view = show('c1')
+    add('Nickname')
     fireEvent.change(nickname(), { target: { value: 'Countess' } })
     view.unmount()
     await waitFor(() => expect(updates()).toHaveLength(1))
@@ -439,6 +491,7 @@ describe('ContactPanel', () => {
 
   it('saves a birthday entered without its year', async () => {
     show('c1')
+    add('Birthday')
     fireEvent.change(field('Day'), { target: { value: '2' } })
     choose(field('Month'), 'October')
     fireEvent.focusOut(field('Day'))
@@ -451,6 +504,7 @@ describe('ContactPanel', () => {
   it('saves the other fields while the birthday is not yet a day, leaving the birthday it had', async () => {
     born('1985-04-12')
     show('c1')
+    add('Nickname')
     fireEvent.change(field('Day'), { target: { value: '31' } })
     fireEvent.change(nickname(), { target: { value: 'Countess' } })
     fireEvent.focusOut(nickname())
@@ -463,6 +517,7 @@ describe('ContactPanel', () => {
 
   it('does not save a birthday that is not a day', async () => {
     show('c1')
+    add('Birthday')
     fireEvent.change(field('Day'), { target: { value: '31' } })
     choose(field('Month'), 'April')
     fireEvent.focusOut(field('Day'))
@@ -480,23 +535,25 @@ describe('ContactPanel', () => {
     expect(field('Day')).toHaveValue('05')
   })
 
-  it('removes a birthday with Clear', async () => {
+  it('removes a birthday with its remove button, which is its only one', async () => {
     born('1985-04-12')
     show('c1')
-    fireEvent.click(screen.getByRole('button', { name: 'Clear' }))
-    expect(field('Day')).toHaveValue('')
-    expect(field('Year')).toHaveValue('')
-    fireEvent.focusOut(field('Day'))
+    expect(screen.queryByRole('button', { name: 'Clear' })).toBeNull()
+    fireEvent.click(screen.getByRole('button', { name: 'Remove birthday' }))
+    expect(screen.queryByRole('group', { name: 'Birthday' })).toBeNull()
+    fireEvent.focusOut(name())
     await waitFor(() => expect(updates()).toHaveLength(1))
     expect(saved('BDAY')).toEqual([])
   })
 
-  it('shows a birthday it cannot read as written, until it is cleared', async () => {
+  it('shows a birthday it cannot read as written, until it is removed', async () => {
     born('circa 1800', { VALUE: ['text'] })
     show('c1')
     expect(screen.getByDisplayValue('circa 1800')).toHaveAttribute('readonly')
     expect(screen.queryByRole('textbox', { name: 'Day' })).toBeNull()
-    fireEvent.click(screen.getByRole('button', { name: 'Clear' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Remove birthday' }))
+    expect(screen.queryByDisplayValue('circa 1800')).toBeNull()
+    add('Birthday')
     expect(field('Day')).toHaveValue('')
     fireEvent.focusOut(field('Day'))
     await waitFor(() => expect(updates()).toHaveLength(1))
@@ -505,6 +562,7 @@ describe('ContactPanel', () => {
 
   it('orders the birthday fields as the date format writes a date', () => {
     show('c1')
+    add('Birthday')
     const group = screen.getByRole('group', { name: 'Birthday' })
     const parts = [field('Year'), field('Month'), field('Day')]
     for (const part of parts) expect(group).toContainElement(part)
@@ -517,6 +575,7 @@ describe('ContactPanel', () => {
   })
 
   it('shows the friend switch under the nickname with no divider between, and the details under a heading', () => {
+    holding({ name: 'NICKNAME', value: 'Countess' }, { name: 'NOTE', value: 'Met at the Society' })
     show('c1')
     const toggle = screen.getByRole('switch', { name: 'Mochi friend' })
     expect(
@@ -529,29 +588,185 @@ describe('ContactPanel', () => {
     expect(screen.getByRole('heading', { name: 'Details' })).toBeInTheDocument()
   })
 
-  it('offers the three add buttons on one line, and only the rows that exist', () => {
+  it('offers every kind of value in one Add menu, and only the rows that exist', () => {
     show('c1')
-    const buttons = ['Add email', 'Add telephone', 'Add address'].map((label) =>
-      screen.getByRole('button', { name: label })
-    )
-    expect(new Set(buttons.map((button) => button.parentElement)).size).toBe(1)
+    // THE POINT: one Add button, whatever the panel's width, where five
+    // buttons wrapped onto a second line.
+    expect(
+      screen.queryByRole('button', {
+        name: /^Add (email|telephone|address|handle|messaging address)$/,
+      })
+    ).toBeNull()
+    expect(menu()).toEqual([
+      'Email',
+      'Telephone',
+      'Address',
+      'Handle',
+      'Messaging address',
+      'Nickname',
+      'Birthday',
+      'Organisation',
+      'Title',
+      'URL',
+      'Note',
+    ])
+    // A line between the kinds a contact has several of and those it has one of.
+    expect(
+      screen.getByRole('menu').querySelectorAll('[role="separator"]')
+    ).toHaveLength(1)
     expect(screen.queryByRole('textbox', { name: 'Emails' })).toBeNull()
-    fireEvent.click(buttons[1])
+    fireEvent.click(screen.getByRole('menuitem', { name: 'Telephone' }))
     expect(
       screen.getByRole('textbox', { name: 'Telephones' })
     ).toBeInTheDocument()
     expect(screen.queryByRole('textbox', { name: 'Emails' })).toBeNull()
   })
 
-  it('keeps the address book at the head of the details, before the birthday', () => {
+  it('adds each kind from the Add menu', () => {
+    show('c1')
+    const rows: [string, string][] = [
+      ['Email', 'Emails'],
+      ['Address', 'Street'],
+      ['Handle', 'Handle'],
+      ['Messaging address', 'Messaging address'],
+    ]
+    for (const [item, field] of rows) {
+      expect(screen.queryByRole('textbox', { name: field })).toBeNull()
+      menu()
+      fireEvent.click(screen.getByRole('menuitem', { name: item }))
+      expect(screen.getByRole('textbox', { name: field })).toBeInTheDocument()
+    }
+  })
+
+  it("shows the address book in the header beside the contact's name, out of the form", () => {
     show('c1')
     const select = screen.getByRole('combobox', { name: 'Address book' })
-    const birthday = screen.getByRole('group', { name: 'Birthday' })
+    const header = select.closest('[data-slot="side-panel-header"]')
+    expect(header).not.toBeNull()
+    expect(header).toContainElement(
+      screen.getByRole('heading', { name: contact.name })
+    )
+    expect(select.closest('form')).toBeNull()
+    expect(screen.queryByText('Address book')).toBeNull()
+  })
+
+  it('puts the Add button below everything it adds, under no line of its own', () => {
+    show('c1')
+    add('Telephone')
+    add('Note')
+    const telephone = screen.getByRole('textbox', { name: 'Telephones' })
+    const note = screen.getByRole('textbox', { name: 'Note' })
+    const button = screen.getByRole('button', { name: 'Add' })
+    for (const value of [telephone, note]) {
+      expect(
+        value.compareDocumentPosition(button) &
+          Node.DOCUMENT_POSITION_FOLLOWING
+      ).toBeTruthy()
+    }
+    // Outside the divided sections, so no line runs between it and the last.
+    expect(button.closest('section')).toBeNull()
+    expect(button.closest('.divide-y')).toBeNull()
+  })
+
+  it('shows only the name and its switches for a contact holding nothing else, under no Details heading', () => {
+    show('c1')
+    expect(name()).toHaveValue('Ada')
+    expect(screen.getByRole('textbox', { name: 'Forename' })).toBeInTheDocument()
+    expect(screen.getByRole('textbox', { name: 'Surname' })).toBeInTheDocument()
+    for (const label of ['Nickname', 'Organisation', 'Title', 'URL', 'Note']) {
+      expect(screen.queryByRole('textbox', { name: label })).toBeNull()
+    }
+    expect(screen.queryByRole('group', { name: 'Birthday' })).toBeNull()
+    expect(screen.queryByRole('heading', { name: 'Details' })).toBeNull()
+    expect(screen.getByRole('dialog').querySelectorAll('section')).toHaveLength(1)
+  })
+
+  it('shows each field the card holds, with a remove button, and offers none of them in the Add menu', () => {
+    born('1985-04-12')
+    const card = (queries.contact as { data: { contact: typeof contact } }).data
+      .contact.card
+    holding(
+      ...card.slice(1),
+      { name: 'NICKNAME', value: 'Countess' },
+      { name: 'ORG', value: 'Analytical Society' },
+      { name: 'TITLE', value: 'Analyst' },
+      { name: 'URL', value: 'https://ada.example' },
+      { name: 'NOTE', value: 'Wrote the first program' }
+    )
+    show('c1')
+    expect(nickname()).toHaveValue('Countess')
+    expect(field('Year')).toHaveValue('1985')
+    expect(screen.getByRole('textbox', { name: 'Organisation' })).toHaveValue(
+      'Analytical Society'
+    )
+    expect(screen.getByRole('textbox', { name: 'Title' })).toHaveValue('Analyst')
+    expect(screen.getByRole('textbox', { name: 'URL' })).toHaveValue(
+      'https://ada.example'
+    )
+    expect(screen.getByRole('textbox', { name: 'Note' })).toHaveValue(
+      'Wrote the first program'
+    )
+    expect(screen.getByRole('heading', { name: 'Details' })).toBeInTheDocument()
+    for (const label of [
+      'Remove nickname',
+      'Remove birthday',
+      'Remove organisation',
+      'Remove job title',
+      'Remove URL',
+      'Remove note',
+    ]) {
+      expect(screen.getByRole('button', { name: label })).toBeInTheDocument()
+    }
+    expect(menu()).toEqual([
+      'Email',
+      'Telephone',
+      'Address',
+      'Handle',
+      'Messaging address',
+    ])
     expect(
-      select.compareDocumentPosition(birthday) &
-        Node.DOCUMENT_POSITION_FOLLOWING
-    ).toBeTruthy()
-    expect(select.closest('section')).toBe(birthday.closest('section'))
+      screen.getByRole('menu').querySelectorAll('[role="separator"]')
+    ).toHaveLength(0)
+  })
+
+  it('takes a field out of the Add menu once added, and puts it back once removed', () => {
+    show('c1')
+    add('Note')
+    expect(screen.getByRole('textbox', { name: 'Note' })).toBeInTheDocument()
+    expect(menu()).not.toContain('Note')
+    dismiss()
+    fireEvent.click(screen.getByRole('button', { name: 'Remove note' }))
+    expect(screen.queryByRole('textbox', { name: 'Note' })).toBeNull()
+    expect(menu()).toContain('Note')
+  })
+
+  it('keeps a field shown when it is emptied, so it can be retyped', () => {
+    holding({ name: 'NICKNAME', value: 'Countess' })
+    show('c1')
+    fireEvent.change(nickname(), { target: { value: '' } })
+    expect(nickname()).toHaveValue('')
+    expect(menu()).not.toContain('Nickname')
+  })
+
+  it('saves a removed field off the card', async () => {
+    holding({ name: 'NOTE', value: 'Wrote the first program' })
+    show('c1')
+    fireEvent.click(screen.getByRole('button', { name: 'Remove note' }))
+    fireEvent.focusOut(name())
+    await waitFor(() => expect(updates()).toHaveLength(1))
+    expect(saved('NOTE')).toEqual([])
+  })
+
+  it('removes an organisation with the units the card held under it', async () => {
+    holding({ name: 'ORG', value: 'Analytical Society;Engines' })
+    show('c1')
+    expect(screen.getByRole('textbox', { name: 'Organisation' })).toHaveValue(
+      'Analytical Society'
+    )
+    fireEvent.click(screen.getByRole('button', { name: 'Remove organisation' }))
+    fireEvent.focusOut(name())
+    await waitFor(() => expect(updates()).toHaveLength(1))
+    expect(saved('ORG')).toEqual([])
   })
 
   it('keeps the unfriend dialog open when the request fails', async () => {
@@ -687,9 +902,29 @@ describe('ContactPanel making a contact', () => {
     show()
     fireEvent.change(name(), { target: { value: 'Grace' } })
     expect(screen.getByRole('button', { name: 'Create' })).toBeEnabled()
+    add('Birthday')
     fireEvent.change(field('Day'), { target: { value: '31' } })
     choose(field('Month'), 'April')
     expect(screen.getByRole('button', { name: 'Create' })).toBeDisabled()
+  })
+
+  it('lets Create go ahead once a birthday that is not a day is removed', () => {
+    show()
+    fireEvent.change(name(), { target: { value: 'Grace' } })
+    add('Birthday')
+    fireEvent.change(field('Day'), { target: { value: '31' } })
+    choose(field('Month'), 'April')
+    expect(screen.getByRole('button', { name: 'Create' })).toBeDisabled()
+    fireEvent.click(screen.getByRole('button', { name: 'Remove birthday' }))
+    expect(screen.getByRole('button', { name: 'Create' })).toBeEnabled()
+  })
+
+  it('opens with only the name fields and Add', () => {
+    show()
+    expect(screen.queryByRole('textbox', { name: 'Nickname' })).toBeNull()
+    expect(screen.queryByRole('group', { name: 'Birthday' })).toBeNull()
+    expect(screen.queryByRole('heading', { name: 'Details' })).toBeNull()
+    expect(screen.getByRole('button', { name: 'Add' })).toBeInTheDocument()
   })
 
   it('creates the contact with Create and then closes', async () => {
@@ -700,6 +935,7 @@ describe('ContactPanel making a contact', () => {
       ).toHaveTextContent('Contacts')
     )
     fireEvent.change(name(), { target: { value: 'Grace' } })
+    add('Nickname')
     fireEvent.change(nickname(), { target: { value: 'Amazing' } })
     fireEvent.click(screen.getByRole('button', { name: 'Create' }))
     await waitFor(() => expect(closed).toHaveBeenCalledTimes(1))
@@ -727,6 +963,7 @@ describe('ContactPanel making a contact', () => {
 describe('ContactPanel copying', () => {
   it('saves the card, then opens the copy as a new contact, making nothing', async () => {
     show('c1')
+    add('Nickname')
     fireEvent.change(nickname(), { target: { value: 'Countess' } })
     fireEvent.click(screen.getByRole('button', { name: 'Copy' }))
     await waitFor(() => expect(copied).toHaveBeenCalledTimes(1))
@@ -739,6 +976,17 @@ describe('ContactPanel copying', () => {
     expect(copy.form.nickname).toBe('Countess')
     expect(mutations.create.mutateAsync).not.toHaveBeenCalled()
     expect(opened).not.toHaveBeenCalled()
+  })
+
+  it("opens a copy showing the fields the original filled, and only those", () => {
+    show(undefined, undefined, {
+      source: 'c1',
+      form: { ...emptyForm(), name: 'Ada', nickname: 'Countess' },
+      book: 'b1',
+    })
+    expect(nickname()).toHaveValue('Countess')
+    expect(screen.queryByRole('group', { name: 'Birthday' })).toBeNull()
+    expect(screen.queryByRole('textbox', { name: 'Note' })).toBeNull()
   })
 
   it('opens a copy as a new contact filled from the original, and makes it with Create', async () => {

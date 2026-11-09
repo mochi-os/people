@@ -28,6 +28,8 @@ interface ProfileViewProps {
   bannerUrl: string | null
   accounts?: ProfileAccount[]
   history?: ProfileHistory[]
+  // What the viewer can do with the person, beside their name.
+  action?: React.ReactNode
 }
 
 export function ProfileView({
@@ -38,6 +40,7 @@ export function ProfileView({
   bannerUrl,
   accounts = [],
   history = [],
+  action,
 }: ProfileViewProps) {
   const styleVars = accent
     ? ({ ['--accent-colour' as string]: accent } as React.CSSProperties)
@@ -49,11 +52,12 @@ export function ProfileView({
       <div className='flex items-center gap-4 p-4'>
         <EntityAvatar src={avatarUrl} name={name} size='2xl' accent={accent} />
         <h1
-          className='text-2xl font-bold'
+          className='min-w-0 text-2xl font-bold break-words'
           style={accent ? { color: accent } : undefined}
         >
           {name}
         </h1>
+        {action ? <div className='ms-auto shrink-0'>{action}</div> : null}
       </div>
       {/* The person's accounts elsewhere, each a rel="me" link the network
           verifies against a link back from the account. */}

@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "24 óra"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "Baráti meghívó elküldve {name} részére."
 
@@ -168,6 +169,7 @@ msgstr "Kiemelő szín mentve"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "Elfogadás"
 
@@ -181,6 +183,7 @@ msgstr "Automatikus elfogadás"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "Meghívás elfogadása..."
 
@@ -213,6 +216,7 @@ msgstr "Tevékenység"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "Hozzáadás"
 
@@ -236,10 +240,6 @@ msgstr "Hozzáférés hozzáadása"
 msgid "Add account"
 msgstr "Fiók hozzáadása"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "Cím hozzáadása"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Képaláírás hozzáadása"
@@ -259,18 +259,10 @@ msgstr "Névjegy hozzáadása"
 msgid "Add device"
 msgstr "Eszköz hozzáadása"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "E-mail hozzáadása"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Mező hozzáadása"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "Felhasználónév hozzáadása"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "Hivatkozás hozzáadása"
 msgid "Add member"
 msgstr "Tag hozzáadása"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "Üzenetküldési cím hozzáadása"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "Kezdésként adjon hozzá valakit"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Címke hozzáadása..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "Telefonszám hozzáadása"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "Névjegy hozzáadása..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Tag hozzáadása..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "Cím"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "Meghívás visszavonása..."
 msgid "Caption"
 msgstr "Képaláírás"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "Ezen értesítések kategóriája"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "Kategória frissítve"
@@ -731,8 +716,6 @@ msgstr "Város"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "Törlés"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "Nézet szerkesztése"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "E-mail"
 
@@ -1426,6 +1410,7 @@ msgstr "Extra nagy"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "Nem sikerült elfogadni a meghívást"
 
@@ -1629,6 +1614,7 @@ msgstr "Nem sikerült menteni az utasítást"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "Nem sikerült elküldeni a meghívót"
 
@@ -1768,6 +1754,7 @@ msgid "Groups"
 msgstr "Csoportok"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
 msgstr "Felhasználónév"
 
@@ -1843,6 +1830,7 @@ msgstr "Érvénytelen dátum"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "Meghívás elfogadva"
 
@@ -1859,6 +1847,7 @@ msgstr "Meghívás elutasítva"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "Meghívó elküldve"
 
@@ -1870,6 +1859,7 @@ msgstr "Meghívások"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "Meghívás"
 
@@ -1885,6 +1875,7 @@ msgstr "Meghívási beállítások"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "Meghívva"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "Üzenet küldése"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "Üzenetküldési cím"
 
@@ -2163,6 +2155,10 @@ msgstr "Hálózat"
 msgid "Network error"
 msgstr "Hálózati hiba"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "Hálózatok"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "Legújabb"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Új névjegy"
@@ -2714,6 +2711,10 @@ msgid "Remove address"
 msgstr "Cím eltávolítása"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "Születésnap eltávolítása"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "E-mail eltávolítása"
 
@@ -2730,6 +2731,10 @@ msgstr "Érdeklődés eltávolítása"
 msgid "Remove item"
 msgstr "Elem eltávolítása"
 
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "Beosztás eltávolítása"
+
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 msgid "Remove link"
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "Üzenetküldési cím eltávolítása"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "Becenév eltávolítása"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "Megjegyzés eltávolítása"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "Szervezet eltávolítása"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Telefonszám eltávolítása"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "URL eltávolítása"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "Üzenet küldése"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "Meghívás küldése..."
 
@@ -3070,6 +3092,7 @@ msgstr "Kiindulási és úti cél beállítása"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "Beállítások"
 
@@ -3222,6 +3245,10 @@ msgstr "A címke legfeljebb 50 karakter lehet"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Címkék"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "Telefon"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "Nem sikerült csatlakozni a távoli kiszolgálóhoz"
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "Nem sikerült átirányítani a bejelentkezésre. Próbálja újra."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "Hozzárendelés nélküli"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

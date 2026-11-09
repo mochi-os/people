@@ -145,6 +145,7 @@ msgid "24 hours"
 msgstr "Amahora angu-24"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/profile/public.tsx
 msgid "A friend invitation has been sent to {name}."
 msgstr "Isimemo sobungane sithunyelwe ku-{name}."
 
@@ -168,6 +169,7 @@ msgstr "Umsindo ulondoloziwe"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accept"
 msgstr "Yamukela"
 
@@ -181,6 +183,7 @@ msgstr "Yamukela ngokuzenzakalelayo"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Accepting invitation..."
 msgstr "Iyamukela isimemo..."
 
@@ -213,6 +216,7 @@ msgstr "Umsebenzi"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 #: ../../../lib/web/src/features/access/access-dialog.tsx
 #: ../../../lib/web/src/features/accounts/account-add.tsx
+#: src/features/contacts/fields.tsx
 msgid "Add"
 msgstr "Engeza"
 
@@ -236,10 +240,6 @@ msgstr "Engeza ukufinyelela"
 msgid "Add account"
 msgstr "Engeza i-akhawunti"
 
-#: src/features/contacts/panel.tsx
-msgid "Add address"
-msgstr "Engeza ikheli"
-
 #: ../../../lib/web/src/components/attachment-composer.tsx
 msgid "Add caption"
 msgstr "Engeza umbhalo ochazayo"
@@ -259,18 +259,10 @@ msgstr "Engeza oxhumana naye"
 msgid "Add device"
 msgstr "Engeza idivayisi"
 
-#: src/features/contacts/panel.tsx
-msgid "Add email"
-msgstr "Engeza i-imeyili"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 msgid "Add field"
 msgstr "Engeza inkambu"
-
-#: src/features/contacts/panel.tsx
-msgid "Add handle"
-msgstr "Engeza isidlaliso"
 
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Add item..."
@@ -287,10 +279,6 @@ msgstr "Engeza isixhumanisi"
 msgid "Add member"
 msgstr "Engeza ilungu"
 
-#: src/features/contacts/panel.tsx
-msgid "Add messaging address"
-msgstr "Engeza ikheli lemiyalezo"
-
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/add-field-dialog.tsx
 #: ../../../lib/web/src/components/entity/entity-field-dialog.tsx
@@ -306,10 +294,6 @@ msgstr "Engeza umuntu ukuze uqale"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Add tag..."
 msgstr "Engeza ithegi..."
-
-#: src/features/contacts/panel.tsx
-msgid "Add telephone"
-msgstr "Engeza ucingo"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/add-dialog.tsx
@@ -346,6 +330,11 @@ msgstr "Kwengezwa oxhumana naye..."
 #: src/features/groups/member-dialog.tsx
 msgid "Adding member..."
 msgstr "Ingeza ilungu..."
+
+#: src/features/contacts/panel.tsx
+msgctxt "postal"
+msgid "Address"
+msgstr "Ikheli"
 
 #: src/components/layout/people-layout.tsx
 msgid "address book"
@@ -664,10 +653,6 @@ msgstr "Ikhansela isimemo..."
 msgid "Caption"
 msgstr "Umbhalo ochazayo"
 
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Category for these notifications"
-msgstr "Isigaba salezi zaziso"
-
 #: ../../../lib/web/src/hooks/use-notification-category-picker.ts
 msgid "Category updated"
 msgstr "Isigaba sibuyekeziwe"
@@ -731,8 +716,6 @@ msgstr "Idolobha"
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
 #: ../../../lib/web/src/components/travelling-picker.tsx
-#: src/features/contacts/birthday.tsx
-#: src/features/contacts/birthday.tsx
 msgid "Clear"
 msgstr "Sula"
 
@@ -1355,6 +1338,7 @@ msgid "Edit view"
 msgstr "Hlela umbukiso"
 
 #: ../../../lib/web/src/features/accounts/types.ts
+#: src/features/contacts/panel.tsx
 msgid "Email"
 msgstr "I-imeyili"
 
@@ -1426,6 +1410,7 @@ msgstr "Okukhulu kakhulu"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to accept invitation"
 msgstr "Kuhlulekile ukwamukela isimemo"
 
@@ -1629,6 +1614,7 @@ msgstr "Kuhlulekile ukulondoloza umyalo"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Failed to send invitation"
 msgstr "Kuhlulekile ukuthumela isimemo"
 
@@ -1768,8 +1754,9 @@ msgid "Groups"
 msgstr "Amaqembu"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Handle"
-msgstr "Isidlaliso"
+msgstr "Igama lomsebenzisi"
 
 #: ../../../lib/web/src/components/audit-timeline.tsx
 msgid "History"
@@ -1843,6 +1830,7 @@ msgstr "Idethi engalungile"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/invitations/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation accepted"
 msgstr "Isimemo samukelwe"
 
@@ -1859,6 +1847,7 @@ msgstr "Isimemo senqatshelwe"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invitation sent"
 msgstr "Isimemo sithunyelwe"
 
@@ -1870,6 +1859,7 @@ msgstr "Izimemo"
 
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/index.tsx
+#: src/features/profile/public.tsx
 msgid "Invite"
 msgstr "Mema"
 
@@ -1885,6 +1875,7 @@ msgstr "Izilungiselelo zesimemo"
 #: src/features/contacts/add-dialog.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Invited"
 msgstr "Umenyiwe"
 
@@ -2058,6 +2049,7 @@ msgid "Message"
 msgstr "Thumela umyalezo"
 
 #: src/features/contacts/fields.tsx
+#: src/features/contacts/panel.tsx
 msgid "Messaging address"
 msgstr "Ikheli lemiyalezo"
 
@@ -2163,6 +2155,10 @@ msgstr "Inethiwekhi"
 msgid "Network error"
 msgstr "Iphutha lenethiwekhi"
 
+#: src/features/profile/index.tsx
+msgid "Networks"
+msgstr "Amanethiwekhi"
+
 #: src/features/contacts/connect-dialog.tsx
 #: src/features/contacts/connect-dialog.tsx
 msgid "Never"
@@ -2178,6 +2174,7 @@ msgid "New"
 msgstr "Okusha kakhulu"
 
 #: src/features/contacts/add-dialog.tsx
+#: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 msgid "New contact"
 msgstr "Oxhumana naye omusha"
@@ -2714,12 +2711,16 @@ msgid "Remove address"
 msgstr "Khipha ikheli"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove birthday"
+msgstr "Susa usuku lokuzalwa"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove email"
 msgstr "Khipha i-imeyili"
 
 #: src/features/contacts/fields.tsx
 msgid "Remove handle"
-msgstr "Susa isidlaliso"
+msgstr "Susa igama lomsebenzisi"
 
 #: ../../../lib/web/src/components/post-tags.tsx
 #: ../../../lib/web/src/components/post-tags.tsx
@@ -2729,6 +2730,10 @@ msgstr "Khipha intshisekelo"
 #: ../../../lib/web/src/components/entity/entity-field-editor.tsx
 msgid "Remove item"
 msgstr "Khipha into"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove job title"
+msgstr "Susa isikhundla"
 
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
 #: ../../../lib/web/src/components/entity/entity-object-links.tsx
@@ -2745,8 +2750,24 @@ msgid "Remove messaging address"
 msgstr "Khipha ikheli lemiyalezo"
 
 #: src/features/contacts/panel.tsx
+msgid "Remove nickname"
+msgstr "Susa isidlaliso"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove note"
+msgstr "Susa inothi"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove organisation"
+msgstr "Susa inhlangano"
+
+#: src/features/contacts/panel.tsx
 msgid "Remove telephone"
 msgstr "Khipha ucingo"
+
+#: src/features/contacts/panel.tsx
+msgid "Remove URL"
+msgstr "Susa i-URL"
 
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
@@ -3037,6 +3058,7 @@ msgstr "Thumela umyalezo"
 #: src/features/contacts/index.tsx
 #: src/features/contacts/panel.tsx
 #: src/features/contacts/panel.tsx
+#: src/features/profile/public.tsx
 msgid "Sending invitation..."
 msgstr "Ithumela isimemo..."
 
@@ -3070,6 +3092,7 @@ msgstr "Misa indawo yokuqala neyokuya"
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/layout/mochi-menu.tsx
 #: ../../../lib/web/src/components/options-menu.tsx
+#: src/features/profile/index.tsx
 msgid "Settings"
 msgstr "Izilungiselelo"
 
@@ -3222,6 +3245,10 @@ msgstr "Ithegi kumele ibe ngezinhlamvu ezingama-50 noma ngaphansi"
 #: ../../../lib/web/src/components/post-tags.tsx
 msgid "Tags"
 msgstr "Amathegi"
+
+#: src/features/contacts/panel.tsx
+msgid "Telephone"
+msgstr "Ifoni"
 
 #: src/features/contacts/panel.tsx
 msgid "Telephones"
@@ -3402,10 +3429,6 @@ msgstr "Ayikwazi ukuxhuma kuseva ekude"
 #: ../../../lib/web/src/lib/auth-manager.ts
 msgid "Unable to redirect to login. Please try again."
 msgstr "Ayikwazi ukuqondisa kabusha ekungeneni. Sicela uzame futhi."
-
-#: ../../../lib/web/src/components/notification-category-button.tsx
-msgid "Unassigned"
-msgstr "Akwabelwanga"
 
 #: ../../../lib/web/src/components/attachment-image.tsx
 msgid "Unavailable"

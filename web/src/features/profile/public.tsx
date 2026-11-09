@@ -4,9 +4,24 @@
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { useEffect } from 'react'
 import { useLingui } from '@lingui/react/macro'
-import { GeneralError, Skeleton, usePageTitle } from '@mochi/web'
+import {
+  Button,
+  GeneralError,
+  Skeleton,
+  getErrorMessage,
+  toastAction,
+  usePageTitle,
+} from '@mochi/web'
+import { Check, Send } from 'lucide-react'
 import endpoints from '@/api/endpoints'
-import { usePersonInformationQuery } from '@/hooks/usePerson'
+import type { GetContactsResponse } from '@/api/types/contacts'
+import type { PersonInformation } from '@/api/types/person'
+import {
+  useAcceptFriendMutation,
+  useContactsQuery,
+  useInviteFriendMutation,
+} from '@/hooks/useContacts'
+import { useMyIdentity, usePersonInformationQuery } from '@/hooks/usePerson'
 import { ProfileView } from './profile-view'
 
 function PublicProfileSkeleton() {
@@ -26,6 +41,88 @@ function PublicProfileSkeleton() {
   )
 }
 
+// Where the viewer stands with a person, read off the viewer's own contacts: a
+// friend, an invitation either way, or neither. Their invitation comes first,
+// since accepting it is all there is to do. Null until the contacts load.
+export function connection(
+  contacts: GetContactsResponse | undefined,
+  person: string
+): 'friend' | 'pending' | 'invited' | 'none' | null {
+  if (!contacts) return null
+  if (contacts.contacts.some((row) => row.person === person && row.friend))
+    return 'friend'
+  if (contacts.received.some((invite) => invite.id === person)) return 'pending'
+  if (contacts.sent.some((invite) => invite.id === person)) return 'invited'
+  return 'none'
+}
+
+// The friend invitation the person's page offers a signed-in visitor, as the
+// add dialog's row does: Invite, Invited once sent, or Accept theirs.
+function Connect({ person }: { person: PersonInformation }) {
+  const { t } = useLingui()
+  const { data } = useContactsQuery()
+  const invite = useInviteFriendMutation()
+  const accept = useAcceptFriendMutation()
+  const state = connection(data, person.id)
+
+  const sendInvite = async () => {
+    const name = person.name
+    try {
+      await toastAction(invite.mutateAsync({ person: person.id, name }), {
+        loading: t`Sending invitation...`,
+        success: t`Invitation sent`,
+        successOptions: () => ({
+          description: t`A friend invitation has been sent to ${name}.`,
+        }),
+        error: (error) => getErrorMessage(error, t`Failed to send invitation`),
+      })
+    } catch {
+      // toastAction already showed error
+    }
+  }
+
+  const acceptInvite = async () => {
+    try {
+      await toastAction(accept.mutateAsync({ person: person.id }), {
+        loading: t`Accepting invitation...`,
+        success: t`Invitation accepted`,
+        error: (error) =>
+          getErrorMessage(error, t`Failed to accept invitation`),
+      })
+    } catch {
+      // toastAction already showed error
+    }
+  }
+
+  if (state === 'none')
+    return (
+      <Button
+        onClick={sendInvite}
+        loading={invite.isPending}
+        icon={<Send className='size-4' />}
+      >
+        {t`Invite`}
+      </Button>
+    )
+  if (state === 'invited')
+    return (
+      <Button variant='outline' disabled icon={<Send className='size-4' />}>
+        {t`Invited`}
+      </Button>
+    )
+  if (state === 'pending')
+    return (
+      <Button
+        onClick={acceptInvite}
+        loading={accept.isPending}
+        icon={<Check className='size-4' />}
+      >
+        {t`Accept`}
+      </Button>
+    )
+  return null
+}
+
 function setFavicon(href: string) {
   const existing = document.querySelectorAll('link[rel~="icon"]')
   existing.forEach((n) => n.remove())
@@ -37,6 +134,8 @@ function setFavicon(href: string) {
 
 export function PublicProfile({ fingerprint }: { fingerprint: string }) {
   const { t } = useLingui()
+  // Empty for an anonymous visitor, who has no one to invite from.
+  const identity = useMyIdentity()
   const { data, isLoading, error, refetch } =
     usePersonInformationQuery(fingerprint)
 
@@ -82,6 +181,9 @@ export function PublicProfile({ fingerprint }: { fingerprint: string }) {
       bannerUrl={bannerUrl}
       accounts={data.accounts}
       history={data.history}
+      action={
+        identity && identity !== data.id ? <Connect person={data} /> : null
+      }
     />
   )
 }

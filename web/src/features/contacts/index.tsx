@@ -71,14 +71,11 @@ const closedDialog: ContactDialog = { open: false, contact: null }
 export function Contacts({
   book,
   autoAdd,
-  query,
   open,
   create,
 }: {
   book?: string
   autoAdd?: boolean
-  /** What the Add dialog opened by autoAdd searches for first. */
-  query?: string
   /** The contact to open in the panel, from a link to it. */
   open?: string
   /** Open the panel on a new contact. */
@@ -443,7 +440,6 @@ export function Contacts({
           open={addDialogOpen}
           onOpenChange={setAddDialogOpen}
           book={book}
-          query={query}
           onNew={() => setPanel({})}
         />
 

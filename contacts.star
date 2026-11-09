@@ -27,6 +27,13 @@ _INVITE_WINDOW = 3600
 # it is accepted, which is what keeps this cap meaningful.
 _INVITE_PENDING_MAXIMUM = 200
 
+# The apps that may send the friendship handshake: People itself, by its
+# published id and as a dev install. mochi.message.send lets any app send as
+# the user it runs for, so without this another installed app could invite,
+# befriend or unfriend in the user's name. The sending server stamps the app;
+# one that lies about it is the sender's own problem.
+_SENDERS = ("1gGcjxdhV2VjuEMLs7UZiQwMaY2jvx1ARbu8g9uqM5QeS2vFJV", "people")
+
 # Bounds on a card made here. A value has no bound of its own beyond the
 # card's: a phone's NOTE can run long, and the editor must be able to save any
 # card the DAV path stored.
@@ -1420,7 +1427,14 @@ def action_friend_remove(a):
 
 # === P2P events: the friendship handshake ===
 
+# Whether a handshake event was sent by People, rather than by another app
+# speaking as the sender.
+def genuine(e):
+	return e.header("app") in _SENDERS
+
 def event_accept(e):
+	if not genuine(e):
+		return
 	identity = e.header("to")
 	sender = e.header("from")
 	i = mochi.db.row("select * from invites where identity=? and id=? and direction='to'", identity, sender)
@@ -1436,6 +1450,8 @@ def event_invite(e):
 	# decides what happens for unsolicited invites; the default is notify, as
 	# action_preferences_get and the clients present it. Mutual invites always
 	# transition to friends regardless of policy.
+	if not genuine(e):
+		return
 	# mochi.text.valid raises on a non-string (it answers False only for None), and
 	# a raised error aborts the handler and mails the admin, so a peer sending
 	# {"name": 123} loses the invite silently. Test the type first.
@@ -1483,10 +1499,14 @@ def event_invite(e):
 		notify("invite/received", "", mochi.app.label("notifications.title.friend_invitation"), mochi.app.label("notifications.body.invited_you", name=name), "/people/invitations", sender, event="invite/received:" + sender + ":" + identity)
 
 def event_cancel(e):
+	if not genuine(e):
+		return
 	# Remove the invitation from the recipient's side
 	invite_remove(e.header("to"), e.header("from"), "from")
 
 def event_remove(e):
+	if not genuine(e):
+		return
 	# The remote friend removed us: the contact stays, the friendship ends.
 	identity = e.header("to")
 	sender = e.header("from")

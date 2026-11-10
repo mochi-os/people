@@ -5,7 +5,12 @@
 import { useEffect } from 'react'
 import type { AxiosProgressEvent } from 'axios'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { authManager, shellSetAvatar, useAuthStore } from '@mochi/web'
+import {
+  authManager,
+  optimistic,
+  shellSetAvatar,
+  useAuthStore,
+} from '@mochi/web'
 import { personApi } from '@/api/person'
 import type { PersonInformation } from '@/api/types/person'
 
@@ -59,10 +64,20 @@ export function useSetNameMutation(person: string) {
   })
 }
 
+// The switch flips on the click and goes back if the server refuses; the
+// caller says so.
 export function useSetPrivacyMutation(person: string) {
   const qc = useQueryClient()
+  const patch = optimistic(qc, (privacy: string) => [
+    {
+      filters: { queryKey: informationKey(person), exact: true },
+      update: (old: PersonInformation) => ({ ...old, privacy }),
+    },
+  ])
   return useMutation({
     mutationFn: (privacy: string) => personApi.setPrivacy(person, privacy),
+    onMutate: patch.onMutate,
+    onError: (_error, _privacy, context) => patch.rollback(context),
     onSuccess: (_, privacy) => {
       qc.setQueryData<PersonInformation>(informationKey(person), (old) =>
         old ? { ...old, privacy } : old

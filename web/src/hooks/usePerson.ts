@@ -3,13 +3,13 @@
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
 import { useEffect } from 'react'
-import type { AxiosProgressEvent } from 'axios'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import {
   authManager,
   optimistic,
   shellSetAvatar,
   useAuthStore,
+  type TransferProgress,
 } from '@mochi/web'
 import { personApi } from '@/api/person'
 import type { PersonInformation } from '@/api/types/person'
@@ -97,7 +97,7 @@ export function useUploadImageMutation(
       onProgress,
     }: {
       file: File
-      onProgress?: (event: AxiosProgressEvent) => void
+      onProgress?: (event: TransferProgress) => void
     }) => {
       if (slot === 'avatar')
         return personApi.setAvatar(person, file, onProgress)

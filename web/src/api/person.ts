@@ -2,8 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import type { AxiosProgressEvent } from 'axios'
-import { requestHelpers } from '@mochi/web'
+import { requestHelpers, type TransferProgress } from '@mochi/web'
 import endpoints from '@/api/endpoints'
 import { quiet } from '@/api/request'
 import type { MutationSuccess, PersonInformation } from '@/api/types/person'
@@ -48,7 +47,7 @@ const setPrivacy = (
 const uploadImage = (
   url: string,
   file: File,
-  onProgress?: (event: AxiosProgressEvent) => void
+  onProgress?: (event: TransferProgress) => void
 ): Promise<MutationSuccess> => {
   const form = new FormData()
   form.append('file', file)
@@ -61,19 +60,19 @@ const uploadImage = (
 const setAvatar = (
   person: string,
   file: File,
-  onProgress?: (event: AxiosProgressEvent) => void
+  onProgress?: (event: TransferProgress) => void
 ) => uploadImage(endpoints.person.avatarSet(person), file, onProgress)
 
 const setBanner = (
   person: string,
   file: File,
-  onProgress?: (event: AxiosProgressEvent) => void
+  onProgress?: (event: TransferProgress) => void
 ) => uploadImage(endpoints.person.bannerSet(person), file, onProgress)
 
 const setFavicon = (
   person: string,
   file: File,
-  onProgress?: (event: AxiosProgressEvent) => void
+  onProgress?: (event: TransferProgress) => void
 ) => uploadImage(endpoints.person.faviconSet(person), file, onProgress)
 
 export const personApi = {

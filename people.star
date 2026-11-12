@@ -22,6 +22,11 @@ def notify(topic, object="", title="", body="", url="", sender="", event=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event=event)
 
 def database_upgrade(version):
+	if version == 17:
+		# A friend's XMPP and Matrix addresses as their profile shows them, for
+		# chat and core to know them by.
+		if not [c for c in mochi.db.table("contacts") if c["name"] == "addresses"]:
+			mochi.db.execute("alter table contacts add column addresses text not null default ''")
 	if version == 16:
 		# A slot image's type was the one its uploader's browser declared, and
 		# JPEG bytes stood as image/png. Each takes the type its bytes carry;
@@ -151,11 +156,13 @@ def database_upgrade(version):
 def database_create():
 	# Address books are entities of class book; the row carries the version that
 	# serves as the book's change token. Contacts hold a vCard property list in
-	# card (see contacts.star); person and friend are server-owned columns.
+	# card (see contacts.star); person and friend are server-owned columns, as
+	# is addresses, a friend's XMPP and Matrix addresses as their profile shows
+	# them, a JSON list or empty for none.
 	mochi.db.execute("create table if not exists books ( id text not null primary key, identity text not null, slug text not null default '', version integer not null default 0, created integer not null default 0, updated integer not null default 0 )")
 	mochi.db.execute("create index if not exists books_identity on books( identity )")
 	mochi.db.execute("create unique index if not exists books_identity_slug on books( identity, slug )")
-	mochi.db.execute("create table if not exists contacts ( id text not null primary key, book text not null default '', identity text not null, person text not null default '', friend integer not null default 0, name text not null default '', directory text not null default '', card text not null default '[]', etag text not null default '', slug text not null default '', photo text not null default '', photographed integer not null default 0, created integer not null default 0, updated integer not null default 0, refreshed integer not null default 0 )")
+	mochi.db.execute("create table if not exists contacts ( id text not null primary key, book text not null default '', identity text not null, person text not null default '', friend integer not null default 0, name text not null default '', directory text not null default '', card text not null default '[]', etag text not null default '', slug text not null default '', photo text not null default '', photographed integer not null default 0, addresses text not null default '', created integer not null default 0, updated integer not null default 0, refreshed integer not null default 0 )")
 	mochi.db.execute("create index if not exists contacts_identity_person on contacts( identity, person )")
 	mochi.db.execute("create index if not exists contacts_book on contacts( book )")
 	mochi.db.execute("create unique index if not exists contacts_book_slug on contacts( book, slug )")
@@ -660,8 +667,14 @@ def profile_accounts():
 	"""The person's accounts on other networks that they show on their
 	profile, as the page links them: type, identifier, name and url. The
 	page's links to them carry rel="me", which those networks verify by
-	fetching the page, so the accounts show the profile as the person's."""
-	return [{"type": acc.get("type", ""), "identifier": acc.get("identifier", ""), "name": acc.get("name", ""), "url": acc["url"]} for acc in (mochi.account.profile() or []) if acc.get("url", "").startswith("https://")]
+	fetching the page, so the accounts show the profile as the person's. An
+	XMPP account's link is the xmpp: address a client opens a chat with."""
+	return [{"type": acc.get("type", ""), "identifier": acc.get("identifier", ""), "name": acc.get("name", ""), "url": acc["url"]} for acc in (mochi.account.profile() or []) if profile_link(acc.get("url", ""))]
+
+# profile_link(url) -> bool: whether an account's address is one a profile
+# page links: a web page, or an XMPP address.
+def profile_link(url):
+	return type(url) == "string" and (url.startswith("https://") or url.startswith("xmpp:"))
 
 # person_held(a, person_id) -> bool: whether this server holds the person. Core
 # resolves a route's entity only for one held here, and then hands the person

@@ -50,6 +50,7 @@ import {
 import endpoints from '@/api/endpoints'
 import type { PersonInformation } from '@/api/types/person'
 import { formatFingerprint } from '@/lib/fingerprint'
+import { profileLink } from '@/lib/profile-link'
 import { resizeImage, SLOT_RESIZE } from '@/lib/resize-image'
 import {
   useMyIdentity,
@@ -172,9 +173,9 @@ function ProfileEditor({
   const faviconUrl = info.favicon
     ? endpoints.person.asset(info.fingerprint, 'favicon', info.favicon)
     : null
-  // Only web links, as the profile itself shows them.
+  // Only the links the profile itself shows.
   const accounts = (info.accounts ?? []).filter((account) =>
-    /^https:\/\//.test(account.url)
+    profileLink(account.url)
   )
 
   const [profile, setProfile] = useState(info.profile)

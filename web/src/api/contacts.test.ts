@@ -45,3 +45,23 @@ describe('Contact list request', () => {
     })
   })
 })
+
+describe('Search requests', () => {
+  beforeEach(() => {
+    post.mockReset()
+    post.mockResolvedValue({})
+  })
+
+  it("asks the directory's search to leave other networks to their own request", async () => {
+    await contactsApi.search('ada')
+    expect(post.mock.calls[0][0]).toMatch(/contacts\/search$/)
+    expect(sent().get('search')).toBe('ada')
+    expect(sent().get('networks')).toBe('separate')
+  })
+
+  it('asks for other networks separately', async () => {
+    await contactsApi.networks('ada')
+    expect(post.mock.calls[0][0]).toMatch(/contacts\/search\/networks$/)
+    expect(sent().get('search')).toBe('ada')
+  })
+})

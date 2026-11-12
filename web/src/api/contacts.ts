@@ -14,6 +14,7 @@ import type {
   MutationSuccessResponse,
   SearchDirectoryResponse,
   SearchLocalUsersResponse,
+  SearchNetworksResponse,
   UpdateContactRequest,
 } from '@/api/types/contacts'
 
@@ -72,9 +73,18 @@ const deleteContact = (contact: string) =>
     })
   )
 
+// The directory's people, without other networks': those are asked for
+// separately (searchNetworks), so this answer does not wait on their servers.
 const searchDirectory = (search: string): Promise<SearchDirectoryResponse> =>
   requestHelpers.post<SearchDirectoryResponse>(
     endpoints.contacts.search,
+    body({ search, networks: 'separate' }),
+    { ...form, ...quiet }
+  )
+
+const searchNetworks = (search: string): Promise<SearchNetworksResponse> =>
+  requestHelpers.post<SearchNetworksResponse>(
+    endpoints.contacts.networks,
     body({ search }),
     { ...form, ...quiet }
   )
@@ -180,6 +190,7 @@ export const contactsApi = {
   update: updateContact,
   delete: deleteContact,
   search: searchDirectory,
+  networks: searchNetworks,
   searchLocalUsers,
   listBooks,
   createBook,
@@ -201,5 +212,6 @@ export type {
   MutationSuccessResponse,
   SearchDirectoryResponse,
   SearchLocalUsersResponse,
+  SearchNetworksResponse,
   UpdateContactRequest,
 }

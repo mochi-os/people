@@ -32,6 +32,9 @@ const endpoints = {
     update: action('contacts/update'),
     delete: action('contacts/delete'),
     search: action('contacts/search'),
+    // Other networks' people a search finds, asked beside it (contacts/search
+    // then answers without waiting on their servers).
+    networks: action('contacts/search/networks'),
     // What a network shows of a handle on a card (phase 17).
     handleLookup: action('contacts/handle/lookup'),
   },

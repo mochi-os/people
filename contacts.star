@@ -1180,7 +1180,24 @@ def action_contact_search(a):
 	# no LIMIT, so one request would return every person in the directory.
 	if len(search) < 1:
 		return {"data": {"results": [], "networks": []}}
-	return {"data": {"results": search_annotated(identity, search), "networks": network_people(identity, search)}}
+	# A client that asks contacts/search/networks for other networks' people
+	# says so, and has this answer without waiting on their servers. The field
+	# stays for the Android releases from before that action.
+	networks = [] if a.input("networks") == "separate" else network_people(identity, search)
+	return {"data": {"results": search_annotated(identity, search), "networks": networks}}
+
+def action_contact_search_networks(a):
+	"""People on other networks a search finds through the user's accounts,
+	asked beside contacts/search so the directory's answer does not wait on
+	other networks' servers."""
+	identity = a.user.identity.id
+	search = a.input("search", "").strip()
+	if len(search) > 200:
+		a.error.label(400, "errors.search_query_too_long")
+		return
+	if len(search) < 1:
+		return {"data": {"networks": []}}
+	return {"data": {"networks": network_people(identity, search)}}
 
 def address_key(address):
 	"""A messaging address as two contacts' are compared: a Matrix address the

@@ -15,6 +15,7 @@ import { FileText, MessageSquare } from 'lucide-react'
 import Markdown, { defaultUrlTransform } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import type { ProfileAccount, ProfileHistory } from '@/api/types/person'
+import { profileLink } from '@/lib/profile-link'
 
 // A profile is written by the person being viewed, including strangers and
 // anonymous readers of the public page, so its images stay on this origin.
@@ -64,7 +65,7 @@ export function ProfileView({
       {accounts.length > 0 && (
         <ul className='flex flex-wrap gap-x-4 gap-y-1 px-4 pb-2 text-sm'>
           {accounts
-            .filter((account) => /^https:\/\//.test(account.url))
+            .filter((account) => profileLink(account.url))
             .map((account) => (
               <li key={account.url}>
                 <a

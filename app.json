@@ -12,12 +12,12 @@
 	"services": ["people", "friends", "contacts"],
 
 	"architecture": {"engine": "starlark", "version": 4},
-	"execute": ["lib/attachments.star", "people.star", "contacts.star"],
+	"execute": ["lib/assets.star", "lib/attachments.star", "people.star", "contacts.star"],
 
-	"require": {"version": {"minimum": "2.0.12"}},
+	"require": {"version": {"minimum": "2.0.19"}},
 
 	"database": {
-		"schema": 16,
+		"schema": 17,
 		"file": "people.db",
 		"create": {"function": "database_create"},
 		"upgrade": {"function": "database_upgrade"},
@@ -40,6 +40,7 @@
 		"-/contacts/update": {"function": "action_contact_update"},
 		"-/contacts/delete": {"function": "action_contact_delete"},
 		"-/contacts/search": {"function": "action_contact_search"},
+		"-/contacts/search/networks": {"function": "action_contact_search_networks"},
 		"-/contacts/handle/lookup": {"function": "action_contact_handle_lookup"},
 		"-/contacts/changes": {"function": "action_contacts_changes"},
 		"-/contacts/photos": {"function": "action_contacts_photos"},
@@ -96,6 +97,8 @@
 		"friend/cancel": {"function": "event_cancel"},
 		"friend/invite": {"function": "event_invite"},
 		"friend/remove": {"function": "event_remove"},
+		// A friend's XMPP and Matrix addresses as their profile now shows them.
+		"friend/accounts": {"function": "event_accounts"},
 		"information": {"function": "event_information", "anonymous": true},
 		"avatar": {"function": "event_avatar", "anonymous": true},
 		"banner": {"function": "event_banner", "anonymous": true},
@@ -120,6 +123,9 @@
 		// The person's avatar and banner as bytes, for a hosted Bluesky
 		// account's profile record, asked by core's AT Protocol engine.
 		"profile/media": {"function": "function_profile_media"},
+		// The accounts the person shows on their profile have changed, said by
+		// core: their friends are told the XMPP and Matrix addresses among them.
+		"profile/accounts": {"function": "function_profile_accounts"},
 		"groups/list": {"function": "function_groups_list", "permission": "groups/read"},
 		"contacts/list": {"function": "function_contacts_list", "permission": "contacts/read"},
 		"contacts/get": {"function": "function_contacts_get", "permission": "contacts/read"},

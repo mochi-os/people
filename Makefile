@@ -20,6 +20,7 @@ all: vendor web/dist/index.html
 vendor:
 	mkdir -p lib
 	ln -sf ../../../lib/starlark/attachments.star lib/attachments.star
+	ln -sf ../../../lib/starlark/assets.star lib/assets.star
 
 clean:
 	rm -rf web/dist

@@ -113,7 +113,7 @@ describe('PublicProfile', () => {
     ).toMatchObject({ name: 'Ada Lovelace' })
   })
 
-  it("links the person's accounts elsewhere with rel=me, web links only", async () => {
+  it("links the person's accounts elsewhere with rel=me, web and XMPP links only", async () => {
     calls.information = vi.fn().mockResolvedValue({
       id: 'p1',
       fingerprint: 'abcdefghi',
@@ -136,6 +136,12 @@ describe('PublicProfile', () => {
           name: 'Ada',
           url: 'javascript:alert(1)',
         },
+        {
+          type: 'xmpp',
+          identifier: 'ada@example.org',
+          name: 'ada',
+          url: 'xmpp:ada@example.org',
+        },
       ],
     })
     render(
@@ -151,6 +157,10 @@ describe('PublicProfile', () => {
     expect(link).toHaveAttribute('href', 'https://mastodon.social/@ada')
     expect(link.getAttribute('rel')).toContain('me')
     expect(screen.queryByText(/ada\.bsky\.social/)).toBeNull()
+    // THE POINT: an XMPP account is linked by the address a chat client opens.
+    expect(
+      screen.getByRole('link', { name: 'XMPP · ada@example.org' })
+    ).toHaveAttribute('href', 'xmpp:ada@example.org')
   })
 
   it("lists the person's newest forum posts and comments, each opening in forums", async () => {

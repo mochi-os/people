@@ -163,7 +163,10 @@ export interface NetworkPerson {
 
 export interface SearchDirectoryResponse {
   results: DirectoryPerson[]
-  networks?: NetworkPerson[]
+}
+
+export interface SearchNetworksResponse {
+  networks: NetworkPerson[]
 }
 
 interface LocalUser {

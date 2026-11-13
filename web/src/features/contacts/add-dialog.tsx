@@ -48,6 +48,7 @@ import {
   useCreateContactMutation,
   useInviteFriendMutation,
   useSearchDirectoryQuery,
+  useSearchNetworksQuery,
 } from '@/hooks/useContacts'
 
 type AddContactDialogProps = {
@@ -109,13 +110,24 @@ export function AddContactDialog({
     debounced,
     { enabled: open && debounced.length > 0 }
   )
+  // Asked beside the directory, so its people show without waiting on other
+  // networks' servers. Not while linking a card, which offers no one there.
+  const { data: found, isLoading: finding } = useSearchNetworksQuery(
+    debounced,
+    { enabled: open && !link && debounced.length > 0 }
+  )
 
   const createMutation = useCreateContactMutation()
   const inviteMutation = useInviteFriendMutation()
   const acceptMutation = useAcceptFriendMutation()
 
   const results = useMemo(() => data?.results ?? [], [data?.results])
-  const networks = useMemo(() => data?.networks ?? [], [data?.networks])
+  // None while linking a card: a disabled query still holds what an earlier
+  // search of the same text answered.
+  const networks = useMemo(
+    () => (link ? [] : (found?.networks ?? [])),
+    [link, found?.networks]
+  )
 
   const addToContacts = async (
     person: string,
@@ -255,7 +267,8 @@ export function AddContactDialog({
     if (!hasQuery) return 'idle'
     if (isLoading) return 'loading'
     if (isError) return 'error'
-    if (results.length === 0 && networks.length === 0) return 'empty'
+    if (results.length === 0 && networks.length === 0)
+      return finding ? 'loading' : 'empty'
     return 'results'
   })()
 

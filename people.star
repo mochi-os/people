@@ -22,6 +22,11 @@ def notify(topic, object="", title="", body="", url="", sender="", event=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event=event)
 
 def database_upgrade(version):
+	if version == 17:
+		# A friend's XMPP and Matrix addresses as their profile shows them, for
+		# chat and core to know them by.
+		if not [c for c in mochi.db.table("contacts") if c["name"] == "addresses"]:
+			mochi.db.execute("alter table contacts add column addresses text not null default ''")
 	if version == 16:
 		# A slot image's type was the one its uploader's browser declared, and
 		# JPEG bytes stood as image/png. Each takes the type its bytes carry;
@@ -151,11 +156,13 @@ def database_upgrade(version):
 def database_create():
 	# Address books are entities of class book; the row carries the version that
 	# serves as the book's change token. Contacts hold a vCard property list in
-	# card (see contacts.star); person and friend are server-owned columns.
+	# card (see contacts.star); person and friend are server-owned columns, as
+	# is addresses, a friend's XMPP and Matrix addresses as their profile shows
+	# them, a JSON list or empty for none.
 	mochi.db.execute("create table if not exists books ( id text not null primary key, identity text not null, slug text not null default '', version integer not null default 0, created integer not null default 0, updated integer not null default 0 )")
 	mochi.db.execute("create index if not exists books_identity on books( identity )")
 	mochi.db.execute("create unique index if not exists books_identity_slug on books( identity, slug )")
-	mochi.db.execute("create table if not exists contacts ( id text not null primary key, book text not null default '', identity text not null, person text not null default '', friend integer not null default 0, name text not null default '', directory text not null default '', card text not null default '[]', etag text not null default '', slug text not null default '', photo text not null default '', photographed integer not null default 0, created integer not null default 0, updated integer not null default 0, refreshed integer not null default 0 )")
+	mochi.db.execute("create table if not exists contacts ( id text not null primary key, book text not null default '', identity text not null, person text not null default '', friend integer not null default 0, name text not null default '', directory text not null default '', card text not null default '[]', etag text not null default '', slug text not null default '', photo text not null default '', photographed integer not null default 0, addresses text not null default '', created integer not null default 0, updated integer not null default 0, refreshed integer not null default 0 )")
 	mochi.db.execute("create index if not exists contacts_identity_person on contacts( identity, person )")
 	mochi.db.execute("create index if not exists contacts_book on contacts( book )")
 	mochi.db.execute("create unique index if not exists contacts_book_slug on contacts( book, slug )")
@@ -660,8 +667,25 @@ def profile_accounts():
 	"""The person's accounts on other networks that they show on their
 	profile, as the page links them: type, identifier, name and url. The
 	page's links to them carry rel="me", which those networks verify by
-	fetching the page, so the accounts show the profile as the person's."""
-	return [{"type": acc.get("type", ""), "identifier": acc.get("identifier", ""), "name": acc.get("name", ""), "url": acc["url"]} for acc in (mochi.account.profile() or []) if acc.get("url", "").startswith("https://")]
+	fetching the page, so the accounts show the profile as the person's. An
+	XMPP account's link is the xmpp: address a client opens a chat with."""
+	return [{"type": acc.get("type", ""), "identifier": acc.get("identifier", ""), "name": acc.get("name", ""), "url": acc["url"]} for acc in (mochi.account.profile() or []) if profile_link(acc.get("url", ""))]
+
+# profile_link(url) -> bool: whether an account's address is one a profile
+# page links: a web page, or an XMPP address.
+def profile_link(url):
+	return type(url) == "string" and (url.startswith("https://") or url.startswith("xmpp:"))
+
+# person_held(a, person_id) -> bool: whether this server holds the person. Core
+# resolves a route's entity only for one held here, and then hands the person
+# input its id, however the address named it. A hosted domain's app route
+# resolves no entity, so a signed-in caller there is answered from the local
+# entities; an anonymous one has no user context for mochi.entity.info to ask
+# with, and is relayed, unkept, as any other server's person is.
+def person_held(a, person_id):
+	if a.entity != None:
+		return a.entity.get("class") == "person" and a.entity.get("id") == person_id
+	return a.user != None and get_person_entity(person_id) != None
 
 def get_person_entity(person_id):
 	if not person_id:
@@ -698,6 +722,22 @@ def stream_person_asset(a, person_id, asset):
 	if not mochi.text.valid(person_id, "entity") and not mochi.text.valid(person_id, "fingerprint"):
 		a.error.label(404, "errors.person_not_found")
 		return None
+	# A person another server holds is relayed through the shared asset cache,
+	# as every other app's routes to people's faces are: kept five minutes in
+	# the caller's storage, so a list of faces or a person's page does not pay
+	# a stream to their server on every view, and a revalidation of a kept copy
+	# is answered here. A person this server holds is read fresh, as before.
+	# An entity this server holds that is not a person - a feed, a forum - is
+	# no person anywhere: relayed, it would only loop back here to say so.
+	if a.entity != None and a.entity.get("class") != "person":
+		a.error.label(404, "errors.person_not_found")
+		return None
+	if not person_held(a, person_id):
+		image = asset in _IMAGE_SLOTS
+		# attachment-ok: a person's avatar, style and information are public by design (privacy limits only the directory listing); the person's own server answers for them, as the direct relay below does
+		return asset_serve(a, person_id, "people", asset, version=a.input("v"),
+			missing="errors.asset_not_set" if image else "errors.person_not_found",
+			unavailable="errors.asset_unavailable" if image else "errors.person_unavailable")
 	s = mochi.remote.stream(person_id, "people", asset, {})
 	if not s:
 		a.error.label(502, "errors.person_unavailable")
@@ -726,14 +766,16 @@ def stream_person_asset(a, person_id, asset):
 	# Only the image slots stream bytes; information and style answer with data in
 	# the header and returned above. Anything else asking to be streamed is not a
 	# slot we have a size for, so there is nothing to bound it with.
-	cap = _SLOT_CAPS.get(asset)
+	# The favicon takes the avatar's cap: event_favicon answers a person with no
+	# favicon with their avatar, which the favicon's own upload cap would refuse.
+	cap = _AVATAR_MAX if asset == "favicon" else _SLOT_CAPS.get(asset)
 	if cap == None:
 		a.error.label(404, "errors.person_not_found")
 		return None
 	# Check the declared size before streaming: once a.write.stream starts, the 200
 	# and headers are sent and cannot be retracted. The maximum below still stops
 	# an under-declaring peer.
-	declared = header.get("size", 0)
+	declared = header.get("size")
 	if type(declared) in ("int", "float") and declared > cap:
 		a.error.label(502, "errors.asset_too_large", slot=asset)
 		return None
@@ -754,8 +796,9 @@ def stream_person_asset(a, person_id, asset):
 	# The slot's own cap, not core's 1GB backstop: this is a profile image, and the
 	# size we accept on upload is the size we should relay. A peer that ignores it
 	# gets cut off mid-transfer rather than being allowed to stream indefinitely
-	# through a route any anonymous caller can trigger.
-	a.write.stream(s, maximum=cap)
+	# through a route any anonymous caller can trigger. Held to the size declared
+	# too, so a body cut short is not kept under the validator set above.
+	a.write.stream(s, maximum=cap, size=declared if type(declared) == "int" and declared >= 0 else -1)
 	return None
 
 def action_information(a):
@@ -811,11 +854,17 @@ def set_image(a, slot):
 		return
 	# One image per slot: stream the bytes to file storage at a fixed per-slot
 	# path (so an upload overwrites the previous one, no accumulation) and upsert
-	# its metadata. No attachment machinery - a slot holds exactly one file.
-	size = a.upload("file", slot_path(person_id, slot))
+	# its metadata. No attachment machinery - a slot holds exactly one file. The
+	# bytes land beside the slot and are renamed over it, so a view while they
+	# arrive is served the old image or the new one whole, never part of either.
+	upload = slot_path(person_id, slot) + ".upload"
+	size = a.upload("file", upload)
 	if not size:
+		if mochi.file.exists(upload):
+			mochi.file.delete(upload)
 		a.error.label(400, "errors.no_file_uploaded")
 		return
+	mochi.file.move(upload, slot_path(person_id, slot))
 	now = mochi.time.now()
 	mochi.db.execute("insert or replace into images ( person, slot, content_type, size, updated ) values ( ?, ?, ?, ?, ? )",
 		person_id, slot, content_type, size, now)
@@ -835,8 +884,11 @@ def action_favicon_set(a):
 # The accent changes rarely and every page with a face asks for it, so a browser
 # keeps it as long as it keeps the avatar.
 def action_style(a):
-	out = stream_person_asset(a, a.input("person"), "style")
-	if out:
+	person = a.input("person")
+	out = stream_person_asset(a, person, "style")
+	# A person relayed from another server is answered with the freshness the
+	# relay set: what is left of the kept answer's lifetime.
+	if out and person_held(a, person):
 		a.header("Cache-Control", "private, max-age=300")
 	return out
 
@@ -963,19 +1015,26 @@ def serve_image_event(e, slot, fallback_slot=""):
 	if not get_person_entity(person_id):
 		e.stream.write({"status": "404", "error": "Person not found"})
 		return
+	# A slot is set when its row and its file both are; one whose file has gone
+	# falls back as one never set does. The size is the file's own, not the
+	# row's: a relay is held to it, and a row copied from older records may
+	# differ.
 	resolved = slot
 	att = slot_attachment(person_id, slot)
-	if not att and fallback_slot:
-		att = slot_attachment(person_id, fallback_slot)
+	size = mochi.file.size(slot_path(person_id, slot)) if att else None
+	if size == None and fallback_slot:
 		resolved = fallback_slot
-	if not att:
+		att = slot_attachment(person_id, fallback_slot)
+		size = mochi.file.size(slot_path(person_id, fallback_slot)) if att else None
+	if not att or size == None:
 		e.stream.write({"status": "404", "error": slot + " not set"})
 		return
+	path = slot_path(person_id, resolved)
 	# updated is when the image was set, from which the relaying server builds
 	# the validator a browser revalidates with. It goes out only here, after
 	# every check above, so a check added there runs before any answer.
-	e.stream.write({"status": "200", "content_type": att.get("content_type", "application/octet-stream"), "size": att.get("size", 0), "updated": att.get("updated", 0)})
-	e.write.file(slot_path(person_id, resolved))
+	e.stream.write({"status": "200", "content_type": att.get("content_type", "application/octet-stream"), "size": size, "updated": att.get("updated", 0)})
+	e.write.file(path)
 
 def event_avatar(e):
 	serve_image_event(e, "avatar")

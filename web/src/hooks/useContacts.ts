@@ -21,6 +21,7 @@ import {
   type PreferencesResponse,
   type SearchDirectoryResponse,
   type SearchLocalUsersResponse,
+  type SearchNetworksResponse,
   type UpdateContactRequest,
 } from '@/api/contacts'
 
@@ -29,6 +30,7 @@ const contactKeys = {
   one: (contact: string) => ['contacts', contact] as const,
   books: () => ['books'] as const,
   search: (query: string) => ['contacts', 'search', query] as const,
+  networks: (query: string) => ['contacts', 'networks', query] as const,
   localUsers: (query: string) => ['users', 'search', query] as const,
   preferences: () => ['people', 'preferences'] as const,
 }
@@ -124,6 +126,19 @@ export const useSearchDirectoryQuery = (
   useQuery<SearchDirectoryResponse>({
     queryKey: contactKeys.search(query),
     queryFn: () => contactsApi.search(query),
+    ...options,
+  })
+
+export const useSearchNetworksQuery = (
+  query: string,
+  options?: Omit<
+    UseQueryOptions<SearchNetworksResponse>,
+    'queryKey' | 'queryFn'
+  >
+) =>
+  useQuery<SearchNetworksResponse>({
+    queryKey: contactKeys.networks(query),
+    queryFn: () => contactsApi.networks(query),
     ...options,
   })
 

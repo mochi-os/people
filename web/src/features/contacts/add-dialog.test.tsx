@@ -42,6 +42,10 @@ const calls = vi.hoisted(() => ({
   start: vi.fn(),
   results: [] as unknown[],
   networks: [] as unknown[],
+  // Whether other networks' people are still being searched for, and whether
+  // the dialog asked for them at all.
+  finding: false,
+  asked: [] as boolean[],
 }))
 
 beforeEach(() => {
@@ -52,6 +56,8 @@ beforeEach(() => {
   calls.start = vi.fn()
   calls.results = [person]
   calls.networks = []
+  calls.finding = false
+  calls.asked = []
 })
 
 // Someone on Matrix a search found through the user's accounts.
@@ -65,12 +71,19 @@ const dave = {
 vi.mock('@/hooks/useContacts', () => ({
   useContactsQuery: () => ({ data: { contacts: [], received: [], sent: [] } }),
   useSearchDirectoryQuery: () => ({
-    data: { results: calls.results, networks: calls.networks },
+    data: { results: calls.results },
     isLoading: false,
     isError: false,
     error: null,
     refetch: vi.fn(),
   }),
+  useSearchNetworksQuery: (_query: string, options?: { enabled?: boolean }) => {
+    calls.asked.push(Boolean(options?.enabled))
+    return {
+      data: calls.finding ? undefined : { networks: calls.networks },
+      isLoading: calls.finding && Boolean(options?.enabled),
+    }
+  },
   useCreateContactMutation: () => ({
     mutateAsync: calls.create,
     isPending: false,
@@ -247,6 +260,35 @@ describe('AddContactDialog', () => {
     show({ link: { contact: 'c1', name: 'Ada Lovelace' } })
     await screen.findByText('Ada Lovelace')
     expect(screen.queryByText('Dave Fleet')).toBeNull()
+    expect(calls.asked).not.toContain(true)
+  })
+
+  it('says no one was found while linking, whatever other networks found before', async () => {
+    calls.results = []
+    calls.networks = [dave]
+    show({ link: { contact: 'c1', name: 'Zed' } })
+    expect(await screen.findByText('No people found')).toBeInTheDocument()
+    expect(screen.queryByText('Dave Fleet')).toBeNull()
+  })
+
+  it("shows the directory's people while other networks are still searched", async () => {
+    calls.finding = true
+    show({})
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'ada' } })
+    expect(await screen.findByText('Ada Lovelace')).toBeInTheDocument()
+    expect(calls.asked).toContain(true)
+  })
+
+  it('says no one was found only once other networks have answered', async () => {
+    calls.results = []
+    calls.finding = true
+    const view = show({})
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'zed' } })
+    await waitFor(() => expect(calls.asked).toContain(true))
+    expect(screen.queryByText('No people found')).toBeNull()
+    calls.finding = false
+    view.rerender(dialog({}))
+    expect(await screen.findByText('No people found')).toBeInTheDocument()
   })
 
   it('starts a new contact where the list asks', () => {

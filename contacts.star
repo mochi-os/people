@@ -754,12 +754,14 @@ def contact_friend_set(identity, person, friend, name="", book=""):
 		photo_delete(row)
 	etag = contact_etag(card, person, friend, photo, row["name"], name or row["directory"])
 	now = mochi.time.now()
+	# A friend's addresses are theirs to give, and go with the friendship.
+	addresses = row.get("addresses", "") if friend else ""
 	if name:
 		# The name is the peer's claim: it fills the directory column for now and
 		# refreshed is left alone, so the next listing checks it against the directory.
-		mochi.db.execute("update contacts set friend=?, directory=?, photo=?, photographed=0, etag=?, updated=? where id=?", friend, name, photo, etag, now, row["id"])
+		mochi.db.execute("update contacts set friend=?, directory=?, photo=?, photographed=0, addresses=?, etag=?, updated=? where id=?", friend, name, photo, addresses, etag, now, row["id"])
 	else:
-		mochi.db.execute("update contacts set friend=?, photo=?, photographed=0, etag=?, updated=? where id=?", friend, photo, etag, now, row["id"])
+		mochi.db.execute("update contacts set friend=?, photo=?, photographed=0, addresses=?, etag=?, updated=? where id=?", friend, photo, addresses, etag, now, row["id"])
 	book_touch(row["book"], row["id"])
 	return contact_get(identity, row["id"])
 
@@ -1180,7 +1182,24 @@ def action_contact_search(a):
 	# no LIMIT, so one request would return every person in the directory.
 	if len(search) < 1:
 		return {"data": {"results": [], "networks": []}}
-	return {"data": {"results": search_annotated(identity, search), "networks": network_people(identity, search)}}
+	# A client that asks contacts/search/networks for other networks' people
+	# says so, and has this answer without waiting on their servers. The field
+	# stays for the Android releases from before that action.
+	networks = [] if a.input("networks") == "separate" else network_people(identity, search)
+	return {"data": {"results": search_annotated(identity, search), "networks": networks}}
+
+def action_contact_search_networks(a):
+	"""People on other networks a search finds through the user's accounts,
+	asked beside contacts/search so the directory's answer does not wait on
+	other networks' servers."""
+	identity = a.user.identity.id
+	search = a.input("search", "").strip()
+	if len(search) > 200:
+		a.error.label(400, "errors.search_query_too_long")
+		return
+	if len(search) < 1:
+		return {"data": {"networks": []}}
+	return {"data": {"networks": network_people(identity, search)}}
 
 def address_key(address):
 	"""A messaging address as two contacts' are compared: a Matrix address the
@@ -1191,10 +1210,14 @@ def address_key(address):
 	return value
 
 def contacts_addresses(identity):
-	"""Each messaging address on the user's contacts (vCard IMPP), compared as
-	address_key does, with the contact it is on."""
+	"""Each messaging address on the user's contacts (vCard IMPP), and each a
+	friend's profile shows, compared as address_key does, with the contact it
+	is on."""
 	out = {}
 	for row in contacts_rows(identity):
+		for key in addresses_of(row):
+			if key not in out:
+				out[key] = row["id"]
 		if "IMPP" not in (row.get("card") or ""):
 			continue
 		for p in card_decode(row["card"]):
@@ -1358,7 +1381,7 @@ def friend_invite(a, person, name, contact="", book=""):
 	if mutual:
 		# They already invited us - accept it.
 		contact_friend_set(identity, person, 1, name, book)
-		mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/accept"})
+		mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/accept"}, addresses_own())
 		invite_remove(identity, person)
 		return {"data": {}}
 	mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/invite"}, {"name": a.user.identity.name})
@@ -1382,7 +1405,7 @@ def friend_accept(a, person):
 		a.error.label(400, "errors.invitation_not_found")
 		return
 	contact_friend_set(identity, person, 1, i["name"])
-	mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/accept"})
+	mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/accept"}, addresses_own())
 	invite_remove(identity, person)
 	return {"data": {}}
 
@@ -1443,6 +1466,9 @@ def event_accept(e):
 	# They accepted our invitation: the contact made at invite time becomes a friend.
 	contact_friend_set(identity, sender, 1, i["name"])
 	invite_remove(identity, sender)
+	# Their addresses came with the acceptance; ours go back, now they are ours too.
+	addresses_store(identity, sender, e.content("addresses"), e.content("version"))
+	addresses_give(identity, sender)
 	notify("accept/accepted", "", mochi.app.label("notifications.title.friend_request_accepted"), mochi.app.label("notifications.body.accepted_invitation", name=i["name"]), "/people", sender, event="accept/accepted:" + sender + ":" + identity)
 
 def event_invite(e):
@@ -1467,7 +1493,7 @@ def event_invite(e):
 	# Mutual invite: always connect, regardless of policy.
 	if mochi.db.exists("select id from invites where identity=? and id=? and direction='to'", identity, sender):
 		contact_friend_set(identity, sender, 1, name)
-		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
+		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"}, addresses_own())
 		invite_remove(identity, sender)
 		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event="accept/matched:" + sender + ":" + identity)
 		return
@@ -1480,7 +1506,7 @@ def event_invite(e):
 	if policy == "accept":
 		# Auto-accept: mirror the mutual path without writing to invites.
 		contact_friend_set(identity, sender, 1, name)
-		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"})
+		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"}, addresses_own())
 		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event="accept/matched:" + sender + ":" + identity)
 		return
 
@@ -1514,6 +1540,102 @@ def event_remove(e):
 	if row and row["friend"] == 1:
 		contact_friend_set(identity, sender, 0)
 	invite_remove(identity, sender)
+
+def event_accounts(e):
+	if not genuine(e):
+		return
+	# A friend's addresses as their profile now shows them.
+	addresses_store(e.header("to"), e.header("from"), e.content("addresses"), e.content("version"))
+
+# === A friend's addresses on other networks ===
+# Each friend's XMPP and Matrix addresses as their profile shows them, kept on
+# their contact (addresses), so chat takes their messages and invitations and
+# core puts them on the roster without asking their server during delivery.
+# A person gives theirs with each friend/accept they send and in friend/accounts,
+# when a friendship forms and whenever what their profile shows changes. Only
+# what the profile shows goes: the copy is what anyone can read there. Each
+# carries a version, a time-ordered id made as the profile was read, and the
+# copy keeps the newest: a send that failed and is retried can arrive after a
+# later one. The column holds {"addresses": [...], "version": ...}.
+
+# Most addresses a friend's copy keeps.
+_ADDRESSES_MAXIMUM = 16
+
+def address_network(network, value):
+	"""An address on XMPP or Matrix in the form address_key compares, or None."""
+	if network == "xmpp":
+		address = xmpp_address(value)
+		return "xmpp:" + address if address else None
+	if network == "matrix":
+		address = address_key(value)
+		if address.startswith("@") and address.find(":") > 1 and not address.endswith(":") and " " not in address and "/" not in address and len(address) <= 500:
+			return address
+	return None
+
+def addresses_own():
+	"""The user's XMPP and Matrix addresses that their profile shows, as a
+	friend is told them: with the version they stand at."""
+	out = []
+	for acc in mochi.account.profile() or []:
+		address = address_network(acc.get("type"), acc.get("identifier"))
+		if address and address not in out:
+			out.append(address)
+	return {"addresses": out, "version": mochi.uid()}
+
+def addresses_clean(value):
+	"""A friend's addresses as their server gave them, each one it could be,
+	or None for a value that is no list. A list in an event arrives as a
+	tuple."""
+	if type(value) not in ("list", "tuple"):
+		return None
+	out = []
+	for entry in value[:_ADDRESSES_MAXIMUM]:
+		if type(entry) != "string":
+			continue
+		address = address_network("xmpp" if entry.lower().startswith("xmpp:") else "matrix", entry)
+		if address and address not in out:
+			out.append(address)
+	return out
+
+def addresses_kept(row):
+	"""What a contact keeps of a friend's addresses: {addresses, version}."""
+	value = json.decode(row["addresses"]) if row.get("addresses") else None
+	return value if type(value) == "dict" else {"addresses": [], "version": ""}
+
+def addresses_of(row):
+	"""The addresses kept on a contact, a friend's."""
+	return addresses_kept(row)["addresses"]
+
+def addresses_store(identity, person, value, version):
+	"""Keep a friend's addresses as they gave them, unless what is kept is as
+	new. Only a friend's are kept, and a value that is no list, or one with
+	no version, leaves what is."""
+	addresses = addresses_clean(value)
+	if addresses == None or type(version) != "string" or not version or len(version) > 64 or not identity or not person:
+		return
+	row = mochi.db.row("select id, addresses from contacts where identity=? and person=? and friend=1", identity, person)
+	if not row or addresses_kept(row)["version"] >= version:
+		return
+	mochi.db.execute("update contacts set addresses=? where id=?", json.encode({"addresses": addresses, "version": version}), row["id"])
+	# Core builds the XMPP roster from the friends' addresses, and refreshes it
+	# when told the contacts changed.
+	devices_sync()
+
+def addresses_give(identity, person):
+	"""Give a new friend the user's addresses, where the profile shows any."""
+	own = addresses_own()
+	if own["addresses"]:
+		mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/accounts"}, own)
+
+def function_profile_accounts(context, identity):
+	"""Tell each of the user's friends the XMPP and Matrix addresses their
+	profile now shows, as core asks once what it shows has changed."""
+	if not identity:
+		return
+	own = addresses_own()
+	for row in mochi.db.rows("select person from contacts where identity=? and friend=1 and person!=''", identity):
+		if not xmpp_person(row["person"]):
+			mochi.message.send({"from": identity, "to": row["person"], "service": "friends", "event": "friend/accounts"}, own)
 
 # === Services: the friends view of contacts ===
 # Consumers (chat, chess, go, words) pass these rows straight to their own
@@ -2124,5 +2246,8 @@ def function_xmpp_friends(context, identity):
 					address = xmpp_address(p.get("value")) if str(p.get("value", "")).lower().startswith("xmpp:") else None
 					if address and address not in addresses:
 						addresses.append(address)
+		for key in addresses_of(row):
+			if key.startswith("xmpp:") and key[len("xmpp:"):] not in addresses:
+				addresses.append(key[len("xmpp:"):])
 		out.append({"person": row["person"], "name": row["name"] or row["directory"], "addresses": ["xmpp:" + address for address in addresses]})
 	return out

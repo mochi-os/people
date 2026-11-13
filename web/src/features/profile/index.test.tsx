@@ -79,6 +79,12 @@ describe('Profile', () => {
         name: 'Ada',
         url: 'javascript:alert(1)',
       },
+      {
+        type: 'xmpp',
+        identifier: 'ada@example.org',
+        name: 'ada',
+        url: 'xmpp:ada@example.org',
+      },
     ]
     show()
     // THE POINT: what Show on profile turns on is seen where the profile is edited.
@@ -87,6 +93,9 @@ describe('Profile', () => {
     })
     expect(link).toHaveAttribute('href', 'https://mastodon.social/@ada')
     expect(screen.queryByText(/ada\.example/)).toBeNull()
+    expect(
+      screen.getByRole('link', { name: 'XMPP · ada@example.org' })
+    ).toHaveAttribute('href', 'xmpp:ada@example.org')
     fireEvent.click(screen.getByRole('button', { name: 'Settings' }))
     expect(opened).toEqual(['/settings/user/networks'])
   })

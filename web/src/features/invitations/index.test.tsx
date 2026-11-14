@@ -7,11 +7,12 @@ import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import type { Received } from '@/api/types/contacts'
+import type { GetContactsResponse, Received } from '@/api/types/contacts'
 import { Invitations } from './index'
 
 const state = vi.hoisted(() => ({
   received: [] as Received[],
+  sent: [] as GetContactsResponse['sent'],
   accept: vi.fn(),
   toast: { success: vi.fn(), error: vi.fn() },
 }))
@@ -24,7 +25,7 @@ vi.mock('@mochi/web', async (original) => ({
 }))
 vi.mock('@/hooks/useContacts', () => ({
   useContactsQuery: () => ({
-    data: { contacts: [], received: state.received, sent: [] },
+    data: { contacts: [], received: state.received, sent: state.sent },
     isLoading: false,
     error: null,
     refetch: vi.fn(),
@@ -67,6 +68,8 @@ function show() {
 }
 
 beforeEach(() => {
+  state.received = []
+  state.sent = []
   state.accept = vi.fn().mockResolvedValue({})
   state.toast.success = vi.fn()
   state.toast.error = vi.fn()
@@ -122,6 +125,50 @@ describe('Invitations', () => {
       expect(state.accept).toHaveBeenCalledWith({
         person: 'xmpp:dave@example.org',
       })
+    )
+  })
+
+  // jsdom lays nothing out, so the row's flex contract is what can be held:
+  // the name block takes the spare width and may shrink below its text, so
+  // `truncate` cuts a long name short, and the buttons never shrink. A
+  // received row also wraps: below a 12rem name block beside both buttons,
+  // as on a phone, Accept and Decline go to a line of their own.
+  it("gives a received invite's name the row and keeps its buttons whole", () => {
+    state.received = [invite({ name: 'Test Seller' })]
+    show()
+    const block = screen.getByText('Test Seller').closest('.flex.items-center')
+    expect(block).toHaveClass('min-w-0', 'flex-1', 'basis-48')
+    expect(block?.parentElement).toHaveClass('flex-wrap')
+    expect(screen.getByText('Test Seller').parentElement).toHaveClass('min-w-0')
+    const actions = screen.getByRole('button', {
+      name: /^Accept$/,
+    }).parentElement
+    expect(actions).toHaveClass('shrink-0')
+    expect(actions).toContainElement(
+      screen.getByRole('button', { name: /^Decline$/ })
+    )
+  })
+
+  it("lets a sent invite's name and address shrink and keeps Cancel whole", () => {
+    state.sent = [
+      {
+        identity: 'me',
+        id: 'xmpp:dave@example.org',
+        direction: 'to',
+        name: 'Dave',
+        updated: 0,
+        address: 'dave@example.org',
+      },
+    ]
+    show()
+    const name = screen.getByText('Dave')
+    expect(name.closest('.flex.items-center')).toHaveClass('min-w-0', 'flex-1')
+    expect(name.parentElement).toHaveClass('min-w-0')
+    expect(screen.getByText('Pending · dave@example.org')).toHaveClass(
+      'truncate'
+    )
+    expect(screen.getByRole('button', { name: /^Cancel$/ })).toHaveClass(
+      'shrink-0'
     )
   })
 

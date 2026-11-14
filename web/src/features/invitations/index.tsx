@@ -297,9 +297,9 @@ export function Invitations() {
                   {filteredReceived.map((invite) => (
                     <div
                       key={invite.id}
-                      className='hover:bg-hover flex items-center justify-between px-4 py-3 transition-colors'
+                      className='hover:bg-hover flex flex-wrap items-center justify-between gap-x-3 gap-y-2 px-4 py-3 transition-colors'
                     >
-                      <div className='flex items-center gap-3'>
+                      <div className='flex min-w-0 flex-1 basis-48 items-center gap-3'>
                         {invite.address ? (
                           <EntityAvatar name={invite.name} size='md' />
                         ) : (
@@ -335,7 +335,7 @@ export function Invitations() {
                           </span>
                         </div>
                       </div>
-                      <div className='flex items-center gap-2'>
+                      <div className='ms-auto flex shrink-0 items-center gap-2'>
                         <Button
                           size='sm'
                           variant='default'
@@ -397,9 +397,9 @@ export function Invitations() {
                   {filteredSent.map((invite) => (
                     <div
                       key={invite.id}
-                      className='hover:bg-hover flex items-center justify-between px-4 py-3 transition-colors'
+                      className='hover:bg-hover flex items-center justify-between gap-3 px-4 py-3 transition-colors'
                     >
-                      <div className='flex items-center gap-3'>
+                      <div className='flex min-w-0 flex-1 items-center gap-3'>
                         {invite.address ? (
                           <EntityAvatar name={invite.name} size='md' />
                         ) : (
@@ -413,11 +413,11 @@ export function Invitations() {
                             size='md'
                           />
                         )}
-                        <div className='flex flex-col'>
+                        <div className='flex min-w-0 flex-col'>
                           <span className='truncate font-medium'>
                             {invite.name}
                           </span>
-                          <span className='text-muted-foreground text-xs'>
+                          <span className='text-muted-foreground truncate text-xs'>
                             <Trans>Pending</Trans>
                             {invite.address && ` · ${invite.address}`}
                           </span>

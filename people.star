@@ -22,6 +22,9 @@ def notify(topic, object="", title="", body="", url="", sender="", event=""):
 	mochi.service.call("notifications", "send", topic, object, title, body, url, mochi.app.label("notifications.topic." + topic.replace("/", ".")), sender=sender, event=event)
 
 def database_upgrade(version):
+	if version == 18:
+		# The people the user has declined, whose later invitations are dropped.
+		mochi.db.execute("create table if not exists declined ( identity text not null, person text not null, created integer not null, primary key ( identity, person ) )")
 	if version == 17:
 		# A friend's XMPP and Matrix addresses as their profile shows them, for
 		# chat and core to know them by.
@@ -174,6 +177,9 @@ def database_create():
 	mochi.db.execute("create table if not exists invites ( identity text not null, id text not null, direction text not null, name text not null default '', updated integer not null default 0, account text not null default '', primary key ( identity, id, direction ) )")
 	mochi.db.execute("create table if not exists sent ( identity text not null, created integer not null )")
 	mochi.db.execute("create index if not exists sent_identity_created on sent( identity, created )")
+	# A person whose invitation the user declined: their later invitations are
+	# dropped unseen, until the user invites them.
+	mochi.db.execute("create table if not exists declined ( identity text not null, person text not null, created integer not null, primary key ( identity, person ) )")
 	mochi.db.execute("create table if not exists profiles ( person text not null primary key, profile text not null default '', accent text not null default '', updated integer not null default 0 )")
 
 	# Per-slot image metadata (avatar/banner/favicon). The bytes live in file

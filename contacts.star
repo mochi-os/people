@@ -109,6 +109,33 @@ def invite_remove(identity, id, direction=None):
 		return
 	mochi.db.execute("delete from invites where identity=? and id=?", identity, id)
 
+# A decline is final: the declined person's later invitations are dropped
+# unseen, so cancelling and inviting again cannot nag. Only the user inviting
+# them lifts it. The sender is never told, as a decline is never announced.
+def declined(identity, person):
+	return mochi.db.exists("select person from declined where identity=? and person=?", identity, person)
+
+def decline_set(identity, person):
+	mochi.db.execute("insert into declined ( identity, person, created ) values ( ?, ?, ? ) on conflict ( identity, person ) do update set created=excluded.created", identity, person, mochi.time.now())
+
+def decline_remove(identity, person):
+	mochi.db.execute("delete from declined where identity=? and person=?", identity, person)
+
+# occurrence(kind) -> string: a friendship notification's event key, naming
+# this one invitation or acceptance. The notifications app takes a repeated key
+# for a retry and refreshes the row without announcing it, so the key names the
+# occurrence, never the pair of people, or a later invitation between the same
+# two after a cancel would pass for a retry. A message delivered twice cannot
+# notify twice, as each handler checks its own state first: an invitation
+# already pending, a sender already a friend, an outgoing invitation to accept.
+def occurrence(kind):
+	return kind + ":" + mochi.uid()
+
+# invited(identity, person) -> bool: whether the user's own invitation to
+# person is waiting on them.
+def invited(identity, person):
+	return mochi.db.exists("select id from invites where identity=? and id=? and direction='to'", identity, person)
+
 # invites_received(identity) -> list: the invitations waiting on the user. The
 # name on one is the sender's own claim, so each also carries the sender's
 # fingerprint and the directory's name for them, which tell the real person
@@ -1342,7 +1369,7 @@ def person_valid(a, person, identity):
 def friend_invite(a, person, name, contact="", book=""):
 	identity = a.user.identity.id
 	if xmpp_person(person):
-		return xmpp_invite(a, identity, person, name, a.input("account", ""))
+		return xmpp_invite(a, identity, person, name, a.input("account", ""), invitation=True)
 	if not person_valid(a, person, identity):
 		return
 	if not name:
@@ -1368,6 +1395,11 @@ def friend_invite(a, person, name, contact="", book=""):
 		if other and other["id"] != row["id"]:
 			a.error.label(409, "errors.person_linked")
 			return
+	# One invitation at a time: a second while the first waits would only
+	# announce it again.
+	if invited(identity, person):
+		a.error.label(409, "errors.already_invited")
+		return
 	mutual = mochi.db.exists("select id from invites where identity=? and id=? and direction='from'", identity, person)
 	# An invite is the only friends message that can target a stranger, so it is
 	# the one primitive for spraying or probing entity ids; core's send limit is
@@ -1375,7 +1407,9 @@ def friend_invite(a, person, name, contact="", book=""):
 	if not mutual and invites_recent(identity) >= _INVITE_LIMIT:
 		a.error.label(429, "errors.too_many_invites")
 		return
-	# Every refusal is behind us: the card changes only for an invite that goes.
+	# Every refusal is behind us: the card changes only for an invite that goes,
+	# and inviting someone the user declined lifts the decline.
+	decline_remove(identity, person)
 	if row and not row["person"]:
 		contact_person_set(row, person, name)
 	if mutual:
@@ -1404,6 +1438,8 @@ def friend_accept(a, person):
 	if not i:
 		a.error.label(400, "errors.invitation_not_found")
 		return
+	# Accepting is the user's own choice, as inviting is, and lifts a decline.
+	decline_remove(identity, person)
 	contact_friend_set(identity, person, 1, i["name"])
 	mochi.message.send({"from": identity, "to": person, "service": "friends", "event": "friend/accept"}, addresses_own())
 	invite_remove(identity, person)
@@ -1415,6 +1451,8 @@ def friend_ignore(a, person):
 		return xmpp_end(a, identity, person, "from")
 	if not person_valid(a, person, identity):
 		return
+	# The decline first, so an invitation arriving meanwhile is dropped.
+	decline_set(identity, person)
 	invite_remove(identity, person, "from")
 	return {"data": {}}
 
@@ -1469,7 +1507,7 @@ def event_accept(e):
 	# Their addresses came with the acceptance; ours go back, now they are ours too.
 	addresses_store(identity, sender, e.content("addresses"), e.content("version"))
 	addresses_give(identity, sender)
-	notify("accept/accepted", "", mochi.app.label("notifications.title.friend_request_accepted"), mochi.app.label("notifications.body.accepted_invitation", name=i["name"]), "/people", sender, event="accept/accepted:" + sender + ":" + identity)
+	notify("accept/accepted", "", mochi.app.label("notifications.title.friend_request_accepted"), mochi.app.label("notifications.body.accepted_invitation", name=i["name"]), "/people", sender, event=occurrence("accept/accepted"))
 
 def event_invite(e):
 	# Incoming friend invite. The user-configurable `invite_policy` preference
@@ -1490,12 +1528,25 @@ def event_invite(e):
 	identity = e.header("to")
 	sender = e.header("from")
 
+	# Someone the user declined: dropped unseen, whatever the policy.
+	if declined(identity, sender):
+		return
+
+	# A friend already: their side has lost the friendship, or the invitation
+	# is a repeat. The acceptance goes back so they catch up, and nothing is
+	# announced, as nothing has changed here.
+	row = contact_by_person(identity, sender)
+	if row and row["friend"] == 1:
+		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"}, addresses_own())
+		invite_remove(identity, sender)
+		return
+
 	# Mutual invite: always connect, regardless of policy.
 	if mochi.db.exists("select id from invites where identity=? and id=? and direction='to'", identity, sender):
 		contact_friend_set(identity, sender, 1, name)
 		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"}, addresses_own())
 		invite_remove(identity, sender)
-		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event="accept/matched:" + sender + ":" + identity)
+		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event=occurrence("accept/matched"))
 		return
 
 	policy = e.user.preference.get("invite_policy") or "notify"
@@ -1507,7 +1558,7 @@ def event_invite(e):
 		# Auto-accept: mirror the mutual path without writing to invites.
 		contact_friend_set(identity, sender, 1, name)
 		mochi.message.send({"from": identity, "to": sender, "service": "friends", "event": "friend/accept"}, addresses_own())
-		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event="accept/matched:" + sender + ":" + identity)
+		notify("accept/matched", "", mochi.app.label("notifications.title.new_friend"), mochi.app.label("notifications.body.now_your_friend", name=name), "/people", sender, event=occurrence("accept/matched"))
 		return
 
 	# silent or notify: store the pending invite. A sender already pending only
@@ -1522,7 +1573,7 @@ def event_invite(e):
 	invite_set(identity, sender, "from", name)
 
 	if policy == "notify" and not pending:
-		notify("invite/received", "", mochi.app.label("notifications.title.friend_invitation"), mochi.app.label("notifications.body.invited_you", name=name), "/people/invitations", sender, event="invite/received:" + sender + ":" + identity)
+		notify("invite/received", "", mochi.app.label("notifications.title.friend_invitation"), mochi.app.label("notifications.body.invited_you", name=name), "/people/invitations", sender, event=occurrence("invite/received"))
 
 def event_cancel(e):
 	if not genuine(e):
@@ -2102,9 +2153,10 @@ def xmpp_account_for(roster, account, address):
 			return str(item["account"])
 	return ids[0] if ids else None
 
-def xmpp_invite(a, identity, person, name, account):
+def xmpp_invite(a, identity, person, name, account, invitation=False):
 	"""Invite an XMPP address, or accept its request: the account asks to
-	see their presence and approves theirs."""
+	see their presence and approves theirs. A new invitation is refused
+	while the account's own request to them waits, one at a time."""
 	address = xmpp_address(person)
 	if not address:
 		a.error.label(400, "errors.invalid_friend_id_format")
@@ -2114,10 +2166,16 @@ def xmpp_invite(a, identity, person, name, account):
 	if not account:
 		a.error.label(400, "errors.no_xmpp_account")
 		return
+	if invitation:
+		for item in roster.get("items", []):
+			if item.get("address") == address and str(item.get("account", "")) == account and item.get("ask") and not item.get("pending"):
+				a.error.label(409, "errors.already_invited")
+				return
 	name = str(name or "").strip()
 	if name and not mochi.text.valid(name, "line"):
 		a.error.label(400, "errors.invalid_friend_name")
 		return
+	decline_remove(identity, "xmpp:" + address)
 	mochi.account.roster.add(account, address, name=name)
 	invite_remove(identity, "xmpp:" + address, "from")
 	invite_set(identity, "xmpp:" + address, "to", name or address, account)
@@ -2132,6 +2190,9 @@ def xmpp_end(a, identity, person, direction):
 		a.error.label(400, "errors.invalid_friend_id_format")
 		return
 	account = a.input("account", "")
+	# A decline first, so a request arriving meanwhile is refused.
+	if direction == "from":
+		decline_set(identity, "xmpp:" + address)
 	roster = xmpp_roster()
 	for item in roster.get("items", []):
 		if item.get("address") == address and (not account or str(item.get("account", "")) == account):
@@ -2201,24 +2262,31 @@ def function_xmpp_roster(context, identity, account, address, name="", subscript
 	label = str(name or "").strip()
 	if not label or not mochi.text.valid(label, "display"):
 		label = address
-	if pending and event == "invite":
-		policy = mochi.user.preference.get("invite_policy") or "notify"
-		if policy == "reject":
+	policy = mochi.user.preference.get("invite_policy") or "notify"
+	# The user's own request, from People or any of their XMPP clients, is
+	# them inviting this person, which lifts a decline. A request from
+	# someone the user has asked, or already sees, answers the user's own, so
+	# neither a decline nor the policy refuses it: refusing removes the
+	# contact, which would end the user's own subscription too.
+	if ask:
+		decline_remove(identity, id)
+	if pending and not ask and subscription not in ("to", "both"):
+		if declined(identity, id) or (event == "invite" and policy == "reject"):
 			mochi.account.roster.remove(account, address)
 			invite_remove(identity, id)
 			return None
-		if policy == "accept":
-			mochi.account.roster.add(account, address, name=label)
-			contact_xmpp_link(identity, address, label)
-			notify("accept/matched", "", mochi.app.label("notifications.title.xmpp_contact"), mochi.app.label("notifications.body.xmpp_contact", name=label), "/people", id, event="accept/matched:" + id + ":" + identity)
-			return None
+	if pending and event == "invite" and policy == "accept":
+		mochi.account.roster.add(account, address, name=label)
+		contact_xmpp_link(identity, address, label)
+		notify("accept/matched", "", mochi.app.label("notifications.title.xmpp_contact"), mochi.app.label("notifications.body.xmpp_contact", name=label), "/people", id, event=occurrence("accept/matched"))
+		return None
 	if pending:
 		fresh = not mochi.db.exists("select id from invites where identity=? and id=? and direction='from'", identity, id)
 		if fresh and invites_pending(identity) >= _INVITE_PENDING_MAXIMUM:
 			return None
 		invite_set(identity, id, "from", label, account)
-		if fresh and event == "invite" and (mochi.user.preference.get("invite_policy") or "notify") == "notify":
-			notify("invite/received", "", mochi.app.label("notifications.title.xmpp_invitation"), mochi.app.label("notifications.body.xmpp_invited", name=label), "/people/invitations", id, event="invite/received:" + id + ":" + identity)
+		if fresh and event == "invite" and policy == "notify":
+			notify("invite/received", "", mochi.app.label("notifications.title.xmpp_invitation"), mochi.app.label("notifications.body.xmpp_invited", name=label), "/people/invitations", id, event=occurrence("invite/received"))
 	else:
 		invite_remove(identity, id, "from")
 	if ask:
@@ -2228,7 +2296,7 @@ def function_xmpp_roster(context, identity, account, address, name="", subscript
 	if subscription != "none" or ask:
 		contact_xmpp_link(identity, address, label)
 	if event == "accept":
-		notify("accept/accepted", "", mochi.app.label("notifications.title.xmpp_accepted"), mochi.app.label("notifications.body.xmpp_accepted", name=label), "/people", id, event="accept/accepted:" + id + ":" + identity)
+		notify("accept/accepted", "", mochi.app.label("notifications.title.xmpp_accepted"), mochi.app.label("notifications.body.xmpp_accepted", name=label), "/people", id, event=occurrence("accept/accepted"))
 	return None
 
 def function_xmpp_friends(context, identity):

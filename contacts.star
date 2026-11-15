@@ -2039,6 +2039,19 @@ def function_contacts_birthdays(context, identity):
 			break
 	return out
 
+# function_books_versions(context, identity) -> list: each address book's
+# change token, as CardDAV answers it, without reading a card. Every write to
+# a contact moves its book's token, so the list moves whenever anything
+# derived from the contacts may have, contacts/birthdays included. Contacts
+# from before address books are moved into the default book first, as their
+# changes would otherwise move no token.
+def function_books_versions(context, identity):
+	if not identity:
+		return []
+	if mochi.db.exists("select id from contacts where identity=? and book=''", identity):
+		book_default(identity)
+	return [row["id"] + "-" + str(row["version"]) for row in mochi.db.rows("select id, version from books where identity=? order by created, id", identity)]
+
 # The networks a SOCIALPROFILE may name, by SERVICE-TYPE, and the network
 # Mochi's lookup knows each as. Earlier versions wrote Fediverse.
 HANDLE_NETWORKS = {"activitypub": "fediverse", "fediverse": "fediverse", "mastodon": "fediverse", "bluesky": "bluesky"}

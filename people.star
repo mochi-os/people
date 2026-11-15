@@ -997,8 +997,8 @@ def opengraph_person(params):
 	if profile.get("profile"):
 		# Flatten whitespace so multi-line markdown doesn't break meta attributes
 		excerpt = " ".join(profile["profile"].split()).strip()
-		if len(excerpt) > 200:
-			excerpt = excerpt[:197] + "..."
+		if length(excerpt) > 200:
+			excerpt = "".join(list(excerpt.codepoints())[:197]) + "..."
 		og["description"] = excerpt
 	if slot_attachment(person_id, "avatar"):
 		og["image"] = "-/avatar"

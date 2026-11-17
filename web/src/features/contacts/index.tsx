@@ -107,9 +107,7 @@ export function Contacts({
   const shownName =
     shown.data?.contact.name ||
     data?.contacts.find((row) => row.id === panel?.id)?.name
-  usePageTitle(
-    panel ? (panel.id ? shownName || title : t`New contact`) : title
-  )
+  usePageTitle(panel ? (panel.id ? shownName || title : t`New contact`) : title)
 
   const deleteMutation = useDeleteContactMutation()
   const removeFriendMutation = useRemoveFriendMutation()

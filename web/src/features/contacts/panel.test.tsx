@@ -279,7 +279,11 @@ describe('ContactPanel', () => {
     fireEvent.change(nickname(), { target: { value: 'Countess' } })
     fireEvent.focusOut(nickname())
     await waitFor(() => expect(updates()).toHaveLength(1))
-    expect(updates()[0]).toMatchObject({ contact: 'c1', etag: 'e1', book: 'b1' })
+    expect(updates()[0]).toMatchObject({
+      contact: 'c1',
+      etag: 'e1',
+      book: 'b1',
+    })
     expect(saved('NICKNAME')).toEqual([
       { name: 'NICKNAME', params: {}, value: 'Countess' },
     ])
@@ -575,7 +579,10 @@ describe('ContactPanel', () => {
   })
 
   it('shows the friend switch under the nickname with no divider between, and the details under a heading', () => {
-    holding({ name: 'NICKNAME', value: 'Countess' }, { name: 'NOTE', value: 'Met at the Society' })
+    holding(
+      { name: 'NICKNAME', value: 'Countess' },
+      { name: 'NOTE', value: 'Met at the Society' }
+    )
     show('c1')
     const toggle = screen.getByRole('switch', { name: 'Mochi friend' })
     expect(
@@ -659,8 +666,7 @@ describe('ContactPanel', () => {
     const button = screen.getByRole('button', { name: 'Add' })
     for (const value of [telephone, note]) {
       expect(
-        value.compareDocumentPosition(button) &
-          Node.DOCUMENT_POSITION_FOLLOWING
+        value.compareDocumentPosition(button) & Node.DOCUMENT_POSITION_FOLLOWING
       ).toBeTruthy()
     }
     // Outside the divided sections, so no line runs between it and the last.
@@ -671,14 +677,18 @@ describe('ContactPanel', () => {
   it('shows only the name and its switches for a contact holding nothing else, under no Details heading', () => {
     show('c1')
     expect(name()).toHaveValue('Ada')
-    expect(screen.getByRole('textbox', { name: 'Forename' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('textbox', { name: 'Forename' })
+    ).toBeInTheDocument()
     expect(screen.getByRole('textbox', { name: 'Surname' })).toBeInTheDocument()
     for (const label of ['Nickname', 'Organisation', 'Title', 'URL', 'Note']) {
       expect(screen.queryByRole('textbox', { name: label })).toBeNull()
     }
     expect(screen.queryByRole('group', { name: 'Birthday' })).toBeNull()
     expect(screen.queryByRole('heading', { name: 'Details' })).toBeNull()
-    expect(screen.getByRole('dialog').querySelectorAll('section')).toHaveLength(1)
+    expect(screen.getByRole('dialog').querySelectorAll('section')).toHaveLength(
+      1
+    )
   })
 
   it('shows each field the card holds, with a remove button, and offers none of them in the Add menu', () => {
@@ -699,7 +709,9 @@ describe('ContactPanel', () => {
     expect(screen.getByRole('textbox', { name: 'Organisation' })).toHaveValue(
       'Analytical Society'
     )
-    expect(screen.getByRole('textbox', { name: 'Title' })).toHaveValue('Analyst')
+    expect(screen.getByRole('textbox', { name: 'Title' })).toHaveValue(
+      'Analyst'
+    )
     expect(screen.getByRole('textbox', { name: 'URL' })).toHaveValue(
       'https://ada.example'
     )
@@ -838,7 +850,9 @@ describe('ContactPanel', () => {
       },
     })
     show('c1')
-    expect(screen.getAllByRole('switch', { name: 'XMPP contact' })).toHaveLength(2)
+    expect(
+      screen.getAllByRole('switch', { name: 'XMPP contact' })
+    ).toHaveLength(2)
     expect(
       screen.getByText('dave@example.org · me@other.net')
     ).toBeInTheDocument()
@@ -978,7 +992,7 @@ describe('ContactPanel copying', () => {
     expect(opened).not.toHaveBeenCalled()
   })
 
-  it("opens a copy showing the fields the original filled, and only those", () => {
+  it('opens a copy showing the fields the original filled, and only those', () => {
     show(undefined, undefined, {
       source: 'c1',
       form: { ...emptyForm(), name: 'Ada', nickname: 'Countess' },

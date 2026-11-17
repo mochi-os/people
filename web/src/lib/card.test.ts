@@ -416,10 +416,38 @@ describe('messaging addresses (IMPP)', () => {
   it('writes each address with its network as the scheme', () => {
     const form = formFromCard([])
     form.messaging.push(
-      { value: ' @bob@remote.example ', network: 'fediverse', params: {}, group: '', raw: '', read: '' },
-      { value: '@carol:matrix.example', network: 'matrix', params: {}, group: '', raw: '', read: '' },
-      { value: 'xmpp:dave@jabber.example', network: 'xmpp', params: {}, group: '', raw: '', read: '' },
-      { value: 'sip:erin@voip.example', network: 'other', params: {}, group: '', raw: '', read: '' }
+      {
+        value: ' @bob@remote.example ',
+        network: 'fediverse',
+        params: {},
+        group: '',
+        raw: '',
+        read: '',
+      },
+      {
+        value: '@carol:matrix.example',
+        network: 'matrix',
+        params: {},
+        group: '',
+        raw: '',
+        read: '',
+      },
+      {
+        value: 'xmpp:dave@jabber.example',
+        network: 'xmpp',
+        params: {},
+        group: '',
+        raw: '',
+        read: '',
+      },
+      {
+        value: 'sip:erin@voip.example',
+        network: 'other',
+        params: {},
+        group: '',
+        raw: '',
+        read: '',
+      }
     )
     expect(
       propertiesFromForm(form)
@@ -438,11 +466,15 @@ describe('messaging addresses (IMPP)', () => {
       property('IMPP', 'matrix:@carol:matrix.example', { PREF: ['1'] }),
     ])
     expect(propertiesFromForm(form).filter((p) => p.name === 'IMPP')).toEqual([
-      { name: 'IMPP', params: { PREF: ['1'] }, value: 'matrix:@carol:matrix.example' },
+      {
+        name: 'IMPP',
+        params: { PREF: ['1'] },
+        value: 'matrix:@carol:matrix.example',
+      },
     ])
     form.messaging[0].value = '@carol:other.example'
-    expect(
-      propertiesFromForm(form).find((p) => p.name === 'IMPP')?.value
-    ).toBe('matrix:u/carol:other.example')
+    expect(propertiesFromForm(form).find((p) => p.name === 'IMPP')?.value).toBe(
+      'matrix:u/carol:other.example'
+    )
   })
 })

@@ -44,6 +44,7 @@ function PublicProfileSkeleton() {
 // Where the viewer stands with a person, read off the viewer's own contacts: a
 // friend, an invitation either way, or neither. Their invitation comes first,
 // since accepting it is all there is to do. Null until the contacts load.
+// eslint-disable-next-line react-refresh/only-export-components
 export function connection(
   contacts: GetContactsResponse | undefined,
   person: string

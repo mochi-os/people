@@ -41,7 +41,10 @@ import {
 } from '@/lib/card'
 
 // Example handles, shown as placeholders.
-const HANDLE_EXAMPLES = { fediverse: '@name@server.example', bluesky: 'name.bsky.social' }
+const HANDLE_EXAMPLES = {
+  fediverse: '@name@server.example',
+  bluesky: 'name.bsky.social',
+}
 const MESSAGING_EXAMPLES: Record<MessagingNetwork, string> = {
   fediverse: '@name@server.example',
   matrix: '@name:server.example',
@@ -469,7 +472,11 @@ function HandlePreview({ handle }: { handle: string }) {
   if (!data?.name && !data?.address) return null
   return (
     <div className='text-muted-foreground flex items-center gap-2 text-xs sm:ps-[calc(12rem+1rem)]'>
-      <EntityAvatar src={data.avatar || null} name={data.name || ''} size='xs' />
+      <EntityAvatar
+        src={data.avatar || null}
+        name={data.name || ''}
+        size='xs'
+      />
       <span className='truncate'>
         {[data.name, data.address].filter(Boolean).join(' · ')}
       </span>

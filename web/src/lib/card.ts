@@ -329,7 +329,11 @@ export function messagingRead(uri: string): {
 export function messagingUri(row: MessagingValue): string {
   const value = row.value.trim()
   if (!value) return ''
-  if (row.raw && row.network === messagingRead(row.raw).network && value === row.read)
+  if (
+    row.raw &&
+    row.network === messagingRead(row.raw).network &&
+    value === row.read
+  )
     return row.raw
   if (row.network === 'other') return value
   const bare = value.replace(/^(acct|matrix|xmpp):/i, '')

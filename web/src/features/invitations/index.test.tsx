@@ -117,7 +117,11 @@ describe('Invitations', () => {
 
   it('accepts a request on XMPP by its address', async () => {
     state.received = [
-      invite({ id: 'xmpp:dave@example.org', name: 'Dave', address: 'dave@example.org' }),
+      invite({
+        id: 'xmpp:dave@example.org',
+        name: 'Dave',
+        address: 'dave@example.org',
+      }),
     ]
     show()
     fireEvent.click(screen.getByRole('button', { name: /^Accept$/ }))

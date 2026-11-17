@@ -5,9 +5,9 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
+import { usePageTitleStore } from '@mochi/web'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-import { usePageTitleStore } from '@mochi/web'
 import { Contacts } from './index'
 
 const contact = {

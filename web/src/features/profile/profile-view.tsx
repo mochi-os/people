@@ -92,6 +92,18 @@ export function ProfileView({
   )
 }
 
+// A history entry's place in forums, or null where its parts are not ids. The
+// entry is written by the person's own server, so a part holding a slash or
+// dots would steer the link to any page of this site instead.
+const HISTORY_PART = /^[A-Za-z0-9_-]{1,128}$/
+
+function historyUrl(item: ProfileHistory): string | null {
+  const forum = item.fingerprint || item.forum
+  if (!HISTORY_PART.test(forum ?? '') || !HISTORY_PART.test(item.post ?? ''))
+    return null
+  return `/forums/${forum}/${item.post}`
+}
+
 // The person's newest posts and comments in forums, each opening in forums.
 function ProfileHistoryList({ history }: { history: ProfileHistory[] }) {
   const { formatTimestamp } = useFormat()
@@ -102,36 +114,45 @@ function ProfileHistoryList({ history }: { history: ProfileHistory[] }) {
       </h2>
       <ul className='space-y-1'>
         {history.map((item) => {
-          const url = `/forums/${item.fingerprint || item.forum}/${item.post}`
+          const url = historyUrl(item)
+          const content = (
+            <>
+              {item.kind === 'post' ? (
+                <FileText className='text-muted-foreground mt-0.5 size-4 shrink-0' />
+              ) : (
+                <MessageSquare className='text-muted-foreground mt-0.5 size-4 shrink-0' />
+              )}
+              <span className='min-w-0 flex-1'>
+                <span className='block truncate text-sm font-medium'>
+                  {item.title}
+                </span>
+                {item.kind === 'comment' && item.body && (
+                  <span className='text-muted-foreground line-clamp-2 block text-sm'>
+                    {item.body}
+                  </span>
+                )}
+                <span className='text-muted-foreground block text-xs'>
+                  {item.forum_name} · {formatTimestamp(item.created)}
+                </span>
+              </span>
+            </>
+          )
           return (
             <li key={`${item.kind}:${item.id}`}>
-              <a
-                href={url}
-                onClick={(event) => {
-                  event.preventDefault()
-                  shellNavigateExternal(url)
-                }}
-                className='hover:bg-hover flex gap-3 rounded-lg p-2'
-              >
-                {item.kind === 'post' ? (
-                  <FileText className='text-muted-foreground mt-0.5 size-4 shrink-0' />
-                ) : (
-                  <MessageSquare className='text-muted-foreground mt-0.5 size-4 shrink-0' />
-                )}
-                <span className='min-w-0 flex-1'>
-                  <span className='block truncate text-sm font-medium'>
-                    {item.title}
-                  </span>
-                  {item.kind === 'comment' && item.body && (
-                    <span className='text-muted-foreground line-clamp-2 block text-sm'>
-                      {item.body}
-                    </span>
-                  )}
-                  <span className='text-muted-foreground block text-xs'>
-                    {item.forum_name} · {formatTimestamp(item.created)}
-                  </span>
-                </span>
-              </a>
+              {url ? (
+                <a
+                  href={url}
+                  onClick={(event) => {
+                    event.preventDefault()
+                    shellNavigateExternal(url)
+                  }}
+                  className='hover:bg-hover flex gap-3 rounded-lg p-2'
+                >
+                  {content}
+                </a>
+              ) : (
+                <div className='flex gap-3 rounded-lg p-2'>{content}</div>
+              )}
             </li>
           )
         })}

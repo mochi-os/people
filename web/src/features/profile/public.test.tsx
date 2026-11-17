@@ -217,6 +217,45 @@ describe('PublicProfile', () => {
     expect(calls.navigate).toHaveBeenCalledWith('/forums/fffffffff/p9')
   })
 
+  it('links no history entry whose parts are not ids', async () => {
+    calls.navigate.mockClear()
+    calls.information = vi.fn().mockResolvedValue({
+      id: 'p1',
+      fingerprint: 'abcdefghi',
+      name: 'Ada Lovelace',
+      profile: '',
+      style: {},
+      avatar: '',
+      banner: '',
+      favicon: '',
+      history: [
+        {
+          kind: 'post',
+          id: 'p8',
+          post: '../../settings/user',
+          forum: 'f1',
+          forum_name: 'Engines',
+          fingerprint: 'fffffffff',
+          title: 'Notes on Menabrea',
+          created: 1_700_000_000,
+          up: 0,
+          down: 0,
+        },
+      ],
+    })
+    render(
+      <QueryClientProvider client={new QueryClient()}>
+        <I18nProvider i18n={i18n}>
+          <PublicProfile fingerprint='abcdefghi' />
+        </I18nProvider>
+      </QueryClientProvider>
+    )
+    const title = await screen.findByText('Notes on Menabrea')
+    expect(title.closest('a')).toBeNull()
+    fireEvent.click(title)
+    expect(calls.navigate).not.toHaveBeenCalled()
+  })
+
   it('shows no forums section for a person with no history', async () => {
     calls.information = vi.fn().mockResolvedValue({
       id: 'p1',

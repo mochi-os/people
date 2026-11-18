@@ -35,8 +35,10 @@ import {
   Briefcase,
   Building2,
   Cake,
+  Check,
   Copy,
   Link,
+  Loader2,
   Mail,
   MapPin,
   Merge,
@@ -45,6 +47,7 @@ import {
   Plus,
   StickyNote,
   Trash2,
+  TriangleAlert,
   UserRound,
   UserX,
   type LucideIcon,
@@ -199,10 +202,23 @@ export function ContactPanel({
     contactsData?.sent.some((invite) => invite.id === contact.person)
   )
   const friendState = contact?.friend ? 'friend' : invited ? 'invited' : 'none'
-  const toggling = inviteMutation.isPending || removeFriendMutation.isPending
+  // Where a switch was moved to while its change is on its way: it moves
+  // when clicked, and shows what the server holds once the contact is read
+  // again, or goes back when the change fails.
+  const [switching, setSwitching] = useState<{
+    key: string
+    to: boolean
+  } | null>(null)
+  const toggling =
+    inviteMutation.isPending ||
+    removeFriendMutation.isPending ||
+    switching !== null
 
   // The form as last rendered, which a save started by a timer, a blur or
   // the panel closing reads.
+  // Where the card's saving stands, shown in the header: nothing until a
+  // change is sent, and nothing again once the next is typed.
+  const [status, setStatus] = useState<SaveStatus>('idle')
   const latest = useRef({ form, book })
   latest.current = { form, book }
 
@@ -277,6 +293,7 @@ export function ContactPanel({
     // reaches the form, so the birthday it had stands until it is one.
     if (!current.form.name.trim()) return
     const properties = propertiesFromForm(current.form)
+    setStatus('saving')
     try {
       const data = await updateMutation.mutateAsync({
         contact: id,
@@ -290,7 +307,10 @@ export function ContactPanel({
         card: JSON.stringify(properties),
         book: current.book,
       }
+      // Saved, unless a change made while it went is still to go.
+      setStatus(dirty() ? 'idle' : 'saved')
     } catch (error) {
+      setStatus('error')
       toast.error(getErrorMessage(error, t`Failed to save contact`))
       if (statusOf(error) === 412) {
         again.current = false
@@ -341,6 +361,7 @@ export function ContactPanel({
 
   const update = (changes: Partial<ContactForm>) => {
     setForm((current) => ({ ...current, ...changes }))
+    setStatus('idle')
     later()
   }
 
@@ -443,6 +464,25 @@ export function ContactPanel({
     }
   }
 
+  // A switch's change: the switch shows where it was moved to until the
+  // change and the contact read after it are done. A failure has said why in
+  // its toast, and the switch goes back.
+  const switched = async (
+    key: string,
+    to: boolean,
+    change: () => Promise<unknown>
+  ) => {
+    setSwitching({ key, to })
+    try {
+      await change()
+      await query.refetch()
+    } catch {
+      // The toast has said why.
+    } finally {
+      setSwitching(null)
+    }
+  }
+
   const toggleFriend = async (on: boolean) => {
     if (!contact) return
     if (on) {
@@ -451,15 +491,17 @@ export function ContactPanel({
         return
       }
       const name = contact.directory || contact.name
-      await toastAction(
-        inviteMutation.mutateAsync({ person: contact.person, name }),
-        {
-          loading: t`Sending invitation...`,
-          success: t`Invitation sent`,
-          error: (error) =>
-            getErrorMessage(error, t`Failed to send invitation`),
-        }
-      ).catch(() => {})
+      await switched(FRIEND_SWITCH, true, () =>
+        toastAction(
+          inviteMutation.mutateAsync({ person: contact.person, name }),
+          {
+            loading: t`Sending invitation...`,
+            success: t`Invitation sent`,
+            error: (error) =>
+              getErrorMessage(error, t`Failed to send invitation`),
+          }
+        )
+      )
       return
     }
     if (contact.friend) {
@@ -467,15 +509,17 @@ export function ContactPanel({
       return
     }
     if (invited) {
-      await toastAction(
-        removeFriendMutation.mutateAsync({ person: contact.person }),
-        {
-          loading: t`Cancelling invitation...`,
-          success: t`Invitation cancelled`,
-          error: (error) =>
-            getErrorMessage(error, t`Failed to cancel invitation`),
-        }
-      ).catch(() => {})
+      await switched(FRIEND_SWITCH, false, () =>
+        toastAction(
+          removeFriendMutation.mutateAsync({ person: contact.person }),
+          {
+            loading: t`Cancelling invitation...`,
+            success: t`Invitation cancelled`,
+            error: (error) =>
+              getErrorMessage(error, t`Failed to cancel invitation`),
+          }
+        )
+      )
     }
   }
 
@@ -485,33 +529,78 @@ export function ContactPanel({
   const toggleXmpp = async (entry: XmppContact, on: boolean) => {
     if (!contact) return
     const person = `xmpp:${entry.address}`
-    if (on) {
-      await toastAction(
-        inviteMutation.mutateAsync({
-          person,
-          name: contact.name,
-          account: entry.account,
-        }),
-        {
-          loading: t`Sending invitation...`,
-          success: t`Invitation sent`,
-          error: (error) =>
-            getErrorMessage(error, t`Failed to send invitation`),
-        }
-      ).catch(() => {})
-      return
-    }
-    await toastAction(
-      removeFriendMutation.mutateAsync({ person, account: entry.account }),
-      {
-        loading: t`Removing XMPP contact...`,
-        success: t`XMPP contact removed`,
-        error: (error) =>
-          getErrorMessage(error, t`Failed to remove XMPP contact`),
-      }
-    ).catch(() => {})
+    await switched(xmppSwitch(entry), on, () =>
+      on
+        ? toastAction(
+            inviteMutation.mutateAsync({
+              person,
+              name: contact.name,
+              account: entry.account,
+            }),
+            {
+              loading: t`Sending invitation...`,
+              success: t`Invitation sent`,
+              error: (error) =>
+                getErrorMessage(error, t`Failed to send invitation`),
+            }
+          )
+        : toastAction(
+            removeFriendMutation.mutateAsync({
+              person,
+              account: entry.account,
+            }),
+            {
+              loading: t`Removing XMPP contact...`,
+              success: t`XMPP contact removed`,
+              error: (error) =>
+                getErrorMessage(error, t`Failed to remove XMPP contact`),
+            }
+          )
+    )
   }
   const xmpp = contact?.xmpp ?? []
+
+  // An XMPP address on one of the user's contact lists: removing it from the
+  // card asks whether to take them off the list there too, keeping them
+  // unless told.
+  const [ending, setEnding] = useState<{
+    index: number
+    entry: XmppContact
+  } | null>(null)
+  const removeMessaging = (index: number) => {
+    const row = form.messaging[index]
+    const address = row.value
+      .trim()
+      .replace(/^xmpp:/i, '')
+      .toLowerCase()
+    const entry =
+      row.network === 'xmpp'
+        ? xmpp.find(
+            (listed) =>
+              (listed.subscription === 'to' ||
+                listed.subscription === 'both' ||
+                listed.ask) &&
+              listed.address.toLowerCase() === address
+          )
+        : undefined
+    if (entry) {
+      setEnding({ index, entry })
+      return
+    }
+    update({
+      messaging: form.messaging.filter((_, position) => position !== index),
+    })
+  }
+  const dropMessaging = (end: boolean) => {
+    if (!ending) return
+    setEnding(null)
+    update({
+      messaging: form.messaging.filter(
+        (_, position) => position !== ending.index
+      ),
+    })
+    if (end) void toggleXmpp(ending.entry, false)
+  }
 
   // A failed unfriend leaves the dialog open, so it can be tried again.
   const confirmUnfriend = async () => {
@@ -641,6 +730,7 @@ export function ContactPanel({
 
   const actions = id ? (
     <>
+      <SaveState status={status} />
       {action(t`Copy`, Copy, () => void copy(), blocked)}
       {action(
         t({ message: 'Merge', context: 'combine' }),
@@ -750,7 +840,11 @@ export function ContactPanel({
               <div className='flex items-center gap-3'>
                 <Switch
                   id='contact-friend'
-                  checked={friendState !== 'none'}
+                  checked={
+                    switching?.key === FRIEND_SWITCH
+                      ? switching.to
+                      : friendState !== 'none'
+                  }
                   loading={toggling}
                   onCheckedChange={(on) => void toggleFriend(on)}
                 />
@@ -775,7 +869,11 @@ export function ContactPanel({
                 <div className='flex items-center gap-3'>
                   <Switch
                     id={`contact-xmpp-${key}`}
-                    checked={seen || entry.ask}
+                    checked={
+                      switching?.key === xmppSwitch(entry)
+                        ? switching.to
+                        : seen || entry.ask
+                    }
                     loading={toggling}
                     onCheckedChange={(on) => void toggleXmpp(entry, on)}
                   />
@@ -847,6 +945,7 @@ export function ContactPanel({
                 <MessagingRows
                   values={form.messaging}
                   onChange={(messaging) => update({ messaging })}
+                  onRemove={removeMessaging}
                 />
               </div>
             )}
@@ -1005,6 +1104,20 @@ export function ContactPanel({
       )}
 
       <ConfirmDialog
+        open={ending !== null}
+        onOpenChange={(open) => {
+          if (!open) dropMessaging(false)
+        }}
+        title={t`XMPP contact`}
+        desc={ending?.entry.address ?? ''}
+        cancelBtnText={t`Keep`}
+        confirmText={<Trans>Remove</Trans>}
+        icon={<Trash2 className='size-4' />}
+        destructive
+        handleConfirm={() => dropMessaging(true)}
+      />
+
+      <ConfirmDialog
         open={unfriendOpen}
         onOpenChange={setUnfriendOpen}
         title={t`Unfriend`}
@@ -1092,4 +1205,36 @@ export function ContactPanel({
   )
 
   return frame(contact?.name || t`New contact`, body, actions, footer, place)
+}
+
+type SaveStatus = 'idle' | 'saving' | 'saved' | 'error'
+
+// The friend switch's and an XMPP contact's switch's names while one moves.
+const FRIEND_SWITCH = 'friend'
+const xmppSwitch = (entry: XmppContact) =>
+  `xmpp ${entry.account} ${entry.address}`
+
+// Where the card's saving stands, beside the header's actions.
+function SaveState({ status }: { status: SaveStatus }) {
+  const { t } = useLingui()
+  if (status === 'idle') return null
+  return (
+    <span
+      role='status'
+      className={`flex shrink-0 items-center gap-1 px-1 text-xs ${status === 'error' ? 'text-destructive' : 'text-muted-foreground'}`}
+    >
+      {status === 'saving' ? (
+        <Loader2 className='size-3.5 animate-spin' />
+      ) : status === 'saved' ? (
+        <Check className='size-3.5' />
+      ) : (
+        <TriangleAlert className='size-3.5' />
+      )}
+      {status === 'saving'
+        ? t`Saving...`
+        : status === 'saved'
+          ? t({ message: 'Saved', context: 'saved status' })
+          : t`Not saved`}
+    </span>
+  )
 }

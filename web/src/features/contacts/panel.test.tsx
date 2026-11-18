@@ -12,6 +12,7 @@ import {
   render,
   screen,
   waitFor,
+  within,
 } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { emptyForm } from '@/lib/card'
@@ -338,6 +339,39 @@ describe('ContactPanel', () => {
     await waitFor(() => expect(updates()).toHaveLength(2))
     expect(updates()[1].etag).toBe('e2')
     expect(saved('NICKNAME')[0].value).toBe('Countess')
+  })
+
+  // A change saved as it is typed says so in the header: saving while it
+  // goes, saved once back, nothing once the next is typed, and not saved
+  // when the save fails.
+  it('says in the header whether a change is saving or saved', async () => {
+    let finish: (value: unknown) => void = () => {}
+    mutations.update.mutateAsync = vi
+      .fn()
+      .mockImplementationOnce(
+        () => new Promise((resolve) => (finish = resolve))
+      )
+    show('c1')
+    expect(screen.queryByRole('status')).toBeNull()
+    add('Nickname')
+    fireEvent.change(nickname(), { target: { value: 'Count' } })
+    fireEvent.focusOut(nickname())
+    expect(screen.getByRole('status')).toHaveTextContent('Saving...')
+    await act(async () => finish({ contact: { ...contact, etag: 'e2' } }))
+    expect(screen.getByRole('status')).toHaveTextContent('Saved')
+    fireEvent.change(nickname(), { target: { value: 'Countess' } })
+    expect(screen.queryByRole('status')).toBeNull()
+  })
+
+  it('says a change is not saved when its save fails', async () => {
+    mutations.update.mutateAsync = vi.fn().mockRejectedValue(new Error('down'))
+    show('c1')
+    add('Nickname')
+    fireEvent.change(nickname(), { target: { value: 'Count' } })
+    fireEvent.focusOut(nickname())
+    await waitFor(() =>
+      expect(screen.getByRole('status')).toHaveTextContent('Not saved')
+    )
   })
 
   it('does not save a contact left with no name, and says it needs one', async () => {
@@ -820,6 +854,147 @@ describe('ContactPanel', () => {
         account: 'x1',
       })
     )
+  })
+
+  // An XMPP address on the user's contact list there, removed
+  // from the card, asks whether to take them off the list too - keeping
+  // them unless told - instead of leaving them there with no switch left.
+  describe('removing an XMPP address on the contact list', () => {
+    const listed = {
+      account: 'x1',
+      identifier: 'me@example.com',
+      address: 'dave@example.org',
+      subscription: 'both' as const,
+      ask: false,
+      pending: false,
+    }
+    const card = [
+      { name: 'FN', params: {}, value: 'Ada' },
+      { name: 'IMPP', params: {}, value: 'xmpp:dave@example.org' },
+    ]
+    // The question, among the dialogs: the panel is one too.
+    const question = () =>
+      screen
+        .queryAllByRole('dialog')
+        .find((dialog) => within(dialog).queryByText('dave@example.org'))
+
+    it('takes them off the list when told', async () => {
+      queries.contact = loaded({
+        contact: { ...contact, card, xmpp: [listed] },
+      })
+      show('c1')
+      fireEvent.click(
+        screen.getByRole('button', { name: 'Remove messaging address' })
+      )
+      await waitFor(() => expect(question()).toBeDefined())
+      fireEvent.click(
+        within(question()!).getByRole('button', { name: 'Remove' })
+      )
+      await waitFor(() =>
+        expect(mutations.remove.mutateAsync).toHaveBeenCalledWith({
+          person: 'xmpp:dave@example.org',
+          account: 'x1',
+        })
+      )
+      expect(
+        screen.queryByRole('textbox', { name: 'Messaging address' })
+      ).toBeNull()
+    })
+
+    it('keeps them on the list otherwise, and the address still goes', async () => {
+      queries.contact = loaded({
+        contact: { ...contact, card, xmpp: [listed] },
+      })
+      show('c1')
+      fireEvent.click(
+        screen.getByRole('button', { name: 'Remove messaging address' })
+      )
+      await waitFor(() => expect(question()).toBeDefined())
+      fireEvent.click(within(question()!).getByRole('button', { name: 'Keep' }))
+      await waitFor(() =>
+        expect(
+          screen.queryByRole('textbox', { name: 'Messaging address' })
+        ).toBeNull()
+      )
+      expect(mutations.remove.mutateAsync).not.toHaveBeenCalled()
+    })
+
+    it('asks nothing for an address not on the list', () => {
+      queries.contact = loaded({
+        contact: {
+          ...contact,
+          card,
+          xmpp: [{ ...listed, subscription: 'none' as const }],
+        },
+      })
+      show('c1')
+      fireEvent.click(
+        screen.getByRole('button', { name: 'Remove messaging address' })
+      )
+      expect(question()).toBeUndefined()
+      expect(
+        screen.queryByRole('textbox', { name: 'Messaging address' })
+      ).toBeNull()
+    })
+  })
+
+  // A switch moves when clicked, not once the server has answered and the
+  // contact has been read again; a click meanwhile is not taken, and a
+  // failure puts it back.
+  describe('a switch on its way', () => {
+    const entry = {
+      account: 'x1',
+      identifier: 'me@example.com',
+      address: 'dave@example.org',
+      subscription: 'none' as const,
+      ask: false,
+      pending: false,
+    }
+
+    it('shows where it was moved to until the change and the reload are done', async () => {
+      let finish: (value: unknown) => void = () => {}
+      mutations.invite.mutateAsync = vi
+        .fn()
+        .mockImplementation(() => new Promise((resolve) => (finish = resolve)))
+      queries.contact = loaded({ contact: { ...contact, xmpp: [entry] } })
+      show('c1')
+      const toggle = screen.getByRole('switch', { name: 'XMPP contact' })
+      fireEvent.click(toggle)
+      expect(toggle).toBeChecked()
+      fireEvent.click(toggle)
+      expect(mutations.invite.mutateAsync).toHaveBeenCalledTimes(1)
+      expect(mutations.remove.mutateAsync).not.toHaveBeenCalled()
+      await act(async () => finish({}))
+      expect(queries.contact.refetch).toHaveBeenCalled()
+      // The stand-in server still holds the contact off, so it shows off.
+      await waitFor(() => expect(toggle).not.toBeChecked())
+    })
+
+    it('goes back when the change fails', async () => {
+      mutations.invite.mutateAsync = vi
+        .fn()
+        .mockRejectedValue(new Error('down'))
+      queries.contact = loaded({ contact: { ...contact, xmpp: [entry] } })
+      show('c1')
+      const toggle = screen.getByRole('switch', { name: 'XMPP contact' })
+      fireEvent.click(toggle)
+      await waitFor(() => expect(toggle).not.toBeChecked())
+      expect(queries.contact.refetch).not.toHaveBeenCalled()
+    })
+
+    it('moves the friend switch at once when inviting', async () => {
+      let finish: (value: unknown) => void = () => {}
+      mutations.invite.mutateAsync = vi
+        .fn()
+        .mockImplementation(() => new Promise((resolve) => (finish = resolve)))
+      queries.contact = loaded({ contact: { ...contact, person: 'p1' } })
+      show('c1')
+      const toggle = screen.getByRole('switch', { name: 'Mochi friend' })
+      fireEvent.click(toggle)
+      expect(toggle).toBeChecked()
+      await act(async () => finish({}))
+      await waitFor(() => expect(toggle).not.toBeChecked())
+    })
   })
 
   it('names the address and account of each XMPP switch once there are several', () => {

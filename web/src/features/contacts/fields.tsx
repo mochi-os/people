@@ -484,9 +484,12 @@ function HandlePreview({ handle }: { handle: string }) {
 export function MessagingRows({
   values,
   onChange,
+  onRemove,
 }: {
   values: MessagingValue[]
   onChange: (values: MessagingValue[]) => void
+  // Removing a row, where the caller has more to do than drop it.
+  onRemove?: (index: number) => void
 }) {
   const { t } = useLingui()
   const names: Record<MessagingNetwork, string> = {
@@ -541,7 +544,9 @@ export function MessagingRows({
             <RemoveButton
               label={t`Remove messaging address`}
               onClick={() =>
-                onChange(values.filter((_, position) => position !== index))
+                onRemove
+                  ? onRemove(index)
+                  : onChange(values.filter((_, position) => position !== index))
               }
             />
           </div>

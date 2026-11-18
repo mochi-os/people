@@ -560,27 +560,34 @@ export function ContactPanel({
   }
   const xmpp = contact?.xmpp ?? []
 
-  // An XMPP address on one of the user's contact lists: removing it from the
-  // card asks whether to take them off the list there too, keeping them
-  // unless told.
+  // An XMPP address on one of the user's contact lists that leaves the card
+  // asks whether to take them off the list there too, keeping them unless
+  // told: removed with its button, at once; changed in its field, once the
+  // field is left. The card's contact names only the addresses the card
+  // has, so the ones seen on a list are remembered, and one answered for is
+  // not asked about again.
   const [ending, setEnding] = useState<{
-    index: number
+    index: number | null
     entry: XmppContact
   } | null>(null)
+  // The page gives each contact a panel of its own, so these are one card's.
+  const seen = useRef(new Map<string, XmppContact>())
+  const answered = useRef(new Set<string>())
+  useEffect(() => {
+    for (const entry of contact?.xmpp ?? []) {
+      if (xmppListed(entry)) seen.current.set(xmppSwitch(entry), entry)
+      else seen.current.delete(xmppSwitch(entry))
+    }
+  }, [contact])
   const removeMessaging = (index: number) => {
     const row = form.messaging[index]
-    const address = row.value
-      .trim()
-      .replace(/^xmpp:/i, '')
-      .toLowerCase()
+    const address = xmppAddress(row.value)
     const entry =
       row.network === 'xmpp'
-        ? xmpp.find(
+        ? [...seen.current.values()].find(
             (listed) =>
-              (listed.subscription === 'to' ||
-                listed.subscription === 'both' ||
-                listed.ask) &&
-              listed.address.toLowerCase() === address
+              listed.address.toLowerCase() === address &&
+              !answered.current.has(xmppSwitch(listed))
           )
         : undefined
     if (entry) {
@@ -591,14 +598,32 @@ export function ContactPanel({
       messaging: form.messaging.filter((_, position) => position !== index),
     })
   }
+  // A field left: an address on a list that the card no longer has.
+  const askLeft = () => {
+    if (ending) return
+    const kept = new Set(
+      latest.current.form.messaging
+        .filter((row) => row.network === 'xmpp')
+        .map((row) => xmppAddress(row.value))
+    )
+    for (const entry of seen.current.values()) {
+      if (answered.current.has(xmppSwitch(entry))) continue
+      if (kept.has(entry.address.toLowerCase())) continue
+      setEnding({ index: null, entry })
+      return
+    }
+  }
   const dropMessaging = (end: boolean) => {
     if (!ending) return
     setEnding(null)
-    update({
-      messaging: form.messaging.filter(
-        (_, position) => position !== ending.index
-      ),
-    })
+    answered.current.add(xmppSwitch(ending.entry))
+    if (ending.index !== null) {
+      update({
+        messaging: form.messaging.filter(
+          (_, position) => position !== ending.index
+        ),
+      })
+    }
     if (end) void toggleXmpp(ending.entry, false)
   }
 
@@ -785,7 +810,7 @@ export function ContactPanel({
     <form
       noValidate
       onBlur={() => {
-        if (id) void save()
+        if (id) void save().then(askLeft)
       }}
       onSubmit={(event) => {
         event.preventDefault()
@@ -1213,6 +1238,17 @@ type SaveStatus = 'idle' | 'saving' | 'saved' | 'error'
 const FRIEND_SWITCH = 'friend'
 const xmppSwitch = (entry: XmppContact) =>
   `xmpp ${entry.account} ${entry.address}`
+
+// An XMPP contact on the account's contact list: seen, or asked to be.
+const xmppListed = (entry: XmppContact) =>
+  entry.subscription === 'to' || entry.subscription === 'both' || entry.ask
+
+// A messaging address as an XMPP address, for comparing with a list's.
+const xmppAddress = (value: string) =>
+  value
+    .trim()
+    .replace(/^xmpp:/i, '')
+    .toLowerCase()
 
 // Where the card's saving stands, beside the header's actions.
 function SaveState({ status }: { status: SaveStatus }) {

@@ -919,6 +919,55 @@ describe('ContactPanel', () => {
       expect(mutations.remove.mutateAsync).not.toHaveBeenCalled()
     })
 
+    it('asks, once the field is left, when the address is changed in it', async () => {
+      queries.contact = loaded({
+        contact: { ...contact, card, xmpp: [listed] },
+      })
+      // The saved card no longer names the address, so the contact read
+      // after it no longer lists it either.
+      mutations.update.mutateAsync = vi.fn().mockImplementation(async () => {
+        queries.contact = loaded({
+          contact: { ...contact, etag: 'e2', card: [card[0]], xmpp: [] },
+        })
+        return { contact: { ...contact, etag: 'e2' } }
+      })
+      show('c1')
+      const field = screen.getByRole('textbox', { name: 'Messaging address' })
+      fireEvent.focusOut(field)
+      await new Promise((resolve) => setTimeout(resolve, 20))
+      expect(question()).toBeUndefined()
+      fireEvent.change(field, { target: { value: 'dave@example.com' } })
+      fireEvent.focusOut(field)
+      await waitFor(() => expect(question()).toBeDefined())
+      fireEvent.click(
+        within(question()!).getByRole('button', { name: 'Remove' })
+      )
+      await waitFor(() =>
+        expect(mutations.remove.mutateAsync).toHaveBeenCalledWith({
+          person: 'xmpp:dave@example.org',
+          account: 'x1',
+        })
+      )
+      expect(field).toHaveValue('dave@example.com')
+    })
+
+    it('asks about a changed address once', async () => {
+      queries.contact = loaded({
+        contact: { ...contact, card, xmpp: [listed] },
+      })
+      show('c1')
+      const field = screen.getByRole('textbox', { name: 'Messaging address' })
+      fireEvent.change(field, { target: { value: 'dave@example.com' } })
+      fireEvent.focusOut(field)
+      await waitFor(() => expect(question()).toBeDefined())
+      fireEvent.click(within(question()!).getByRole('button', { name: 'Keep' }))
+      await waitFor(() => expect(question()).toBeUndefined())
+      fireEvent.focusOut(field)
+      await new Promise((resolve) => setTimeout(resolve, 20))
+      expect(question()).toBeUndefined()
+      expect(mutations.remove.mutateAsync).not.toHaveBeenCalled()
+    })
+
     it('asks nothing for an address not on the list', () => {
       queries.contact = loaded({
         contact: {

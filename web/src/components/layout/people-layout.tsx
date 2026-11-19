@@ -40,7 +40,7 @@ import {
   User,
   UsersRound,
 } from 'lucide-react'
-import endpoints from '@/api/endpoints'
+import { personAsset } from '@/api/endpoints'
 import type { Book } from '@/api/types/contacts'
 import { SidebarProvider, useSidebarContext } from '@/context/sidebar-context'
 import {
@@ -66,8 +66,8 @@ function profileIcon(identityId: string, version = ''): React.FC {
     Icon = function ProfileIcon() {
       return (
         <EntityAvatar
-          src={endpoints.person.asset(identityId, 'avatar', version)}
-          styleUrl={endpoints.person.asset(identityId, 'style')}
+          src={personAsset(identityId, 'avatar', version)}
+          styleUrl={personAsset(identityId, 'style')}
           size='xs'
         />
       )

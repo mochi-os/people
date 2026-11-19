@@ -24,7 +24,7 @@ import {
   useListAutoAnimate,
 } from '@mochi/web'
 import { UserPlus, UserX, Send, X, Check, Settings } from 'lucide-react'
-import endpoints from '@/api/endpoints'
+import { personAsset } from '@/api/endpoints'
 import { formatFingerprint } from '@/lib/fingerprint'
 import { searchMatches } from '@/lib/search'
 import {
@@ -304,11 +304,8 @@ export function Invitations() {
                           <EntityAvatar name={invite.name} size='md' />
                         ) : (
                           <EntityAvatar
-                            src={endpoints.person.asset(invite.id, 'avatar')}
-                            styleUrl={endpoints.person.asset(
-                              invite.id,
-                              'style'
-                            )}
+                            src={personAsset(invite.id, 'avatar')}
+                            styleUrl={personAsset(invite.id, 'style')}
                             name={invite.name}
                             size='md'
                           />
@@ -404,11 +401,8 @@ export function Invitations() {
                           <EntityAvatar name={invite.name} size='md' />
                         ) : (
                           <EntityAvatar
-                            src={endpoints.person.asset(invite.id, 'avatar')}
-                            styleUrl={endpoints.person.asset(
-                              invite.id,
-                              'style'
-                            )}
+                            src={personAsset(invite.id, 'avatar')}
+                            styleUrl={personAsset(invite.id, 'style')}
                             name={invite.name}
                             size='md'
                           />

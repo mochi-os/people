@@ -13,7 +13,7 @@ import {
   usePageTitle,
 } from '@mochi/web'
 import { Check, Send } from 'lucide-react'
-import endpoints from '@/api/endpoints'
+import { personAsset } from '@/api/endpoints'
 import type { GetContactsResponse } from '@/api/types/contacts'
 import type { PersonInformation } from '@/api/types/person'
 import {
@@ -143,10 +143,13 @@ export function PublicProfile({ fingerprint }: { fingerprint: string }) {
   usePageTitle(data?.name ?? t`Profile`)
 
   useEffect(() => {
-    if (data?.favicon)
-      setFavicon(endpoints.person.asset(fingerprint, 'favicon', data.favicon))
-    else if (data?.avatar)
-      setFavicon(endpoints.person.asset(fingerprint, 'favicon', data.avatar))
+    // The favicon's stamp, else the avatar's; none for an id that cannot be
+    // one path segment.
+    const version = data?.favicon || data?.avatar
+    const href = version
+      ? personAsset(fingerprint, 'favicon', version)
+      : undefined
+    if (href) setFavicon(href)
   }, [fingerprint, data?.favicon, data?.avatar])
 
   if (isLoading) {
@@ -167,10 +170,10 @@ export function PublicProfile({ fingerprint }: { fingerprint: string }) {
   }
 
   const avatarUrl = data.avatar
-    ? endpoints.person.asset(fingerprint, 'avatar', data.avatar)
+    ? (personAsset(fingerprint, 'avatar', data.avatar) ?? null)
     : null
   const bannerUrl = data.banner
-    ? endpoints.person.asset(fingerprint, 'banner', data.banner)
+    ? (personAsset(fingerprint, 'banner', data.banner) ?? null)
     : null
 
   return (

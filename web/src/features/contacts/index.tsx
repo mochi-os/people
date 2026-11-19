@@ -45,7 +45,7 @@ import {
   UserPlus,
   UserX,
 } from 'lucide-react'
-import endpoints from '@/api/endpoints'
+import { personAsset } from '@/api/endpoints'
 import type { Contact } from '@/api/types/contacts'
 import { searchMatches, searchRange } from '@/lib/search'
 import {
@@ -344,11 +344,8 @@ export function Contacts({
                   >
                     {contact.person ? (
                       <EntityAvatar
-                        src={endpoints.person.asset(contact.person, 'avatar')}
-                        styleUrl={endpoints.person.asset(
-                          contact.person,
-                          'style'
-                        )}
+                        src={personAsset(contact.person, 'avatar')}
+                        styleUrl={personAsset(contact.person, 'style')}
                         name={contact.name}
                         size='lg'
                       />

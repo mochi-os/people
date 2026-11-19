@@ -46,7 +46,7 @@ import {
   X,
   UserPlus,
 } from 'lucide-react'
-import endpoints from '@/api/endpoints'
+import { personAsset } from '@/api/endpoints'
 import type { GroupMember } from '@/api/types/groups'
 import { formatFingerprint } from '@/lib/fingerprint'
 import {
@@ -232,14 +232,8 @@ export function GroupDetail() {
                           <div className='flex items-center gap-2'>
                             {member.type === 'user' && (
                               <EntityAvatar
-                                src={endpoints.person.asset(
-                                  member.member,
-                                  'avatar'
-                                )}
-                                styleUrl={endpoints.person.asset(
-                                  member.member,
-                                  'style'
-                                )}
+                                src={personAsset(member.member, 'avatar')}
+                                styleUrl={personAsset(member.member, 'style')}
                                 name={nameOf(member)}
                                 size='md'
                               />

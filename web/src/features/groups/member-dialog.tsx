@@ -27,7 +27,7 @@ import {
   naturalCompare,
 } from '@mochi/web'
 import { User, UsersRound, Search, UserPlus } from 'lucide-react'
-import endpoints from '@/api/endpoints'
+import { personAsset } from '@/api/endpoints'
 import type { GroupMember } from '@/api/types/groups'
 import { useSearchLocalUsersQuery } from '@/hooks/useContacts'
 import { useAddGroupMemberMutation, useGroupsQuery } from '@/hooks/useGroups'
@@ -253,8 +253,8 @@ export function MemberDialog({
                       }
                     >
                       <EntityAvatar
-                        src={endpoints.person.asset(user.id, 'avatar')}
-                        styleUrl={endpoints.person.asset(user.id, 'style')}
+                        src={personAsset(user.id, 'avatar')}
+                        styleUrl={personAsset(user.id, 'style')}
                         name={user.name}
                         size='md'
                       />

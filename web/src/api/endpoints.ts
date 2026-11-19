@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 // This file is part of Mochi, licensed under the GNU AGPL v3 with the
 // Mochi Application Interface Exception - see license.txt and license-exception.md.
-import { getAppPath, isDomainEntityRouting } from '@mochi/web'
+import { getAppPath, isDomainEntityRouting, path, tryPath } from '@mochi/web'
 
 // Class-level actions are addressed absolutely: on a profile URL
 // (/people/<entity>) the request layer's baseURL becomes /people/<entity>/-/,
@@ -12,13 +12,15 @@ import { getAppPath, isDomainEntityRouting } from '@mochi/web'
 // path is empty too, but only the app's own path reaches a class action, as
 // forums and feeds fall back to theirs.
 const app = getAppPath() || (isDomainEntityRouting() ? '' : '/people')
-const action = (name: string) => (app ? `${app}/-/${name}` : name)
+const action = (name: string) => (app ? `${app}/-/${name}` : name) // path-ok: the app path and literal action names, no data
 
 // Entity-scoped actions name their own entity, so they are absolute and do not
 // depend on which entity the page happens to have been loaded under. Under
 // domain routing the app path is empty and the entity's own path addresses
-// them.
-const person = (id: string, name: string) => `${app}/${id}/-/${name}`
+// them. The id goes in through path, as one encoded segment: it comes from the
+// address or from another server, and one holding a `/`, `?` or `..` would
+// otherwise reach a different action. One that cannot be a segment throws.
+const person = (id: string, name: string) => app + path`/${id}/-/` + name
 
 type Asset = 'avatar' | 'banner' | 'favicon' | 'style'
 
@@ -77,7 +79,7 @@ const endpoints = {
     // stamp the information carries, so a new upload is a new URL rather than
     // the one the browser has cached.
     asset: (id: string, kind: Asset, version?: string) =>
-      person(id, kind) + (version ? `?v=${version}` : ''),
+      person(id, kind) + (version ? path`?v=${version}` : ''),
     avatarSet: (id: string) => person(id, 'avatar/set'),
     bannerSet: (id: string) => person(id, 'banner/set'),
     faviconSet: (id: string) => person(id, 'favicon/set'),
@@ -87,5 +89,13 @@ const endpoints = {
     privacySet: (id: string) => person(id, 'privacy/set'),
   },
 } as const
+
+/**
+ * A person's image or style as a page embeds it, or undefined for an id that
+ * cannot be one segment. Drawn during a render, where a throw would break the
+ * page, so the caller shows initials or no image instead.
+ */
+export const personAsset = (id: string, kind: Asset, version?: string) =>
+  tryPath(() => endpoints.person.asset(id, kind, version))
 
 export default endpoints

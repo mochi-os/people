@@ -37,7 +37,7 @@ import {
 } from 'lucide-react'
 import Markdown, { defaultUrlTransform } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import endpoints from '@/api/endpoints'
+import { personAsset } from '@/api/endpoints'
 import { personApi } from '@/api/person'
 import type { DirectoryPerson, NetworkPerson } from '@/api/types/contacts'
 import type { PersonInformation } from '@/api/types/person'
@@ -580,8 +580,8 @@ function PersonRow({
     <div className='hover:bg-hover hover:text-hover-foreground group flex items-center justify-between gap-3 rounded-lg p-3 transition-all'>
       <div className='flex min-w-0 flex-1 items-center gap-3'>
         <EntityAvatar
-          src={endpoints.person.asset(person.id, 'avatar')}
-          styleUrl={endpoints.person.asset(person.id, 'style')}
+          src={personAsset(person.id, 'avatar')}
+          styleUrl={personAsset(person.id, 'style')}
           name={person.name}
           size='lg'
         />
@@ -683,10 +683,10 @@ const previewUrlTransform = markdownUrlTransform(defaultUrlTransform)
 
 function PersonPreview({ info }: { info: PersonInformation }) {
   const avatarUrl = info.avatar
-    ? endpoints.person.asset(info.id, 'avatar', info.avatar)
+    ? personAsset(info.id, 'avatar', info.avatar)
     : null
   const bannerUrl = info.banner
-    ? endpoints.person.asset(info.id, 'banner', info.banner)
+    ? personAsset(info.id, 'banner', info.banner)
     : null
 
   return (

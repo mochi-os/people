@@ -47,7 +47,7 @@ import {
   Upload as UploadIcon,
   X,
 } from 'lucide-react'
-import endpoints from '@/api/endpoints'
+import { personAsset } from '@/api/endpoints'
 import type { PersonInformation } from '@/api/types/person'
 import { formatFingerprint } from '@/lib/fingerprint'
 import { profileLink } from '@/lib/profile-link'
@@ -165,13 +165,13 @@ function ProfileEditor({
 }) {
   const { t } = useLingui()
   const avatarUrl = info.avatar
-    ? endpoints.person.asset(info.fingerprint, 'avatar', info.avatar)
+    ? (personAsset(info.fingerprint, 'avatar', info.avatar) ?? null)
     : null
   const bannerUrl = info.banner
-    ? endpoints.person.asset(info.fingerprint, 'banner', info.banner)
+    ? (personAsset(info.fingerprint, 'banner', info.banner) ?? null)
     : null
   const faviconUrl = info.favicon
-    ? endpoints.person.asset(info.fingerprint, 'favicon', info.favicon)
+    ? personAsset(info.fingerprint, 'favicon', info.favicon)
     : null
   // Only the links the profile itself shows.
   const accounts = (info.accounts ?? []).filter((account) =>

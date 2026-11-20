@@ -937,8 +937,13 @@ def action_contact_handle_lookup(a):
 	"""What a network shows of a handle on a contact's card (phase 17): the
 	person's name, avatar, page and address, or nothing where the network
 	does not answer."""
-	if not a.user or not a.user.identity or not a.user.identity.id:
+	if not a.user:
 		a.error.label(401, "errors.not_logged_in")
+		return
+	# Signed in with no identity is a refusal, not an ended session: a 401
+	# would sign every client out.
+	if not a.user.identity or not a.user.identity.id:
+		a.error.label(403, "errors.identity_required")
 		return
 	handle = (a.input("handle") or "").strip()
 	if not handle or len(handle) > 500 or " " in handle:

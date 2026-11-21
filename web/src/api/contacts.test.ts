@@ -46,6 +46,17 @@ describe('Contact list request', () => {
   })
 })
 
+describe('Standing request', () => {
+  it('reads one person, as a read', async () => {
+    const { requestHelpers } = await import('@mochi/web')
+    vi.mocked(requestHelpers.get).mockResolvedValue({})
+    await contactsApi.standing('p1')
+    expect(requestHelpers.get).toHaveBeenCalledWith('/people/-/friends/standing', {
+      params: { person: 'p1' },
+    })
+  })
+})
+
 describe('Search requests', () => {
   beforeEach(() => {
     post.mockReset()

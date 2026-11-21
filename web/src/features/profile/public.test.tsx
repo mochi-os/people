@@ -16,7 +16,10 @@ const calls = vi.hoisted(() => ({
   accept: vi.fn(),
   // The viewer: '' for an anonymous visitor.
   identity: '',
-  contacts: undefined as unknown,
+  standing: undefined as unknown,
+  // The people whose standing the page asked for.
+  asked: [] as string[],
+  listed: vi.fn(),
 }))
 
 vi.mock('@mochi/web', async (original) => ({
@@ -34,7 +37,14 @@ vi.mock('@/hooks/usePerson', async (original) => ({
   useMyIdentity: () => calls.identity,
 }))
 vi.mock('@/hooks/useContacts', () => ({
-  useContactsQuery: () => ({ data: calls.contacts }),
+  useContactsQuery: () => {
+    calls.listed()
+    return { data: undefined }
+  },
+  useStandingQuery: (person: string) => {
+    calls.asked.push(person)
+    return { data: calls.standing }
+  },
   useInviteFriendMutation: () => ({
     mutateAsync: calls.invite,
     isPending: false,
@@ -56,17 +66,7 @@ const ada = {
   favicon: '',
 }
 
-const nobody = { contacts: [], received: [], sent: [] }
-
-function invitation(id: string) {
-  return {
-    identity: 'me',
-    id,
-    direction: 'to' as const,
-    name: 'Ada Lovelace',
-    updated: 0,
-  }
-}
+const nobody = { contact: '', friend: false, sent: false, received: false }
 
 function page() {
   calls.information = vi.fn().mockResolvedValue(ada)
@@ -83,7 +83,9 @@ beforeEach(() => {
   calls.invite = vi.fn().mockResolvedValue({ success: true })
   calls.accept = vi.fn().mockResolvedValue({ success: true })
   calls.identity = ''
-  calls.contacts = undefined
+  calls.standing = undefined
+  calls.asked = []
+  calls.listed = vi.fn()
 })
 
 describe('PublicProfile', () => {
@@ -244,7 +246,7 @@ describe('PublicProfile', () => {
     // THE POINT: Chat sends someone it refused here, and the request is the
     // button beside the name.
     calls.identity = 'me'
-    calls.contacts = nobody
+    calls.standing = nobody
     page()
     fireEvent.click(await screen.findByRole('button', { name: 'Invite' }))
     await waitFor(() =>
@@ -255,9 +257,18 @@ describe('PublicProfile', () => {
     )
   })
 
+  it('asks where the viewer stands with this person alone, listing no contacts', async () => {
+    calls.identity = 'me'
+    calls.standing = nobody
+    page()
+    expect(await screen.findByRole('button', { name: 'Invite' })).toBeInTheDocument()
+    expect(new Set(calls.asked)).toEqual(new Set(['p1']))
+    expect(calls.listed).not.toHaveBeenCalled()
+  })
+
   it('shows an invitation already sent as such', async () => {
     calls.identity = 'me'
-    calls.contacts = { ...nobody, sent: [invitation('p1')] }
+    calls.standing = { ...nobody, contact: 'c1', sent: true }
     page()
     expect(
       await screen.findByRole('button', { name: 'Invited' })
@@ -267,7 +278,7 @@ describe('PublicProfile', () => {
 
   it("accepts the person's own invitation", async () => {
     calls.identity = 'me'
-    calls.contacts = { ...nobody, received: [invitation('p1')] }
+    calls.standing = { ...nobody, received: true }
     page()
     fireEvent.click(await screen.findByRole('button', { name: 'Accept' }))
     await waitFor(() =>
@@ -283,21 +294,7 @@ describe('PublicProfile', () => {
 
   it('offers nothing to a friend', async () => {
     calls.identity = 'me'
-    calls.contacts = {
-      ...nobody,
-      contacts: [
-        {
-          id: 'c1',
-          book: 'b1',
-          person: 'p1',
-          friend: true,
-          name: 'Ada Lovelace',
-          directory: '',
-          created: 0,
-          updated: 0,
-        },
-      ],
-    }
+    calls.standing = { ...nobody, contact: 'c1', friend: true }
     page()
     expect(await screen.findByText('Ada Lovelace')).toBeInTheDocument()
     expect(screen.queryByRole('button')).toBeNull()
@@ -305,7 +302,7 @@ describe('PublicProfile', () => {
 
   it('offers nothing on the viewer’s own page', async () => {
     calls.identity = 'p1'
-    calls.contacts = nobody
+    calls.standing = nobody
     page()
     expect(await screen.findByText('Ada Lovelace')).toBeInTheDocument()
     expect(screen.queryByRole('button')).toBeNull()
@@ -313,38 +310,18 @@ describe('PublicProfile', () => {
 })
 
 describe('connection', () => {
-  const friend = {
-    id: 'c1',
-    book: 'b1',
-    person: 'p1',
-    friend: true,
-    name: 'Ada Lovelace',
-    directory: '',
-    created: 0,
-    updated: 0,
-  }
-
   it('reads a friend, an invitation either way, or neither', () => {
-    expect(connection(undefined, 'p1')).toBeNull()
-    expect(connection(nobody, 'p1')).toBe('none')
-    expect(connection({ ...nobody, contacts: [friend] }, 'p1')).toBe('friend')
-    expect(
-      connection({ ...nobody, contacts: [{ ...friend, friend: false }] }, 'p1')
-    ).toBe('none')
-    expect(connection({ ...nobody, sent: [invitation('p1')] }, 'p1')).toBe(
-      'invited'
+    expect(connection(undefined)).toBeNull()
+    expect(connection(nobody)).toBe('none')
+    expect(connection({ ...nobody, contact: 'c1', friend: true })).toBe(
+      'friend'
     )
-    expect(
-      connection(
-        {
-          ...nobody,
-          received: [{ ...invitation('p1'), fingerprint: '', directory: '' }],
-        },
-        'p1'
-      )
-    ).toBe('pending')
-    expect(connection({ ...nobody, sent: [invitation('p2')] }, 'p1')).toBe(
-      'none'
+    expect(connection({ ...nobody, contact: 'c1' })).toBe('none')
+    expect(connection({ ...nobody, sent: true })).toBe('invited')
+    expect(connection({ ...nobody, received: true })).toBe('pending')
+    // Their invitation comes first: accepting it is all there is to do.
+    expect(connection({ ...nobody, sent: true, received: true })).toBe(
+      'pending'
     )
   })
 })

@@ -120,7 +120,9 @@
 		"get": {"function": "function_get", "permission": "friends/read"},
 		"list": {"function": "function_list", "permission": "friends/read"},
 		"count": {"function": "function_count", "permission": "friends/read"},
-		"users/search": {"function": "function_users_search"},
+		// People in the directory, for other apps' member pickers: what the
+		// directory already shows any app.
+		"users/search": {"function": "function_users_search", "open": true},
 		// What a hosted account's fediverse document shows of the person,
 		// asked by core's ActivityPub engine.
 		"activitypub/profile": {"function": "function_activitypub_profile"},
@@ -143,16 +145,17 @@
 		"handles": {"function": "function_handles", "permission": "contacts/read"},
 		// Whether a messaging address is a contact's, for chat to police an
 		// invitation from another network (phase 24).
-		"contacts/known": {"function": "function_contacts_known", "permission": "friends/read"},
+		"contacts/known": {"function": "function_contacts_known", "permission": "contacts/read"},
 		// A contact on XMPP as it now stands, and the friends with an XMPP
 		// address, asked by core's XMPP engine (phase 25).
-		"xmpp/roster": {"function": "function_xmpp_roster", "permission": "roster/write"},
-		"xmpp/friends": {"function": "function_xmpp_friends", "permission": "friends/read"},
-		"dav/collections": {"function": "function_dav_collections", "permission": "contacts/read"},
-		"dav/collections/create": {"function": "function_dav_collection_create", "permission": "contacts/read"},
-		"dav/collections/delete": {"function": "function_dav_collection_delete", "permission": "contacts/read"},
-		"dav/objects": {"function": "function_dav_objects", "permission": "contacts/read"},
-		"dav/put": {"function": "function_dav_put", "permission": "contacts/read"},
-		"dav/delete": {"function": "function_dav_delete", "permission": "contacts/read"}
+		"xmpp/roster": {"function": "function_xmpp_roster"},
+		"xmpp/friends": {"function": "function_xmpp_friends"},
+		// The address books, asked by core's CardDAV engine.
+		"dav/collections": {"function": "function_dav_collections"},
+		"dav/collections/create": {"function": "function_dav_collection_create"},
+		"dav/collections/delete": {"function": "function_dav_collection_delete"},
+		"dav/objects": {"function": "function_dav_objects"},
+		"dav/put": {"function": "function_dav_put"},
+		"dav/delete": {"function": "function_dav_delete"}
 	}
 }

@@ -64,7 +64,17 @@ import {
 import { ProfileView } from './profile-view'
 
 // Matches the server cap (_PROFILE_MAX = 100 * 1024 in people.star).
-const PROFILE_MAX = 100 * 1024
+export const PROFILE_MAX = 100 * 1024
+
+// A profile's length as the server counts it: in code points, so an emoji or
+// any other character past the Basic Multilingual Plane counts once, not as
+// the two UTF-16 units of `text.length`.
+export function profileLength(text: string): number {
+  let count = 0
+  for (const _ of text) count++
+  return count
+}
+
 const ACCENT_PATTERN = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i
 
 // Sanity cap on the *source* file the user picks — well above any real photo.
@@ -196,8 +206,9 @@ function ProfileEditor({
   const { formatNumber } = useFormat()
 
   const profileDirty = profile !== info.profile
-  const tooLong = profile.length > PROFILE_MAX
-  const progress = Math.min((profile.length / PROFILE_MAX) * 100, 100)
+  const length = profileLength(profile)
+  const tooLong = length > PROFILE_MAX
+  const progress = Math.min((length / PROFILE_MAX) * 100, 100)
 
   const accentTrimmed = accent.trim()
   const accentValid = accentTrimmed === '' || ACCENT_PATTERN.test(accentTrimmed)
@@ -468,7 +479,7 @@ function ProfileEditor({
                 tooLong ? 'text-destructive' : 'text-muted-foreground'
               }`}
             >
-              {formatNumber(profile.length, 0)} / {formatNumber(PROFILE_MAX, 0)}
+              {formatNumber(length, 0)} / {formatNumber(PROFILE_MAX, 0)}
             </p>
             <Button
               size='sm'

@@ -22,6 +22,7 @@ import {
   type SearchDirectoryResponse,
   type SearchLocalUsersResponse,
   type SearchNetworksResponse,
+  type Standing,
   type UpdateContactRequest,
 } from '@/api/contacts'
 
@@ -31,6 +32,8 @@ const contactKeys = {
   books: () => ['books'] as const,
   search: (query: string) => ['contacts', 'search', query] as const,
   networks: (query: string) => ['contacts', 'networks', query] as const,
+  // Under contacts, so every write that refetches the list refetches it too.
+  standing: (person: string) => ['contacts', 'standing', person] as const,
   localUsers: (query: string) => ['users', 'search', query] as const,
   preferences: () => ['people', 'preferences'] as const,
 }
@@ -101,6 +104,14 @@ export const useContactQuery = (
     queryKey: contactKeys.one(contact),
     queryFn: () => contactsApi.get(contact),
     ...options,
+  })
+
+// Where the user stands with one person, read for that person alone.
+export const useStandingQuery = (person: string) =>
+  useQuery<Standing>({
+    queryKey: contactKeys.standing(person),
+    queryFn: () => contactsApi.standing(person),
+    enabled: Boolean(person),
   })
 
 // The merge of two contacts as it would be saved, read without writing.

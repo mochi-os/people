@@ -7,7 +7,7 @@ import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { Profile } from './index'
+import { PROFILE_MAX, Profile, profileLength } from './index'
 
 // The profile as the server answers it; a test gives it accounts.
 const info = vi.hoisted(() => ({ data: {} as Record<string, unknown> }))
@@ -121,5 +121,25 @@ describe('Profile', () => {
     const field = document.getElementById('profile-markdown')
     expect(field).not.toBeNull()
     expect(field).not.toHaveAttribute('placeholder')
+  })
+
+  it('counts the profile in characters, as the server does', () => {
+    info.data.profile = '😀😀'
+    show()
+    // THE POINT: two emoji are two characters, not four UTF-16 units.
+    expect(screen.getByText(/^2 \/ /)).toBeInTheDocument()
+  })
+})
+
+describe('profileLength', () => {
+  it('counts a character past the Basic Multilingual Plane once', () => {
+    expect(profileLength('😀')).toBe(1)
+    expect(profileLength('é😀a')).toBe(3)
+  })
+
+  it('takes a full profile of emoji, twice as long in UTF-16 units', () => {
+    const full = '😀'.repeat(PROFILE_MAX)
+    expect(full.length).toBe(2 * PROFILE_MAX)
+    expect(profileLength(full)).toBe(PROFILE_MAX)
   })
 })

@@ -14,12 +14,12 @@ import {
 } from '@mochi/web'
 import { Check, Send } from 'lucide-react'
 import { personAsset } from '@/api/endpoints'
-import type { GetContactsResponse } from '@/api/types/contacts'
+import type { Standing } from '@/api/types/contacts'
 import type { PersonInformation } from '@/api/types/person'
 import {
   useAcceptFriendMutation,
-  useContactsQuery,
   useInviteFriendMutation,
+  useStandingQuery,
 } from '@/hooks/useContacts'
 import { useMyIdentity, usePersonInformationQuery } from '@/hooks/usePerson'
 import { ProfileView } from './profile-view'
@@ -41,30 +41,30 @@ function PublicProfileSkeleton() {
   )
 }
 
-// Where the viewer stands with a person, read off the viewer's own contacts: a
-// friend, an invitation either way, or neither. Their invitation comes first,
-// since accepting it is all there is to do. Null until the contacts load.
+// Where the viewer stands with a person, as their own server answers for that
+// one person: a friend, an invitation either way, or neither. Their invitation
+// comes first, since accepting it is all there is to do. Null until it loads.
 // eslint-disable-next-line react-refresh/only-export-components
 export function connection(
-  contacts: GetContactsResponse | undefined,
-  person: string
+  standing: Standing | undefined
 ): 'friend' | 'pending' | 'invited' | 'none' | null {
-  if (!contacts) return null
-  if (contacts.contacts.some((row) => row.person === person && row.friend))
-    return 'friend'
-  if (contacts.received.some((invite) => invite.id === person)) return 'pending'
-  if (contacts.sent.some((invite) => invite.id === person)) return 'invited'
+  if (!standing) return null
+  if (standing.friend) return 'friend'
+  if (standing.received) return 'pending'
+  if (standing.sent) return 'invited'
   return 'none'
 }
 
 // The friend invitation the person's page offers a signed-in visitor, as the
-// add dialog's row does: Invite, Invited once sent, or Accept theirs.
+// add dialog's row does: Invite, Invited once sent, or Accept theirs. The
+// person is the one the page asked for: their server's answer is bound to the
+// address, so its id is theirs.
 function Connect({ person }: { person: PersonInformation }) {
   const { t } = useLingui()
-  const { data } = useContactsQuery()
+  const { data } = useStandingQuery(person.id)
   const invite = useInviteFriendMutation()
   const accept = useAcceptFriendMutation()
-  const state = connection(data, person.id)
+  const state = connection(data)
 
   const sendInvite = async () => {
     const name = person.name

@@ -810,15 +810,26 @@ def stream_person_asset(a, person_id, asset):
 def action_information(a):
 	person = a.input("person")
 	out = stream_person_asset(a, person, "information")
+	if not out or "data" not in out:
+		return out
+	# The answer is the person's server's, relayed: it is bound to the person
+	# asked for - their id, or the fingerprint derived from it - so no server
+	# can answer one person's address with another person's identity, kept
+	# answers included. Rebuilt rather than assigned into: a decoded response
+	# dict may be frozen.
+	answered = out["data"]
+	id = answered.get("id") if type(answered) == "dict" else None
+	if type(id) != "string" or not mochi.text.valid(id, "entity") or (id != person and mochi.entity.fingerprint(id) != person):
+		a.error.label(502, "errors.person_unavailable")
+		return None
+	data = {key: value for key, value in answered.items()}
+	data["fingerprint"] = mochi.entity.fingerprint(id)
 	# privacy never crosses the wire (see build_information), so the owner's own
-	# view reads it from the local entity instead. Rebuilt rather than assigned
-	# into: a decoded response dict may be frozen.
-	if out and "data" in out and is_person_owner(a, person):
+	# view reads it from the local entity instead.
+	if is_person_owner(a, person):
 		entity = get_person_entity(person) or {}
-		data = {key: value for key, value in out["data"].items()}
 		data["privacy"] = entity.get("privacy", "")
-		return {"data": data}
-	return out
+	return {"data": data}
 
 def action_avatar(a):
 	return stream_person_asset(a, a.input("person"), "avatar")

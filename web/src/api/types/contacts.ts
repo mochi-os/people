@@ -78,6 +78,16 @@ export interface GetContactsResponse {
   sent: Invite[]
 }
 
+// Where the user stands with one person, as friends/standing answers it: the
+// contact for them ('' for none), whether a friend, and an invitation either
+// way.
+export interface Standing {
+  contact: string
+  friend: boolean
+  sent: boolean
+  received: boolean
+}
+
 export interface GetContactResponse {
   contact: ContactFull
   // A merge preview: the contact absorbed into this one, whose card holds

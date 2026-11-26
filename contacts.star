@@ -47,13 +47,16 @@ _PROPERTIES_MAXIMUM = 200
 # SERVICE-TYPE naming the network (ActivityPub, Bluesky), so the card keeps it
 # for CardDAV and feeds can offer the person as someone to follow. IMPP (RFC
 # 6350) is a messaging address as a URI - xmpp:, matrix:, acct: - which chat
-# can message where one of the user's accounts reaches its network.
-_MANAGED = ["FN", "N", "NICKNAME", "EMAIL", "TEL", "ADR", "BDAY", "ORG", "TITLE", "URL", "NOTE", "SOCIALPROFILE", "IMPP"]
+# can message where one of the user's accounts reaches its network. The
+# X-PHONETIC names are a name's reading, as a phone's contacts hold it and
+# other vCard writers name it: what Japanese, Chinese and Korean names sort by.
+_MANAGED = ["FN", "N", "NICKNAME", "EMAIL", "TEL", "ADR", "BDAY", "ORG", "TITLE", "URL", "NOTE", "SOCIALPROFILE", "IMPP", "X-PHONETIC-FIRST-NAME", "X-PHONETIC-MIDDLE-NAME", "X-PHONETIC-LAST-NAME"]
 
 # The managed properties every submission replaces. A client written before
-# SOCIALPROFILE and IMPP were managed - an Android app already installed, a
-# phone's contacts syncing through it - sends neither, so those are replaced
-# only when the submission carries one or names it in its managed list.
+# SOCIALPROFILE, IMPP and the phonetic names were managed - an Android app
+# already installed, a phone's contacts syncing through it, the editors, which
+# show no reading - sends none of them, so those are replaced only when the
+# submission carries one or names it in its managed list.
 _REPLACED = ["FN", "N", "NICKNAME", "EMAIL", "TEL", "ADR", "BDAY", "ORG", "TITLE", "URL", "NOTE"]
 
 # Properties the server owns. Never accepted from a client; regenerated on read.
@@ -385,7 +388,7 @@ def card_merge(card, properties, managed=None):
 
 # Properties a card holds one of. In a merge the surviving card's stands and
 # the other card's fills a gap; the other card's UID never moves.
-_SINGLE = ["FN", "N", "NICKNAME", "BDAY", "ORG", "TITLE", "VERSION", "PRODID", "REV", "KIND", "GENDER", "ANNIVERSARY", "TZ", "GEO", "PHOTO", "LOGO", "SOUND", "CLASS", "SORT-STRING"]
+_SINGLE = ["FN", "N", "NICKNAME", "BDAY", "ORG", "TITLE", "VERSION", "PRODID", "REV", "KIND", "GENDER", "ANNIVERSARY", "TZ", "GEO", "PHOTO", "LOGO", "SOUND", "CLASS", "SORT-STRING", "X-PHONETIC-FIRST-NAME", "X-PHONETIC-MIDDLE-NAME", "X-PHONETIC-LAST-NAME"]
 
 # merge_pair(first, second) -> (survivor, absorbed) or None: the card that
 # survives a merge is the one linked to a Mochi person, whichever was opened.
@@ -937,8 +940,13 @@ def action_contact_handle_lookup(a):
 	"""What a network shows of a handle on a contact's card (phase 17): the
 	person's name, avatar, page and address, or nothing where the network
 	does not answer."""
-	if not a.user or not a.user.identity or not a.user.identity.id:
+	if not a.user:
 		a.error.label(401, "errors.not_logged_in")
+		return
+	# Signed in with no identity is a refusal, not an ended session: a 401
+	# would sign every client out.
+	if not a.user.identity or not a.user.identity.id:
+		a.error.label(403, "errors.identity_required")
 		return
 	handle = (a.input("handle") or "").strip()
 	if not handle or len(handle) > 500 or " " in handle:
@@ -959,6 +967,9 @@ def action_contact_get(a):
 	if not source:
 		contact = contact_full(row)
 		contact["xmpp"] = contact_xmpp(row)
+		# Whether the user's invitation to the contact's person is out, so the
+		# editor's friend switch need not list every contact to learn it.
+		contact["invited"] = row["friend"] != 1 and bool(row["person"]) and invited(identity, row["person"])
 		return {"data": {"contact": contact}}
 	# A merge is previewed here: the contact that survives, its card holding
 	# both cards' details, and the contact it absorbs.
@@ -1485,6 +1496,27 @@ def action_friend_ignore(a):
 
 def action_friend_remove(a):
 	return friend_remove(a, person_input(a))
+
+# action_friend_standing: where the user stands with one Mochi person - their
+# contact for them (its id, empty for none), whether that contact is a friend,
+# and an invitation either way - so a person's page need not list every
+# contact to learn it.
+def action_friend_standing(a):
+	identity = a.user.identity.id
+	person = person_input(a)
+	if not person:
+		a.error.label(400, "errors.missing_friend_id")
+		return
+	if not mochi.text.valid(person, "entity"):
+		a.error.label(400, "errors.invalid_friend_id_format")
+		return
+	row = contact_by_person(identity, person)
+	return {"data": {
+		"contact": row["id"] if row else "",
+		"friend": bool(row) and row["friend"] == 1,
+		"sent": invited(identity, person),
+		"received": mochi.db.exists("select id from invites where identity=? and id=? and direction='from'", identity, person),
+	}}
 
 # === P2P events: the friendship handshake ===
 

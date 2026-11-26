@@ -15,6 +15,7 @@ import type {
   SearchDirectoryResponse,
   SearchLocalUsersResponse,
   SearchNetworksResponse,
+  Standing,
   UpdateContactRequest,
 } from '@/api/types/contacts'
 
@@ -155,6 +156,11 @@ const ignoreFriend = (person: string) =>
     })
   )
 
+const getStanding = (person: string): Promise<Standing> =>
+  requestHelpers.get<Standing>(endpoints.friends.standing, {
+    params: { person },
+  })
+
 // Ends the friendship and keeps the contact; also cancels a sent invitation.
 const removeFriend = (person: string, account?: string) =>
   toMutationSuccess(
@@ -200,6 +206,7 @@ export const contactsApi = {
   accept: acceptFriend,
   ignore: ignoreFriend,
   removeFriend,
+  standing: getStanding,
   getPreferences,
   setPreferences,
 }
@@ -213,5 +220,6 @@ export type {
   SearchDirectoryResponse,
   SearchLocalUsersResponse,
   SearchNetworksResponse,
+  Standing,
   UpdateContactRequest,
 }

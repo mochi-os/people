@@ -51,6 +51,8 @@ const endpoints = {
     accept: action('friends/accept'),
     ignore: action('friends/ignore'),
     remove: action('friends/remove'),
+    // Where the user stands with one person, without listing every contact.
+    standing: action('friends/standing'),
   },
   preferences: {
     get: action('preferences/get'),

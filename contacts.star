@@ -737,8 +737,11 @@ def friend_projection(row):
 	# entity id, name the user's label.
 	return {"identity": row["identity"], "id": row["person"], "name": row["name"], "class": "person", "created": row["created"], "refreshed": row["refreshed"]}
 
-# contact_insert(identity, book, person, friend, name, directory, card, slug="") -> row
+# contact_insert(identity, book, person, friend, name, directory, card, slug="") -> row | None
 # The slug is the name a DAV client chose; a contact made here is named by its id.
+# None when the book already holds a contact at slug: one another request made
+# between the caller's look for it and this insert, which the unique index on
+# (book, slug) keeps out rather than failing the request.
 def contact_insert(identity, book, person, friend, name, directory, card, slug=""):
 	id = mochi.uid()
 	now = mochi.time.now()
@@ -747,10 +750,13 @@ def contact_insert(identity, book, person, friend, name, directory, card, slug="
 	# refreshed stays 0: a name that arrived in an invite is the sender's own
 	# claim, so the first listing re-resolves the directory name straight away
 	# rather than trusting the claim for a day.
-	mochi.db.execute("insert into contacts ( id, book, identity, person, friend, name, directory, card, etag, slug, created, updated, refreshed ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0 )",
+	mochi.db.execute("insert or ignore into contacts ( id, book, identity, person, friend, name, directory, card, etag, slug, created, updated, refreshed ) values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0 )",
 		id, book, identity, person, friend, name, directory, encoded, etag, slug or id, now, now)
+	row = contact_get(identity, id)
+	if not row:
+		return None
 	book_touch(book, id)
-	return contact_get(identity, id)
+	return row
 
 # contact_link(identity, person, name) -> row: the contact for a Mochi person,
 # created in the default book when there is none. The friend flag is untouched;
@@ -1068,6 +1074,14 @@ def action_contact_create(a):
 		info = mochi.directory.get(person)
 		directory = info.get("name", "") if info else ""
 	row = contact_insert(identity, book, person, 0, name, directory, card, slug)
+	if not row:
+		# Another create at the same name landed first, a retry racing its
+		# original: answer with the contact it made, as a retry finding it
+		# above is answered.
+		row = contact_by_slug(identity, book, slug)
+		if not row:
+			a.error.label(409, "errors.contact_exists")
+			return
 	return {"data": {"contact": contact_full(row)}}
 
 def action_contact_update(a):
@@ -1927,6 +1941,10 @@ def function_dav_put(context, identity, collection, name, card, match="", absent
 		label = row["name"]
 	if not row:
 		inserted = contact_insert(identity, book["id"], "", 0, label, "", clean, name)
+		if not inserted:
+			# Another create at the same name landed between the look above
+			# and the insert: this one is refused as one meeting it there.
+			return {"error": "conflict"}
 		return {"name": name, "etag": inserted["etag"], "updated": inserted["updated"]}
 	etag = contact_etag(clean, row["person"], row["friend"], row.get("photo", ""), label, row["directory"])
 	now = mochi.time.now()
